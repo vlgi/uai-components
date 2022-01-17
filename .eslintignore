@@ -1,0 +1,11 @@
+node_modules/*
+public/*
+android/*
+ios/*
+jest.config.ts
+dist/
+.vscode
+.idea
+/coverage/
+.creevey/report/
+storybook-static/

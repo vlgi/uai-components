@@ -1,0 +1,57 @@
+# the first thing GitLab Runner will look for in your .gitlab-ci.yml is a Docker image specifying what do you need in your container to run that script
+image: node:14.18.1 # can be upgraded, depending on your node version used
+
+cache: #  Parameter 'cache' to cache the installation files for your projects dependencies, for building faster
+  paths:
+    - node_modules/
+
+stages:
+  - install-dependencies
+  - lint
+  - test
+  - build-storybook
+  - deploy
+
+install-dependencies:
+  stage: install-dependencies
+  script:
+    - npm install
+
+build-storybook:
+  stage: build-storybook
+  script:
+    - npm run build-storybook
+
+  artifacts:
+    paths:
+      - storybook-static
+  only:
+    - master # or dev, the branch you want to publish
+
+lint:
+  stage: lint
+  script: npm run lint
+  only:
+    - master # or dev, the branch you want to publish
+
+test:
+  stage: test
+  script: npm run test
+  only:
+    - master # or dev, the branch you want to publish
+
+pages:
+  stage: deploy
+  script:
+    - ls storybook-static
+    - mkdir .public
+    - cp -r storybook-static/* .public
+    - rm -rf .public/node_modules
+    - rm -rf public/*
+    - mv .public public
+    - ls public
+  artifacts:
+    paths:
+      - public # mandatory, other folder won't work
+  only:
+    - master # or dev, the branch you want to publish

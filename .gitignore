@@ -1,0 +1,14 @@
+/node_modules/
+
+.DS_Store
+
+# Build
+
+dist/
+
+# IDEs
+.vscode
+.idea
+/coverage/
+.creevey/report/
+storybook-static/

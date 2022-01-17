@@ -1,0 +1,437 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots External/SveltePdfViewer Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <h1
+    class="svelte-zftq3x"
+  >
+    Component package example.
+  </h1>
+   
+  <br
+    class="svelte-zftq3x"
+  />
+  <br
+    class="svelte-zftq3x"
+  />
+   
+  <h2
+    class="svelte-zftq3x"
+  >
+    This component show your name from props:
+  </h2>
+   
+  <p
+    class="svelte-zftq3x"
+  >
+    Hi 
+    
+  </p>
+   
+  <br
+    class="svelte-zftq3x"
+  />
+  <hr
+    class="svelte-zftq3x"
+  />
+  <br
+    class="svelte-zftq3x"
+  />
+   
+  <h2
+    class="svelte-zftq3x"
+  >
+    Use 2 internal componentes:
+  </h2>
+   
+  <p
+    class="svelte-zftq3x"
+  >
+    a 
+    <button
+      class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
+      data-testid="btn-visible"
+      style=""
+      type="button"
+    >
+      Button
+    </button>
+     
+    <button
+      class="svelte-wtisvu"
+      data-testid="btn-hidden"
+      id="btn-hidden"
+    >
+      hi
+    </button>
+  </p>
+   
+  <br
+    class="svelte-zftq3x"
+  />
+   
+  <p
+    class="svelte-zftq3x"
+  >
+    and an icon 
+  
+    <span
+      class="icon-mail"
+    />
+  </p>
+   
+  <br
+    class="svelte-zftq3x"
+  />
+  <hr
+    class="svelte-zftq3x"
+  />
+  <br
+    class="svelte-zftq3x"
+  />
+   
+  <h2
+    class="svelte-zftq3x"
+  >
+    And import an image too:
+    <br
+      class="svelte-zftq3x"
+    />
+     
+    <img
+      alt="my-img"
+      class="svelte-zftq3x"
+      height="150px"
+      width="150px"
+    />
+    <br
+      class="svelte-zftq3x"
+    />
+  </h2>
+</section>
+`;
+
+exports[`Storyshots Internal/Button Inaccessible 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
+    data-testid="btn-visible"
+    style="background-color: white"
+    type="button"
+  >
+    Button
+  </button>
+   
+  <button
+    class="svelte-wtisvu"
+    data-testid="btn-hidden"
+    id="btn-hidden"
+  >
+    hi
+  </button>
+</section>
+`;
+
+exports[`Storyshots Internal/Button Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="storybook-button storybook-button--large storybook-button--secondary svelte-wtisvu"
+    data-testid="btn-visible"
+    style=""
+    type="button"
+  >
+    Button
+  </button>
+   
+  <button
+    class="svelte-wtisvu"
+    data-testid="btn-hidden"
+    id="btn-hidden"
+  >
+    hi
+  </button>
+</section>
+`;
+
+exports[`Storyshots Internal/Button Primary 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
+    data-testid="btn-visible"
+    style=""
+    type="button"
+  >
+    Button
+  </button>
+   
+  <button
+    class="svelte-wtisvu"
+    data-testid="btn-hidden"
+    id="btn-hidden"
+  >
+    hi
+  </button>
+</section>
+`;
+
+exports[`Storyshots Internal/Button Secondary 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="storybook-button storybook-button--medium storybook-button--secondary svelte-wtisvu"
+    data-testid="btn-visible"
+    style=""
+    type="button"
+  >
+    Button
+  </button>
+   
+  <button
+    class="svelte-wtisvu"
+    data-testid="btn-hidden"
+    id="btn-hidden"
+  >
+    hi
+  </button>
+</section>
+`;
+
+exports[`Storyshots Internal/Button Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="storybook-button storybook-button--small storybook-button--secondary svelte-wtisvu"
+    data-testid="btn-visible"
+    style=""
+    type="button"
+  >
+    Button
+  </button>
+   
+  <button
+    class="svelte-wtisvu"
+    data-testid="btn-hidden"
+    id="btn-hidden"
+  >
+    hi
+  </button>
+</section>
+`;
+
+exports[`Storyshots Internal/Icon Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="icon-phone"
+  />
+</section>
+`;
+
+exports[`Storyshots Internal/Icon List 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="icon-eye-off"
+  />
+   
+  <span>
+    icon-
+    eye-off
+  </span>
+   
+  <br />
+  <span
+    class="icon-eye-on"
+  />
+   
+  <span>
+    icon-
+    eye-on
+  </span>
+   
+  <br />
+  <span
+    class="icon-file"
+  />
+   
+  <span>
+    icon-
+    file
+  </span>
+   
+  <br />
+  <span
+    class="icon-filter"
+  />
+   
+  <span>
+    icon-
+    filter
+  </span>
+   
+  <br />
+  <span
+    class="icon-info"
+  />
+   
+  <span>
+    icon-
+    info
+  </span>
+   
+  <br />
+  <span
+    class="icon-investing"
+  />
+   
+  <span>
+    icon-
+    investing
+  </span>
+   
+  <br />
+  <span
+    class="icon-link"
+  />
+   
+  <span>
+    icon-
+    link
+  </span>
+   
+  <br />
+  <span
+    class="icon-lock"
+  />
+   
+  <span>
+    icon-
+    lock
+  </span>
+   
+  <br />
+  <span
+    class="icon-mail"
+  />
+   
+  <span>
+    icon-
+    mail
+  </span>
+   
+  <br />
+  <span
+    class="icon-more"
+  />
+   
+  <span>
+    icon-
+    more
+  </span>
+   
+  <br />
+  <span
+    class="icon-notification"
+  />
+   
+  <span>
+    icon-
+    notification
+  </span>
+   
+  <br />
+  <span
+    class="icon-partners"
+  />
+   
+  <span>
+    icon-
+    partners
+  </span>
+   
+  <br />
+  <span
+    class="icon-phone"
+  />
+   
+  <span>
+    icon-
+    phone
+  </span>
+   
+  <br />
+  <span
+    class="icon-ponto"
+  />
+   
+  <span>
+    icon-
+    ponto
+  </span>
+   
+  <br />
+  <span
+    class="icon-profile"
+  />
+   
+  <span>
+    icon-
+    profile
+  </span>
+   
+  <br />
+  <span
+    class="icon-proposal"
+  />
+   
+  <span>
+    icon-
+    proposal
+  </span>
+   
+  <br />
+  <span
+    class="icon-search"
+  />
+   
+  <span>
+    icon-
+    search
+  </span>
+   
+  <br />
+  <span
+    class="icon-task"
+  />
+   
+  <span>
+    icon-
+    task
+  </span>
+   
+  <br />
+  <span
+    class="icon-upload"
+  />
+   
+  <span>
+    icon-
+    upload
+  </span>
+   
+  <br />
+  
+</section>
+`;
