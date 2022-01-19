@@ -7,4 +7,5 @@
 <span class="icon-{iconName}" on:click/>
 
 <style lang="scss">
+
 </style>
