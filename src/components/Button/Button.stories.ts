@@ -1,64 +1,116 @@
 import type { ArgType } from "@storybook/addons";
 import { action } from "@storybook/addon-actions";
 import Button from "./Button.svelte";
-import ButtonWrapperForTestSlot from "./ButtonWrapperForTestSlot.svelte";
+import ButtonWrapper from "./ButtonWrapperForTest.svelte";
 
 export default {
-  title: "Internal/Button",
+  title: "Components/Button",
   component: Button,
-  argTypes: {
-    onClick: { action: "onClick" },
-    size: {
-      control: {
-        type: "select",
-        options: ["small", "medium", "large"],
-      },
-    },
-    backgroundColor: { control: "color" },
-  },
-  parameters: {
-    // skip all screen test for button stories
-    creevey: {
-      skip: true,
-    },
+  argtypes: {
   },
 };
 
 const Template = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
-    // note that export default use Button componente, because this file describe button stories
-    // this ButtonWrapperForTestSlot is only for wrap slots
-    Component: ButtonWrapperForTestSlot,
-    props,
-    on: {
-      click: action("onClick"),
-    },
+  const ret = ({...props}) => ({
+    Component: ButtonWrapper,
+    props: props,
   });
   ret.args = _args;
   return ret;
 };
 
-export const Primary = Template({
-  primary: true,
-  labelSlot: "Button",
-});
-
-export const Secondary = Template({
-  labelSlot: "Button",
-});
-
-export const Large = Template({
+export const LargeSimple = Template({
+  style: "default",
   size: "large",
-  labelSlot: "Button",
+  labelSlot: "Bloquear",
 });
 
-export const Small = Template({
+export const LargeIcon = Template({
+  style: "default",
+  size: "large",
+  icon: "lock",
+  labelSlot: "Bloquear",
+});
+
+export const mediumSimple = Template({
+  style: "default",
+  size: "medium",
+  labelSlot: "Botão 1",
+});
+
+export const mediumIcon = Template({
+  style: "default",
+  size: "medium",
+  icon: "file",
+  labelSlot: "Documento",
+});
+
+export const smallSimple = Template({
+  style: "default",
   size: "small",
-  labelSlot: "Button",
+  labelSlot: "Buscar",
 });
 
-export const Inaccessible = Template({
-  primary: true,
-  backgroundColor: "white",
-  labelSlot: "Button",
+export const smallIcon = Template({
+  style: "default",
+  size: "small",
+  icon: "search",
+  labelSlot: "Buscar",
+});
+
+export const Disabled = Template({
+  style: "default",
+  size: "large",
+  disabled: "true",
+  labelSlot: "Bloquear",
+});
+
+export const NotBackground = Template({
+  style: "default",
+  size: "large",
+  background: "none",
+  labelSlot: "Bloquear",
+});
+
+export const NotBackgroundDisabled = Template({
+  style: "default",
+  size: "large",
+  disabled: "true",
+  background: "none",
+  labelSlot: "Bloquear",
+});
+
+export const withBorders = Template({
+  style: "borders",
+  size: "medium",
+  background: "none",
+  labelSlot: "Bloquear",
+});
+
+export const withBordersDisabled = Template({
+  style: "borders",
+  size: "medium",
+  disabled: "true",
+  background: "none",
+  labelSlot: "Bloquear",
+});
+
+export const Floating = Template({
+  style: "white",
+  size: "floating",
+  icon: "more",
+});
+
+export const FloatingNotBackground = Template({
+  style: "default",
+  size: "floating",
+  background: "none",
+  icon: "more",
+});
+
+export const FloatingDisabled = Template({
+  style: "default",
+  size: "floating",
+  icon: "more",
+  disabled: "true",
 });
