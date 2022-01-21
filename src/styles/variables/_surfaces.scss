@@ -1,0 +1,12 @@
+:root {
+  // border-radius
+  // used in objects with small sizes, like a button, input, badge
+  --theme-small-shape: var(--szot-small-shape, 0.625rem);
+  // medium size, like a card, accordion
+  --theme-medium-shape: var(--szot-medium-shape, 1rem);
+  // large size, like a modal
+  --theme-large-shape: var(--szot-large-shape, 1.5rem);
+
+  // shadows
+  --theme-global-shadow: var(--szot-small-shadow, 2px 2px 5px rgba(0,0,0,.4));
+}
