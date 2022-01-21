@@ -5,9 +5,19 @@
       description: "Used in shaped components, like a button or a card",
       variables: [
         {
-          variable: "--szot-global-shadow",
-          default: "2px 2px 5px rgba(0,0,0,.4)",
-          description: "used in objects with small sizes, like a button, input, badge",
+          variable: "--szot-low-shadow",
+          default: "0 0 4px rgba(0,0,0,.07)",
+          description: "",
+        },
+        {
+          variable: "--szot-medium-shadow",
+          default: "0 4px 4px rgba(0,0,0,.07)",
+          description: "",
+        },
+        {
+          variable: "--szot-high-shadow",
+          default: "4px 4px 4px rgba(0,0,0,.07)",
+          description: "",
         },
       ],
     },
@@ -44,11 +54,13 @@
 
     <div class="container">
       {#each d.variables as v}
-        <div class="shape-content">
+        <div class="content">
           <p><b>Variable Name:</b> {v.variable}</p>
           <p><b>Default Value:</b> {v.default}</p>
           <p><b>Description:</b> {v.description}</p>
-          <div class="shape {v.variable}">
+          <div class="shape-content">
+            <div class="shape {v.variable}">
+            </div>
           </div>
         </div>
       {/each}
@@ -66,7 +78,7 @@
     margin-bottom: .4rem;
   }
 
-  .shape-content {
+  .content {
     margin-top: 1rem;
     font-size: 12px;
   }
@@ -75,37 +87,39 @@
     width: 4rem;
     height: 4rem;
     border: 3px solid black;
-
-    &[class*=small] {
-      width: 4rem;
-      height: 2rem;
-    }
-
-    &[class*=medium] {
-      width: 20rem;
-      height: 10rem;
-    }
-
-    &[class*=large] {
-      width: 60rem;
-      height: 30rem;
-    }
   }
 
   .--szot-small-shape {
     border-radius: var(--theme-small-shape);
+    width: 4rem;
+    height: 2rem;
   }
 
   .--szot-medium-shape {
     border-radius: var(--theme-medium-shape);
+    width: 20rem;
+    height: 10rem;
   }
 
   .--szot-large-shape {
     border-radius: var(--theme-large-shape);
+    width: 60rem;
+    height: 30rem;
   }
 
-  .--szot-global-shadow {
-    box-shadow: var(--theme-global-shadow);
+  .--szot-low-shadow {
+    border: 1px solid #eee;
+    box-shadow: var(--theme-low-shadow);
+  }
+
+  .--szot-medium-shadow {
+    border: 1px solid #eee;
+    box-shadow: var(--theme-medium-shadow);
+  }
+
+  .--szot-high-shadow {
+    border: 1px solid #eee;
+    box-shadow: var(--theme-high-shadow);
   }
 
 </style>
