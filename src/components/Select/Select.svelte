@@ -75,6 +75,49 @@ function toggleOpen() {
 // ======= Input handling ======= //
 
 /**
+   * Handles when the user uses the keyboard.
+   * @param {KeyboardEvent} ev The event emmited by the keyboard.
+   */
+function handleSelectKeypresses(ev: KeyboardEvent) {
+  const { key } = ev;
+
+  switch (key) {
+  case "Escape":
+    dropdownOpen = false;
+    break;
+
+  case "Enter":
+  case " ":
+    if (dropdownOpen) toggleSelected(options[focused]);
+    toggleOpen();
+    break;
+
+  case "ArrowDown":
+    if (!multiple) {
+      toggleSelected(options[Math.min(selectedIndex + 1, options.length - 1)]);
+    } else {
+      focused = Math.min(focused + 1, options.length - 1);
+    }
+    break;
+  case "ArrowUp":
+    if (!multiple) {
+      if (selectedIndex < 0) {
+        toggleSelected(options[options.length - 1]);
+      } else {
+        toggleSelected(options[Math.max(selectedIndex - 1, 0)]);
+      }
+    } else if (focused < 0) {
+      focused = options.length - 1;
+    } else {
+      focused = Math.max(focused - 1, 0);
+    }
+    break;
+  default:
+    break;
+  }
+}
+
+/**
  * Handles when an option is clicked.
  * @param {TOption} option The option that was clicked.
  */
@@ -96,6 +139,7 @@ function handleOptionClick(option: TOption) {
   {label}
 </label>
 <div class="select" role="combobox" tabindex="0"
+  on:keydown={handleSelectKeypresses}
   on:click={toggleOpen}
   id="{selectAttributes.id}-custom"
   aria-controls="{selectAttributes.id}-listbox"
@@ -109,7 +153,7 @@ function handleOptionClick(option: TOption) {
         Selecione
       {:else if multiple}
         {#each selectedMultiple as option}
-          <div class="badge">{option.text}</div>
+          <span class="badge">{option.text}</span>
         {/each}
       {:else}
         {selectedSingle ? selectedSingle.text : ""}
@@ -158,5 +202,8 @@ function handleOptionClick(option: TOption) {
   }
   .focused {
     border: 2px solid red;
+  }
+  .badge {
+    margin: 0.25rem;
   }
 </style>
