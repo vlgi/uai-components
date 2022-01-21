@@ -13,13 +13,13 @@
 
 <style lang="scss">
   .default{
-    --badge-border:none;
+    --border:none;
   }
   .border {
-    --badge-border:.9px solid #7D7D7D;
+    --border:.9px solid #7D7D7D;
   }
   .orange {
-    --badge-color:#FFFFFF;
-    --badge-background:#FC6627;
+    --color:#FFFFFF;
+    --background:#FC6627;
   }
 </style>

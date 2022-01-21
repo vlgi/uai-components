@@ -2,34 +2,34 @@
   export let disabled = "false";
 </script>
 
-<span href="./" class="dynamic-badge" id={disabled}><span><slot>Teste</slot></span></span>
+<span href="./" class="badge" id={disabled}><span><slot></slot></span></span>
 
 <style lang="scss">
 
-.dynamic-badge {
+.badge {
 
   position:relative;
-  padding: var(--badge-padding,0px 10px);
+  padding: var(--padding,0px 10px);
 
-  background:var(--badge-background,#FFFFFF);
-  color:var(--badge-color,#5F5F5F);
+  background:var(--background,#FFFFFF);
+  color:var(--color,#5F5F5F);
 
-  width: var(--badge-width,6.3125rem);
-  height: var(--badge-heigth,1.0625rem);
+  width: var(--width,6.3125rem);
+  height: var(--heigth,1.0625rem);
   text-align:center;
 
-  border-radius: var(--badge-border-radius, 1.5625rem);
-  border: var(--badge-border, none);
+  border-radius: var(--border-radius, 1.5625rem);
+  border: var(--border, none);
 
-  font-family: var(--badge-font-family,Open Sans);
-  font-style: var(--badge-font-style,normal);
-  font-weight: var(--badge-font-weight,600);
-  font-size: var(--badge-font-size,0.75rem);
-  line-height: var(--badge-line-height,0.625rem);
+  font-family: var(--font-family,Open Sans);
+  font-style: var(--font-style,normal);
+  font-weight: var(--font-weight,600);
+  font-size: var(--font-size,0.75rem);
+  line-height: var(--line-height,0.625rem);
   }
   #true{
-      --badge-background:#B1B1B1;
-      --badge-color:#7D7D7D;
+      --background:#B1B1B1;
+      --color:#7D7D7D;
     }
 
 
