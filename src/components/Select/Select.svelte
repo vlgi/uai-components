@@ -139,7 +139,6 @@ function handleOptionClick(option: TOption) {
 </label>
 <div class="select" role="combobox" tabindex="0"
   on:keydown={handleSelectKeypresses}
-  on:click={toggleOpen}
   id="{selectAttributes.id}-custom"
   aria-controls="{selectAttributes.id}-listbox"
   aria-labelledby="{selectAttributes.id}-label"
@@ -147,7 +146,7 @@ function handleOptionClick(option: TOption) {
   aria-expanded={dropdownOpen ? "true" : "false"}>
 
     <!-- Select's box that shows which option is selected -->
-    <div class="select-box">
+    <div class="select-box" on:click={toggleOpen}>
       {#if !selected || selectedMultiple.length <= 0}
         Selecione
       {:else if multiple}
@@ -159,38 +158,45 @@ function handleOptionClick(option: TOption) {
       {/if}
     </div>
 
-    <!-- Dropdown with options to select -->
-    <div class="select-menu" role="listbox" tabindex="-1"
-      class:hidden={!dropdownOpen}
-      id="{selectAttributes.id}-listbox"
-      aria-labelledby="{selectAttributes.id}-label">
+    <!-- Floating box with extra related data -->
+    <div class="dropdown-menu" class:hidden={!dropdownOpen}>
 
-        <!-- List all options -->
-        {#each options as option, i}
-          <div class="option" role="option" tabindex="-1"
-            class:focused="{i === focused}"
-            class:selected="{isOptionSelected(option, selected)}"
-            on:click={() => handleOptionClick(option)}>
-            {option.text}
-          </div>
-        {/each}
+      <!-- Search input -->
+      <input type="text" class="select-search" />
+
+      <!-- List of all selectable options -->
+      <div class="select-menu" role="listbox" tabindex="-1"
+        id="{selectAttributes.id}-listbox"
+        aria-labelledby="{selectAttributes.id}-label">
+
+          <!-- List all options -->
+          {#each options as option, i}
+            <div class="option" role="option" tabindex="-1"
+              class:focused="{i === focused}"
+              class:selected="{isOptionSelected(option, selected)}"
+              on:click={() => handleOptionClick(option)}>
+              {option.text}
+            </div>
+          {/each}
+
+      </div>
 
     </div>
 
+    <!-- For form compatibility -->
+    <select class="hidden"
+      {...selectAttributes}
+      disabled
+      {multiple}
+      value={selected}>
+      {#each options as option}
+        <option value={option}>
+          {option.text}
+        </option>
+      {/each}
+    </select>
 </div>
 
-<!-- For form compatibility -->
-<select class="hidden"
-  {...selectAttributes}
-  disabled
-  {multiple}
-  value={selected}>
-  {#each options as option}
-    <option value={option}>
-      {option.text}
-    </option>
-  {/each}
-</select>
 
 <style>
   .hidden {
