@@ -122,7 +122,6 @@ function handleSelectKeypresses(ev: KeyboardEvent) {
  * @param {TOption} option The option that was clicked.
  */
 function handleOptionClick(option: TOption) {
-  console.log("çlkasjdfçkasj");
   toggleSelected(option);
   if (!multiple) {
     setTimeout(() => {
