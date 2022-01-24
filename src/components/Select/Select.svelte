@@ -10,7 +10,7 @@ export let options: TOption[];
 // The label text for this element
 export let label: string;
 
-// Exports the selected value(s) for any modes
+// The selected value(s) for any select mode
 export let selected: TOption | TOption[] | null = multiple ? [] : null;
 
 // Type casts the selected as TOption for internal use
@@ -32,6 +32,10 @@ $: selectedIndex = options.indexOf(selected as TOption);
 let dropdownOpen = false;
 // Index of the focused option. More useful for multiple select.
 let focused = -1;
+// The HTML element that wraps all of the select components.
+let selectBind: HTMLElement;
+// The HTML element that is the searchbar for the dropdown.
+let searchBind: HTMLInputElement;
 
 /**
  Toggles the selected state for the option passed. Sets selection to option if single select.
@@ -66,36 +70,57 @@ function isOptionSelected(option: TOption, _selected: TOption | TOption[]) {
 }
 
 /**
- * Toggles the dropdown open state.
+ * Toggles or sets the dropdown open state.
+ * @param {boolean} open Whether or not it should be open. If nullish it will
+ *                       just change the value.
  */
-function toggleOpen() {
-  dropdownOpen = !dropdownOpen;
+function toggleOpen(open?: boolean) {
+  const lastState = dropdownOpen;
+  if (open !== undefined && open !== null) {
+    dropdownOpen = open;
+  } else {
+    dropdownOpen = !dropdownOpen;
+  }
+
+  // If it changed state to opened
+  if (lastState !== dropdownOpen && dropdownOpen) {
+    focused = -1;
+  }
 }
 
 // ======= Input handling ======= //
 
 /**
-   * Handles when the user uses the keyboard.
-   * @param {KeyboardEvent} ev The event emmited by the keyboard.
-   */
+ * Handles when the user uses the keyboard.
+ * @param {KeyboardEvent} ev The event emmited by the keyboard.
+ */
 function handleSelectKeypresses(ev: KeyboardEvent) {
-  const { key } = ev;
+  const { key, target } = ev;
+
+  let shouldPreventPropagation = true;
 
   switch (key) {
   case "Escape":
-    dropdownOpen = false;
+    toggleOpen(false);
     break;
 
-  case "Enter":
   case " ":
+    if (target === searchBind) break;
+  // eslint-disable-next-line no-fallthrough
+  case "Enter":
     if (dropdownOpen) toggleSelected(options[focused]);
-    toggleOpen();
+
+    if (!multiple) {
+      toggleOpen();
+    } else if (!dropdownOpen) {
+      toggleOpen(true);
+    }
     break;
 
   case "ArrowDown":
     if (!multiple) {
       toggleSelected(options[Math.min(selectedIndex + 1, options.length - 1)]);
-    } else {
+    } else if (dropdownOpen) {
       focused = Math.min(focused + 1, options.length - 1);
     }
     break;
@@ -106,14 +131,32 @@ function handleSelectKeypresses(ev: KeyboardEvent) {
       } else {
         toggleSelected(options[Math.max(selectedIndex - 1, 0)]);
       }
-    } else if (focused < 0) {
-      focused = options.length - 1;
-    } else {
-      focused = Math.max(focused - 1, 0);
+    } else if (dropdownOpen) {
+      if (focused < 0) {
+        focused = options.length - 1;
+      } else {
+        focused = Math.max(focused - 1, 0);
+      }
     }
     break;
   default:
+    if (key.toUpperCase() >= "A" && key.toUpperCase() <= "Z") {
+      if (target !== searchBind) {
+        toggleOpen(true);
+        setTimeout(() => {
+          focused = 0;
+          searchBind.value = key;
+          searchBind.focus();
+        }, 0);
+      }
+      break;
+    }
+    shouldPreventPropagation = false;
     break;
+  }
+
+  if (shouldPreventPropagation) {
+    ev.stopPropagation();
   }
 }
 
@@ -124,29 +167,44 @@ function handleSelectKeypresses(ev: KeyboardEvent) {
 function handleOptionClick(option: TOption) {
   toggleSelected(option);
   if (!multiple) {
-    setTimeout(() => {
-      dropdownOpen = false;
-    }, 0);
+    toggleOpen(false);
+  }
+}
+
+/**
+ * Handles when a blur event happens
+ * @param {TOption} option The option that was clicked.
+ */
+function handleBlur(ev: FocusEvent) {
+  const newFocus = ev.relatedTarget as HTMLElement;
+  if (!selectBind.contains(newFocus)) {
+    toggleOpen(false);
   }
 }
 
 </script>
 
-<label class="select-label"
-  id="{selectAttributes.id}-label"
-  for="{selectAttributes.id}-custom">
-  {label}
-</label>
-<div class="select" role="combobox" tabindex="0"
-  on:keydown={handleSelectKeypresses}
-  id="{selectAttributes.id}-custom"
-  aria-controls="{selectAttributes.id}-listbox"
-  aria-labelledby="{selectAttributes.id}-label"
-  aria-haspopup="listbox"
-  aria-expanded={dropdownOpen ? "true" : "false"}>
+<div class="select" tabindex="0"
+  bind:this={selectBind}
+  on:focusout={handleBlur}
+  on:keydown={handleSelectKeypresses}>
+
+    <!-- Floating label for the select -->
+    <label class="select-label"
+      id="{selectAttributes.id}-label"
+      for="{selectAttributes.id}-custom">
+      {label}
+    </label>
 
     <!-- Select's box that shows which option is selected -->
-    <div class="select-box" on:click={toggleOpen}>
+    <div class="select-box" role="combobox" tabindex="-1"
+      on:click={() => toggleOpen()}
+      id="{selectAttributes.id}-custom"
+      aria-controls="{selectAttributes.id}-listbox"
+      aria-labelledby="{selectAttributes.id}-label"
+      aria-haspopup="listbox"
+      aria-expanded={dropdownOpen ? "true" : "false"}>
+
       {#if !selected || selectedMultiple.length <= 0}
         Selecione
       {:else if multiple}
@@ -156,32 +214,36 @@ function handleOptionClick(option: TOption) {
       {:else}
         {selectedSingle ? selectedSingle.text : ""}
       {/if}
+
     </div>
 
-    <!-- Floating box with extra related data -->
-    <div class="dropdown-menu" class:hidden={!dropdownOpen}>
+    {#if dropdownOpen}
+      <!-- Floating box with extra related data -->
+      <div class="dropdown-menu">
 
-      <!-- Search input -->
-      <input type="text" class="select-search" />
+        <!-- Search input -->
+        <input type="text" class="select-search" tabindex="-1"
+          bind:this={searchBind}/>
 
-      <!-- List of all selectable options -->
-      <div class="select-menu" role="listbox" tabindex="-1"
-        id="{selectAttributes.id}-listbox"
-        aria-labelledby="{selectAttributes.id}-label">
+        <!-- List of all selectable options -->
+        <div class="select-menu" role="listbox" tabindex="-1"
+          id="{selectAttributes.id}-listbox"
+          aria-labelledby="{selectAttributes.id}-label">
 
-          <!-- List all options -->
-          {#each options as option, i}
-            <div class="option" role="option" tabindex="-1"
-              class:focused="{i === focused}"
-              class:selected="{isOptionSelected(option, selected)}"
-              on:click={() => handleOptionClick(option)}>
-              {option.text}
-            </div>
-          {/each}
+            <!-- List all options -->
+            {#each options as option, i}
+              <div class="select-option" role="option" tabindex="-1"
+                class:focused="{i === focused}"
+                class:selected="{isOptionSelected(option, selected)}"
+                on:click={() => handleOptionClick(option)}>
+                {option.text}
+              </div>
+            {/each}
+
+        </div>
 
       </div>
-
-    </div>
+    {/if}
 
     <!-- For form compatibility -->
     <select class="hidden"
