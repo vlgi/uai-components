@@ -42,6 +42,27 @@
         },
       ],
     },
+    {
+      title: "Border",
+      description: "Used in shaped components, like a button or a card",
+      variables: [
+        {
+          variable: "--szot-small-border",
+          default: "0.0625rem solid #333333",
+          description: "used in objects with small sizes, like a button, input, badge",
+        },
+        {
+          variable: "--szot-medium-border",
+          default: "0.125rem solid #333333",
+          description: "medium size, like a card, accordion",
+        },
+        {
+          variable: "--szot-large-border",
+          default: "0.25rem solid #333333",
+          description: "large size, like a modal",
+        },
+      ],
+    },
   ];
 </script>
 
@@ -120,6 +141,24 @@
   .--szot-high-shadow {
     border: 1px solid #eee;
     box-shadow: var(--theme-high-shadow);
+  }
+
+  .--szot-small-border {
+    border: var(--theme-small-border);
+    width: 4rem;
+    height: 2rem;
+  }
+
+  .--szot-medium-border {
+    border: var(--theme-medium-border);
+    width: 20rem;
+    height: 10rem;
+  }
+
+  .--szot-large-border{
+    border: var(--theme-large-border);
+    width: 60rem;
+    height: 30rem;
   }
 
 </style>
