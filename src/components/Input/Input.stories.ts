@@ -20,7 +20,7 @@ const Template = (_args: ArgType) => {
 
 export const Default = Template({
   labelSlot: "Email",
-  type: "email",
+  type: "name",
 });
 
 export const BordersNone = Template({
@@ -31,17 +31,15 @@ export const BordersNone = Template({
 
 export const WhithIcon = Template({
   labelSlot: "Celular 1",
-  type: "text",
+  type: "tel",
   border: "none",
   iconName: "phone",
-  type: "tel",
 });
 
 export const WhithIconLeft = Template({
   labelSlot: "Celular 2",
-  type: "text",
   iconName: "phone",
-  iconPosition:"left",
+  iconPosition: "left",
   type: "tel",
 });
 

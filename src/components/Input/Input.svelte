@@ -5,22 +5,29 @@
   export let iconPosition = "right"
   export let type = "text"
   export let value = ""
+  export let pattern = ""
   export let disabled = false
   export let readonly = false
+  export let autocomplete = "off"
+  export let autofocus = ""
+  export let max = ""
+  export let min = ""
+  export let required = ""
+  export let step = ""
 
   import Icon from "../Icon/Icon.svelte"
 </script>
 
 {#if iconName != "none"}
   <div class="form-div border-{border}" style="background-color: {backgroundColor}" id={iconPosition}>
-      <input type={type} class="form-input" placeholder=" " value={value} disabled={disabled} readonly={readonly}/>
+      <input type={type} class="form-input" placeholder=" " value={value} pattern={pattern} disabled={disabled} readonly={readonly} autocomplete={autocomplete} autofocus={autofocus} max={max} min={min} required={required} step={step}/>
       <label for="" class="form-label"><slot></slot></label>
       <div class="icon"><Icon iconName="{iconName}"/></div>
   </div>
 
 {:else}
-  <div class="form-div border-{border}" style="background-color: {backgroundColor}" >
-    <input type={type} class="form-input" placeholder=" " value={value}/>
+  <div class="form-div border-{border}" style="background-color: {backgroundColor}"  >
+    <input type={type} class="form-input" placeholder=" " value={value} pattern={pattern} disabled={disabled} readonly={readonly} autocomplete={autocomplete} autofocus={autofocus} max={max} min={min} required={required} step={step}/>
     <label for="" class="form-label"><slot></slot></label>
   </div>
 
