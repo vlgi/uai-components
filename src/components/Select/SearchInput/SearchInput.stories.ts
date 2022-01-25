@@ -1,5 +1,5 @@
 import type { ArgType } from "@storybook/addons";
-import { desserts } from "./fixtures";
+import { complexDesserts } from "../fixtures";
 // import { action } from "@storybook/addon-actions";
 import SearchInput from "./SearchInput.svelte";
 import SearchInputWrapper from "./SearchInputWrapper.svelte";
@@ -18,22 +18,20 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
-const items = desserts;
-
 export const Default = Template({
-  items,
+  items: complexDesserts,
   searchable: ["variety"],
   searchQuery: "",
 });
 
 export const Searching = Template({
-  items,
+  items: complexDesserts,
   searchable: ["variety"],
   searchQuery: "brownie",
 });
 
 export const MultipleFieldsSearching = Template({
-  items,
+  items: complexDesserts,
   searchable: ["variety", "topping", "flavor"],
   searchQuery: "brownie chocolate",
 });

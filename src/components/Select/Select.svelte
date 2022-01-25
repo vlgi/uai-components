@@ -1,4 +1,5 @@
 <script lang="ts">
+import OptionsList from "./OptionsList/OptionsList.svelte";
 import SearchInput from "./SearchInput/SearchInput.svelte";
 import type { TOption, TSelectAttributes } from "./types";
 
@@ -14,29 +15,29 @@ export let label: string;
 // The selected value(s) for any select mode
 export let selected: TOption | TOption[] | null = multiple ? [] : null;
 
-// Type casts the selected as TOption for internal use
-let selectedSingle: TOption = null;
-$: selectedSingle = selected as TOption;
-
-// Type casts the selected as array for internal use
-let selectedMultiple: TOption[] = [];
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-$: selectedMultiple = selected as TOption[];
-
-// Auxiliary variable for holding the index of the selected element
-let selectedIndex = -1;
-$: selectedIndex = options.indexOf(selected as TOption);
-
 // ====== Internal control ====== //
+
+// Type casts the selected as TOption for internal use
+let selectedSingle: TOption;
+// Type casts the selected as array for internal use
+let selectedMultiple: TOption[];
 
 // Controls the visibility of the dropdown
 let dropdownOpen = false;
-// Index of the focused option. More useful for multiple select.
+// Index of the focused option. Used for keyboard navigation.
 let focused = -1;
 // The HTML element that wraps all of the select components.
 let selectBind: HTMLElement;
 // The HTML element that wraps all of the select components.
 let searchBind: HTMLInputElement;
+
+// The OptionsList component's focus state control functions.
+const optionsListBinds: {
+  unfocusItems?: ()=> void,
+  focusNext?: ()=> void,
+  focusPrevious?: ()=> void,
+  toggleFocused?: ()=> void,
+} = {};
 
 // Function to force focus on the search input.
 let focusSearch: ()=> void;
@@ -45,38 +46,6 @@ let focusSearch: ()=> void;
 let searchQuery: string;
 // The results of the search
 let filteredOptions: TOption[];
-
-/**
- Toggles the selected state for the option passed. Sets selection to option if single select.
- * @param {TOption} option The option to toggle selected state or set as selected.
-*/
-function toggleSelected(option: TOption) {
-  if (multiple) {
-    const index = (selected as TOption[]).indexOf(option);
-    if (index === -1) {
-      selected = [...(selected as TOption[]), option];
-    } else {
-      selected = [
-        ...(selected as TOption[]).slice(0, index),
-        ...(selected as TOption[]).slice(index + 1),
-      ];
-    }
-  } else {
-    selected = option;
-    focused = options.indexOf(selected);
-  }
-}
-
-/**
- * Tests if the option is selected.
- * @param {TOption} option The option being tested.
- * @param {TOption | TOption[]} _selected The current selection of items.
- * @returns {boolean} Whether the option is selected or not.
-*/
-function isOptionSelected(option: TOption, _selected: TOption | TOption[]) {
-  if (multiple) return (_selected as TOption[]).includes(option);
-  return (_selected as TOption) === option;
-}
 
 /**
  * Toggles or sets the dropdown open state.
@@ -93,11 +62,19 @@ function toggleOpen(open?: boolean) {
 
   // If it changed state to opened
   if (lastState !== dropdownOpen && dropdownOpen) {
-    focused = -1;
+    optionsListBinds?.unfocusItems();
   }
 }
 
 // ======= Input handling ======= //
+
+function isAlphanumeric(text: string): boolean {
+  return text.length === 1
+  && (
+    (text[0].toUpperCase() >= "A" && text[0].toUpperCase() <= "Z")
+    || (text[0].toUpperCase() >= "0" && text[0].toUpperCase() <= "9")
+  );
+}
 
 /**
  * Handles when the user uses the keyboard.
@@ -117,7 +94,7 @@ function handleSelectKeypresses(ev: KeyboardEvent) {
     if (target === searchBind) break;
   // eslint-disable-next-line no-fallthrough
   case "Enter":
-    if (dropdownOpen) toggleSelected(options[focused]);
+    if (dropdownOpen) optionsListBinds?.toggleFocused();
 
     if (!multiple) {
       toggleOpen();
@@ -127,36 +104,25 @@ function handleSelectKeypresses(ev: KeyboardEvent) {
     break;
 
   case "ArrowDown":
-    if (!multiple) {
-      toggleSelected(options[Math.min(selectedIndex + 1, options.length - 1)]);
-    } else if (dropdownOpen) {
-      focused = Math.min(focused + 1, options.length - 1);
-    }
+    optionsListBinds?.focusNext();
     break;
   case "ArrowUp":
-    if (!multiple) {
-      if (selectedIndex < 0) {
-        toggleSelected(options[options.length - 1]);
-      } else {
-        toggleSelected(options[Math.max(selectedIndex - 1, 0)]);
-      }
-    } else if (dropdownOpen) {
-      if (focused < 0) {
-        focused = options.length - 1;
-      } else {
-        focused = Math.max(focused - 1, 0);
-      }
-    }
+    optionsListBinds?.focusPrevious();
     break;
   default:
-    if (key.toUpperCase() >= "A" && key.toUpperCase() <= "Z") {
+    if (isAlphanumeric(key)) {
+      // If not on the search input focus
       if (target !== searchBind) {
+        // Opens the dropdown and focus on the search input
         toggleOpen(true);
         setTimeout(() => {
-          focused = 0;
-          searchQuery = key;
           focusSearch();
+          searchQuery = key;
+          focused = 0; // Selects the first search result
         }, 0);
+      } else {
+        // Selects the first search result when typing on the search input
+        focused = 0;
       }
       break;
     }
@@ -170,13 +136,12 @@ function handleSelectKeypresses(ev: KeyboardEvent) {
 }
 
 /**
- * Handles when an option is clicked.
- * @param {TOption} option The option that was clicked.
+ * Handles when the selected changes.
  */
-function handleOptionClick(option: TOption) {
-  toggleSelected(option);
+function handleSelectedChange() {
   if (!multiple) {
     toggleOpen(false);
+    searchQuery = "";
   }
 }
 
@@ -190,6 +155,9 @@ function handleBlur(ev: FocusEvent) {
     toggleOpen(false);
   }
 }
+
+$: selectedSingle = Array.isArray(selected) ? null : selected;
+$: selectedMultiple = Array.isArray(selected) ? selected : [];
 
 </script>
 
@@ -226,40 +194,33 @@ function handleBlur(ev: FocusEvent) {
 
     </div>
 
-    {#if dropdownOpen}
-      <!-- Floating box with extra related data -->
-      <div class="dropdown-menu">
+    <!-- Floating box with extra related data -->
+    <div class="dropdown-menu" class:hidden={!dropdownOpen}>
 
-        <!-- Search input -->
-        <SearchInput
-          searchable={["text"]}
-          items={options}
-          bind:searchQuery
-          bind:filtered={filteredOptions}
-          bind:focus={focusSearch}
-          bind:inputBind={searchBind}/>
+      <!-- Search input -->
+      <SearchInput
+        searchable={["text"]}
+        items={options}
+        bind:searchQuery
+        bind:filtered={filteredOptions}
+        bind:focus={focusSearch}
+        bind:inputBind={searchBind}/>
 
-        <!-- List of all selectable options -->
-        <div class="select-menu" role="listbox" tabindex="-1"
-          id="{selectAttributes.id}-listbox"
-          aria-labelledby="{selectAttributes.id}-label">
+      <!-- List of all selectable options -->
+      <OptionsList
+        id="{selectAttributes.id}-listbox"
+        labelledBy="{selectAttributes.id}-label"
+        options={filteredOptions}
+        on:changeSelected={handleSelectedChange}
+        bind:selected
+        bind:focused
+        bind:unfocusItems={optionsListBinds.unfocusItems}
+        bind:focusNext={optionsListBinds.focusNext}
+        bind:focusPrevious={optionsListBinds.focusPrevious}
+        bind:toggleFocused={optionsListBinds.toggleFocused}
+        />
 
-            <!-- List all options -->
-            {#if filteredOptions}
-            {#each filteredOptions as option, i}
-              <div class="select-option" role="option" tabindex="-1"
-                class:focused="{i === focused}"
-                class:selected="{isOptionSelected(option, selected)}"
-                on:click={() => handleOptionClick(option)}>
-                {option.text}
-              </div>
-            {/each}
-            {/if}
-
-        </div>
-
-      </div>
-    {/if}
+    </div>
 
     <!-- For form compatibility -->
     <select class="hidden"
@@ -279,12 +240,6 @@ function handleBlur(ev: FocusEvent) {
 <style>
   .hidden {
     display: none;
-  }
-  .selected {
-    background-color: #ddd;
-  }
-  .focused {
-    border: 2px solid red;
   }
   .badge {
     margin: 0.25rem;

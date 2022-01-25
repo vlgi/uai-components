@@ -1,4 +1,5 @@
 import type { ArgType } from "@storybook/addons";
+import { simpleDesserts } from "./fixtures";
 // import { action } from "@storybook/addon-actions";
 import Select from "./Select.svelte";
 import SelectWrapper from "./SelectWrapper.svelte";
@@ -17,15 +18,7 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
-const options = [
-  { text: "Torta alemã" },
-  { text: "Pavê" },
-  { text: "Bolo" },
-  { text: "Brigadeiro" },
-  { text: "Pudim" },
-  { text: "Rabanada" },
-  { text: "Beijinho" },
-];
+const options = simpleDesserts;
 
 export const Single = Template({
   multiple: false,

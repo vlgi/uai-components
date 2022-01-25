@@ -1,4 +1,4 @@
-export const desserts = [
+export const complexDesserts = [
   {
     id: 8238,
     uid: "e3f80973-a749-452d-b28d-18ab3c292ac1",
@@ -69,4 +69,14 @@ export const desserts = [
     topping: "Peanut Butter",
     flavor: "Blondie",
   },
+];
+
+export const simpleDesserts = [
+  { text: "Torta alemã" },
+  { text: "Pavê" },
+  { text: "Bolo" },
+  { text: "Brigadeiro" },
+  { text: "Pudim" },
+  { text: "Rabanada" },
+  { text: "Beijinho" },
 ];
