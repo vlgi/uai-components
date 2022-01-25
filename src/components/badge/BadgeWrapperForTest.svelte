@@ -22,4 +22,8 @@
     --color:#FFFFFF;
     --background:#FC6627;
   }
+  .theme-test{
+    --szot-dark: #202020;
+    --szot-dark-txt: #ececec;
+  }
 </style>

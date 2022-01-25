@@ -29,9 +29,16 @@ export const Border = Template({
 });
 export const Color = Template({
   style: "orange",
+  color: "custom",
   labelSlot: "Badge",
 });
 export const Disabled = Template({
   disabled: "true",
   labelSlot: "Badge",
+});
+
+export const ThemeTest = Template({
+  style: "theme-test",
+  labelSlot: "Badge",
+  color: "Dark",
 });
