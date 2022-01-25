@@ -1,4 +1,5 @@
 <script lang="ts">
+import SearchInput from "./SearchInput/SearchInput.svelte";
 import type { TOption, TSelectAttributes } from "./types";
 
 // True if the select should select multiple values
@@ -34,8 +35,16 @@ let dropdownOpen = false;
 let focused = -1;
 // The HTML element that wraps all of the select components.
 let selectBind: HTMLElement;
-// The HTML element that is the searchbar for the dropdown.
+// The HTML element that wraps all of the select components.
 let searchBind: HTMLInputElement;
+
+// Function to force focus on the search input.
+let focusSearch: ()=> void;
+
+// The searched text
+let searchQuery: string;
+// The results of the search
+let filteredOptions: TOption[];
 
 /**
  Toggles the selected state for the option passed. Sets selection to option if single select.
@@ -145,8 +154,8 @@ function handleSelectKeypresses(ev: KeyboardEvent) {
         toggleOpen(true);
         setTimeout(() => {
           focused = 0;
-          searchBind.value = key;
-          searchBind.focus();
+          searchQuery = key;
+          focusSearch();
         }, 0);
       }
       break;
@@ -222,8 +231,13 @@ function handleBlur(ev: FocusEvent) {
       <div class="dropdown-menu">
 
         <!-- Search input -->
-        <input type="text" class="select-search" tabindex="-1"
-          bind:this={searchBind}/>
+        <SearchInput
+          searchable={["text"]}
+          items={options}
+          bind:searchQuery
+          bind:filtered={filteredOptions}
+          bind:focus={focusSearch}
+          bind:inputBind={searchBind}/>
 
         <!-- List of all selectable options -->
         <div class="select-menu" role="listbox" tabindex="-1"

@@ -3,7 +3,7 @@ import type { ArgType } from "@storybook/addons";
 import Select from "./Select.svelte";
 
 export default {
-  title: "Form/Select",
+  title: "Form/Select/Select",
   component: Select,
 };
 
