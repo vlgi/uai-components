@@ -49,4 +49,5 @@ export const Readonly = Template({
   iconName: "info",
   value: "Não escreva aqui",
   readonly: true,
+  helperText: "Apenas um exemplo",
 });
