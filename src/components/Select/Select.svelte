@@ -245,7 +245,8 @@ function handleBlur(ev: FocusEvent) {
           aria-labelledby="{selectAttributes.id}-label">
 
             <!-- List all options -->
-            {#each options as option, i}
+            {#if filteredOptions}
+            {#each filteredOptions as option, i}
               <div class="select-option" role="option" tabindex="-1"
                 class:focused="{i === focused}"
                 class:selected="{isOptionSelected(option, selected)}"
@@ -253,6 +254,7 @@ function handleBlur(ev: FocusEvent) {
                 {option.text}
               </div>
             {/each}
+            {/if}
 
         </div>
 

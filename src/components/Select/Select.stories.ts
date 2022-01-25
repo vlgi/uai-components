@@ -1,6 +1,7 @@
 import type { ArgType } from "@storybook/addons";
 // import { action } from "@storybook/addon-actions";
 import Select from "./Select.svelte";
+import SelectWrapper from "./SelectWrapper.svelte";
 
 export default {
   title: "Form/Select/Select",
@@ -9,7 +10,7 @@ export default {
 
 const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
-    Component: Select,
+    Component: SelectWrapper,
     props,
   });
   ret.args = _args;

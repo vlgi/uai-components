@@ -19,7 +19,7 @@
   {...$$restProps} />
 
 <header>
-  <b>Resultados:</b>
+  <b>Results:</b>
 </header>
 {#each filtered as item}
   <p>{JSON.stringify(item)}</p>
