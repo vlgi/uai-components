@@ -1,44 +1,56 @@
 import type { ArgType } from "@storybook/addons";
-import { action } from "@storybook/addon-actions";
 import Badge from "./Badge.svelte";
 import BadgeWrapper from "./BadgeWrapperForTest.svelte";
 
 export default {
   title: "Components/Badge",
   component: Badge,
-  argtypes: {
+  argTypes: {
+    badgeStyle: {
+      control: {
+        type: "select",
+        options: ["Primary", "Secondary", "Dark", "Light", "Custom"],
+      },
+    },
+    border: {
+      control: {
+        type: "select",
+        options: ["Outiline", "None"],
+      },
+    },
   },
 };
 
 const Template = (_args: ArgType) => {
-  const ret = ({...props}) => ({
+  const ret = ({ ...props }) => ({
     Component: BadgeWrapper,
-    props: props,
+    props,
   });
   ret.args = _args;
   return ret;
 };
 
 export const Default = Template({
-  style: "default",
+  style: "",
+  labelSlot: "Badge",
+  border: "Outiline",
+  badgeStyle: "Primary",
+});
+
+export const BorderNone = Template({
+  border: "None",
   labelSlot: "Badge",
 });
-export const Border = Template({
-  style: "border",
-  labelSlot: "Badge",
-});
-export const Color = Template({
-  style: "orange",
-  color: "custom",
-  labelSlot: "Badge",
-});
-export const Disabled = Template({
-  disabled: "true",
+
+export const Custom = Template({
+  //  Teste,
+  style: "--color:#FFFFFF; --background:#FC6627;",
+  badgeStyle: "Custom",
   labelSlot: "Badge",
 });
 
 export const ThemeTest = Template({
-  style: "theme-test",
+  style: "--szot-dark: #202020; --szot-dark-txt: #ececec;",
   labelSlot: "Badge",
-  color: "Dark",
+  badgeStyle: "Dark",
 });
