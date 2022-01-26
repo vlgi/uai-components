@@ -51,3 +51,10 @@ export const Readonly = Template({
   readonly: true,
   helperText: "Apenas um exemplo",
 });
+
+export const CustomColor = Template({
+  labelSlot: "Fruta",
+  type: "name",
+  color: "custom",
+  style: "orange",
+});

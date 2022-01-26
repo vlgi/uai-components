@@ -52,17 +52,9 @@
   --max-width: var(--szot-fields-max-width,7.5rem);
   --height: var(--szot-fields-height,2.2rem);
   --font-family: var(--szot-font-family,Open Sans);
-
   --border-radius: var(--szot-large-shape,1.5rem);
-
   --border: var(--szot-small-border, 1px solid #575555);
-  --border-bottom-focus: var(--szot-medium-border,1.5px solid #0c8aff);
-
-  --szot-error: #bb5656;
-  --szot-warning: #bbb156;
-  --szot-info: #568cbb;
-  --szot-success: #60bb56;
-  --szot-neutral: #6e737a;
+  --border-bottom-focus: var(--szot-medium-border,1.5px solid #575555);
 }
 
 .form-div {
@@ -124,10 +116,12 @@
   .form-input{
     border: 0;
     border-bottom: var(--border,1px solid #575555);
+    border-color: var(--border-bottom-color);
     padding: var(--border-none-padding,.5rem .5rem);
   }
   .form-input:focus{
-    border-bottom: var(--border-bottom-focus,1.5px solid #0c8aff);
+    border-bottom: var(--border-bottom-focus,1.5px solid #575555);
+    border-color: var(--border-bottom-focus-color);
   }
 
   .form-label{
@@ -139,10 +133,12 @@
 
   .form-input{
     border: var(--border,1px solid #575555);
+    border-color: var(--border-color);
     border-radius: 24px;
   }
   .form-input:focus{
-    border: var(--border-color-focus,1.5px solid #0c8aff);
+    border: var(--border-focus,1.5px solid #0c8aff);
+    border-color: var(--border-color-focus);
   }
 }
 
@@ -184,6 +180,10 @@
     --label-color:var(--szot-primary-txt);
     --input-color: var(--szot-primary-txt);
     --input-focus-color: var(--szot-primary-txt);
+    --border-color-focus: var(--szot-primary-txt);
+    --border-bottom-focus-color: var(--szot-primary-txt);
+    --border-color: var(--szot-primary-txt);
+    --border-bottom-color: var(--szot-primary-txt);
 }
 
 #color-Secondary{
@@ -191,6 +191,10 @@
     --label-color:var(--szot-secondary-txt);
     --input-color: var(--szot-secondary-txt);
     --input-focus-color: var(--szot-secondary-txt);
+    --border-color-focus: var(--szot-secondary-txt);
+    --border-bottom-focus-color: var(--szot-secondary-txt);
+    --border-color: var(--szot-secondary-txt);
+    --border-bottom-color: var(--szot-secondary-txt);
 }
 
 #color-Dark{
@@ -198,12 +202,20 @@
     --label-color: var(--szot-dark-txt);
     --input-color: var(--szot-dark-txt);
     --input-focus-color: var(--szot-dark-txt);
+    --border-color-focus: var(--szot-dark-txt);
+    --border-bottom-focus-color: var(--szot-dark-txt);
+    --border-color: var(--szot-dark-txt);
+    --border-bottom-color: var(--szot-dark-txt);
 }
 #color-Light{
     --background-color: var(--szot-light);
     --label-color:var( --szot-light-txt);
     --input-color: var(--szot-light-txt);
     --input-focus-color: var(--szot-light-txt);
+    --border-color-focus: var(--szot-light-txt);
+    --border-bottom-focus-color: var(--szot-light-txt);
+    --border-color: var(--szot-ligth-txt);
+    --border-bottom-color: var(--szot-ligth-txt);
 }
 #helper {
     position: absolute;
