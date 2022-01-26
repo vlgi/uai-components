@@ -30,6 +30,13 @@
     --hover-background:#c2bdbd83;
     --effect-color-after-click: #f3efef;
   }
+
+  :root{
+    --szot-primary:#2b4c7e;
+    --szot-primary-txt: #FFFFFF;
+    --szot-secondary:#722b7e;
+    --szot-secondary-txt: #FFFFFF;
+  }
 </style>
 
 

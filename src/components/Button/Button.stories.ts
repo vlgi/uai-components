@@ -22,14 +22,14 @@ const Template = (_args: ArgType) => {
 export const LargeSimple = Template({
   style: "default",
   size: "large",
-  labelSlot: "Bloquear",
+  labelSlot: "Minhas contas",
 });
 
 export const LargeIcon = Template({
   style: "default",
   size: "large",
-  icon: "lock",
-  labelSlot: "Bloquear",
+  icon: "upload",
+  labelSlot: "Enviar",
 });
 
 export const mediumSimple = Template({
@@ -68,7 +68,7 @@ export const Disabled = Template({
 export const NotBackground = Template({
   style: "default",
   size: "large",
-  background: "none",
+  color: "none",
   labelSlot: "Bloquear",
 });
 
@@ -76,35 +76,38 @@ export const NotBackgroundDisabled = Template({
   style: "default",
   size: "large",
   disabled: "true",
-  background: "none",
+  color: "none",
   labelSlot: "Bloquear",
 });
 
 export const withBorders = Template({
   style: "borders",
   size: "medium",
-  background: "none",
+  color: "none",
   labelSlot: "Bloquear",
+  color: "custom",
 });
 
 export const withBordersDisabled = Template({
   style: "borders",
   size: "medium",
   disabled: "true",
-  background: "none",
+  color: "none",
   labelSlot: "Bloquear",
+  color: "custom",
 });
 
 export const Floating = Template({
   style: "white",
   size: "floating",
   icon: "more",
+  color: "custom",
 });
 
 export const FloatingNotBackground = Template({
   style: "default",
   size: "floating",
-  background: "none",
+  color: "none",
   icon: "more",
 });
 
@@ -113,4 +116,11 @@ export const FloatingDisabled = Template({
   size: "floating",
   icon: "more",
   disabled: "true",
+});
+
+export const ThemeTest = Template({
+  style: "default",
+  size: "medium",
+  labelSlot: "Botão 1",
+  color: "Secondary",
 });

@@ -4,26 +4,27 @@
   export let size = "medium";
   export let icon = "none";
   export let disabled = "false";
-  export let background = "normal";
+  export let color = "Primary";
 </script>
 
+<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 
 {#if size == "floating" && icon != "none"}
 
-  <button class="button {size} background-{background} disabled-{disabled}">
+  <button class="button {size} background-{color} disabled-{disabled}">
     <div id="icone"><Icon iconName={icon}/></div>
   </button>
 
 {:else if icon != "none" && size !="floating"}
 
-  <button class="button {size} background-{background} disabled-{disabled}">
+  <button class="button {size} background-{color} disabled-{disabled}">
     <div id="icone"><Icon iconName={icon}/></div>
     <div id="texto"><slot></slot></div>
   </button>
 
 {:else}
 
-  <button class="button {size} disabled-{disabled} background-{background}">
+  <button class="button {size} disabled-{disabled} background-{color}">
     <slot></slot>
   </button>
 
@@ -31,6 +32,12 @@
 
 
 <style lang="scss">
+
+*{
+  --font-family: var(--szot-font-family,Open Sans);
+  --border-radius: var(--szot-large-shape,1.5rem);
+  --border: var(--szot-medium-border, none);
+}
 .button {
   position: relative;
   display: block;
@@ -48,15 +55,10 @@
   transition: background-color .3s;
   overflow: hidden;
 }
-
 .button:hover {
   color:var(--hover-color,--color);
-  background-color: var(--hover-background,#1A1A1A);
+  background-color: var(--hover-background,#4b4b4b);
   transition: background-color .3s;
-}
-
-.button > * {
-  position: relative;
 }
 
 .button:before {
@@ -91,27 +93,27 @@
     #icone {
     transform: var(--icon-transform-translate,translate(0rem, 0.1rem));
     }
-  }
-  .large {
+}
+.large {
     border-radius: var(--border-radius,2.5625rem);
     padding: var(--padding, 0.625rem 2.1875rem);
 
-    font-size: var(--font-size,1.5rem);
-    font-style: var(--font-style,normal);
-    font-weight: var(--font-weight,bold);
-    line-height: var(--line-height,2rem);
+    font-size: var(--font-size-large,24px);
+    font-style: var(--font-style-large,normal);
+    font-weight: var(--font-weight-large,bold);
+    line-height: var(--line-height-large,2rem);
 
-    #icone {
+  #icone {
     position: absolute;
-    transform: var(--icon-transform-translate,translate(5.75rem, .1rem));
+    transform: var(--icon-transform-translate,translate(4.25rem, .1rem));
     }
-    #texto {
+  #texto {
       position: relative;
       transform: var(--texto-transform-translate,translate(-0.9375rem,0));
-    }
-
   }
-  .medium {
+
+}
+.medium {
     border-radius: var(--border-radius,1.4375rem);
     padding: var(--padding,0.5625rem 3.4688rem);
 
@@ -120,42 +122,60 @@
     font-weight: var(--font-weight,600);
     line-height: var(--line-height,1.875rem);
 
-    #icone {
+  #icone {
     position: absolute;
     transform: var(--icon-transform-translate,translate(5.5rem, 0.2rem));
     }
-    #texto {
+  #texto {
       position: relative;
       transform: var(--texto-transform-translate,translate(-.5rem, 0rem));
     }
-  }
-  .small {
+}
+.small {
     border-radius: var(--border-radius,1.4375rem);
     padding: var(--padding, 0.3125rem 0.625rem);
 
-    font-size: var(--font-size,1rem);
-    font-style: var(--font-style,normal);
-    font-weight: var(--font-weight,600);
-    line-height: var(--line-height,1.875rem);
+    font-size: var(--font-size-small,1rem);
+    font-style: var(--font-style-small,normal);
+    font-weight: var(--font-weight-small,600);
+    line-height: var(--line-height-small,1.875rem);
 
-    #icone {
+  #icone {
     position: absolute;
     transform: var(--icon-transform-translate,translate(-.1rem, .2rem));
     }
-    #texto {
+  #texto {
       position: relative;
       margin: var(--margin-with-icon, 0 0 0 1.5625rem);
     }
-  }
-
-  .background-none {
+}
+.background-none {
     --background-color: none;
     --background-none: none;
     --color:#414141;
     --hover-color:#333333;
     --hover-background:#d8d6d6;
-  }
-  .disabled-true {
+}
+.background-Primary{
+  --background-color: var(--szot-primary);
+  --color:var(--szot-primary-txt);
+  --hover-background:#133c7093;
+}
+.background-Secondary{
+  --background-color: var(--szot-secondary);
+  --color:var(--szot-secondary-txt);
+  --hover-background: #771d61af;
+}
+.background-Dark{
+  --background-color: var(--szot-dark);
+  --color:var(--szot-dark-txt);
+}
+.background-Light{
+  --background-color: var(--szot-light);
+  --color:var(--szot-light-txt);
+}
+
+.disabled-true {
     --color:#B1B1B1;
     --background-color: var(--background-none,#7D7D7D);
     --hover-background: var(--background-color);
@@ -163,6 +183,5 @@
     --effect-color-after-click: none;
       cursor: initial;
       border-color: #B1B1B1;
-  }
-
+}
 </style>
