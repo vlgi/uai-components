@@ -3,3 +3,9 @@ export type TSelectAttributes = {
   name: string,
   id: string,
 }
+export type TOptionsListBinds = {
+  unfocusItems?: ()=> void,
+  focusNext?: ()=> void,
+  focusPrevious?: ()=> void,
+  toggleFocused?: ()=> void,
+}

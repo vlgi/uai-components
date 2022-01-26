@@ -1,7 +1,8 @@
 <script lang="ts">
 import OptionsList from "./OptionsList/OptionsList.svelte";
 import SearchInput from "./SearchInput/SearchInput.svelte";
-import type { TOption, TSelectAttributes } from "./types";
+import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
+import type { TOption, TOptionsListBinds, TSelectAttributes } from "./types";
 
 // True if the select should select multiple values
 export let multiple = false;
@@ -32,12 +33,7 @@ let selectBind: HTMLElement;
 let searchBind: HTMLInputElement;
 
 // The OptionsList component's focus state control functions.
-const optionsListBinds: {
-  unfocusItems?: ()=> void,
-  focusNext?: ()=> void,
-  focusPrevious?: ()=> void,
-  toggleFocused?: ()=> void,
-} = {};
+const optionsListBinds: TOptionsListBinds = {};
 
 // Function to force focus on the search input.
 let focusSearch: ()=> void;
@@ -66,75 +62,6 @@ function toggleOpen(open?: boolean) {
   }
 }
 
-// ======= Input handling ======= //
-
-function isAlphanumeric(text: string): boolean {
-  return text.length === 1
-  && (
-    (text[0].toUpperCase() >= "A" && text[0].toUpperCase() <= "Z")
-    || (text[0].toUpperCase() >= "0" && text[0].toUpperCase() <= "9")
-  );
-}
-
-/**
- * Handles when the user uses the keyboard.
- * @param {KeyboardEvent} ev The event emmited by the keyboard.
- */
-function handleSelectKeypresses(ev: KeyboardEvent) {
-  const { key, target } = ev;
-
-  let shouldPreventPropagation = true;
-
-  switch (key) {
-  case "Escape":
-    toggleOpen(false);
-    break;
-
-  case " ":
-    if (target === searchBind) break;
-  // eslint-disable-next-line no-fallthrough
-  case "Enter":
-    if (dropdownOpen) optionsListBinds?.toggleFocused();
-
-    if (!multiple) {
-      toggleOpen();
-    } else if (!dropdownOpen) {
-      toggleOpen(true);
-    }
-    break;
-
-  case "ArrowDown":
-    optionsListBinds?.focusNext();
-    break;
-  case "ArrowUp":
-    optionsListBinds?.focusPrevious();
-    break;
-  default:
-    if (isAlphanumeric(key)) {
-      // If not on the search input focus
-      if (target !== searchBind) {
-        // Opens the dropdown and focus on the search input
-        toggleOpen(true);
-        setTimeout(() => {
-          focusSearch();
-          searchQuery = key;
-          focused = 0; // Selects the first search result
-        }, 0);
-      } else {
-        // Selects the first search result when typing on the search input
-        focused = 0;
-      }
-      break;
-    }
-    shouldPreventPropagation = false;
-    break;
-  }
-
-  if (shouldPreventPropagation) {
-    ev.stopPropagation();
-  }
-}
-
 /**
  * Handles when the selected changes.
  */
@@ -145,15 +72,25 @@ function handleSelectedChange() {
   }
 }
 
-/**
- * Handles when a blur event happens
- * @param {TOption} option The option that was clicked.
- */
-function handleBlur(ev: FocusEvent) {
-  const newFocus = ev.relatedTarget as HTMLElement;
-  if (!selectBind.contains(newFocus)) {
-    toggleOpen(false);
+function handleTyping(ev: CustomEvent<string>) {
+  const key = ev.detail;
+
+  // If not on the search input focus
+  if (document.activeElement !== searchBind) {
+    // Opens the dropdown and focus on the search input
+    toggleOpen(true);
+    setTimeout(() => {
+      focusSearch();
+      searchQuery = key;
+      focused = 0; // Selects the first search result
+    }, 0);
+  } else {
+    // Selects the first search result when typing on the search input
+    focused = 0;
   }
+}
+function handleToggleDropdown(ev: CustomEvent<boolean | undefined>) {
+  toggleOpen(ev.detail);
 }
 
 $: selectedSingle = Array.isArray(selected) ? null : selected;
@@ -163,8 +100,12 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
 
 <div class="select" tabindex="0"
   bind:this={selectBind}
-  on:focusout={handleBlur}
-  on:keydown={handleSelectKeypresses}>
+  use:keyboardControls={{ multiple, dropdownOpen }}
+  on:actionToggleFocused={() => optionsListBinds?.toggleFocused()}
+  on:actionFocusPrevious={() => optionsListBinds?.focusPrevious()}
+  on:actionFocusNext={() => optionsListBinds?.focusNext()}
+  on:actionToggleDropdown={handleToggleDropdown}
+  on:actionType={handleTyping}>
 
     <!-- Floating label for the select -->
     <label class="select-label"
@@ -182,14 +123,14 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
       aria-haspopup="listbox"
       aria-expanded={dropdownOpen ? "true" : "false"}>
 
-      {#if !selected || selectedMultiple.length <= 0}
-        Selecione
-      {:else if multiple}
+      {#if multiple && selectedMultiple.length > 0}
         {#each selectedMultiple as option}
           <span class="badge">{option.text}</span>
         {/each}
-      {:else}
+      {:else if !multiple && selectedSingle}
         {selectedSingle ? selectedSingle.text : ""}
+      {:else}
+        Selecione
       {/if}
 
     </div>
