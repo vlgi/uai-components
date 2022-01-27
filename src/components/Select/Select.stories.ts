@@ -1,5 +1,5 @@
 import type { ArgType } from "@storybook/addons";
-import { simpleDesserts } from "./fixtures";
+import { longDesserts, simpleDesserts } from "./fixtures";
 // import { action } from "@storybook/addon-actions";
 import Select from "./Select.svelte";
 import SelectWrapper from "./SelectWrapper.svelte";
@@ -35,6 +35,13 @@ export const SingleSelected = Template({
   selected: options[0],
 });
 
+export const SimpleLong = Template({
+  multiple: true,
+  selectAttributes: { id: "doce", name: "doce" },
+  label: "Sobremesas",
+  options: longDesserts,
+});
+
 export const Multiple = Template({
   multiple: true,
   selectAttributes: { id: "doce", name: "doce" },
@@ -48,4 +55,11 @@ export const MultipleSelected = Template({
   label: "Sobremesas",
   options,
   selected: options.slice(0, 3),
+});
+
+export const MultipleLong = Template({
+  multiple: true,
+  selectAttributes: { id: "doce", name: "doce" },
+  label: "Sobremesas",
+  options: longDesserts,
 });
