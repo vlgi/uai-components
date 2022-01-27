@@ -435,3 +435,17 @@ exports[`Storyshots Internal/Icon List 1`] = `
   
 </section>
 `;
+
+exports[`Storyshots Ionic/Input Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <ion-item>
+    <ion-label>
+      My input
+    </ion-label>
+     
+    <ion-input />
+  </ion-item>
+</section>
+`;
