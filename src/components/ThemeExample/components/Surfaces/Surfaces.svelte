@@ -48,17 +48,17 @@
       variables: [
         {
           variable: "--szot-small-border",
-          default: "0.0625rem solid #333333",
+          default: "0.0625rem solid #333",
           description: "used in objects with small sizes, like a button, input, badge",
         },
         {
           variable: "--szot-medium-border",
-          default: "0.125rem solid #333333",
+          default: "0.0625rem solid #ccc",
           description: "medium size, like a card, accordion",
         },
         {
           variable: "--szot-large-border",
-          default: "0.25rem solid #333333",
+          default: "0.0625rem solid #ddd",
           description: "large size, like a modal",
         },
       ],
@@ -91,7 +91,6 @@
 
 <style lang="scss">
   section {
-    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 2rem 0;
   }
 

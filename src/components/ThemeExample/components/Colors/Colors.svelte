@@ -91,7 +91,6 @@
 
 <style lang="scss">
   section {
-    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 2rem 0;
   }
 

@@ -1,52 +1,79 @@
 <script lang="ts">
   const data = [
     {
-      title: "Font normal",
-      description: "used font variables",
+      title: "Global font family",
+      description: "",
       variables: [
-        { name: "--szot-font-family", default: "Open Sans", description: "" },
-        { name: "--szot-font-weight", default: "normal", description: "" },
-        { name: "--szot-font-style", default: "normal", description: "" },
-        { name: " --szot-font-size", default: "1rem", description: "" },
-        { name: "--szot-line-height", default: "1rem", description: "" },
+        { name: "--szot-font-family", default: "'Open Sans', 'Helvetica Neue', sans-serif", description: "" },
+      ],
+    },
+    {
+      title: "Tag P font",
+      description: "used in <p>",
+      variables: [
+        { name: "--szot-p-font-weight", default: "normal", description: "" },
+        { name: "--szot-p-font-style", default: "normal", description: "" },
+        { name: " --szot-p-font-size", default: ".9rem", description: "" },
+        { name: "--szot-p-line-height", default: "1.25rem", description: "" },
+      ],
+    },
+    {
+      title: "Others",
+      description: "The rest of the tags follows the browser default for now",
+      variables: [
       ],
     },
   ];
+
+  function isEmpty(arr: unknown[]): boolean {
+    if (!arr) return true;
+    if (arr.length === 0) return true;
+    return false;
+  }
 </script>
+
+<div class="examples">
+  <h1>H1 example</h1>
+  <h2>H2 example</h2>
+  <h3>H3 example</h3>
+  <h4>H4 example</h4>
+  <h5>H5 example</h5>
+  <h6>H6 example</h6>
+  <span>span example</span>
+  <p>p example: Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur natus dolores distinctio officiis maxime eos illo aperiam reprehenderit aspernatur molestiae deleniti ducimus sunt vel veniam, tempora in incidunt ab tempore.</p>
+</div>
+
 {#each data as d}
   <section>
     <header>
       <h2>{ d.title }</h2>
       <p class="description">{ d.description }</p>
     </header>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Variable Name</th>
-          <th>Default Value</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each d.variables as v}
+    {#if !isEmpty(d.variables)}
+      <table>
+        <thead>
           <tr>
-            <td>{v.name}</td>
-            <td>{v.default}</td>
-            <td>{v.description}</td>
+            <th>Variable Name</th>
+            <th>Default Value</th>
+            <!-- <th>Description</th> -->
           </tr>
-        {/each}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {#each d.variables as v}
+            <tr>
+              <td>{v.name}</td>
+              <td>{v.default}</td>
+              <!-- <td>{v.description}</td> -->
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    {/if}
   </section>
-
 {/each}
-
-<p class="example">Default font example</p>
 
 <style lang="scss">
   section {
-    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 2rem 0;
   }
 
@@ -72,11 +99,12 @@
     background: #ddd;
   }
 
-  .example {
-    font-family: var(--theme-font-family);
-    font-weight: var(--theme-font-weight,600);
-    font-style: var(--theme-font-style);
-    font-size: var(--theme-font-size);
-    line-height: var(--theme-line-height);
+  .examples {
+    display: flex;
+    flex-flow: column;
+
+    p {
+      max-width: 300px;
+    }
   }
 </style>
