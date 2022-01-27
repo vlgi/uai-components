@@ -1,6 +1,6 @@
 import type { ArgType } from "@storybook/addons";
 import { action } from "@storybook/addon-actions";
-import { simpleDesserts } from "../fixtures";
+import { longDesserts, simpleDesserts } from "../fixtures";
 import OptionsList from "./OptionsList.svelte";
 import OptionsListWrapper from "./OptionsListWrapper.svelte";
 
@@ -21,7 +21,7 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
-const options = simpleDesserts;
+const options = longDesserts;
 
 export const Default = Template({
   id: "doce-listbox",

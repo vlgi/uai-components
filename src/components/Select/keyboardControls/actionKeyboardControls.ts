@@ -35,10 +35,6 @@ export function keyboardControls(node: HTMLElement, params: TKeyboardControlsPar
     case "Enter":
       if (dropdownOpen) {
         dispatchEvent(node, "actionToggleFocused");
-      }
-
-      if (!multiple) {
-        dispatchEvent(node, "actionToggleDropdown");
       } else if (!dropdownOpen) {
         dispatchEvent<boolean>(node, "actionToggleDropdown", true);
       }

@@ -80,3 +80,8 @@ export const simpleDesserts = [
   { text: "Rabanada" },
   { text: "Beijinho" },
 ];
+
+export const longDesserts = Array.from(
+  { length: 20 },
+  (_, i) => simpleDesserts.map((e) => ({ text: `${e.text} ${i}` })),
+).flat();

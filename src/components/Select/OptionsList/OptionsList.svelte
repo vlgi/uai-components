@@ -1,5 +1,6 @@
 <script lang="ts">
 import { createEventDispatcher } from "svelte";
+import { infiniteScroll } from "../infiniteScroll/actionInfiniteScroll";
 
 import type { TOption } from "../types";
 
@@ -23,10 +24,33 @@ export let labelledBy: string;
  */
 export let options: TOption[];
 /**
+ * Options elements references
+ */
+const optionsBinds: HTMLElement[] = [];
+/**
  * Selected options.
  * @type {object}
  */
 export let selected: TOption | TOption[];
+
+/**
+ * The index of the option that is selected
+ */
+export let focused = -1;
+
+/**
+ * The number of items loaded each time the list is scrolled to the bottom.
+ */
+export let infiniteScrollStep = 10;
+/**
+ * The number of items loaded when the component mounts.
+ */
+export let infiniteScrollInitialCount = 10;
+
+/**
+ * The number of items shown on the list.
+ */
+let shownUpperLimit = infiniteScrollInitialCount;
 
 /**
  * Tests if the option is selected.
@@ -71,9 +95,6 @@ function toggleSelected(option: TOption) {
 
 // ======= Focused management ======= //
 
-// The index of the option that is selected
-export let focused = -1;
-
 /**
  * Set focus to no options.
  */
@@ -107,15 +128,42 @@ export const toggleFocused = (): void => {
     toggleSelected(options[focused]);
   }
 };
+
+// ======= Infinite scroll management ======= //
+
+/**
+ * Handles when the infinite scroll requests to load more items on the list
+ */
+function handleLoadMore() {
+  shownUpperLimit += infiniteScrollStep;
+}
+
+$: if (focused >= 0 && focused < options.length) {
+  if (!optionsBinds[focused]) {
+    handleLoadMore();
+  }
+  setTimeout(() => {
+    optionsBinds[focused].scrollIntoView();
+  }, 0);
+}
+
+// Resets the infinite scroll if the options change
+$: if (options) {
+  shownUpperLimit = infiniteScrollInitialCount;
+}
+
 </script>
 
 <div class="select-menu" role="listbox" tabindex="-1"
-  {id} aria-labelledby={labelledBy}>
+  {id} aria-labelledby={labelledBy}
+  use:infiniteScroll={{ distFromBottom: 30 }}
+  on:actionLoadMore={handleLoadMore}>
 
     <!-- List all options -->
     {#if options}
-    {#each options as option, i}
+    {#each options.slice(0, shownUpperLimit) as option, i}
       <div class="select-option" role="option" tabindex="-1"
+        bind:this={optionsBinds[i]}
         class:focused="{i === focused}"
         class:selected="{isOptionSelected(option, selected)}"
         on:click={() => toggleSelected(option)}>
@@ -132,5 +180,12 @@ export const toggleFocused = (): void => {
   }
   .focused {
     border: 2px solid red;
+  }
+
+  .select-menu {
+    max-height: 5rem;
+    overflow-y: auto;
+    background-color: pink;
+    margin: 0.5rem;
   }
 </style>
