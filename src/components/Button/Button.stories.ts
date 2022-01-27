@@ -1,126 +1,160 @@
 import type { ArgType } from "@storybook/addons";
-import { action } from "@storybook/addon-actions";
 import Button from "./Button.svelte";
 import ButtonWrapper from "./ButtonWrapperForTest.svelte";
+import { IIcons } from "../Icon/IIcons";
 
 export default {
   title: "Components/Button",
   component: Button,
-  argtypes: {
+  argTypes: {
+    buttonStyle: {
+      control: {
+        type: "select",
+        options: ["Primary", "Secondary", "Dark", "Light", "Custom", "Disabled"],
+      },
+    },
+    icon: {
+      control: {
+        type: "select",
+        options: Object.values(IIcons),
+      },
+    },
+    size: {
+      control: {
+        type: "select",
+        options: ["small", "medium", "large"],
+      },
+    },
+    border: {
+      control: {
+        type: "select",
+        options: ["None", "Outline"],
+      },
+    },
+    background: {
+      control: {
+        type: "boolen",
+      },
+    },
+    positionIcon: {
+      control: {
+        type: "select",
+        options: ["left", "right"],
+      },
+    },
   },
 };
 
 const Template = (_args: ArgType) => {
-  const ret = ({...props}) => ({
+  const ret = ({ ...props }) => ({
     Component: ButtonWrapper,
-    props: props,
+    props,
   });
   ret.args = _args;
   return ret;
 };
 
+export const ThemeTest = Template({
+  /** teste */
+  style: "",
+  size: "medium",
+  labelSlot: "Botão 1",
+  buttonStyle: "Secondary",
+});
+
 export const LargeSimple = Template({
-  style: "default",
   size: "large",
   labelSlot: "Minhas contas",
+  style: "",
 });
 
 export const LargeIcon = Template({
-  style: "default",
   size: "large",
   icon: "upload",
-  labelSlot: "Enviar",
+  labelSlot: "Mandar para a china",
+  style: "",
 });
 
 export const mediumSimple = Template({
-  style: "default",
   size: "medium",
   labelSlot: "Botão 1",
+  style: "",
 });
 
 export const mediumIcon = Template({
-  style: "default",
   size: "medium",
   icon: "file",
   labelSlot: "Documento",
+  style: "--icon-transform-translate: translate(5.5rem, 0.2rem)",
 });
 
 export const smallSimple = Template({
-  style: "default",
   size: "small",
   labelSlot: "Buscar",
+  style: "",
 });
 
 export const smallIcon = Template({
-  style: "default",
   size: "small",
   icon: "search",
   labelSlot: "Buscar",
+  style: "",
 });
 
 export const Disabled = Template({
-  style: "default",
   size: "large",
-  disabled: "true",
+  buttonStyle: "Disabled",
   labelSlot: "Bloquear",
 });
 
 export const NotBackground = Template({
-  style: "default",
   size: "large",
-  color: "none",
+  background: "false",
   labelSlot: "Bloquear",
+  buttonStyle: "Custom",
+  style: "--color: #333333;",
 });
 
 export const NotBackgroundDisabled = Template({
-  style: "default",
   size: "large",
-  disabled: "true",
-  color: "none",
+  Disabled: "true",
+  background: "false",
+  buttonStyle: "Disabled",
   labelSlot: "Bloquear",
 });
 
 export const withBorders = Template({
-  style: "borders",
+  border: "Outline",
   size: "medium",
-  color: "none",
   labelSlot: "Bloquear",
-  color: "custom",
+  background: "false",
+  buttonStyle: "custom",
+  style: "--color: #333333;",
 });
 
 export const withBordersDisabled = Template({
-  style: "borders",
+  border: "Outline",
   size: "medium",
-  disabled: "true",
-  color: "none",
   labelSlot: "Bloquear",
-  color: "custom",
+  buttonStyle: "Disabled",
 });
 
 export const Floating = Template({
-  style: "white",
+  style: "",
   size: "floating",
   icon: "more",
-  color: "custom",
 });
 
 export const FloatingNotBackground = Template({
-  style: "default",
   size: "floating",
-  color: "none",
   icon: "more",
+  background: "false",
+  style: "--color: #333333;",
+  buttonStyle: "custom",
 });
 
 export const FloatingDisabled = Template({
-  style: "default",
   size: "floating",
   icon: "more",
-  disabled: "true",
-});
-
-export const ThemeTest = Template({
-  style: "default",
-  size: "medium",
-  labelSlot: "Botão 1",
-  color: "Secondary",
+  buttonStyle: "Disabled",
 });
