@@ -71,8 +71,9 @@ export const LargeSimple = Template({
 export const LargeIcon = Template({
   size: "large",
   icon: "upload",
-  labelSlot: "Mandar para a china",
+  labelSlot: "Enviar documentos",
   style: "",
+  positionIcon: "right",
 });
 
 export const mediumSimple = Template({
@@ -85,7 +86,8 @@ export const mediumIcon = Template({
   size: "medium",
   icon: "file",
   labelSlot: "Documento",
-  style: "--icon-transform-translate: translate(5.5rem, 0.2rem)",
+  style: "",
+  positionIcon: "right",
 });
 
 export const smallSimple = Template({
@@ -112,6 +114,7 @@ export const NotBackground = Template({
   background: "false",
   labelSlot: "Bloquear",
   buttonStyle: "Custom",
+  border: "None",
   style: "--color: #333333;",
 });
 

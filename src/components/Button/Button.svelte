@@ -26,11 +26,6 @@
   export let positionIcon: TpositionIcon = "left";
 </script>
 
-<link
-  href="https://fonts.googleapis.com/css?family=Open Sans"
-  rel="stylesheet"
-/>
-
 {#if `${size}` === "floating" && `${icon}` !== "none"}
   <button
     class="button {size} background-{background} button-style-{buttonStyle} border-{border}"
@@ -54,9 +49,9 @@
 
 <style lang="scss">
   * {
-    --font-family: var(--szot-font-family, Open Sans);
-    --border-radius: var(--szot-large-shape, 1.5rem);
-    --border: var(--szot-medium-border, none);
+    --font-family: var(--theme-font-family);
+    --border-radius: var(--theme-large-shape, 1.5rem);
+    --border: var(--theme-medium-border, none);
   }
   .button {
     position: relative;
@@ -202,21 +197,24 @@
   .border-Outline {
     --border: 2px solid #333333;
   }
+  .border-None {
+    --border: none;
+  }
   .button-style-Primary {
-    --background-color: var(--szot-primary);
-    --color: var(--szot-primary-txt);
+    --background-color: var(--theme-primary);
+    --color: var(---theme-txt-on-primary-surface);
   }
   .button-style-Secondary {
-    --background-color: var(--szot-secondary);
-    --color: var(--szot-secondary-txt);
+    --background-color: var(--theme-secondary);
+    --color: var(--theme-txt-on-secondary-surface);
   }
   .button-style-Dark {
-    --background-color: var(--szot-dark);
-    --color: var(--szot-dark-txt);
+    --background-color: var(--theme-dark);
+    --color: var(--theme-txt-on-dark-surface);
   }
   .button-style-Light {
-    --background-color: var(--szot-light);
-    --color: var(--szot-light-txt);
+    --background-color: var(--theme-light);
+    --color: var(--theme-txt-on-light-surface);
   }
   .background-false {
     --background-color: none;
