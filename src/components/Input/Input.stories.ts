@@ -1,5 +1,4 @@
 import type { ArgType } from "@storybook/addons";
-import { action } from "@storybook/addon-actions";
 import Input from "./InputWrapperForTest.svelte";
 
 export default {
@@ -10,9 +9,9 @@ export default {
 };
 
 const Template = (_args: ArgType) => {
-  const ret = ({...props}) => ({
+  const ret = ({ ...props }) => ({
     Component: Input,
-    props: props,
+    props,
   });
   ret.args = _args;
   return ret;
