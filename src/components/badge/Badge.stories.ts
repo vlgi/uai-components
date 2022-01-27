@@ -30,16 +30,21 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
-export const Default = Template({
+export const ThemeTest = Template({
   style: "",
   labelSlot: "Badge",
-  border: "Outiline",
-  badgeStyle: "Primary",
+  badgeStyle: "Dark",
 });
 
-export const BorderNone = Template({
-  border: "None",
+export const Default = Template({
   labelSlot: "Badge",
+  badgeStyle: "Light",
+});
+
+export const Border = Template({
+  border: "Outiline",
+  labelSlot: "Badge",
+  badgeStyle: "Dark",
 });
 
 export const Custom = Template({
@@ -47,10 +52,4 @@ export const Custom = Template({
   style: "--color:#FFFFFF; --background:#FC6627;",
   badgeStyle: "Custom",
   labelSlot: "Badge",
-});
-
-export const ThemeTest = Template({
-  style: "--szot-dark: #202020; --szot-dark-txt: #ececec;",
-  labelSlot: "Badge",
-  badgeStyle: "Dark",
 });

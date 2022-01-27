@@ -1,34 +1,31 @@
 <script lang="ts">
-
   type TbadgeStyle = "Primary" | "Secondary" | "Dark" | "Light" | "Custom";
   /** Select the theme color pattern that will be used or Custom to define your own color. */
   export let badgeStyle: TbadgeStyle = "Primary";
   type Tborders = "Outiline" | "None";
   /** Choose whether to have borders or not. */
   export let border: Tborders = "None";
-
 </script>
 
 <span class="badge {badgeStyle} border-{border}">
-  <slot/>
+  <slot />
 </span>
-
 
 <style lang="scss">
   .badge {
 
     * {
-      --font-family: var(--szot-font-family);
-      --font-weight: var(--szot-font-weight)
-      --font-style: var(--szot-font-style);
-      --font-size: var(--szot-font-size);
-      --line-height: var(--szot-line-height);
+      --font-family: var(--theme-font-family);
+      --font-weight: var(--theme-font-weight)
+      --font-style: var(--theme-font-style);
+      --font-size: var(--theme-font-size);
+      --line-height: var(--theme-line-height);
 
-      --max-width: var(--szot-fields-max-width);
-      --height: var(--szot-fields-height);
-      --padding: var(--szot-fields-padding);
-      --border-radius: var(--szot-large-shape);
-      --border: var(--szot-small-border);
+      --max-width: var(--theme-fields-max-width);
+      --height: var(--theme-fields-height);
+      --padding: var(--theme-fields-padding);
+      --border-radius: var(--theme-large-shape);
+      --border: var(--theme-small-border);
     }
 
     position:relative;
@@ -52,28 +49,31 @@
     line-height: var(--line-height, 0.625rem);
   }
 
-  .border-Outiline{
+  .border-Outiline {
     border: var(--border, 0.0625rem solid #7D7D7D);
+  }
+  .border-None {
+    border: none;
   }
 
   .Primary {
-    --background: var(--szot-primary,#FFFFFF);
-    --color: var(--szot-primary-txt,#5F5F5F);
+    --background: var(--theme-primary);
+    --color: var(---theme-txt-on-primary-surface);
   }
 
   .Secondary {
-    --background: var(--szot-secondary);
-    --color: var(--szot-secondary-txt);
+    --background: var(--theme-secondary);
+    --color: var(--theme-txt-on-secondary-surface);
   }
 
   .Dark {
-    --background: var(--szot-dark);
-    --color: var(--szot-dark-txt);
+    --background: var(--theme-dark);
+    --color: var(--theme-txt-on-dark-surface);
   }
 
   .Light {
-    --background: var(--szot-light);
-    --color: var(--szot-light-txt);
+    --background: var(--theme-light);
+    --color: var(--theme-txt-on-light-surface);
   }
 
 </style>
