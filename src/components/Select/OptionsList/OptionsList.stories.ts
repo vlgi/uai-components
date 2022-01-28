@@ -5,7 +5,7 @@ import OptionsList from "./OptionsList.svelte";
 import OptionsListWrapper from "./OptionsListWrapper.svelte";
 
 export default {
-  title: "Form/Select/OptionsList",
+  title: "Components/Select/OptionsList",
   component: OptionsList,
 };
 

@@ -5,7 +5,7 @@ import Select from "./Select.svelte";
 import SelectWrapper from "./SelectWrapper.svelte";
 
 export default {
-  title: "Form/Select/Select",
+  title: "Components/Select/Select",
   component: Select,
 };
 
