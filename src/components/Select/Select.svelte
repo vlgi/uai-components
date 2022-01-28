@@ -103,6 +103,15 @@ function handleTyping(ev: CustomEvent<string>) {
 function handleToggleDropdown(ev: CustomEvent<boolean | undefined>) {
   toggleOpen(ev.detail);
 }
+function handleBadgeRemoval(ev: MouseEvent, option: TOption) {
+  const remove = selectedMultiple.indexOf(option);
+  selected = [
+    ...selectedMultiple.slice(0, remove),
+    ...selectedMultiple.slice(remove + 1),
+  ];
+  ev.stopPropagation();
+  ev.preventDefault();
+}
 
 $: selectedSingle = Array.isArray(selected) ? null : selected;
 $: selectedMultiple = Array.isArray(selected) ? selected : [];
@@ -139,14 +148,9 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
 
       {#if multiple && selectedMultiple.length > 0}
         {#each selectedMultiple as option}
-          <span class="badge">{option.text} <span
-            on:click={() => {
-              const remove = selectedMultiple.indexOf(option);
-              selected = [
-                ...selectedMultiple.slice(0, remove),
-                ...selectedMultiple.slice(remove + 1),
-              ];
-            }}>&times;</span></span>
+          <span class="badge" on:click|preventDefault|stopPropagation>
+            {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
+          </span>
         {/each}
       {:else if !multiple && selectedSingle}
         {selectedSingle ? selectedSingle.text : ""}
@@ -196,6 +200,10 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
         </option>
       {/each}
     </select>
+
+    <div class="select-arrow" class:flipped={dropdownOpen}>
+      <div class="select-arrow-aux"></div>
+    </div>
 </div>
 
 
@@ -277,6 +285,48 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
         padding-top: 0;
         padding-bottom: 0;
       }
+    }
+
+    &-arrow {
+      --component-arrow-size: 0.5rem;
+      width: var(--component-arrow-size);
+      height: var(--component-arrow-size);
+
+      position: absolute;
+
+      top: calc(var(--component-padding-vertical) + calc(1rem - var(--component-arrow-size)) / 2);
+      right: var(--component-padding-horizontal);
+
+      transition: transform 200ms;
+      transform-origin: 50% 75%;
+      &.flipped {
+        transform: rotate(180deg);
+      }
+      &-aux{
+        width: var(--component-arrow-size);
+        height: var(--component-arrow-size);
+
+        transform: rotate(45deg);
+
+        &::before, &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: var(--theme-fields-outline);
+        }
+
+        &::before {
+          width: 100%;
+          height: 0.1rem;
+          bottom: 0;
+        }
+        &::after {
+          width: 0.1rem;
+          height: 100%;
+          right: 0;
+        }
+      }
+
     }
   }
 </style>
