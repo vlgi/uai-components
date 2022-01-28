@@ -1,0 +1,19 @@
+:root {
+  // border-radius
+  // used in objects with small sizes, like a button, input, badge
+  --theme-small-shape: var(--szot-small-shape, 0.625rem);
+  // medium size, like a card, accordion
+  --theme-medium-shape: var(--szot-medium-shape, 1rem);
+  // large size, like a modal
+  --theme-large-shape: var(--szot-large-shape, 1.5rem);
+
+  // shadows
+  --theme-low-shadow: var(--szot-small-shadow, 0 0 4px rgba(0,0,0,.07));
+  --theme-medium-shadow: var(--szot-medium-shadow, 0 4px 4px rgba(0,0,0,.07));
+  --theme-high-shadow: var(--szot-high-shadow, 4px 4px 4px rgba(0,0,0,.07));
+
+  // Border size/type/color
+  --theme-small-border: var(--szot-small-border, 0.0625rem solid #333);
+  --theme-medium-border: var(--szot-medium-border, 0.0625rem solid #ccc);
+  --theme-large-border: var(--szot-large-border, 0.0625rem solid #ddd);
+}
