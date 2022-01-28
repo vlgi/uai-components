@@ -9,13 +9,7 @@ export default {
     badgeStyle: {
       control: {
         type: "select",
-        options: ["Primary", "Secondary", "Dark", "Light", "Custom"],
-      },
-    },
-    border: {
-      control: {
-        type: "select",
-        options: ["Outiline", "None"],
+        options: ["Primary", "Secondary", "Dark", "Light", "Custom", "Outline"],
       },
     },
   },
@@ -30,26 +24,13 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
-export const ThemeTest = Template({
+export const Theme = Template({
   style: "",
   labelSlot: "Badge",
   badgeStyle: "Dark",
 });
 
-export const Default = Template({
-  labelSlot: "Badge",
-  badgeStyle: "Light",
-});
-
 export const Border = Template({
-  border: "Outiline",
   labelSlot: "Badge",
-  badgeStyle: "Dark",
-});
-
-export const Custom = Template({
-  //  Teste,
-  style: "--color:#FFFFFF; --background:#FC6627;",
-  badgeStyle: "Custom",
-  labelSlot: "Badge",
+  badgeStyle: "Outline",
 });

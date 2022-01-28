@@ -1,79 +1,55 @@
 <script lang="ts">
-  type TbadgeStyle = "Primary" | "Secondary" | "Dark" | "Light" | "Custom";
+  type TbadgeStyle = "Primary" | "Secondary" | "Dark" | "Light" | "Outline" | "Custom";
   /** Select the theme color pattern that will be used or Custom to define your own color. */
   export let badgeStyle: TbadgeStyle = "Primary";
-  type Tborders = "Outiline" | "None";
-  /** Choose whether to have borders or not. */
-  export let border: Tborders = "None";
 </script>
 
-<span class="badge {badgeStyle} border-{border}">
+<span class="badge {badgeStyle}">
   <slot />
 </span>
 
 <style lang="scss">
   .badge {
+    position: relative;
+    max-width: var(--theme-fields-max-width);
+    height: var(--theme-fields-height);
+    padding-left: var(--theme-fields-padding);
+    padding-right: var(--theme-fields-padding);
+    text-align: center;
 
-    * {
-      --font-family: var(--theme-font-family);
-      --font-weight: var(--theme-font-weight)
-      --font-style: var(--theme-font-style);
-      --font-size: var(--theme-font-size);
-      --line-height: var(--theme-line-height);
+    border: var(--szot-border,none);
+    border-radius: var(--theme-large-shape);
 
-      --max-width: var(--theme-fields-max-width);
-      --height: var(--theme-fields-height);
-      --padding: var(--theme-fields-padding);
-      --border-radius: var(--theme-large-shape);
-      --border: var(--theme-small-border);
-    }
+    font-family: var(--theme-font-family);
+    font-style: var(--theme-p-font-style);
+    font-weight: var(--theme-p-font-weight);
+    font-size: var(--theme-p-font-size);
+    line-height: var(--theme-p-line-height);
 
-    position:relative;
-    padding-left: var(--padding, 0.6rem);
-    padding-right: var(--padding, 0.6rem);
-
-    background:var(--background);
-    color:var(--color);
-
-    width: var(--width,6.3125rem);
-    max-width: var(--max-width, 7.2rem);
-    height: var(--heigth,1.0625rem);
-    text-align:center;
-
-    border-radius: var(--border-radius, 1.5rem);
-
-    font-family: var(--font-family,Open Sans);
-    font-style: var(--font-style, normal);
-    font-weight: var(--font-weight,600);
-    font-size: var(--font-size, 0.75rem);
-    line-height: var(--line-height, 0.625rem);
+    background-color: var(--szot-background-color );
+    color: var(--szot-color,#5F5F5F);
   }
-
-  .border-Outiline {
-    border: var(--border, 0.0625rem solid #7D7D7D);
-  }
-  .border-None {
-    border: none;
-  }
-
   .Primary {
-    --background: var(--theme-primary);
-    --color: var(---theme-txt-on-primary-surface);
+    --szot-background-color: var(--theme-primary);
+    --szot-color: var(--theme-txt-on-primary-surface);
   }
 
   .Secondary {
-    --background: var(--theme-secondary);
-    --color: var(--theme-txt-on-secondary-surface);
+    --szot-background-color: var(--theme-secondary);
+    --szot-color: var(--theme-txt-on-secondary-surface);
   }
 
   .Dark {
-    --background: var(--theme-dark);
-    --color: var(--theme-txt-on-dark-surface);
+    --szot-background-color: var(--theme-dark);
+    --szot-color: var(--theme-txt-on-dark-surface);
   }
 
   .Light {
-    --background: var(--theme-light);
-    --color: var(--theme-txt-on-light-surface);
+    --szot-background-color: var(--theme-light);
+    --szot-color: var(--theme-txt-on-light-surface);
+  }
+  .Outline {
+    border: var(--szot-border, 0.0563rem solid #5F5F5F);
   }
 
 </style>

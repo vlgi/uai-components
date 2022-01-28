@@ -5,9 +5,8 @@
   export let style: string;
 </script>
 
-<div style={style}>
-  <Badge { ...$$restProps }>
-    { labelSlot }
+<div {style}>
+  <Badge {...$$restProps}>
+    {labelSlot}
   </Badge>
 </div>
-
