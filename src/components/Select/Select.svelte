@@ -201,7 +201,8 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
       {/each}
     </select>
 
-    <div class="select-arrow" class:flipped={dropdownOpen}>
+    <div class="select-arrow" class:flipped={dropdownOpen}
+      on:click={() => toggleOpen()}>
       <div class="select-arrow-aux"></div>
     </div>
 </div>
