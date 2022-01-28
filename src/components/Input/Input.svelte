@@ -1,87 +1,117 @@
 <script lang="ts">
   import Icon from "../Icon/Icon.svelte";
+  import type { IIcons } from "../Icon/IIcons";
 
-  export let border = "true";
-  export let iconName = "none";
-  export let iconPosition = "right";
+  /** choose an icon from the list */
+  export let icon: IIcons = "none";
+
+  type TpositionIcon = "left" | "right";
+  /** if there is an icon define if it goes to the left or to the right */
+  export let iconPosition: TpositionIcon = "right";
+
+  type Tborders = "Bottom" | "Outline";
+  /** choose border type */
+  export let border: Tborders = "Outline";
+
+  type TborderStyle = "Primary" | "Secondary" | "Dark" | "Light" | "Custom";
+
+  /** choose default theme colors or "Custom" to set a custom color */
+  export let inputStyle: TborderStyle = "Primary";
+
+  /** write a helpertext if needed */
+  export let helperText = "";
+
+  /** enable if you want a color change if the input is valid or invalid */
+  export let validation = false;
+
+  /** Undefined */
+  export let pattern = undefined; //eslint-disable-line
+
+  /** input attributes */
   export let type = "text";
   export let value = "";
-  export let pattern = "";
   export let disabled = false;
   export let readonly = false;
   export let autocomplete = "off";
-  export let autofocus = "";
   export let max = "";
   export let min = "";
-  export let required = "";
   export let step = "";
-  export let color = "Primary";
-  export let helperText = "";
+  export let required = false;
+
+  let helper = false;
+  const focused = () => {
+    helper = !helper;
+  };
 </script>
 
-<link
-  href="https://fonts.googleapis.com/css?family=Open Sans"
-  rel="stylesheet"
-/>
-
-{#if iconName !== "none"}
-  <div id="color-{color}">
-    <div class="form-div border-{border}" id={iconPosition}>
-      <input
-        {type}
-        class="form-input"
-        placeholder=" "
-        {value}
-        {pattern}
-        {disabled}
-        {readonly}
-        {autocomplete}
-        {autofocus}
-        {max}
-        {min}
-        {required}
-        {step}
-      />
-      <label for="" class="form-label"><slot /></label>
-      <div class="icon"><Icon {iconName} /></div>
-      <p id="helper">{helperText}</p>
+{#if `${icon}` !== "none"}
+  <div
+    class="form-div border-{border} icons-{iconPosition} input-style-{inputStyle}"
+  >
+    <input
+      on:focus={focused}
+      on:blur={focused}
+      {type}
+      class="form-input form-input-validation"
+      placeholder=" "
+      {value}
+      {pattern}
+      {disabled}
+      {readonly}
+      {autocomplete}
+      {max}
+      {min}
+      {step}
+      {required}
+    />
+    <label for="" class="form-label">
+      <slot />
+    </label>
+    <div class="icon">
+      <Icon iconName={icon} />
     </div>
+    <p class:helper>
+      {helperText}
+    </p>
   </div>
 {:else}
-  <div id="color-{color}">
-    <div class="form-div border-{border}">
-      <input
-        {type}
-        class="form-input"
-        placeholder=" "
-        {value}
-        {pattern}
-        {disabled}
-        {readonly}
-        {autocomplete}
-        {autofocus}
-        {max}
-        {min}
-        {required}
-        {step}
-      />
-      <label for="" class="form-label"><slot /></label>
-      <p id="helper">{helperText}</p>
-    </div>
+  <div class="form-div border-{border} input-style-{inputStyle}">
+    <input
+      {type}
+      class="form-input"
+      class:validation
+      placeholder=" "
+      {value}
+      {pattern}
+      {disabled}
+      {readonly}
+      {autocomplete}
+      {max}
+      {min}
+      {step}
+      {required}
+      on:focus={focused}
+      on:blur={focused}
+    />
+    <label for="" class="form-label">
+      <slot />
+    </label>
+    <p class:helper>
+      {helperText}
+    </p>
   </div>
 {/if}
 
 <style lang="scss">
   * {
     box-sizing: border-box;
-    font-family: var(--font-family, Open Sans);
+    font-family: var(--theme-font-family);
 
-    --max-width: var(--szot-fields-max-width, 7.5rem);
-    --height: var(--szot-fields-height, 2.2rem);
-    --font-family: var(--szot-font-family, Open Sans);
-    --border-radius: var(--szot-large-shape, 1.5rem);
-    --border: var(--szot-small-border, 1px solid #575555);
-    --border-bottom-focus: var(--szot-medium-border, 1.5px solid #575555);
+    --max-width: var(--theme-fields-max-width);
+    --height: var(--theme-fields-height);
+    --border-radius: var(--theme-large-shape);
+    --border: var(--theme-small-border);
+    --border-bottom-focus: var(--theme-medium-border);
   }
 
   .form-div {
@@ -89,15 +119,15 @@
     height: var(--height, 2.2rem);
     margin-bottom: var(--margin-bottom, 1.5rem);
     width: var(--width, 16rem);
-    max-width: var(--max-width, 7.5rem);
+    max-width: var(--max-width);
   }
 
   .form-input {
     position: absolute;
     top: var(--input-top, 0);
     left: var(--input-left, 0);
-    width: var(--input-width, 100%);
-    height: var(--input-height, 100%);
+    width: 100%;
+    height: 100%;
     font-size: var(--input-font-size, 0.625rem);
     outline: none;
     padding: var(--input-padding, 0rem 1rem);
@@ -108,10 +138,9 @@
 
   .form-label {
     position: relative;
-    left: var(--label-left, 1rem);
-    top: var(--label-top, 0.3rem);
+    left: var(--label-left, 1.2rem);
+    top: var(--label-top, 0.5rem);
     padding: var(--label-padding, 0rem);
-    margin-left: var(--label-margin-left, 0.2rem);
     color: var(--label-color, #5f5f5f);
     font-size: var(--label-font-size, 0.8125rem);
     background-color: var(--background-color, #ffff);
@@ -128,43 +157,40 @@
   }
 
   .form-input:not(:placeholder-shown).form-input:not(:focus) + .form-label {
-    top: var(--label-not-focus-top, -0.8rem);
-    left: var(--label-not-focus-left, 0.8rem);
+    top: var(--label-not-focus-top, -0.7rem);
+    left: var(--label-not-focus-left, 0.9rem);
     z-index: 10;
     font-weight: var(--label-not-focus-font-weight, 500);
     font-size: var(--label-not-focus-font-size, 11px);
   }
 
-  .border-none {
+  .border-Bottom {
     .form-input {
       border: 0;
       border-bottom: var(--border, 1px solid #575555);
       border-color: var(--border-bottom-color);
       padding: var(--border-none-padding, 0.5rem 0.5rem);
-    }
-    .form-input:focus {
-      border-bottom: var(--border-bottom-focus, 1.5px solid #575555);
-      border-color: var(--border-bottom-focus-color);
-    }
+      &:focus {
+        border-color: var(--border-bottom-focus-color);
+      }
 
-    .form-label {
-      margin-left: var(--border-none-margin-left, -0.5rem);
+      .form-label {
+        margin-left: var(--border-none-margin-left, -0.5rem);
+      }
     }
   }
-
-  .border-true {
+  .border-Outline {
     .form-input {
-      border: var(--border, 1px solid #575555);
+      border: var(--border, 1px solid);
       border-color: var(--border-color);
       border-radius: 24px;
-    }
-    .form-input:focus {
-      border: var(--border-focus, 1.5px solid #0c8aff);
-      border-color: var(--border-color-focus);
+      &:focus {
+        border-color: var(--border-color-focus);
+      }
     }
   }
 
-  #left {
+  .icons-left {
     .form-input {
       padding: 1rem 1rem 1rem 2rem;
     }
@@ -176,72 +202,93 @@
     .icon {
       position: absolute;
       left: 0;
-      margin: var(--icon-margin, -0.85rem 0.5rem);
+      margin: var(--icon-margin, -0.6rem 0.5rem);
       color: var(--icon-color, #5f5f5f);
     }
   }
 
-  #right {
+  .icons-right {
     .form-input {
-      padding: 1rem 1.7rem 1rem 0.5rem;
+      padding: 1rem 1.7rem 1rem 1rem;
     }
 
     .icon {
       position: absolute;
       right: 0;
-      margin: var(--icon-margin, -0.85rem 0.5rem);
+      margin: var(--icon-margin, -0.6rem 0.5rem);
       color: var(--icon-color, #5f5f5f);
     }
   }
-  #color-Primary {
-    --background-color: var(--szot-primary);
-    --label-color: var(--szot-primary-txt);
-    --input-color: var(--szot-primary-txt);
-    --input-focus-color: var(--szot-primary-txt);
-    --border-color-focus: var(--szot-primary-txt);
-    --border-bottom-focus-color: var(--szot-primary-txt);
-    --border-color: var(--szot-primary-txt);
-    --border-bottom-color: var(--szot-primary-txt);
+  .input-style-Primary {
+    --label-color: var(--theme-primary-txt);
+    --input-color: var(--theme-primary-txt);
+    --icon-color: var(--theme-primary-txt);
+    --input-focus-color: var(--theme-primary-txt);
+    --border-color-focus: var(--theme-primary-txt);
+    --border-bottom-focus-color: var(--theme-primary-txt);
+    --border-color: var(--theme-primary-txt);
+    --border-bottom-color: var(--theme-primary-txt);
   }
 
-  #color-Secondary {
-    --background-color: var(--szot-secondary);
-    --label-color: var(--szot-secondary-txt);
-    --input-color: var(--szot-secondary-txt);
-    --input-focus-color: var(--szot-secondary-txt);
-    --border-color-focus: var(--szot-secondary-txt);
-    --border-bottom-focus-color: var(--szot-secondary-txt);
-    --border-color: var(--szot-secondary-txt);
-    --border-bottom-color: var(--szot-secondary-txt);
+  .input-style-Secondary {
+    --label-color: var(--theme-secondary-txt);
+    --icon-color: var(--theme-secondary-txt);
+    --input-color: var(--theme-secondary-txt);
+    --input-focus-color: var(--theme-secondary-txt);
+    --border-color-focus: var(--theme-secondary-txt);
+    --border-bottom-focus-color: var(--theme-secondary-txt);
+    --border-color: var(--theme-secondary-txt);
+    --border-bottom-color: var(--theme-secondary-txt);
   }
 
-  #color-Dark {
-    --background-color: var(--szot-dark);
-    --label-color: var(--szot-dark-txt);
-    --input-color: var(--szot-dark-txt);
-    --input-focus-color: var(--szot-dark-txt);
-    --border-color-focus: var(--szot-dark-txt);
-    --border-bottom-focus-color: var(--szot-dark-txt);
-    --border-color: var(--szot-dark-txt);
-    --border-bottom-color: var(--szot-dark-txt);
+  .input-style-Dark {
+    --label-color: var(--theme-dark-txt);
+    --icon-color: var(--theme-dark-txt);
+    --input-color: var(--theme-dark-txt);
+    --input-focus-color: var(--theme-dark-txt);
+    --border-color-focus: var(--theme-dark-txt);
+    --border-bottom-focus-color: var(--theme-dark-txt);
+    --border-color: var(--theme-dark-txt);
+    --border-bottom-color: var(--theme-dark-txt);
   }
-  #color-Light {
-    --background-color: var(--szot-light);
-    --label-color: var(--szot-light-txt);
-    --input-color: var(--szot-light-txt);
-    --input-focus-color: var(--szot-light-txt);
-    --border-color-focus: var(--szot-light-txt);
-    --border-bottom-focus-color: var(--szot-light-txt);
-    --border-color: var(--szot-ligth-txt);
-    --border-bottom-color: var(--szot-ligth-txt);
+  .input-style-Light {
+    --label-color: var(--theme-light-txt);
+    --icon-color: var(--theme-light-txt);
+    --input-color: var(--theme-light-txt);
+    --input-focus-color: var(--theme-light-txt);
+    --border-color-focus: var(--theme-light-txt);
+    --border-bottom-focus-color: var(--theme-light-txt);
+    --border-color: var(--theme-ligth-txt);
+    --border-bottom-color: var(--theme-ligth-txt);
   }
-  #helper {
+  .validation {
+    &:invalid:not(:focus):not(:placeholder-shown) {
+      border-color: var(--theme-error);
+      color: var(--theme-error);
+      + .form-label {
+        color: var(--theme-error);
+      }
+    }
+    &:valid:not(:focus):not(:placeholder-shown) {
+      border-color: var(--theme-success);
+      color: var(--theme-success);
+      + .form-label {
+        color: var(--theme-success);
+      }
+    }
+  }
+  p {
     position: absolute;
     z-index: 1;
-    bottom: var(--helper-bottom, -0.65rem);
+    bottom: var(--helper-bottom, -1rem);
     left: var(--helper-left, 1rem);
     font-size: var(--helper-font-size, 0.25em);
-    color: var(--helper-color, rgb(202, 8, 8));
-    opacity: var(--helper-opacity, 0.75);
+    color: var(--theme-info);
+    opacity: 0;
+    transition: opacity 0.5s linear;
+  }
+  .helper {
+    opacity: 0.75;
+    transition: opacity 0.5s linear;
   }
 </style>

@@ -1,16 +1,47 @@
 import type { ArgType } from "@storybook/addons";
-import Input from "./InputWrapperForTest.svelte";
+import Input from "./Input.svelte";
+import InputWrapper from "./InputWrapperForTest.svelte";
+import { IIcons } from "../Icon/IIcons";
 
 export default {
   title: "Components/Input",
   component: Input,
-  argtypes: {
+  argTypes: {
+    inputStyle: {
+      control: {
+        type: "select",
+        options: ["Primary", "Secondary", "Dark", "Light", "Custom"],
+      },
+    },
+    icon: {
+      control: {
+        type: "select",
+        options: Object.values(IIcons),
+      },
+    },
+    iconPosition: {
+      control: {
+        type: "select",
+        options: ["left", "right"],
+      },
+    },
+    border: {
+      control: {
+        type: "select",
+        options: ["Bottom", "Outline"],
+      },
+    },
+    pattern: {
+      control: {
+        type: "string",
+      },
+    },
   },
 };
 
 const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
-    Component: Input,
+    Component: InputWrapper,
     props,
   });
   ret.args = _args;
@@ -19,25 +50,28 @@ const Template = (_args: ArgType) => {
 
 export const Default = Template({
   labelSlot: "Email",
-  type: "name",
+  style: "",
+  helperText: "Digite um email válido",
+  validation: false,
+  type: "email",
 });
 
 export const BordersNone = Template({
   labelSlot: "Senha",
   type: "password",
-  border: "none",
+  border: "Bottom",
 });
 
 export const WhithIcon = Template({
   labelSlot: "Celular 1",
   type: "tel",
-  border: "none",
-  iconName: "phone",
+  border: "Bottom",
+  icon: "phone",
 });
 
 export const WhithIconLeft = Template({
   labelSlot: "Celular 2",
-  iconName: "phone",
+  icon: "phone",
   iconPosition: "left",
   type: "tel",
 });
@@ -45,7 +79,7 @@ export const WhithIconLeft = Template({
 export const Readonly = Template({
   labelSlot: "Aviso",
   type: "text",
-  iconName: "info",
+  icon: "info",
   value: "Não escreva aqui",
   readonly: true,
   helperText: "Apenas um exemplo",
@@ -54,6 +88,6 @@ export const Readonly = Template({
 export const CustomColor = Template({
   labelSlot: "Fruta",
   type: "name",
-  color: "custom",
-  style: "orange",
+  inputStyle: "Custom",
+  style: "--background-color: #ffffff;--label-color: #c56d09;--input-color: #db984b;--input-focus-color: #ce4007;--border-color-focus: #ce4007;--border-color: #c56d09;",
 });

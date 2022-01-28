@@ -18,4 +18,5 @@ export enum IIcons {
   search = "search",
   task = "task",
   upload = "upload",
+  none = "none",
 }
