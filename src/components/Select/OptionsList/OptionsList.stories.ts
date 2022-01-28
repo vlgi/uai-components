@@ -1,6 +1,6 @@
 import type { ArgType } from "@storybook/addons";
 import { action } from "@storybook/addon-actions";
-import { longDesserts, simpleDesserts } from "../fixtures";
+import { longDesserts } from "../fixtures";
 import OptionsList from "./OptionsList.svelte";
 import OptionsListWrapper from "./OptionsListWrapper.svelte";
 
