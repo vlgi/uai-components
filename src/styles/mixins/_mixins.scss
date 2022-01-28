@@ -1,5 +1,8 @@
 @mixin custom-scrollbar {
 
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-dark) transparent;
+
   /* width */
   &::-webkit-scrollbar {
     width: 0.3125rem;
