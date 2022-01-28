@@ -23,9 +23,10 @@ export function keyboardControls(node: HTMLElement, params: TKeyboardControlsPar
    * @param {KeyboardEvent} ev The event emmited by the keyboard.
    */
   function handleKeyboard(ev: KeyboardEvent) {
-    const { key } = ev;
+    const { key, target } = ev;
 
     let shouldPreventPropagation = true;
+    let shouldPreventDefault = true;
 
     switch (key) {
     case "Escape":
@@ -51,14 +52,20 @@ export function keyboardControls(node: HTMLElement, params: TKeyboardControlsPar
     default:
       if (isAlphanumeric(key)) {
         dispatchEvent<string>(node, "actionType", key);
+        if ((target as HTMLElement).nodeName === "INPUT") {
+          shouldPreventDefault = false;
+        }
         break;
       }
       shouldPreventPropagation = false;
+      shouldPreventDefault = false;
       break;
     }
 
     if (shouldPreventPropagation) {
       ev.stopPropagation();
+    }
+    if (shouldPreventDefault) {
       ev.preventDefault();
     }
   }
