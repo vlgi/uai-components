@@ -1,6 +1,6 @@
 <script lang="ts">
   // The input reference.
-  export let inputBind: HTMLInputElement;
+  export let inputBind: HTMLInputElement = null;
 
   /**
    * Focus on the input element.
