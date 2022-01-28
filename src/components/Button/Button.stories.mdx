@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+import ButtonWrapper from "./ButtonWrapperForTest.svelte";
+
+<Meta title="Components/Button/Custom" />
+
+# Button Custom
+
+###### These are the component's CSS variables.
+
+CSS Property | Descripiton
+-------------|-------------
+--szot-text-transform | change text transformation mode
+--szot-opacity-hover | change button opacity when hover
+--szot-effect-color-after-click | effect color when clicking the button
+
+###### For the variables below the "button Style" must be "Custom".
+CSS Property | Descripiton
+-------------|-------------
+--szot-color-custom | Sets a custom text color
+--szot-background-color| Set custom background color
+--szot-border | Set the border and its color (* Only if the "border" is "Custom")
+
+<p>The theme's font and shape variables are used here, as well as the 4 default options.</p>
+
+###### Below is an example of a custom button with variables.
+<br />
+<br />
+
+
+export const Template = (args) => ({
+  Component: ButtonWrapper,
+  props: args,
+});
+
+<Story
+    name="Unchecked"
+    args={{
+      labelSlot: "Laranja",
+      buttonStyle: "Custom",
+      border: "Custom",
+      style: "--szot-color-custom:#ffc7a7;--szot-background-color:#FC6627;--szot-border: 2px solid #ffc7a7",
+    }}>
+    >
+    {Template.bind({})}
+</Story>
+
+

@@ -28,12 +28,7 @@ export default {
     border: {
       control: {
         type: "select",
-        options: ["None", "Outline"],
-      },
-    },
-    background: {
-      control: {
-        type: "boolen",
+        options: ["None", "Outline", "Custom"],
       },
     },
     positionIcon: {
@@ -55,7 +50,6 @@ const Template = (_args: ArgType) => {
 };
 
 export const ThemeTest = Template({
-  /** teste */
   style: "",
   size: "medium",
   labelSlot: "Botão 1",
@@ -65,42 +59,36 @@ export const ThemeTest = Template({
 export const LargeSimple = Template({
   size: "large",
   labelSlot: "Minhas contas",
-  style: "",
 });
 
 export const LargeIcon = Template({
   size: "large",
   icon: "upload",
   labelSlot: "Enviar documentos",
-  style: "",
   positionIcon: "right",
 });
 
 export const mediumSimple = Template({
   size: "medium",
   labelSlot: "Botão 1",
-  style: "",
 });
 
 export const mediumIcon = Template({
   size: "medium",
   icon: "file",
   labelSlot: "Documento",
-  style: "",
   positionIcon: "right",
 });
 
 export const smallSimple = Template({
   size: "small",
   labelSlot: "Buscar",
-  style: "",
 });
 
 export const smallIcon = Template({
   size: "small",
   icon: "search",
   labelSlot: "Buscar",
-  style: "",
 });
 
 export const Disabled = Template({
@@ -111,17 +99,16 @@ export const Disabled = Template({
 
 export const NotBackground = Template({
   size: "large",
-  background: "false",
+  notbackground: "false",
   labelSlot: "Bloquear",
   buttonStyle: "Custom",
   border: "None",
-  style: "--color: #333333;",
 });
 
 export const NotBackgroundDisabled = Template({
   size: "large",
   Disabled: "true",
-  background: "false",
+  notbackground: "false",
   buttonStyle: "Disabled",
   labelSlot: "Bloquear",
 });
@@ -130,9 +117,7 @@ export const withBorders = Template({
   border: "Outline",
   size: "medium",
   labelSlot: "Bloquear",
-  background: "false",
-  buttonStyle: "custom",
-  style: "--color: #333333;",
+  notbackground: "false",
 });
 
 export const withBordersDisabled = Template({
@@ -151,9 +136,7 @@ export const Floating = Template({
 export const FloatingNotBackground = Template({
   size: "floating",
   icon: "more",
-  background: "false",
-  style: "--color: #333333;",
-  buttonStyle: "custom",
+  notbackground: "false",
 });
 
 export const FloatingDisabled = Template({
