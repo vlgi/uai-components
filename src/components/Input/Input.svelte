@@ -22,7 +22,7 @@
   export let helperText = "";
 
   /** enable if you want a color change if the input is valid or invalid */
-  export let validation = false;
+  export let validation = true;
 
   /** Undefined */
   export let pattern = undefined; //eslint-disable-line
@@ -47,12 +47,13 @@
 {#if `${icon}` !== "none"}
   <div
     class="form-div border-{border} icons-{iconPosition} input-style-{inputStyle}"
+    class:validation
   >
     <input
       on:focus={focused}
       on:blur={focused}
       {type}
-      class="form-input form-input-validation"
+      class="form-input"
       placeholder=" "
       {value}
       {pattern}
@@ -70,15 +71,18 @@
     <div class="icon">
       <Icon iconName={icon} />
     </div>
-    <p class:helper>
+    <p class="helper-hidden" class:helper>
       {helperText}
     </p>
   </div>
 {:else}
-  <div class="form-div border-{border} input-style-{inputStyle}">
+  <div
+    class="form-div border-{border} input-style-{inputStyle}"
+    class:validation
+  >
     <input
       {type}
-      class="form-input"
+      class="form-input "
       class:validation
       placeholder=" "
       {value}
@@ -96,7 +100,7 @@
     <label for="" class="form-label">
       <slot />
     </label>
-    <p class:helper>
+    <p class="helper-hidden" class:helper>
       {helperText}
     </p>
   </div>
@@ -106,86 +110,80 @@
   * {
     box-sizing: border-box;
     font-family: var(--theme-font-family);
-
-    --max-width: var(--theme-fields-max-width);
-    --height: var(--theme-fields-height);
-    --border-radius: var(--theme-large-shape);
-    --border: var(--theme-small-border);
-    --border-bottom-focus: var(--theme-medium-border);
   }
 
   .form-div {
     position: relative;
-    height: var(--height, 2.2rem);
-    margin-bottom: var(--margin-bottom, 1.5rem);
-    width: var(--width, 16rem);
-    max-width: var(--max-width);
+    height: var(--theme-fields-height);
+    margin-bottom: var(--szot-margin-bottom, 1.5rem);
+    width: var(--szot-width, 16rem);
+    max-width: var(--theme-fields-max-width);
   }
 
   .form-input {
     position: absolute;
-    top: var(--input-top, 0);
-    left: var(--input-left, 0);
+    top: var(--szot-input-top, 0);
+    left: var(--szot-input-left, 0);
     width: 100%;
     height: 100%;
-    font-size: var(--input-font-size, 0.625rem);
+    font-size: var(--szot-input-font-size, 0.625rem);
     outline: none;
-    padding: var(--input-padding, 0rem 1rem);
+    padding: var(--szot-input-padding, 0rem 1rem);
     background: none;
     z-index: 1;
-    color: var(--input-color, #b1b1b1);
+    color: var(--szot-input-color, #b1b1b1);
   }
 
   .form-label {
     position: relative;
-    left: var(--label-left, 1.2rem);
-    top: var(--label-top, 0.5rem);
+    left: var(--szot-label-left, 1.2rem);
+    top: var(--szot-label-top, 0.5rem);
     padding: var(--label-padding, 0rem);
-    color: var(--label-color, #5f5f5f);
-    font-size: var(--label-font-size, 0.8125rem);
-    background-color: var(--background-color, #ffff);
+    color: var(--szot-label-color, #5f5f5f);
+    font-size: var(--szot-label-font-size, 0.8125rem);
+    background-color: var(--szot-background-color, #ffff);
     transition: 0.2s;
   }
 
   .form-input:focus + .form-label {
-    top: var(--input-focus-top, -0.8rem);
-    left: var(--input-focus-left, 0.8rem);
+    top: var(--szot-input-focus-top, -0.8rem);
+    left: var(--szot-input-focus-left, 0.8rem);
     z-index: 10;
-    font-weight: var(--input-focus-weigth, 400);
-    color: var(--input-focus-color, #0c8aff);
-    font-size: var(--input-focus-font-size, 0.6875rem);
+    font-weight: var(--szot-input-focus-weigth, 400);
+    color: var(--szot-input-focus-color);
+    font-size: var(--szot-input-focus-font-size, 0.6875rem);
   }
 
   .form-input:not(:placeholder-shown).form-input:not(:focus) + .form-label {
-    top: var(--label-not-focus-top, -0.7rem);
-    left: var(--label-not-focus-left, 0.9rem);
+    top: var(--szot-label-not-focus-top, -0.7rem);
+    left: var(--szot-label-not-focus-left, 0.9rem);
     z-index: 10;
-    font-weight: var(--label-not-focus-font-weight, 500);
-    font-size: var(--label-not-focus-font-size, 11px);
+    font-weight: var(--szot-label-not-focus-font-weight, 500);
+    font-size: var(--szot-label-not-focus-font-size, 11px);
   }
 
   .border-Bottom {
     .form-input {
       border: 0;
-      border-bottom: var(--border, 1px solid #575555);
-      border-color: var(--border-bottom-color);
-      padding: var(--border-none-padding, 0.5rem 0.5rem);
+      border-bottom: var(--theme-small-border);
+      border-color: var(--szot-border-color);
+      padding: var(--szot-border-none-padding, 0.5rem 0.5rem);
       &:focus {
-        border-color: var(--border-bottom-focus-color);
+        border-color: var(--szot-border-color-focus);
       }
 
       .form-label {
-        margin-left: var(--border-none-margin-left, -0.5rem);
+        margin-left: var(--szot-border-none-margin-left, -0.5rem);
       }
     }
   }
   .border-Outline {
     .form-input {
-      border: var(--border, 1px solid);
-      border-color: var(--border-color);
-      border-radius: 24px;
+      border: var(--theme-small-border);
+      border-color: var(--szot-border-color);
+      border-radius: var(--theme-large-shape);
       &:focus {
-        border-color: var(--border-color-focus);
+        border-color: var(--szot-border-color-focus);
       }
     }
   }
@@ -202,8 +200,8 @@
     .icon {
       position: absolute;
       left: 0;
-      margin: var(--icon-margin, -0.6rem 0.5rem);
-      color: var(--icon-color, #5f5f5f);
+      margin: var(--szot-icon-margin, -0.6rem 0.5rem);
+      color: var(--szot-icon-color, #5f5f5f);
     }
   }
 
@@ -215,77 +213,83 @@
     .icon {
       position: absolute;
       right: 0;
-      margin: var(--icon-margin, -0.6rem 0.5rem);
-      color: var(--icon-color, #5f5f5f);
+      margin: var(--szot-icon-margin, -0.6rem 0.5rem);
+      color: var(--szot-icon-color, #5f5f5f);
     }
   }
   .input-style-Primary {
-    --label-color: var(--theme-primary-txt);
-    --input-color: var(--theme-primary-txt);
-    --icon-color: var(--theme-primary-txt);
-    --input-focus-color: var(--theme-primary-txt);
-    --border-color-focus: var(--theme-primary-txt);
-    --border-bottom-focus-color: var(--theme-primary-txt);
-    --border-color: var(--theme-primary-txt);
-    --border-bottom-color: var(--theme-primary-txt);
+    --szot-label-color: var(--theme-primary-txt);
+    --szot-input-color: var(--theme-primary-txt);
+    --szot-icon-color: var(--theme-primary-txt);
+    --szot-input-focus-color: var(--theme-primary-txt);
+    --szot-border-color-focus: var(--theme-primary-txt);
+    --szot-border-color: var(--theme-primary-txt);
+    --szot-border-color: var(--theme-primary-txt);
   }
 
   .input-style-Secondary {
-    --label-color: var(--theme-secondary-txt);
-    --icon-color: var(--theme-secondary-txt);
-    --input-color: var(--theme-secondary-txt);
-    --input-focus-color: var(--theme-secondary-txt);
-    --border-color-focus: var(--theme-secondary-txt);
-    --border-bottom-focus-color: var(--theme-secondary-txt);
-    --border-color: var(--theme-secondary-txt);
-    --border-bottom-color: var(--theme-secondary-txt);
+    --szot-label-color: var(--theme-secondary-txt);
+    --szot-icon-color: var(--theme-secondary-txt);
+    --szot-input-color: var(--theme-secondary-txt);
+    --szot-input-focus-color: var(--theme-secondary-txt);
+    --szot-border-color-focus: var(--theme-secondary-txt);
+    --szot-border-color: var(--theme-secondary-txt);
+    --szot-border-color: var(--theme-secondary-txt);
   }
 
   .input-style-Dark {
-    --label-color: var(--theme-dark-txt);
-    --icon-color: var(--theme-dark-txt);
-    --input-color: var(--theme-dark-txt);
-    --input-focus-color: var(--theme-dark-txt);
-    --border-color-focus: var(--theme-dark-txt);
-    --border-bottom-focus-color: var(--theme-dark-txt);
-    --border-color: var(--theme-dark-txt);
-    --border-bottom-color: var(--theme-dark-txt);
+    --szot-label-color: var(--theme-dark-txt);
+    --szot-icon-color: var(--theme-dark-txt);
+    --szot-input-color: var(--theme-dark-txt);
+    --szot-input-focus-color: var(--theme-dark-txt);
+    --szot-border-color-focus: var(--theme-dark-txt);
+    --szot-border-color: var(--theme-dark-txt);
+    --szot-border-color: var(--theme-dark-txt);
   }
   .input-style-Light {
-    --label-color: var(--theme-light-txt);
-    --icon-color: var(--theme-light-txt);
-    --input-color: var(--theme-light-txt);
-    --input-focus-color: var(--theme-light-txt);
-    --border-color-focus: var(--theme-light-txt);
-    --border-bottom-focus-color: var(--theme-light-txt);
-    --border-color: var(--theme-ligth-txt);
-    --border-bottom-color: var(--theme-ligth-txt);
+    --szot-label-color: var(--theme-light-txt);
+    --szot-icon-color: var(--theme-light-txt);
+    --szot-input-color: var(--theme-light-txt);
+    --szot-input-focus-color: var(--theme-light-txt);
+    --szot-border-color-focus: var(--theme-light-txt);
+    --szot-border-color: var(--theme-ligth-txt);
   }
   .validation {
-    &:invalid:not(:focus):not(:placeholder-shown) {
-      border-color: var(--theme-error);
-      color: var(--theme-error);
-      + .form-label {
+    .form-input {
+      &:invalid:not(:focus):not(:placeholder-shown) {
+        border-color: var(--theme-error);
         color: var(--theme-error);
+        + .form-label + .icon {
+          color: var(--theme-error);
+        }
+        + .form-label {
+          color: var(--theme-error);
+        }
       }
-    }
-    &:valid:not(:focus):not(:placeholder-shown) {
-      border-color: var(--theme-success);
-      color: var(--theme-success);
-      + .form-label {
+      &:valid:not(:focus):not(:placeholder-shown) {
+        border-color: var(--theme-success);
         color: var(--theme-success);
+        + .form-label + .icon {
+          color: var(--theme-success);
+        }
+        + .form-label {
+          color: var(--theme-success);
+        }
       }
     }
   }
+
   p {
     position: absolute;
     z-index: 1;
-    bottom: var(--helper-bottom, -1rem);
-    left: var(--helper-left, 1rem);
-    font-size: var(--helper-font-size, 0.25em);
-    color: var(--theme-info);
+    bottom: var(--szot-texthelp-bottom, -1rem);
+    left: var(--szot-texthelp-left, 1rem);
+    font-size: var(--szot-texthelp-font-size, 0.25em);
     opacity: 0;
     transition: opacity 0.5s linear;
+  }
+  .helper-hidden {
+    color: var(--theme-info);
   }
   .helper {
     opacity: 0.75;
