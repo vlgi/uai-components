@@ -58,6 +58,20 @@
         { name: "--szot-txt-on-signal-color", default: "black" },
       ],
     },
+    {
+      title: "text colors",
+      description: "text colors splitted by context of use",
+      variables: [
+        { name: "--szot-global-txt", default: "--szot-txt-dark" },
+      ],
+    },
+    {
+      title: "other colors",
+      description: "colors splitted by context of use",
+      variables: [
+        { name: "--szot-fields-outline", default: "--szot-global-txt" },
+      ],
+    },
   ];
 </script>
 
