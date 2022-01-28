@@ -63,6 +63,17 @@ function toggleOpen(open?: boolean) {
 }
 
 /**
+ * Tests if there is something selected on the input
+ * @param {TOption | TOption[]} _selected the selected item or items.
+ */
+function isFilled(_selected: TOption | TOption[]) {
+  if (Array.isArray(_selected)) {
+    return _selected.length > 0;
+  }
+  return _selected !== null && _selected !== undefined;
+}
+
+/**
  * Handles when the selected changes.
  */
 function handleSelectedChange() {
@@ -110,12 +121,15 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
     <!-- Floating label for the select -->
     <label class="select-label"
       id="{selectAttributes.id}-label"
-      for="{selectAttributes.id}-custom">
+      for="{selectAttributes.id}-custom"
+      on:click={() => toggleOpen()}
+      class:floated={dropdownOpen || isFilled(selected)}>
       {label}
     </label>
 
     <!-- Select's box that shows which option is selected -->
     <div class="select-box" role="combobox" tabindex="-1"
+      class:selected-multiple={multiple && isFilled(selected)}
       on:click={() => toggleOpen()}
       id="{selectAttributes.id}-custom"
       aria-controls="{selectAttributes.id}-listbox"
@@ -125,7 +139,14 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
 
       {#if multiple && selectedMultiple.length > 0}
         {#each selectedMultiple as option}
-          <span class="badge">{option.text}</span>
+          <span class="badge">{option.text} <span
+            on:click={() => {
+              const remove = selectedMultiple.indexOf(option);
+              selected = [
+                ...selectedMultiple.slice(0, remove),
+                ...selectedMultiple.slice(remove + 1),
+              ];
+            }}>&times;</span></span>
         {/each}
       {:else if !multiple && selectedSingle}
         {selectedSingle ? selectedSingle.text : ""}
@@ -136,7 +157,7 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
     </div>
 
     <!-- Floating box with extra related data -->
-    <div class="dropdown-menu" class:hidden={!dropdownOpen}>
+    <div class="select-dropdown-menu" class:closed={!dropdownOpen}>
 
       <!-- Search input -->
       <SearchInput
@@ -178,11 +199,84 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
 </div>
 
 
-<style>
+<style lang="scss">
   .hidden {
     display: none;
   }
   .badge {
+    display: inline-block;
+    font-size: 0.875rem;
+    border: 1px solid var(--theme-fields-outline);
+    border-radius: 25px;
+    padding: 1px 5px;
     margin: 0.25rem;
+    span {
+      font-size: 1.3em;
+      line-height: 0.875rem;
+      vertical-align: -10%;
+      cursor: pointer;
+    }
+  }
+
+  .select {
+
+    --component-background-color: var(--szot-background-color, white);
+    --component-padding-vertical: 0.6875rem;
+    --component-padding-horizontal: 1rem;
+    --component-border-radius: var(--szot-border-radius, 1.5625rem);
+
+    position: relative;
+
+    background-color: var(--component-background-color);
+    color: var(--theme-dark-txt);
+
+    border: 0.0625rem solid var(--theme-fields-outline);
+    border-radius: var(--component-border-radius);
+
+
+    &-label {
+      position: absolute;
+      top: var(--component-padding-vertical);
+      left: var(--component-padding-horizontal);
+      background-color: var(--component-background-color);
+
+      transform-origin: 0 30%;
+
+      transition: top 200ms, transform 200ms;
+      &.floated {
+        top: -0.7em;
+        transform: scale(0.8);
+      }
+    }
+
+    &-box {
+      border-radius: var(--component-border-radius);
+      padding: var(--component-padding-vertical) var(--component-padding-horizontal);
+
+      cursor: pointer;
+
+      &.selected-multiple {
+        padding: calc(0.6 * var(--component-padding-vertical)) calc(0.6 * var(--component-padding-horizontal));
+      }
+    }
+
+    &-dropdown-menu {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: var(--component-padding-vertical);
+
+      overflow: hidden;
+      max-height: 10rem;
+
+      border-radius: 0 0 var(--component-border-radius) var(--component-border-radius);
+      padding: 0 var(--component-padding-horizontal);
+
+      transition: max-height 200ms, padding 200ms;
+      &.closed {
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
   }
 </style>

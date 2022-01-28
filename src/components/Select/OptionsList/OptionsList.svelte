@@ -166,7 +166,10 @@ $: if (options) {
         bind:this={optionsBinds[i]}
         class:focused="{i === focused}"
         class:selected="{isOptionSelected(option, selected)}"
-        on:click={() => toggleSelected(option)}>
+        on:click={() => {
+          toggleSelected(option);
+          focused = -1;
+        }}>
         {option.text}
       </div>
     {/each}
@@ -174,18 +177,33 @@ $: if (options) {
 
 </div>
 
-<style>
-  .selected {
-    background-color: #ddd;
-  }
-  .focused {
-    border: 2px solid red;
-  }
+<style lang="scss">
+  @use '../../../styles/mixins' as m;
 
-  .select-menu {
-    max-height: 5rem;
-    overflow-y: auto;
-    background-color: pink;
-    margin: 0.5rem;
+  .select {
+    &-menu {
+      overflow-y: auto;
+      overflow-x: hidden;
+      @include m.custom-scrollbar;
+    }
+
+    &-option {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin: 0.25rem;
+      padding: 0.15rem;
+      border-radius: var(--theme-small-shape);
+      cursor: pointer;
+
+      transition: background-color 200ms;
+
+      &.selected {
+        color: var(--theme-light-txt);
+      }
+
+      &.focused, &:hover {
+        background-color: var(--szot-focused-color, #f2f2f2);
+      }
+    }
   }
 </style>

@@ -36,7 +36,7 @@ export const SingleSelected = Template({
 });
 
 export const SimpleLong = Template({
-  multiple: true,
+  multiple: false,
   selectAttributes: { id: "doce", name: "doce" },
   label: "Sobremesas",
   options: longDesserts,

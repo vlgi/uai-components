@@ -66,5 +66,28 @@
 </script>
 
 <input type="text" class="search" tabindex="-1"
+  placeholder="Pesquise ou Selecione..."
   bind:value={searchQuery}
   bind:this={inputBind}/>
+
+<style lang="scss">
+  .search {
+    --component-compression-factor: 0.7;
+
+    color: var(--theme-global-txt);
+    background-color: var(--component-background-color);
+
+    padding: calc(var(--component-compression-factor) * var(--component-padding-vertical))
+    calc(var(--component-compression-factor) * var(--component-padding-horizontal));
+
+    border: 0.0625rem solid var(--theme-fields-outline);
+    border-radius: var(--szot-search-border-radius, 1.5625rem);
+
+    font-size: 1.125rem;
+
+    &::placeholder {
+      font-size: 1.125rem;
+      color: var(--theme-light-txt);
+    }
+  }
+</style>

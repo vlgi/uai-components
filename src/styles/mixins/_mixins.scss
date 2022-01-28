@@ -1,0 +1,23 @@
+@mixin custom-scrollbar {
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 0.3125rem;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: var(--theme-dark);
+    border-radius: 1.5625rem / 3.125rem;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-light);
+  }
+}
