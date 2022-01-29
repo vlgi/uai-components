@@ -78,7 +78,7 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
     and an icon
   
     <span
-      class="icon-mail_outline"
+      class="icon-email-outline"
     />
   </p>
    
