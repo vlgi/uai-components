@@ -1,10 +1,9 @@
 <script lang="ts">
   /* eslint-disable */
-  import { IIcons } from "./IIcons";
+  import iconsList from "./icons-list";
   import Icon from "./Icon.svelte";
 
   let qValue = "";
-  const iconsList = Object.values(IIcons);
   const maxToShow = 50;
   let filteredIconsList = iconsList.slice(0, maxToShow);
 

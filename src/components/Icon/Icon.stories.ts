@@ -2,7 +2,7 @@ import type { ArgType } from "@storybook/addons";
 import { action } from "@storybook/addon-actions";
 import Icon from "./Icon.svelte";
 import IconList from "./IconList.svelte";
-import { IIcons } from "./IIcons";
+import iconsList from "./icons-list";
 
 export default {
   title: "Internal/Icon",
@@ -12,7 +12,7 @@ export default {
     iconName: {
       control: {
         type: "select",
-        options: Object.values(IIcons),
+        options: iconsList,
       },
     },
   },
@@ -37,7 +37,7 @@ const Template = (_args: ArgType) => {
 };
 
 export const Default = Template({
-  iconName: IIcons.phone,
+  iconName: "phone",
 });
 
 export const List = (): unknown => ({
