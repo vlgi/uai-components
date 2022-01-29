@@ -1,7 +1,6 @@
 <script lang="ts">
   import Hammer from "hammerjs";
   import { onMount } from "svelte";
-  import { fade } from "svelte/transition";
 
   export let items = [];
   export let mobileMode = false;
@@ -9,16 +8,17 @@
   export let expandedLogoImg: string;
 
   let panIsActive = false;
-  let elBtn: HTMLButtonElement;
   let hammertime: Hammer;
   let navExpanded = false;
+  let elBtnContainer: HTMLElement;
+  let elBtnOverlay: HTMLElement;
+  let elBtn: HTMLButtonElement;
 
   function isGroupActive(items) {
     return items.some((i) => i.isActive);
   }
 
   function setBtnPan() {
-    elBtn = document.querySelector(".mobile-toggle-btn");
     hammertime = new Hammer(elBtn);
     hammertime.get("pan").set({ direction: Hammer.DIRECTION_ALL });
     hammertime.on("pan", onPanToggleBtn);
@@ -39,11 +39,6 @@
     elBtn.style.top = `${p.top}px`;
   }
 
-  function isMobileOrTablet() {
-    // TODO - ver o que fazer quanto a isso daqui
-    return false;
-  }
-
   function onPanToggleBtn(ev) {
     if (
       window.innerWidth < ev.center.x
@@ -57,9 +52,6 @@
   }
 
   function openMenu() {
-    const elBtnContainer = document.querySelector(".mobile-toggle-btn-container");
-    const elBtnOverlay = document.querySelector(".mobile-toggle-overlay");
-
     // open side nav
     navExpanded = true;
 
@@ -72,9 +64,6 @@
   }
 
   function closeMenu() {
-    const elBtnContainer = document.querySelector(".mobile-toggle-btn-container");
-    const elBtnOverlay = document.querySelector(".mobile-toggle-overlay");
-
     navExpanded = false;
 
     // close button overlay
@@ -85,7 +74,6 @@
 
   function toggleMobileMenu() {
     if (panIsActive) return;
-    const elBtnContainer = document.querySelector(".mobile-toggle-btn-container");
     if (elBtnContainer.classList.contains("mobile-toggle-btn-container--active")) {
       closeMenu();
     } else {
@@ -100,16 +88,20 @@
 </script>
 
 <side-menu class:is-mobile={ mobileMode }>
-  <div class="mobile-toggle-btn-container">
-    <div class="mobile-toggle-overlay"></div>
-    <button class="mobile-toggle-btn" on:click={ toggleMobileMenu }>
+  <div class="mobile-toggle-btn-container" bind:this={ elBtnContainer }>
+    <div class="mobile-toggle-overlay" bind:this={ elBtnOverlay }></div>
+    <button class="mobile-toggle-btn" bind:this={ elBtn } on:click={ toggleMobileMenu }>
       <i class="icon-search"/>
     </button>
   </div>
 
   <nav class:nav--expanded={ navExpanded }
-    on:mouseover={ (ev) => !mobileMode && openMenu(ev) }
-    on:mouseout={ (ev) => !mobileMode && closeMenu(ev) }>
+    on:mouseover={ () => !mobileMode && openMenu() }
+    on:focus={ () => !mobileMode && openMenu() }
+    on:mouseout={ () => !mobileMode && closeMenu() }
+    on:blur={ () => !mobileMode && closeMenu() }
+    tabindex="0"
+  >
     <div class="nav-logo">
       {#if navExpanded}
         <img src={ expandedLogoImg } alt="Logo" />
