@@ -3,7 +3,7 @@
 import ThemeExample from "./ThemeExample.svelte";
 import ThemeColors from "./components/Colors/Colors.svelte";
 import ThemeSizes from "./components/Sizes/Sizes.svelte";
-import ThemeFonts from "./components/Fonts/Fonts.svelte"
+import ThemeFonts from "./components/Fonts/Fonts.svelte";
 import ThemeSpacings from "./components/Spacings/Spacings.svelte";
 import ThemeSurfaces from "./components/Surfaces/Surfaces.svelte";
 
