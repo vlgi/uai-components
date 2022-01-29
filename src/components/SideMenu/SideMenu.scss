@@ -1,0 +1,293 @@
+side-menu {
+  --nav-width: var(--szot-nav-width, 5.6rem);
+  --nav-padding: var(--szot-nav-width, 0.8rem);
+  --nav-expanded-width: var(--szot-nav-expanded-width, 300px);
+  --nav-logo-height: var(--szot-nav-logo-height, 6.25rem);
+  --nav-logo-padding: var(--szot-nav-padding, .6rem);
+  --nav-external-padding: var(--szot-nav-external-padding, .8rem);
+  --nav-z-index: var(--szot-nav-z-index, 9999);
+  --nav-animation-speed: var(--szot-nav-animation-speed, 350ms);
+  --nav-items-spacing: var(--szot-nav-items-spacing);
+  --nav-border-radius: var(--szot-nav-border-radius,
+    0 var(--theme-medium-shape) var(--theme-medium-shape) 0
+  );
+
+  // above we have some internal variables only
+  --internal-nav-width: var(--nav-width);
+
+
+  $secondary: #1A1A1A;
+  $light: #F3F3F3;
+  $white: #ffffff;
+  $secondary-medium: #222222;
+
+  --internal-nav-transition-delay: 0;
+  --internal-nav-expanded-transition-delay:0;
+  --internal-mobile-toggle-overlay-delay: 0;
+  --internal-mobile-toggle-btn-delay: 0;
+  --internal-mobile-toggle-overlay-expanded-delay: 0;
+  --internal-mobile-toggle-btn-expanded-delay: 0;
+  --internal-mobile-toggle-btn-container-display: none;
+
+  &.is-mobile {
+    --internal-nav-width: 0;
+    --nav-expanded-width: 100vw;
+    --nav-border-radius: 0;
+
+    --internal-nav-transition-delay: 0;
+    --internal-nav-expanded-transition-delay: var(--nav-animation-speed);
+    --internal-mobile-toggle-overlay-delay: var(--nav-animation-speed);
+    --internal-mobile-toggle-btn-delay: var(--nav-animation-speed);
+    --internal-mobile-toggle-overlay-expanded-delay: 0;
+    --internal-mobile-toggle-btn-expanded-delay: 0;
+    --internal-mobile-toggle-btn-container-display: block;
+  }
+
+  display: block;
+  height: 100%;
+  width: var(--internal-nav-width);
+  position: relative;
+  z-index: var(--nav-z-index);
+
+  .mobile-toggle-btn-container {
+    display: var(--internal-mobile-toggle-btn-container-display);
+
+    @mixin mobile-toggle-btn-defaults {
+      background-color: $secondary;
+      border-radius: 100%;
+      border: none;
+      height: 3rem;
+      width: 3rem;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      bottom: -1.5rem;
+      right: -1.5rem;
+      color: $light;
+      cursor: pointer;
+      box-shadow: 0px 0px 5px #{$light};
+    }
+
+    .mobile-toggle-overlay {
+      @include mobile-toggle-btn-defaults();
+      z-index: 1;
+      width: 0;
+      height: 0;
+      cursor: initial;
+      transition: width ease-in-out var(--nav-animation-speed), height ease-in-out var(--nav-animation-speed);
+      transition-delay: var(--internal-mobile-toggle-overlay-delay);
+    }
+
+    .mobile-toggle-btn {
+      @include mobile-toggle-btn-defaults();
+      z-index: 100;
+
+      &:not(.mobile-toggle-btn--dragging) {
+        transition:
+          top ease-in-out var(--nav-animation-speed),
+          left ease-in-out var(--nav-animation-speed),
+          transform ease-in-out var(--nav-animation-speed);
+        transition-delay: var(--internal-mobile-toggle-btn-delay);
+      }
+    }
+
+    &--active {
+      .mobile-toggle-overlay {
+        height: 300vmax;
+        width: 300vmax;
+        transition-delay: var(--internal-mobile-toggle-overlay-expanded-delay);
+      }
+
+      .mobile-toggle-btn {
+        transform: translate(-50%, -50%) rotateZ(45deg);
+        transition-delay: var(--internal-mobile-toggle-btn-expanded-delay);
+      }
+    }
+  }
+
+
+  nav {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto auto;
+    background-color: $secondary;
+    height: calc(100% - 2*var(--nav-external-padding));
+    top: var(--nav-external-padding);
+    left: 0;
+    border-radius: var(--nav-border-radius);
+    width: var(--internal-nav-width);
+    overflow: hidden;
+    transition: width ease-in-out 450ms;
+    transition-delay: var(--internal-nav-transition-delay);
+    position: fixed;
+    z-index: 10;
+
+    &.nav--expanded {
+      width: var(--nav-expanded-width);
+      transition: width ease-in-out 450ms;
+      transition-delay: var(--internal-nav-expanded-transition-delay);
+
+      %on-nav-hover-animate-n1-container {
+        width: 16rem;
+        transition: width ease 1ms 0ms, max-height ease 400ms 0ms;
+      }
+
+      %on-nav-hover-animate-n1-text {
+        opacity: 1;
+        transition: opacity 250ms ease-out 100ms ;
+      }
+    }
+
+    .nav-logo {
+      display: flex;
+      height: calc(var(--nav-logo-height) - var(--nav-logo-padding));
+      max-width: var(--internal-nav-width);
+      align-items: center;
+      justify-content: flex-start;
+      padding: var(--nav-logo-padding);
+      position: relative;
+
+      img {
+        height: 100%;
+        background-color: $secondary;
+      }
+    }
+
+    hr {
+      width: calc(var(--nav-width) - 2 * var(--nav-padding) - 6px);
+      margin: 0 calc(var(--nav-padding));
+    }
+
+    @mixin n1-container {
+      display: grid;
+      align-items: center;
+      border-radius: 0.625rem;
+      grid: calc(var(--nav-width) - 4*var(--nav-padding)) auto/ calc(var(--nav-width) - 2*var(--nav-padding)) 1fr;
+      width: calc(var(--nav-width) - 2*var(--nav-padding));
+      max-height: calc(var(--nav-width) - 2*var(--nav-padding));
+      flex-shrink: 0;
+      margin: .3rem var(--nav-padding);
+      padding: var(--nav-padding);
+      padding-left: 0;
+      overflow: hidden;
+      transition: width ease 1ms 500ms, max-height ease 150ms 0ms;
+      text-decoration: none;
+      cursor: pointer;
+      color: $white;
+
+      @extend %on-nav-hover-animate-n1-container;
+
+      &:not([class*="active-true"]):hover {
+        background: $secondary-medium;
+      }
+
+      &--active-true {
+        border: 2px solid $white;
+      }
+    }
+
+    @mixin n1-icon {
+      justify-self: center;
+
+      &::before {
+        font-size: 1.5rem;
+      }
+    }
+
+    @mixin n1-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      grid-column: 2/3;
+      opacity: 0;
+      transition: opacity 250ms ease-in 250ms;
+      text-decoration: none;
+      cursor: pointer;
+
+      @extend %on-nav-hover-animate-n1-text;
+    }
+
+    .nav-items {
+      display: flex;
+      flex-flow: column;
+      padding: .3rem 0;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      .n1-item {
+        @include n1-container();
+
+        i {
+          @include n1-icon();
+        }
+
+        .n1-item-text {
+          @include n1-text();
+        }
+      }
+
+      .n1-group {
+        @include n1-container();
+
+        &:hover {
+          max-height: 500px;
+
+          .n2-item {
+            opacity: 1;
+            transition: opacity 250ms ease-out 100ms;
+          }
+        }
+
+        i {
+          @include n1-icon();
+        }
+
+        .n1-group-text {
+          @include n1-text();
+        }
+
+        .n2-item {
+          @include n1-text();
+          margin-top: .7rem;
+          font-weight: 400;
+          color: $white;
+          position: relative;
+
+          &:hover:not(&--active-true) {
+            opacity: .7;
+          }
+
+          &--active-true {
+            &::after {
+              content: '';
+              width: 4rem;
+              height: .18rem;
+              border-radius: .3rem;
+              background-color: $white;
+              position: absolute;
+              bottom: -.2rem;
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .nav-menu-apps {
+      padding: .3rem 0;
+
+      .menu-apps-open-button {
+        @include n1-container();
+        background: transparent;
+        border: 0;
+
+        i {
+          @include n1-icon();
+        }
+
+        .menu-apps-open-button-text {
+          @include n1-text();
+          text-align: start;
+        }
+      }
+    }
+  }
+}
