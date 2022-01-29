@@ -2,25 +2,19 @@ import type { ArgType } from "@storybook/addons";
 import { action } from "@storybook/addon-actions";
 import Icon from "./Icon.svelte";
 import IconList from "./IconList.svelte";
-import iconsList from "./icons-list";
 
 export default {
   title: "Internal/Icon",
   component: Icon,
   argTypes: {
     onClick: { action: "onClick" },
-    iconName: {
-      control: {
-        type: "select",
-        options: iconsList,
-      },
-    },
   },
   parameters: {
     // skip all screen test for this stories
     creevey: {
       skip: true,
     },
+    storyshots: false,
   },
 };
 
@@ -43,10 +37,3 @@ export const Default = Template({
 export const List = (): unknown => ({
   Component: IconList,
 });
-
-// disabled storyshots for the list
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-List.parameters = {
-  ...List.parameters,
-  storyshots: false,
-};

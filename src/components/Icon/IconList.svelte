@@ -1,10 +1,25 @@
 <script lang="ts">
   /* eslint-disable */
-  import iconsList from "./icons-list";
+  import iconsListPt1 from "./icons-list/icons-list-pt1";
+  import iconsListPt2 from "./icons-list/icons-list-pt2";
+  import iconsListPt3 from "./icons-list/icons-list-pt3";
+  import iconsListPt4 from "./icons-list/icons-list-pt4";
+  import iconsListPt5 from "./icons-list/icons-list-pt5";
+  import iconsListPt6 from "./icons-list/icons-list-pt6";
+  import iconsListPt7 from "./icons-list/icons-list-pt7";
   import Icon from "./Icon.svelte";
 
   let qValue = "";
   const maxToShow = 50;
+  const iconsList = [
+    ...iconsListPt1,
+    ...iconsListPt2,
+    ...iconsListPt3,
+    ...iconsListPt4,
+    ...iconsListPt5,
+    ...iconsListPt6,
+    ...iconsListPt7,
+  ];
   let filteredIconsList = iconsList.slice(0, maxToShow);
 
   function filterIcons(_qValue) {
