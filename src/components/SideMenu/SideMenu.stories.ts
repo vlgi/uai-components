@@ -5,7 +5,7 @@ import collapsedLogoImg from "../../assets/img/logo.png";
 import expandedLogoImg from "../../assets/img/logo-marca.png";
 
 export default {
-  title: "Components/Side Menu",
+  title: "Components/SideMenu",
   component: SideMenu,
 };
 

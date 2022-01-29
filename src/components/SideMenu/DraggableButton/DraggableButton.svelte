@@ -1,0 +1,76 @@
+<script lang="ts">
+  import Hammer from "hammerjs";
+  import { onMount } from "svelte";
+
+  // true if user is dragging the button
+  export let panIsActive = false;
+  export let elBtn: HTMLButtonElement | null = null;
+
+  let hammertime: Hammer;
+
+  function setBtnPan() {
+    hammertime = new Hammer(elBtn);
+    hammertime.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    hammertime.on("pan", onPanToggleBtn);
+    hammertime.on("panstart", () => {
+      panIsActive = true;
+    });
+    hammertime.on("panend", () => setTimeout(() => {
+      panIsActive = false;
+    }, 250));
+  }
+
+  function positionButton() {
+    // position mobile button to be inside the screen
+    const p = elBtn.getBoundingClientRect();
+    elBtn.style.left = `${p.left}px`;
+    elBtn.style.top = `${p.top}px`;
+  }
+
+  function onPanToggleBtn(ev) {
+    if (
+      window.innerWidth < ev.center.x
+    || window.innerHeight < ev.center.y
+    || ev.center.x < 0
+    || ev.center.y < 0
+    ) return;
+
+    elBtn.style.top = `${ev.center.y}px`;
+    elBtn.style.left = `${ev.center.x}px`;
+  }
+
+  onMount(() => {
+    setBtnPan();
+    positionButton();
+  });
+</script>
+
+<button
+  class="mobile-toggle-btn"
+  class:mobile-toggle-btn--dragging={ panIsActive }
+  bind:this={ elBtn }
+  on:click
+>
+  <i class="icon-search"/>
+</button>
+
+<style lang="scss">
+  $secondary: #1A1A1A;
+  $light: #F3F3F3;
+
+  .mobile-toggle-btn {
+    background-color: $secondary;
+    border-radius: 100%;
+    border: none;
+    height: 3rem;
+    width: 3rem;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    bottom: -1.5rem;
+    right: -1.5rem;
+    color: $light;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #{$light};
+    z-index: 100;
+  }
+</style>

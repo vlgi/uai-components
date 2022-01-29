@@ -52,7 +52,7 @@ side-menu {
   .mobile-toggle-btn-container {
     display: var(--internal-mobile-toggle-btn-container-display);
 
-    @mixin mobile-toggle-btn-defaults {
+    .mobile-toggle-overlay {
       background-color: $secondary;
       border-radius: 100%;
       border: none;
@@ -65,10 +65,6 @@ side-menu {
       color: $light;
       cursor: pointer;
       box-shadow: 0px 0px 5px #{$light};
-    }
-
-    .mobile-toggle-overlay {
-      @include mobile-toggle-btn-defaults();
       z-index: 1;
       width: 0;
       height: 0;
@@ -78,9 +74,6 @@ side-menu {
     }
 
     .mobile-toggle-btn {
-      @include mobile-toggle-btn-defaults();
-      z-index: 100;
-
       &:not(.mobile-toggle-btn--dragging) {
         transition:
           top ease-in-out var(--nav-animation-speed),
