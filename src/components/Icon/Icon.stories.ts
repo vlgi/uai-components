@@ -43,3 +43,10 @@ export const Default = Template({
 export const List = (): unknown => ({
   Component: IconList,
 });
+
+// disabled storyshots for the list
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+List.parameters = {
+  ...List.parameters,
+  storyshots: false,
+};

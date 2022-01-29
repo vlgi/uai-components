@@ -29,8 +29,8 @@
 </p>
 <br>
 <p>
-  and an icon 
-  <Icon iconName={IIcons.mail} />
+  and an icon
+  <Icon iconName={IIcons.mail_outline} />
 </p>
 
 <br><hr><br>
