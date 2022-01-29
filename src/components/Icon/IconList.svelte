@@ -1,4 +1,5 @@
 <script lang="ts">
+  /* eslint-disable */
   import { IIcons } from "./IIcons";
   import Icon from "./Icon.svelte";
 
@@ -8,12 +9,15 @@
   let filteredIconsList = iconsList.slice(0, maxToShow);
 
   function filterIcons(_qValue) {
-    filteredIconsList = iconsList
-      .filter((i) => {
-        const re = new RegExp(_qValue, "ig");
+    let filtered = iconsList;
+    const qList = _qValue.split(' ');
+    qList.forEach(q => {
+      filtered = filtered.filter((i) => {
+        const re = new RegExp(q, "ig");
         return re.test(i);
-      })
-      .slice(0, maxToShow);
+      });
+    });
+    filteredIconsList = filtered.slice(0, maxToShow);
   }
 
   $: filterIcons(qValue);
@@ -35,12 +39,15 @@
 <hr>
 <br>
 <p>
-  The following icons is a mixing of: our custom icons + material-icons from google + brands from simpleicons.org. The licences can be found at this project files.
+  The following icons is a mixing of:
+  <a href="https://materialdesignicons.com/">material-icons from google</a>
+  +
+  <a href="https://simpleicons.org">brands from simpleicons.org</a>.
+  The licences can be found at this project files.
 </p>
 <br>
 <hr>
 <br>
-
 
 <input type="text" placeholder="Search for an icon" bind:value={ qValue }>
 <br><br>
@@ -61,7 +68,7 @@
 <style lang="scss">
   .container {
     display: grid;
-    grid: auto / repeat(auto-fit, minmax(250px, 1fr));
+    grid: auto / repeat(auto-fit, minmax(300px, 1fr));
   }
 
   .item {
