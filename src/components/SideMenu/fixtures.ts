@@ -3,7 +3,6 @@ export const items = [
     type: "item",
     icon: "icon-proposal",
     text: "Home",
-    isActive: true,
   },
   {
     type: "group",
@@ -17,7 +16,6 @@ export const items = [
       {
         type: "item",
         text: "NPS",
-        isActive: true,
       },
       {
         type: "item",

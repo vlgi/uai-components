@@ -47,14 +47,16 @@
   }
 </script>
 
-<side-menu class:is-mobile={ mobileMode }>
+<div class="nav-menu-container" class:is-mobile={ mobileMode }>
   <div class="mobile-toggle-btn-container" bind:this={ elBtnContainer }>
     <div class="mobile-toggle-overlay" bind:this={ elBtnOverlay }></div>
     <DraggableButton
       bind:panIsActive
       bind:elBtn
       on:click={ toggleMobileMenu }
-    />
+    >
+      <i class="icon-search"/>
+    </DraggableButton>
   </div>
 
   <nav class:nav--expanded={ navExpanded }
@@ -118,7 +120,7 @@
       </button>
     </div>
   </nav>
-</side-menu>
+</div>
 
 <style lang="scss" global>
   @use './SideMenu.scss';

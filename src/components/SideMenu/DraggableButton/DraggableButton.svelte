@@ -4,6 +4,7 @@
 
   // true if user is dragging the button
   export let panIsActive = false;
+  // this is the tag button element
   export let elBtn: HTMLButtonElement | null = null;
 
   let hammertime: Hammer;
@@ -51,15 +52,12 @@
   bind:this={ elBtn }
   on:click
 >
-  <i class="icon-search"/>
+  <slot/>
 </button>
 
 <style lang="scss">
-  $secondary: #1A1A1A;
-  $light: #F3F3F3;
-
   .mobile-toggle-btn {
-    background-color: $secondary;
+    background-color: var(--theme-dark-surface);
     border-radius: 100%;
     border: none;
     height: 3rem;
@@ -68,9 +66,9 @@
     transform: translate(-50%, -50%);
     bottom: -1.5rem;
     right: -1.5rem;
-    color: $light;
+    color: var(--theme-txt-on-dark-surface);
     cursor: pointer;
-    box-shadow: 0px 0px 5px #{$light};
+    box-shadow: var(--theme-low-shadow);
     z-index: 100;
   }
 </style>

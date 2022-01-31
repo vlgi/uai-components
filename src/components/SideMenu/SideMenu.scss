@@ -1,26 +1,40 @@
-side-menu {
+
+.nav-menu-container {
+  // nav sizes
   --nav-width: var(--szot-nav-width, 5.6rem);
-  --nav-padding: var(--szot-nav-width, 0.8rem);
   --nav-expanded-width: var(--szot-nav-expanded-width, 300px);
   --nav-logo-height: var(--szot-nav-logo-height, 6.25rem);
+  --nav-text-size: var(--szot-text-size, 1rem);
+  --nav-icon-size: var(--szot-icon-size, 1.5rem);
+  --nav-item-max-height: var(--szot-item-max-height, 50px);
+
+  // nav paddings
+  --nav-padding: var(--szot-nav-width, 0.4rem);
   --nav-logo-padding: var(--szot-nav-padding, .6rem);
   --nav-external-padding: var(--szot-nav-external-padding, .8rem);
-  --nav-z-index: var(--szot-nav-z-index, 9999);
+
+  // nav colors
+  --nav-background-color: var(--szot-nav-background-color, #fff);
+  --nav-txt-color: var(--szot-nav-txt-color, var(--theme-dark-txt));
+  --nav-items-hover-color: var(--szot-items-hover-color, var(--theme-light-surface));
+  --nav-items-active-border: var(--szot-items-active-border, none);
+  --nav-items-active-background: var(--szot-items-active-background, var(--theme-dark-surface));
+  --nav-items-active-txt-color: var(--szot-items-active-txt-color, var(--theme-txt-on-dark-surface));
+  --nav-sub-items-active-highlight: var(--szot-sub-items-active-highlight, var(--nav-items-active-txt-color));
+
+  // other variables
   --nav-animation-speed: var(--szot-nav-animation-speed, 350ms);
-  --nav-items-spacing: var(--szot-nav-items-spacing);
+  --nav-z-index: var(--szot-nav-z-index, 9999);
+  --nav-shadow: var(--szot-nav-shadow, var(--theme-high-shadow));
   --nav-border-radius: var(--szot-nav-border-radius,
     0 var(--theme-medium-shape) var(--theme-medium-shape) 0
   );
+  --nav-items-border-radius: var(--szot-items-border-radius, 0px 1.8rem 1.8rem 0px);
 
-  // above we have some internal variables only
+  /*
+    above we have some internal variables only
+  */
   --internal-nav-width: var(--nav-width);
-
-
-  $secondary: #1A1A1A;
-  $light: #F3F3F3;
-  $white: #ffffff;
-  $secondary-medium: #222222;
-
   --internal-nav-transition-delay: 0;
   --internal-nav-expanded-transition-delay:0;
   --internal-mobile-toggle-overlay-delay: 0;
@@ -43,7 +57,6 @@ side-menu {
     --internal-mobile-toggle-btn-container-display: block;
   }
 
-  display: block;
   height: 100%;
   width: var(--internal-nav-width);
   position: relative;
@@ -53,22 +66,15 @@ side-menu {
     display: var(--internal-mobile-toggle-btn-container-display);
 
     .mobile-toggle-overlay {
-      background-color: $secondary;
+      background-color: var(--nav-background-color);
       border-radius: 100%;
-      border: none;
-      height: 3rem;
-      width: 3rem;
       position: fixed;
       transform: translate(-50%, -50%);
       bottom: -1.5rem;
       right: -1.5rem;
-      color: $light;
-      cursor: pointer;
-      box-shadow: 0px 0px 5px #{$light};
       z-index: 1;
       width: 0;
       height: 0;
-      cursor: initial;
       transition: width ease-in-out var(--nav-animation-speed), height ease-in-out var(--nav-animation-speed);
       transition-delay: var(--internal-mobile-toggle-overlay-delay);
     }
@@ -101,7 +107,7 @@ side-menu {
   nav {
     display: grid;
     grid-template-rows: auto auto 1fr auto auto;
-    background-color: $secondary;
+    background-color: var(--nav-background-color);
     height: calc(100% - 2*var(--nav-external-padding));
     top: var(--nav-external-padding);
     left: 0;
@@ -112,6 +118,7 @@ side-menu {
     transition-delay: var(--internal-nav-transition-delay);
     position: fixed;
     z-index: 10;
+    box-shadow: var(--nav-shadow);
 
     &.nav--expanded {
       width: var(--nav-expanded-width);
@@ -140,40 +147,45 @@ side-menu {
 
       img {
         height: 100%;
-        background-color: $secondary;
+        background-color: var(--nav-background-color);
       }
     }
 
     hr {
       width: calc(var(--nav-width) - 2 * var(--nav-padding) - 6px);
       margin: 0 calc(var(--nav-padding));
+      border-color: var(--nav-txt-color);
     }
 
     @mixin n1-container {
       display: grid;
       align-items: center;
-      border-radius: 0.625rem;
-      grid: calc(var(--nav-width) - 4*var(--nav-padding)) auto/ calc(var(--nav-width) - 2*var(--nav-padding)) 1fr;
+      border-radius: var(--nav-items-border-radius);
+      grid: calc(var(--nav-item-max-height) - 2*var(--nav-padding)) auto/ calc(var(--nav-width) - 1*var(--nav-padding)) 1fr;
       width: calc(var(--nav-width) - 2*var(--nav-padding));
-      max-height: calc(var(--nav-width) - 2*var(--nav-padding));
+      max-height: var(--nav-item-max-height);
       flex-shrink: 0;
       margin: .3rem var(--nav-padding);
+      margin-left: 0;
       padding: var(--nav-padding);
       padding-left: 0;
       overflow: hidden;
-      transition: width ease 1ms 500ms, max-height ease 150ms 0ms;
+      transition: width ease 1ms 500ms, max-height ease 150ms 0ms, background-color ease-in-out 1500ms;
       text-decoration: none;
       cursor: pointer;
-      color: $white;
+      color: var(--nav-txt-color);
+      background-color: transparent;
 
       @extend %on-nav-hover-animate-n1-container;
 
       &:not([class*="active-true"]):hover {
-        background: $secondary-medium;
+        background-color: var(--nav-items-hover-color);
       }
 
       &--active-true {
-        border: 2px solid $white;
+        border: var(--nav-items-active-border);
+        background-color: var(--nav-items-active-background);
+        color: var(--nav-items-active-txt-color);
       }
     }
 
@@ -181,12 +193,12 @@ side-menu {
       justify-self: center;
 
       &::before {
-        font-size: 1.5rem;
+        font-size: var(--nav-icon-size);
       }
     }
 
     @mixin n1-text {
-      font-size: 1.1rem;
+      font-size: var(--nav-text-size);
       font-weight: 700;
       grid-column: 2/3;
       opacity: 0;
@@ -229,6 +241,10 @@ side-menu {
           }
         }
 
+        &--active-true .n2-item {
+          color: var(--nav-items-active-txt-color);
+        }
+
         i {
           @include n1-icon();
         }
@@ -241,7 +257,6 @@ side-menu {
           @include n1-text();
           margin-top: .7rem;
           font-weight: 400;
-          color: $white;
           position: relative;
 
           &:hover:not(&--active-true) {
@@ -254,7 +269,7 @@ side-menu {
               width: 4rem;
               height: .18rem;
               border-radius: .3rem;
-              background-color: $white;
+              background-color: var(--nav-sub-items-active-highlight);
               position: absolute;
               bottom: -.2rem;
               left: 0;
