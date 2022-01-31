@@ -1,11 +1,12 @@
 <script lang="ts">
   import DraggableButton from "./DraggableButton/DraggableButton.svelte";
+  import type { TBottomMenuItem, TMenuItem, TMenuSubLink } from "./types";
 
   // itens of the menu
-  export let items = [];
+  export let items: TMenuItem[] = [];
 
   // itens to show at the bottom, without scroll
-  export let bottomItems = [];
+  export let bottomItems: TBottomMenuItem[] = [];
 
   // switch menu to mobile mode
   export let mobileMode = false;
@@ -22,8 +23,8 @@
   let elBtnOverlay: HTMLElement;
   let elBtn: HTMLButtonElement;
 
-  function isGroupActive(items) {
-    return items.some((i) => i.isActive);
+  function isGroupActive(_items: TMenuSubLink[]) {
+    return _items.some((i) => i.isActive);
   }
 
   function openMenu() {
@@ -125,12 +126,14 @@
       <hr>
       <div class="nav-bottom-items-container">
         {#each bottomItems as item}
-          <button
+          <a
             class="nav-bottom-items nav-bottom-items--active-{ item.isActive }"
+            href={ item.path }
+            on:click={ closeMenu }
           >
             <i class={ item.icon }/>
             <span class="nav-bottom-items-text">{ item.text }</span>
-          </button>
+          </a>
         {/each}
       </div>
     {/if}
@@ -205,6 +208,11 @@
     width: var(--internal-nav-width);
     position: relative;
     z-index: var(--nav-z-index);
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .mobile-toggle-btn-container {
       display: var(--internal-mobile-toggle-btn-container-display);
@@ -434,8 +442,6 @@
         padding: .3rem 0;
 
         .nav-bottom-items {
-          background: transparent;
-          border: 0;
           @include n1-container();
 
           i {

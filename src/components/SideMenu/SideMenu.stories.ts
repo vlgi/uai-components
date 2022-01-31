@@ -3,6 +3,7 @@ import SideMenu from "./SideMenu.svelte";
 import { items, bottomItems } from "./fixtures";
 import collapsedLogoImg from "../../assets/img/logo.png";
 import expandedLogoImg from "../../assets/img/logo-marca.png";
+import type { TBottomMenuItem, TMenuItem } from "./types";
 
 export default {
   title: "Components/SideMenu",
@@ -43,48 +44,51 @@ export const Scroll = Template({
   ],
 });
 
+const itemActiveItems: TMenuItem[] = [
+  {
+    type: "item",
+    icon: "icon-proposal",
+    text: "My active item",
+    isActive: true,
+    path: "./",
+  },
+  ...items.slice(1, items.length),
+];
 export const ItemActive = Template({
   mobileMode: false,
   collapsedLogoImg,
   expandedLogoImg,
-  items: [
-    {
-      type: "item",
-      icon: "icon-proposal",
-      text: "My active item",
-      isActive: true,
-    },
-    ...items.slice(1, items.length),
-  ],
+  items: itemActiveItems,
 });
 
+const groupActiveItems: TMenuItem[] = [
+  {
+    type: "group",
+    icon: "icon-proposal",
+    text: "My Group Active",
+    items: [
+      {
+        text: "Item 3",
+        path: "./",
+      },
+      {
+        text: "My Sub Item Active",
+        path: "./",
+        isActive: true,
+      },
+      {
+        text: "Item 3",
+        path: "./",
+      },
+    ],
+  },
+  ...items.slice(1, items.length),
+];
 export const GroupActive = Template({
   mobileMode: false,
   collapsedLogoImg,
   expandedLogoImg,
-  items: [
-    {
-      type: "group",
-      icon: "icon-proposal",
-      text: "My Group Active",
-      items: [
-        {
-          type: "item",
-          text: "Item 3",
-        },
-        {
-          type: "item",
-          text: "My Sub Item Active",
-          isActive: true,
-        },
-        {
-          type: "item",
-          text: "Item 3",
-        },
-      ],
-    },
-    ...items.slice(1, items.length),
-  ],
+  items: groupActiveItems,
 });
 
 export const BottomItems = Template({
@@ -118,15 +122,16 @@ export const MultipleBottomItems = Template({
   items,
 });
 
+const bottomItemsActiveItems: TBottomMenuItem[] = [
+  {
+    ...bottomItems[0],
+    isActive: true,
+  },
+];
 export const BottomItemsActive = Template({
   mobileMode: false,
   collapsedLogoImg,
   expandedLogoImg,
   items,
-  bottomItems: [
-    {
-      ...bottomItems[0],
-      isActive: true,
-    },
-  ],
+  bottomItems: bottomItemsActiveItems,
 });

@@ -1,8 +1,11 @@
-export const items = [
+import type { TMenuItem, TBottomMenuItem } from "./types";
+
+export const items: TMenuItem[] = [
   {
     type: "item",
     icon: "icon-proposal",
     text: "Home",
+    path: "./",
   },
   {
     type: "group",
@@ -10,16 +13,16 @@ export const items = [
     text: "Dashboard",
     items: [
       {
-        type: "item",
         text: "Big numbers",
+        path: "./",
       },
       {
-        type: "item",
         text: "NPS",
+        path: "./",
       },
       {
-        type: "item",
         text: "incentivo",
+        path: "./",
       },
     ],
   },
@@ -29,8 +32,8 @@ export const items = [
     text: "Assessores",
     items: [
       {
-        type: "item",
         text: "Meus clientes",
+        path: "./",
       },
     ],
   },
@@ -38,22 +41,26 @@ export const items = [
     type: "item",
     icon: "icon-proposal",
     text: "Expansão",
+    path: "./",
   },
   {
     type: "item",
     icon: "icon-proposal",
     text: "Financeiro",
+    path: "./",
   },
   {
     type: "item",
     icon: "icon-proposal",
     text: "Nome que cabe aqui de boa",
+    path: "./",
   },
 ];
 
-export const bottomItems = [
+export const bottomItems: TBottomMenuItem[] = [
   {
     icon: "icon-search",
     text: "Configurações",
+    path: "./",
   },
 ];
