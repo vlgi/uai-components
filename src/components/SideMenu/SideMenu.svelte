@@ -2,6 +2,7 @@
   import DraggableButton from "./DraggableButton/DraggableButton.svelte";
 
   export let items = [];
+  export let bottomItems = [];
   export let mobileMode = false;
   export let collapsedLogoImg: string;
   export let expandedLogoImg: string;
@@ -110,15 +111,20 @@
         {/if}
       {/each}
     </div>
-    <hr>
-    <div class="nav-menu-apps">
-      <button
-        class="menu-apps-open-button"
-      >
-        <i class="icon-search"/>
-        <span class="menu-apps-open-button-text">Apps</span>
-      </button>
-    </div>
+
+    {#if bottomItems.length > 0}
+      <hr>
+      <div class="nav-bottom-items-container">
+        {#each bottomItems as item}
+          <button
+            class="nav-bottom-items nav-bottom-items--active-{ item.isActive }"
+          >
+            <i class={ item.icon }/>
+            <span class="nav-bottom-items-text">{ item.text }</span>
+          </button>
+      {/each}
+      </div>
+    {/if}
   </nav>
 </div>
 

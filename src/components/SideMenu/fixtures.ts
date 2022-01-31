@@ -50,3 +50,10 @@ export const items = [
     text: "Nome que cabe aqui de boa",
   },
 ];
+
+export const bottomItems = [
+  {
+    icon: "icon-search",
+    text: "Configurações",
+  },
+];

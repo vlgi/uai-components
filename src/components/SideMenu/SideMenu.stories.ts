@@ -1,6 +1,6 @@
 import type { ArgType } from "@storybook/addons";
 import SideMenu from "./SideMenu.svelte";
-import { items } from "./fixtures";
+import { items, bottomItems } from "./fixtures";
 import collapsedLogoImg from "../../assets/img/logo.png";
 import expandedLogoImg from "../../assets/img/logo-marca.png";
 
@@ -32,7 +32,7 @@ export const mobileMode = Template({
   items,
 });
 
-export const scroll = Template({
+export const Scroll = Template({
   mobileMode: false,
   collapsedLogoImg,
   expandedLogoImg,
@@ -84,5 +84,49 @@ export const GroupActive = Template({
       ],
     },
     ...items.slice(1, items.length),
+  ],
+});
+
+export const BottomItems = Template({
+  mobileMode: false,
+  collapsedLogoImg,
+  expandedLogoImg,
+  items,
+  bottomItems,
+});
+
+export const BottomItemsScroll = Template({
+  mobileMode: false,
+  collapsedLogoImg,
+  expandedLogoImg,
+  bottomItems,
+  items: [
+    ...items,
+    ...items,
+    ...items,
+  ],
+});
+
+export const MultipleBottomItems = Template({
+  mobileMode: false,
+  collapsedLogoImg,
+  expandedLogoImg,
+  bottomItems: [
+    ...bottomItems,
+    ...bottomItems,
+  ],
+  items,
+});
+
+export const BottomItemsActive = Template({
+  mobileMode: false,
+  collapsedLogoImg,
+  expandedLogoImg,
+  items,
+  bottomItems: [
+    {
+      ...bottomItems[0],
+      isActive: true,
+    },
   ],
 });
