@@ -153,18 +153,18 @@
     // nav paddings
     --nav-padding: var(--szot-nav-width, 0.4rem);
     --nav-logo-padding: var(--szot-nav-padding, .6rem .3rem);
-    --nav-external-padding: var(--szot-nav-external-padding, .0001rem);
+    --nav-external-padding: var(--szot-nav-external-padding, 0px);
 
     // nav colors
     --nav-background-color: var(--szot-nav-background-color, #f0f0f0);
     --nav-txt-color: var(--szot-nav-txt-color, var(--theme-dark-txt));
     --nav-items-hover-color: var(--szot-items-hover-color, var(--theme-light-surface));
-    --nav-items-active-border: var(--szot-items-active-border, none);
     --nav-items-active-background: var(--szot-items-active-background, var(--theme-dark-surface));
     --nav-items-active-txt-color: var(--szot-items-active-txt-color, var(--theme-txt-on-dark-surface));
     --nav-sub-items-active-highlight: var(--szot-sub-items-active-highlight, var(--nav-items-active-txt-color));
 
     // other variables
+    --nav-items-active-border: var(--szot-items-active-border, none);
     --nav-animation-speed: var(--szot-nav-animation-speed, 350ms);
     --nav-z-index: var(--szot-nav-z-index, 9999);
     --nav-shadow: var(--szot-nav-shadow, var(--theme-high-shadow));
