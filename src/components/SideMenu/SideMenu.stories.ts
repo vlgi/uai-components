@@ -8,6 +8,13 @@ import type { TBottomMenuItem, TMenuItem } from "./types";
 export default {
   title: "Components/SideMenu",
   component: SideMenu,
+  parameters: {
+    // skip all screen test for button stories
+    creevey: {
+      skip: true,
+    },
+    storyshots: false,
+  },
 };
 
 const Template = (_args: ArgType) => {
