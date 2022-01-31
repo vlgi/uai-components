@@ -39,6 +39,7 @@
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
+    "@rollup/plugin-url": "^6.1.0",
     "@storybook/addon-a11y": "~6.3.12",
     "@storybook/addon-actions": "~6.3.12",
     "@storybook/addon-essentials": "~6.3.12",
@@ -52,6 +53,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/svelte": "^3.0.3",
     "@tsconfig/svelte": "^2.0.0",
+    "@types/hammerjs": "^2.0.41",
     "@types/jest": "^27.0.3",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
@@ -85,7 +87,6 @@
     "ts-jest": "^27.1.1",
     "ts-node": "^10.4.0",
     "tslib": "^2.0.0",
-    "@rollup/plugin-url": "^6.1.0",
     "typescript": "~4.4.3"
   },
   "dependencies": {

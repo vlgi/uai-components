@@ -7,7 +7,28 @@
   // this is the tag button element
   export let elBtn: HTMLButtonElement | null = null;
 
-  let hammertime: Hammer;
+  /* global HammerManager */
+  let hammertime: HammerManager;
+
+  function positionButton() {
+    // position mobile button to be inside the screen
+    const p = elBtn.getBoundingClientRect();
+    elBtn.style.left = `${p.left}px`;
+    elBtn.style.top = `${p.top}px`;
+  }
+
+  /* global HammerInput */
+  function onPanToggleBtn(ev: HammerInput) {
+    if (
+      window.innerWidth < ev.center.x
+    || window.innerHeight < ev.center.y
+    || ev.center.x < 0
+    || ev.center.y < 0
+    ) return;
+
+    elBtn.style.top = `${ev.center.y}px`;
+    elBtn.style.left = `${ev.center.x}px`;
+  }
 
   function setBtnPan() {
     hammertime = new Hammer(elBtn);
@@ -19,25 +40,6 @@
     hammertime.on("panend", () => setTimeout(() => {
       panIsActive = false;
     }, 250));
-  }
-
-  function positionButton() {
-    // position mobile button to be inside the screen
-    const p = elBtn.getBoundingClientRect();
-    elBtn.style.left = `${p.left}px`;
-    elBtn.style.top = `${p.top}px`;
-  }
-
-  function onPanToggleBtn(ev) {
-    if (
-      window.innerWidth < ev.center.x
-    || window.innerHeight < ev.center.y
-    || ev.center.x < 0
-    || ev.center.y < 0
-    ) return;
-
-    elBtn.style.top = `${ev.center.y}px`;
-    elBtn.style.left = `${ev.center.x}px`;
   }
 
   onMount(() => {
