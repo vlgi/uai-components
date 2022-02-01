@@ -21,22 +21,24 @@
   /** write a helpertext if needed */
   export let helperText = "";
 
-  /** Undefined */
-  export let pattern = undefined; //eslint-disable-line
-
   /** Enter a message in case it is invalid */
   export let errorMsg = "";
-
-  /** Enter label text */
-  export let label = "";
 
   /** pass the function to validation */
   export let validationFn = (value) => {}; //eslint-disable-line
 
   /** if you want to force invalid, change it to true */
-  export let Invalid = false;
+  export let ForceInvalid = false;
 
-  /** input attributes */
+  /** shows if the component is valid */
+  export let isValid = true;
+
+  /** Undefined */
+  export let pattern = undefined; //eslint-disable-line
+
+  /** Enter label text */
+  export let label = "";
+
   export let type = "text";
   export let value = "";
   export let disabled = false;
@@ -47,17 +49,14 @@
   export let step = "";
   export let required = false;
 
-  let isValid = true;
-  let invalid = Invalid;
+  let invalid = ForceInvalid;
   let helper = false;
   let eMsg = "";
   let MsgUp = false;
-  let fist = true;
 
   const focused = () => {
     helper = !helper;
     MsgUp = !MsgUp;
-    fist = false;
   };
 
   const changed = () => {
@@ -67,30 +66,30 @@
   const checkStatus = (answer) => {
     if (answer === true) {
       isValid = true;
-      invalid = false;
+      invalid = !isValid;
     } else if (answer === false) {
       isValid = false;
-      invalid = true;
+      invalid = !isValid;
       eMsg = errorMsg;
     } else if (answer === undefined) {
       isValid = true;
-      invalid = false;
+      invalid = !isValid;
     } else if (typeof answer === "string") {
       isValid = false;
-      invalid = true;
+      invalid = !isValid;
       eMsg = answer;
     }
   };
 
   const validation = () => {
-    if (Invalid) {
+    if (ForceInvalid) {
       isValid = false;
-      invalid = true;
+      invalid = !isValid;
       eMsg = errorMsg;
     } else if (required) {
       if (!value) {
         isValid = false;
-        invalid = true;
+        invalid = !isValid;
         eMsg = "Este campo é obrigatorio";
       } else {
         checkStatus(validationFn(value));
@@ -107,9 +106,9 @@
 </script>
 
 <div
-  class="form-div border-{border} input-style-{inputStyle}"
-  class:icons-left={iconPosition === "left"}
-  class:icons-right={iconPosition === "right"}
+  class="form-div input-style-{inputStyle}"
+  class:icons-left={iconPosition === "left" && icon !== "none"}
+  class:icons-right={iconPosition === "right" && icon !== "none"}
   class:invalid
 >
   <input
@@ -120,7 +119,7 @@
     on:input
     on:blur={focused}
     on:blur={validation}
-    class="form-input"
+    class="form-input border-{border}"
     placeholder=" "
     {type}
     {value}
@@ -170,60 +169,44 @@
     background: none;
     z-index: 1;
     color: var(--szot-input-color, #b1b1b1);
-  }
 
+    &:focus + .form-label {
+      top: var(--szot-label-focus-top, -0.7rem);
+      left: var(--szot-label-focus-left, 0.8rem);
+      z-index: 10;
+      font-weight: var(--szot-input-focus-weigth, 400);
+      color: var(--szot-input-focus-color);
+      font-size: var(--szot-input-focus-font-size, 0.6875rem);
+      border-color: var(--szot-border-color-focus);
+    }
+    &:not(:placeholder-shown).form-input:not(:focus) + .form-label {
+      top: var(--szot-label-focus-top, -0.7rem);
+      left: var(--szot-label-focus-left, 0.8rem);
+      z-index: 10;
+      font-weight: var(--szot-label-not-focus-font-weight, 400);
+      font-size: var(--szot-label-not-focus-font-size, 0.6875rem);
+    }
+  }
   .form-label {
     position: relative;
     left: var(--szot-label-left, 1.2rem);
     top: var(--szot-label-top, 0.5rem);
-    padding: var(--label-padding, 0rem);
+    padding: var(--szot-label-padding, 0rem);
     color: var(--szot-label-color, #5f5f5f);
     font-size: var(--szot-label-font-size, 0.8125rem);
     background-color: var(--szot-background-color, #ffff);
     transition: 0.2s;
   }
 
-  .form-input:focus + .form-label {
-    top: var(--szot-input-focus-top, -0.8rem);
-    left: var(--szot-input-focus-left, 0.8rem);
-    z-index: 10;
-    font-weight: var(--szot-input-focus-weigth, 400);
-    color: var(--szot-input-focus-color);
-    font-size: var(--szot-input-focus-font-size, 0.6875rem);
-  }
-
-  .form-input:not(:placeholder-shown).form-input:not(:focus) + .form-label {
-    top: var(--szot-label-not-focus-top, -0.7rem);
-    left: var(--szot-label-not-focus-left, 0.9rem);
-    z-index: 10;
-    font-weight: var(--szot-label-not-focus-font-weight, 500);
-    font-size: var(--szot-label-not-focus-font-size, 11px);
-  }
-
   .border-Bottom {
-    .form-input {
-      border: 0;
-      border-bottom: var(--theme-small-border);
-      border-color: var(--szot-border-color);
-      padding: var(--szot-border-none-padding, 0.5rem 0.5rem);
-      &:focus {
-        border-color: var(--szot-border-color-focus);
-      }
-
-      .form-label {
-        margin-left: var(--szot-border-none-margin-left, -0.5rem);
-      }
-    }
+    border: 0;
+    border-bottom: var(--theme-small-border);
+    border-color: var(--szot-border-color);
   }
   .border-Outline {
-    .form-input {
-      border: var(--theme-small-border);
-      border-color: var(--szot-border-color);
-      border-radius: var(--theme-large-shape);
-      &:focus {
-        border-color: var(--szot-border-color-focus);
-      }
-    }
+    border: var(--theme-small-border);
+    border-color: var(--szot-border-color);
+    border-radius: var(--theme-large-shape);
   }
 
   .icons-left {
@@ -262,7 +245,6 @@
     --szot-input-focus-color: var(--theme-primary-txt);
     --szot-border-color-focus: var(--theme-primary-txt);
     --szot-border-color: var(--theme-primary-txt);
-    --szot-border-color: var(--theme-primary-txt);
   }
 
   .input-style-Secondary {
@@ -272,7 +254,6 @@
     --szot-input-focus-color: var(--theme-secondary-txt);
     --szot-border-color-focus: var(--theme-secondary-txt);
     --szot-border-color: var(--theme-secondary-txt);
-    --szot-border-color: var(--theme-secondary-txt);
   }
 
   .input-style-Dark {
@@ -281,7 +262,6 @@
     --szot-input-color: var(--theme-dark-txt);
     --szot-input-focus-color: var(--theme-dark-txt);
     --szot-border-color-focus: var(--theme-dark-txt);
-    --szot-border-color: var(--theme-dark-txt);
     --szot-border-color: var(--theme-dark-txt);
   }
   .input-style-Light {
@@ -311,7 +291,7 @@
   p {
     position: absolute;
     z-index: 1;
-    font-size: var(--szot-texthelp-font-size, 0.25em);
+    font-size: var(--szot-message-font-size, 0.25em);
     transition: opacity 0.5s linear, bottom 0.5s;
   }
   .helper {
@@ -327,8 +307,8 @@
     transition: opacity 0.5s linear, bottom 0.5s;
   }
   .error {
-    bottom: var(--szot-texthelp-bottom, -1rem);
-    left: var(--szot-texthelp-left, 1rem);
+    bottom: var(--szot-texterror-bottom, -1rem);
+    left: var(--szot-texterror-left, 1rem);
     color: var(--theme-error);
     opacity: 0;
     transition: opacity 0.5s linear, bottom 0.5s;
@@ -339,7 +319,7 @@
     transition: opacity 0.5s linear, bottom 0.5s;
   }
   .MsgUp {
-    bottom: var(--szot-texthelp-bottom, -1.5rem);
+    bottom: var(--szot-texterror-bottom-focus, -1.5rem);
     transition: opacity 0.5s linear, bottom 0.5s;
   }
 </style>

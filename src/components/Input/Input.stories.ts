@@ -52,9 +52,8 @@ export const Default = Template({
   label: "Email",
   style: "",
   helperText: "Digite um email válido",
-  type: "email",
   errorMsg: "Falhou, tente novamente",
-  required: true,
+  type: "email",
 });
 
 export const BordersNone = Template({
@@ -84,11 +83,4 @@ export const Readonly = Template({
   value: "Não escreva aqui",
   readonly: true,
   helperText: "Apenas um exemplo",
-});
-
-export const CustomColor = Template({
-  label: "Fruta",
-  type: "name",
-  inputStyle: "Custom",
-  style: "--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-input-color: #db984b;--szot-input-focus-color: #ce4007;--szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;",
 });
