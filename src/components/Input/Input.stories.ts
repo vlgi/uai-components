@@ -49,38 +49,36 @@ const Template = (_args: ArgType) => {
 };
 
 export const Default = Template({
-  labelSlot: "Email",
+  label: "Email",
   style: "",
   helperText: "Digite um email válido",
-  validation: true,
   type: "email",
+  errorMsg: "Falhou, tente novamente",
+  required: true,
 });
 
 export const BordersNone = Template({
-  labelSlot: "Senha",
+  label: "Senha",
   type: "password",
   border: "Bottom",
-  validation: false,
 });
 
 export const WhithIcon = Template({
-  labelSlot: "Celular 1",
+  label: "Celular 1",
   type: "tel",
   border: "Bottom",
   icon: "phone",
-  validation: false,
 });
 
 export const WhithIconLeft = Template({
-  labelSlot: "Celular 2",
+  label: "Celular 2",
   icon: "phone",
   iconPosition: "left",
   type: "tel",
-  validation: false,
 });
 
 export const Readonly = Template({
-  labelSlot: "Aviso",
+  label: "Aviso",
   type: "text",
   icon: "info",
   value: "Não escreva aqui",
@@ -89,9 +87,8 @@ export const Readonly = Template({
 });
 
 export const CustomColor = Template({
-  labelSlot: "Fruta",
+  label: "Fruta",
   type: "name",
   inputStyle: "Custom",
-  validation: false,
   style: "--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-input-color: #db984b;--szot-input-focus-color: #ce4007;--szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;",
 });

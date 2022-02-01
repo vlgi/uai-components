@@ -21,11 +21,20 @@
   /** write a helpertext if needed */
   export let helperText = "";
 
-  /** enable if you want a color change if the input is valid or invalid */
-  export let validation = true;
-
   /** Undefined */
   export let pattern = undefined; //eslint-disable-line
+
+  /** Enter a message in case it is invalid */
+  export let errorMsg = "";
+
+  /** Enter label text */
+  export let label = "";
+
+  /** pass the function to validation */
+  export let validationFn = (value) => {}; //eslint-disable-line
+
+  /** if you want to force invalid, change it to true */
+  export let Invalid = false;
 
   /** input attributes */
   export let type = "text";
@@ -38,86 +47,115 @@
   export let step = "";
   export let required = false;
 
+  let isValid = true;
+  let invalid = Invalid;
   let helper = false;
+  let eMsg = "";
+  let MsgUp = false;
+  let fist = true;
+
   const focused = () => {
     helper = !helper;
+    MsgUp = !MsgUp;
+    fist = false;
+  };
+
+  const changed = () => {
+    invalid = false;
+  };
+
+  const checkStatus = (answer) => {
+    if (answer === true) {
+      isValid = true;
+      invalid = false;
+    } else if (answer === false) {
+      isValid = false;
+      invalid = true;
+      eMsg = errorMsg;
+    } else if (answer === undefined) {
+      isValid = true;
+      invalid = false;
+    } else if (typeof answer === "string") {
+      isValid = false;
+      invalid = true;
+      eMsg = answer;
+    }
+  };
+
+  const validation = () => {
+    if (Invalid) {
+      isValid = false;
+      invalid = true;
+      eMsg = errorMsg;
+    } else if (required) {
+      if (!value) {
+        isValid = false;
+        invalid = true;
+        eMsg = "Este campo é obrigatorio";
+      } else {
+        checkStatus(validationFn(value));
+      }
+    } else {
+      checkStatus(validationFn(value));
+    }
+  };
+
+  const setValue = () => {
+    const x = document.querySelector("input").value;
+    value = x;
   };
 </script>
 
-{#if `${icon}` !== "none"}
-  <div
-    class="form-div border-{border} icons-{iconPosition} input-style-{inputStyle}"
-    class:validation
-  >
-    <input
-      on:focus={focused}
-      on:blur={focused}
-      {type}
-      class="form-input"
-      placeholder=" "
-      {value}
-      {pattern}
-      {disabled}
-      {readonly}
-      {autocomplete}
-      {max}
-      {min}
-      {step}
-      {required}
-    />
-    <label for="" class="form-label">
-      <slot />
-    </label>
-    <div class="icon">
-      <Icon iconName={icon} />
-    </div>
-    <p class="helper-hidden" class:helper>
-      {helperText}
-    </p>
+<div
+  class="form-div border-{border} input-style-{inputStyle}"
+  class:icons-left={iconPosition === "left"}
+  class:icons-right={iconPosition === "right"}
+  class:invalid
+>
+  <input
+    on:focus={focused}
+    on:focus={validation}
+    on:input={changed}
+    on:input={setValue}
+    on:input
+    on:blur={focused}
+    on:blur={validation}
+    class="form-input"
+    placeholder=" "
+    {type}
+    {value}
+    {pattern}
+    {disabled}
+    {readonly}
+    {autocomplete}
+    {max}
+    {min}
+    {step}
+    {required}
+  />
+  <label for="" class="form-label">
+    {label}
+  </label>
+  <div class="icon">
+    <Icon iconName={icon} />
   </div>
-{:else}
-  <div
-    class="form-div border-{border} input-style-{inputStyle}"
-    class:validation
-  >
-    <input
-      {type}
-      class="form-input "
-      class:validation
-      placeholder=" "
-      {value}
-      {pattern}
-      {disabled}
-      {readonly}
-      {autocomplete}
-      {max}
-      {min}
-      {step}
-      {required}
-      on:focus={focused}
-      on:blur={focused}
-    />
-    <label for="" class="form-label">
-      <slot />
-    </label>
-    <p class="helper-hidden" class:helper>
-      {helperText}
-    </p>
-  </div>
-{/if}
+  <p class="helper" class:helper-show={helper}>
+    {helperText}
+  </p>
+  <p class="error" class:error-show={invalid} class:MsgUp>
+    {eMsg}
+  </p>
+</div>
 
 <style lang="scss">
-  * {
-    box-sizing: border-box;
-    font-family: var(--theme-font-family);
-  }
-
   .form-div {
     position: relative;
     height: var(--theme-fields-height);
     margin-bottom: var(--szot-margin-bottom, 1.5rem);
     width: var(--szot-width, 16rem);
     max-width: var(--theme-fields-max-width);
+    box-sizing: border-box;
+    font-family: var(--theme-font-family);
   }
 
   .form-input {
@@ -254,27 +292,18 @@
     --szot-border-color-focus: var(--theme-light-txt);
     --szot-border-color: var(--theme-ligth-txt);
   }
-  .validation {
+  .invalid {
     .form-input {
-      &:invalid:not(:focus):not(:placeholder-shown) {
-        border-color: var(--theme-error);
+      border-color: var(--theme-error);
+      color: var(--theme-error);
+      + .form-label + .icon {
         color: var(--theme-error);
-        + .form-label + .icon {
-          color: var(--theme-error);
-        }
-        + .form-label {
-          color: var(--theme-error);
-        }
       }
-      &:valid:not(:focus):not(:placeholder-shown) {
-        border-color: var(--theme-success);
-        color: var(--theme-success);
-        + .form-label + .icon {
-          color: var(--theme-success);
-        }
-        + .form-label {
-          color: var(--theme-success);
-        }
+      + .form-label {
+        color: var(--theme-error);
+      }
+      &:focus {
+        border-color: var(--theme-error);
       }
     }
   }
@@ -282,17 +311,35 @@
   p {
     position: absolute;
     z-index: 1;
-    bottom: var(--szot-texthelp-bottom, -1rem);
-    left: var(--szot-texthelp-left, 1rem);
     font-size: var(--szot-texthelp-font-size, 0.25em);
-    opacity: 0;
-    transition: opacity 0.5s linear;
-  }
-  .helper-hidden {
-    color: var(--theme-info);
+    transition: opacity 0.5s linear, bottom 0.5s;
   }
   .helper {
+    bottom: var(--szot-texthelp-bottom, -1rem);
+    left: var(--szot-texthelp-left, 1rem);
+    color: var(--theme-info);
+    opacity: 0;
+    transition: opacity 0.5s linear, bottom 0.5s;
+  }
+  .helper-show {
     opacity: 0.75;
-    transition: opacity 0.5s linear;
+    color: var(--theme-info);
+    transition: opacity 0.5s linear, bottom 0.5s;
+  }
+  .error {
+    bottom: var(--szot-texthelp-bottom, -1rem);
+    left: var(--szot-texthelp-left, 1rem);
+    color: var(--theme-error);
+    opacity: 0;
+    transition: opacity 0.5s linear, bottom 0.5s;
+  }
+  .error-show {
+    color: var(--theme-error);
+    opacity: 0.75;
+    transition: opacity 0.5s linear, bottom 0.5s;
+  }
+  .MsgUp {
+    bottom: var(--szot-texthelp-bottom, -1.5rem);
+    transition: opacity 0.5s linear, bottom 0.5s;
   }
 </style>
