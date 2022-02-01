@@ -37,6 +37,12 @@ export default {
         options: ["left", "right"],
       },
     },
+    type: {
+      control: {
+        type: "select",
+        options: ["submit", "reset", "button"],
+      },
+    },
   },
 };
 

@@ -23,25 +23,43 @@
   /** choose whether or not to have a background color */
   export let notbackground: Tbackground = false;
   type TpositionIcon = "left" | "right";
+  /** choose which side the icon should be on */
   export let positionIcon: TpositionIcon = "left";
+  type TbuttonType = "submit" | "reset" | "button";
+  /** set the button type */
+  export let type: TbuttonType = "button";
+  /** set the button name */
+  export let name = "button";
 </script>
 
 {#if `${size}` === "floating" && `${icon}` !== "none"}
   <button
-    class="button {size} button-style-{buttonStyle} border-{border}" class:notbackground
+    {type}
+    {name}
+    class="button {size} button-style-{buttonStyle} border-{border}"
+    class:notbackground
+    disabled={buttonStyle === "Disabled"}
   >
     <div class="icone"><Icon iconName={icon} /></div>
   </button>
 {:else if `${icon}` !== "none" && `${size}` !== "floating"}
   <button
-    class="button {size} button-style-{buttonStyle} border-{border}" class:notbackground
+    {type}
+    {name}
+    class="button {size} button-style-{buttonStyle} border-{border}"
+    class:notbackground
+    disabled={buttonStyle === "Disabled"}
   >
     <div class="icone-{positionIcon}"><Icon iconName={icon} /></div>
     <div class="texto-{positionIcon}"><slot /></div>
   </button>
 {:else}
   <button
-    class="button {size} button-style-{buttonStyle} border-{border}" class:notbackground
+    {type}
+    {name}
+    class="button {size} button-style-{buttonStyle} border-{border}"
+    class:notbackground
+    disabled={buttonStyle === "Disabled"}
   >
     <slot />
   </button>
@@ -66,10 +84,9 @@
     line-height: var(--theme-p-line-height);
     text-transform: var(--szot-text-transform, capitalize);
 
-    color: var(--szot-color, #FFFFFF);
+    color: var(--szot-color, #ffffff);
     background-color: var(--szot-background-color, #333333);
     border: var(--szot-border);
-
   }
   .button:hover {
     transition: background-color 0.3s;
@@ -85,7 +102,10 @@
     width: 0;
     padding-top: 0;
     border-radius: 100%;
-    background-color: var(--szot-effect-color-after-click, rgba(184, 182, 182, 0.2));
+    background-color: var(
+      --szot-effect-color-after-click,
+      rgba(184, 182, 182, 0.2)
+    );
 
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
@@ -208,7 +228,7 @@
     --szot-opacity-hover: 60%;
     --szot-color: var(--theme-txt-on-light-surface, #ffc7a756);
   }
-  .button-style-Custom{
+  .button-style-Custom {
     color: var(--szot-color-custom, --theme-txt-on-light-surface);
   }
   .button-style-Disabled {
@@ -220,5 +240,4 @@
     cursor: initial;
     border-color: #b1b1b1;
   }
-
 </style>
