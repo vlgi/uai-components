@@ -53,6 +53,7 @@
   let helper = false;
   let eMsg = "";
   let MsgUp = false;
+  let fist = false;
 
   const focused = () => {
     helper = !helper;
@@ -91,12 +92,13 @@
         isValid = false;
         invalid = !isValid;
         eMsg = "Este campo é obrigatorio";
-      } else {
+      } else if (fist) {
         checkStatus(validationFn(value));
       }
     } else {
       checkStatus(validationFn(value));
     }
+    fist = true;
   };
 
   const setValue = () => {
