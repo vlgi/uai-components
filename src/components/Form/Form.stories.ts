@@ -7,6 +7,13 @@ import InputExampleComponent from "./InputExample.svelte";
 export default {
   title: "Components/Form",
   component: Form,
+  parameters: {
+    // skip all screen test for button stories
+    creevey: {
+      skip: true,
+    },
+    storyshots: false,
+  },
 };
 
 const Template = (_args: ArgType) => {

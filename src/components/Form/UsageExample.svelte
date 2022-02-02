@@ -2,8 +2,8 @@
   import Input from "./InputExample.svelte";
   import Form from "./Form.svelte";
 
-  let values: Record<string, unknown>;
-  let isAllValid: boolean;
+  export let values: Record<string, unknown>;
+  export let isAllValid: boolean;
 </script>
 
 <Form bind:values bind:isAllValid>
