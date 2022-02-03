@@ -40,6 +40,7 @@
   export let label = "";
 
   export let type = "text";
+  export let name = "";
   export let value = "";
   export let disabled = false;
   export let readonly = false;
@@ -124,6 +125,7 @@
     class="form-input border-{border}"
     placeholder=" "
     {type}
+    {name}
     {value}
     {pattern}
     {disabled}
