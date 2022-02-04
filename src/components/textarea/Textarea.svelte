@@ -105,7 +105,7 @@
     value = x;
   };
 
-  /* eslint-disable */
+
   function getScrollHeight(elm) {
     let savedValue = elm.value;
     elm.value = "";
@@ -129,7 +129,7 @@
       elm.rows = maxRows;
     }
   }
-  /* eslint-enable */
+
   document.addEventListener("input", onExpandableTextareaInput);
 </script>
 
