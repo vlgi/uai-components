@@ -7,6 +7,6 @@
 
 <div {style}>
   <Button {...$$restProps}>
-    {labelSlot}
+    { labelSlot }
   </Button>
 </div>

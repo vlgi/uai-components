@@ -33,36 +33,36 @@
 
 {#if `${size}` === "floating" && `${icon}` !== "none"}
   <button
-    {type}
-    {name}
-    class="button {size} button-style-{buttonStyle} border-{border}"
+    { type }
+    { name }
+    class="button { size } button-style-{ buttonStyle } border-{ border }"
     class:notbackground
-    disabled={buttonStyle === "Disabled"}
+    disabled={ buttonStyle === "Disabled"}
   >
-    <div class="icone"><Icon iconName={icon} /></div>
+    <div class="icone"><Icon iconName={ icon } /></div>
   </button>
 {:else if `${icon}` !== "none" && `${size}` !== "floating"}
   <button
-    {type}
-    {name}
-    class="button {size} button-style-{buttonStyle} border-{border}"
+    { type }
+    { name }
+    class="button { size } button-style-{ buttonStyle } border-{ border }"
     class:notbackground
-    disabled={buttonStyle === "Disabled"}
+    disabled={ buttonStyle === "Disabled"}
   >
-    <div class="icone-{positionIcon}"><Icon iconName={icon} /></div>
-    <div class="texto-{positionIcon}"><slot /></div>
+    <div class="icone-{ positionIcon }"><Icon iconName={ icon } /></div>
+    <div class="texto-{ positionIcon }"><slot /></div>
   </button>
-{:else}
+{:else }
   <button
-    {type}
-    {name}
-    class="button {size} button-style-{buttonStyle} border-{border}"
+    { type }
+    { name }
+    class="button { size } button-style-{ buttonStyle } border-{ border }"
     class:notbackground
-    disabled={buttonStyle === "Disabled"}
+    disabled={ buttonStyle === "Disabled"}
   >
     <slot />
   </button>
-{/if}
+{/if }
 
 <style lang="scss">
   .button {
