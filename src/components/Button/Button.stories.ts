@@ -1,7 +1,6 @@
 import type { ArgType } from "@storybook/addons";
 import Button from "./Button.svelte";
 import ButtonWrapper from "./ButtonWrapperForTest.svelte";
-import { IIcons } from "../Icon/IIcons";
 
 export default {
   title: "Components/Button",
@@ -11,12 +10,6 @@ export default {
       control: {
         type: "select",
         options: ["Primary", "Secondary", "Dark", "Light", "Custom", "Disabled"],
-      },
-    },
-    icon: {
-      control: {
-        type: "select",
-        options: Object.values(IIcons),
       },
     },
     size: {
@@ -93,7 +86,7 @@ export const smallSimple = Template({
 
 export const smallIcon = Template({
   size: "small",
-  icon: "search",
+  icon: "magnify",
   labelSlot: "Buscar",
 });
 

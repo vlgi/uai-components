@@ -1,12 +1,11 @@
 <script lang="ts">
   import Icon from "../Icon/Icon.svelte";
-  import type { IIcons } from "../Icon/IIcons";
 
   type Tsize = "small" | "medium" | "large";
   /** choose a preset size for the button */
   export let size: Tsize = "medium";
   /** choose an icon from the list */
-  export let icon: IIcons = "none";
+  export let icon = "none";
   type Tborders = "None" | "Outline" | "Custom";
   /** choose whether to have borders on the button */
   export let border: Tborders = "None";
