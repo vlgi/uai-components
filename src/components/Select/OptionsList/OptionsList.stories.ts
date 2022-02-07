@@ -5,7 +5,7 @@ import OptionsList from "./OptionsList.svelte";
 import OptionsListWrapper from "./OptionsListWrapper.svelte";
 
 export default {
-  title: "Components/Select/OptionsList",
+  title: "Components/Select/Internals/OptionsList",
   component: OptionsList,
 };
 
