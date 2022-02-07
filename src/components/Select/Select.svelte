@@ -27,9 +27,7 @@ let selectedMultiple: TOption[];
 let dropdownOpen = false;
 // Index of the focused option. Used for keyboard navigation.
 let focused = -1;
-// The HTML element that wraps all of the select components.
-let selectBind: HTMLElement;
-// The HTML element that wraps all of the select components.
+// The HTML input element used for the search.
 let searchBind: HTMLInputElement;
 
 // The OptionsList component's focus state control functions.
@@ -119,7 +117,6 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
 </script>
 
 <div class="select" tabindex="0"
-  bind:this={selectBind}
   use:keyboardControls={{ multiple, dropdownOpen }}
   on:actionToggleFocused={() => optionsListBinds?.toggleFocused()}
   on:actionFocusPrevious={() => optionsListBinds?.focusPrevious()}

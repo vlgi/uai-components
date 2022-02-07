@@ -30,6 +30,7 @@ export function infiniteScroll(node: HTMLElement, params: TInfiniteScrollParams)
 
   /**
    * Throttles the scroll event to avoid creating performance issues.
+   * https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event#scroll_event_throttling
    *
    * param {Event} ev The event object sent by the scroll event.
    */
