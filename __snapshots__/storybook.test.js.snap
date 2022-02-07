@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Components/Badge Border 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <span
+      class="badge outline svelte-18ypbna"
+    >
+      Badge
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Badge Theme 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <span
+      class="badge dark svelte-18ypbna"
+    >
+      Badge
+    </span>
+  </div>
+</section>
+`;
+
 exports[`Storyshots External/SveltePdfViewer Default 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -235,19 +265,5 @@ exports[`Storyshots Internal/Icon Default 1`] = `
   <span
     class="icon-phone"
   />
-</section>
-`;
-
-exports[`Storyshots Ionic/Input Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <ion-item>
-    <ion-label>
-      My input
-    </ion-label>
-     
-    <ion-input />
-  </ion-item>
 </section>
 `;
