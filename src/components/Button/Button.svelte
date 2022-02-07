@@ -16,7 +16,7 @@
   // choose a preset size for the button
   export let size: Tsize = "medium";
   // choose an icon from the list
-  export let icon = "none";
+  export let icon: string|undefined;
   // choose whether to have borders on the button
   export let border: Tborders = "none";
   // choose default theme colors, "Custom" to set a custom color, or disabled disable button
@@ -31,7 +31,7 @@
   export let name = "button";
 </script>
 
-{#if `${size}` === "floating" && `${icon}` !== "none"}
+{#if `${size}` === "floating" && icon}
   <button
     { type }
     { name }
@@ -39,9 +39,9 @@
     class:notbackground
     disabled={ buttonStyle === "disabled"}
   >
-    <div class="icone"><Icon iconName={ icon } /></div>
+    <div class="icon"><Icon iconName={ icon } /></div>
   </button>
-{:else if `${icon}` !== "none" && `${size}` !== "floating"}
+{:else if icon && `${size}` !== "floating"}
   <button
     { type }
     { name }
@@ -49,7 +49,7 @@
     class:notbackground
     disabled={ buttonStyle === "disabled"}
   >
-    <div class="icone-{ positionIcon }"><Icon iconName={ icon } /></div>
+    <div class="icon-{ positionIcon }"><Icon iconName={ icon } /></div>
     <div class="texto-{ positionIcon }"><slot /></div>
   </button>
 {:else }
@@ -123,7 +123,7 @@
     width: 30.56px;
     height: 31.36px;
 
-    .icone {
+    .icon {
       position: absolute;
       top: 0.45rem;
       left: 0.35rem;
@@ -132,7 +132,7 @@
   .large {
     border-radius: var(--theme-large-shape, 2.5625rem);
     padding: 0.625rem 2.1875rem;
-    .icone-right {
+    .icon-right {
       position: absolute;
       right: 0;
       margin: 0 1rem;
@@ -141,7 +141,7 @@
       position: relative;
       transform: translate(-0.6rem, 0);
     }
-    .icone-left {
+    .icon-left {
       position: absolute;
       left: 0;
       margin: 0 1rem;
@@ -155,7 +155,7 @@
     border-radius: var(--theme-large-shape, 1.4375rem);
     padding: 0.5625rem 3.4688rem;
 
-    .icone-left {
+    .icon-left {
       position: absolute;
       left: 0;
       margin: 0rem 1rem;
@@ -164,7 +164,7 @@
       position: relative;
       transform: translate(0.5rem, 0rem);
     }
-    .icone-right {
+    .icon-right {
       position: absolute;
       right: 0;
       margin: 0rem 1rem;
@@ -178,7 +178,7 @@
     border-radius: var(--theme-large-shape, 1.4375rem);
     padding: 0.3125rem 0.625rem;
 
-    .icone-left {
+    .icon-left {
       position: absolute;
       left: -0.5rem;
       margin: 0rem 1rem;
@@ -188,7 +188,7 @@
       margin-left: 1.5625rem;
     }
 
-    .icone-right {
+    .icon-right {
       position: absolute;
       right: -0.5rem;
       margin: 0rem 1rem;
