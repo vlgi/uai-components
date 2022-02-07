@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Components/Badge Border 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <span
+      class="badge outline svelte-18ypbna"
+    >
+      Badge
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Badge Theme 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <span
+      class="badge dark svelte-18ypbna"
+    >
+      Badge
+    </span>
+  </div>
+</section>
+`;
+
 exports[`Storyshots External/SveltePdfViewer Default 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -9,27 +39,27 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
   >
     Component package example.
   </h1>
-   
+
   <br
     class="svelte-zftq3x"
   />
   <br
     class="svelte-zftq3x"
   />
-   
+
   <h2
     class="svelte-zftq3x"
   >
     This component show your name from props:
   </h2>
-   
+
   <p
     class="svelte-zftq3x"
   >
-    Hi 
-    
+    Hi
+
   </p>
-   
+
   <br
     class="svelte-zftq3x"
   />
@@ -39,17 +69,17 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
   <br
     class="svelte-zftq3x"
   />
-   
+
   <h2
     class="svelte-zftq3x"
   >
     Use 2 internal componentes:
   </h2>
-   
+
   <p
     class="svelte-zftq3x"
   >
-    a 
+    a
     <button
       class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
       data-testid="btn-visible"
@@ -58,7 +88,7 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
     >
       Button
     </button>
-     
+
     <button
       class="svelte-wtisvu"
       data-testid="btn-hidden"
@@ -67,21 +97,21 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
       hi
     </button>
   </p>
-   
+
   <br
     class="svelte-zftq3x"
   />
-   
+
   <p
     class="svelte-zftq3x"
   >
     and an icon
-  
+
     <span
       class="icon-email-outline"
     />
   </p>
-   
+
   <br
     class="svelte-zftq3x"
   />
@@ -91,7 +121,7 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
   <br
     class="svelte-zftq3x"
   />
-   
+
   <h2
     class="svelte-zftq3x"
   >
@@ -99,7 +129,7 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
     <br
       class="svelte-zftq3x"
     />
-     
+
     <img
       alt="my-img"
       class="svelte-zftq3x"
@@ -125,7 +155,7 @@ exports[`Storyshots Internal/Button Inaccessible 1`] = `
   >
     Button
   </button>
-   
+
   <button
     class="svelte-wtisvu"
     data-testid="btn-hidden"
@@ -148,7 +178,7 @@ exports[`Storyshots Internal/Button Large 1`] = `
   >
     Button
   </button>
-   
+
   <button
     class="svelte-wtisvu"
     data-testid="btn-hidden"
@@ -171,7 +201,7 @@ exports[`Storyshots Internal/Button Primary 1`] = `
   >
     Button
   </button>
-   
+
   <button
     class="svelte-wtisvu"
     data-testid="btn-hidden"
@@ -194,7 +224,7 @@ exports[`Storyshots Internal/Button Secondary 1`] = `
   >
     Button
   </button>
-   
+
   <button
     class="svelte-wtisvu"
     data-testid="btn-hidden"
@@ -217,7 +247,7 @@ exports[`Storyshots Internal/Button Small 1`] = `
   >
     Button
   </button>
-   
+
   <button
     class="svelte-wtisvu"
     data-testid="btn-hidden"
@@ -246,7 +276,7 @@ exports[`Storyshots Ionic/Input Default 1`] = `
     <ion-label>
       My input
     </ion-label>
-     
+
     <ion-input />
   </ion-item>
 </section>
@@ -260,7 +290,7 @@ exports[`Storyshots Ionic/Input Default 1`] = `
     <ion-label>
       My input
     </ion-label>
-     
+
     <ion-input />
   </ion-item>
 </section>
