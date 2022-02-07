@@ -10,42 +10,44 @@
 
 <style lang="scss">
   .badge {
-    --badge-color: var(--szot-color, var(--badge-default-color));
-    --badge-background-color: var(--szot-background-color, var(--badge-default-background-color));
-    --badge-border: var(--szot-border, var(--badge-default-border));
+    --color: var(--szot-color, var(--default-color));
+    --background-color: var(--szot-background-color, var(--default-background-color));
+    --border: var(--szot-border, var(--default-border));
+    --font-size: var(--szot-font-size, .9rem);
 
     &.primary {
-      --badge-default-background-color: var(--theme-primary-surface);
-      --badge-default-color: var(--theme-txt-on-primary-surface);
+      --default-background-color: var(--theme-primary-surface);
+      --default-color: var(--theme-txt-on-primary-surface);
     }
 
     &.secondary {
-      --badge-default-background-color: var(--theme-secondary-surface);
-      --badge-default-color: var(--theme-txt-on-secondary-surface);
+      --default-background-color: var(--theme-secondary-surface);
+      --default-color: var(--theme-txt-on-secondary-surface);
     }
 
     &.dark {
-      --badge-default-background-color: var(--theme-dark-surface);
-      --badge-default-color: var(--theme-txt-on-dark-surface);
+      --default-background-color: var(--theme-dark-surface);
+      --default-color: var(--theme-txt-on-dark-surface);
     }
 
     &.light {
-      --badge-default-background-color: var(--theme-light-surface);
-      --badge-default-color: var(--theme-txt-on-light-surface);
+      --default-background-color: var(--theme-light-surface);
+      --default-color: var(--theme-txt-on-light-surface);
     }
     &.outline {
-      --badge-default-border: 0.0563rem solid #5F5F5F;
+      --default-border: 0.0563rem solid #5F5F5F;
     }
 
+    font-size: var(--font-size);
     padding-left: var(--theme-fields-padding);
     padding-right: var(--theme-fields-padding);
     text-align: center;
 
-    border: var(--badge-border);
+    border: var(--border);
     border-radius: var(--theme-small-shape);
 
-    background-color: var(--badge-background-color);
-    color: var(--badge-color);
+    background-color: var(--background-color);
+    color: var(--color);
   }
 
 </style>
