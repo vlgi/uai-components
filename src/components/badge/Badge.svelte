@@ -17,11 +17,6 @@
     border: var(--szot-border,none);
     border-radius: var(--theme-large-shape);
 
-    font-style: var(--theme-p-font-style);
-    font-weight: var(--theme-p-font-weight);
-    font-size: var(--theme-p-font-size);
-    line-height: var(--theme-p-line-height);
-
     background-color: var(--szot-background-color );
     color: var(--szot-color,#5F5F5F);
 
