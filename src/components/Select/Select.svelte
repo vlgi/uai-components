@@ -233,9 +233,9 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
   .select {
 
     --component-background-color: var(--szot-background-color, white);
-    --component-padding-vertical: 0.6875rem;
-    --component-padding-horizontal: 1rem;
-    --component-border-radius: var(--szot-border-radius, 1.5625rem);
+    --component-border-radius: var(--szot-border-radius, var(--theme-small-shape));
+    --component-padding-vertical: var(--szot-padding-vertical, var(--theme-fields-padding));
+    --component-padding-horizontal: var(--szot-padding-horizontal, var(--theme-fields-padding));
 
     position: relative;
 

@@ -191,7 +191,7 @@ $: if (options) {
       font-size: 0.875rem;
       font-weight: 600;
       margin: 0.25rem;
-      padding: 0.15rem;
+      padding: 0.15rem .5rem;
       border-radius: var(--theme-small-shape);
       cursor: pointer;
 
