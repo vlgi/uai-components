@@ -1,13 +1,13 @@
 <script lang="ts">
+  // Field concatenation
+  type TConcat = {
+    index: number,
+    concatenated: string,
+  }
+
   // The input reference.
   export let inputBind: HTMLInputElement = null;
 
-  /**
-   * Focus on the input element.
-   */
-  export function focus(): void {
-    if (inputBind) inputBind.focus();
-  }
   /**
    * The string that is being searched.
    * @type {string}
@@ -31,11 +31,13 @@
    */
   export let filtered: unknown[] = [];
 
-  // Field concatenation
-  type TConcat = {
-    index: number,
-    concatenated: string,
-  }
+  /**
+   * Focus on the input element.
+   */
+  export const focus = (): void => {
+    if (inputBind) inputBind.focus();
+  };
+
   // Generate a lookup table with the searchable fields concatenated
   function concatenateSearchable(_items: unknown[], _searchable: string[]): TConcat[] {
     return _items.map((item, i) => {
