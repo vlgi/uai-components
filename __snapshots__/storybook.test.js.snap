@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Components/Badge Border 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <span
+      class="badge outline svelte-18ypbna"
+    >
+      Badge
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Badge Theme 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <span
+      class="badge dark svelte-18ypbna"
+    >
+      Badge
+    </span>
+  </div>
+</section>
+`;
+
 exports[`Storyshots External/SveltePdfViewer Default 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -75,10 +105,10 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
   <p
     class="svelte-zftq3x"
   >
-    and an icon 
+    and an icon
   
     <span
-      class="icon-mail"
+      class="icon-email-outline"
     />
   </p>
    
@@ -235,217 +265,5 @@ exports[`Storyshots Internal/Icon Default 1`] = `
   <span
     class="icon-phone"
   />
-</section>
-`;
-
-exports[`Storyshots Internal/Icon List 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <span
-    class="icon-eye-off"
-  />
-   
-  <span>
-    icon-
-    eye-off
-  </span>
-   
-  <br />
-  <span
-    class="icon-eye-on"
-  />
-   
-  <span>
-    icon-
-    eye-on
-  </span>
-   
-  <br />
-  <span
-    class="icon-file"
-  />
-   
-  <span>
-    icon-
-    file
-  </span>
-   
-  <br />
-  <span
-    class="icon-filter"
-  />
-   
-  <span>
-    icon-
-    filter
-  </span>
-   
-  <br />
-  <span
-    class="icon-info"
-  />
-   
-  <span>
-    icon-
-    info
-  </span>
-   
-  <br />
-  <span
-    class="icon-investing"
-  />
-   
-  <span>
-    icon-
-    investing
-  </span>
-   
-  <br />
-  <span
-    class="icon-link"
-  />
-   
-  <span>
-    icon-
-    link
-  </span>
-   
-  <br />
-  <span
-    class="icon-lock"
-  />
-   
-  <span>
-    icon-
-    lock
-  </span>
-   
-  <br />
-  <span
-    class="icon-mail"
-  />
-   
-  <span>
-    icon-
-    mail
-  </span>
-   
-  <br />
-  <span
-    class="icon-more"
-  />
-   
-  <span>
-    icon-
-    more
-  </span>
-   
-  <br />
-  <span
-    class="icon-notification"
-  />
-   
-  <span>
-    icon-
-    notification
-  </span>
-   
-  <br />
-  <span
-    class="icon-partners"
-  />
-   
-  <span>
-    icon-
-    partners
-  </span>
-   
-  <br />
-  <span
-    class="icon-phone"
-  />
-   
-  <span>
-    icon-
-    phone
-  </span>
-   
-  <br />
-  <span
-    class="icon-ponto"
-  />
-   
-  <span>
-    icon-
-    ponto
-  </span>
-   
-  <br />
-  <span
-    class="icon-profile"
-  />
-   
-  <span>
-    icon-
-    profile
-  </span>
-   
-  <br />
-  <span
-    class="icon-proposal"
-  />
-   
-  <span>
-    icon-
-    proposal
-  </span>
-   
-  <br />
-  <span
-    class="icon-search"
-  />
-   
-  <span>
-    icon-
-    search
-  </span>
-   
-  <br />
-  <span
-    class="icon-task"
-  />
-   
-  <span>
-    icon-
-    task
-  </span>
-   
-  <br />
-  <span
-    class="icon-upload"
-  />
-   
-  <span>
-    icon-
-    upload
-  </span>
-   
-  <br />
-  
-</section>
-`;
-
-exports[`Storyshots Ionic/Input Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <ion-item>
-    <ion-label>
-      My input
-    </ion-label>
-     
-    <ion-input />
-  </ion-item>
 </section>
 `;

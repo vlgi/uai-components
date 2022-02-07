@@ -1,7 +1,6 @@
 <script lang="ts">
   import Button from "./components/Button/Button.svelte";
   import Icon from "./components/Icon/Icon.svelte";
-  import { IIcons } from "./components/Icon/IIcons";
   import myImage from "./assets/img/Luna.jpg";
 
   // Props example, input your name
@@ -29,8 +28,8 @@
 </p>
 <br>
 <p>
-  and an icon 
-  <Icon iconName={IIcons.mail} />
+  and an icon
+  <Icon iconName="email-outline" />
 </p>
 
 <br><hr><br>
