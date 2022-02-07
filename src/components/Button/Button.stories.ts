@@ -9,7 +9,7 @@ export default {
     buttonStyle: {
       control: {
         type: "select",
-        options: ["Primary", "Secondary", "Dark", "Light", "Custom", "Disabled"],
+        options: ["primary", "secondary", "dark", "light", "custom", "disabled"],
       },
     },
     size: {
@@ -52,7 +52,7 @@ export const ThemeTest = Template({
   style: "",
   size: "medium",
   labelSlot: "Botão 1",
-  buttonStyle: "Secondary",
+  buttonStyle: "secondary",
 });
 
 export const LargeSimple = Template({
@@ -100,30 +100,30 @@ export const NotBackground = Template({
   size: "large",
   notbackground: "false",
   labelSlot: "Bloquear",
-  buttonStyle: "Custom",
-  border: "None",
+  buttonStyle: "custom",
+  border: "none",
 });
 
 export const NotBackgroundDisabled = Template({
   size: "large",
   Disabled: "true",
   notbackground: "false",
-  buttonStyle: "Disabled",
+  buttonStyle: "disabled",
   labelSlot: "Bloquear",
 });
 
 export const withBorders = Template({
-  border: "Outline",
+  border: "outline",
   size: "medium",
   labelSlot: "Bloquear",
   notbackground: "false",
 });
 
 export const withBordersDisabled = Template({
-  border: "Outline",
+  border: "outline",
   size: "medium",
   labelSlot: "Bloquear",
-  buttonStyle: "Disabled",
+  buttonStyle: "disabled",
 });
 
 export const Floating = Template({
@@ -141,5 +141,5 @@ export const FloatingNotBackground = Template({
 export const FloatingDisabled = Template({
   size: "floating",
   icon: "more",
-  buttonStyle: "Disabled",
+  buttonStyle: "disabled",
 });

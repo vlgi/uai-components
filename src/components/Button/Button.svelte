@@ -2,14 +2,14 @@
   import Icon from "../Icon/Icon.svelte";
 
   type Tsize = "small" | "medium" | "large";
-  type Tborders = "None" | "Outline" | "Custom";
+  type Tborders = "none" | "outline" | "custom";
   type TborderStyle =
-    | "Primary"
-    | "Secondary"
-    | "Dark"
-    | "Light"
-    | "Custom"
-    | "Disabled";
+    | "primary"
+    | "secondary"
+    | "dark"
+    | "light"
+    | "custom"
+    | "disabled";
   type TpositionIcon = "left" | "right";
   type TbuttonType = "submit" | "reset" | "button";
 
@@ -18,9 +18,9 @@
   // choose an icon from the list
   export let icon = "none";
   // choose whether to have borders on the button
-  export let border: Tborders = "None";
+  export let border: Tborders = "none";
   // choose default theme colors, "Custom" to set a custom color, or disabled disable button
-  export let buttonStyle: TborderStyle = "Primary";
+  export let buttonStyle: TborderStyle = "primary";
   // choose whether or not to have a background color
   export let notbackground = false;
   // choose which side the icon should be on
@@ -37,7 +37,7 @@
     { name }
     class="button { size } button-style-{ buttonStyle } border-{ border }"
     class:notbackground
-    disabled={ buttonStyle === "Disabled"}
+    disabled={ buttonStyle === "disabled"}
   >
     <div class="icone"><Icon iconName={ icon } /></div>
   </button>
@@ -47,7 +47,7 @@
     { name }
     class="button { size } button-style-{ buttonStyle } border-{ border }"
     class:notbackground
-    disabled={ buttonStyle === "Disabled"}
+    disabled={ buttonStyle === "disabled"}
   >
     <div class="icone-{ positionIcon }"><Icon iconName={ icon } /></div>
     <div class="texto-{ positionIcon }"><slot /></div>
@@ -58,7 +58,7 @@
     { name }
     class="button { size } button-style-{ buttonStyle } border-{ border }"
     class:notbackground
-    disabled={ buttonStyle === "Disabled"}
+    disabled={ buttonStyle === "disabled"}
   >
     <slot />
   </button>
@@ -199,25 +199,25 @@
     }
   }
 
-  .border-Outline {
+  .border-outline {
     --szot-border: var(--theme-medium-border);
   }
   .border-None {
     --szot-border: none;
   }
-  .button-style-Primary {
+  .button-style-primary {
     --szot-background-color: var(--theme-primary);
     --szot-color: var(--theme-txt-on-primary-surface);
   }
-  .button-style-Secondary {
+  .button-style-secondary {
     --szot-background-color: var(--theme-secondary);
     --szot-color: var(--theme-txt-on-secondary-surface);
   }
-  .button-style-Dark {
+  .button-style-dark {
     --szot-background-color: var(--theme-dark);
     --szot-color: var(---theme-txt-on-dark-surface);
   }
-  .button-style-Light {
+  .button-style-light {
     --szot-background-color: var(--theme-light);
     --szot-color: var(--theme-txt-on-light-surface);
   }
@@ -227,10 +227,10 @@
     --szot-opacity-hover: 60%;
     --szot-color: var(--theme-txt-on-light-surface, #ffc7a756);
   }
-  .button-style-Custom {
+  .button-style-custom {
     color: var(--szot-color-custom, --theme-txt-on-light-surface);
   }
-  .button-style-Disabled {
+  .button-style-disabled {
     --szot-color: #b1b1b1;
     --szot-background-color: var(--background-none, #7d7d7d);
     --effect-color-after-click: none;
