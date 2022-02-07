@@ -123,7 +123,7 @@ export const focusPrevious = (): void => {
 /**
  * Toggles the currently focused option select state
  */
-export const toggleFocused = (): void => {
+export const toggleSelectedOfFocused = (): void => {
   if (focused >= 0 && focused < options.length) {
     toggleSelected(options[focused]);
   }
