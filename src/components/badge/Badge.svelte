@@ -15,22 +15,22 @@
     --badge-border: var(--szot-border, var(--badge-default-border));
 
     &.primary {
-      --badge-default-background-color: var(--theme-primary);
+      --badge-default-background-color: var(--theme-primary-surface);
       --badge-default-color: var(--theme-txt-on-primary-surface);
     }
 
     &.secondary {
-      --badge-default-background-color: var(--theme-secondary);
+      --badge-default-background-color: var(--theme-secondary-surface);
       --badge-default-color: var(--theme-txt-on-secondary-surface);
     }
 
     &.dark {
-      --badge-default-background-color: var(--theme-dark);
+      --badge-default-background-color: var(--theme-dark-surface);
       --badge-default-color: var(--theme-txt-on-dark-surface);
     }
 
     &.light {
-      --badge-default-background-color: var(--theme-light);
+      --badge-default-background-color: var(--theme-light-surface);
       --badge-default-color: var(--theme-txt-on-light-surface);
     }
     &.outline {
