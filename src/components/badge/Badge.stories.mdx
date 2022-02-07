@@ -8,16 +8,11 @@ import BadgeWrapper from "./BadgeWrapperForTest.svelte";
 
 # Badge Custom
 
-
-###### To modify these variables the "badgeStyle" must be "Custom"
 CSS Property | Descripiton
 -------------|-------------
 --szot-color | Sets a custom text color
 --szot-background-color| Set custom background color
 --szot-border | Set the border and its color
-
-<p> the variables of sizes, padding of field, font and the 4 colors of the theme are used in this component </p>
-
 
 ##### below is an example of the modified component using some of the variables
 
@@ -28,14 +23,14 @@ export const Template = (args) => ({
   props: args,
 });
 
-<Story
-    name="Custom"
-    args={{
-      labelSlot: "New",
-      badgeStyle: "custom",
-      style: "--szot-color:#FFFFFF; --szot-background-color:#FC6627;",
-    }}>
-    >
-    {Template.bind({})}
-</Story>
-
+<Canvas>
+  <Story
+      name="Custom"
+      args={{
+        labelSlot: "New",
+        style: "--szot-color:#FFFFFF; --szot-background-color:#FC6627;",
+      }}>
+      >
+      {Template.bind({})}
+  </Story>
+</Canvas>

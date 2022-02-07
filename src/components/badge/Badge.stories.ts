@@ -9,7 +9,7 @@ export default {
     badgeStyle: {
       control: {
         type: "select",
-        options: ["primary", "secondary", "dark", "light", "custom", "outline"],
+        options: ["primary", "secondary", "dark", "light", "outline"],
       },
     },
   },
