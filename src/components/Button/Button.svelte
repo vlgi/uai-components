@@ -2,13 +2,7 @@
   import Icon from "../Icon/Icon.svelte";
 
   type Tsize = "small" | "medium" | "large";
-  /** choose a preset size for the button */
-  export let size: Tsize = "medium";
-  /** choose an icon from the list */
-  export let icon = "none";
   type Tborders = "None" | "Outline" | "Custom";
-  /** choose whether to have borders on the button */
-  export let border: Tborders = "None";
   type TborderStyle =
     | "Primary"
     | "Secondary"
@@ -16,18 +10,24 @@
     | "Light"
     | "Custom"
     | "Disabled";
-  /** choose default theme colors, "Custom" to set a custom color, or disabled disable button */
-  export let buttonStyle: TborderStyle = "Primary";
-  type Tbackground = boolean;
-  /** choose whether or not to have a background color */
-  export let notbackground: Tbackground = false;
   type TpositionIcon = "left" | "right";
-  /** choose which side the icon should be on */
-  export let positionIcon: TpositionIcon = "left";
   type TbuttonType = "submit" | "reset" | "button";
-  /** set the button type */
+
+  // choose a preset size for the button
+  export let size: Tsize = "medium";
+  // choose an icon from the list
+  export let icon = "none";
+  // choose whether to have borders on the button
+  export let border: Tborders = "None";
+  // choose default theme colors, "Custom" to set a custom color, or disabled disable button
+  export let buttonStyle: TborderStyle = "Primary";
+  // choose whether or not to have a background color
+  export let notbackground = false;
+  // choose which side the icon should be on
+  export let positionIcon: TpositionIcon = "left";
+  // set the button type
   export let type: TbuttonType = "button";
-  /** set the button name */
+  // set the button name
   export let name = "button";
 </script>
 
