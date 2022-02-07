@@ -6,7 +6,7 @@ exports[`Storyshots Components/Badge Border 1`] = `
 >
   <div>
     <span
-      class="badge outline svelte-18ypbna"
+      class="badge outline svelte-zsk4sa"
     >
       Badge
     </span>
@@ -22,7 +22,7 @@ exports[`Storyshots Components/Badge Theme 1`] = `
     style=""
   >
     <span
-      class="badge dark svelte-18ypbna"
+      class="badge dark svelte-zsk4sa"
     >
       Badge
     </span>
@@ -356,27 +356,27 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
   >
     Component package example.
   </h1>
-
+   
   <br
     class="svelte-zftq3x"
   />
   <br
     class="svelte-zftq3x"
   />
-
+   
   <h2
     class="svelte-zftq3x"
   >
     This component show your name from props:
   </h2>
-
+   
   <p
     class="svelte-zftq3x"
   >
-    Hi
-
+    Hi 
+    
   </p>
-
+   
   <br
     class="svelte-zftq3x"
   />
@@ -386,49 +386,41 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
   <br
     class="svelte-zftq3x"
   />
-
+   
   <h2
     class="svelte-zftq3x"
   >
     Use 2 internal componentes:
   </h2>
-
+   
   <p
     class="svelte-zftq3x"
   >
-    a
+    a 
     <button
-      class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
-      data-testid="btn-visible"
-      style=""
+      class="button medium button-style-primary border-none svelte-1d0dwsn"
+      name="button"
       type="button"
     >
       Button
     </button>
-
-    <button
-      class="svelte-wtisvu"
-      data-testid="btn-hidden"
-      id="btn-hidden"
-    >
-      hi
-    </button>
+    
   </p>
-
+   
   <br
     class="svelte-zftq3x"
   />
-
+   
   <p
     class="svelte-zftq3x"
   >
     and an icon
-
+  
     <span
       class="icon-email-outline"
     />
   </p>
-
+   
   <br
     class="svelte-zftq3x"
   />
@@ -438,7 +430,7 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
   <br
     class="svelte-zftq3x"
   />
-
+   
   <h2
     class="svelte-zftq3x"
   >
@@ -446,7 +438,7 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
     <br
       class="svelte-zftq3x"
     />
-
+     
     <img
       alt="my-img"
       class="svelte-zftq3x"
@@ -460,121 +452,6 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
 </section>
 `;
 
-exports[`Storyshots Internal/Button Inaccessible 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
-    data-testid="btn-visible"
-    style="background-color: white"
-    type="button"
-  >
-    Button
-  </button>
-
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
-</section>
-`;
-
-exports[`Storyshots Internal/Button Large 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="storybook-button storybook-button--large storybook-button--secondary svelte-wtisvu"
-    data-testid="btn-visible"
-    style=""
-    type="button"
-  >
-    Button
-  </button>
-
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
-</section>
-`;
-
-exports[`Storyshots Internal/Button Primary 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
-    data-testid="btn-visible"
-    style=""
-    type="button"
-  >
-    Button
-  </button>
-
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
-</section>
-`;
-
-exports[`Storyshots Internal/Button Secondary 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="storybook-button storybook-button--medium storybook-button--secondary svelte-wtisvu"
-    data-testid="btn-visible"
-    style=""
-    type="button"
-  >
-    Button
-  </button>
-
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
-</section>
-`;
-
-exports[`Storyshots Internal/Button Small 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="storybook-button storybook-button--small storybook-button--secondary svelte-wtisvu"
-    data-testid="btn-visible"
-    style=""
-    type="button"
-  >
-    Button
-  </button>
-
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
-</section>
-`;
-
 exports[`Storyshots Internal/Icon Default 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -582,19 +459,5 @@ exports[`Storyshots Internal/Icon Default 1`] = `
   <span
     class="icon-phone"
   />
-</section>
-`;
-
-exports[`Storyshots Ionic/Input Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <ion-item>
-    <ion-label>
-      My input
-    </ion-label>
-
-    <ion-input />
-  </ion-item>
 </section>
 `;
