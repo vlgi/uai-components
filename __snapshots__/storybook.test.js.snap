@@ -30,6 +30,323 @@ exports[`Storyshots Components/Badge Theme 1`] = `
 </section>
 `;
 
+exports[`Storyshots Components/Button Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button large button-style-disabled border-none svelte-1d0dwsn"
+      disabled=""
+      name="button"
+      type="button"
+    >
+      Bloquear
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Floating 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <button
+      class="button floating button-style-primary border-none svelte-1d0dwsn"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon svelte-1d0dwsn"
+      >
+        <span
+          class="icon-dots-horizontal"
+        />
+      </div>
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Floating Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button floating button-style-disabled border-none svelte-1d0dwsn"
+      disabled=""
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon svelte-1d0dwsn"
+      >
+        <span
+          class="icon-dots-horizontal"
+        />
+      </div>
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Floating Not Background 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button floating button-style-primary border-none svelte-1d0dwsn notbackground"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon svelte-1d0dwsn"
+      >
+        <span
+          class="icon-dots-horizontal"
+        />
+      </div>
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Large Icon 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button large button-style-primary border-none svelte-1d0dwsn"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon-right svelte-1d0dwsn"
+      >
+        <span
+          class="icon-upload"
+        />
+      </div>
+       
+      <div
+        class="texto-right svelte-1d0dwsn"
+      >
+        Enviar documentos
+      </div>
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Large Simple 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button large button-style-primary border-none svelte-1d0dwsn"
+      name="button"
+      type="button"
+    >
+      Minhas contas
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Medium Icon 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button medium button-style-primary border-none svelte-1d0dwsn"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon-right svelte-1d0dwsn"
+      >
+        <span
+          class="icon-file"
+        />
+      </div>
+       
+      <div
+        class="texto-right svelte-1d0dwsn"
+      >
+        Documento
+      </div>
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Medium Simple 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button medium button-style-primary border-none svelte-1d0dwsn"
+      name="button"
+      type="button"
+    >
+      Botão 1
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Not Background 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button large button-style-custom border-none svelte-1d0dwsn notbackground"
+      name="button"
+      type="button"
+    >
+      Bloquear
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Not Background Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button large button-style-disabled border-none svelte-1d0dwsn notbackground"
+      disabled=""
+      name="button"
+      type="button"
+    >
+      Bloquear
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Small Icon 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button small button-style-primary border-none svelte-1d0dwsn"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon-left svelte-1d0dwsn"
+      >
+        <span
+          class="icon-magnify"
+        />
+      </div>
+       
+      <div
+        class="texto-left svelte-1d0dwsn"
+      >
+        Buscar
+      </div>
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Small Simple 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button small button-style-primary border-none svelte-1d0dwsn"
+      name="button"
+      type="button"
+    >
+      Buscar
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Theme Test 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <button
+      class="button medium button-style-secondary border-none svelte-1d0dwsn"
+      name="button"
+      type="button"
+    >
+      Botão 1
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button With Borders 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button medium button-style-primary border-outline svelte-1d0dwsn notbackground"
+      name="button"
+      type="button"
+    >
+      Bloquear
+    </button>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button With Borders Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button medium button-style-disabled border-outline svelte-1d0dwsn notbackground"
+      disabled=""
+      name="button"
+      type="button"
+    >
+      Bloquear
+    </button>
+    
+  </div>
+</section>
+`;
+
 exports[`Storyshots External/SveltePdfViewer Default 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -265,20 +582,6 @@ exports[`Storyshots Internal/Icon Default 1`] = `
   <span
     class="icon-phone"
   />
-</section>
-`;
-
-exports[`Storyshots Ionic/Input Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <ion-item>
-    <ion-label>
-      My input
-    </ion-label>
-
-    <ion-input />
-  </ion-item>
 </section>
 `;
 

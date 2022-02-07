@@ -92,7 +92,7 @@ export const smallIcon = Template({
 
 export const Disabled = Template({
   size: "large",
-  buttonStyle: "Disabled",
+  buttonStyle: "disabled",
   labelSlot: "Bloquear",
 });
 
@@ -124,22 +124,23 @@ export const withBordersDisabled = Template({
   size: "medium",
   labelSlot: "Bloquear",
   buttonStyle: "disabled",
+  notbackground: "false",
 });
 
 export const Floating = Template({
   style: "",
   floating: true,
-  icon: "more",
+  icon: "dots-horizontal",
 });
 
 export const FloatingNotBackground = Template({
   floating: true,
-  icon: "more",
+  icon: "dots-horizontal",
   notbackground: "false",
 });
 
 export const FloatingDisabled = Template({
   floating: true,
-  icon: "more",
+  icon: "dots-horizontal",
   buttonStyle: "disabled",
 });
