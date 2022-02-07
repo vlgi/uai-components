@@ -22,14 +22,16 @@ const options = simpleDesserts;
 
 export const Single = Template({
   multiple: false,
-  selectAttributes: { id: "doce", name: "doce" },
+  id: "doce",
+  name: "doce",
   label: "Sobremesas",
   options,
 });
 
 export const SingleSelected = Template({
   multiple: false,
-  selectAttributes: { id: "doce", name: "doce" },
+  id: "doce",
+  name: "doce",
   label: "Sobremesas",
   options,
   selected: options[0],
@@ -37,21 +39,24 @@ export const SingleSelected = Template({
 
 export const SimpleLong = Template({
   multiple: false,
-  selectAttributes: { id: "doce", name: "doce" },
+  id: "doce",
+  name: "doce",
   label: "Sobremesas",
   options: longDesserts,
 });
 
 export const Multiple = Template({
   multiple: true,
-  selectAttributes: { id: "doce", name: "doce" },
+  id: "doce",
+  name: "doce",
   label: "Sobremesas",
   options,
 });
 
 export const MultipleSelected = Template({
   multiple: true,
-  selectAttributes: { id: "doce", name: "doce" },
+  id: "doce",
+  name: "doce",
   label: "Sobremesas",
   options,
   selected: options.slice(0, 3),
@@ -59,7 +64,8 @@ export const MultipleSelected = Template({
 
 export const MultipleLong = Template({
   multiple: true,
-  selectAttributes: { id: "doce", name: "doce" },
+  id: "doce",
+  name: "doce",
   label: "Sobremesas",
   options: longDesserts,
 });

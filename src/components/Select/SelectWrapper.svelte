@@ -3,6 +3,8 @@ import Select from "./Select.svelte";
 
 export let label;
 export let options;
+export let id;
+export let name;
 export let selectAttributes;
 export let multiple;
 export let selected;
@@ -11,6 +13,8 @@ export let selected;
 <Select
   {label}
   {options}
+  {id}
+  {name}
   {selectAttributes}
   {multiple}
   bind:selected/>

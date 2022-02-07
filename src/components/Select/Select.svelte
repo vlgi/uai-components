@@ -2,12 +2,16 @@
 import OptionsList from "./OptionsList/OptionsList.svelte";
 import SearchInput from "./SearchInput/SearchInput.svelte";
 import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
-import type { TOption, TOptionsListBinds, TSelectAttributes } from "./types";
+import type { TOption, TOptionsListBinds } from "./types";
 
 // True if the select should select multiple values
 export let multiple = false;
-// Attributes for the HTML select element. id and name are required
-export let selectAttributes: TSelectAttributes;
+// id attribute for the HTML select element
+export let id: string;
+// name attribute for the HTML select element
+export let name: string;
+// Attributes for the HTML select element
+export let selectAttributes: Record<string, string>;
 // All possible options that can be selected
 export let options: TOption[];
 // The label text for this element
@@ -118,7 +122,7 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
 
 <div class="select" tabindex="0"
   use:keyboardControls={{ multiple, dropdownOpen }}
-  on:actionToggleFocused={() => optionsListBinds?.toggleFocused()}
+  on:actiontoggleSelectedOfFocused={() => optionsListBinds?.toggleSelectedOfFocused()}
   on:actionFocusPrevious={() => optionsListBinds?.focusPrevious()}
   on:actionFocusNext={() => optionsListBinds?.focusNext()}
   on:actionToggleDropdown={handleToggleDropdown}
@@ -126,8 +130,8 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
 
     <!-- Floating label for the select -->
     <label class="select-label"
-      id="{selectAttributes.id}-label"
-      for="{selectAttributes.id}-custom"
+      id="{id}-label"
+      for="{id}-custom"
       on:click={() => toggleOpen()}
       class:floated={dropdownOpen || isFilled(selected)}>
       {label}
@@ -137,9 +141,9 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
     <div class="select-box" role="combobox" tabindex="-1"
       class:selected-multiple={multiple && isFilled(selected)}
       on:click={() => toggleOpen()}
-      id="{selectAttributes.id}-custom"
-      aria-controls="{selectAttributes.id}-listbox"
-      aria-labelledby="{selectAttributes.id}-label"
+      id="{id}-custom"
+      aria-controls="{id}-listbox"
+      aria-labelledby="{id}-label"
       aria-haspopup="listbox"
       aria-expanded={dropdownOpen ? "true" : "false"}>
 
@@ -171,8 +175,8 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
 
       <!-- List of all selectable options -->
       <OptionsList
-        id="{selectAttributes.id}-listbox"
-        labelledBy="{selectAttributes.id}-label"
+        id="{id}-listbox"
+        labelledBy="{id}-label"
         options={filteredOptions}
         on:changeSelected={handleSelectedChange}
         bind:selected
@@ -188,6 +192,8 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
     <!-- For form compatibility -->
     <select class="hidden"
       {...selectAttributes}
+      { id }
+      { name }
       disabled
       {multiple}
       value={selected}>
