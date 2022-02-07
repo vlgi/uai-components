@@ -1,0 +1,105 @@
+import { Canvas, Meta, Story, Source } from '@storybook/addon-docs';
+import UsageExample from './UsageExample.svelte';
+
+<Meta title="Components/Form/Context"/>
+
+# Form Context
+
+This component is a wrapper to use like html form:
+```jsx
+<Form>
+  <Input type="text" name="my-imput"/>
+</Form>
+```
+
+Within it some form fields can be used, but to have full integration they must be our custom form fields, not html tags. That's because this wrapper sets up a context to communicate with child components and automate validation and fetching values for you.
+
+You can find the full list of the components that can be used inside this wrapper on `Form/components`.
+
+**NOTE: Inside a Form component, every formfield MUST have the name attribute defined, and MUST be unique, inside this Form component.**
+
+## Using formfields without Form component
+Some times you just what to use some form field alone and not create a full form with validations and etc. You can do that, the formfields components can handle with context defined by this Form component, but can work too if the context is not set. However you must handle with validations and fetch values by your self.
+
+## Creating a custom formfield to use with Form component
+Some times you want to extend a formfield component, or create an other completly new. You can do both.
+
+If you just want create a component to style a formfield, you don't have to handle with this Form context, just create the component and style it normally. Our formfield will still work normally.
+
+If you want to modify the component behavior, like adding an mask that will change the value you must handle with the Form context.
+
+If you want to create new formfield component, you must handle with the Form context too.
+
+The documentation can be find at the section bellow.
+
+### Example
+[Here we have a story that create an input example](?path=/docs/components-form--input-example),
+click on docs and show code to see who is done. This input is made to handle with and without form context.
+
+[Here we have a story that show how to use they toggether](?path=/docs/components-form--usage-example),
+click on docs and show code to see who is done.
+
+### Dos and Don'ts
+
+✅ Dos
+```markdown
+- At mounted add the field to the context, with the default props values.
+- At destroy, remove component from the context.
+- At formfield name change, remove the formfield from the context and add another with the new field name.
+```
+
+❌ Don'ts
+```markdown
+- Forget to add the field to the context.
+- Set the field value, but not set the isValid.
+- Add field to the context on before mount.
+- Get the context on mounted.
+```
+
+## Form context documentation
+The form context have the key `"FormContext"`. They define the following functions:
+
+```typescript
+/**
+ * Set the formfield value
+ * @param fieldName the name of the field
+ * @param value the value of the field, can be anything, an array, a string
+ * @param isvalid true if the value is valid. e.g.: required field + value="", isvalid is false
+ */
+type setFieldValue = (fieldName: string, value: unknown, isvalid: boolean) => void
+```
+
+```typescript
+/**
+ * Add the child formfield to the context
+ * @param fieldName the name of the field
+ * @param value the initial value
+ * @param isValid the initial value is valid
+ * @param isRequired true if field is required
+ * @param htmlElement the most external layer of the component, e.g.: a wrapper div
+ */
+type addFieldToContext = (
+  fieldName: string,
+  value: unknown,
+  isValid: boolean,
+  isRequired: boolean,
+  htmlElement: HTMLElement,
+) =>  void
+```
+
+```typescript
+/**
+ * Remove the formfield from the form context.
+ * Use when your formfield component be destroyed
+ * @param fieldName the name of the field
+ */
+type removeFieldFromContext = (fieldName: string) => void
+```
+
+```typescript
+/**
+ * Dispatch the form submit event.
+ * Works like the submit button for defaut html form tag.
+ */
+type fireSubmit() => void
+```
