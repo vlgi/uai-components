@@ -7,5 +7,5 @@ export type TOptionsListBinds = {
   unfocusItems?: ()=> void,
   focusNext?: ()=> void,
   focusPrevious?: ()=> void,
-  toggleFocused?: ()=> void,
+  toggleSelectedOfFocused?: ()=> void,
 }

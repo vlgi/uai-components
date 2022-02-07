@@ -180,7 +180,7 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
         bind:unfocusItems={optionsListBinds.unfocusItems}
         bind:focusNext={optionsListBinds.focusNext}
         bind:focusPrevious={optionsListBinds.focusPrevious}
-        bind:toggleFocused={optionsListBinds.toggleFocused}
+        bind:toggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
         />
 
     </div>

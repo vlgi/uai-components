@@ -35,7 +35,7 @@ export function keyboardControls(node: HTMLElement, params: TKeyboardControlsPar
 
     case "Enter":
       if (dropdownOpen) {
-        dispatchEvent(node, "actionToggleFocused");
+        dispatchEvent(node, "actiontoggleSelectedOfFocused");
       } else if (!dropdownOpen) {
         dispatchEvent<boolean>(node, "actionToggleDropdown", true);
       }
@@ -43,11 +43,11 @@ export function keyboardControls(node: HTMLElement, params: TKeyboardControlsPar
 
     case "ArrowDown":
       dispatchEvent(node, "actionFocusNext");
-      if (!multiple && !dropdownOpen) dispatchEvent(node, "actionToggleFocused");
+      if (!multiple && !dropdownOpen) dispatchEvent(node, "actiontoggleSelectedOfFocused");
       break;
     case "ArrowUp":
       dispatchEvent<boolean>(node, "actionFocusPrevious");
-      if (!multiple && !dropdownOpen) dispatchEvent(node, "actionToggleFocused");
+      if (!multiple && !dropdownOpen) dispatchEvent(node, "actiontoggleSelectedOfFocused");
       break;
     default:
       if (isAlphanumeric(key)) {

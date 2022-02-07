@@ -46,7 +46,7 @@ function handleToggleDropdown(ev: CustomEvent<boolean | undefined>) {
 
 <div tabindex="0"
   use:keyboardControls={{ multiple, dropdownOpen }}
-  on:actionToggleFocused={() => optionsListBinds?.toggleFocused()}
+  on:actiontoggleSelectedOfFocused={() => optionsListBinds?.toggleSelectedOfFocused()}
   on:actionFocusPrevious={() => optionsListBinds?.focusPrevious()}
   on:actionFocusNext={() => optionsListBinds?.focusNext()}
   on:actionToggleDropdown={handleToggleDropdown}
@@ -66,7 +66,7 @@ function handleToggleDropdown(ev: CustomEvent<boolean | undefined>) {
         bind:focused
         bind:focusNext={optionsListBinds.focusNext}
         bind:focusPrevious={optionsListBinds.focusPrevious}
-        bind:toggleFocused={optionsListBinds.toggleFocused}
+        bind:toggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
         bind:unfocusItems={optionsListBinds.unfocusItems}
         />
     </div>

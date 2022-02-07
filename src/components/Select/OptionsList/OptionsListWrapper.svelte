@@ -8,7 +8,7 @@ export let selected;
 export let focused;
 export let focusNext;
 export let focusPrevious;
-export let toggleFocused;
+export let toggleSelectedOfFocused;
 export let unfocusItems;
 </script>
 
@@ -21,13 +21,13 @@ export let unfocusItems;
   bind:focused
   bind:focusNext
   bind:focusPrevious
-  bind:toggleFocused
+  bind:toggleSelectedOfFocused
   bind:unfocusItems
 />
 
 <button on:click={focusNext}>Focus Next</button>
 <button on:click={focusPrevious}>Focus Previous</button>
-<button on:click={toggleFocused}>Toggle Focused</button>
+<button on:click={toggleSelectedOfFocused}>Toggle Focused</button>
 <button on:click={unfocusItems}>Unfocus Items</button>
 
 <header><b>Selected:</b></header>
