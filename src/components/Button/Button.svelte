@@ -29,19 +29,21 @@
   export let type: TbuttonType = "button";
   // set the button name
   export let name = "button";
+  // set as floating button (size doesn't work with this)
+  export let floating = false;
 </script>
 
-{#if `${size}` === "floating" && icon}
+{#if floating && icon}
   <button
     { type }
     { name }
-    class="button { size } button-style-{ buttonStyle } border-{ border }"
+    class="button floating button-style-{ buttonStyle } border-{ border }"
     class:notbackground
     disabled={ buttonStyle === "disabled"}
   >
     <div class="icon"><Icon iconName={ icon } /></div>
   </button>
-{:else if icon && `${size}` !== "floating"}
+{:else if icon && !floating}
   <button
     { type }
     { name }

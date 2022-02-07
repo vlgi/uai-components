@@ -128,18 +128,18 @@ export const withBordersDisabled = Template({
 
 export const Floating = Template({
   style: "",
-  size: "floating",
+  floating: true,
   icon: "more",
 });
 
 export const FloatingNotBackground = Template({
-  size: "floating",
+  floating: true,
   icon: "more",
   notbackground: "false",
 });
 
 export const FloatingDisabled = Template({
-  size: "floating",
+  floating: true,
   icon: "more",
   buttonStyle: "disabled",
 });
