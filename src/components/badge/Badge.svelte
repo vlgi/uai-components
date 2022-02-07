@@ -1,7 +1,7 @@
 <script lang="ts">
-  type TbadgeStyle = "Primary" | "Secondary" | "Dark" | "Light" | "Outline" | "Custom";
+  type TbadgeStyle = "primary" | "secondary" | "dark" | "light" | "outline" | "custom";
   /** Select the theme color pattern that will be used or Custom to define your own color. */
-  export let badgeStyle: TbadgeStyle = "Primary";
+  export let badgeStyle: TbadgeStyle = "primary";
 </script>
 
 <span class="badge {badgeStyle}">
@@ -29,26 +29,26 @@
     background-color: var(--szot-background-color );
     color: var(--szot-color,#5F5F5F);
   }
-  .Primary {
+  .primary {
     --szot-background-color: var(--theme-primary);
     --szot-color: var(--theme-txt-on-primary-surface);
   }
 
-  .Secondary {
+  .secondary {
     --szot-background-color: var(--theme-secondary);
     --szot-color: var(--theme-txt-on-secondary-surface);
   }
 
-  .Dark {
+  .dark {
     --szot-background-color: var(--theme-dark);
     --szot-color: var(--theme-txt-on-dark-surface);
   }
 
-  .Light {
+  .light {
     --szot-background-color: var(--theme-light);
     --szot-color: var(--theme-txt-on-light-surface);
   }
-  .Outline {
+  .outline {
     border: var(--szot-border, 0.0563rem solid #5F5F5F);
   }
 

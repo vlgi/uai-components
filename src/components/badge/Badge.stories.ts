@@ -9,7 +9,7 @@ export default {
     badgeStyle: {
       control: {
         type: "select",
-        options: ["Primary", "Secondary", "Dark", "Light", "Custom", "Outline"],
+        options: ["primary", "secondary", "dark", "light", "custom", "outline"],
       },
     },
   },
@@ -27,10 +27,10 @@ const Template = (_args: ArgType) => {
 export const Theme = Template({
   style: "",
   labelSlot: "Badge",
-  badgeStyle: "Dark",
+  badgeStyle: "dark",
 });
 
 export const Border = Template({
   labelSlot: "Badge",
-  badgeStyle: "Outline",
+  badgeStyle: "outline",
 });
