@@ -42,7 +42,7 @@
     text-align: center;
 
     border: var(--badge-border);
-    border-radius: var(--theme-large-shape);
+    border-radius: var(--theme-small-shape);
 
     background-color: var(--badge-background-color);
     color: var(--badge-color);
