@@ -1,7 +1,6 @@
 import type { ArgType } from "@storybook/addons";
 import Input from "./Input.svelte";
 import InputWrapper from "./InputWrapperForTest.svelte";
-import { IIcons } from "../Icon/IIcons";
 
 export default {
   title: "Components/Input",
@@ -11,12 +10,6 @@ export default {
       control: {
         type: "select",
         options: ["Primary", "Secondary", "Dark", "Light", "Custom"],
-      },
-    },
-    icon: {
-      control: {
-        type: "select",
-        options: Object.values(IIcons),
       },
     },
     iconPosition: {

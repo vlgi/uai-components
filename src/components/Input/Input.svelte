@@ -1,9 +1,8 @@
 <script lang="ts">
   import Icon from "../Icon/Icon.svelte";
-  import type { IIcons } from "../Icon/IIcons";
 
   /** choose an icon from the list */
-  export let icon: IIcons = "none";
+  export let icon = "none";
 
   type TpositionIcon = "left" | "right";
   /** if there is an icon define if it goes to the left or to the right */
