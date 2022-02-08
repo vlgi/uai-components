@@ -7,7 +7,7 @@
         { name: "--szot-primary", default: "#2b4c7e" },
         { name: "--szot-secondary", default: "#606d80" },
         { name: "--szot-dark", default: "#1f1f20" },
-        { name: "--szot-light", default: "#dce0e6" },
+        { name: "--szot-light", default: "#c4c4c4" },
       ],
     },
     {
@@ -56,6 +56,20 @@
       description: "if the color is used as background, this color must be the text",
       variables: [
         { name: "--szot-txt-on-signal-color", default: "black" },
+      ],
+    },
+    {
+      title: "text colors",
+      description: "text colors splitted by context of use",
+      variables: [
+        { name: "--szot-global-txt", default: "--szot-txt-dark" },
+      ],
+    },
+    {
+      title: "other colors",
+      description: "colors splitted by context of use",
+      variables: [
+        { name: "--szot-fields-outline", default: "--szot-global-txt" },
       ],
     },
   ];

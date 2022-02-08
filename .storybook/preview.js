@@ -1,6 +1,5 @@
 // import global css to be applied to all stories
-import "../src/styles/global.scss";
-import "../src/ionic-components";
+import "../src/globals";
 
 import customViewports from './viewports'
 
