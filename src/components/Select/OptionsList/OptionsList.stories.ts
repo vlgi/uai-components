@@ -27,6 +27,7 @@ export const Default = Template({
   id: "doce-listbox",
   labelledBy: "doce-label",
   options,
+  selected: null,
 });
 
 export const SingleSelected = Template({
@@ -41,6 +42,7 @@ export const Focused = Template({
   labelledBy: "doce-label",
   options,
   focused: 3,
+  selected: null,
 });
 
 export const FocusedSelected = Template({

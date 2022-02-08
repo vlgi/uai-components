@@ -5,9 +5,9 @@ export let label;
 export let options;
 export let id;
 export let name;
-export let selectAttributes;
+export let selectAttributes = {};
 export let multiple;
-export let selected;
+export let selected = [];
 </script>
 
 <Select

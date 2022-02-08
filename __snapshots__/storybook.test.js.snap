@@ -4,7 +4,9 @@ exports[`Storyshots Components/Badge Border 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    style=""
+  >
     <span
       class="badge outline svelte-zsk4sa"
     >
@@ -147,7 +149,7 @@ exports[`Storyshots Components/Select/Internals/OptionsList Default 1`] = `
   </header>
    
   <p>
-    undefined
+    null
   </p>
   
 </section>
@@ -270,7 +272,7 @@ exports[`Storyshots Components/Select/Internals/OptionsList Focused 1`] = `
   </header>
    
   <p>
-    undefined
+    null
   </p>
   
 </section>
@@ -3269,9 +3271,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
     </b>
   </header>
    
-  <p>
-    null
-  </p>
+  
   
 </section>
 `;
@@ -3447,9 +3447,7 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
     </b>
   </header>
    
-  <p>
-    null
-  </p>
+  
   
 </section>
 `;
