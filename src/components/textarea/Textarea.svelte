@@ -181,12 +181,12 @@
       --szot-placeholder-color,
       var(--default-placeholder-color)
     );
-    --placeholder-font-size: var(--szot-placeholder-font-size, 0.8rem);
+    --placeholder-font-size: var(--szot-placeholder-font-size, 0.6rem);
 
     --margin-bottom: var(--szot-margin-bottom, 1.5rem);
     --max-width: var(--szot-fields-max-width, var(--theme-fields-max-width));
     --max-height: var(--szot-max-height, var(--theme-fields-height));
-    --font-size: var(--szot-font-size, 1rem);
+    --font-size: var(--szot-font-size, 0.5rem);
     --resize: var(--szot-resize, none);
 
     --message-font-size: var(--szot-message-font-size, 0.6875rem);
@@ -285,15 +285,15 @@
       outline: none;
     }
     &::-webkit-scrollbar {
-      width: 4px;
+      width: 0.25rem;
     }
     &::-webkit-scrollbar-track {
       background-color: trasparent;
     }
     &::-webkit-scrollbar-thumb {
-      border-radius: 24px;
+      border-radius: 1.5rem;
       background-clip: content-box;
-      border: 5px solid trasparent;
+      border: 0.3125rem solid trasparent;
     }
   }
   .invalid {

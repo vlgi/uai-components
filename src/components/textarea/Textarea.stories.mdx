@@ -59,39 +59,3 @@ import Textarea from "./TextareaWrapperForTest.svelte";
   in case it is necessary to insert the "errorMsg " in the component) or the
   error message in string format.
 </p>
-
-##### below is an example of the modified component using some of the variables
-
-<p>
-  Here a function was applied to validate and if you write "show an error" the
-  component will be invalid.
-</p>
-
-export const Template = (args) => ({
-  Component: Textarea,
-  props: args,
-});
-
-export let validteste = (value) => {
-  if (value === "erro") {
-    return "Aqui está o erro.";
-  }
-  return true;
-};
-
-<Story
-  name="Custom"
-  args={{
-    validationFn: validteste,
-    label: "Teste",
-    placeholder: "Aqui o tamanho é estático, então haverá scroll",
-    helperText: "Digite 'erro' para ser invalido",
-    type: "text",
-    rows: 4,
-    maxRows: 4,
-    style:
-      "--szot-border-radius: 1.5rem; --szot-max-height: 5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-textarea-color: #db984b;--szot-border-color: #c56d09;--szot-placeholder-color:#db984b;",
-  }}
->
-  >{Template.bind({})}
-</Story>
