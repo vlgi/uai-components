@@ -30,20 +30,37 @@ exports[`Storyshots Components/Badge Theme 1`] = `
 </section>
 `;
 
+exports[`Storyshots Components/Button Custom Example 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style="--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-border: 2px solid #ffc7a7; --szot-border-radius: 1.5rem"
+  >
+    <button
+      class="button medium button-style-primary border-filled svelte-1k6va50"
+      name="button"
+      type="button"
+    >
+      orange
+    </button>
+  </div>
+</section>
+`;
+
 exports[`Storyshots Components/Button Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button large button-style-disabled border-none svelte-1d0dwsn"
+      class="button large button-style-primary border-filled svelte-1k6va50 disabled"
       disabled=""
       name="button"
       type="button"
     >
       Bloquear
     </button>
-    
   </div>
 </section>
 `;
@@ -56,19 +73,18 @@ exports[`Storyshots Components/Button Floating 1`] = `
     style=""
   >
     <button
-      class="button floating button-style-primary border-none svelte-1d0dwsn"
+      class="button floating button-style-primary border-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       <div
-        class="icon svelte-1d0dwsn"
+        class="icon svelte-1k6va50"
       >
         <span
           class="icon-dots-horizontal"
         />
       </div>
     </button>
-    
   </div>
 </section>
 `;
@@ -79,20 +95,19 @@ exports[`Storyshots Components/Button Floating Disabled 1`] = `
 >
   <div>
     <button
-      class="button floating button-style-disabled border-none svelte-1d0dwsn"
+      class="button floating button-style-primary border-filled svelte-1k6va50 disabled"
       disabled=""
       name="button"
       type="button"
     >
       <div
-        class="icon svelte-1d0dwsn"
+        class="icon svelte-1k6va50"
       >
         <span
           class="icon-dots-horizontal"
         />
       </div>
     </button>
-    
   </div>
 </section>
 `;
@@ -103,19 +118,18 @@ exports[`Storyshots Components/Button Floating Not Background 1`] = `
 >
   <div>
     <button
-      class="button floating button-style-primary border-none svelte-1d0dwsn notbackground"
+      class="button floating button-style-primary border-not-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       <div
-        class="icon svelte-1d0dwsn"
+        class="icon svelte-1k6va50"
       >
         <span
           class="icon-dots-horizontal"
         />
       </div>
     </button>
-    
   </div>
 </section>
 `;
@@ -126,12 +140,12 @@ exports[`Storyshots Components/Button Large Icon 1`] = `
 >
   <div>
     <button
-      class="button large button-style-primary border-none svelte-1d0dwsn"
+      class="button large button-style-primary border-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       <div
-        class="icon-right svelte-1d0dwsn"
+        class="icon-right svelte-1k6va50"
       >
         <span
           class="icon-upload"
@@ -139,12 +153,11 @@ exports[`Storyshots Components/Button Large Icon 1`] = `
       </div>
        
       <div
-        class="texto-right svelte-1d0dwsn"
+        class="texto-right svelte-1k6va50"
       >
         Enviar documentos
       </div>
     </button>
-    
   </div>
 </section>
 `;
@@ -155,13 +168,12 @@ exports[`Storyshots Components/Button Large Simple 1`] = `
 >
   <div>
     <button
-      class="button large button-style-primary border-none svelte-1d0dwsn"
+      class="button large button-style-primary border-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       Minhas contas
     </button>
-    
   </div>
 </section>
 `;
@@ -172,12 +184,12 @@ exports[`Storyshots Components/Button Medium Icon 1`] = `
 >
   <div>
     <button
-      class="button medium button-style-primary border-none svelte-1d0dwsn"
+      class="button medium button-style-primary border-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       <div
-        class="icon-right svelte-1d0dwsn"
+        class="icon-right svelte-1k6va50"
       >
         <span
           class="icon-file"
@@ -185,12 +197,11 @@ exports[`Storyshots Components/Button Medium Icon 1`] = `
       </div>
        
       <div
-        class="texto-right svelte-1d0dwsn"
+        class="texto-right svelte-1k6va50"
       >
         Documento
       </div>
     </button>
-    
   </div>
 </section>
 `;
@@ -201,13 +212,12 @@ exports[`Storyshots Components/Button Medium Simple 1`] = `
 >
   <div>
     <button
-      class="button medium button-style-primary border-none svelte-1d0dwsn"
+      class="button medium button-style-primary border-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       Botão 1
     </button>
-    
   </div>
 </section>
 `;
@@ -218,13 +228,12 @@ exports[`Storyshots Components/Button Not Background 1`] = `
 >
   <div>
     <button
-      class="button large button-style-custom border-none svelte-1d0dwsn notbackground"
+      class="button large button-style-primary border-not-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       Bloquear
     </button>
-    
   </div>
 </section>
 `;
@@ -235,14 +244,13 @@ exports[`Storyshots Components/Button Not Background Disabled 1`] = `
 >
   <div>
     <button
-      class="button large button-style-disabled border-none svelte-1d0dwsn notbackground"
+      class="button large button-style-primary border-not-filled svelte-1k6va50 disabled"
       disabled=""
       name="button"
       type="button"
     >
       Bloquear
     </button>
-    
   </div>
 </section>
 `;
@@ -253,12 +261,12 @@ exports[`Storyshots Components/Button Small Icon 1`] = `
 >
   <div>
     <button
-      class="button small button-style-primary border-none svelte-1d0dwsn"
+      class="button small button-style-primary border-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       <div
-        class="icon-left svelte-1d0dwsn"
+        class="icon-left svelte-1k6va50"
       >
         <span
           class="icon-magnify"
@@ -266,12 +274,11 @@ exports[`Storyshots Components/Button Small Icon 1`] = `
       </div>
        
       <div
-        class="texto-left svelte-1d0dwsn"
+        class="texto-left svelte-1k6va50"
       >
         Buscar
       </div>
     </button>
-    
   </div>
 </section>
 `;
@@ -282,13 +289,12 @@ exports[`Storyshots Components/Button Small Simple 1`] = `
 >
   <div>
     <button
-      class="button small button-style-primary border-none svelte-1d0dwsn"
+      class="button small button-style-primary border-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       Buscar
     </button>
-    
   </div>
 </section>
 `;
@@ -301,13 +307,12 @@ exports[`Storyshots Components/Button Theme Test 1`] = `
     style=""
   >
     <button
-      class="button medium button-style-secondary border-none svelte-1d0dwsn"
+      class="button medium button-style-secondary border-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       Botão 1
     </button>
-    
   </div>
 </section>
 `;
@@ -318,13 +323,12 @@ exports[`Storyshots Components/Button With Borders 1`] = `
 >
   <div>
     <button
-      class="button medium button-style-primary border-outline svelte-1d0dwsn notbackground"
+      class="button medium button-style-primary border-outline svelte-1k6va50"
       name="button"
       type="button"
     >
       Bloquear
     </button>
-    
   </div>
 </section>
 `;
@@ -335,14 +339,13 @@ exports[`Storyshots Components/Button With Borders Disabled 1`] = `
 >
   <div>
     <button
-      class="button medium button-style-disabled border-outline svelte-1d0dwsn notbackground"
+      class="button medium button-style-primary border-outline svelte-1k6va50 disabled"
       disabled=""
       name="button"
       type="button"
     >
       Bloquear
     </button>
-    
   </div>
 </section>
 `;
@@ -398,13 +401,12 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
   >
     a 
     <button
-      class="button medium button-style-primary border-none svelte-1d0dwsn"
+      class="button medium button-style-primary border-filled svelte-1k6va50"
       name="button"
       type="button"
     >
       Button
     </button>
-    
   </p>
    
   <br

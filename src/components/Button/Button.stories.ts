@@ -1,4 +1,5 @@
 import type { ArgType } from "@storybook/addons";
+import { action } from "@storybook/addon-actions";
 import Button from "./Button.svelte";
 import ButtonWrapper from "./ButtonWrapperForTest.svelte";
 
@@ -6,22 +7,23 @@ export default {
   title: "Components/Button",
   component: Button,
   argTypes: {
+    onClick: { action: "on::click" },
     buttonStyle: {
       control: {
         type: "select",
-        options: ["primary", "secondary", "dark", "light", "custom", "disabled"],
+        options: ["primary", "secondary", "dark", "light", "disabled"],
       },
     },
     size: {
       control: {
         type: "select",
-        options: ["small", "medium", "large"],
+        options: ["small", "medium", "large", "floating"],
       },
     },
     border: {
       control: {
         type: "select",
-        options: ["None", "Outline", "Custom"],
+        options: ["filled", "outline", "not-filled"],
       },
     },
     positionIcon: {
@@ -43,6 +45,9 @@ const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
     Component: ButtonWrapper,
     props,
+    on: {
+      click: action("on::click"),
+    },
   });
   ret.args = _args;
   return ret;
@@ -92,23 +97,20 @@ export const smallIcon = Template({
 
 export const Disabled = Template({
   size: "large",
-  buttonStyle: "disabled",
+  disabled: "true",
   labelSlot: "Bloquear",
 });
 
 export const NotBackground = Template({
   size: "large",
-  notbackground: "false",
   labelSlot: "Bloquear",
-  buttonStyle: "custom",
-  border: "none",
+  border: "not-filled",
 });
 
 export const NotBackgroundDisabled = Template({
   size: "large",
-  Disabled: "true",
-  notbackground: "false",
-  buttonStyle: "disabled",
+  border: "not-filled",
+  disabled: "true",
   labelSlot: "Bloquear",
 });
 
@@ -116,31 +118,54 @@ export const withBorders = Template({
   border: "outline",
   size: "medium",
   labelSlot: "Bloquear",
-  notbackground: "false",
 });
 
 export const withBordersDisabled = Template({
   border: "outline",
   size: "medium",
   labelSlot: "Bloquear",
-  buttonStyle: "disabled",
-  notbackground: "false",
+  disabled: "true",
 });
 
 export const Floating = Template({
   style: "",
-  floating: true,
+  size: "floating",
   icon: "dots-horizontal",
 });
 
 export const FloatingNotBackground = Template({
-  floating: true,
+  size: "floating",
   icon: "dots-horizontal",
-  notbackground: "false",
+  border: "not-filled",
 });
 
 export const FloatingDisabled = Template({
-  floating: true,
+  size: "floating",
   icon: "dots-horizontal",
-  buttonStyle: "disabled",
+  disabled: "true",
 });
+
+export const CustomExample: any = Template({
+  labelSlot: "orange",
+  style:
+      "--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-border: 2px solid #ffc7a7; --szot-border-radius: 1.5rem",
+});
+
+CustomExample.parameters = {
+  docs: {
+    source: {
+      language: "html",
+      code: `
+  <script lang="ts">
+    import Button from "./Button.svelte";
+  </script>
+
+  <div style="--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-border: 2px solid #ffc7a7; --szot-border-radius: 1.5rem" >
+    <Button>
+      orange
+    </Button>
+  </div>
+  `,
+    },
+  },
+};

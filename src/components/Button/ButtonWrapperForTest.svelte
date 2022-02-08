@@ -6,7 +6,7 @@
 </script>
 
 <div {style}>
-  <Button {...$$restProps}>
-    { labelSlot }
+  <Button {...$$restProps} on:click>
+    {labelSlot}
   </Button>
 </div>

@@ -1,28 +1,23 @@
 <script lang="ts">
   import Icon from "../Icon/Icon.svelte";
 
-  type Tsize = "small" | "medium" | "large";
-  type Tborders = "none" | "outline" | "custom";
-  type TborderStyle =
-    | "primary"
-    | "secondary"
-    | "dark"
-    | "light"
-    | "custom"
-    | "disabled";
+  type Tsize = "small" | "medium" | "large" | "floating";
+  type Tborders = "filled" | "not-filled" | "outline";
+  type TbuttonStyle = "primary" | "secondary" | "dark" | "light";
   type TpositionIcon = "left" | "right";
   type TbuttonType = "submit" | "reset" | "button";
 
   // choose a preset size for the button
   export let size: Tsize = "medium";
   // choose an icon from the list
-  export let icon: string | undefined;
+  export let icon = null;
   // choose whether to have borders on the button
-  export let border: Tborders = "none";
-  // choose default theme colors, "Custom" to set a custom color, or disabled disable button
-  export let buttonStyle: TborderStyle = "primary";
+  export let border: Tborders = "filled";
+  // choose default theme colors or disabled disable button
+  export let buttonStyle: TbuttonStyle = "primary";
+  export let disabled = false;
   // choose whether or not to have a background color
-  export let notbackground = false;
+  export let notbackground = null;
   // choose which side the icon should be on
   export let positionIcon: TpositionIcon = "left";
   // set the button type
@@ -30,51 +25,45 @@
   // set the button name
   export let name = "button";
   // set as floating button (size doesn't work with this)
-  export let floating = false;
+  export let floating = (size === "floating");
 </script>
 
-{#if floating && icon }
-  <button
-    { type }
-    { name }
-    class="button floating button-style-{ buttonStyle } border-{ border }"
-    class:notbackground
-    disabled={ buttonStyle === "disabled" }
-  >
-    <div class="icon"><Icon iconName={ icon } /></div>
-  </button>
-{:else if icon && !floating }
-  <button
-    { type }
-    { name }
-    class="button { size } button-style-{ buttonStyle } border-{ border }"
-    class:notbackground
-    disabled={ buttonStyle === "disabled" }
-  >
-    <div class="icon-{ positionIcon }"><Icon iconName={ icon } /></div>
-    <div class="texto-{ positionIcon }"><slot /></div>
-  </button>
-{:else }
-  <button
-    { type }
-    { name }
-    class="button { size } button-style-{ buttonStyle } border-{ border }"
-    class:notbackground
-    disabled={ buttonStyle === "disabled" }
-  >
+<button
+  {type}
+  {name}
+  class="button {size} button-style-{buttonStyle} border-{border}"
+  class:notbackground
+  class:disabled
+  {disabled}
+  on:click
+>
+  {#if floating && icon}
+    <div class="icon"><Icon iconName={icon} /></div>
+  {:else if icon && !floating}
+    <div class="icon-{positionIcon}"><Icon iconName={icon} /></div>
+    <div class="texto-{positionIcon}"><slot /></div>
+  {:else}
     <slot />
-  </button>
-{/if } 
+  {/if}
+</button>
 
 <style lang="scss">
   .button {
+    // internal variables
     --default-opacity-hover: 85%;
     --default-effect-color: rgba(184, 182, 182, 0.2);
+    // external variables
     --opacity-hover: var(--szot-opacity-hover, var(--default-opacity-hover));
-    --background-color: var(--szot-background-color,var(--default-background-color));
+    --background-color: var(
+      --szot-background-color,
+      var(--default-background-color)
+    );
     --color: var(--szot-color, var(--default-color));
     --border: var(--szot-border, var(--default-border));
-    --effect-color-after-click: var(--szot-effect-color-after-click,var(--default-effect-color));
+    --effect-color-after-click: var(
+      --szot-effect-color-after-click,
+      var(--default-effect-color)
+    );
     --text-transform: (--szot-text-transform, capitalize);
     --border-radius: var(--szot-border-radius, var(--theme-small-shape));
     --font-size: var(--szot-font-size, 0.9rem);
@@ -85,14 +74,6 @@
 
     --margin-icon: var(--szot-margin-icon, -0.1rem 1rem);
 
-    --float-icon-top: var(--szot-icon-top, 0.4rem);
-    --float-icon-left: var(--szot-icon-left, 0.35rem);
-    &.border-outline {
-      --default-border: var(--theme-small-border);
-    }
-    &.border-None {
-      --default-border: none;
-    }
     &.button-style-primary {
       --default-background-color: var(--theme-primary-surface);
       --default-color: var(--theme-txt-on-primary-surface);
@@ -109,22 +90,16 @@
       --default-background-color: var(--theme-light-surface);
       --default-color: var(--theme-txt-on-light-surface);
     }
-    &.notbackground {
-      --default-background-color: none;
-      --background-none: none;
-      --default-opacity-hover: 60%;
-      --default-color: var(--theme-txt-on-light-surface);
-    }
     &.floating {
-      border-radius: 17px;
+      border-radius: 1.0625rem;
       padding: 0;
-      width: 30.56px;
-      height: 31.36px;
+      width: 1.91rem;
+      height: 1.96rem;
 
       .icon {
         position: absolute;
-        top: var(--float-icon-top);
-        left: var(--float-icon-left);
+        top: 20%;
+        left: 18%;
       }
     }
     &.large {
@@ -196,7 +171,24 @@
         margin-right: 1.5rem;
       }
     }
-    &.button-style-disabled {
+    &.border-outline {
+      --default-border: var(--theme-small-border);
+      --default-background-color: none;
+      --default-opacity-hover: 60%;
+      --default-color: var(--theme-txt-on-light-surface);
+      --background-none: none;
+    }
+    &.border-filled {
+      --default-border: none;
+    }
+    &.border-not-filled {
+      --default-border: none;
+      --default-background-color: none;
+      --default-opacity-hover: 60%;
+      --default-color: var(--theme-txt-on-light-surface);
+      --background-none: none;
+    }
+    &.disabled {
       --default-color: #b1b1b1;
       --default-background-color: var(--background-none, #7d7d7d);
       --disabled-opacity-hover: 100%;

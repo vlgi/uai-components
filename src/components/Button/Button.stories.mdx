@@ -20,8 +20,6 @@ import ButtonWrapper from "./ButtonWrapperForTest.svelte";
 | --szot-font-size                | change font size                                                       |
 | --szot-padding                  | change button padding                                                  |
 | --szot-margin-icon              | change the distance of the icon with the button (small, medium, large) |
-| --szot-icon-top                 | change icon position vertically (floating button)                      |
-| --szot-icon-left                | change the icon position horizontally (floating button)                |
 
 <p>
   The theme's font and shape variables are used here, as well as the 4 default
@@ -29,23 +27,3 @@ import ButtonWrapper from "./ButtonWrapperForTest.svelte";
 </p>
 
 ###### Below is an example of a custom button with variables.
-
-<br />
-<br />
-
-export const Template = (args) => ({
-  Component: ButtonWrapper,
-  props: args,
-});
-
-<Story
-  name="Custom"
-  args={{
-    labelSlot: "Laranja",
-    border: "custom",
-    style:
-      "--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-border: 2px solid #ffc7a7; --szot-border-radius: 1.5rem",
-  }}
->
-  >{Template.bind({})}
-</Story>
