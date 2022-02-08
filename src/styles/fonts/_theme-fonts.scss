@@ -8,3 +8,10 @@ p {
   font-size: var(--theme-p-font-size);
   line-height: var(--theme-p-line-height);
 }
+
+span {
+  font-weight: var(--theme-span-font-weight);
+  font-style: var(--theme-span-font-style);
+  font-size: var(--theme-span-font-size);
+  line-height: var(--theme-span-line-height);
+}

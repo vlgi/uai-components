@@ -14,20 +14,20 @@
       title: "pure text colors",
       description: "You can ovewrite the text color.",
       variables: [
-        { name: "--szot-primary-txt", default: "--primary" },
-        { name: "--szot-secondary-txt", default: "--secondary" },
-        { name: "--szot-dark-txt", default: "--dark" },
-        { name: "--szot-light-txt", default: "--light" },
+        { name: "--szot-primary-txt", default: "--szot-primary" },
+        { name: "--szot-secondary-txt", default: "--szot-secondary" },
+        { name: "--szot-dark-txt", default: "--szot-dark" },
+        { name: "--szot-light-txt", default: "--szot-light" },
       ],
     },
     {
       title: "surface colors",
       description: "You can ovewrite the surface colors.",
       variables: [
-        { name: "--szot-primary-surface", default: "--primary" },
-        { name: "--szot-secondary-surface", default: "--secondary" },
-        { name: "--szot-dark-surface", default: "--dark" },
-        { name: "--szot-light-surface", default: "--light" },
+        { name: "--szot-primary-surface", default: "--szot-primary" },
+        { name: "--szot-secondary-surface", default: "--szot-secondary" },
+        { name: "--szot-dark-surface", default: "--szot-dark" },
+        { name: "--szot-light-surface", default: "--szot-light" },
       ],
     },
     {
