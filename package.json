@@ -54,6 +54,7 @@
     "@testing-library/svelte": "^3.0.3",
     "@testing-library/user-event": "^13.5.0",
     "@tsconfig/svelte": "^2.0.0",
+    "@types/hammerjs": "^2.0.41",
     "@types/jest": "^27.0.3",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
@@ -90,6 +91,7 @@
     "typescript": "~4.4.3"
   },
   "dependencies": {
-    "@ionic/core": "^6.0.2"
+    "@ionic/core": "^6.0.2",
+    "hammerjs": "^2.0.8"
   }
 }
