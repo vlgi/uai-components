@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/Select/OptionsList Default 1`] = `
+exports[`Storyshots Components/Select/Internals/OptionsList Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
     aria-labelledby="doce-label"
-    class="select-menu svelte-1526g3y"
+    class="select-menu svelte-12mc5sn"
     id="doce-listbox"
     role="listbox"
     tabindex="-1"
   >
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -20,7 +20,7 @@ exports[`Storyshots Components/Select/OptionsList Default 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -28,7 +28,7 @@ exports[`Storyshots Components/Select/OptionsList Default 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -36,7 +36,7 @@ exports[`Storyshots Components/Select/OptionsList Default 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -44,7 +44,7 @@ exports[`Storyshots Components/Select/OptionsList Default 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -52,7 +52,7 @@ exports[`Storyshots Components/Select/OptionsList Default 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -60,7 +60,7 @@ exports[`Storyshots Components/Select/OptionsList Default 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -68,7 +68,7 @@ exports[`Storyshots Components/Select/OptionsList Default 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -76,7 +76,7 @@ exports[`Storyshots Components/Select/OptionsList Default 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -84,7 +84,7 @@ exports[`Storyshots Components/Select/OptionsList Default 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -123,19 +123,19 @@ exports[`Storyshots Components/Select/OptionsList Default 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
+exports[`Storyshots Components/Select/Internals/OptionsList Focused 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
     aria-labelledby="doce-label"
-    class="select-menu svelte-1526g3y"
+    class="select-menu svelte-12mc5sn"
     id="doce-listbox"
     role="listbox"
     tabindex="-1"
   >
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -143,7 +143,7 @@ exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -151,7 +151,7 @@ exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -159,7 +159,7 @@ exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y focused"
+      class="select-option svelte-12mc5sn focused"
       role="option"
       tabindex="-1"
     >
@@ -167,7 +167,7 @@ exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -175,7 +175,7 @@ exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -183,7 +183,7 @@ exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -191,7 +191,7 @@ exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -199,7 +199,7 @@ exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -207,7 +207,7 @@ exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -246,19 +246,19 @@ exports[`Storyshots Components/Select/OptionsList Focused 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
+exports[`Storyshots Components/Select/Internals/OptionsList Focused Selected 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
     aria-labelledby="doce-label"
-    class="select-menu svelte-1526g3y"
+    class="select-menu svelte-12mc5sn"
     id="doce-listbox"
     role="listbox"
     tabindex="-1"
   >
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -266,7 +266,7 @@ exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -274,7 +274,7 @@ exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y selected"
+      class="select-option svelte-12mc5sn selected"
       role="option"
       tabindex="-1"
     >
@@ -282,7 +282,7 @@ exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y focused"
+      class="select-option svelte-12mc5sn focused"
       role="option"
       tabindex="-1"
     >
@@ -290,7 +290,7 @@ exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -298,7 +298,7 @@ exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -306,7 +306,7 @@ exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -314,7 +314,7 @@ exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -322,7 +322,7 @@ exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -330,7 +330,7 @@ exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -369,19 +369,19 @@ exports[`Storyshots Components/Select/OptionsList Focused Selected 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
+exports[`Storyshots Components/Select/Internals/OptionsList Multiple 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
     aria-labelledby="doce-label"
-    class="select-menu svelte-1526g3y"
+    class="select-menu svelte-12mc5sn"
     id="doce-listbox"
     role="listbox"
     tabindex="-1"
   >
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -389,7 +389,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -397,7 +397,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -405,7 +405,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -413,7 +413,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -421,7 +421,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -429,7 +429,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -437,7 +437,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -445,7 +445,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -453,7 +453,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -490,19 +490,19 @@ exports[`Storyshots Components/Select/OptionsList Multiple 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
+exports[`Storyshots Components/Select/Internals/OptionsList Multiple Selected 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
     aria-labelledby="doce-label"
-    class="select-menu svelte-1526g3y"
+    class="select-menu svelte-12mc5sn"
     id="doce-listbox"
     role="listbox"
     tabindex="-1"
   >
     <div
-      class="select-option svelte-1526g3y selected"
+      class="select-option svelte-12mc5sn selected"
       role="option"
       tabindex="-1"
     >
@@ -510,7 +510,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -518,7 +518,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y selected"
+      class="select-option svelte-12mc5sn selected"
       role="option"
       tabindex="-1"
     >
@@ -526,7 +526,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y selected"
+      class="select-option svelte-12mc5sn selected"
       role="option"
       tabindex="-1"
     >
@@ -534,7 +534,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y selected"
+      class="select-option svelte-12mc5sn selected"
       role="option"
       tabindex="-1"
     >
@@ -542,7 +542,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -550,7 +550,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -558,7 +558,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -566,7 +566,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -574,7 +574,7 @@ exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -623,19 +623,19 @@ exports[`Storyshots Components/Select/OptionsList Multiple Selected 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
+exports[`Storyshots Components/Select/Internals/OptionsList Single Selected 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
     aria-labelledby="doce-label"
-    class="select-menu svelte-1526g3y"
+    class="select-menu svelte-12mc5sn"
     id="doce-listbox"
     role="listbox"
     tabindex="-1"
   >
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -643,7 +643,7 @@ exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -651,7 +651,7 @@ exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -659,7 +659,7 @@ exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y selected"
+      class="select-option svelte-12mc5sn selected"
       role="option"
       tabindex="-1"
     >
@@ -667,7 +667,7 @@ exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -675,7 +675,7 @@ exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -683,7 +683,7 @@ exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -691,7 +691,7 @@ exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -699,7 +699,7 @@ exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -707,7 +707,7 @@ exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
        
     </div>
     <div
-      class="select-option svelte-1526g3y"
+      class="select-option svelte-12mc5sn"
       role="option"
       tabindex="-1"
     >
@@ -746,12 +746,12 @@ exports[`Storyshots Components/Select/OptionsList Single Selected 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/SearchInput Default 1`] = `
+exports[`Storyshots Components/Select/Internals/SearchInput Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <input
-    class="search svelte-1d3g3rt"
+    class="search svelte-1ara2mn"
     placeholder="Pesquise ou Selecione..."
     tabindex="-1"
     type="text"
@@ -797,12 +797,12 @@ exports[`Storyshots Components/Select/SearchInput Default 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/SearchInput Multiple Fields Searching 1`] = `
+exports[`Storyshots Components/Select/Internals/SearchInput Multiple Fields Searching 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <input
-    class="search svelte-1d3g3rt"
+    class="search svelte-1ara2mn"
     placeholder="Pesquise ou Selecione..."
     tabindex="-1"
     type="text"
@@ -821,12 +821,12 @@ exports[`Storyshots Components/Select/SearchInput Multiple Fields Searching 1`] 
 </section>
 `;
 
-exports[`Storyshots Components/Select/SearchInput Searching 1`] = `
+exports[`Storyshots Components/Select/Internals/SearchInput Searching 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <input
-    class="search svelte-1d3g3rt"
+    class="search svelte-1ara2mn"
     placeholder="Pesquise ou Selecione..."
     tabindex="-1"
     type="text"
@@ -853,11 +853,11 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1wuxum6"
+    class="select svelte-1mcmtid"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1wuxum6"
+      class="select-label svelte-1mcmtid"
       for="doce-custom"
       id="doce-label"
     >
@@ -869,7 +869,7 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1wuxum6"
+      class="select-box svelte-1mcmtid"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
@@ -878,10 +878,10 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1wuxum6 closed"
+      class="select-dropdown-menu svelte-1mcmtid closed"
     >
       <input
-        class="search svelte-1d3g3rt"
+        class="search svelte-1ara2mn"
         placeholder="Pesquise ou Selecione..."
         tabindex="-1"
         type="text"
@@ -889,13 +889,13 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
        
       <div
         aria-labelledby="doce-label"
-        class="select-menu svelte-1526g3y"
+        class="select-menu svelte-12mc5sn"
         id="doce-listbox"
         role="listbox"
         tabindex="-1"
       >
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -903,7 +903,7 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -911,7 +911,7 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -919,7 +919,7 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -927,7 +927,7 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -935,7 +935,7 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -943,7 +943,7 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -955,7 +955,7 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1wuxum6"
+      class="hidden svelte-1mcmtid"
       disabled=""
       id="doce"
       multiple=""
@@ -1006,10 +1006,10 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1wuxum6"
+      class="select-arrow svelte-1mcmtid"
     >
       <div
-        class="select-arrow-aux svelte-1wuxum6"
+        class="select-arrow-aux svelte-1mcmtid"
       />
     </div>
   </div>
@@ -1030,11 +1030,11 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1wuxum6"
+    class="select svelte-1mcmtid"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1wuxum6"
+      class="select-label svelte-1mcmtid"
       for="doce-custom"
       id="doce-label"
     >
@@ -1046,7 +1046,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1wuxum6"
+      class="select-box svelte-1mcmtid"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
@@ -1055,10 +1055,10 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1wuxum6 closed"
+      class="select-dropdown-menu svelte-1mcmtid closed"
     >
       <input
-        class="search svelte-1d3g3rt"
+        class="search svelte-1ara2mn"
         placeholder="Pesquise ou Selecione..."
         tabindex="-1"
         type="text"
@@ -1066,13 +1066,13 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
        
       <div
         aria-labelledby="doce-label"
-        class="select-menu svelte-1526g3y"
+        class="select-menu svelte-12mc5sn"
         id="doce-listbox"
         role="listbox"
         tabindex="-1"
       >
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -1080,7 +1080,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -1088,7 +1088,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -1096,7 +1096,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -1104,7 +1104,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -1112,7 +1112,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -1120,7 +1120,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -1128,7 +1128,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -1136,7 +1136,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -1144,7 +1144,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -1156,7 +1156,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1wuxum6"
+      class="hidden svelte-1mcmtid"
       disabled=""
       id="doce"
       multiple=""
@@ -2005,10 +2005,10 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1wuxum6"
+      class="select-arrow svelte-1mcmtid"
     >
       <div
-        class="select-arrow-aux svelte-1wuxum6"
+        class="select-arrow-aux svelte-1mcmtid"
       />
     </div>
   </div>
@@ -2029,11 +2029,11 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1wuxum6"
+    class="select svelte-1mcmtid"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1wuxum6 floated"
+      class="select-label svelte-1mcmtid floated"
       for="doce-custom"
       id="doce-label"
     >
@@ -2045,42 +2045,42 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1wuxum6 selected-multiple"
+      class="select-box svelte-1mcmtid selected-multiple"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
     >
       <span
-        class="badge svelte-1wuxum6"
+        class="badge svelte-1mcmtid"
       >
         Torta alemã
          
         <span
-          class="svelte-1wuxum6"
+          class="svelte-1mcmtid"
         >
           ×
         </span>
          
       </span>
       <span
-        class="badge svelte-1wuxum6"
+        class="badge svelte-1mcmtid"
       >
         Pavê
          
         <span
-          class="svelte-1wuxum6"
+          class="svelte-1mcmtid"
         >
           ×
         </span>
          
       </span>
       <span
-        class="badge svelte-1wuxum6"
+        class="badge svelte-1mcmtid"
       >
         Bolo
          
         <span
-          class="svelte-1wuxum6"
+          class="svelte-1mcmtid"
         >
           ×
         </span>
@@ -2090,10 +2090,10 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1wuxum6 closed"
+      class="select-dropdown-menu svelte-1mcmtid closed"
     >
       <input
-        class="search svelte-1d3g3rt"
+        class="search svelte-1ara2mn"
         placeholder="Pesquise ou Selecione..."
         tabindex="-1"
         type="text"
@@ -2101,13 +2101,13 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
        
       <div
         aria-labelledby="doce-label"
-        class="select-menu svelte-1526g3y"
+        class="select-menu svelte-12mc5sn"
         id="doce-listbox"
         role="listbox"
         tabindex="-1"
       >
         <div
-          class="select-option svelte-1526g3y selected"
+          class="select-option svelte-12mc5sn selected"
           role="option"
           tabindex="-1"
         >
@@ -2115,7 +2115,7 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y selected"
+          class="select-option svelte-12mc5sn selected"
           role="option"
           tabindex="-1"
         >
@@ -2123,7 +2123,7 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y selected"
+          class="select-option svelte-12mc5sn selected"
           role="option"
           tabindex="-1"
         >
@@ -2131,7 +2131,7 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2139,7 +2139,7 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2147,7 +2147,7 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2155,7 +2155,7 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2167,7 +2167,7 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1wuxum6"
+      class="hidden svelte-1mcmtid"
       disabled=""
       id="doce"
       multiple=""
@@ -2218,10 +2218,10 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1wuxum6"
+      class="select-arrow svelte-1mcmtid"
     >
       <div
-        class="select-arrow-aux svelte-1wuxum6"
+        class="select-arrow-aux svelte-1mcmtid"
       />
     </div>
   </div>
@@ -2251,11 +2251,11 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1wuxum6"
+    class="select svelte-1mcmtid"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1wuxum6"
+      class="select-label svelte-1mcmtid"
       for="doce-custom"
       id="doce-label"
     >
@@ -2267,7 +2267,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1wuxum6"
+      class="select-box svelte-1mcmtid"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
@@ -2276,10 +2276,10 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1wuxum6 closed"
+      class="select-dropdown-menu svelte-1mcmtid closed"
     >
       <input
-        class="search svelte-1d3g3rt"
+        class="search svelte-1ara2mn"
         placeholder="Pesquise ou Selecione..."
         tabindex="-1"
         type="text"
@@ -2287,13 +2287,13 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
        
       <div
         aria-labelledby="doce-label"
-        class="select-menu svelte-1526g3y"
+        class="select-menu svelte-12mc5sn"
         id="doce-listbox"
         role="listbox"
         tabindex="-1"
       >
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2301,7 +2301,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2309,7 +2309,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2317,7 +2317,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2325,7 +2325,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2333,7 +2333,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2341,7 +2341,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2349,7 +2349,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2357,7 +2357,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2365,7 +2365,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -2377,7 +2377,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1wuxum6"
+      class="hidden svelte-1mcmtid"
       disabled=""
       id="doce"
       name="doce"
@@ -3225,10 +3225,10 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1wuxum6"
+      class="select-arrow svelte-1mcmtid"
     >
       <div
-        class="select-arrow-aux svelte-1wuxum6"
+        class="select-arrow-aux svelte-1mcmtid"
       />
     </div>
   </div>
@@ -3251,11 +3251,11 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1wuxum6"
+    class="select svelte-1mcmtid"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1wuxum6"
+      class="select-label svelte-1mcmtid"
       for="doce-custom"
       id="doce-label"
     >
@@ -3267,7 +3267,7 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1wuxum6"
+      class="select-box svelte-1mcmtid"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
@@ -3276,10 +3276,10 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1wuxum6 closed"
+      class="select-dropdown-menu svelte-1mcmtid closed"
     >
       <input
-        class="search svelte-1d3g3rt"
+        class="search svelte-1ara2mn"
         placeholder="Pesquise ou Selecione..."
         tabindex="-1"
         type="text"
@@ -3287,13 +3287,13 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
        
       <div
         aria-labelledby="doce-label"
-        class="select-menu svelte-1526g3y"
+        class="select-menu svelte-12mc5sn"
         id="doce-listbox"
         role="listbox"
         tabindex="-1"
       >
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3301,7 +3301,7 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3309,7 +3309,7 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3317,7 +3317,7 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3325,7 +3325,7 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3333,7 +3333,7 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3341,7 +3341,7 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3353,7 +3353,7 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1wuxum6"
+      class="hidden svelte-1mcmtid"
       disabled=""
       id="doce"
       name="doce"
@@ -3403,10 +3403,10 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1wuxum6"
+      class="select-arrow svelte-1mcmtid"
     >
       <div
-        class="select-arrow-aux svelte-1wuxum6"
+        class="select-arrow-aux svelte-1mcmtid"
       />
     </div>
   </div>
@@ -3429,11 +3429,11 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1wuxum6"
+    class="select svelte-1mcmtid"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1wuxum6 floated"
+      class="select-label svelte-1mcmtid floated"
       for="doce-custom"
       id="doce-label"
     >
@@ -3445,7 +3445,7 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1wuxum6"
+      class="select-box svelte-1mcmtid"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
@@ -3454,10 +3454,10 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1wuxum6 closed"
+      class="select-dropdown-menu svelte-1mcmtid closed"
     >
       <input
-        class="search svelte-1d3g3rt"
+        class="search svelte-1ara2mn"
         placeholder="Pesquise ou Selecione..."
         tabindex="-1"
         type="text"
@@ -3465,13 +3465,13 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
        
       <div
         aria-labelledby="doce-label"
-        class="select-menu svelte-1526g3y"
+        class="select-menu svelte-12mc5sn"
         id="doce-listbox"
         role="listbox"
         tabindex="-1"
       >
         <div
-          class="select-option svelte-1526g3y selected"
+          class="select-option svelte-12mc5sn selected"
           role="option"
           tabindex="-1"
         >
@@ -3479,7 +3479,7 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3487,7 +3487,7 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3495,7 +3495,7 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3503,7 +3503,7 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3511,7 +3511,7 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3519,7 +3519,7 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
            
         </div>
         <div
-          class="select-option svelte-1526g3y"
+          class="select-option svelte-12mc5sn"
           role="option"
           tabindex="-1"
         >
@@ -3531,7 +3531,7 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1wuxum6"
+      class="hidden svelte-1mcmtid"
       disabled=""
       id="doce"
       name="doce"
@@ -3581,10 +3581,10 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1wuxum6"
+      class="select-arrow svelte-1mcmtid"
     >
       <div
-        class="select-arrow-aux svelte-1wuxum6"
+        class="select-arrow-aux svelte-1mcmtid"
       />
     </div>
   </div>
