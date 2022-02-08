@@ -16,6 +16,22 @@ exports[`Storyshots Components/Badge Border 1`] = `
 </section>
 `;
 
+exports[`Storyshots Components/Badge Custom Example 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style="--szot-color:#FFFFFF; --szot-background-color:#FC6627;"
+  >
+    <span
+      class="badge primary svelte-zsk4sa"
+    >
+      New
+    </span>
+  </div>
+</section>
+`;
+
 exports[`Storyshots Components/Badge Theme 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -32,855 +48,132 @@ exports[`Storyshots Components/Badge Theme 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/Internals/OptionsList Default 1`] = `
+exports[`Storyshots Components/Button Inaccessible 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div
-    aria-labelledby="doce-label"
-    class="select-menu svelte-12mc5sn"
-    id="doce-listbox"
-    role="listbox"
-    tabindex="-1"
+  <button
+    class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
+    data-testid="btn-visible"
+    style="background-color: white"
+    type="button"
   >
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Brigadeiro 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pudim 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Rabanada 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Beijinho 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 1
-       
-    </div>
-    
-  </div>
-   
-  <button>
-    Focus Next
+    Button
   </button>
    
-  <button>
-    Focus Previous
+  <button
+    class="svelte-wtisvu"
+    data-testid="btn-hidden"
+    id="btn-hidden"
+  >
+    hi
   </button>
-   
-  <button>
-    Toggle Focused
-  </button>
-   
-  <button>
-    Unfocus Items
-  </button>
-   
-  <header>
-    <b>
-      Selected:
-    </b>
-  </header>
-   
-  <p>
-    null
-  </p>
-  
 </section>
 `;
 
-exports[`Storyshots Components/Select/Internals/OptionsList Focused 1`] = `
+exports[`Storyshots Components/Button Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div
-    aria-labelledby="doce-label"
-    class="select-menu svelte-12mc5sn"
-    id="doce-listbox"
-    role="listbox"
-    tabindex="-1"
+  <button
+    class="storybook-button storybook-button--large storybook-button--secondary svelte-wtisvu"
+    data-testid="btn-visible"
+    style=""
+    type="button"
   >
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn focused"
-      role="option"
-      tabindex="-1"
-    >
-      Brigadeiro 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pudim 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Rabanada 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Beijinho 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 1
-       
-    </div>
-    
-  </div>
-   
-  <button>
-    Focus Next
+    Button
   </button>
    
-  <button>
-    Focus Previous
+  <button
+    class="svelte-wtisvu"
+    data-testid="btn-hidden"
+    id="btn-hidden"
+  >
+    hi
   </button>
-   
-  <button>
-    Toggle Focused
-  </button>
-   
-  <button>
-    Unfocus Items
-  </button>
-   
-  <header>
-    <b>
-      Selected:
-    </b>
-  </header>
-   
-  <p>
-    null
-  </p>
-  
 </section>
 `;
 
-exports[`Storyshots Components/Select/Internals/OptionsList Focused Selected 1`] = `
+exports[`Storyshots Components/Button Primary 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div
-    aria-labelledby="doce-label"
-    class="select-menu svelte-12mc5sn"
-    id="doce-listbox"
-    role="listbox"
-    tabindex="-1"
+  <button
+    class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
+    data-testid="btn-visible"
+    style=""
+    type="button"
   >
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn selected"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn focused"
-      role="option"
-      tabindex="-1"
-    >
-      Brigadeiro 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pudim 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Rabanada 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Beijinho 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 1
-       
-    </div>
-    
-  </div>
-   
-  <button>
-    Focus Next
+    Button
   </button>
    
-  <button>
-    Focus Previous
+  <button
+    class="svelte-wtisvu"
+    data-testid="btn-hidden"
+    id="btn-hidden"
+  >
+    hi
   </button>
-   
-  <button>
-    Toggle Focused
-  </button>
-   
-  <button>
-    Unfocus Items
-  </button>
-   
-  <header>
-    <b>
-      Selected:
-    </b>
-  </header>
-   
-  <p>
-    {"text":"Bolo 0"}
-  </p>
-  
 </section>
 `;
 
-exports[`Storyshots Components/Select/Internals/OptionsList Multiple 1`] = `
+exports[`Storyshots Components/Button Secondary 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div
-    aria-labelledby="doce-label"
-    class="select-menu svelte-12mc5sn"
-    id="doce-listbox"
-    role="listbox"
-    tabindex="-1"
+  <button
+    class="storybook-button storybook-button--medium storybook-button--secondary svelte-wtisvu"
+    data-testid="btn-visible"
+    style=""
+    type="button"
   >
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Brigadeiro 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pudim 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Rabanada 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Beijinho 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 1
-       
-    </div>
-    
-  </div>
-   
-  <button>
-    Focus Next
+    Button
   </button>
    
-  <button>
-    Focus Previous
+  <button
+    class="svelte-wtisvu"
+    data-testid="btn-hidden"
+    id="btn-hidden"
+  >
+    hi
   </button>
-   
-  <button>
-    Toggle Focused
-  </button>
-   
-  <button>
-    Unfocus Items
-  </button>
-   
-  <header>
-    <b>
-      Selected:
-    </b>
-  </header>
-   
-  
-  
 </section>
 `;
 
-exports[`Storyshots Components/Select/Internals/OptionsList Multiple Selected 1`] = `
+exports[`Storyshots Components/Button Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div
-    aria-labelledby="doce-label"
-    class="select-menu svelte-12mc5sn"
-    id="doce-listbox"
-    role="listbox"
-    tabindex="-1"
+  <button
+    class="storybook-button storybook-button--small storybook-button--secondary svelte-wtisvu"
+    data-testid="btn-visible"
+    style=""
+    type="button"
   >
-    <div
-      class="select-option svelte-12mc5sn selected"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn selected"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn selected"
-      role="option"
-      tabindex="-1"
-    >
-      Brigadeiro 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn selected"
-      role="option"
-      tabindex="-1"
-    >
-      Pudim 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Rabanada 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Beijinho 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 1
-       
-    </div>
-    
-  </div>
-   
-  <button>
-    Focus Next
+    Button
   </button>
    
-  <button>
-    Focus Previous
+  <button
+    class="svelte-wtisvu"
+    data-testid="btn-hidden"
+    id="btn-hidden"
+  >
+    hi
   </button>
-   
-  <button>
-    Toggle Focused
-  </button>
-   
-  <button>
-    Unfocus Items
-  </button>
-   
-  <header>
-    <b>
-      Selected:
-    </b>
-  </header>
-   
-  <p>
-    {"text":"Bolo 0"}
-  </p>
-  <p>
-    {"text":"Brigadeiro 0"}
-  </p>
-  <p>
-    {"text":"Pudim 0"}
-  </p>
-  <p>
-    {"text":"Torta alemã 0"}
-  </p>
-  
-  
 </section>
 `;
 
-exports[`Storyshots Components/Select/Internals/OptionsList Single Selected 1`] = `
+exports[`Storyshots Components/Icon Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div
-    aria-labelledby="doce-label"
-    class="select-menu svelte-12mc5sn"
-    id="doce-listbox"
-    role="listbox"
-    tabindex="-1"
-  >
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn selected"
-      role="option"
-      tabindex="-1"
-    >
-      Brigadeiro 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pudim 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Rabanada 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Beijinho 0
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Torta alemã 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Pavê 1
-       
-    </div>
-    <div
-      class="select-option svelte-12mc5sn"
-      role="option"
-      tabindex="-1"
-    >
-      Bolo 1
-       
-    </div>
-    
-  </div>
-   
-  <button>
-    Focus Next
-  </button>
-   
-  <button>
-    Focus Previous
-  </button>
-   
-  <button>
-    Toggle Focused
-  </button>
-   
-  <button>
-    Unfocus Items
-  </button>
-   
-  <header>
-    <b>
-      Selected:
-    </b>
-  </header>
-   
-  <p>
-    {"text":"Brigadeiro 0"}
-  </p>
-  
-</section>
-`;
-
-exports[`Storyshots Components/Select/Internals/SearchInput Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <input
-    class="search svelte-1ara2mn"
-    placeholder="Pesquise ou Selecione..."
-    tabindex="-1"
-    type="text"
+  <span
+    class="icon-phone"
   />
-   
-  <header>
-    <b>
-      Results:
-    </b>
-  </header>
-   
-  <p>
-    {"id":8238,"uid":"e3f80973-a749-452d-b28d-18ab3c292ac1","variety":"Brownie","topping":"Chocolate Sprinkles","flavor":"Cookies 'n Cream"}
-  </p>
-  <p>
-    {"id":4642,"uid":"163d7644-8298-439d-b973-98123ef3f76e","variety":"Cobbler","topping":"Cheesecake Bites","flavor":"Apple"}
-  </p>
-  <p>
-    {"id":2568,"uid":"cc8e1fc3-9836-42ac-a789-036cf08c59c7","variety":"Brownie","topping":"Frosting","flavor":"Butter Pecan"}
-  </p>
-  <p>
-    {"id":7968,"uid":"3190bd87-d465-455e-9b39-d6a75dda2b1a","variety":"Cheesecake","topping":"Butterscotch Syrup","flavor":"Caramel"}
-  </p>
-  <p>
-    {"id":2068,"uid":"f0c31efb-47e9-4783-b87a-c2748072c2c5","variety":"Sweet Bread","topping":"Cookie Dough","flavor":"Green Tea"}
-  </p>
-  <p>
-    {"id":386,"uid":"c845f7eb-abbc-4d59-8875-21f41c01c907","variety":"Cookie","topping":"Walnuts","flavor":"Cherry"}
-  </p>
-  <p>
-    {"id":3302,"uid":"5a76f8a1-3035-46d0-8f0f-83e1f2708419","variety":"Ice Cream Cake","topping":"Peanut Butter","flavor":"Pumpkin"}
-  </p>
-  <p>
-    {"id":7,"uid":"699ca1b7-796f-42bc-bbaa-02e20b0320c9","variety":"Upside Down Pineapple Cake","topping":"Granola","flavor":"Green Tea"}
-  </p>
-  <p>
-    {"id":546,"uid":"824e205b-90d8-4f11-ab6a-58d83ce58d02","variety":"Sweet Bread","topping":"Peanuts","flavor":"Caramel"}
-  </p>
-  <p>
-    {"id":2190,"uid":"2974dc00-265e-4a3f-856d-3343dc99b678","variety":"Cake","topping":"Peanut Butter","flavor":"Blondie"}
-  </p>
-  
 </section>
 `;
 
-exports[`Storyshots Components/Select/Internals/SearchInput Multiple Fields Searching 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <input
-    class="search svelte-1ara2mn"
-    placeholder="Pesquise ou Selecione..."
-    tabindex="-1"
-    type="text"
-  />
-   
-  <header>
-    <b>
-      Results:
-    </b>
-  </header>
-   
-  <p>
-    {"id":8238,"uid":"e3f80973-a749-452d-b28d-18ab3c292ac1","variety":"Brownie","topping":"Chocolate Sprinkles","flavor":"Cookies 'n Cream"}
-  </p>
-  
-</section>
-`;
-
-exports[`Storyshots Components/Select/Internals/SearchInput Searching 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <input
-    class="search svelte-1ara2mn"
-    placeholder="Pesquise ou Selecione..."
-    tabindex="-1"
-    type="text"
-  />
-   
-  <header>
-    <b>
-      Results:
-    </b>
-  </header>
-   
-  <p>
-    {"id":8238,"uid":"e3f80973-a749-452d-b28d-18ab3c292ac1","variety":"Brownie","topping":"Chocolate Sprinkles","flavor":"Cookies 'n Cream"}
-  </p>
-  <p>
-    {"id":2568,"uid":"cc8e1fc3-9836-42ac-a789-036cf08c59c7","variety":"Brownie","topping":"Frosting","flavor":"Butter Pecan"}
-  </p>
-  
-</section>
-`;
-
-exports[`Storyshots Components/Select/Select Multiple 1`] = `
+exports[`Storyshots Components/Select Multiple 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -1057,7 +350,7 @@ exports[`Storyshots Components/Select/Select Multiple 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
+exports[`Storyshots Components/Select Multiple Long 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2056,7 +1349,7 @@ exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
+exports[`Storyshots Components/Select Multiple Selected 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2278,7 +1571,7 @@ exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/Select Simple Long 1`] = `
+exports[`Storyshots Components/Select Simple Long 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -3276,7 +2569,7 @@ exports[`Storyshots Components/Select/Select Simple Long 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/Select Single 1`] = `
+exports[`Storyshots Components/Select Single 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -3452,7 +2745,7 @@ exports[`Storyshots Components/Select/Select Single 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select/Select Single Selected 1`] = `
+exports[`Storyshots Components/Select Single Selected 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -3630,127 +2923,899 @@ exports[`Storyshots Components/Select/Select Single Selected 1`] = `
 </section>
 `;
 
-exports[`Storyshots Internal/Button Inaccessible 1`] = `
+exports[`Storyshots Components/Textarea Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <button
-    class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
-    data-testid="btn-visible"
-    style="background-color: white"
-    type="button"
-  >
-    Button
-  </button>
-   
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
-</section>
-`;
-
-exports[`Storyshots Internal/Button Large 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="storybook-button storybook-button--large storybook-button--secondary svelte-wtisvu"
-    data-testid="btn-visible"
+  <div
     style=""
-    type="button"
   >
-    Button
-  </button>
-   
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
+    <div
+      class="textarea-style-secondary svelte-1v14knw"
+    >
+      <p>
+        <textarea
+          autocomplete="off"
+          class="autoExpand svelte-1v14knw"
+          cols="20"
+          data-max-rows=""
+          data-min-rows="3"
+          maxlength="-1"
+          minlength="-1"
+          placeholder="Digite algo:"
+          rows="3"
+          spellcheck="false"
+          wrap="soft"
+        />
+      </p>
+       
+      <label
+        class="label svelte-1v14knw"
+        for=""
+      >
+        Conte sua história
+      </label>
+       
+      <p
+        class="helper message svelte-1v14knw"
+      >
+        Digite o quanto você quiser
+      </p>
+       
+      <p
+        class="error message svelte-1v14knw"
+      >
+        deu ruim
+      </p>
+    </div>
+  </div>
 </section>
 `;
 
-exports[`Storyshots Internal/Button Primary 1`] = `
+exports[`Storyshots Internal Documentation/Components/Select/Components/OptionsList Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <button
-    class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
-    data-testid="btn-visible"
-    style=""
-    type="button"
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
   >
-    Button
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
   </button>
    
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
+  <button>
+    Focus Previous
   </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    null
+  </p>
+  
 </section>
 `;
 
-exports[`Storyshots Internal/Button Secondary 1`] = `
+exports[`Storyshots Internal Documentation/Components/Select/Components/OptionsList Focused 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <button
-    class="storybook-button storybook-button--medium storybook-button--secondary svelte-wtisvu"
-    data-testid="btn-visible"
-    style=""
-    type="button"
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
   >
-    Button
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn focused"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
   </button>
    
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
+  <button>
+    Focus Previous
   </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    null
+  </p>
+  
 </section>
 `;
 
-exports[`Storyshots Internal/Button Small 1`] = `
+exports[`Storyshots Internal Documentation/Components/Select/Components/OptionsList Focused Selected 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <button
-    class="storybook-button storybook-button--small storybook-button--secondary svelte-wtisvu"
-    data-testid="btn-visible"
-    style=""
-    type="button"
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
   >
-    Button
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn focused"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
   </button>
    
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
+  <button>
+    Focus Previous
   </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    {"text":"Bolo 0"}
+  </p>
+  
 </section>
 `;
 
-exports[`Storyshots Internal/Icon Default 1`] = `
+exports[`Storyshots Internal Documentation/Components/Select/Components/OptionsList Multiple 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <span
-    class="icon-phone"
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
+  >
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
+  </button>
+   
+  <button>
+    Focus Previous
+  </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  
+  
+</section>
+`;
+
+exports[`Storyshots Internal Documentation/Components/Select/Components/OptionsList Multiple Selected 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
+  >
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
+  </button>
+   
+  <button>
+    Focus Previous
+  </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    {"text":"Bolo 0"}
+  </p>
+  <p>
+    {"text":"Brigadeiro 0"}
+  </p>
+  <p>
+    {"text":"Pudim 0"}
+  </p>
+  <p>
+    {"text":"Torta alemã 0"}
+  </p>
+  
+  
+</section>
+`;
+
+exports[`Storyshots Internal Documentation/Components/Select/Components/OptionsList Single Selected 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
+  >
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
+  </button>
+   
+  <button>
+    Focus Previous
+  </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    {"text":"Brigadeiro 0"}
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Internal Documentation/Components/Select/Components/SearchInput Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <input
+    class="search svelte-1ara2mn"
+    placeholder="Pesquise ou Selecione..."
+    tabindex="-1"
+    type="text"
   />
+   
+  <header>
+    <b>
+      Results:
+    </b>
+  </header>
+   
+  <p>
+    {"id":8238,"uid":"e3f80973-a749-452d-b28d-18ab3c292ac1","variety":"Brownie","topping":"Chocolate Sprinkles","flavor":"Cookies 'n Cream"}
+  </p>
+  <p>
+    {"id":4642,"uid":"163d7644-8298-439d-b973-98123ef3f76e","variety":"Cobbler","topping":"Cheesecake Bites","flavor":"Apple"}
+  </p>
+  <p>
+    {"id":2568,"uid":"cc8e1fc3-9836-42ac-a789-036cf08c59c7","variety":"Brownie","topping":"Frosting","flavor":"Butter Pecan"}
+  </p>
+  <p>
+    {"id":7968,"uid":"3190bd87-d465-455e-9b39-d6a75dda2b1a","variety":"Cheesecake","topping":"Butterscotch Syrup","flavor":"Caramel"}
+  </p>
+  <p>
+    {"id":2068,"uid":"f0c31efb-47e9-4783-b87a-c2748072c2c5","variety":"Sweet Bread","topping":"Cookie Dough","flavor":"Green Tea"}
+  </p>
+  <p>
+    {"id":386,"uid":"c845f7eb-abbc-4d59-8875-21f41c01c907","variety":"Cookie","topping":"Walnuts","flavor":"Cherry"}
+  </p>
+  <p>
+    {"id":3302,"uid":"5a76f8a1-3035-46d0-8f0f-83e1f2708419","variety":"Ice Cream Cake","topping":"Peanut Butter","flavor":"Pumpkin"}
+  </p>
+  <p>
+    {"id":7,"uid":"699ca1b7-796f-42bc-bbaa-02e20b0320c9","variety":"Upside Down Pineapple Cake","topping":"Granola","flavor":"Green Tea"}
+  </p>
+  <p>
+    {"id":546,"uid":"824e205b-90d8-4f11-ab6a-58d83ce58d02","variety":"Sweet Bread","topping":"Peanuts","flavor":"Caramel"}
+  </p>
+  <p>
+    {"id":2190,"uid":"2974dc00-265e-4a3f-856d-3343dc99b678","variety":"Cake","topping":"Peanut Butter","flavor":"Blondie"}
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Internal Documentation/Components/Select/Components/SearchInput Multiple Fields Searching 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <input
+    class="search svelte-1ara2mn"
+    placeholder="Pesquise ou Selecione..."
+    tabindex="-1"
+    type="text"
+  />
+   
+  <header>
+    <b>
+      Results:
+    </b>
+  </header>
+   
+  <p>
+    {"id":8238,"uid":"e3f80973-a749-452d-b28d-18ab3c292ac1","variety":"Brownie","topping":"Chocolate Sprinkles","flavor":"Cookies 'n Cream"}
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Internal Documentation/Components/Select/Components/SearchInput Searching 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <input
+    class="search svelte-1ara2mn"
+    placeholder="Pesquise ou Selecione..."
+    tabindex="-1"
+    type="text"
+  />
+   
+  <header>
+    <b>
+      Results:
+    </b>
+  </header>
+   
+  <p>
+    {"id":8238,"uid":"e3f80973-a749-452d-b28d-18ab3c292ac1","variety":"Brownie","topping":"Chocolate Sprinkles","flavor":"Cookies 'n Cream"}
+  </p>
+  <p>
+    {"id":2568,"uid":"cc8e1fc3-9836-42ac-a789-036cf08c59c7","variety":"Brownie","topping":"Frosting","flavor":"Butter Pecan"}
+  </p>
+  
 </section>
 `;
