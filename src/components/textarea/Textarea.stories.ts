@@ -9,7 +9,7 @@ export default {
     textareaStyle: {
       control: {
         type: "select",
-        options: ["Primary", "Secondary", "Dark", "Light", "Custom"],
+        options: ["primary", "secondary", "dark", "light"],
       },
     },
     wrap: {
@@ -39,7 +39,7 @@ const Template = (_args: ArgType) => {
 export const Default = Template({
   label: "Conte sua história",
   placeholder: "Digite algo:",
-  textareaStyle: "Secondary",
+  textareaStyle: "secondary",
   style: "",
   helperText: "Digite o quanto você quiser",
 });

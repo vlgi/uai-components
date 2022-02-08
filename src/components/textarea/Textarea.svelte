@@ -1,7 +1,7 @@
 <script lang="ts">
-  type TtextareaStyle = "Primary" | "Secondary" | "Dark" | "Light" | "Custom";
-  /** choose default theme colors or "Custom" to set a custom color */
-  export let textareaStyle: TtextareaStyle = "Primary";
+  type TtextareaStyle = "primary" | "secondary" | "dark" | "light";
+  /** choose default theme colors */
+  export let textareaStyle: TtextareaStyle = "primary";
   /** pass the function to validation */
   export let validationFn = (value) => {}; //eslint-disable-line
   /** if you want to force invalid, change it to true */
@@ -105,7 +105,6 @@
     value = x;
   };
 
-
   function getScrollHeight(elm) {
     let savedValue = elm.value;
     elm.value = "";
@@ -164,70 +163,122 @@
     {label}
   </label>
 
-  <p class="helper" class:helper-show={helper}>{helperText}</p>
-  <p class="error" class:error-show={invalid} class:MsgUp>{eMsg}</p>
+  <p class="helper message" class:helper-show={helper}>{helperText}</p>
+  <p class="error message" class:error-show={invalid} class:MsgUp>{eMsg}</p>
 </div>
 
 <style lang="scss">
   div {
+    --label-color: var(--szot-label-color, var(--default-label-color));
+    --label-padding: var(--szot-label-padding, 0 0.1875rem);
+    --label-font-size: var(--szot-label-font-size, 0.75rem);
+    --label-font-weight: var(--szot-label-font-weight, 600);
+    --label-background-color: var(--szot-label-background-color, white);
+
+    --textarea-color: var(--szot-textarea-color, var(--default-textarea-color));
+    --border-color: var(--szot-border-color, var(--default-border-color));
+    --placeholder-color: var(
+      --szot-placeholder-color,
+      var(--default-placeholder-color)
+    );
+    --placeholder-font-size: var(--szot-placeholder-font-size, 0.8rem);
+
+    --margin-bottom: var(--szot-margin-bottom, 1.5rem);
+    --max-width: var(--szot-fields-max-width, var(--theme-fields-max-width));
+    --max-height: var(--szot-max-height, var(--theme-fields-height));
+    --font-size: var(--szot-font-size, 1rem);
+    --resize: var(--szot-resize, none);
+
+    --message-font-size: var(--szot-message-font-size, 0.6875rem);
+    --message-bottom: var(--szot-texthelp-bottom, -0.85rem);
+    --message-left: var(--szot-texthelp-left, 1rem);
+    --message-error-bottom-focus: var(
+      --szot-message-error-bottom-focus,
+      -1.6rem
+    );
+    --border-radius: var(--szot-border-radius, var(--theme-small-shape));
+
+    &.textarea-style-primary {
+      --default-label-color: var(--theme-primary-txt);
+      --default-textarea-color: var(--theme-primary-txt);
+      --default-border-color: var(--theme-primary-txt);
+      --default-placeholder-color: var(--theme-primary-txt);
+    }
+    &.textarea-style-secondary {
+      --default-label-color: var(--theme-secondary-txt);
+      --default-textarea-color: var(--theme-secondary-txt);
+      --default-border-color: var(--theme-secondary-txt);
+      --default-placeholder-color: var(--theme-secondary-txt);
+    }
+    &.textarea-style-dark {
+      --default-label-color: var(--theme-dark-txt);
+      --default-textarea-color: var(--theme-dark-txt);
+      --default-border-color: var(--theme-dark-txt);
+      --default-placeholder-color: var(--theme-dark-txt);
+    }
+    &.textarea-style-light {
+      --default-label-color: var(--theme-light-txt);
+      --default-textarea-color: var(--theme-light-txt);
+      --default-border-color: var(--theme-light-txt);
+      --default-placeholder-color: var(--theme-light-txt);
+    }
+
     position: relative;
-    margin-bottom: var(--szot-margin-bottom, 1.5rem);
+    margin-bottom: var(--margin-bottom);
     font-family: var(--theme-font-family);
   }
   .label {
     position: absolute;
-    top: -0.65rem;
-    left: 0.6rem;
+    top: -0.5rem;
+    left: 0.8rem;
+    padding: var(--label-padding);
+    font-size: var(--label-font-size);
+    font-weight: var(--label-font-weight, 600);
 
-    padding: var(--szot-label-padding, 0 0.1875rem);
-    font-size: var(--szot-label-font-size, 0.75rem);
-    font-weight: var(--szot-label-font-weight, 600);
-    line-height: var(--szot-label-line-height, 1rem);
-
-    color: var(--szot-label-color, #a0a0a0);
-    background-color: var(--szot-label-background-color, white);
+    color: var(--label-color);
+    background-color: var(--label-background-color, white);
   }
 
   textarea {
     position: relative;
     box-sizing: padding-box;
     overflow-y: auto;
-    color: var(--szot-textarea-color, #838383);
+    color: var(--textarea-color);
     background-color: transparent;
     min-width: 10rem;
     min-height: 3rem;
 
     padding: var(--theme-global-small-padding);
-    width: var(--szot-width, 12rem);
+    max-width: var(--max-width);
 
-    max-height: var(--theme-fields-max-width);
-    font-size: var(--theme-p-font-size);
+    max-height: var(--max-height);
+    font-size: var(--font-size);
 
     border: var(--theme-small-border);
-    border-color: var(--szot-border-color, #5f5f5f);
-    border-radius: var(--theme-large-shape);
-    resize: var(--szot-resize, none);
+    border-color: var(--border-color);
+    border-radius: var(--border-radius);
+    resize: var(--resize);
 
     scrollbar-width: none;
     &::-webkit-input-placeholder {
-      font-size: var(--szot-placeholder-font-size, 0.8rem);
-      color: var(--szot-placeholder-color, #838383);
+      font-size: var(--placeholder-font-size);
+      color: var(--placeholder-color);
     }
     &:-moz-placeholder {
       /* Firefox 18- */
-      font-size: var(--szot-placeholder-font-size, 0.8rem);
-      color: var(--szot-placeholder-color, #838383);
+      font-size: var(--placeholder-font-size);
+      color: var(--placeholder-color);
     }
 
     &::-moz-placeholder {
       /* Firefox 19+ */
-      font-size: var(--szot-placeholder-font-size, 0.8rem);
-      color: var(--szot-placeholder-color, #838383);
+      font-size: var(--placeholder-font-size);
+      color: var(--placeholder-color);
     }
 
     &:-ms-input-placeholder {
-      font-size: var(--szot-placeholder-font-size, 0.8rem);
-      color: var(--szot-placeholder-color, #838383);
+      font-size: var(--placeholder-font-size);
+      color: var(--placeholder-color);
     }
 
     &:focus {
@@ -244,30 +295,6 @@
       background-clip: content-box;
       border: 5px solid trasparent;
     }
-  }
-  .textarea-style-Primary {
-    --szot-label-color: var(--theme-primary-txt);
-    --szot-textarea-color: var(--theme-primary-txt);
-    --szot-border-color: var(--theme-primary-txt);
-    --szot-placeholder-color: var(--theme-primary-txt);
-  }
-  .textarea-style-Secondary {
-    --szot-label-color: var(--theme-secondary-txt);
-    --szot-textarea-color: var(--theme-secondary-txt);
-    --szot-border-color: var(--theme-secondary-txt);
-    --szot-placeholder-color: var(--theme-secondary-txt);
-  }
-  .textarea-style-Dark {
-    --szot-label-color: var(--theme-dark-txt);
-    --szot-textarea-color: var(--theme-dark-txt);
-    --szot-border-color: var(--theme-dark-txt);
-    --szot-placeholder-color: var(--theme-dark-txt);
-  }
-  .textarea-style-Light {
-    --szot-label-color: var(--theme-light-txt);
-    --szot-textarea-color: var(--theme-light-txt);
-    --szot-border-color: var(--theme-light-txt);
-    --szot-placeholder-color: var(--theme-light-txt);
   }
   .invalid {
     textarea {
@@ -295,40 +322,37 @@
       color: var(--theme-error);
     }
   }
-  .helper {
+  .message {
     position: absolute;
     z-index: 1;
-    font-size: var(--szot-message-font-size, 0.5rem);
+    max-width: 11rem;
+    font-size: var(--message-font-size);
+    bottom: var(--message-bottom);
+    left: var(--message-left);
 
-    bottom: var(--szot-texthelp-bottom, -0.75rem);
-    left: var(--szot-texthelp-left, 1rem);
-    color: var(--theme-info);
-    opacity: 0;
-    transition: opacity 0.5s linear, bottom 0.5s;
-  }
-  .helper-show {
-    opacity: 0.75;
-    color: var(--theme-info);
-    transition: opacity 0.5s linear, bottom 0.5s;
-  }
-  .error {
-    position: absolute;
-    z-index: 1;
-    font-size: var(--szot-message-font-size, 0.5rem);
-
-    bottom: var(--szot-texterror-bottom, -0.75rem);
-    left: var(--szot-texterror-left, 1rem);
-    color: var(--theme-error);
-    opacity: 0;
-    transition: opacity 0.5s linear, bottom 0.5s;
-  }
-  .error-show {
-    color: var(--theme-error);
-    opacity: 0.75;
-    transition: opacity 0.5s linear, bottom 0.5s;
-  }
-  .MsgUp {
-    bottom: var(--szot-texterror-bottom-focus, -1.25rem);
-    transition: opacity 0.5s linear, bottom 0.5s;
+    &.helper {
+      color: var(--theme-info);
+      opacity: 0;
+      transition: opacity 0.5s linear, bottom 0.5s;
+    }
+    &.helper-show {
+      opacity: 0.75;
+      color: var(--theme-info);
+      transition: opacity 0.5s linear, bottom 0.5s;
+    }
+    &.error {
+      color: var(--theme-error);
+      opacity: 0;
+      transition: opacity 0.5s linear, bottom 0.5s;
+    }
+    &.error-show {
+      color: var(--theme-error);
+      opacity: 0.75;
+      transition: opacity 0.5s linear, bottom 0.5s;
+    }
+    &.MsgUp {
+      bottom: var(--message-error-bottom-focus);
+      transition: opacity 0.5s linear, bottom 0.5s;
+    }
   }
 </style>

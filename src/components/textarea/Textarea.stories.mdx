@@ -10,12 +10,6 @@ import Textarea from "./TextareaWrapperForTest.svelte";
 
 ##### Gerais
 
-<p>
-  {" "}
-  to customize the text colors of the textarea, label and borders it is
-  necessary that the "textareaStyle" is "Custom"{" "}
-</p>
-
 | CSS Property         | Descripiton                 |
 | -------------------- | --------------------------- |
 | --szot-margin-bottom | Set component bottom margin |
@@ -24,8 +18,10 @@ import Textarea from "./TextareaWrapperForTest.svelte";
 
 | CSS Property                 | Descripiton                                |
 | ---------------------------- | ------------------------------------------ |
-| --szot-width                 | Sets the width of the textarea             |
+| --szot-max-width             | Sets the max-width of the textarea         |
 | --szot-resize                | Sets whether an element is user resizable. |
+| --szot-max-height            | sets the maximum height of the textarea    |
+| --szot-font-size             | Set the font size of textarea              |
 | --szot-placeholder-font-size | Sets the placeholder font size             |
 | --szot-placeholder-color     | Sets placeholder color                     |
 | --szot-textarea-color        | Set textarea text color                    |
@@ -35,7 +31,6 @@ import Textarea from "./TextareaWrapperForTest.svelte";
 
 | CSS Property             | Descripiton                                                                                           |
 | ------------------------ | ----------------------------------------------------------------------------------------------------- | --- |
-| --szot-label-line-height | Sets the height of the label line                                                                     |
 | --szot-label-font-weight | Sets the weight of the label                                                                          |     |
 | --szot-label-font-size   | Set the font size of the label                                                                        |
 | --szot-label-padding     | Set the label padding                                                                                 |
@@ -44,14 +39,12 @@ import Textarea from "./TextareaWrapperForTest.svelte";
 
 ##### Messages
 
-| CSS Property                  | Descripiton                                                     |
-| ----------------------------- | --------------------------------------------------------------- |
-| --szot-message-font-size      | Set the font size of messages                                   |
-| --szot-texthelp-bottom        | Set helper text position down                                   |
-| --szot-texthelp-left          | Set helper text position to left                                |
-| --szot-texterror-bottom       | Set the error text position to the bottom                       |
-| --szot-texterror-left         | Set error text position to left                                 |
-| --szot-texterror-bottom-focus | Set error text position to low when helper text is also showing |
+| CSS Property                      | Descripiton                                                     |
+| --------------------------------- | --------------------------------------------------------------- |
+| --szot-message-font-size          | Set the font size of messages                                   |
+| --szot-message-bottom             | Set message text position to the bottom                         |
+| --szot-message-left               | Set message position to left                                    |
+| --szot-message-error-bottom-focus | Set error text position to low when helper text is also showing |
 
 <p>
   In addition to these variables, this component also uses the theme variables
@@ -80,7 +73,7 @@ export const Template = (args) => ({
 });
 
 export let validteste = (value) => {
-  if (value === "mostre um erro") {
+  if (value === "erro") {
     return "Aqui está o erro.";
   }
   return true;
@@ -92,13 +85,12 @@ export let validteste = (value) => {
     validationFn: validteste,
     label: "Teste",
     placeholder: "Aqui o tamanho é estático, então haverá scroll",
-    helperText: "Digite 'mostre um erro' para ser invalido",
+    helperText: "Digite 'erro' para ser invalido",
     type: "text",
-    textareaStyle: "Custom",
     rows: 4,
     maxRows: 4,
     style:
-      "--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-textarea-color: #db984b;--szot-border-color: #c56d09;--szot-placeholder-color:#db984b;",
+      "--szot-border-radius: 1.5rem; --szot-max-height: 5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-textarea-color: #db984b;--szot-border-color: #c56d09;--szot-placeholder-color:#db984b;",
   }}
 >
   >{Template.bind({})}
