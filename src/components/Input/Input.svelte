@@ -297,8 +297,6 @@
     color: var(--label-color);
     font-size: var(--label-font-size);
     background-color: var(--background-color);
-    text-align: center;
-
     transition: 0.2s;
   }
   .icons-left {
