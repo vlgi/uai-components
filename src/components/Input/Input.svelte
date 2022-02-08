@@ -12,10 +12,10 @@
   /** choose border type */
   export let border: Tborders = "Outline";
 
-  type TborderStyle = "Primary" | "Secondary" | "Dark" | "Light" | "Custom";
+  type TborderStyle = "primary" | "secondary" | "dark" | "light";
 
   /** choose default theme colors or "Custom" to set a custom color */
-  export let inputStyle: TborderStyle = "Primary";
+  export let inputStyle: TborderStyle = "primary";
 
   /** write a helpertext if needed */
   export let helperText = "";
@@ -151,67 +151,156 @@
 
 <style lang="scss">
   .form-div {
+    --margin-bottom: var(--szot-margin-bottom, 1.5rem);
+    --width: var(--szot-width, 12rem);
+    --height: var(--szot-height, var(--theme-fields-height));
+
+    --input-top: var(--szot-input-top, 0);
+    --input-left: var(--szot-input-left, 0);
+    --input-font-size: var(--szot-input-font-size, 0.625rem);
+    --input-padding: var(--szot-input-padding, 0rem 1rem);
+    --input-color: var(--szot-input-color, var(--default-input-color));
+    --border-color: var(--szot-border-color, var(--default-border-color));
+    --border-radius: var(--szot-border-radius, var(--theme-small-shape));
+
+    --label-left: var(--szot-label-left, 1.2rem);
+    --label-padding: var(--szot-label-padding, 0rem);
+    --label-color: var(--szot-label-color, var(--default-label-color));
+    --label-font-size: var(--szot-label-font-size, 0.8125rem);
+    --background-color: var(--szot-background-color, white);
+
+    --label-focus-left: var(--szot-label-focus-left, 0.8rem);
+    --input-focus-weigth: var(--szot-input-focus-weigth, 400);
+    --input-focus-font-size: var(--szot-input-focus-font-size, 0.6875rem);
+    --input-focus-color: var(
+      --szot-input-focus-color,
+      var(--default-input-focus-color)
+    );
+    --border-color-focus: var(
+      --szot-border-color-focus,
+      var(--default-border-color-focus)
+    );
+
+    --icon-margin: var(--szot-icon-margin, 0.5rem 0.5rem);
+    --icon-color: var(--szot-icon-color, var(--default-icon-color));
+
+    --message-font-size: var(--szot-message-font-size, 0.6875rem);
+    --message-bottom: var(--szot-texthelp-bottom, -1.2rem);
+    --message-left: var(--szot-texthelp-left, 1rem);
+    --message-error-bottom-focus: var(--szot-message-error-bottom-focus, -2rem);
+    &.input-style-primary {
+      --default-label-color: var(--theme-primary-txt);
+      --default-input-color: var(--theme-primary-txt);
+      --default-icon-color: var(--theme-primary-txt);
+      --default-input-focus-color: var(--theme-primary-txt);
+      --default-border-color-focus: var(--theme-primary-txt);
+      --default-border-color: var(--theme-primary-txt);
+    }
+
+    &.input-style-secondary {
+      --default-label-color: var(--theme-secondary-txt);
+      --default-input-color: var(--theme-secondary-txt);
+      --default-icon-color: var(--theme-secondary-txt);
+      --default-input-focus-color: var(--theme-secondary-txt);
+      --default-border-color-focus: var(--theme-secondary-txt);
+      --default-border-color: var(--theme-secondary-txt);
+    }
+
+    &.input-style-dark {
+      --default-label-color: var(--theme-dark-txt);
+      --default-input-color: var(--theme-dark-txt);
+      --default-icon-color: var(--theme-dark-txt);
+      --default-input-focus-color: var(--theme-dark-txt);
+      --default-border-color-focus: var(--theme-dark-txt);
+      --default-border-color: var(--theme-dark-txt);
+    }
+    &.input-style-light {
+      --default-label-color: var(--theme-light-txt);
+      --default-input-color: var(--theme-light-txt);
+      --default-icon-color: var(--theme-light-txt);
+      --default-input-focus-color: var(--theme-light-txt);
+      --default-border-color-focus: var(--theme-light-txt);
+      --default-border-color: var(--theme-ligth-txt);
+    }
+    &.invalid {
+      .form-input {
+        border-color: var(--theme-error);
+        color: var(--theme-error);
+        + .form-label + .icon {
+          color: var(--theme-error);
+        }
+        + .form-label {
+          color: var(--theme-error);
+        }
+        &:focus {
+          border-color: var(--theme-error);
+        }
+      }
+    }
     position: relative;
-    height: var(--theme-fields-height);
-    margin-bottom: var(--szot-margin-bottom, 1.5rem);
-    width: var(--szot-width, 16rem);
+    height: var(--height);
+    margin-bottom: var(--margin-bottom);
+    width: var(--width);
     max-width: var(--theme-fields-max-width);
     box-sizing: border-box;
-    font-family: var(--theme-font-family);
   }
 
   .form-input {
+    &.border-Bottom {
+      border: 0;
+      border-bottom: var(--theme-small-border);
+      border-color: var(--border-color);
+    }
+    &.border-Outline {
+      border: var(--theme-small-border);
+      border-color: var(--border-color);
+      border-radius: var(--border-radius);
+    }
+
     position: absolute;
-    top: var(--szot-input-top, 0);
-    left: var(--szot-input-left, 0);
     width: 100%;
     height: 100%;
-    font-size: var(--szot-input-font-size, 0.625rem);
+    font-size: var(--input-font-size);
     outline: none;
-    padding: var(--szot-input-padding, 0rem 1rem);
+    padding: var(--input-padding);
     background: none;
     z-index: 1;
-    color: var(--szot-input-color, #b1b1b1);
+    color: var(--input-color);
 
     &:focus + .form-label {
-      top: var(--szot-label-focus-top, -0.7rem);
-      left: var(--szot-label-focus-left, 0.8rem);
       z-index: 10;
-      font-weight: var(--szot-input-focus-weigth, 400);
-      color: var(--szot-input-focus-color);
-      font-size: var(--szot-input-focus-font-size, 0.6875rem);
-      border-color: var(--szot-border-color-focus);
+      top: 0;
+      left: var(--label-focus-left);
+      transform: translateY(-55%);
+      font-weight: var(--input-focus-weigth);
+      color: var(--input-focus-color);
+      font-size: var(--input-focus-font-size);
+      border-color: var(--border-color-focus);
     }
     &:not(:placeholder-shown).form-input:not(:focus) + .form-label {
-      top: var(--szot-label-focus-top, -0.7rem);
-      left: var(--szot-label-focus-left, 0.8rem);
+      top: 0;
+      left: var(--label-focus-left);
+      transform: translateY(-55%);
       z-index: 10;
-      font-weight: var(--szot-label-not-focus-font-weight, 400);
-      font-size: var(--szot-label-not-focus-font-size, 0.6875rem);
+      font-weight: var(--input-focus-weigth);
+      font-size: var(--input-focus-font-size);
     }
   }
+
   .form-label {
-    position: relative;
-    left: var(--szot-label-left, 1.2rem);
-    top: var(--szot-label-top, 0.5rem);
-    padding: var(--szot-label-padding, 0rem);
-    color: var(--szot-label-color, #5f5f5f);
-    font-size: var(--szot-label-font-size, 0.8125rem);
-    background-color: var(--szot-background-color, #ffff);
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: var(--label-left);
+    transform: translateY(-50%);
+    padding: var(--label-padding);
+    color: var(--label-color);
+    font-size: var(--label-font-size);
+    background-color: var(--background-color);
+    text-align: center;
+
     transition: 0.2s;
   }
-
-  .border-Bottom {
-    border: 0;
-    border-bottom: var(--theme-small-border);
-    border-color: var(--szot-border-color);
-  }
-  .border-Outline {
-    border: var(--theme-small-border);
-    border-color: var(--szot-border-color);
-    border-radius: var(--theme-large-shape);
-  }
-
   .icons-left {
     .form-input {
       padding: 1rem 1rem 1rem 2rem;
@@ -224,8 +313,8 @@
     .icon {
       position: absolute;
       left: 0;
-      margin: var(--szot-icon-margin, -0.6rem 0.5rem);
-      color: var(--szot-icon-color, #5f5f5f);
+      margin: var(--icon-margin);
+      color: var(--icon-color);
     }
   }
 
@@ -237,92 +326,41 @@
     .icon {
       position: absolute;
       right: 0;
-      margin: var(--szot-icon-margin, -0.6rem 0.5rem);
-      color: var(--szot-icon-color, #5f5f5f);
+      margin: var(--icon-margin);
+      color: var(--icon-color);
     }
   }
-  .input-style-Primary {
-    --szot-label-color: var(--theme-primary-txt);
-    --szot-input-color: var(--theme-primary-txt);
-    --szot-icon-color: var(--theme-primary-txt);
-    --szot-input-focus-color: var(--theme-primary-txt);
-    --szot-border-color-focus: var(--theme-primary-txt);
-    --szot-border-color: var(--theme-primary-txt);
-  }
-
-  .input-style-Secondary {
-    --szot-label-color: var(--theme-secondary-txt);
-    --szot-icon-color: var(--theme-secondary-txt);
-    --szot-input-color: var(--theme-secondary-txt);
-    --szot-input-focus-color: var(--theme-secondary-txt);
-    --szot-border-color-focus: var(--theme-secondary-txt);
-    --szot-border-color: var(--theme-secondary-txt);
-  }
-
-  .input-style-Dark {
-    --szot-label-color: var(--theme-dark-txt);
-    --szot-icon-color: var(--theme-dark-txt);
-    --szot-input-color: var(--theme-dark-txt);
-    --szot-input-focus-color: var(--theme-dark-txt);
-    --szot-border-color-focus: var(--theme-dark-txt);
-    --szot-border-color: var(--theme-dark-txt);
-  }
-  .input-style-Light {
-    --szot-label-color: var(--theme-light-txt);
-    --szot-icon-color: var(--theme-light-txt);
-    --szot-input-color: var(--theme-light-txt);
-    --szot-input-focus-color: var(--theme-light-txt);
-    --szot-border-color-focus: var(--theme-light-txt);
-    --szot-border-color: var(--theme-ligth-txt);
-  }
-  .invalid {
-    .form-input {
-      border-color: var(--theme-error);
-      color: var(--theme-error);
-      + .form-label + .icon {
-        color: var(--theme-error);
-      }
-      + .form-label {
-        color: var(--theme-error);
-      }
-      &:focus {
-        border-color: var(--theme-error);
-      }
-    }
-  }
-
   p {
     position: absolute;
     z-index: 1;
-    font-size: var(--szot-message-font-size, 0.25em);
+    font-size: var(--message-font-size);
     transition: opacity 0.5s linear, bottom 0.5s;
-  }
-  .helper {
-    bottom: var(--szot-texthelp-bottom, -1rem);
-    left: var(--szot-texthelp-left, 1rem);
-    color: var(--theme-info);
-    opacity: 0;
-    transition: opacity 0.5s linear, bottom 0.5s;
-  }
-  .helper-show {
-    opacity: 0.75;
-    color: var(--theme-info);
-    transition: opacity 0.5s linear, bottom 0.5s;
-  }
-  .error {
-    bottom: var(--szot-texterror-bottom, -1rem);
-    left: var(--szot-texterror-left, 1rem);
-    color: var(--theme-error);
-    opacity: 0;
-    transition: opacity 0.5s linear, bottom 0.5s;
-  }
-  .error-show {
-    color: var(--theme-error);
-    opacity: 0.75;
-    transition: opacity 0.5s linear, bottom 0.5s;
-  }
-  .MsgUp {
-    bottom: var(--szot-texterror-bottom-focus, -1.5rem);
-    transition: opacity 0.5s linear, bottom 0.5s;
+    bottom: var(--message-bottom);
+    left: var(--message-left);
+
+    &.helper {
+      color: var(--theme-info);
+      opacity: 0;
+      transition: opacity 0.5s linear, bottom 0.5s;
+    }
+    &.helper-show {
+      opacity: 0.75;
+      color: var(--theme-info);
+      transition: opacity 0.5s linear, bottom 0.5s;
+    }
+    &.error {
+      color: var(--theme-error);
+      opacity: 0;
+      transition: opacity 0.5s linear, bottom 0.5s;
+    }
+    &.error-show {
+      color: var(--theme-error);
+      opacity: 0.75;
+      transition: opacity 0.5s linear, bottom 0.5s;
+    }
+    &.MsgUp {
+      bottom: var(--message-error-bottom-focus);
+      transition: opacity 0.5s linear, bottom 0.5s;
+    }
   }
 </style>

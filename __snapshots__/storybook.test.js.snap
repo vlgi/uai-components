@@ -30,6 +30,259 @@ exports[`Storyshots Components/Badge Theme 1`] = `
 </section>
 `;
 
+exports[`Storyshots Components/Input Borders None 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-170l5hf"
+    >
+      <input
+        autocomplete="off"
+        class="form-input border-Bottom svelte-170l5hf"
+        max=""
+        min=""
+        name=""
+        placeholder=" "
+        step=""
+        type="password"
+      />
+       
+      <label
+        class="form-label svelte-170l5hf"
+        for=""
+      >
+        Senha
+      </label>
+       
+      <div
+        class="icon svelte-170l5hf"
+      >
+        <span
+          class="icon-none"
+        />
+      </div>
+       
+      <p
+        class="helper svelte-170l5hf"
+      >
+        
+      </p>
+       
+      <p
+        class="error svelte-170l5hf"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <div
+      class="form-div input-style-primary svelte-170l5hf"
+    >
+      <input
+        autocomplete="off"
+        class="form-input border-Outline svelte-170l5hf"
+        max=""
+        min=""
+        name=""
+        placeholder=" "
+        step=""
+        type="email"
+      />
+       
+      <label
+        class="form-label svelte-170l5hf"
+        for=""
+      >
+        Email
+      </label>
+       
+      <div
+        class="icon svelte-170l5hf"
+      >
+        <span
+          class="icon-none"
+        />
+      </div>
+       
+      <p
+        class="helper svelte-170l5hf"
+      >
+        Digite um email válido
+      </p>
+       
+      <p
+        class="error svelte-170l5hf"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Readonly 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-170l5hf icons-right"
+    >
+      <input
+        autocomplete="off"
+        class="form-input border-Outline svelte-170l5hf"
+        max=""
+        min=""
+        name=""
+        placeholder=" "
+        readonly=""
+        step=""
+        type="text"
+      />
+       
+      <label
+        class="form-label svelte-170l5hf"
+        for=""
+      >
+        Aviso
+      </label>
+       
+      <div
+        class="icon svelte-170l5hf"
+      >
+        <span
+          class="icon-info"
+        />
+      </div>
+       
+      <p
+        class="helper svelte-170l5hf"
+      >
+        Apenas um exemplo
+      </p>
+       
+      <p
+        class="error svelte-170l5hf"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Whith Icon 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-170l5hf icons-right"
+    >
+      <input
+        autocomplete="off"
+        class="form-input border-Bottom svelte-170l5hf"
+        max=""
+        min=""
+        name=""
+        placeholder=" "
+        step=""
+        type="tel"
+      />
+       
+      <label
+        class="form-label svelte-170l5hf"
+        for=""
+      >
+        Celular 1
+      </label>
+       
+      <div
+        class="icon svelte-170l5hf"
+      >
+        <span
+          class="icon-phone"
+        />
+      </div>
+       
+      <p
+        class="helper svelte-170l5hf"
+      >
+        
+      </p>
+       
+      <p
+        class="error svelte-170l5hf"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Whith Icon Left 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-170l5hf icons-left"
+    >
+      <input
+        autocomplete="off"
+        class="form-input border-Outline svelte-170l5hf"
+        max=""
+        min=""
+        name=""
+        placeholder=" "
+        step=""
+        type="tel"
+      />
+       
+      <label
+        class="form-label svelte-170l5hf"
+        for=""
+      >
+        Celular 2
+      </label>
+       
+      <div
+        class="icon svelte-170l5hf"
+      >
+        <span
+          class="icon-phone"
+        />
+      </div>
+       
+      <p
+        class="helper svelte-170l5hf"
+      >
+        
+      </p>
+       
+      <p
+        class="error svelte-170l5hf"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
 exports[`Storyshots External/SveltePdfViewer Default 1`] = `
 <section
   class="storybook-snapshot-container"

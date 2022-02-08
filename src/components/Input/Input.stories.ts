@@ -9,7 +9,7 @@ export default {
     inputStyle: {
       control: {
         type: "select",
-        options: ["Primary", "Secondary", "Dark", "Light", "Custom"],
+        options: ["primary", "secondary", "dark", "light"],
       },
     },
     iconPosition: {
