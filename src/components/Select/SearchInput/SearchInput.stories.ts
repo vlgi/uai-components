@@ -5,7 +5,7 @@ import SearchInput from "./SearchInput.svelte";
 import SearchInputWrapper from "./SearchInputWrapper.svelte";
 
 export default {
-  title: "Components/Select/Internals/SearchInput",
+  title: "Internal Documentation/Components/Select/Components/SearchInput",
   component: SearchInput,
 };
 

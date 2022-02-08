@@ -4,7 +4,7 @@ import Button from "./Button.svelte";
 import ButtonWrapperForTestSlot from "./ButtonWrapperForTestSlot.svelte";
 
 export default {
-  title: "Internal/Button",
+  title: "Components/Button",
   component: Button,
   argTypes: {
     onClick: { action: "onClick" },
