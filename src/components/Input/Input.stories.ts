@@ -21,7 +21,7 @@ export default {
     border: {
       control: {
         type: "select",
-        options: ["Bottom", "Outline"],
+        options: ["bottom", "outline"],
       },
     },
     pattern: {
@@ -52,13 +52,13 @@ export const Default = Template({
 export const BordersNone = Template({
   label: "Senha",
   type: "password",
-  border: "Bottom",
+  border: "bottom",
 });
 
 export const WhithIcon = Template({
   label: "Celular 1",
   type: "tel",
-  border: "Bottom",
+  border: "bottom",
   icon: "phone",
 });
 

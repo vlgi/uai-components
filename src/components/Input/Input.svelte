@@ -8,13 +8,13 @@
   /** if there is an icon define if it goes to the left or to the right */
   export let iconPosition: TpositionIcon = "right";
 
-  type Tborders = "Bottom" | "Outline";
+  type Tborders = "bottom" | "outline";
   /** choose border type */
-  export let border: Tborders = "Outline";
+  export let border: Tborders = "outline";
 
   type TborderStyle = "primary" | "secondary" | "dark" | "light";
 
-  /** choose default theme colors or "Custom" to set a custom color */
+  /** choose default theme colors*/
   export let inputStyle: TborderStyle = "primary";
 
   /** write a helpertext if needed */
@@ -246,12 +246,12 @@
   }
 
   .form-input {
-    &.border-Bottom {
+    &.border-bottom {
       border: 0;
       border-bottom: var(--theme-small-border);
       border-color: var(--border-color);
     }
-    &.border-Outline {
+    &.border-outline {
       border: var(--theme-small-border);
       border-color: var(--border-color);
       border-radius: var(--border-radius);
