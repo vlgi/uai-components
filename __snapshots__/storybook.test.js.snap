@@ -1,5 +1,3637 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Components/Badge Border 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <span
+      class="badge outline svelte-zsk4sa"
+    >
+      Badge
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Badge Theme 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <span
+      class="badge dark svelte-zsk4sa"
+    >
+      Badge
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Select/Internals/OptionsList Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
+  >
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
+  </button>
+   
+  <button>
+    Focus Previous
+  </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    undefined
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Internals/OptionsList Focused 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
+  >
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn focused"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
+  </button>
+   
+  <button>
+    Focus Previous
+  </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    undefined
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Internals/OptionsList Focused Selected 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
+  >
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn focused"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
+  </button>
+   
+  <button>
+    Focus Previous
+  </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    {"text":"Bolo 0"}
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Internals/OptionsList Multiple 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
+  >
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
+  </button>
+   
+  <button>
+    Focus Previous
+  </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Internals/OptionsList Multiple Selected 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
+  >
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
+  </button>
+   
+  <button>
+    Focus Previous
+  </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    {"text":"Bolo 0"}
+  </p>
+  <p>
+    {"text":"Brigadeiro 0"}
+  </p>
+  <p>
+    {"text":"Pudim 0"}
+  </p>
+  <p>
+    {"text":"Torta alemã 0"}
+  </p>
+  
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Internals/OptionsList Single Selected 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-labelledby="doce-label"
+    class="select-menu svelte-12mc5sn"
+    id="doce-listbox"
+    role="listbox"
+    tabindex="-1"
+  >
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn selected"
+      role="option"
+      tabindex="-1"
+    >
+      Brigadeiro 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pudim 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Rabanada 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Beijinho 0
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Torta alemã 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Pavê 1
+       
+    </div>
+    <div
+      class="select-option svelte-12mc5sn"
+      role="option"
+      tabindex="-1"
+    >
+      Bolo 1
+       
+    </div>
+    
+  </div>
+   
+  <button>
+    Focus Next
+  </button>
+   
+  <button>
+    Focus Previous
+  </button>
+   
+  <button>
+    Toggle Focused
+  </button>
+   
+  <button>
+    Unfocus Items
+  </button>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    {"text":"Brigadeiro 0"}
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Internals/SearchInput Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <input
+    class="search svelte-1ara2mn"
+    placeholder="Pesquise ou Selecione..."
+    tabindex="-1"
+    type="text"
+  />
+   
+  <header>
+    <b>
+      Results:
+    </b>
+  </header>
+   
+  <p>
+    {"id":8238,"uid":"e3f80973-a749-452d-b28d-18ab3c292ac1","variety":"Brownie","topping":"Chocolate Sprinkles","flavor":"Cookies 'n Cream"}
+  </p>
+  <p>
+    {"id":4642,"uid":"163d7644-8298-439d-b973-98123ef3f76e","variety":"Cobbler","topping":"Cheesecake Bites","flavor":"Apple"}
+  </p>
+  <p>
+    {"id":2568,"uid":"cc8e1fc3-9836-42ac-a789-036cf08c59c7","variety":"Brownie","topping":"Frosting","flavor":"Butter Pecan"}
+  </p>
+  <p>
+    {"id":7968,"uid":"3190bd87-d465-455e-9b39-d6a75dda2b1a","variety":"Cheesecake","topping":"Butterscotch Syrup","flavor":"Caramel"}
+  </p>
+  <p>
+    {"id":2068,"uid":"f0c31efb-47e9-4783-b87a-c2748072c2c5","variety":"Sweet Bread","topping":"Cookie Dough","flavor":"Green Tea"}
+  </p>
+  <p>
+    {"id":386,"uid":"c845f7eb-abbc-4d59-8875-21f41c01c907","variety":"Cookie","topping":"Walnuts","flavor":"Cherry"}
+  </p>
+  <p>
+    {"id":3302,"uid":"5a76f8a1-3035-46d0-8f0f-83e1f2708419","variety":"Ice Cream Cake","topping":"Peanut Butter","flavor":"Pumpkin"}
+  </p>
+  <p>
+    {"id":7,"uid":"699ca1b7-796f-42bc-bbaa-02e20b0320c9","variety":"Upside Down Pineapple Cake","topping":"Granola","flavor":"Green Tea"}
+  </p>
+  <p>
+    {"id":546,"uid":"824e205b-90d8-4f11-ab6a-58d83ce58d02","variety":"Sweet Bread","topping":"Peanuts","flavor":"Caramel"}
+  </p>
+  <p>
+    {"id":2190,"uid":"2974dc00-265e-4a3f-856d-3343dc99b678","variety":"Cake","topping":"Peanut Butter","flavor":"Blondie"}
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Internals/SearchInput Multiple Fields Searching 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <input
+    class="search svelte-1ara2mn"
+    placeholder="Pesquise ou Selecione..."
+    tabindex="-1"
+    type="text"
+  />
+   
+  <header>
+    <b>
+      Results:
+    </b>
+  </header>
+   
+  <p>
+    {"id":8238,"uid":"e3f80973-a749-452d-b28d-18ab3c292ac1","variety":"Brownie","topping":"Chocolate Sprinkles","flavor":"Cookies 'n Cream"}
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Internals/SearchInput Searching 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <input
+    class="search svelte-1ara2mn"
+    placeholder="Pesquise ou Selecione..."
+    tabindex="-1"
+    type="text"
+  />
+   
+  <header>
+    <b>
+      Results:
+    </b>
+  </header>
+   
+  <p>
+    {"id":8238,"uid":"e3f80973-a749-452d-b28d-18ab3c292ac1","variety":"Brownie","topping":"Chocolate Sprinkles","flavor":"Cookies 'n Cream"}
+  </p>
+  <p>
+    {"id":2568,"uid":"cc8e1fc3-9836-42ac-a789-036cf08c59c7","variety":"Brownie","topping":"Frosting","flavor":"Butter Pecan"}
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Select Multiple 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="select svelte-1mcmtid"
+    tabindex="0"
+  >
+    <label
+      class="select-label svelte-1mcmtid"
+      for="doce-custom"
+      id="doce-label"
+    >
+      Sobremesas
+    </label>
+     
+    <div
+      aria-controls="doce-listbox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="doce-label"
+      class="select-box svelte-1mcmtid"
+      id="doce-custom"
+      role="combobox"
+      tabindex="-1"
+    >
+      Selecione
+    </div>
+     
+    <div
+      class="select-dropdown-menu svelte-1mcmtid closed"
+    >
+      <input
+        class="search svelte-1ara2mn"
+        placeholder="Pesquise ou Selecione..."
+        tabindex="-1"
+        type="text"
+      />
+       
+      <div
+        aria-labelledby="doce-label"
+        class="select-menu svelte-12mc5sn"
+        id="doce-listbox"
+        role="listbox"
+        tabindex="-1"
+      >
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Brigadeiro
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pudim
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Rabanada
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Beijinho
+           
+        </div>
+        
+      </div>
+    </div>
+     
+    <select
+      class="hidden svelte-1mcmtid"
+      disabled=""
+      id="doce"
+      multiple=""
+      name="doce"
+    >
+      <option
+        value="[object Object]"
+      >
+        Torta alemã
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho
+         
+      </option>
+    </select>
+     
+    <div
+      class="select-arrow svelte-1mcmtid"
+    >
+      <div
+        class="select-arrow-aux svelte-1mcmtid"
+      />
+    </div>
+  </div>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Select Multiple Long 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="select svelte-1mcmtid"
+    tabindex="0"
+  >
+    <label
+      class="select-label svelte-1mcmtid"
+      for="doce-custom"
+      id="doce-label"
+    >
+      Sobremesas
+    </label>
+     
+    <div
+      aria-controls="doce-listbox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="doce-label"
+      class="select-box svelte-1mcmtid"
+      id="doce-custom"
+      role="combobox"
+      tabindex="-1"
+    >
+      Selecione
+    </div>
+     
+    <div
+      class="select-dropdown-menu svelte-1mcmtid closed"
+    >
+      <input
+        class="search svelte-1ara2mn"
+        placeholder="Pesquise ou Selecione..."
+        tabindex="-1"
+        type="text"
+      />
+       
+      <div
+        aria-labelledby="doce-label"
+        class="select-menu svelte-12mc5sn"
+        id="doce-listbox"
+        role="listbox"
+        tabindex="-1"
+      >
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Brigadeiro 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pudim 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Rabanada 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Beijinho 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã 1
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê 1
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo 1
+           
+        </div>
+        
+      </div>
+    </div>
+     
+    <select
+      class="hidden svelte-1mcmtid"
+      disabled=""
+      id="doce"
+      multiple=""
+      name="doce"
+    >
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 19
+         
+      </option>
+    </select>
+     
+    <div
+      class="select-arrow svelte-1mcmtid"
+    >
+      <div
+        class="select-arrow-aux svelte-1mcmtid"
+      />
+    </div>
+  </div>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Select Multiple Selected 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="select svelte-1mcmtid"
+    tabindex="0"
+  >
+    <label
+      class="select-label svelte-1mcmtid floated"
+      for="doce-custom"
+      id="doce-label"
+    >
+      Sobremesas
+    </label>
+     
+    <div
+      aria-controls="doce-listbox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="doce-label"
+      class="select-box svelte-1mcmtid selected-multiple"
+      id="doce-custom"
+      role="combobox"
+      tabindex="-1"
+    >
+      <span
+        class="badge svelte-1mcmtid"
+      >
+        Torta alemã
+         
+        <span
+          class="svelte-1mcmtid"
+        >
+          ×
+        </span>
+         
+      </span>
+      <span
+        class="badge svelte-1mcmtid"
+      >
+        Pavê
+         
+        <span
+          class="svelte-1mcmtid"
+        >
+          ×
+        </span>
+         
+      </span>
+      <span
+        class="badge svelte-1mcmtid"
+      >
+        Bolo
+         
+        <span
+          class="svelte-1mcmtid"
+        >
+          ×
+        </span>
+         
+      </span>
+      
+    </div>
+     
+    <div
+      class="select-dropdown-menu svelte-1mcmtid closed"
+    >
+      <input
+        class="search svelte-1ara2mn"
+        placeholder="Pesquise ou Selecione..."
+        tabindex="-1"
+        type="text"
+      />
+       
+      <div
+        aria-labelledby="doce-label"
+        class="select-menu svelte-12mc5sn"
+        id="doce-listbox"
+        role="listbox"
+        tabindex="-1"
+      >
+        <div
+          class="select-option svelte-12mc5sn selected"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn selected"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn selected"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Brigadeiro
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pudim
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Rabanada
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Beijinho
+           
+        </div>
+        
+      </div>
+    </div>
+     
+    <select
+      class="hidden svelte-1mcmtid"
+      disabled=""
+      id="doce"
+      multiple=""
+      name="doce"
+    >
+      <option
+        value="[object Object]"
+      >
+        Torta alemã
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho
+         
+      </option>
+    </select>
+     
+    <div
+      class="select-arrow svelte-1mcmtid"
+    >
+      <div
+        class="select-arrow-aux svelte-1mcmtid"
+      />
+    </div>
+  </div>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    {"text":"Torta alemã"}
+  </p>
+  <p>
+    {"text":"Pavê"}
+  </p>
+  <p>
+    {"text":"Bolo"}
+  </p>
+  
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Select Simple Long 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="select svelte-1mcmtid"
+    tabindex="0"
+  >
+    <label
+      class="select-label svelte-1mcmtid"
+      for="doce-custom"
+      id="doce-label"
+    >
+      Sobremesas
+    </label>
+     
+    <div
+      aria-controls="doce-listbox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="doce-label"
+      class="select-box svelte-1mcmtid"
+      id="doce-custom"
+      role="combobox"
+      tabindex="-1"
+    >
+      Selecione
+    </div>
+     
+    <div
+      class="select-dropdown-menu svelte-1mcmtid closed"
+    >
+      <input
+        class="search svelte-1ara2mn"
+        placeholder="Pesquise ou Selecione..."
+        tabindex="-1"
+        type="text"
+      />
+       
+      <div
+        aria-labelledby="doce-label"
+        class="select-menu svelte-12mc5sn"
+        id="doce-listbox"
+        role="listbox"
+        tabindex="-1"
+      >
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Brigadeiro 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pudim 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Rabanada 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Beijinho 0
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã 1
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê 1
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo 1
+           
+        </div>
+        
+      </div>
+    </div>
+     
+    <select
+      class="hidden svelte-1mcmtid"
+      disabled=""
+      id="doce"
+      name="doce"
+    >
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 0
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 1
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 2
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 3
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 4
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 5
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 6
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 7
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 8
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 9
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 10
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 11
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 12
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 13
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 14
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 15
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 16
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 17
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 18
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Torta alemã 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada 19
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho 19
+         
+      </option>
+    </select>
+     
+    <div
+      class="select-arrow svelte-1mcmtid"
+    >
+      <div
+        class="select-arrow-aux svelte-1mcmtid"
+      />
+    </div>
+  </div>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    null
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Select Single 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="select svelte-1mcmtid"
+    tabindex="0"
+  >
+    <label
+      class="select-label svelte-1mcmtid"
+      for="doce-custom"
+      id="doce-label"
+    >
+      Sobremesas
+    </label>
+     
+    <div
+      aria-controls="doce-listbox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="doce-label"
+      class="select-box svelte-1mcmtid"
+      id="doce-custom"
+      role="combobox"
+      tabindex="-1"
+    >
+      Selecione
+    </div>
+     
+    <div
+      class="select-dropdown-menu svelte-1mcmtid closed"
+    >
+      <input
+        class="search svelte-1ara2mn"
+        placeholder="Pesquise ou Selecione..."
+        tabindex="-1"
+        type="text"
+      />
+       
+      <div
+        aria-labelledby="doce-label"
+        class="select-menu svelte-12mc5sn"
+        id="doce-listbox"
+        role="listbox"
+        tabindex="-1"
+      >
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Brigadeiro
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pudim
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Rabanada
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Beijinho
+           
+        </div>
+        
+      </div>
+    </div>
+     
+    <select
+      class="hidden svelte-1mcmtid"
+      disabled=""
+      id="doce"
+      name="doce"
+    >
+      <option
+        value="[object Object]"
+      >
+        Torta alemã
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho
+         
+      </option>
+    </select>
+     
+    <div
+      class="select-arrow svelte-1mcmtid"
+    >
+      <div
+        class="select-arrow-aux svelte-1mcmtid"
+      />
+    </div>
+  </div>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    null
+  </p>
+  
+</section>
+`;
+
+exports[`Storyshots Components/Select/Select Single Selected 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="select svelte-1mcmtid"
+    tabindex="0"
+  >
+    <label
+      class="select-label svelte-1mcmtid floated"
+      for="doce-custom"
+      id="doce-label"
+    >
+      Sobremesas
+    </label>
+     
+    <div
+      aria-controls="doce-listbox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="doce-label"
+      class="select-box svelte-1mcmtid"
+      id="doce-custom"
+      role="combobox"
+      tabindex="-1"
+    >
+      Torta alemã
+    </div>
+     
+    <div
+      class="select-dropdown-menu svelte-1mcmtid closed"
+    >
+      <input
+        class="search svelte-1ara2mn"
+        placeholder="Pesquise ou Selecione..."
+        tabindex="-1"
+        type="text"
+      />
+       
+      <div
+        aria-labelledby="doce-label"
+        class="select-menu svelte-12mc5sn"
+        id="doce-listbox"
+        role="listbox"
+        tabindex="-1"
+      >
+        <div
+          class="select-option svelte-12mc5sn selected"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Brigadeiro
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pudim
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Rabanada
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Beijinho
+           
+        </div>
+        
+      </div>
+    </div>
+     
+    <select
+      class="hidden svelte-1mcmtid"
+      disabled=""
+      id="doce"
+      name="doce"
+    >
+      <option
+        value="[object Object]"
+      >
+        Torta alemã
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pavê
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Bolo
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Brigadeiro
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Pudim
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Rabanada
+         
+      </option>
+      <option
+        value="[object Object]"
+      >
+        Beijinho
+         
+      </option>
+    </select>
+     
+    <div
+      class="select-arrow svelte-1mcmtid"
+    >
+      <div
+        class="select-arrow-aux svelte-1mcmtid"
+      />
+    </div>
+  </div>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    {"text":"Torta alemã"}
+  </p>
+  
+</section>
+`;
+
 exports[`Storyshots External/SveltePdfViewer Default 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -75,10 +3707,10 @@ exports[`Storyshots External/SveltePdfViewer Default 1`] = `
   <p
     class="svelte-zftq3x"
   >
-    and an icon 
+    and an icon
   
     <span
-      class="icon-mail"
+      class="icon-email-outline"
     />
   </p>
    
@@ -235,217 +3867,5 @@ exports[`Storyshots Internal/Icon Default 1`] = `
   <span
     class="icon-phone"
   />
-</section>
-`;
-
-exports[`Storyshots Internal/Icon List 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <span
-    class="icon-eye-off"
-  />
-   
-  <span>
-    icon-
-    eye-off
-  </span>
-   
-  <br />
-  <span
-    class="icon-eye-on"
-  />
-   
-  <span>
-    icon-
-    eye-on
-  </span>
-   
-  <br />
-  <span
-    class="icon-file"
-  />
-   
-  <span>
-    icon-
-    file
-  </span>
-   
-  <br />
-  <span
-    class="icon-filter"
-  />
-   
-  <span>
-    icon-
-    filter
-  </span>
-   
-  <br />
-  <span
-    class="icon-info"
-  />
-   
-  <span>
-    icon-
-    info
-  </span>
-   
-  <br />
-  <span
-    class="icon-investing"
-  />
-   
-  <span>
-    icon-
-    investing
-  </span>
-   
-  <br />
-  <span
-    class="icon-link"
-  />
-   
-  <span>
-    icon-
-    link
-  </span>
-   
-  <br />
-  <span
-    class="icon-lock"
-  />
-   
-  <span>
-    icon-
-    lock
-  </span>
-   
-  <br />
-  <span
-    class="icon-mail"
-  />
-   
-  <span>
-    icon-
-    mail
-  </span>
-   
-  <br />
-  <span
-    class="icon-more"
-  />
-   
-  <span>
-    icon-
-    more
-  </span>
-   
-  <br />
-  <span
-    class="icon-notification"
-  />
-   
-  <span>
-    icon-
-    notification
-  </span>
-   
-  <br />
-  <span
-    class="icon-partners"
-  />
-   
-  <span>
-    icon-
-    partners
-  </span>
-   
-  <br />
-  <span
-    class="icon-phone"
-  />
-   
-  <span>
-    icon-
-    phone
-  </span>
-   
-  <br />
-  <span
-    class="icon-ponto"
-  />
-   
-  <span>
-    icon-
-    ponto
-  </span>
-   
-  <br />
-  <span
-    class="icon-profile"
-  />
-   
-  <span>
-    icon-
-    profile
-  </span>
-   
-  <br />
-  <span
-    class="icon-proposal"
-  />
-   
-  <span>
-    icon-
-    proposal
-  </span>
-   
-  <br />
-  <span
-    class="icon-search"
-  />
-   
-  <span>
-    icon-
-    search
-  </span>
-   
-  <br />
-  <span
-    class="icon-task"
-  />
-   
-  <span>
-    icon-
-    task
-  </span>
-   
-  <br />
-  <span
-    class="icon-upload"
-  />
-   
-  <span>
-    icon-
-    upload
-  </span>
-   
-  <br />
-  
-</section>
-`;
-
-exports[`Storyshots Ionic/Input Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <ion-item>
-    <ion-label>
-      My input
-    </ion-label>
-     
-    <ion-input />
-  </ion-item>
 </section>
 `;

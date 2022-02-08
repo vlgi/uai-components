@@ -1,10 +1,10 @@
-:root {
+* {
   // global font
   --theme-font-family: var(--szot-font-family, 'Open Sans', 'Helvetica Neue', sans-serif);
 
   // paragraph <p>
   --theme-p-font-weight: var(--szot-p-font-weight, normal);
   --theme-p-font-style: var(--szot-p-font-style, normal);
-  --theme-p-font-size: var(--szot-p-font-size, .9rem);
+  --theme-p-font-size: var(--szot-p-font-size, 0.9rem);
   --theme-p-line-height: var(--szot-p-line-height, 1.25rem);
 }
