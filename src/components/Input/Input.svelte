@@ -14,7 +14,7 @@
 
   type TborderStyle = "primary" | "secondary" | "dark" | "light";
 
-  /** choose default theme colors*/
+  /** choose default theme colors */
   export let inputStyle: TborderStyle = "primary";
 
   /** write a helpertext if needed */
@@ -274,7 +274,7 @@
       transform: translateY(-55%);
       font-weight: var(--input-focus-weigth);
       color: var(--input-focus-color);
-      font-size: var(--input-focus-font-size);
+      font-size: var(--label-font-size);
       border-color: var(--border-color-focus);
     }
     &:not(:placeholder-shown).form-input:not(:focus) + .form-label {
@@ -283,7 +283,7 @@
       transform: translateY(-55%);
       z-index: 10;
       font-weight: var(--input-focus-weigth);
-      font-size: var(--input-focus-font-size);
+      font-size: var(--label-font-size);
     }
   }
 

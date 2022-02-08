@@ -80,6 +80,58 @@ exports[`Storyshots Components/Input Borders None 1`] = `
 </section>
 `;
 
+exports[`Storyshots Components/Input Custom Example 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style="--szot-label-font-size: 10px;--szot-height: 1.5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-input-color: #db984b;--szot-input-focus-color: #ce4007;--szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;--szot-border-radius: 1.5rem;"
+  >
+    <div
+      class="form-div input-style-primary svelte-sav96i"
+    >
+      <input
+        autocomplete="off"
+        class="form-input border-outline svelte-sav96i"
+        max=""
+        min=""
+        name=""
+        placeholder=" "
+        step=""
+        type="name"
+      />
+       
+      <label
+        class="form-label svelte-sav96i"
+        for=""
+      >
+        Teste
+      </label>
+       
+      <div
+        class="icon svelte-sav96i"
+      >
+        <span
+          class="icon-none"
+        />
+      </div>
+       
+      <p
+        class="helper svelte-sav96i"
+      >
+        Digite 'erro' para ser invalido
+      </p>
+       
+      <p
+        class="error svelte-sav96i"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
 exports[`Storyshots Components/Input Default 1`] = `
 <section
   class="storybook-snapshot-container"

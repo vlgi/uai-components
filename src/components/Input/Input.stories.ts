@@ -77,3 +77,45 @@ export const Readonly = Template({
   readonly: true,
   helperText: "Apenas um exemplo",
 });
+
+const validteste = (value) => {
+  if (value === "erro") {
+    return "Aqui está o erro.";
+  }
+  return true;
+};
+
+export const CustomExample: any = Template({
+  validationFn: validteste,
+  label: "Teste",
+  helperText: "Digite 'erro' para ser invalido",
+  type: "name",
+  style: "--szot-label-font-size: 10px;--szot-height: 1.5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-input-color: #db984b;--szot-input-focus-color: #ce4007;--szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;--szot-border-radius: 1.5rem;",
+});
+CustomExample.parameters = {
+  docs: {
+    source: {
+      language: "html",
+      code: `
+    <script lang="ts">
+      import Input from "./Input.svelte";
+
+      const validteste = (value) => {
+        if (value === "erro") {
+          return "Aqui está o erro.";
+        }
+        return true;
+      };
+    </script>
+
+    <div style="--szot-label-font-size: 10px;--szot-height: 1.5rem;
+      --szot-background-color: #ffffff;--szot-label-color: #c56d09;
+      --szot-input-color: #db984b;--szot-input-focus-color: #ce4007;
+      --szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;
+      --szot-border-radius: 1.5rem;" >
+      <Input label="Teste" type="name" validationFn={validteste} helperText="Digite 'erro' para ser invalido"/>
+    </div>
+    `,
+    },
+  },
+};
