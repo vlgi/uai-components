@@ -143,7 +143,7 @@ $: if (focused >= 0 && focused < options.length) {
     handleLoadMore();
   }
   setTimeout(() => {
-    optionsBinds[focused].scrollIntoView();
+    optionsBinds[focused].scrollIntoView({ block: "nearest", inline: "start" });
   }, 0);
 }
 
@@ -161,18 +161,18 @@ $: if (options) {
 
     <!-- List all options -->
     {#if options}
-    {#each options.slice(0, shownUpperLimit) as option, i}
-      <div class="select-option" role="option" tabindex="-1"
-        bind:this={optionsBinds[i]}
-        class:focused="{i === focused}"
-        class:selected="{isOptionSelected(option, selected)}"
-        on:click={() => {
-          toggleSelected(option);
-          focused = -1;
-        }}>
-        {option.text}
-      </div>
-    {/each}
+      {#each options.slice(0, shownUpperLimit) as option, i}
+        <div class="select-option" role="option" tabindex="-1"
+          bind:this={optionsBinds[i]}
+          class:focused="{i === focused}"
+          class:selected="{isOptionSelected(option, selected)}"
+          on:click={() => {
+            toggleSelected(option);
+            focused = -1;
+          }}>
+          {option.text}
+        </div>
+      {/each}
     {/if}
 
 </div>
