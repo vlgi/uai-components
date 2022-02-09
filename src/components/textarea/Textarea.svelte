@@ -3,69 +3,59 @@
   /** choose default theme colors */
   export let textareaStyle: TtextareaStyle = "primary";
   /** pass the function to validation */
-  export let validationFn = (value) => {}; //eslint-disable-line
+  export let validationFn: (value: string)=> undefined|string|boolean = () => true;
   /** if you want to force invalid, change it to true */
-  export let ForceInvalid = false;
-  /** shows if the component is valid */
+  export let forceInvalid = false;
+  /** shows if the component is valid (readonly) */
   export let isValid = true;
   /** Enter label text */
   export let label = "";
-  /** textarea content */
-  export let value = "";
-  /** write the placeholder */
-  export let placeholder = "";
   /** number of initial lines */
   export let rows = 3;
   /** minimum number of lines */
   export let minRows = rows;
   /** maximum number of lines before scroll */
-  export let maxRows = "";
-  /** disable component */
-  export let disabled = false;
-  /** sets the component to readonly */
-  export let readonly = false;
-  type Twrap = "hard" | "soft" | "off";
-  /** Indicates how the control wraps text. */
-  export let wrap: Twrap = "soft";
-  /** defines whether the textarea is spell-checked by the browser */
-  export let spellcheck = false;
-  /** defines if the field is mandatory */
-  export let required = false;
-  /** minimum characters */
-  export let minlength = -1;
-  /** maximum characters */
-  export let maxlength = -1;
-  /** The visible width of the text control, in average character widths. */
-  export let cols = 20;
-  type Tautocomplete = "on" | "off";
-  /** defines whether the value of the control can be auto-populated by the browser. */
-  export let autocomplete: Tautocomplete = "off";
+  export let maxRows = 0;
   /** set an error message */
   export let errorMsg = "";
   /** write a helpertext if needed */
   export let helperText = "";
 
+  /**
+   * The textarea element (readonly)
+   * @type {HTMLTextAreaElement}
+   * */
+  export let textareaElement: HTMLTextAreaElement;
+
+  export let type = "text";
+  export let name = "";
+  export let disabled = false;
+  export let value = "";
+  export let required = false;
+  export let readonly = false;
+  export let placeholder = "";
+
+  // Other attributes for the HTML textarea element
+  export let textareaAttributes: Record<string, string> = {};
+
   let eMsg = "deu ruim";
   let helper = false;
   let MsgUp = false;
-  let invalid = ForceInvalid;
-  let fist = false;
+  let invalid = forceInvalid;
 
   const focused = () => {
     helper = !helper;
     MsgUp = !MsgUp;
   };
 
-  const checkStatus = (answer) => {
-    if (answer === true) {
+  const checkStatus = (answer: undefined|string|boolean) => {
+    if (answer === true || answer === undefined) {
       isValid = true;
       invalid = !isValid;
     } else if (answer === false) {
       isValid = false;
       invalid = !isValid;
-    } else if (answer === undefined) {
-      isValid = true;
-      invalid = !isValid;
+      eMsg = errorMsg;
     } else if (typeof answer === "string") {
       isValid = false;
       invalid = !isValid;
@@ -74,92 +64,64 @@
   };
 
   const changed = () => {
-    if (ForceInvalid) {
-      invalid = true;
-    } else {
-      invalid = false;
-    }
+    invalid = false;
   };
 
-  const validation = () => {
-    if (ForceInvalid) {
+const validation = () => {
+    if (forceInvalid) {
       isValid = false;
       invalid = !isValid;
       eMsg = errorMsg;
-    } else if (required) {
-      if (!value) {
-        isValid = false;
-        invalid = !isValid;
-        eMsg = "Este campo é obrigatorio";
-      } else {
-        checkStatus(validationFn(value));
-      }
-    } else if (fist) {
+    } else if (required && !value) {
+      isValid = false;
+      invalid = !isValid;
+      eMsg = "Este campo é obrigatorio";
+    } else {
       checkStatus(validationFn(value));
     }
-    fist = true;
   };
 
-  const setValue = () => {
-    const x = document.querySelector("textarea").value;
+  const setValue = (ev: InputEvent) => {
+    const x = (ev.target as HTMLInputElement).value;
     value = x;
   };
 
-  function getScrollHeight(elm) {
-    let savedValue = elm.value;
-    elm.value = "";
-    elm._baseScrollHeight = elm.scrollHeight;
-    elm.value = savedValue;
-  }
-  function onExpandableTextareaInput({ target: elm }) {
-    if (
-      !elm.classList.contains("autoExpand") ||
-      `${!elm.nodeName}` == "TEXTAREA"
-    )
-      return;
-    let maxRows = elm.getAttribute("data-max-rows") | 0;
-    let minRows = elm.getAttribute("data-min-rows") | 0,
-      rows;
-    !elm._baseScrollHeight && getScrollHeight(elm);
-    elm.rows = minRows;
-    rows = Math.ceil((elm.scrollHeight - elm._baseScrollHeight) / 16);
-    elm.rows = minRows + rows;
-    if (elm.rows >= maxRows && maxRows !== 0) {
-      elm.rows = maxRows;
-    }
-  }
+  $: if (forceInvalid) validation();
 
-  document.addEventListener("input", onExpandableTextareaInput);
+  $: maxHeight = maxRows ? `${1 + maxRows * 0.8}rem` : "auto";
+
 </script>
 
 <div class="textarea-style-{textareaStyle}" class:invalid>
+  <pre
+		aria-hidden="true"
+		style="--max-auto-height:{maxHeight}"
+	>{`${value}\n`}</pre>
   <p>
     <textarea
       on:focus={focused}
       on:focus={validation}
       on:input={changed}
       on:input={setValue}
-      on:input
       on:blur={focused}
       on:blur={validation}
-      class="autoExpand"
+      on:input
+      on:change
+      bind:this={textareaElement}
       data-min-rows={minRows}
       data-max-rows={maxRows}
       {rows}
+      {type}
+      {name}
       {placeholder}
       {value}
       {disabled}
       {readonly}
-      {wrap}
-      {spellcheck}
       {required}
-      {minlength}
-      {maxlength}
-      {cols}
-      {autocomplete}
+      {...textareaAttributes}
     />
   </p>
-  <label for="" class="label">
+  <label for="" class="label" class:required>
     {label}
   </label>
 
@@ -170,13 +132,14 @@
 <style lang="scss">
   div {
     --label-color: var(--szot-label-color, var(--default-label-color));
-    --label-padding: var(--szot-label-padding, 0 0.1875rem);
+    --label-padding: var(--szot-label-padding, 0 0.15rem);
     --label-font-size: var(--szot-label-font-size, 0.75rem);
     --label-font-weight: var(--szot-label-font-weight, 600);
     --label-background-color: var(--szot-label-background-color, white);
 
     --textarea-color: var(--szot-textarea-color, var(--default-textarea-color));
     --border-color: var(--szot-border-color, var(--default-border-color));
+    --border: var(--szot-border, var(--theme-small-border));
     --placeholder-color: var(
       --szot-placeholder-color,
       var(--default-placeholder-color)
@@ -185,16 +148,17 @@
 
     --margin-bottom: var(--szot-margin-bottom, 1.5rem);
     --max-width: var(--szot-fields-max-width, var(--theme-fields-max-width));
-    --max-height: var(--szot-max-height, var(--theme-fields-height));
+    --max-height: var(--szot-max-height, var(--max-auto-height));
     --font-size: var(--szot-font-size, 0.5rem);
     --resize: var(--szot-resize, none);
+    --padding: var(--szot-padding, var(--theme-global-small-padding));
 
     --message-font-size: var(--szot-message-font-size, 0.6875rem);
-    --message-bottom: var(--szot-texthelp-bottom, -0.85rem);
+    --message-bottom: var(--szot-texthelp-bottom, -1.2rem);
     --message-left: var(--szot-texthelp-left, 1rem);
     --message-error-bottom-focus: var(
       --szot-message-error-bottom-focus,
-      -1.6rem
+      -2rem
     );
     --border-radius: var(--szot-border-radius, var(--theme-small-shape));
 
@@ -225,7 +189,6 @@
 
     position: relative;
     margin-bottom: var(--margin-bottom);
-    font-family: var(--theme-font-family);
   }
   .label {
     position: absolute;
@@ -233,32 +196,42 @@
     left: 0.8rem;
     padding: var(--label-padding);
     font-size: var(--label-font-size);
-    font-weight: var(--label-font-weight, 600);
+    font-weight: var(--label-font-weight);
 
     color: var(--label-color);
-    background-color: var(--label-background-color, white);
-  }
+    background-color: var(--label-background-color);
 
-  textarea {
-    position: relative;
-    box-sizing: padding-box;
-    overflow-y: auto;
-    color: var(--textarea-color);
-    background-color: transparent;
+    &.required::after {
+      content: "*";
+      display: inline;
+    }
+  }
+  pre, textarea {
+		font-family: inherit;
+		padding: var(--padding);
+		box-sizing: border-box;
     min-width: 10rem;
     min-height: 3rem;
-
-    padding: var(--theme-global-small-padding);
-    max-width: var(--max-width);
-
-    max-height: var(--max-height);
-    font-size: var(--font-size);
-
-    border: var(--theme-small-border);
+		border: var(--theme-small-border);
     border-color: var(--border-color);
-    border-radius: var(--border-radius);
-    resize: var(--resize);
+    border-radius:var(--border-radius) ;
 
+    max-width: var(--max-width);
+    max-height: var(--max-height);
+
+		font-size: var(--font-size);
+		overflow: hidden;
+    color: var(--textarea-color);
+    background-color: transparent;
+	}
+
+  textarea {
+    position: absolute;
+    overflow-y: auto;
+    top: 0;
+		width: 100%;
+		height: 100%;
+    resize: var(--resize);
     scrollbar-width: none;
     &::-webkit-input-placeholder {
       font-size: var(--placeholder-font-size);

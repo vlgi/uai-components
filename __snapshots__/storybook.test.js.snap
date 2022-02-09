@@ -2923,6 +2923,60 @@ exports[`Storyshots Components/Select Single Selected 1`] = `
 </section>
 `;
 
+exports[`Storyshots Components/Textarea Custom Example 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style="--szot-border-radius: 1rem; --szot-max-height: 5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-textarea-color: #db984b;--szot-border-color: #c56d09;--szot-placeholder-color:#db984b;"
+  >
+    <div
+      class="textarea-style-primary svelte-1nriksv"
+    >
+      <pre
+        aria-hidden="true"
+        class="svelte-1nriksv"
+        style="--max-auto-height: 4.2rem;"
+      >
+        
+
+      </pre>
+       
+      <p>
+        <textarea
+          class="svelte-1nriksv"
+          data-max-rows="4"
+          data-min-rows="4"
+          name=""
+          placeholder="Aqui o tamanho é estático, então haverá scroll"
+          rows="4"
+          type="text"
+        />
+      </p>
+       
+      <label
+        class="label svelte-1nriksv"
+        for=""
+      >
+        Teste
+      </label>
+       
+      <p
+        class="helper message svelte-1nriksv"
+      >
+        Digite 'erro' para ser invalido
+      </p>
+       
+      <p
+        class="error message svelte-1nriksv"
+      >
+        deu ruim
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
 exports[`Storyshots Components/Textarea Default 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -2931,39 +2985,44 @@ exports[`Storyshots Components/Textarea Default 1`] = `
     style=""
   >
     <div
-      class="textarea-style-secondary svelte-1v14knw"
+      class="textarea-style-secondary svelte-1nriksv"
     >
+      <pre
+        aria-hidden="true"
+        class="svelte-1nriksv"
+        style="--max-auto-height: auto;"
+      >
+        
+
+      </pre>
+       
       <p>
         <textarea
-          autocomplete="off"
-          class="autoExpand svelte-1v14knw"
-          cols="20"
-          data-max-rows=""
+          class="svelte-1nriksv"
+          data-max-rows="0"
           data-min-rows="3"
-          maxlength="-1"
-          minlength="-1"
+          name=""
           placeholder="Digite algo:"
           rows="3"
-          spellcheck="false"
-          wrap="soft"
+          type="text"
         />
       </p>
        
       <label
-        class="label svelte-1v14knw"
+        class="label svelte-1nriksv"
         for=""
       >
         Conte sua história
       </label>
        
       <p
-        class="helper message svelte-1v14knw"
+        class="helper message svelte-1nriksv"
       >
         Digite o quanto você quiser
       </p>
        
       <p
-        class="error message svelte-1v14knw"
+        class="error message svelte-1nriksv"
       >
         deu ruim
       </p>

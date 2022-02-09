@@ -5,5 +5,8 @@
 </script>
 
 <div {style}>
-  <Textarea {...$$restProps} />
-</div>
+  <Textarea {...$$restProps}
+  on:input
+  on:change
+  />
+</div> 

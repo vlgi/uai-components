@@ -1,4 +1,5 @@
 import type { ArgType } from "@storybook/addons";
+import { action } from "@storybook/addon-actions";
 import Textarea from "./Textarea.svelte";
 import TextareaWrapper from "./TextareaWrapperForTest.svelte";
 
@@ -6,24 +7,28 @@ export default {
   title: "Components/Textarea",
   component: Textarea,
   argTypes: {
+    onInput: { action: "on:input" },
+    onChange: { action: "on:change" },
     textareaStyle: {
       control: {
         type: "select",
         options: ["primary", "secondary", "dark", "light"],
       },
     },
-    wrap: {
-      control: {
-        type: "select",
-        options: ["hard", "soft", "off"],
-      },
-    },
-    autocomplete: {
-      control: {
-        type: "select",
-        options: ["on", "off"],
-      },
-    },
+    errorMsg: { table: { category: "validation properties" } },
+    validationFn: { table: { category: "validation properties" } },
+    isValid: { table: { category: "validation properties" } },
+    required: { table: { category: "validation properties" } },
+
+    helperText: { table: { category: "other properties" } },
+    value: { table: { category: "other properties" } },
+    label: { table: { category: "other properties" } },
+    type: { table: { category: "other properties" } },
+    name: { table: { category: "other properties" } },
+    disabled: { table: { category: "other properties" } },
+    readonly: { table: { category: "other properties" } },
+    textareaElement: { table: { category: "other properties" } },
+    textareaAttributes: { table: { category: "other properties" } },
   },
 };
 
@@ -31,6 +36,10 @@ const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
     Component: TextareaWrapper,
     props,
+    on: {
+      input: action("on:input"),
+      change: action("on:change"),
+    },
   });
   ret.args = _args;
   return ret;
@@ -42,9 +51,10 @@ export const Default = Template({
   textareaStyle: "secondary",
   style: "",
   helperText: "Digite o quanto você quiser",
+
 });
 
-const validteste = (value) => {
+const validTest = (value: string): undefined | string | boolean => {
   if (value === "erro") {
     return "Aqui está o erro.";
   }
@@ -52,7 +62,7 @@ const validteste = (value) => {
 };
 
 export const CustomExample: any = Template({
-  validationFn: validteste,
+  validationFn: validTest,
   label: "Teste",
   placeholder: "Aqui o tamanho é estático, então haverá scroll",
   helperText: "Digite 'erro' para ser invalido",
@@ -69,7 +79,7 @@ CustomExample.parameters = {
     <script lang="ts">
       import Input from "./Input.svelte";
 
-      const validteste = (value) => {
+      const validTest = (value) => {
         if (value === "erro") {
           return "Aqui está o erro.";
         }
@@ -82,7 +92,7 @@ CustomExample.parameters = {
       --szot-label-color: #c56d09;--szot-textarea-color: #db984b;
       --szot-border-color: #c56d09;--szot-placeholder-color:#db984b;" 
       >
-      <Textarea validationFn: validteste,
+      <Textarea validationFn: validTest,
         label="Teste"
         placeholder="Aqui o tamanho é estático, então haverá scroll"
         helperText="Digite 'erro' para ser invalido"
