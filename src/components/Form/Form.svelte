@@ -84,6 +84,3 @@
   <!-- Enter as many form fields as you want. But remember they must be our custom form fields.  -->
   <slot></slot>
 </form>
-
-<style lang="scss">
-</style>

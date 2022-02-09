@@ -48,6 +48,8 @@
   bind:value
   bind:this={ inputEl }
   on:blur={ validate }
+  on:input
+  on:change
 />
 {#if showErrorMsg}
   <p>Invalid! Type "my-input"</p>

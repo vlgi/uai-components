@@ -7,7 +7,7 @@
   export let isAllValid: boolean;
 </script>
 
-<Form bind:values bind:isAllValid>
+<Form bind:values bind:isAllValid on:submit>
   <Input name="input-name"/>
   <br>
   <Button/>
@@ -15,6 +15,3 @@
 
 <p><b>Form Values:</b> { JSON.stringify(values) }</p>
 <p><b>Form valid:</b> { isAllValid }</p>
-
-<style lang="scss">
-</style>

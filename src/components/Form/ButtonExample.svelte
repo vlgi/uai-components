@@ -11,6 +11,3 @@
 <button on:click={ () => isInsideContext && fireSubmit() } on:click>
   Submit
 </button>
-
-<style lang="scss">
-</style>
