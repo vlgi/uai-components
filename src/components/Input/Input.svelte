@@ -2,7 +2,7 @@
   import Icon from "../Icon/Icon.svelte";
 
   /** choose an icon from the list */
-  export let icon = "none";
+  export let icon: string|null = null;
 
   type TpositionIcon = "left" | "right";
   /** if there is an icon define if it goes to the left or to the right */
@@ -109,8 +109,8 @@
 
 <div
   class="form-div input-style-{inputStyle}"
-  class:icons-left={iconPosition === "left" && icon !== "none"}
-  class:icons-right={iconPosition === "right" && icon !== "none"}
+  class:icons-left={iconPosition === "left" && icon}
+  class:icons-right={iconPosition === "right" && icon}
   class:invalid
 >
   <input
@@ -118,9 +118,10 @@
     on:focus={validation}
     on:input={changed}
     on:input={setValue}
-    on:input
     on:blur={focused}
     on:blur={validation}
+    on:input
+    on:change
     class="form-input border-{border}"
     placeholder=" "
     {type}
@@ -138,9 +139,11 @@
   <label for="" class="form-label">
     {label}
   </label>
-  <div class="icon">
-    <Icon iconName={icon} />
-  </div>
+  {#if icon}
+    <div class="icon">
+      <Icon iconName={icon} />
+    </div>
+  {/if}
   <p class="helper" class:helper-show={helper}>
     {helperText}
   </p>
