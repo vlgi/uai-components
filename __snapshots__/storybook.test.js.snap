@@ -36,11 +36,11 @@ exports[`Storyshots Components/Input Borders None 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-dsk20e"
+      class="form-div input-style-primary svelte-sav96i"
     >
       <input
         autocomplete="off"
-        class="form-input border-Bottom svelte-dsk20e"
+        class="form-input border-bottom svelte-sav96i"
         max=""
         min=""
         name=""
@@ -50,14 +50,14 @@ exports[`Storyshots Components/Input Borders None 1`] = `
       />
        
       <label
-        class="form-label svelte-dsk20e"
+        class="form-label svelte-sav96i"
         for=""
       >
         Senha
       </label>
        
       <div
-        class="icon svelte-dsk20e"
+        class="icon svelte-sav96i"
       >
         <span
           class="icon-none"
@@ -65,13 +65,13 @@ exports[`Storyshots Components/Input Borders None 1`] = `
       </div>
        
       <p
-        class="helper svelte-dsk20e"
+        class="helper svelte-sav96i"
       >
         
       </p>
        
       <p
-        class="error svelte-dsk20e"
+        class="error svelte-sav96i"
       >
         
       </p>
@@ -140,11 +140,11 @@ exports[`Storyshots Components/Input Default 1`] = `
     style=""
   >
     <div
-      class="form-div input-style-primary svelte-dsk20e"
+      class="form-div input-style-primary svelte-sav96i"
     >
       <input
         autocomplete="off"
-        class="form-input border-Outline svelte-dsk20e"
+        class="form-input border-outline svelte-sav96i"
         max=""
         min=""
         name=""
@@ -154,14 +154,14 @@ exports[`Storyshots Components/Input Default 1`] = `
       />
        
       <label
-        class="form-label svelte-dsk20e"
+        class="form-label svelte-sav96i"
         for=""
       >
         Email
       </label>
        
       <div
-        class="icon svelte-dsk20e"
+        class="icon svelte-sav96i"
       >
         <span
           class="icon-none"
@@ -169,13 +169,13 @@ exports[`Storyshots Components/Input Default 1`] = `
       </div>
        
       <p
-        class="helper svelte-dsk20e"
+        class="helper svelte-sav96i"
       >
         Digite um email válido
       </p>
        
       <p
-        class="error svelte-dsk20e"
+        class="error svelte-sav96i"
       >
         
       </p>
@@ -190,11 +190,11 @@ exports[`Storyshots Components/Input Readonly 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-dsk20e icons-right"
+      class="form-div input-style-primary svelte-sav96i icons-right"
     >
       <input
         autocomplete="off"
-        class="form-input border-Outline svelte-dsk20e"
+        class="form-input border-outline svelte-sav96i"
         max=""
         min=""
         name=""
@@ -205,14 +205,14 @@ exports[`Storyshots Components/Input Readonly 1`] = `
       />
        
       <label
-        class="form-label svelte-dsk20e"
+        class="form-label svelte-sav96i"
         for=""
       >
         Aviso
       </label>
        
       <div
-        class="icon svelte-dsk20e"
+        class="icon svelte-sav96i"
       >
         <span
           class="icon-info"
@@ -220,13 +220,13 @@ exports[`Storyshots Components/Input Readonly 1`] = `
       </div>
        
       <p
-        class="helper svelte-dsk20e"
+        class="helper svelte-sav96i"
       >
         Apenas um exemplo
       </p>
        
       <p
-        class="error svelte-dsk20e"
+        class="error svelte-sav96i"
       >
         
       </p>
@@ -241,11 +241,11 @@ exports[`Storyshots Components/Input Whith Icon 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-dsk20e icons-right"
+      class="form-div input-style-primary svelte-sav96i icons-right"
     >
       <input
         autocomplete="off"
-        class="form-input border-Bottom svelte-dsk20e"
+        class="form-input border-bottom svelte-sav96i"
         max=""
         min=""
         name=""
@@ -255,14 +255,14 @@ exports[`Storyshots Components/Input Whith Icon 1`] = `
       />
        
       <label
-        class="form-label svelte-dsk20e"
+        class="form-label svelte-sav96i"
         for=""
       >
         Celular 1
       </label>
        
       <div
-        class="icon svelte-dsk20e"
+        class="icon svelte-sav96i"
       >
         <span
           class="icon-phone"
@@ -270,13 +270,13 @@ exports[`Storyshots Components/Input Whith Icon 1`] = `
       </div>
        
       <p
-        class="helper svelte-dsk20e"
+        class="helper svelte-sav96i"
       >
         
       </p>
        
       <p
-        class="error svelte-dsk20e"
+        class="error svelte-sav96i"
       >
         
       </p>
@@ -291,11 +291,11 @@ exports[`Storyshots Components/Input Whith Icon Left 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-dsk20e icons-left"
+      class="form-div input-style-primary svelte-sav96i icons-left"
     >
       <input
         autocomplete="off"
-        class="form-input border-Outline svelte-dsk20e"
+        class="form-input border-outline svelte-sav96i"
         max=""
         min=""
         name=""
@@ -305,14 +305,14 @@ exports[`Storyshots Components/Input Whith Icon Left 1`] = `
       />
        
       <label
-        class="form-label svelte-dsk20e"
+        class="form-label svelte-sav96i"
         for=""
       >
         Celular 2
       </label>
        
       <div
-        class="icon svelte-dsk20e"
+        class="icon svelte-sav96i"
       >
         <span
           class="icon-phone"
@@ -320,13 +320,13 @@ exports[`Storyshots Components/Input Whith Icon Left 1`] = `
       </div>
        
       <p
-        class="helper svelte-dsk20e"
+        class="helper svelte-sav96i"
       >
         
       </p>
        
       <p
-        class="error svelte-dsk20e"
+        class="error svelte-sav96i"
       >
         
       </p>
