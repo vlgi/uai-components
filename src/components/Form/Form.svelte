@@ -57,11 +57,14 @@
 
     await tick();
 
-    // fired when submit button is clicked. At detail we pass the variables: values and isAllValid
-    dispatcher("submit", {
-      values,
-      isAllValid,
-    });
+    // if some is invalid don't dispatch the event
+    if (!Object.values(fieldsData).every((fData) => fData.isValid)) return;
+
+    /**
+     * fired when submit button is clicked and all fields is valid.
+     * At detail we pass the variable "values".
+    */
+    dispatcher("submit", values);
   };
 
   $: values = Object.fromEntries(
@@ -80,7 +83,7 @@
   setContext("FormContext", formContextObj);
 </script>
 
-<form on:submit|preventDefault>
+<form on:submit|preventDefault={ () => true }>
   <!-- Enter as many form fields as you want. But remember they must be our custom form fields.  -->
   <slot></slot>
 </form>
