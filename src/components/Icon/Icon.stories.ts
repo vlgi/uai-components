@@ -4,7 +4,7 @@ import Icon from "./Icon.svelte";
 import IconList from "./IconList.svelte";
 
 export default {
-  title: "Internal/Icon",
+  title: "Components/Icon",
   component: Icon,
   argTypes: {
     onClick: { action: "onClick" },

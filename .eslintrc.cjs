@@ -59,6 +59,14 @@ module.exports = {
         "no-multiple-empty-lines": "off",
       },
     },
+    {
+      files: ["*.stories.*"],
+      rules: {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+      },
+    },
   ],
   settings: {
     "svelte3/typescript": () => require("typescript"),
