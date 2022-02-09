@@ -15,34 +15,34 @@
   export let buttonStyle: TButtonStyle = "primary";
   // disable the button
   export let disabled = false;
-  // choose whether or not to have a background color
-  export let notbackground = null;
   // choose which side the icon should be on
   export let positionIcon: TPositionIcon = "left";
   // set the button type
   export let type: TButtonType = "button";
   // set the button name
   export let name = "button";
+
   // set as round button (size doesn't work with this)
-  export let round = (size === "round");
+  let round: boolean;
 
   /**
    *  choose an icon from the list
    *  @type {string}
    */
   export let icon: string|null = null;
+
+  $: round = (size === "round");
 </script>
 
 <button
   {type}
   {name}
   class="button {size} button-style-{buttonStyle} button-style-type-{buttonStyleType}"
-  class:notbackground
   class:disabled
   {disabled}
   on:click
 >
-  {#if round && icon}
+  {#if round}
     <div class="icon"><Icon iconName={icon} /></div>
   {:else if icon && !round}
     <div class="icon-{positionIcon}"><Icon iconName={icon} /></div>
@@ -89,7 +89,7 @@
     }
     &.button-style-dark {
       --default-background-color: var(--theme-dark-surface);
-      --default-color: var(---theme-txt-on-dark-surface);
+      --default-color: var(--theme-txt-on-dark-surface);
     }
     &.button-style-light {
       --default-background-color: var(--theme-light-surface);

@@ -11,7 +11,7 @@ export default {
     buttonStyle: {
       control: {
         type: "select",
-        options: ["primary", "secondary", "dark", "light", "disabled"],
+        options: ["primary", "secondary", "dark", "light"],
       },
     },
     size: {
