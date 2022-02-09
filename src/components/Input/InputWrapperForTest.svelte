@@ -5,5 +5,9 @@
 </script>
 
 <div {style}>
-  <Input {...$$restProps} />
+  <Input
+    {...$$restProps}
+    on:input
+    on:change
+  />
 </div>

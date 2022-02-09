@@ -1,4 +1,5 @@
 import type { ArgType } from "@storybook/addons";
+import { action } from "@storybook/addon-actions";
 import Input from "./Input.svelte";
 import InputWrapper from "./InputWrapperForTest.svelte";
 
@@ -6,6 +7,8 @@ export default {
   title: "Components/Input",
   component: Input,
   argTypes: {
+    onInput: { action: "on:input" },
+    onChange: { action: "on:change" },
     inputStyle: {
       table: { category: "visual properties" },
       control: {
@@ -51,6 +54,10 @@ const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
     Component: InputWrapper,
     props,
+    on: {
+      input: action("on:input"),
+      change: action("on:change"),
+    },
   });
   ret.args = _args;
   return ret;
