@@ -1,6 +1,7 @@
 import Form from "./Form.svelte";
 import UsageExampleComponent from "./UsageExample.svelte";
 import InputExampleComponent from "./InputExample.svelte";
+import ButtonExampleComponent from "./ButtonExample.svelte";
 
 export default {
   title: "Components/Form",
@@ -111,6 +112,36 @@ UsageExample.parameters = {
 <style lang="scss">
 </style>
 `,
+    },
+  },
+};
+
+export const ButtonExample = () => ({
+  Component: ButtonExampleComponent,
+});
+
+ButtonExample.parameters = {
+  docs: {
+    source: {
+      language: "html",
+      code: `
+<script lang="ts">
+  import { getContext, hasContext } from "svelte";
+
+  import type { TFormContext } from "./types";
+
+  const isInsideContext = hasContext("FormContext");
+  const { fireSubmit } = isInsideContext && getContext<TFormContext>("FormContext");
+
+</script>
+
+<button on:click={ () => isInsideContext && fireSubmit() } on:click>
+  Submit
+</button>
+
+<style lang="scss">
+</style>
+      `,
     },
   },
 };
