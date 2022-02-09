@@ -48,118 +48,323 @@ exports[`Storyshots Components/Badge Theme 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Inaccessible 1`] = `
+exports[`Storyshots Components/Button Custom Example 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <button
-    class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
-    data-testid="btn-visible"
-    style="background-color: white"
-    type="button"
+  <div
+    style="--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-buttonStyleType: 2px solid #ffc7a7; --szot-border-radius: 1.5rem"
   >
-    Button
-  </button>
-   
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
+    <button
+      class="button medium button-style-primary button-style-type-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      orange
+    </button>
+  </div>
 </section>
 `;
 
-exports[`Storyshots Components/Button Large 1`] = `
+exports[`Storyshots Components/Button Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <button
-    class="storybook-button storybook-button--large storybook-button--secondary svelte-wtisvu"
-    data-testid="btn-visible"
-    style=""
-    type="button"
-  >
-    Button
-  </button>
-   
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
+  <div>
+    <button
+      class="button large button-style-primary button-style-type-filled svelte-rl985o disabled"
+      disabled=""
+      name="button"
+      type="button"
+    >
+      Bloquear
+    </button>
+  </div>
 </section>
 `;
 
-exports[`Storyshots Components/Button Primary 1`] = `
+exports[`Storyshots Components/Button Large Icon 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <button
-    class="storybook-button storybook-button--medium storybook-button--primary svelte-wtisvu"
-    data-testid="btn-visible"
-    style=""
-    type="button"
-  >
-    Button
-  </button>
-   
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
+  <div>
+    <button
+      class="button large button-style-primary button-style-type-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon-right svelte-rl985o"
+      >
+        <span
+          class="icon-upload"
+        />
+      </div>
+       
+      <div
+        class="texto-right svelte-rl985o"
+      >
+        Enviar documentos
+      </div>
+    </button>
+  </div>
 </section>
 `;
 
-exports[`Storyshots Components/Button Secondary 1`] = `
+exports[`Storyshots Components/Button Large Simple 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <button
-    class="storybook-button storybook-button--medium storybook-button--secondary svelte-wtisvu"
-    data-testid="btn-visible"
-    style=""
-    type="button"
-  >
-    Button
-  </button>
-   
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
-  >
-    hi
-  </button>
+  <div>
+    <button
+      class="button large button-style-primary button-style-type-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      Minhas contas
+    </button>
+  </div>
 </section>
 `;
 
-exports[`Storyshots Components/Button Small 1`] = `
+exports[`Storyshots Components/Button Medium Icon 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <button
-    class="storybook-button storybook-button--small storybook-button--secondary svelte-wtisvu"
-    data-testid="btn-visible"
+  <div>
+    <button
+      class="button medium button-style-primary button-style-type-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon-right svelte-rl985o"
+      >
+        <span
+          class="icon-file"
+        />
+      </div>
+       
+      <div
+        class="texto-right svelte-rl985o"
+      >
+        Documento
+      </div>
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Medium Simple 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button medium button-style-primary button-style-type-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      Botão 1
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Not Background 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button large button-style-primary button-style-type-not-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      Bloquear
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Not Background Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button large button-style-primary button-style-type-not-filled svelte-rl985o disabled"
+      disabled=""
+      name="button"
+      type="button"
+    >
+      Bloquear
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Round 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
     style=""
-    type="button"
   >
-    Button
-  </button>
-   
-  <button
-    class="svelte-wtisvu"
-    data-testid="btn-hidden"
-    id="btn-hidden"
+    <button
+      class="button round button-style-primary button-style-type-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon svelte-rl985o"
+      >
+        <span
+          class="icon-dots-horizontal"
+        />
+      </div>
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Round Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button round button-style-primary button-style-type-filled svelte-rl985o disabled"
+      disabled=""
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon svelte-rl985o"
+      >
+        <span
+          class="icon-dots-horizontal"
+        />
+      </div>
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Round Not Background 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button round button-style-primary button-style-type-not-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon svelte-rl985o"
+      >
+        <span
+          class="icon-dots-horizontal"
+        />
+      </div>
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Small Icon 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button small button-style-primary button-style-type-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon-left svelte-rl985o"
+      >
+        <span
+          class="icon-magnify"
+        />
+      </div>
+       
+      <div
+        class="texto-left svelte-rl985o"
+      >
+        Buscar
+      </div>
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Small Simple 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button small button-style-primary button-style-type-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      Buscar
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Theme Test 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
   >
-    hi
-  </button>
+    <button
+      class="button medium button-style-secondary button-style-type-filled svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      Botão 1
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button With Borders 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button medium button-style-primary button-style-type-outline svelte-rl985o"
+      name="button"
+      type="button"
+    >
+      Bloquear
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button With Borders Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button medium button-style-primary button-style-type-outline svelte-rl985o disabled"
+      disabled=""
+      name="button"
+      type="button"
+    >
+      Bloquear
+    </button>
+  </div>
 </section>
 `;
 
@@ -170,6 +375,385 @@ exports[`Storyshots Components/Icon Default 1`] = `
   <span
     class="icon-phone"
   />
+</section>
+`;
+
+exports[`Storyshots Components/Input Borders None 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m"
+    >
+      <input
+        class="form-input border-bottom svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        type="password"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m"
+        for=""
+      >
+        Senha
+      </label>
+       
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Custom Example 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style="--szot-label-font-size: 10px;--szot-height: 1.5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-input-color: #db984b;--szot-input-focus-color: #ce4007;--szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;--szot-border-radius: 1.5rem;"
+  >
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m"
+    >
+      <input
+        class="form-input border-outline svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        type="name"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m"
+        for=""
+      >
+        Teste
+      </label>
+       
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        Digite 'erro' para ser invalido
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Custom Validation And Required 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m"
+    >
+      <input
+        class="form-input border-outline svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        required=""
+        type="text"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m required"
+        for=""
+      >
+        Name
+      </label>
+       
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        Digite 'erro' para ser invalido
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m"
+    >
+      <input
+        class="form-input border-outline svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        type="email"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m"
+        for=""
+      >
+        Email
+      </label>
+       
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        Digite um email válido
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Force Invalid 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m invalid"
+    >
+      <input
+        class="form-input border-outline svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        type="text"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m"
+        for=""
+      >
+        Name
+      </label>
+       
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m error-show"
+      >
+        Mensagem de erro customizada
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Readonly 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m icons-right"
+    >
+      <input
+        class="form-input border-outline svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        readonly=""
+        type="text"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m"
+        for=""
+      >
+        Aviso
+      </label>
+       
+      <div
+        class="icon svelte-1pqcn1m"
+      >
+        <span
+          class="icon-info"
+        />
+      </div>
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        Apenas um exemplo
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Required 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m"
+    >
+      <input
+        class="form-input border-outline svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        required=""
+        type="text"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m required"
+        for=""
+      >
+        Name
+      </label>
+       
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Whith Icon 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m icons-right"
+    >
+      <input
+        class="form-input border-bottom svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        type="tel"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m"
+        for=""
+      >
+        Celular 1
+      </label>
+       
+      <div
+        class="icon svelte-1pqcn1m"
+      >
+        <span
+          class="icon-phone"
+        />
+      </div>
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Whith Icon Left 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m icons-left"
+    >
+      <input
+        class="form-input border-outline svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        type="tel"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m"
+        for=""
+      >
+        Celular 2
+      </label>
+       
+      <div
+        class="icon svelte-1pqcn1m"
+      >
+        <span
+          class="icon-phone"
+        />
+      </div>
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m"
+      >
+        
+      </p>
+    </div>
+  </div>
 </section>
 `;
 

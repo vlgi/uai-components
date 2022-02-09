@@ -1,0 +1,78 @@
+<!-- Badge.stories.mdx -->
+
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+import InputTeste from "./InputWrapperForTest.svelte";
+
+<Meta title="Components/Input/Custom" />
+
+# Input Custom
+
+## Gerais
+
+| CSS Property         | Descripiton                 |
+| -------------------- | --------------------------- |
+| --szot-margin-bottom | Set component bottom margin |
+| --szot-width         | Set component width         |
+| --szot-height        | Set component height        |
+
+## On the input
+
+| CSS Property           | Descripiton                        |
+| ---------------------- | ---------------------------------- |
+| --szot-input-top       | Set input position on top          |
+| --szot-input-left      | Set the input position to the left |
+| --szot-input-font-size | Set the input font size            |
+| --szot-input-padding   | Set simple input padding           |
+| --szot-input-color     | Set input text color               |
+| --szot-border-color    | Set label focus position on top    |
+| --szot-border-radius   | set the border radius              |
+
+## On the label
+
+| CSS Property | Descripiton |
+| ------------ | ----------- |
+| --szot-label-left | Set the label position to the left |
+| --szot-label-padding | Set the label padding |
+| --szot-label-color | Set label text color |
+| --szot-label-font-size | Set the font size of the label |
+| --szot-background-color | Sets the background color of the label to hide the outline border. (Set according to page background) |
+
+## When it's in focus
+
+<p>
+  {" "}
+  These modifications can be used to change the color and position of input
+  elements when it is in focus. If the component is not in focus but contains
+  some text, only the colors will return to the default
+</p>
+
+| CSS Property                 | Descripiton                                 |
+| ---------------------------- | ------------------------------------------- |
+| --szot-label-focus-left      | Set the label position to the left          |
+| --szot-input-focus-weigth    | Sets the font weight when input is in focus |
+| --szot-input-focus-font-size | Sets the font size when input is in focus   |
+| --szot-input-focus-color     | Sets the font color when input is in focus  |
+| --szot-border-color-focus    | Set color to border when input is in focus  |
+
+## With icons
+
+| CSS Property       | Descripiton                                   |
+| ------------------ | --------------------------------------------- |
+| --szot-icon-margin | Set the icon margin according to its position |
+| --szot-icon-color  | Set the input color                           |
+
+## Messages
+
+| CSS Property                | Descripiton                                                     |
+| --------------------------- | --------------------------------------------------------------- |
+| --szot-message-font-size    | Set the font size of messages                                   |
+| --szot-message-bottom       | Set messages position down                                      |
+| --szot-message-left         | Set messages position to left                                   |
+| --szot-message-bottom-focus | Set error text position to low when helper text is also showing |
+
+<p>
+  In addition to these variables, this component also uses the theme variables
+  for, font-family, sizes, small-shape, small-border, the 4 main theme colors
+  and the colors for error and information.
+</p>
