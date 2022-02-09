@@ -3,12 +3,14 @@
   import type {
     TAddFieldToContext, TSetFieldValue, TRemoveFieldFromContext, TFireSubmit, TFormContext,
   } from "./types";
+  import { tick } from "../../helpers/utils";
 
   type TFieldData = {
     isValid: boolean,
     isRequired: boolean,
     htmlElement: HTMLElement,
     value?: unknown,
+    forceValidation: ()=> void,
   }
 
   // All fields values (readonly)
@@ -34,13 +36,14 @@
   };
 
   const addFieldToContext: TAddFieldToContext = (
-    fieldName, value, isValid, isRequired, htmlElement,
+    fieldName, value, isValid, isRequired, htmlElement, forceValidation,
   ) => {
     fieldsData[fieldName] = {
       isValid,
       isRequired,
       htmlElement,
       value,
+      forceValidation,
     };
   };
 
@@ -48,7 +51,12 @@
     delete fieldsData[fieldName];
   };
 
-  const fireSubmit: TFireSubmit = () => {
+  const fireSubmit: TFireSubmit = async () => {
+    // force all fields validate
+    Object.values(fieldsData).forEach((fData) => fData.forceValidation());
+
+    await tick();
+
     // fired when submit button is clicked. At detail we pass the variables: values and isAllValid
     dispatcher("submit", {
       values,

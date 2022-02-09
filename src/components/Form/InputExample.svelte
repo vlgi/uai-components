@@ -30,13 +30,7 @@
 
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(
-        name,
-        value,
-        isValid,
-        required,
-        inputEl,
-      );
+      addFieldToContext(name, value, isValid, required, inputEl, validate);
     }
   });
 
