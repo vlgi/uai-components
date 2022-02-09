@@ -7,7 +7,7 @@ export default {
   title: "Components/Button",
   component: Button,
   argTypes: {
-    onClick: { action: "on::click" },
+    onClick: { action: "on:click" },
     buttonStyle: {
       control: {
         type: "select",
@@ -20,7 +20,7 @@ export default {
         options: ["small", "medium", "large", "floating"],
       },
     },
-    border: {
+    buttonStyleType: {
       control: {
         type: "select",
         options: ["filled", "outline", "not-filled"],
@@ -46,7 +46,7 @@ const Template = (_args: ArgType) => {
     Component: ButtonWrapper,
     props,
     on: {
-      click: action("on::click"),
+      click: action("on:click"),
     },
   });
   ret.args = _args;
@@ -104,24 +104,24 @@ export const Disabled = Template({
 export const NotBackground = Template({
   size: "large",
   labelSlot: "Bloquear",
-  border: "not-filled",
+  buttonStyleType: "not-filled",
 });
 
 export const NotBackgroundDisabled = Template({
   size: "large",
-  border: "not-filled",
+  buttonStyleType: "not-filled",
   disabled: "true",
   labelSlot: "Bloquear",
 });
 
 export const withBorders = Template({
-  border: "outline",
+  buttonStyleType: "outline",
   size: "medium",
   labelSlot: "Bloquear",
 });
 
 export const withBordersDisabled = Template({
-  border: "outline",
+  buttonStyleType: "outline",
   size: "medium",
   labelSlot: "Bloquear",
   disabled: "true",
@@ -136,7 +136,7 @@ export const Floating = Template({
 export const FloatingNotBackground = Template({
   size: "floating",
   icon: "dots-horizontal",
-  border: "not-filled",
+  buttonStyleType: "not-filled",
 });
 
 export const FloatingDisabled = Template({
@@ -148,7 +148,7 @@ export const FloatingDisabled = Template({
 export const CustomExample: any = Template({
   labelSlot: "orange",
   style:
-      "--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-border: 2px solid #ffc7a7; --szot-border-radius: 1.5rem",
+      "--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-buttonStyleType: 2px solid #ffc7a7; --szot-border-radius: 1.5rem",
 });
 
 CustomExample.parameters = {
@@ -160,7 +160,7 @@ CustomExample.parameters = {
     import Button from "./Button.svelte";
   </script>
 
-  <div style="--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-border: 2px solid #ffc7a7; --szot-border-radius: 1.5rem" >
+  <div style="--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-buttonStyleType: 2px solid #ffc7a7; --szot-border-radius: 1.5rem" >
     <Button>
       orange
     </Button>

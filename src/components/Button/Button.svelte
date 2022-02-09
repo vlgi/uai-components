@@ -1,27 +1,27 @@
 <script lang="ts">
   import Icon from "../Icon/Icon.svelte";
 
-  type Tsize = "small" | "medium" | "large" | "floating";
-  type Tborders = "filled" | "not-filled" | "outline";
-  type TbuttonStyle = "primary" | "secondary" | "dark" | "light";
-  type TpositionIcon = "left" | "right";
-  type TbuttonType = "submit" | "reset" | "button";
+  type TSize = "small" | "medium" | "large" | "floating";
+  type TButtonStyleType = "filled" | "not-filled" | "outline";
+  type TButtonStyle = "primary" | "secondary" | "dark" | "light";
+  type TPositionIcon = "left" | "right";
+  type TButtonType = "submit" | "reset" | "button";
 
   // choose a preset size for the button
-  export let size: Tsize = "medium";
+  export let size: TSize = "medium";
   // choose an icon from the list
   export let icon = null;
   // choose whether to have borders on the button
-  export let border: Tborders = "filled";
+  export let buttonStyleType: TButtonStyleType = "filled";
   // choose default theme colors or disabled disable button
-  export let buttonStyle: TbuttonStyle = "primary";
+  export let buttonStyle: TButtonStyle = "primary";
   export let disabled = false;
   // choose whether or not to have a background color
   export let notbackground = null;
   // choose which side the icon should be on
-  export let positionIcon: TpositionIcon = "left";
+  export let positionIcon: TPositionIcon = "left";
   // set the button type
-  export let type: TbuttonType = "button";
+  export let type: TButtonType = "button";
   // set the button name
   export let name = "button";
   // set as floating button (size doesn't work with this)
@@ -31,7 +31,7 @@
 <button
   {type}
   {name}
-  class="button {size} button-style-{buttonStyle} border-{border}"
+  class="button {size} button-style-{buttonStyle} button-style-type-{buttonStyleType}"
   class:notbackground
   class:disabled
   {disabled}
@@ -171,17 +171,17 @@
         margin-right: 1.5rem;
       }
     }
-    &.border-outline {
+    &.button-style-type-outline {
       --default-border: var(--theme-small-border);
       --default-background-color: none;
       --default-opacity-hover: 60%;
       --default-color: var(--theme-txt-on-light-surface);
       --background-none: none;
     }
-    &.border-filled {
+    &.button-style-type-filled {
       --default-border: none;
     }
-    &.border-not-filled {
+    &.button-style-type-not-filled {
       --default-border: none;
       --default-background-color: none;
       --default-opacity-hover: 60%;
