@@ -384,42 +384,31 @@ exports[`Storyshots Components/Input Borders None 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-sav96i"
+      class="form-div input-style-primary svelte-1pqcn1m"
     >
       <input
-        autocomplete="off"
-        class="form-input border-bottom svelte-sav96i"
-        max=""
-        min=""
+        class="form-input border-bottom svelte-1pqcn1m"
         name=""
         placeholder=" "
-        step=""
         type="password"
       />
        
       <label
-        class="form-label svelte-sav96i"
+        class="form-label svelte-1pqcn1m"
         for=""
       >
         Senha
       </label>
        
-      <div
-        class="icon svelte-sav96i"
-      >
-        <span
-          class="icon-none"
-        />
-      </div>
        
       <p
-        class="helper svelte-sav96i"
+        class="helper svelte-1pqcn1m"
       >
         
       </p>
        
       <p
-        class="error svelte-sav96i"
+        class="error svelte-1pqcn1m"
       >
         
       </p>
@@ -436,42 +425,71 @@ exports[`Storyshots Components/Input Custom Example 1`] = `
     style="--szot-label-font-size: 10px;--szot-height: 1.5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-input-color: #db984b;--szot-input-focus-color: #ce4007;--szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;--szot-border-radius: 1.5rem;"
   >
     <div
-      class="form-div input-style-primary svelte-sav96i"
+      class="form-div input-style-primary svelte-1pqcn1m"
     >
       <input
-        autocomplete="off"
-        class="form-input border-outline svelte-sav96i"
-        max=""
-        min=""
+        class="form-input border-outline svelte-1pqcn1m"
         name=""
         placeholder=" "
-        step=""
         type="name"
       />
        
       <label
-        class="form-label svelte-sav96i"
+        class="form-label svelte-1pqcn1m"
         for=""
       >
         Teste
       </label>
        
-      <div
-        class="icon svelte-sav96i"
-      >
-        <span
-          class="icon-none"
-        />
-      </div>
        
       <p
-        class="helper svelte-sav96i"
+        class="helper svelte-1pqcn1m"
       >
         Digite 'erro' para ser invalido
       </p>
        
       <p
-        class="error svelte-sav96i"
+        class="error svelte-1pqcn1m"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Custom Validation And Required 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m"
+    >
+      <input
+        class="form-input border-outline svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        required=""
+        type="text"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m required"
+        for=""
+      >
+        Name
+      </label>
+       
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        Digite 'erro' para ser invalido
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m"
       >
         
       </p>
@@ -488,44 +506,72 @@ exports[`Storyshots Components/Input Default 1`] = `
     style=""
   >
     <div
-      class="form-div input-style-primary svelte-sav96i"
+      class="form-div input-style-primary svelte-1pqcn1m"
     >
       <input
-        autocomplete="off"
-        class="form-input border-outline svelte-sav96i"
-        max=""
-        min=""
+        class="form-input border-outline svelte-1pqcn1m"
         name=""
         placeholder=" "
-        step=""
         type="email"
       />
        
       <label
-        class="form-label svelte-sav96i"
+        class="form-label svelte-1pqcn1m"
         for=""
       >
         Email
       </label>
        
-      <div
-        class="icon svelte-sav96i"
-      >
-        <span
-          class="icon-none"
-        />
-      </div>
        
       <p
-        class="helper svelte-sav96i"
+        class="helper svelte-1pqcn1m"
       >
         Digite um email válido
       </p>
        
       <p
-        class="error svelte-sav96i"
+        class="error svelte-1pqcn1m"
       >
         
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Force Invalid 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m invalid"
+    >
+      <input
+        class="form-input border-outline svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        type="text"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m"
+        for=""
+      >
+        Name
+      </label>
+       
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m error-show"
+      >
+        Mensagem de erro customizada
       </p>
     </div>
   </div>
@@ -538,29 +584,25 @@ exports[`Storyshots Components/Input Readonly 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-sav96i icons-right"
+      class="form-div input-style-primary svelte-1pqcn1m icons-right"
     >
       <input
-        autocomplete="off"
-        class="form-input border-outline svelte-sav96i"
-        max=""
-        min=""
+        class="form-input border-outline svelte-1pqcn1m"
         name=""
         placeholder=" "
         readonly=""
-        step=""
         type="text"
       />
        
       <label
-        class="form-label svelte-sav96i"
+        class="form-label svelte-1pqcn1m"
         for=""
       >
         Aviso
       </label>
        
       <div
-        class="icon svelte-sav96i"
+        class="icon svelte-1pqcn1m"
       >
         <span
           class="icon-info"
@@ -568,13 +610,53 @@ exports[`Storyshots Components/Input Readonly 1`] = `
       </div>
        
       <p
-        class="helper svelte-sav96i"
+        class="helper svelte-1pqcn1m"
       >
         Apenas um exemplo
       </p>
        
       <p
-        class="error svelte-sav96i"
+        class="error svelte-1pqcn1m"
+      >
+        
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Input Required 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="form-div input-style-primary svelte-1pqcn1m"
+    >
+      <input
+        class="form-input border-outline svelte-1pqcn1m"
+        name=""
+        placeholder=" "
+        required=""
+        type="text"
+      />
+       
+      <label
+        class="form-label svelte-1pqcn1m required"
+        for=""
+      >
+        Name
+      </label>
+       
+       
+      <p
+        class="helper svelte-1pqcn1m"
+      >
+        
+      </p>
+       
+      <p
+        class="error svelte-1pqcn1m"
       >
         
       </p>
@@ -589,28 +671,24 @@ exports[`Storyshots Components/Input Whith Icon 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-sav96i icons-right"
+      class="form-div input-style-primary svelte-1pqcn1m icons-right"
     >
       <input
-        autocomplete="off"
-        class="form-input border-bottom svelte-sav96i"
-        max=""
-        min=""
+        class="form-input border-bottom svelte-1pqcn1m"
         name=""
         placeholder=" "
-        step=""
         type="tel"
       />
        
       <label
-        class="form-label svelte-sav96i"
+        class="form-label svelte-1pqcn1m"
         for=""
       >
         Celular 1
       </label>
        
       <div
-        class="icon svelte-sav96i"
+        class="icon svelte-1pqcn1m"
       >
         <span
           class="icon-phone"
@@ -618,13 +696,13 @@ exports[`Storyshots Components/Input Whith Icon 1`] = `
       </div>
        
       <p
-        class="helper svelte-sav96i"
+        class="helper svelte-1pqcn1m"
       >
         
       </p>
        
       <p
-        class="error svelte-sav96i"
+        class="error svelte-1pqcn1m"
       >
         
       </p>
@@ -639,28 +717,24 @@ exports[`Storyshots Components/Input Whith Icon Left 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-sav96i icons-left"
+      class="form-div input-style-primary svelte-1pqcn1m icons-left"
     >
       <input
-        autocomplete="off"
-        class="form-input border-outline svelte-sav96i"
-        max=""
-        min=""
+        class="form-input border-outline svelte-1pqcn1m"
         name=""
         placeholder=" "
-        step=""
         type="tel"
       />
        
       <label
-        class="form-label svelte-sav96i"
+        class="form-label svelte-1pqcn1m"
         for=""
       >
         Celular 2
       </label>
        
       <div
-        class="icon svelte-sav96i"
+        class="icon svelte-1pqcn1m"
       >
         <span
           class="icon-phone"
@@ -668,13 +742,13 @@ exports[`Storyshots Components/Input Whith Icon Left 1`] = `
       </div>
        
       <p
-        class="helper svelte-sav96i"
+        class="helper svelte-1pqcn1m"
       >
         
       </p>
        
       <p
-        class="error svelte-sav96i"
+        class="error svelte-1pqcn1m"
       >
         
       </p>
