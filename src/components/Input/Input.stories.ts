@@ -41,12 +41,40 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
+const validTest = (value: string): undefined|string|boolean => {
+  if (value === "erro") {
+    return "Aqui está o erro.";
+  }
+  return true;
+};
+
 export const Default = Template({
   label: "Email",
   style: "",
   helperText: "Digite um email válido",
   errorMsg: "Falhou, tente novamente",
   type: "email",
+});
+
+export const Required = Template({
+  label: "Name",
+  type: "text",
+  required: true,
+});
+
+export const CustomValidationAndRequired = Template({
+  label: "Name",
+  type: "text",
+  required: true,
+  validationFn: validTest,
+  helperText: "Digite 'erro' para ser invalido",
+});
+
+export const ForceInvalid = Template({
+  label: "Name",
+  type: "text",
+  forceInvalid: true,
+  errorMsg: "Mensagem de erro customizada",
 });
 
 export const BordersNone = Template({
@@ -78,15 +106,8 @@ export const Readonly = Template({
   helperText: "Apenas um exemplo",
 });
 
-const validteste = (value) => {
-  if (value === "erro") {
-    return "Aqui está o erro.";
-  }
-  return true;
-};
-
 export const CustomExample: any = Template({
-  validationFn: validteste,
+  validationFn: validTest,
   label: "Teste",
   helperText: "Digite 'erro' para ser invalido",
   type: "name",
@@ -100,7 +121,7 @@ CustomExample.parameters = {
     <script lang="ts">
       import Input from "./Input.svelte";
 
-      const validteste = (value) => {
+      const validTest = (value) => {
         if (value === "erro") {
           return "Aqui está o erro.";
         }
@@ -113,7 +134,7 @@ CustomExample.parameters = {
       --szot-input-color: #db984b;--szot-input-focus-color: #ce4007;
       --szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;
       --szot-border-radius: 1.5rem;" >
-      <Input label="Teste" type="name" validationFn={validteste} helperText="Digite 'erro' para ser invalido"/>
+      <Input label="Teste" type="name" validationFn={validTest} helperText="Digite 'erro' para ser invalido"/>
     </div>
     `,
     },

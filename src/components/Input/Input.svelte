@@ -23,17 +23,24 @@
   /** Enter a message in case it is invalid */
   export let errorMsg = "";
 
-  /** pass the function to validation */
-  export let validationFn = (value) => {}; //eslint-disable-line
+  /**
+   * Pass the function to validation.
+   * Return true/undefined if valid,
+   * or a string to show the error, or false to show the "errorMsg" props.
+  */
+  export let validationFn: (value:string)=> undefined|string|boolean = () => true; //eslint-disable-line
 
   /** if you want to force invalid, change it to true */
-  export let ForceInvalid = false;
+  export let forceInvalid = false;
 
-  /** shows if the component is valid */
+  /** shows if the component is valid (readonly) */
   export let isValid = true;
 
-  /** Undefined */
-  export let pattern = undefined; //eslint-disable-line
+  /** input default pattern validation */
+  export let pattern: string|null = null;
+
+  /** input default title attribute */
+  export let title: string|null = null;
 
   /** Enter label text */
   export let label = "";
@@ -49,11 +56,10 @@
   export let step = "";
   export let required = false;
 
-  let invalid = ForceInvalid;
+  let invalid = forceInvalid;
   let helper = false;
   let eMsg = "";
   let MsgUp = false;
-  let fist = false;
 
   const focused = () => {
     helper = !helper;
@@ -64,17 +70,14 @@
     invalid = false;
   };
 
-  const checkStatus = (answer) => {
-    if (answer === true) {
+  const checkStatus = (answer: undefined|string|boolean) => {
+    if (answer === true || answer === undefined) {
       isValid = true;
       invalid = !isValid;
     } else if (answer === false) {
       isValid = false;
       invalid = !isValid;
       eMsg = errorMsg;
-    } else if (answer === undefined) {
-      isValid = true;
-      invalid = !isValid;
     } else if (typeof answer === "string") {
       isValid = false;
       invalid = !isValid;
@@ -83,28 +86,25 @@
   };
 
   const validation = () => {
-    if (ForceInvalid) {
+    if (forceInvalid) {
       isValid = false;
       invalid = !isValid;
       eMsg = errorMsg;
-    } else if (required) {
-      if (!value) {
-        isValid = false;
-        invalid = !isValid;
-        eMsg = "Este campo é obrigatorio";
-      } else if (fist) {
-        checkStatus(validationFn(value));
-      }
+    } else if (required && !value) {
+      isValid = false;
+      invalid = !isValid;
+      eMsg = "Este campo é obrigatorio";
     } else {
       checkStatus(validationFn(value));
     }
-    fist = true;
   };
 
-  const setValue = () => {
-    const x = document.querySelector("input").value;
+  const setValue = (ev: InputEvent) => {
+    const x = (ev.target as HTMLInputElement).value;
     value = x;
   };
+
+  $: if (forceInvalid) validation();
 </script>
 
 <div
@@ -115,7 +115,6 @@
 >
   <input
     on:focus={focused}
-    on:focus={validation}
     on:input={changed}
     on:input={setValue}
     on:blur={focused}
@@ -128,6 +127,7 @@
     {name}
     {value}
     {pattern}
+    {title}
     {disabled}
     {readonly}
     {autocomplete}
@@ -136,7 +136,7 @@
     {step}
     {required}
   />
-  <label for="" class="form-label">
+  <label for="" class="form-label" class:required>
     {label}
   </label>
   {#if icon}
@@ -301,6 +301,11 @@
     font-size: var(--label-font-size);
     background-color: var(--background-color);
     transition: 0.2s;
+
+    &.required::after {
+      content: "*";
+      display: inline;
+    }
   }
   .icons-left {
     .form-input {
