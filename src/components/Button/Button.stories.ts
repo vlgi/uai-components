@@ -17,7 +17,7 @@ export default {
     size: {
       control: {
         type: "select",
-        options: ["small", "medium", "large", "floating"],
+        options: ["small", "medium", "large", "round"],
       },
     },
     buttonStyleType: {
@@ -127,20 +127,20 @@ export const withBordersDisabled = Template({
   disabled: "true",
 });
 
-export const Floating = Template({
+export const Round = Template({
   style: "",
-  size: "floating",
+  size: "round",
   icon: "dots-horizontal",
 });
 
-export const FloatingNotBackground = Template({
-  size: "floating",
+export const RoundNotBackground = Template({
+  size: "round",
   icon: "dots-horizontal",
   buttonStyleType: "not-filled",
 });
 
-export const FloatingDisabled = Template({
-  size: "floating",
+export const RoundDisabled = Template({
+  size: "round",
   icon: "dots-horizontal",
   disabled: "true",
 });

@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from "../Icon/Icon.svelte";
 
-  type TSize = "small" | "medium" | "large" | "floating";
+  type TSize = "small" | "medium" | "large" | "round";
   type TButtonStyleType = "filled" | "not-filled" | "outline";
   type TButtonStyle = "primary" | "secondary" | "dark" | "light";
   type TPositionIcon = "left" | "right";
@@ -9,12 +9,11 @@
 
   // choose a preset size for the button
   export let size: TSize = "medium";
-  // choose an icon from the list
-  export let icon = null;
   // choose whether to have borders on the button
   export let buttonStyleType: TButtonStyleType = "filled";
   // choose default theme colors or disabled disable button
   export let buttonStyle: TButtonStyle = "primary";
+  // disable the button
   export let disabled = false;
   // choose whether or not to have a background color
   export let notbackground = null;
@@ -24,8 +23,14 @@
   export let type: TButtonType = "button";
   // set the button name
   export let name = "button";
-  // set as floating button (size doesn't work with this)
-  export let floating = (size === "floating");
+  // set as round button (size doesn't work with this)
+  export let round = (size === "round");
+
+  /**
+   *  choose an icon from the list
+   *  @type {string}
+   */
+  export let icon: string|null = null;
 </script>
 
 <button
@@ -37,9 +42,9 @@
   {disabled}
   on:click
 >
-  {#if floating && icon}
+  {#if round && icon}
     <div class="icon"><Icon iconName={icon} /></div>
-  {:else if icon && !floating}
+  {:else if icon && !round}
     <div class="icon-{positionIcon}"><Icon iconName={icon} /></div>
     <div class="texto-{positionIcon}"><slot /></div>
   {:else}
@@ -90,7 +95,7 @@
       --default-background-color: var(--theme-light-surface);
       --default-color: var(--theme-txt-on-light-surface);
     }
-    &.floating {
+    &.round {
       border-radius: 1.0625rem;
       padding: 0;
       width: 1.91rem;

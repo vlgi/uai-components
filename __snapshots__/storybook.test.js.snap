@@ -56,7 +56,7 @@ exports[`Storyshots Components/Button Custom Example 1`] = `
     style="--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-buttonStyleType: 2px solid #ffc7a7; --szot-border-radius: 1.5rem"
   >
     <button
-      class="button medium button-style-primary button-style-type-filled svelte-17vqcxn"
+      class="button medium button-style-primary button-style-type-filled svelte-sdytiz"
       name="button"
       type="button"
     >
@@ -72,81 +72,12 @@ exports[`Storyshots Components/Button Disabled 1`] = `
 >
   <div>
     <button
-      class="button large button-style-primary button-style-type-filled svelte-17vqcxn disabled"
+      class="button large button-style-primary button-style-type-filled svelte-sdytiz disabled"
       disabled=""
       name="button"
       type="button"
     >
       Bloquear
-    </button>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Components/Button Floating 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    style=""
-  >
-    <button
-      class="button floating button-style-primary button-style-type-filled svelte-17vqcxn"
-      name="button"
-      type="button"
-    >
-      <div
-        class="icon svelte-17vqcxn"
-      >
-        <span
-          class="icon-dots-horizontal"
-        />
-      </div>
-    </button>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Components/Button Floating Disabled 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div>
-    <button
-      class="button floating button-style-primary button-style-type-filled svelte-17vqcxn disabled"
-      disabled=""
-      name="button"
-      type="button"
-    >
-      <div
-        class="icon svelte-17vqcxn"
-      >
-        <span
-          class="icon-dots-horizontal"
-        />
-      </div>
-    </button>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Components/Button Floating Not Background 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div>
-    <button
-      class="button floating button-style-primary button-style-type-not-filled svelte-17vqcxn"
-      name="button"
-      type="button"
-    >
-      <div
-        class="icon svelte-17vqcxn"
-      >
-        <span
-          class="icon-dots-horizontal"
-        />
-      </div>
     </button>
   </div>
 </section>
@@ -158,12 +89,12 @@ exports[`Storyshots Components/Button Large Icon 1`] = `
 >
   <div>
     <button
-      class="button large button-style-primary button-style-type-filled svelte-17vqcxn"
+      class="button large button-style-primary button-style-type-filled svelte-sdytiz"
       name="button"
       type="button"
     >
       <div
-        class="icon-right svelte-17vqcxn"
+        class="icon-right svelte-sdytiz"
       >
         <span
           class="icon-upload"
@@ -171,7 +102,7 @@ exports[`Storyshots Components/Button Large Icon 1`] = `
       </div>
        
       <div
-        class="texto-right svelte-17vqcxn"
+        class="texto-right svelte-sdytiz"
       >
         Enviar documentos
       </div>
@@ -186,7 +117,7 @@ exports[`Storyshots Components/Button Large Simple 1`] = `
 >
   <div>
     <button
-      class="button large button-style-primary button-style-type-filled svelte-17vqcxn"
+      class="button large button-style-primary button-style-type-filled svelte-sdytiz"
       name="button"
       type="button"
     >
@@ -202,12 +133,12 @@ exports[`Storyshots Components/Button Medium Icon 1`] = `
 >
   <div>
     <button
-      class="button medium button-style-primary button-style-type-filled svelte-17vqcxn"
+      class="button medium button-style-primary button-style-type-filled svelte-sdytiz"
       name="button"
       type="button"
     >
       <div
-        class="icon-right svelte-17vqcxn"
+        class="icon-right svelte-sdytiz"
       >
         <span
           class="icon-file"
@@ -215,7 +146,7 @@ exports[`Storyshots Components/Button Medium Icon 1`] = `
       </div>
        
       <div
-        class="texto-right svelte-17vqcxn"
+        class="texto-right svelte-sdytiz"
       >
         Documento
       </div>
@@ -230,7 +161,7 @@ exports[`Storyshots Components/Button Medium Simple 1`] = `
 >
   <div>
     <button
-      class="button medium button-style-primary button-style-type-filled svelte-17vqcxn"
+      class="button medium button-style-primary button-style-type-filled svelte-sdytiz"
       name="button"
       type="button"
     >
@@ -246,7 +177,7 @@ exports[`Storyshots Components/Button Not Background 1`] = `
 >
   <div>
     <button
-      class="button large button-style-primary button-style-type-not-filled svelte-17vqcxn"
+      class="button large button-style-primary button-style-type-not-filled svelte-sdytiz"
       name="button"
       type="button"
     >
@@ -262,12 +193,81 @@ exports[`Storyshots Components/Button Not Background Disabled 1`] = `
 >
   <div>
     <button
-      class="button large button-style-primary button-style-type-not-filled svelte-17vqcxn disabled"
+      class="button large button-style-primary button-style-type-not-filled svelte-sdytiz disabled"
       disabled=""
       name="button"
       type="button"
     >
       Bloquear
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Round 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <button
+      class="button round button-style-primary button-style-type-filled svelte-sdytiz"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon svelte-sdytiz"
+      >
+        <span
+          class="icon-dots-horizontal"
+        />
+      </div>
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Round Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button round button-style-primary button-style-type-filled svelte-sdytiz disabled"
+      disabled=""
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon svelte-sdytiz"
+      >
+        <span
+          class="icon-dots-horizontal"
+        />
+      </div>
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Button Round Not Background 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <button
+      class="button round button-style-primary button-style-type-not-filled svelte-sdytiz"
+      name="button"
+      type="button"
+    >
+      <div
+        class="icon svelte-sdytiz"
+      >
+        <span
+          class="icon-dots-horizontal"
+        />
+      </div>
     </button>
   </div>
 </section>
@@ -279,12 +279,12 @@ exports[`Storyshots Components/Button Small Icon 1`] = `
 >
   <div>
     <button
-      class="button small button-style-primary button-style-type-filled svelte-17vqcxn"
+      class="button small button-style-primary button-style-type-filled svelte-sdytiz"
       name="button"
       type="button"
     >
       <div
-        class="icon-left svelte-17vqcxn"
+        class="icon-left svelte-sdytiz"
       >
         <span
           class="icon-magnify"
@@ -292,7 +292,7 @@ exports[`Storyshots Components/Button Small Icon 1`] = `
       </div>
        
       <div
-        class="texto-left svelte-17vqcxn"
+        class="texto-left svelte-sdytiz"
       >
         Buscar
       </div>
@@ -307,7 +307,7 @@ exports[`Storyshots Components/Button Small Simple 1`] = `
 >
   <div>
     <button
-      class="button small button-style-primary button-style-type-filled svelte-17vqcxn"
+      class="button small button-style-primary button-style-type-filled svelte-sdytiz"
       name="button"
       type="button"
     >
@@ -325,7 +325,7 @@ exports[`Storyshots Components/Button Theme Test 1`] = `
     style=""
   >
     <button
-      class="button medium button-style-secondary button-style-type-filled svelte-17vqcxn"
+      class="button medium button-style-secondary button-style-type-filled svelte-sdytiz"
       name="button"
       type="button"
     >
@@ -341,7 +341,7 @@ exports[`Storyshots Components/Button With Borders 1`] = `
 >
   <div>
     <button
-      class="button medium button-style-primary button-style-type-outline svelte-17vqcxn"
+      class="button medium button-style-primary button-style-type-outline svelte-sdytiz"
       name="button"
       type="button"
     >
@@ -357,7 +357,7 @@ exports[`Storyshots Components/Button With Borders Disabled 1`] = `
 >
   <div>
     <button
-      class="button medium button-style-primary button-style-type-outline svelte-17vqcxn disabled"
+      class="button medium button-style-primary button-style-type-outline svelte-sdytiz disabled"
       disabled=""
       name="button"
       type="button"
