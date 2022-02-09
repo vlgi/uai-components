@@ -19,13 +19,16 @@
     removeFieldFromContext,
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
-  function validate() {
-    isValid = value === "my-input";
-    showErrorMsg = !isValid;
-
+  function setContextValue() {
     if (isInsideContext) {
       setFieldValue(name, value, isValid);
     }
+  }
+
+  function validate() {
+    isValid = value === "my-input";
+    showErrorMsg = !isValid;
+    setContextValue();
   }
 
   onMount(() => {
@@ -48,6 +51,7 @@
   bind:value
   bind:this={ inputEl }
   on:blur={ validate }
+  on:input={ setContextValue }
   on:input
   on:change
 />

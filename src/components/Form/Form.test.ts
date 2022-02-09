@@ -18,8 +18,36 @@ test("Should form get input value automatically", async () => {
   userEvent.clear(inputEl);
   userEvent.keyboard("my-input");
   await sleep(10);
-  expect(component.isAllValid).toBeTruthy();
+
   expect(component.values).toEqual({
     "input-name": "my-input",
   });
+
+  // must click outside to trigger the validation
+  userEvent.click(document.documentElement);
+  await sleep(10);
+  expect(component.isAllValid).toBeTruthy();
+});
+
+test("Should form dispatch the submit only when all fields is valid", async () => {
+  const { getByRole, component } = render(UsageExample, {});
+  const inputEl = getByRole("textbox");
+  const buttonEl = getByRole("button");
+
+  const submitFn = jest.fn();
+  component.$on("submit", submitFn);
+
+  userEvent.click(buttonEl);
+  await sleep(10);
+
+  expect(submitFn).not.toBeCalled();
+
+  userEvent.click(inputEl);
+  userEvent.keyboard("my-input");
+  await sleep(10);
+
+  userEvent.click(buttonEl);
+  await sleep(10);
+
+  expect(submitFn).toBeCalled();
 });
