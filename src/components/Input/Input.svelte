@@ -36,12 +36,6 @@
   /** shows if the component is valid (readonly) */
   export let isValid = true;
 
-  /** input default pattern validation */
-  export let pattern: string|null = null;
-
-  /** input default title attribute */
-  export let title: string|null = null;
-
   /** Enter label text */
   export let label = "";
 
@@ -56,11 +50,10 @@
   export let value = "";
   export let disabled = false;
   export let readonly = false;
-  export let autocomplete = "off";
-  export let max = "";
-  export let min = "";
-  export let step = "";
   export let required = false;
+
+  // Other attributes for the HTML input element
+  export let inputAttributes: Record<string, string> = {};
 
   let invalid = forceInvalid;
   let helper = false;
@@ -127,21 +120,16 @@
     on:blur={validation}
     on:input
     on:change
+    bind:this={inputElement}
     class="form-input border-{border}"
     placeholder=" "
-    {type}
     {name}
+    {type}
     {value}
-    {pattern}
-    {title}
+    {required}
     {disabled}
     {readonly}
-    {autocomplete}
-    {max}
-    {min}
-    {step}
-    {required}
-    bind:this={inputElement}
+    {...inputAttributes}
   />
   <label for="" class="form-label" class:required>
     {label}

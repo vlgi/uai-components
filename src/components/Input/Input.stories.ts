@@ -7,28 +7,43 @@ export default {
   component: Input,
   argTypes: {
     inputStyle: {
+      table: { category: "visual properties" },
       control: {
         type: "select",
         options: ["primary", "secondary", "dark", "light"],
       },
     },
-    iconPosition: {
-      control: {
-        type: "select",
-        options: ["left", "right"],
-      },
-    },
     border: {
+      table: { category: "visual properties" },
       control: {
         type: "select",
         options: ["bottom", "outline"],
       },
     },
-    pattern: {
+    iconPosition: {
+      table: { category: "visual properties" },
       control: {
-        type: "string",
+        type: "select",
+        options: ["left", "right"],
       },
     },
+    icon: { table: { category: "visual properties" } },
+
+    errorMsg: { table: { category: "validation properties" } },
+    validationFn: { table: { category: "validation properties" } },
+    forceInvalid: { table: { category: "validation properties" } },
+    isValid: { table: { category: "validation properties" } },
+    required: { table: { category: "validation properties" } },
+
+    helperText: { table: { category: "other properties" } },
+    value: { table: { category: "other properties" } },
+    label: { table: { category: "other properties" } },
+    type: { table: { category: "other properties" } },
+    name: { table: { category: "other properties" } },
+    disabled: { table: { category: "other properties" } },
+    readonly: { table: { category: "other properties" } },
+    inputElement: { table: { category: "other properties" } },
+    inputAttributes: { table: { category: "other properties" } },
   },
 };
 
