@@ -45,6 +45,12 @@
   /** Enter label text */
   export let label = "";
 
+  /**
+   * The input element (readonly)
+   * @type {HTMLInputElement}
+   * */
+  export let inputElement: HTMLInputElement;
+
   export let type = "text";
   export let name = "";
   export let value = "";
@@ -135,6 +141,7 @@
     {min}
     {step}
     {required}
+    bind:this={inputElement}
   />
   <label for="" class="form-label" class:required>
     {label}
