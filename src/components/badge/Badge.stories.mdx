@@ -1,6 +1,6 @@
 <!-- Badge.stories.mdx -->
 
-import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs';
 
 import BadgeWrapper from "./BadgeWrapperForTest.svelte";
 
@@ -14,24 +14,3 @@ CSS Property | Default | Descripiton
 --szot-background-color| - | Defined following the prop "badgeStyle"
 --szot-border | - | Defined following the prop "badgeStyle"
 --szot-font-size | .9rem |
-
-##### below is an example of the modified component using some of the variables
-
-<br />
-
-export const Template = (args) => ({
-  Component: BadgeWrapper,
-  props: args,
-});
-
-<Canvas>
-  <Story
-      name="Custom"
-      args={{
-        labelSlot: "New",
-        style: "--szot-color:#FFFFFF; --szot-background-color:#FC6627;",
-      }}>
-      >
-      {Template.bind({})}
-  </Story>
-</Canvas>

@@ -5,7 +5,7 @@ import OptionsList from "./OptionsList.svelte";
 import OptionsListWrapper from "./OptionsListWrapper.svelte";
 
 export default {
-  title: "Components/Select/Internals/OptionsList",
+  title: "Internal Documentation/Components/Select/Components/OptionsList",
   component: OptionsList,
 };
 
@@ -27,6 +27,7 @@ export const Default = Template({
   id: "doce-listbox",
   labelledBy: "doce-label",
   options,
+  selected: null,
 });
 
 export const SingleSelected = Template({
@@ -41,6 +42,7 @@ export const Focused = Template({
   labelledBy: "doce-label",
   options,
   focused: 3,
+  selected: null,
 });
 
 export const FocusedSelected = Template({

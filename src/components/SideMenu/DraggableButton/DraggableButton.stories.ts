@@ -2,7 +2,7 @@ import type { ArgType } from "@storybook/addons";
 import DraggableButton from "./DraggableButton.svelte";
 
 export default {
-  title: "Components/SideMenu/Components/DraggableButton",
+  title: "Internal Documentation/Components/SideMenu/Components/DraggableButton",
   component: DraggableButton,
   parameters: {
     // skip all screen test for button stories

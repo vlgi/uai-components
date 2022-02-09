@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import type { ArgType } from "@storybook/addons";
 import Form from "./Form.svelte";
 import UsageExampleComponent from "./UsageExample.svelte";
 import InputExampleComponent from "./InputExample.svelte";
@@ -15,17 +13,6 @@ export default {
     storyshots: false,
   },
 };
-
-const Template = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
-    Component: Form,
-    props,
-  });
-  ret.args = _args;
-  return ret;
-};
-
-export const Default = Template({});
 
 export const InputExample = () => ({
   Component: InputExampleComponent,

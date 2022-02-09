@@ -11,7 +11,7 @@ export let id: string;
 // name attribute for the HTML select element
 export let name: string;
 // Attributes for the HTML select element
-export let selectAttributes: Record<string, string>;
+export let selectAttributes: Record<string, string> = {};
 // All possible options that can be selected
 export let options: TOption[];
 // The label text for this element

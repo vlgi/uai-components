@@ -2,7 +2,7 @@
   import Badge from "./Badge.svelte";
 
   export let labelSlot: string;
-  export let style: string;
+  export let style = "";
 </script>
 
 <div {style}>
