@@ -4,7 +4,7 @@ import Textarea from "./Textarea.svelte";
 import TextareaWrapper from "./TextareaWrapperForTest.svelte";
 
 export default {
-  title: "Components/Textarea",
+  title: "Components/FormFields/Textarea",
   component: Textarea,
   argTypes: {
     textareaStyle: {

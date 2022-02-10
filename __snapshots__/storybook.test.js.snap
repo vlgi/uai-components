@@ -4683,17 +4683,7 @@ exports[`Storyshots Components/FormFields/Select Single Selected 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Icon Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <span
-    class="icon-phone"
-  />
-</section>
-`;
-
-exports[`Storyshots Components/Textarea Custom Example 1`] = `
+exports[`Storyshots Components/FormFields/Textarea Custom Example 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -4747,7 +4737,7 @@ exports[`Storyshots Components/Textarea Custom Example 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Textarea Default 1`] = `
+exports[`Storyshots Components/FormFields/Textarea Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -4801,7 +4791,7 @@ exports[`Storyshots Components/Textarea Default 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Textarea Readonly 1`] = `
+exports[`Storyshots Components/FormFields/Textarea Readonly 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -4856,7 +4846,7 @@ exports[`Storyshots Components/Textarea Readonly 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Textarea Required 1`] = `
+exports[`Storyshots Components/FormFields/Textarea Required 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -4911,7 +4901,7 @@ exports[`Storyshots Components/Textarea Required 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Textarea Resizable 1`] = `
+exports[`Storyshots Components/FormFields/Textarea Resizable 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -4962,6 +4952,16 @@ exports[`Storyshots Components/Textarea Resizable 1`] = `
       </p>
     </div>
   </div>
+</section>
+`;
+
+exports[`Storyshots Components/Icon Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="icon-phone"
+  />
 </section>
 `;
 
