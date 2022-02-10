@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Icon from "../Icon/Icon.svelte";
+  import Icon from "../../Icon/Icon.svelte";
 
   /** choose an icon from the list */
   export let icon: string|null = null;

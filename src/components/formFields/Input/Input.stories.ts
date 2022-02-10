@@ -4,7 +4,7 @@ import Input from "./Input.svelte";
 import InputWrapper from "./InputWrapperForTest.svelte";
 
 export default {
-  title: "Components/Form/FormFields/Input",
+  title: "Components/FormFields/Input",
   component: Input,
   argTypes: {
     onInput: { action: "on:input" },

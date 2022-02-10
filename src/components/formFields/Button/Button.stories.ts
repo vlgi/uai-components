@@ -4,7 +4,7 @@ import Button from "./Button.svelte";
 import ButtonWrapper from "./ButtonWrapperForTest.svelte";
 
 export default {
-  title: "Components/Button",
+  title: "Components/FormFields/Button",
   component: Button,
   argTypes: {
     onClick: { action: "on:click" },

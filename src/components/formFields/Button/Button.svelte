@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Icon from "../Icon/Icon.svelte";
+  import Icon from "../../Icon/Icon.svelte";
 
   type TSize = "small" | "medium" | "large" | "round";
   type TButtonStyleType = "filled" | "not-filled" | "outline";
