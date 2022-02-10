@@ -25,6 +25,8 @@
   export let errorMsg = "";
   /** write a helpertext if needed */
   export let helperText = "";
+  /** Enable the textarea to be resizable */
+  export let resizable = false;
 
   /**
    * The textarea element (readonly)
@@ -128,7 +130,11 @@
   class:invalid
   bind:this={wrapperElement}
 >
-  <div class="textarea-wrapper" style="--max-auto-height:{maxHeight}">
+  <div
+    class="textarea-wrapper"
+    class:resizable
+    style="--max-auto-height:{maxHeight}"
+  >
     <pre aria-hidden="true">{`${value || placeholder}\n`}</pre>
     <textarea
       on:focus={focused}
@@ -177,7 +183,6 @@
     --margin-bottom: var(--szot-margin-bottom, 1.5rem);
     --max-width: var(--szot-fields-max-width, var(--theme-fields-max-width));
     --max-height: var(--szot-max-height, var(--max-auto-height));
-    --resize: var(--szot-resize, none);
     --padding: var(--szot-padding, var(--theme-fields-padding));
 
     --message-font-size: var(--szot-message-font-size, 0.6875rem);
@@ -236,7 +241,7 @@
 
   .textarea-wrapper {
     position: relative;
-        border: var(--theme-small-border);
+    border: var(--theme-small-border);
     border-color: var(--border-color);
     border-radius:var(--border-radius);
 
@@ -246,7 +251,10 @@
     max-height: var(--max-height);
 
     overflow: hidden;
-    resize: var(--resize);
+
+    &.resizable {
+      resize: both;
+    }
   }
 
   pre {

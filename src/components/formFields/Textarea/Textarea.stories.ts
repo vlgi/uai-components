@@ -17,7 +17,9 @@ export default {
     validationFn: { table: { category: "validation properties" } },
     isValid: { table: { category: "validation properties" } },
     required: { table: { category: "validation properties" } },
+    forceInvalid: { table: { category: "validation properties" } },
 
+    resizable: { table: { category: "other properties" } },
     helperText: { table: { category: "other properties" } },
     value: { table: { category: "other properties" } },
     label: { table: { category: "other properties" } },
@@ -71,7 +73,7 @@ export const Resizable = Template({
   label: "Conte sua história",
   placeholder: "Digite algo:",
   textareaStyle: "secondary",
-  style: "--szot-resize: both",
+  resizable: true,
 });
 
 const validTest = (value: string): undefined | string | boolean => {
