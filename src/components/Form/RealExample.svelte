@@ -1,11 +1,22 @@
 <script lang="ts">
   import Input from "../formFields/Input/Input.svelte";
   import Textarea from "../formFields/Textarea/Textarea.svelte";
+  import Select from "../formFields/Select/Select.svelte";
   import Button from "../formFields/Button/Button.svelte";
   import Form from "./Form.svelte";
 
   export let values: Record<string, unknown>;
   export let isAllValid: boolean;
+
+  const simpleDessertsOptions = [
+    { text: "Torta alemã" },
+    { text: "Pavê" },
+    { text: "Bolo" },
+    { text: "Brigadeiro" },
+    { text: "Pudim" },
+    { text: "Rabanada" },
+    { text: "Beijinho" },
+  ];
 
   function validateEmail(value: string): string|boolean {
     if (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(value)) return true;
@@ -54,7 +65,23 @@
       required={true}
       validationFn={min10Characters}
     />
-    <Button type="submit" size="small">Submit</Button>
+    <Select
+      label="Favorite Dessert"
+      id="favorite-desserts"
+      name="favorite-desserts"
+      options={simpleDessertsOptions}
+      required={true}
+    />
+    <Select
+      label="Disliked Dessert"
+      id="disliked-desserts"
+      name="disliked-desserts"
+      multiple={true}
+      min={2}
+      options={simpleDessertsOptions}
+      required={true}
+    />
+    <Button type="submit">Submit</Button>
   </Form>
 </div>
 

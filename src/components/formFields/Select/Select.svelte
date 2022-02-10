@@ -1,4 +1,9 @@
 <script lang="ts">
+import {
+  onMount, getContext, hasContext, onDestroy,
+} from "svelte";
+import type { TFormContext } from "../../Form/types";
+
 import OptionsList from "./OptionsList/OptionsList.svelte";
 import SearchInput from "./SearchInput/SearchInput.svelte";
 import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
@@ -71,18 +76,28 @@ let searchQuery: string;
 // The results of the search
 let filteredOptions: TOption[];
 
-function validate(_selected: TOption | TOption[], _required: boolean) {
-  if (forceInvalid) return false;
+let wrapperElement: HTMLElement;
 
-  let valid = true;
-  if (_required) {
+const isInsideContext = hasContext("FormContext");
+const {
+  setFieldValue,
+  addFieldToContext,
+  removeFieldFromContext,
+} = isInsideContext && getContext<TFormContext>("FormContext");
+
+function validate() {
+  isValid = true;
+  if (forceInvalid) {
+    isValid = false;
+  } else if (required) {
     if (multiple) {
-      valid = Array.isArray(_selected) && _selected.length >= min;
+      isValid = Array.isArray(selected) && selected.length >= min;
     } else {
-      valid = _selected !== null && _selected !== undefined;
+      isValid = selected !== null && selected !== undefined;
     }
   }
-  return valid;
+
+  isVisuallyValid = isValid;
 }
 
 /**
@@ -105,7 +120,7 @@ function toggleOpen(open?: boolean) {
 
   // If it changed state to closed
   if (lastState !== dropdownOpen && !dropdownOpen) {
-    isVisuallyValid = validate(selected, required);
+    validate();
   }
 }
 
@@ -147,9 +162,11 @@ function handleTyping(ev: CustomEvent<string>) {
     focused = 0;
   }
 }
+
 function handleToggleDropdown(ev: CustomEvent<boolean | undefined>) {
   toggleOpen(ev.detail);
 }
+
 function handleBadgeRemoval(ev: MouseEvent, option: TOption) {
   const remove = selectedMultiple.indexOf(option);
   selected = [
@@ -160,15 +177,26 @@ function handleBadgeRemoval(ev: MouseEvent, option: TOption) {
   ev.preventDefault();
 }
 
+$: if (forceInvalid) validate();
 $: selectedSingle = Array.isArray(selected) ? null : selected;
 $: selectedMultiple = Array.isArray(selected) ? selected : [];
 
-$: if (forceInvalid) {
-  isVisuallyValid = false;
+// run only after mounted, because setFieldValue, must become after addFieldToContext
+$: if (wrapperElement && isInsideContext) {
+  setFieldValue(name, selected, isValid);
 }
 
-$: isValid = !forceInvalid && validate(selected, required);
+onMount(() => {
+  if (isInsideContext) {
+    addFieldToContext(name, selected, isValid, required, wrapperElement, validate);
+  }
+});
 
+onDestroy(() => {
+  if (isInsideContext) {
+    removeFieldFromContext(name);
+  }
+});
 </script>
 
 <div class="select" tabindex="0"
@@ -178,7 +206,9 @@ $: isValid = !forceInvalid && validate(selected, required);
   on:actionFocusPrevious={optionsListBinds.focusPrevious}
   on:actionFocusNext={optionsListBinds.focusNext}
   on:actionToggleDropdown={handleToggleDropdown}
-  on:actionType={handleTyping}>
+  on:actionType={handleTyping}
+  bind:this={wrapperElement}
+>
 
     <!-- Floating label for the select -->
     <label class="select-label"
@@ -304,6 +334,8 @@ $: isValid = !forceInvalid && validate(selected, required);
 
   .select {
     position: relative;
+    width: 100%;
+    max-width: var(--theme-fields-max-width);
 
     background-color: var(--component-background-color);
     color: var(--theme-dark-txt);
