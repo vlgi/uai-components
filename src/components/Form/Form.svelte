@@ -3,12 +3,14 @@
   import type {
     TAddFieldToContext, TSetFieldValue, TRemoveFieldFromContext, TFireSubmit, TFormContext,
   } from "./types";
+  import { tick } from "../../helpers/utils";
 
   type TFieldData = {
     isValid: boolean,
     isRequired: boolean,
     htmlElement: HTMLElement,
     value?: unknown,
+    forceValidation: ()=> void,
   }
 
   // All fields values (readonly)
@@ -34,13 +36,14 @@
   };
 
   const addFieldToContext: TAddFieldToContext = (
-    fieldName, value, isValid, isRequired, htmlElement,
+    fieldName, value, isValid, isRequired, htmlElement, forceValidation,
   ) => {
     fieldsData[fieldName] = {
       isValid,
       isRequired,
       htmlElement,
       value,
+      forceValidation,
     };
   };
 
@@ -48,12 +51,20 @@
     delete fieldsData[fieldName];
   };
 
-  const fireSubmit: TFireSubmit = () => {
-    // fired when submit button is clicked. At detail we pass the variables: values and isAllValid
-    dispatcher("submit", {
-      values,
-      isAllValid,
-    });
+  const fireSubmit: TFireSubmit = async () => {
+    // force all fields validate
+    Object.values(fieldsData).forEach((fData) => fData.forceValidation());
+
+    await tick();
+
+    // if some is invalid don't dispatch the event
+    if (!Object.values(fieldsData).every((fData) => fData.isValid)) return;
+
+    /**
+     * fired when submit button is clicked and all fields is valid.
+     * At detail we pass the variable "values".
+    */
+    dispatcher("submit", values);
   };
 
   $: values = Object.fromEntries(
@@ -72,10 +83,7 @@
   setContext("FormContext", formContextObj);
 </script>
 
-<form on:submit|preventDefault>
+<form on:submit|preventDefault={ () => true }>
   <!-- Enter as many form fields as you want. But remember they must be our custom form fields.  -->
   <slot></slot>
 </form>
-
-<style lang="scss">
-</style>

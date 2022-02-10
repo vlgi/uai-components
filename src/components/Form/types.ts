@@ -1,10 +1,12 @@
 /**
- * Add the child formfield to the context
+ * Add the a formfield to the context
  * @param fieldName the name of the field
  * @param value the initial value
  * @param isValid the initial value is valid
  * @param isRequired true if field is required
  * @param htmlElement the most external layer of the component, e.g.: a wrapper div
+ * @param forceValidation a function to force the field validate,
+ *                        the field must set again the value and isvalid using 'setFieldValue'
  */
 export type TAddFieldToContext = (
   fieldName: string,
@@ -12,6 +14,7 @@ export type TAddFieldToContext = (
   isValid: boolean,
   isRequired: boolean,
   htmlElement: HTMLElement,
+  forceValidation: ()=> void,
 )=> void;
 
 /**
@@ -33,7 +36,7 @@ export type TRemoveFieldFromContext = (fieldName: string)=> void;
  * Dispatch the form submit event.
  * Works like the submit button for defaut html form tag.
  */
-export type TFireSubmit = ()=> void;
+export type TFireSubmit = ()=> Promise<void>;
 
 export type TFormContext = {
   setFieldValue: TSetFieldValue,

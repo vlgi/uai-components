@@ -71,20 +71,23 @@ type setFieldValue = (fieldName: string, value: unknown, isvalid: boolean) => vo
 
 ```typescript
 /**
- * Add the child formfield to the context
+ * Add the a formfield to the context
  * @param fieldName the name of the field
  * @param value the initial value
  * @param isValid the initial value is valid
  * @param isRequired true if field is required
  * @param htmlElement the most external layer of the component, e.g.: a wrapper div
+ * @param forceValidation a function to force the field validate,
+ *                        the field must set again the value and isvalid using 'setFieldValue'
  */
-type addFieldToContext = (
+export type addFieldToContext = (
   fieldName: string,
   value: unknown,
   isValid: boolean,
   isRequired: boolean,
   htmlElement: HTMLElement,
-) =>  void
+  forceValidation: ()=> void,
+)=> void;
 ```
 
 ```typescript

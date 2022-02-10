@@ -9,7 +9,8 @@
   export let required = false;
 
   let inputEl: HTMLInputElement;
-  let isValid: boolean;
+  let isValid = false;
+  let showErrorMsg = false;
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -18,14 +19,21 @@
     removeFieldFromContext,
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
-  function validateInput(_value) {
-    if (_value === "my-input") return true;
-    return false;
+  function setContextValue() {
+    if (isInsideContext) {
+      setFieldValue(name, value, isValid);
+    }
+  }
+
+  function validate() {
+    isValid = value === "my-input";
+    showErrorMsg = !isValid;
+    setContextValue();
   }
 
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(name, value, isValid, required, inputEl);
+      addFieldToContext(name, value, isValid, required, inputEl, validate);
     }
   });
 
@@ -34,23 +42,19 @@
       removeFieldFromContext(name);
     }
   });
-
-  // check inputEl to run only after mounted
-  $: if (inputEl) {
-    isValid = validateInput(value);
-    if (isInsideContext) {
-      setFieldValue(name, value, isValid);
-    }
-  }
 </script>
 
 <input
   type="text"
   { name }
   { required }
-  bind:this={ inputEl }
   bind:value
+  bind:this={ inputEl }
+  on:blur={ validate }
+  on:input={ setContextValue }
+  on:input
+  on:change
 />
-{#if !isValid}
+{#if showErrorMsg}
   <p>Invalid! Type "my-input"</p>
 {/if}
