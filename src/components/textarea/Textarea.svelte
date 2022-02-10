@@ -104,7 +104,6 @@ const validation = () => {
   <p>
     <textarea
       on:focus={focused}
-      on:focus={validation}
       on:input={changed}
       on:input={setValue}
       on:blur={focused}
