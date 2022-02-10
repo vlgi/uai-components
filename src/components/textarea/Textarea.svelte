@@ -27,8 +27,12 @@
    * */
   export let textareaElement: HTMLTextAreaElement;
 
+  /**
+   * Required
+   * @type {string}
+   */
+  export let name: string;
   export let type = "text";
-  export let name = "";
   export let disabled = false;
   export let value = "";
   export let required = false;
