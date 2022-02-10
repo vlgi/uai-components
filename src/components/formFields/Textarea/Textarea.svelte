@@ -1,4 +1,9 @@
 <script lang="ts">
+  import {
+    onMount, getContext, hasContext, onDestroy,
+  } from "svelte";
+  import type { TFormContext } from "../../Form/types";
+
   type TtextareaStyle = "primary" | "secondary" | "dark" | "light";
   /** choose default theme colors */
   export let textareaStyle: TtextareaStyle = "primary";
@@ -25,7 +30,7 @@
    * The textarea element (readonly)
    * @type {HTMLTextAreaElement}
    * */
-  export let textareaElement: HTMLTextAreaElement;
+  export let textareaElement: HTMLTextAreaElement|null = null;
 
   /**
    * Required
@@ -45,6 +50,14 @@
   let helper = false;
   let MsgUp = false;
   let invalid = forceInvalid;
+  let wrapperElement: HTMLElement;
+
+  const isInsideContext = hasContext("FormContext");
+  const {
+    setFieldValue,
+    addFieldToContext,
+    removeFieldFromContext,
+  } = isInsideContext && getContext<TFormContext>("FormContext");
 
   const focused = () => {
     helper = !helper;
@@ -70,7 +83,7 @@
     invalid = false;
   };
 
-const validation = () => {
+  const validation = () => {
     if (forceInvalid) {
       isValid = false;
       invalid = !isValid;
@@ -90,12 +103,31 @@ const validation = () => {
   };
 
   $: if (forceInvalid) validation();
-
   $: maxHeight = maxRows ? `${1 + maxRows * 0.8}rem` : "auto";
 
+  // run only after mounted, because setFieldValue, must become after addFieldToContext
+  $: if (textareaElement && isInsideContext) {
+    setFieldValue(name, value, isValid);
+  }
+
+  onMount(() => {
+    if (isInsideContext) {
+      addFieldToContext(name, value, isValid, required, wrapperElement, validation);
+    }
+  });
+
+  onDestroy(() => {
+    if (isInsideContext) {
+      removeFieldFromContext(name);
+    }
+  });
 </script>
 
-<div class="textarea-container textarea-style-{textareaStyle}" class:invalid>
+<div
+  class="textarea-container textarea-style-{textareaStyle}"
+  class:invalid
+  bind:this={wrapperElement}
+>
   <div class="textarea-wrapper" style="--max-auto-height:{maxHeight}">
     <pre aria-hidden="true">{`${value || placeholder}\n`}</pre>
     <textarea
@@ -204,7 +236,7 @@ const validation = () => {
 
   .textarea-wrapper {
     position: relative;
-		border: var(--theme-small-border);
+        border: var(--theme-small-border);
     border-color: var(--border-color);
     border-radius:var(--border-radius);
 
@@ -229,16 +261,16 @@ const validation = () => {
     line-height: inherit;
     font-style: inherit;
 
-		margin: var(--padding);
-		box-sizing: border-box;
+        margin: var(--padding);
+        box-sizing: border-box;
     width: calc(100% - 2*var(--padding));
     height: calc(100% - 2*var(--padding));
     border: none;
 
-		overflow: hidden;
+        overflow: hidden;
     color: var(--textarea-color);
     background-color: transparent;
-	}
+    }
 
   textarea {
     position: absolute;

@@ -1,5 +1,6 @@
 <script lang="ts">
   import Input from "../formFields/Input/Input.svelte";
+  import Textarea from "../formFields/Textarea/Textarea.svelte";
   import Button from "../formFields/Button/Button.svelte";
   import Form from "./Form.svelte";
 
@@ -41,6 +42,10 @@
       type="password"
       validationFn={validatePassword}
       required={true}
+    />
+    <Textarea
+      label="Notes"
+      name="notes"
     />
     <Button type="submit" size="small">Submit</Button>
   </Form>

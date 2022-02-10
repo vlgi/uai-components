@@ -76,7 +76,6 @@
     removeFieldFromContext,
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
-
   function focused() {
     helper = !helper;
     MsgUp = !MsgUp;
