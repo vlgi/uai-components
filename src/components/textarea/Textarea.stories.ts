@@ -49,7 +49,29 @@ export const Default = Template({
   textareaStyle: "secondary",
   style: "",
   helperText: "Digite o quanto você quiser",
+});
 
+export const Required = Template({
+  label: "Conte sua história",
+  placeholder: "Digite algo:",
+  textareaStyle: "secondary",
+  style: "",
+  required: true,
+});
+
+export const Readonly = Template({
+  label: "Conte sua história",
+  placeholder: "Você não pode editar o que está aqui",
+  textareaStyle: "secondary",
+  style: "",
+  readonly: true,
+});
+
+export const Resizable = Template({
+  label: "Conte sua história",
+  placeholder: "Digite algo:",
+  textareaStyle: "secondary",
+  style: "--szot-resize: both",
 });
 
 const validTest = (value: string): undefined | string | boolean => {
@@ -62,7 +84,7 @@ const validTest = (value: string): undefined | string | boolean => {
 export const CustomExample: any = Template({
   validationFn: validTest,
   label: "Teste",
-  placeholder: "Aqui o tamanho é estático, então haverá scroll",
+  value: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos maxime accusamus laborum fuga ratione veritatis aliquam totam nam illo harum veniam minima vero atque iusto exercitationem repellendus, commodi mollitia sapiente!",
   helperText: "Digite 'erro' para ser invalido",
   type: "text",
   rows: 4,
