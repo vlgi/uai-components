@@ -3,6 +3,7 @@ import Form from "./Form.svelte";
 import UsageExampleComponent from "./UsageExample.svelte";
 import InputExampleComponent from "./InputExample.svelte";
 import ButtonExampleComponent from "./ButtonExample.svelte";
+import RealExampleComponent from "./RealExample.svelte";
 
 export default {
   title: "Components/Form",
@@ -153,3 +154,10 @@ UsageExample.parameters = {
     },
   },
 };
+
+export const RealExample = () => ({
+  Component: RealExampleComponent,
+  on: {
+    submit: action("on:submit"),
+  },
+});

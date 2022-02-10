@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { getContext, hasContext } from "svelte";
+  import type { TFormContext } from "../../Form/types";
   import Icon from "../../Icon/Icon.svelte";
 
   type TSize = "small" | "medium" | "large" | "round";
@@ -22,14 +24,24 @@
   // set the button name
   export let name = "button";
 
-  // set as round button (size doesn't work with this)
-  let round: boolean;
-
   /**
    *  choose an icon from the list
    *  @type {string}
    */
   export let icon: string|null = null;
+
+  // set as round button (size doesn't work with this)
+  let round: boolean;
+
+  const isInsideContext = hasContext("FormContext");
+  const { fireSubmit } = isInsideContext && getContext<TFormContext>("FormContext");
+
+  function submitForm() {
+    if (isInsideContext && type === "submit") {
+      // eslint-disable-next-line no-void
+      void fireSubmit();
+    }
+  }
 
   $: round = (size === "round");
 </script>
@@ -40,6 +52,7 @@
   class="button {size} button-style-{buttonStyle} button-style-type-{buttonStyleType}"
   class:disabled
   {disabled}
+  on:click={submitForm}
   on:click
 >
   {#if round}
