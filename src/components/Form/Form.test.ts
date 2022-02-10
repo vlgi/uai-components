@@ -3,6 +3,14 @@ import userEvent from "@testing-library/user-event";
 import UsageExample from "./UsageExample.svelte";
 import { sleep } from "../../helpers/utils";
 
+beforeEach(() => {
+  /**
+   * fix for scrollintoview-is-not-a-function
+   * https://stackoverflow.com/questions/53271193/typeerror-scrollintoview-is-not-a-function
+   */
+  window.HTMLElement.prototype.scrollIntoView = function () {};
+});
+
 test("Should form get input value automatically", async () => {
   const { component, getByRole } = render(UsageExample, {});
   const inputEl = getByRole("textbox");
