@@ -9,3 +9,4 @@ dist/
 /coverage/
 .creevey/report/
 storybook-static/
+/scripts/
