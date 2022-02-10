@@ -1,0 +1,14 @@
+/node_modules/
+
+.DS_Store
+
+# IDEs
+.vscode
+.idea
+/coverage/
+.creevey/report/
+storybook-static/
+
+# ignore storybook and tests
+*.stories.*
+*.test.*
