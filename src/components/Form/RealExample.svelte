@@ -1,10 +1,20 @@
 <script lang="ts">
-  import Input from "./InputExample.svelte";
+  import Input from "../formFields/Input/Input.svelte";
   import Button from "../formFields/Button/Button.svelte";
   import Form from "./Form.svelte";
 
   export let values: Record<string, unknown>;
   export let isAllValid: boolean;
+
+  function validateEmail(value: string): string|boolean {
+    if (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(value)) return true;
+    return "Type a valid e-mail.";
+  }
+
+  function validatePassword(value: string): string|boolean {
+    if (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/.test(value)) return true;
+    return "So weak! You can do it better.";
+  }
 </script>
 
 <div>
@@ -17,8 +27,20 @@
 </div>
 
 <Form bind:values bind:isAllValid on:submit>
-  <Input name="input-name"/>
-  <br>
+  <Input
+    label="email"
+    name="email"
+    type="email"
+    validationFn={validateEmail}
+    required={true}
+  />
+  <Input
+    label="password"
+    name="password"
+    type="password"
+    validationFn={validatePassword}
+    required={true}
+  />
   <Button type="submit">Submit</Button>
 </Form>
 

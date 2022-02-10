@@ -1,4 +1,8 @@
 <script lang="ts">
+  import {
+    onMount, getContext, hasContext, onDestroy,
+  } from "svelte";
+  import type { TFormContext } from "../../Form/types";
   import Icon from "../../Icon/Icon.svelte";
 
   /** choose an icon from the list */
@@ -43,10 +47,14 @@
    * The input element (readonly)
    * @type {HTMLInputElement}
    * */
-  export let inputElement: HTMLInputElement;
+  export let inputElement: HTMLInputElement|null = null;
 
+  /**
+   * required
+   * @type {string}
+   */
+  export let name: string;
   export let type = "text";
-  export let name = "";
   export let value = "";
   export let disabled = false;
   export let readonly = false;
@@ -59,17 +67,26 @@
   let helper = false;
   let eMsg = "";
   let MsgUp = false;
+  let wrapperElement: HTMLElement;
 
-  const focused = () => {
+  const isInsideContext = hasContext("FormContext");
+  const {
+    setFieldValue,
+    addFieldToContext,
+    removeFieldFromContext,
+  } = isInsideContext && getContext<TFormContext>("FormContext");
+
+
+  function focused() {
     helper = !helper;
     MsgUp = !MsgUp;
-  };
+  }
 
-  const changed = () => {
+  function changed() {
     invalid = false;
-  };
+  }
 
-  const checkStatus = (answer: undefined|string|boolean) => {
+  function checkStatus(answer: undefined|string|boolean) {
     if (answer === true || answer === undefined) {
       isValid = true;
       invalid = !isValid;
@@ -82,9 +99,9 @@
       invalid = !isValid;
       eMsg = answer;
     }
-  };
+  }
 
-  const validation = () => {
+  function validation() {
     if (forceInvalid) {
       isValid = false;
       invalid = !isValid;
@@ -96,14 +113,31 @@
     } else {
       checkStatus(validationFn(value));
     }
-  };
+  }
 
-  const setValue = (ev: InputEvent) => {
+  function setValue(ev: InputEvent) {
     const x = (ev.target as HTMLInputElement).value;
     value = x;
-  };
+  }
 
   $: if (forceInvalid) validation();
+
+  // run only after mounted, because setFieldValue, must become after addFieldToContext
+  $: if (inputElement && isInsideContext) {
+    setFieldValue(name, value, isValid);
+  }
+
+  onMount(() => {
+    if (isInsideContext) {
+      addFieldToContext(name, value, isValid, required, wrapperElement, validation);
+    }
+  });
+
+  onDestroy(() => {
+    if (isInsideContext) {
+      removeFieldFromContext(name);
+    }
+  });
 </script>
 
 <div
@@ -111,6 +145,7 @@
   class:icons-left={iconPosition === "left" && icon}
   class:icons-right={iconPosition === "right" && icon}
   class:invalid
+  bind:this={wrapperElement}
 >
   <input
     on:focus={focused}
@@ -126,7 +161,6 @@
     {name}
     {type}
     {value}
-    {required}
     {disabled}
     {readonly}
     {...inputAttributes}
