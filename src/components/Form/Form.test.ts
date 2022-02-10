@@ -8,7 +8,8 @@ beforeEach(() => {
    * fix for scrollintoview-is-not-a-function
    * https://stackoverflow.com/questions/53271193/typeerror-scrollintoview-is-not-a-function
    */
-  window.HTMLElement.prototype.scrollIntoView = function () {};
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  window.HTMLElement.prototype.scrollIntoView = () => {};
 });
 
 test("Should form get input value automatically", async () => {
