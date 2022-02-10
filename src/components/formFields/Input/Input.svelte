@@ -335,33 +335,33 @@
     position: absolute;
     z-index: 1;
     font-size: var(--message-font-size);
-    transition: opacity 0.5s linear, bottom 0.5s;
+    transition: opacity 0.2s linear, bottom 0.2s;
     bottom: var(--message-bottom);
     left: var(--message-left);
 
     &.helper {
       color: var(--theme-info);
       opacity: 0;
-      transition: opacity 0.5s linear, bottom 0.5s;
+      transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.helper-show {
       opacity: 0.75;
       color: var(--theme-info);
-      transition: opacity 0.5s linear, bottom 0.5s;
+      transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.error {
       color: var(--theme-error);
       opacity: 0;
-      transition: opacity 0.5s linear, bottom 0.5s;
+      transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.error-show {
       color: var(--theme-error);
       opacity: 0.75;
-      transition: opacity 0.5s linear, bottom 0.5s;
+      transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.MsgUp {
       bottom: var(--message-error-bottom-focus);
-      transition: opacity 0.5s linear, bottom 0.5s;
+      transition: opacity 0.2s linear, bottom 0.2s;
     }
   }
 </style>
