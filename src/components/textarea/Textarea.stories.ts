@@ -7,8 +7,6 @@ export default {
   title: "Components/Textarea",
   component: Textarea,
   argTypes: {
-    onInput: { action: "on:input" },
-    onChange: { action: "on:change" },
     textareaStyle: {
       control: {
         type: "select",
@@ -90,7 +88,7 @@ CustomExample.parameters = {
     <div style="--szot-border-radius: 1rem;
       --szot-max-height: 5rem;--szot-background-color: #ffffff;
       --szot-label-color: #c56d09;--szot-textarea-color: #db984b;
-      --szot-border-color: #c56d09;--szot-placeholder-color:#db984b;" 
+      --szot-border-color: #c56d09;--szot-placeholder-color:#db984b;"
       >
       <Textarea validationFn: validTest,
         label="Teste"
