@@ -7,6 +7,7 @@ import SelectWrapper from "./SelectWrapper.svelte";
 export default {
   title: "Components/Select",
   component: Select,
+
 };
 
 const Template = (_args: ArgType) => {
@@ -45,6 +46,24 @@ export const SimpleLong = Template({
   options: longDesserts,
 });
 
+export const SimpleRequired = Template({
+  multiple: false,
+  id: "doce",
+  name: "doce",
+  label: "Sobremesas",
+  options,
+  required: true,
+});
+
+export const SimpleForceInvalid = Template({
+  multiple: false,
+  id: "doce",
+  name: "doce",
+  label: "Sobremesas",
+  options,
+  forceInvalid: true,
+});
+
 export const Multiple = Template({
   multiple: true,
   id: "doce",
@@ -68,4 +87,23 @@ export const MultipleLong = Template({
   name: "doce",
   label: "Sobremesas",
   options: longDesserts,
+});
+
+export const MultipleRequired = Template({
+  multiple: true,
+  id: "doce",
+  name: "doce",
+  label: "Sobremesas",
+  options,
+  required: true,
+  min: 2,
+});
+
+export const MultipleForceInvalid = Template({
+  multiple: true,
+  id: "doce",
+  name: "doce",
+  label: "Sobremesas",
+  options,
+  forceInvalid: true,
 });
