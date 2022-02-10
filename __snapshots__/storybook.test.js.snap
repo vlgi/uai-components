@@ -48,7 +48,7 @@ exports[`Storyshots Components/Badge Theme 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Custom Example 1`] = `
+exports[`Storyshots Components/FormFields/Button Custom Example 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -56,7 +56,7 @@ exports[`Storyshots Components/Button Custom Example 1`] = `
     style="--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-buttonStyleType: 2px solid #ffc7a7; --szot-border-radius: 1.5rem"
   >
     <button
-      class="button medium button-style-primary button-style-type-filled svelte-rl985o"
+      class="button medium button-style-primary button-style-type-filled svelte-4xwich"
       name="button"
       type="button"
     >
@@ -66,13 +66,13 @@ exports[`Storyshots Components/Button Custom Example 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Disabled 1`] = `
+exports[`Storyshots Components/FormFields/Button Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button large button-style-primary button-style-type-filled svelte-rl985o disabled"
+      class="button large button-style-primary button-style-type-filled svelte-4xwich disabled"
       disabled=""
       name="button"
       type="button"
@@ -83,18 +83,18 @@ exports[`Storyshots Components/Button Disabled 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Large Icon 1`] = `
+exports[`Storyshots Components/FormFields/Button Large Icon 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button large button-style-primary button-style-type-filled svelte-rl985o"
+      class="button large button-style-primary button-style-type-filled svelte-4xwich"
       name="button"
       type="button"
     >
       <div
-        class="icon-right svelte-rl985o"
+        class="icon-right svelte-4xwich"
       >
         <span
           class="icon-upload"
@@ -102,7 +102,7 @@ exports[`Storyshots Components/Button Large Icon 1`] = `
       </div>
        
       <div
-        class="texto-right svelte-rl985o"
+        class="texto-right svelte-4xwich"
       >
         Enviar documentos
       </div>
@@ -111,13 +111,13 @@ exports[`Storyshots Components/Button Large Icon 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Large Simple 1`] = `
+exports[`Storyshots Components/FormFields/Button Large Simple 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button large button-style-primary button-style-type-filled svelte-rl985o"
+      class="button large button-style-primary button-style-type-filled svelte-4xwich"
       name="button"
       type="button"
     >
@@ -127,18 +127,18 @@ exports[`Storyshots Components/Button Large Simple 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Medium Icon 1`] = `
+exports[`Storyshots Components/FormFields/Button Medium Icon 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button medium button-style-primary button-style-type-filled svelte-rl985o"
+      class="button medium button-style-primary button-style-type-filled svelte-4xwich"
       name="button"
       type="button"
     >
       <div
-        class="icon-right svelte-rl985o"
+        class="icon-right svelte-4xwich"
       >
         <span
           class="icon-file"
@@ -146,7 +146,7 @@ exports[`Storyshots Components/Button Medium Icon 1`] = `
       </div>
        
       <div
-        class="texto-right svelte-rl985o"
+        class="texto-right svelte-4xwich"
       >
         Documento
       </div>
@@ -155,13 +155,13 @@ exports[`Storyshots Components/Button Medium Icon 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Medium Simple 1`] = `
+exports[`Storyshots Components/FormFields/Button Medium Simple 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button medium button-style-primary button-style-type-filled svelte-rl985o"
+      class="button medium button-style-primary button-style-type-filled svelte-4xwich"
       name="button"
       type="button"
     >
@@ -171,13 +171,13 @@ exports[`Storyshots Components/Button Medium Simple 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Not Background 1`] = `
+exports[`Storyshots Components/FormFields/Button Not Background 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button large button-style-primary button-style-type-not-filled svelte-rl985o"
+      class="button large button-style-primary button-style-type-not-filled svelte-4xwich"
       name="button"
       type="button"
     >
@@ -187,13 +187,13 @@ exports[`Storyshots Components/Button Not Background 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Not Background Disabled 1`] = `
+exports[`Storyshots Components/FormFields/Button Not Background Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button large button-style-primary button-style-type-not-filled svelte-rl985o disabled"
+      class="button large button-style-primary button-style-type-not-filled svelte-4xwich disabled"
       disabled=""
       name="button"
       type="button"
@@ -204,7 +204,7 @@ exports[`Storyshots Components/Button Not Background Disabled 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Round 1`] = `
+exports[`Storyshots Components/FormFields/Button Round 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -212,12 +212,12 @@ exports[`Storyshots Components/Button Round 1`] = `
     style=""
   >
     <button
-      class="button round button-style-primary button-style-type-filled svelte-rl985o"
+      class="button round button-style-primary button-style-type-filled svelte-4xwich"
       name="button"
       type="button"
     >
       <div
-        class="icon svelte-rl985o"
+        class="icon svelte-4xwich"
       >
         <span
           class="icon-dots-horizontal"
@@ -228,19 +228,19 @@ exports[`Storyshots Components/Button Round 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Round Disabled 1`] = `
+exports[`Storyshots Components/FormFields/Button Round Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button round button-style-primary button-style-type-filled svelte-rl985o disabled"
+      class="button round button-style-primary button-style-type-filled svelte-4xwich disabled"
       disabled=""
       name="button"
       type="button"
     >
       <div
-        class="icon svelte-rl985o"
+        class="icon svelte-4xwich"
       >
         <span
           class="icon-dots-horizontal"
@@ -251,18 +251,18 @@ exports[`Storyshots Components/Button Round Disabled 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Round Not Background 1`] = `
+exports[`Storyshots Components/FormFields/Button Round Not Background 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button round button-style-primary button-style-type-not-filled svelte-rl985o"
+      class="button round button-style-primary button-style-type-not-filled svelte-4xwich"
       name="button"
       type="button"
     >
       <div
-        class="icon svelte-rl985o"
+        class="icon svelte-4xwich"
       >
         <span
           class="icon-dots-horizontal"
@@ -273,18 +273,18 @@ exports[`Storyshots Components/Button Round Not Background 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Small Icon 1`] = `
+exports[`Storyshots Components/FormFields/Button Small Icon 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button small button-style-primary button-style-type-filled svelte-rl985o"
+      class="button small button-style-primary button-style-type-filled svelte-4xwich"
       name="button"
       type="button"
     >
       <div
-        class="icon-left svelte-rl985o"
+        class="icon-left svelte-4xwich"
       >
         <span
           class="icon-magnify"
@@ -292,7 +292,7 @@ exports[`Storyshots Components/Button Small Icon 1`] = `
       </div>
        
       <div
-        class="texto-left svelte-rl985o"
+        class="texto-left svelte-4xwich"
       >
         Buscar
       </div>
@@ -301,13 +301,13 @@ exports[`Storyshots Components/Button Small Icon 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Small Simple 1`] = `
+exports[`Storyshots Components/FormFields/Button Small Simple 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button small button-style-primary button-style-type-filled svelte-rl985o"
+      class="button small button-style-primary button-style-type-filled svelte-4xwich"
       name="button"
       type="button"
     >
@@ -317,7 +317,7 @@ exports[`Storyshots Components/Button Small Simple 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button Theme Test 1`] = `
+exports[`Storyshots Components/FormFields/Button Theme Test 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -325,7 +325,7 @@ exports[`Storyshots Components/Button Theme Test 1`] = `
     style=""
   >
     <button
-      class="button medium button-style-secondary button-style-type-filled svelte-rl985o"
+      class="button medium button-style-secondary button-style-type-filled svelte-4xwich"
       name="button"
       type="button"
     >
@@ -335,13 +335,13 @@ exports[`Storyshots Components/Button Theme Test 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button With Borders 1`] = `
+exports[`Storyshots Components/FormFields/Button With Borders 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button medium button-style-primary button-style-type-outline svelte-rl985o"
+      class="button medium button-style-primary button-style-type-outline svelte-4xwich"
       name="button"
       type="button"
     >
@@ -351,13 +351,13 @@ exports[`Storyshots Components/Button With Borders 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Button With Borders Disabled 1`] = `
+exports[`Storyshots Components/FormFields/Button With Borders Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <button
-      class="button medium button-style-primary button-style-type-outline svelte-rl985o disabled"
+      class="button medium button-style-primary button-style-type-outline svelte-4xwich disabled"
       disabled=""
       name="button"
       type="button"
@@ -368,33 +368,23 @@ exports[`Storyshots Components/Button With Borders Disabled 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Icon Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <span
-    class="icon-phone"
-  />
-</section>
-`;
-
-exports[`Storyshots Components/Input Borders None 1`] = `
+exports[`Storyshots Components/FormFields/Input Borders None 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1pqcn1m"
+      class="form-div input-style-primary svelte-1q9ns05"
     >
       <input
-        class="form-input border-bottom svelte-1pqcn1m"
-        name=""
+        aria-required="false"
+        class="form-input border-bottom svelte-1q9ns05"
         placeholder=" "
         type="password"
       />
        
       <label
-        class="form-label svelte-1pqcn1m"
+        class="form-label svelte-1q9ns05"
         for=""
       >
         Senha
@@ -402,13 +392,13 @@ exports[`Storyshots Components/Input Borders None 1`] = `
        
        
       <p
-        class="helper svelte-1pqcn1m"
+        class="helper svelte-1q9ns05"
       >
         
       </p>
        
       <p
-        class="error svelte-1pqcn1m"
+        class="error svelte-1q9ns05"
       >
         
       </p>
@@ -417,7 +407,7 @@ exports[`Storyshots Components/Input Borders None 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Input Custom Example 1`] = `
+exports[`Storyshots Components/FormFields/Input Custom Example 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -425,17 +415,17 @@ exports[`Storyshots Components/Input Custom Example 1`] = `
     style="--szot-label-font-size: 10px;--szot-height: 1.5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-input-color: #db984b;--szot-input-focus-color: #ce4007;--szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;--szot-border-radius: 1.5rem;"
   >
     <div
-      class="form-div input-style-primary svelte-1pqcn1m"
+      class="form-div input-style-primary svelte-1q9ns05"
     >
       <input
-        class="form-input border-outline svelte-1pqcn1m"
-        name=""
+        aria-required="false"
+        class="form-input border-outline svelte-1q9ns05"
         placeholder=" "
         type="name"
       />
        
       <label
-        class="form-label svelte-1pqcn1m"
+        class="form-label svelte-1q9ns05"
         for=""
       >
         Teste
@@ -443,13 +433,13 @@ exports[`Storyshots Components/Input Custom Example 1`] = `
        
        
       <p
-        class="helper svelte-1pqcn1m"
+        class="helper svelte-1q9ns05"
       >
         Digite 'erro' para ser invalido
       </p>
        
       <p
-        class="error svelte-1pqcn1m"
+        class="error svelte-1q9ns05"
       >
         
       </p>
@@ -458,24 +448,23 @@ exports[`Storyshots Components/Input Custom Example 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Input Custom Validation And Required 1`] = `
+exports[`Storyshots Components/FormFields/Input Custom Validation And Required 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1pqcn1m"
+      class="form-div input-style-primary svelte-1q9ns05"
     >
       <input
-        class="form-input border-outline svelte-1pqcn1m"
-        name=""
+        aria-required="true"
+        class="form-input border-outline svelte-1q9ns05"
         placeholder=" "
-        required=""
         type="text"
       />
        
       <label
-        class="form-label svelte-1pqcn1m required"
+        class="form-label svelte-1q9ns05 required"
         for=""
       >
         Name
@@ -483,13 +472,13 @@ exports[`Storyshots Components/Input Custom Validation And Required 1`] = `
        
        
       <p
-        class="helper svelte-1pqcn1m"
+        class="helper svelte-1q9ns05"
       >
         Digite 'erro' para ser invalido
       </p>
        
       <p
-        class="error svelte-1pqcn1m"
+        class="error svelte-1q9ns05"
       >
         
       </p>
@@ -498,7 +487,7 @@ exports[`Storyshots Components/Input Custom Validation And Required 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Input Default 1`] = `
+exports[`Storyshots Components/FormFields/Input Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -506,17 +495,17 @@ exports[`Storyshots Components/Input Default 1`] = `
     style=""
   >
     <div
-      class="form-div input-style-primary svelte-1pqcn1m"
+      class="form-div input-style-primary svelte-1q9ns05"
     >
       <input
-        class="form-input border-outline svelte-1pqcn1m"
-        name=""
+        aria-required="false"
+        class="form-input border-outline svelte-1q9ns05"
         placeholder=" "
         type="email"
       />
        
       <label
-        class="form-label svelte-1pqcn1m"
+        class="form-label svelte-1q9ns05"
         for=""
       >
         Email
@@ -524,13 +513,13 @@ exports[`Storyshots Components/Input Default 1`] = `
        
        
       <p
-        class="helper svelte-1pqcn1m"
+        class="helper svelte-1q9ns05"
       >
         Digite um email válido
       </p>
        
       <p
-        class="error svelte-1pqcn1m"
+        class="error svelte-1q9ns05"
       >
         
       </p>
@@ -539,23 +528,23 @@ exports[`Storyshots Components/Input Default 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Input Force Invalid 1`] = `
+exports[`Storyshots Components/FormFields/Input Force Invalid 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1pqcn1m invalid"
+      class="form-div input-style-primary svelte-1q9ns05 invalid"
     >
       <input
-        class="form-input border-outline svelte-1pqcn1m"
-        name=""
+        aria-required="false"
+        class="form-input border-outline svelte-1q9ns05"
         placeholder=" "
         type="text"
       />
        
       <label
-        class="form-label svelte-1pqcn1m"
+        class="form-label svelte-1q9ns05"
         for=""
       >
         Name
@@ -563,13 +552,13 @@ exports[`Storyshots Components/Input Force Invalid 1`] = `
        
        
       <p
-        class="helper svelte-1pqcn1m"
+        class="helper svelte-1q9ns05"
       >
         
       </p>
        
       <p
-        class="error svelte-1pqcn1m error-show"
+        class="error svelte-1q9ns05 error-show"
       >
         Mensagem de erro customizada
       </p>
@@ -578,31 +567,31 @@ exports[`Storyshots Components/Input Force Invalid 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Input Readonly 1`] = `
+exports[`Storyshots Components/FormFields/Input Readonly 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1pqcn1m icons-right"
+      class="form-div input-style-primary svelte-1q9ns05 icons-right"
     >
       <input
-        class="form-input border-outline svelte-1pqcn1m"
-        name=""
+        aria-required="false"
+        class="form-input border-outline svelte-1q9ns05"
         placeholder=" "
         readonly=""
         type="text"
       />
        
       <label
-        class="form-label svelte-1pqcn1m"
+        class="form-label svelte-1q9ns05"
         for=""
       >
         Aviso
       </label>
        
       <div
-        class="icon svelte-1pqcn1m"
+        class="icon svelte-1q9ns05"
       >
         <span
           class="icon-info"
@@ -610,13 +599,13 @@ exports[`Storyshots Components/Input Readonly 1`] = `
       </div>
        
       <p
-        class="helper svelte-1pqcn1m"
+        class="helper svelte-1q9ns05"
       >
         Apenas um exemplo
       </p>
        
       <p
-        class="error svelte-1pqcn1m"
+        class="error svelte-1q9ns05"
       >
         
       </p>
@@ -625,24 +614,23 @@ exports[`Storyshots Components/Input Readonly 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Input Required 1`] = `
+exports[`Storyshots Components/FormFields/Input Required 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1pqcn1m"
+      class="form-div input-style-primary svelte-1q9ns05"
     >
       <input
-        class="form-input border-outline svelte-1pqcn1m"
-        name=""
+        aria-required="true"
+        class="form-input border-outline svelte-1q9ns05"
         placeholder=" "
-        required=""
         type="text"
       />
        
       <label
-        class="form-label svelte-1pqcn1m required"
+        class="form-label svelte-1q9ns05 required"
         for=""
       >
         Name
@@ -650,13 +638,13 @@ exports[`Storyshots Components/Input Required 1`] = `
        
        
       <p
-        class="helper svelte-1pqcn1m"
+        class="helper svelte-1q9ns05"
       >
         
       </p>
        
       <p
-        class="error svelte-1pqcn1m"
+        class="error svelte-1q9ns05"
       >
         
       </p>
@@ -665,30 +653,30 @@ exports[`Storyshots Components/Input Required 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Input Whith Icon 1`] = `
+exports[`Storyshots Components/FormFields/Input Whith Icon 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1pqcn1m icons-right"
+      class="form-div input-style-primary svelte-1q9ns05 icons-right"
     >
       <input
-        class="form-input border-bottom svelte-1pqcn1m"
-        name=""
+        aria-required="false"
+        class="form-input border-bottom svelte-1q9ns05"
         placeholder=" "
         type="tel"
       />
        
       <label
-        class="form-label svelte-1pqcn1m"
+        class="form-label svelte-1q9ns05"
         for=""
       >
         Celular 1
       </label>
        
       <div
-        class="icon svelte-1pqcn1m"
+        class="icon svelte-1q9ns05"
       >
         <span
           class="icon-phone"
@@ -696,13 +684,13 @@ exports[`Storyshots Components/Input Whith Icon 1`] = `
       </div>
        
       <p
-        class="helper svelte-1pqcn1m"
+        class="helper svelte-1q9ns05"
       >
         
       </p>
        
       <p
-        class="error svelte-1pqcn1m"
+        class="error svelte-1q9ns05"
       >
         
       </p>
@@ -711,30 +699,30 @@ exports[`Storyshots Components/Input Whith Icon 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Input Whith Icon Left 1`] = `
+exports[`Storyshots Components/FormFields/Input Whith Icon Left 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1pqcn1m icons-left"
+      class="form-div input-style-primary svelte-1q9ns05 icons-left"
     >
       <input
-        class="form-input border-outline svelte-1pqcn1m"
-        name=""
+        aria-required="false"
+        class="form-input border-outline svelte-1q9ns05"
         placeholder=" "
         type="tel"
       />
        
       <label
-        class="form-label svelte-1pqcn1m"
+        class="form-label svelte-1q9ns05"
         for=""
       >
         Celular 2
       </label>
        
       <div
-        class="icon svelte-1pqcn1m"
+        class="icon svelte-1q9ns05"
       >
         <span
           class="icon-phone"
@@ -742,13 +730,13 @@ exports[`Storyshots Components/Input Whith Icon Left 1`] = `
       </div>
        
       <p
-        class="helper svelte-1pqcn1m"
+        class="helper svelte-1q9ns05"
       >
         
       </p>
        
       <p
-        class="error svelte-1pqcn1m"
+        class="error svelte-1q9ns05"
       >
         
       </p>
@@ -757,16 +745,16 @@ exports[`Storyshots Components/Input Whith Icon Left 1`] = `
 </section>
 `;
 
-exports[`Storyshots Components/Select Multiple 1`] = `
+exports[`Storyshots Components/FormFields/Select Multiple 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1mcmtid"
+    class="select svelte-ng9884"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1mcmtid"
+      class="select-label svelte-ng9884"
       for="doce-custom"
       id="doce-label"
     >
@@ -778,7 +766,7 @@ exports[`Storyshots Components/Select Multiple 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1mcmtid"
+      class="select-box svelte-ng9884"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
@@ -787,7 +775,7 @@ exports[`Storyshots Components/Select Multiple 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1mcmtid closed"
+      class="select-dropdown-menu svelte-ng9884 closed"
     >
       <input
         class="search svelte-1ara2mn"
@@ -864,49 +852,56 @@ exports[`Storyshots Components/Select Multiple 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1mcmtid"
+      class="hidden svelte-ng9884"
       disabled=""
       id="doce"
       multiple=""
       name="doce"
     >
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho
@@ -915,12 +910,18 @@ exports[`Storyshots Components/Select Multiple 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1mcmtid"
+      class="select-arrow svelte-ng9884"
     >
       <div
-        class="select-arrow-aux svelte-1mcmtid"
+        class="select-arrow-aux svelte-ng9884"
       />
     </div>
+  </div>
+   
+  <div
+    class="error-text svelte-ng9884 invisible"
+  >
+    Valor inválido.
   </div>
    
   <header>
@@ -930,20 +931,27 @@ exports[`Storyshots Components/Select Multiple 1`] = `
   </header>
    
   
-  
+   
+  <p>
+    <b>
+      isValid:
+    </b>
+     
+    true
+  </p>
 </section>
 `;
 
-exports[`Storyshots Components/Select Multiple Long 1`] = `
+exports[`Storyshots Components/FormFields/Select Multiple Force Invalid 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1mcmtid"
+    class="select svelte-ng9884 error"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1mcmtid"
+      class="select-label svelte-ng9884"
       for="doce-custom"
       id="doce-label"
     >
@@ -955,7 +963,7 @@ exports[`Storyshots Components/Select Multiple Long 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1mcmtid"
+      class="select-box svelte-ng9884"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
@@ -964,7 +972,204 @@ exports[`Storyshots Components/Select Multiple Long 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1mcmtid closed"
+      class="select-dropdown-menu svelte-ng9884 closed"
+    >
+      <input
+        class="search svelte-1ara2mn"
+        placeholder="Pesquise ou Selecione..."
+        tabindex="-1"
+        type="text"
+      />
+       
+      <div
+        aria-labelledby="doce-label"
+        class="select-menu svelte-12mc5sn"
+        id="doce-listbox"
+        role="listbox"
+        tabindex="-1"
+      >
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Brigadeiro
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pudim
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Rabanada
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Beijinho
+           
+        </div>
+        
+      </div>
+    </div>
+     
+    <select
+      class="hidden svelte-ng9884"
+      disabled=""
+      id="doce"
+      multiple=""
+      name="doce"
+    >
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Torta alemã
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Pavê
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Bolo
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Brigadeiro
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Pudim
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Rabanada
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Beijinho
+         
+      </option>
+    </select>
+     
+    <div
+      class="select-arrow svelte-ng9884"
+    >
+      <div
+        class="select-arrow-aux svelte-ng9884"
+      />
+    </div>
+  </div>
+   
+  <div
+    class="error-text svelte-ng9884"
+  >
+    Valor inválido.
+  </div>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  
+   
+  <p>
+    <b>
+      isValid:
+    </b>
+     
+    false
+  </p>
+</section>
+`;
+
+exports[`Storyshots Components/FormFields/Select Multiple Long 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="select svelte-ng9884"
+    tabindex="0"
+  >
+    <label
+      class="select-label svelte-ng9884"
+      for="doce-custom"
+      id="doce-label"
+    >
+      Sobremesas
+    </label>
+     
+    <div
+      aria-controls="doce-listbox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="doce-label"
+      class="select-box svelte-ng9884"
+      id="doce-custom"
+      role="combobox"
+      tabindex="-1"
+    >
+      Selecione
+    </div>
+     
+    <div
+      class="select-dropdown-menu svelte-ng9884 closed"
     >
       <input
         class="search svelte-1ara2mn"
@@ -1065,847 +1270,987 @@ exports[`Storyshots Components/Select Multiple Long 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1mcmtid"
+      class="hidden svelte-ng9884"
       disabled=""
       id="doce"
       multiple=""
       name="doce"
     >
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 19
@@ -1914,12 +2259,18 @@ exports[`Storyshots Components/Select Multiple Long 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1mcmtid"
+      class="select-arrow svelte-ng9884"
     >
       <div
-        class="select-arrow-aux svelte-1mcmtid"
+        class="select-arrow-aux svelte-ng9884"
       />
     </div>
+  </div>
+   
+  <div
+    class="error-text svelte-ng9884 invisible"
+  >
+    Valor inválido.
   </div>
    
   <header>
@@ -1929,20 +2280,27 @@ exports[`Storyshots Components/Select Multiple Long 1`] = `
   </header>
    
   
-  
+   
+  <p>
+    <b>
+      isValid:
+    </b>
+     
+    true
+  </p>
 </section>
 `;
 
-exports[`Storyshots Components/Select Multiple Selected 1`] = `
+exports[`Storyshots Components/FormFields/Select Multiple Required 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1mcmtid"
+    class="select svelte-ng9884"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1mcmtid floated"
+      class="select-label svelte-ng9884"
       for="doce-custom"
       id="doce-label"
     >
@@ -1954,42 +2312,243 @@ exports[`Storyshots Components/Select Multiple Selected 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1mcmtid selected-multiple"
+      class="select-box svelte-ng9884"
+      id="doce-custom"
+      role="combobox"
+      tabindex="-1"
+    >
+      Selecione
+    </div>
+     
+    <div
+      class="select-dropdown-menu svelte-ng9884 closed"
+    >
+      <input
+        class="search svelte-1ara2mn"
+        placeholder="Pesquise ou Selecione..."
+        tabindex="-1"
+        type="text"
+      />
+       
+      <div
+        aria-labelledby="doce-label"
+        class="select-menu svelte-12mc5sn"
+        id="doce-listbox"
+        role="listbox"
+        tabindex="-1"
+      >
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Brigadeiro
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pudim
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Rabanada
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Beijinho
+           
+        </div>
+        
+      </div>
+    </div>
+     
+    <select
+      class="hidden svelte-ng9884"
+      disabled=""
+      id="doce"
+      multiple=""
+      name="doce"
+    >
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Torta alemã
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Pavê
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Bolo
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Brigadeiro
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Pudim
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Rabanada
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Beijinho
+         
+      </option>
+    </select>
+     
+    <div
+      class="select-arrow svelte-ng9884"
+    >
+      <div
+        class="select-arrow-aux svelte-ng9884"
+      />
+    </div>
+  </div>
+   
+  <div
+    class="error-text svelte-ng9884 invisible"
+  >
+    É necessário selecionar 
+    2
+     
+    valores
+    .
+  </div>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  
+   
+  <p>
+    <b>
+      isValid:
+    </b>
+     
+    false
+  </p>
+</section>
+`;
+
+exports[`Storyshots Components/FormFields/Select Multiple Selected 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="select svelte-ng9884"
+    tabindex="0"
+  >
+    <label
+      class="select-label svelte-ng9884 floated"
+      for="doce-custom"
+      id="doce-label"
+    >
+      Sobremesas
+    </label>
+     
+    <div
+      aria-controls="doce-listbox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="doce-label"
+      class="select-box svelte-ng9884 selected-multiple"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
     >
       <span
-        class="badge svelte-1mcmtid"
+        class="badge svelte-ng9884"
       >
         Torta alemã
          
         <span
-          class="svelte-1mcmtid"
+          class="svelte-ng9884"
         >
           ×
         </span>
          
       </span>
       <span
-        class="badge svelte-1mcmtid"
+        class="badge svelte-ng9884"
       >
         Pavê
          
         <span
-          class="svelte-1mcmtid"
+          class="svelte-ng9884"
         >
           ×
         </span>
          
       </span>
       <span
-        class="badge svelte-1mcmtid"
+        class="badge svelte-ng9884"
       >
         Bolo
          
         <span
-          class="svelte-1mcmtid"
+          class="svelte-ng9884"
         >
           ×
         </span>
@@ -1999,7 +2558,7 @@ exports[`Storyshots Components/Select Multiple Selected 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1mcmtid closed"
+      class="select-dropdown-menu svelte-ng9884 closed"
     >
       <input
         class="search svelte-1ara2mn"
@@ -2076,49 +2635,56 @@ exports[`Storyshots Components/Select Multiple Selected 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1mcmtid"
+      class="hidden svelte-ng9884"
       disabled=""
       id="doce"
       multiple=""
       name="doce"
     >
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho
@@ -2127,12 +2693,18 @@ exports[`Storyshots Components/Select Multiple Selected 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1mcmtid"
+      class="select-arrow svelte-ng9884"
     >
       <div
-        class="select-arrow-aux svelte-1mcmtid"
+        class="select-arrow-aux svelte-ng9884"
       />
     </div>
+  </div>
+   
+  <div
+    class="error-text svelte-ng9884 invisible"
+  >
+    Valor inválido.
   </div>
    
   <header>
@@ -2151,20 +2723,27 @@ exports[`Storyshots Components/Select Multiple Selected 1`] = `
     {"text":"Bolo"}
   </p>
   
-  
+   
+  <p>
+    <b>
+      isValid:
+    </b>
+     
+    true
+  </p>
 </section>
 `;
 
-exports[`Storyshots Components/Select Simple Long 1`] = `
+exports[`Storyshots Components/FormFields/Select Simple Force Invalid 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1mcmtid"
+    class="select svelte-ng9884 error"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1mcmtid"
+      class="select-label svelte-ng9884"
       for="doce-custom"
       id="doce-label"
     >
@@ -2176,7 +2755,7 @@ exports[`Storyshots Components/Select Simple Long 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1mcmtid"
+      class="select-box svelte-ng9884"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
@@ -2185,7 +2764,205 @@ exports[`Storyshots Components/Select Simple Long 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1mcmtid closed"
+      class="select-dropdown-menu svelte-ng9884 closed"
+    >
+      <input
+        class="search svelte-1ara2mn"
+        placeholder="Pesquise ou Selecione..."
+        tabindex="-1"
+        type="text"
+      />
+       
+      <div
+        aria-labelledby="doce-label"
+        class="select-menu svelte-12mc5sn"
+        id="doce-listbox"
+        role="listbox"
+        tabindex="-1"
+      >
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Brigadeiro
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pudim
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Rabanada
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Beijinho
+           
+        </div>
+        
+      </div>
+    </div>
+     
+    <select
+      class="hidden svelte-ng9884"
+      disabled=""
+      id="doce"
+      name="doce"
+    >
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Torta alemã
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Pavê
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Bolo
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Brigadeiro
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Pudim
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Rabanada
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Beijinho
+         
+      </option>
+    </select>
+     
+    <div
+      class="select-arrow svelte-ng9884"
+    >
+      <div
+        class="select-arrow-aux svelte-ng9884"
+      />
+    </div>
+  </div>
+   
+  <div
+    class="error-text svelte-ng9884"
+  >
+    Valor inválido.
+  </div>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    null
+  </p>
+   
+  <p>
+    <b>
+      isValid:
+    </b>
+     
+    false
+  </p>
+</section>
+`;
+
+exports[`Storyshots Components/FormFields/Select Simple Long 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="select svelte-ng9884"
+    tabindex="0"
+  >
+    <label
+      class="select-label svelte-ng9884"
+      for="doce-custom"
+      id="doce-label"
+    >
+      Sobremesas
+    </label>
+     
+    <div
+      aria-controls="doce-listbox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="doce-label"
+      class="select-box svelte-ng9884"
+      id="doce-custom"
+      role="combobox"
+      tabindex="-1"
+    >
+      Selecione
+    </div>
+     
+    <div
+      class="select-dropdown-menu svelte-ng9884 closed"
     >
       <input
         class="search svelte-1ara2mn"
@@ -2286,846 +3063,986 @@ exports[`Storyshots Components/Select Simple Long 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1mcmtid"
+      class="hidden svelte-ng9884"
       disabled=""
       id="doce"
       name="doce"
     >
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 0
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 1
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 2
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 3
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 4
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 5
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 6
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 7
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 8
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 9
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 10
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 11
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 12
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 13
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 14
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 15
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 16
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 17
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 18
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada 19
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho 19
@@ -3134,12 +4051,18 @@ exports[`Storyshots Components/Select Simple Long 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1mcmtid"
+      class="select-arrow svelte-ng9884"
     >
       <div
-        class="select-arrow-aux svelte-1mcmtid"
+        class="select-arrow-aux svelte-ng9884"
       />
     </div>
+  </div>
+   
+  <div
+    class="error-text svelte-ng9884 invisible"
+  >
+    Valor inválido.
   </div>
    
   <header>
@@ -3148,21 +4071,30 @@ exports[`Storyshots Components/Select Simple Long 1`] = `
     </b>
   </header>
    
-  
-  
+  <p>
+    null
+  </p>
+   
+  <p>
+    <b>
+      isValid:
+    </b>
+     
+    true
+  </p>
 </section>
 `;
 
-exports[`Storyshots Components/Select Single 1`] = `
+exports[`Storyshots Components/FormFields/Select Simple Required 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1mcmtid"
+    class="select svelte-ng9884"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1mcmtid"
+      class="select-label svelte-ng9884"
       for="doce-custom"
       id="doce-label"
     >
@@ -3174,7 +4106,7 @@ exports[`Storyshots Components/Select Single 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1mcmtid"
+      class="select-box svelte-ng9884"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
@@ -3183,7 +4115,7 @@ exports[`Storyshots Components/Select Single 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1mcmtid closed"
+      class="select-dropdown-menu svelte-ng9884 closed"
     >
       <input
         class="search svelte-1ara2mn"
@@ -3260,48 +4192,55 @@ exports[`Storyshots Components/Select Single 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1mcmtid"
+      class="hidden svelte-ng9884"
       disabled=""
       id="doce"
       name="doce"
     >
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho
@@ -3310,12 +4249,22 @@ exports[`Storyshots Components/Select Single 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1mcmtid"
+      class="select-arrow svelte-ng9884"
     >
       <div
-        class="select-arrow-aux svelte-1mcmtid"
+        class="select-arrow-aux svelte-ng9884"
       />
     </div>
+  </div>
+   
+  <div
+    class="error-text svelte-ng9884 invisible"
+  >
+    É necessário selecionar 
+    1
+     
+    valor
+    .
   </div>
    
   <header>
@@ -3324,21 +4273,30 @@ exports[`Storyshots Components/Select Single 1`] = `
     </b>
   </header>
    
-  
-  
+  <p>
+    null
+  </p>
+   
+  <p>
+    <b>
+      isValid:
+    </b>
+     
+    false
+  </p>
 </section>
 `;
 
-exports[`Storyshots Components/Select Single Selected 1`] = `
+exports[`Storyshots Components/FormFields/Select Single 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-1mcmtid"
+    class="select svelte-ng9884"
     tabindex="0"
   >
     <label
-      class="select-label svelte-1mcmtid floated"
+      class="select-label svelte-ng9884"
       for="doce-custom"
       id="doce-label"
     >
@@ -3350,7 +4308,205 @@ exports[`Storyshots Components/Select Single Selected 1`] = `
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-labelledby="doce-label"
-      class="select-box svelte-1mcmtid"
+      class="select-box svelte-ng9884"
+      id="doce-custom"
+      role="combobox"
+      tabindex="-1"
+    >
+      Selecione
+    </div>
+     
+    <div
+      class="select-dropdown-menu svelte-ng9884 closed"
+    >
+      <input
+        class="search svelte-1ara2mn"
+        placeholder="Pesquise ou Selecione..."
+        tabindex="-1"
+        type="text"
+      />
+       
+      <div
+        aria-labelledby="doce-label"
+        class="select-menu svelte-12mc5sn"
+        id="doce-listbox"
+        role="listbox"
+        tabindex="-1"
+      >
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Torta alemã
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pavê
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Bolo
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Brigadeiro
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Pudim
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Rabanada
+           
+        </div>
+        <div
+          class="select-option svelte-12mc5sn"
+          role="option"
+          tabindex="-1"
+        >
+          Beijinho
+           
+        </div>
+        
+      </div>
+    </div>
+     
+    <select
+      class="hidden svelte-ng9884"
+      disabled=""
+      id="doce"
+      name="doce"
+    >
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Torta alemã
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Pavê
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Bolo
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Brigadeiro
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Pudim
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Rabanada
+         
+      </option>
+      <option
+        class="svelte-ng9884"
+        value="[object Object]"
+      >
+        Beijinho
+         
+      </option>
+    </select>
+     
+    <div
+      class="select-arrow svelte-ng9884"
+    >
+      <div
+        class="select-arrow-aux svelte-ng9884"
+      />
+    </div>
+  </div>
+   
+  <div
+    class="error-text svelte-ng9884 invisible"
+  >
+    Valor inválido.
+  </div>
+   
+  <header>
+    <b>
+      Selected:
+    </b>
+  </header>
+   
+  <p>
+    null
+  </p>
+   
+  <p>
+    <b>
+      isValid:
+    </b>
+     
+    true
+  </p>
+</section>
+`;
+
+exports[`Storyshots Components/FormFields/Select Single Selected 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="select svelte-ng9884"
+    tabindex="0"
+  >
+    <label
+      class="select-label svelte-ng9884 floated"
+      for="doce-custom"
+      id="doce-label"
+    >
+      Sobremesas
+    </label>
+     
+    <div
+      aria-controls="doce-listbox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="doce-label"
+      class="select-box svelte-ng9884"
       id="doce-custom"
       role="combobox"
       tabindex="-1"
@@ -3359,7 +4515,7 @@ exports[`Storyshots Components/Select Single Selected 1`] = `
     </div>
      
     <div
-      class="select-dropdown-menu svelte-1mcmtid closed"
+      class="select-dropdown-menu svelte-ng9884 closed"
     >
       <input
         class="search svelte-1ara2mn"
@@ -3436,48 +4592,55 @@ exports[`Storyshots Components/Select Single Selected 1`] = `
     </div>
      
     <select
-      class="hidden svelte-1mcmtid"
+      class="hidden svelte-ng9884"
       disabled=""
       id="doce"
       name="doce"
     >
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Torta alemã
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pavê
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Bolo
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Brigadeiro
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Pudim
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Rabanada
          
       </option>
       <option
+        class="svelte-ng9884"
         value="[object Object]"
       >
         Beijinho
@@ -3486,12 +4649,18 @@ exports[`Storyshots Components/Select Single Selected 1`] = `
     </select>
      
     <div
-      class="select-arrow svelte-1mcmtid"
+      class="select-arrow svelte-ng9884"
     >
       <div
-        class="select-arrow-aux svelte-1mcmtid"
+        class="select-arrow-aux svelte-ng9884"
       />
     </div>
+  </div>
+   
+  <div
+    class="error-text svelte-ng9884 invisible"
+  >
+    Valor inválido.
   </div>
    
   <header>
@@ -3503,7 +4672,24 @@ exports[`Storyshots Components/Select Single Selected 1`] = `
   <p>
     {"text":"Torta alemã"}
   </p>
-  
+   
+  <p>
+    <b>
+      isValid:
+    </b>
+     
+    true
+  </p>
+</section>
+`;
+
+exports[`Storyshots Components/Icon Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="icon-phone"
+  />
 </section>
 `;
 
