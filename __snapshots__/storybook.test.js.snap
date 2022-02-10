@@ -3507,6 +3507,278 @@ exports[`Storyshots Components/Select Single Selected 1`] = `
 </section>
 `;
 
+exports[`Storyshots Components/Textarea Custom Example 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style="--szot-border-radius: 1rem; --szot-max-height: 5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-textarea-color: #db984b;--szot-border-color: #c56d09;--szot-placeholder-color:#db984b;"
+  >
+    <div
+      class="textarea-container textarea-style-primary svelte-1b4i3dj"
+    >
+      <div
+        class="textarea-wrapper svelte-1b4i3dj"
+        style="--max-auto-height: 4.2rem;"
+      >
+        <pre
+          aria-hidden="true"
+          class="svelte-1b4i3dj"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos maxime accusamus laborum fuga ratione veritatis aliquam totam nam illo harum veniam minima vero atque iusto exercitationem repellendus, commodi mollitia sapiente!
+
+        </pre>
+         
+        <textarea
+          class="svelte-1b4i3dj"
+          data-max-rows="4"
+          data-min-rows="4"
+          placeholder=""
+          rows="4"
+        />
+      </div>
+       
+      <label
+        class="label svelte-1b4i3dj"
+        for=""
+      >
+        Teste
+      </label>
+       
+      <p
+        class="helper message svelte-1b4i3dj"
+      >
+        Digite 'erro' para ser invalido
+      </p>
+       
+      <p
+        class="error message svelte-1b4i3dj"
+      >
+        deu ruim
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Textarea Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <div
+      class="textarea-container textarea-style-secondary svelte-1b4i3dj"
+    >
+      <div
+        class="textarea-wrapper svelte-1b4i3dj"
+        style="--max-auto-height: auto;"
+      >
+        <pre
+          aria-hidden="true"
+          class="svelte-1b4i3dj"
+        >
+          Digite algo:
+
+        </pre>
+         
+        <textarea
+          class="svelte-1b4i3dj"
+          data-max-rows="0"
+          data-min-rows="3"
+          placeholder="Digite algo:"
+          rows="3"
+        />
+      </div>
+       
+      <label
+        class="label svelte-1b4i3dj"
+        for=""
+      >
+        Conte sua história
+      </label>
+       
+      <p
+        class="helper message svelte-1b4i3dj"
+      >
+        Digite o quanto você quiser
+      </p>
+       
+      <p
+        class="error message svelte-1b4i3dj"
+      >
+        deu ruim
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Textarea Readonly 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <div
+      class="textarea-container textarea-style-secondary svelte-1b4i3dj"
+    >
+      <div
+        class="textarea-wrapper svelte-1b4i3dj"
+        style="--max-auto-height: auto;"
+      >
+        <pre
+          aria-hidden="true"
+          class="svelte-1b4i3dj"
+        >
+          Você não pode editar o que está aqui
+
+        </pre>
+         
+        <textarea
+          class="svelte-1b4i3dj"
+          data-max-rows="0"
+          data-min-rows="3"
+          placeholder="Você não pode editar o que está aqui"
+          readonly=""
+          rows="3"
+        />
+      </div>
+       
+      <label
+        class="label svelte-1b4i3dj"
+        for=""
+      >
+        Conte sua história
+      </label>
+       
+      <p
+        class="helper message svelte-1b4i3dj"
+      >
+        
+      </p>
+       
+      <p
+        class="error message svelte-1b4i3dj"
+      >
+        deu ruim
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Textarea Required 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style=""
+  >
+    <div
+      class="textarea-container textarea-style-secondary svelte-1b4i3dj"
+    >
+      <div
+        class="textarea-wrapper svelte-1b4i3dj"
+        style="--max-auto-height: auto;"
+      >
+        <pre
+          aria-hidden="true"
+          class="svelte-1b4i3dj"
+        >
+          Digite algo:
+
+        </pre>
+         
+        <textarea
+          class="svelte-1b4i3dj"
+          data-max-rows="0"
+          data-min-rows="3"
+          placeholder="Digite algo:"
+          required=""
+          rows="3"
+        />
+      </div>
+       
+      <label
+        class="label svelte-1b4i3dj required"
+        for=""
+      >
+        Conte sua história
+      </label>
+       
+      <p
+        class="helper message svelte-1b4i3dj"
+      >
+        
+      </p>
+       
+      <p
+        class="error message svelte-1b4i3dj"
+      >
+        deu ruim
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Textarea Resizable 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    style="--szot-resize: both"
+  >
+    <div
+      class="textarea-container textarea-style-secondary svelte-1b4i3dj"
+    >
+      <div
+        class="textarea-wrapper svelte-1b4i3dj"
+        style="--max-auto-height: auto;"
+      >
+        <pre
+          aria-hidden="true"
+          class="svelte-1b4i3dj"
+        >
+          Digite algo:
+
+        </pre>
+         
+        <textarea
+          class="svelte-1b4i3dj"
+          data-max-rows="0"
+          data-min-rows="3"
+          placeholder="Digite algo:"
+          rows="3"
+        />
+      </div>
+       
+      <label
+        class="label svelte-1b4i3dj"
+        for=""
+      >
+        Conte sua história
+      </label>
+       
+      <p
+        class="helper message svelte-1b4i3dj"
+      >
+        
+      </p>
+       
+      <p
+        class="error message svelte-1b4i3dj"
+      >
+        deu ruim
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
 exports[`Storyshots Internal Documentation/Components/Select/Components/OptionsList Default 1`] = `
 <section
   class="storybook-snapshot-container"

@@ -1,0 +1,62 @@
+<!-- Badge.stories.mdx -->
+
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+import Textarea from "./TextareaWrapperForTest.svelte";
+
+<Meta title="Components/Textarea/Custom" />
+
+# Textarea Custom
+
+## Gerais
+
+| CSS Property         | Descripiton                 |
+| -------------------- | --------------------------- |
+| --szot-margin-bottom | Set component bottom margin |
+
+## On the textarea
+
+| CSS Property                 | Descripiton                                |
+| ---------------------------- | ------------------------------------------ |
+| --szot-max-width             | Sets the max-width of the textarea         |
+| --szot-resize                | Sets whether an element is user resizable. |
+| --szot-max-height            | sets the maximum height of the textarea    |
+| --szot-font-size             | Set the font size of textarea              |
+| --szot-placeholder-font-size | Sets the placeholder font size             |
+| --szot-placeholder-color     | Sets placeholder color                     |
+| --szot-textarea-color        | Set textarea text color                    |
+| --szot-border-color          | Sets the component's border color          |
+| --szot-padding               | Sets a custom padding                      |
+| --szot-border                | Sets a custom border                       |
+## On the label
+
+| CSS Property             | Descripiton                                                                                           |
+| ------------------------ | ----------------------------------------------------------------------------------------------------- | --- |
+| --szot-label-font-weight | Sets the weight of the label                                                                          |     |
+| --szot-label-font-size   | Set the font size of the label                                                                        |
+| --szot-label-padding     | Set the label padding                                                                                 |
+| --szot-label-color       | Sets the color of the label                                                                           |
+| --szot-background-color  | Sets the background color of the label to hide the outline border. (Set according to page background) |
+
+## Messages
+
+| CSS Property                      | Descripiton                                                     |
+| --------------------------------- | --------------------------------------------------------------- |
+| --szot-message-font-size          | Set the font size of messages                                   |
+| --szot-message-bottom             | Set message text position to the bottom                         |
+| --szot-message-left               | Set message position to left                                    |
+| --szot-message-error-bottom-focus | Set error text position to low when helper text is also showing |
+
+<p>
+  In addition to these variables, this component also uses the theme variables
+  for, font-family, sizes, large-shape, small-border, the 4 main theme colors
+  and the colors for error and information.
+</p>
+
+<p>
+  The validation function to be passed to the component must be in the following
+  format: The test function receives a "value" and uses this "value" to
+  validate, the return must be "true" when valid, "false" when invalid (in this
+  in case it is necessary to insert the "errorMsg " in the component) or the
+  error message in string format.
+</p>
