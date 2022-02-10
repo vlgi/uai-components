@@ -57,8 +57,12 @@
 
     await tick();
 
-    // if some is invalid don't dispatch the event
-    if (!Object.values(fieldsData).every((fData) => fData.isValid)) return;
+    // if some is invalid don't dispatch the event, and scroll to first invalid field
+    if (!Object.values(fieldsData).every((fData) => fData.isValid)) {
+      const firstInvalidEl = Object.values(fieldsData).find((fData) => !fData.isValid).htmlElement;
+      firstInvalidEl.scrollIntoView();
+      return;
+    }
 
     /**
      * fired when submit button is clicked and all fields is valid.
