@@ -87,13 +87,13 @@
   setContext("FormContext", formContextObj);
 </script>
 
-<form on:submit|preventDefault={ () => true }>
+<div role="form">
   <!-- Enter as many form fields as you want. But remember they must be our custom form fields.  -->
   <slot></slot>
-</form>
+</div>
 
 <style>
-  form {
+  div {
     display: contents;
   }
 </style>
