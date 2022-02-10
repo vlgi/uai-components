@@ -7,7 +7,11 @@ export let id;
 export let name;
 export let selectAttributes = {};
 export let multiple;
-export let selected = multiple ? [] : null;
+export let required;
+export let min;
+export let isValid;
+export let selected;
+export let forceInvalid;
 </script>
 
 <Select
@@ -17,6 +21,10 @@ export let selected = multiple ? [] : null;
   {name}
   {selectAttributes}
   {multiple}
+  {required}
+  {min}
+  {forceInvalid}
+  bind:isValid
   bind:selected/>
 
 <header><b>Selected:</b></header>
@@ -29,3 +37,5 @@ export let selected = multiple ? [] : null;
 {:else}
   <p>{JSON.stringify(selected)}</p>
 {/if}
+
+<p><b>isValid:</b> {isValid}</p>

@@ -6,15 +6,38 @@ import type { TOption, TOptionsListBinds } from "./types";
 
 // True if the select should select multiple values
 export let multiple = false;
-// id attribute for the HTML select element
+// Whether the field needs to have at least `min` value
+export let required = false;
+/**
+ * If the select is multiple and required, it defines the minimum quantity
+ * that needs to be selected for the select to be valid.
+ */
+export let min = 1;
+// Whether the field has a valid value
+export let isValid = true;
+// Whether the field should show as invalid
+export let forceInvalid = false;
+/**
+ * id attribute for the HTML select element
+ * @type {string}
+ */
 export let id: string;
-// name attribute for the HTML select element
+/**
+ * name attribute for the HTML select element
+ * @type {string}
+ */
 export let name: string;
 // Attributes for the HTML select element
 export let selectAttributes: Record<string, string> = {};
-// All possible options that can be selected
+/**
+ * All possible options that can be selected
+ * @type {array}
+ */
 export let options: TOption[];
-// The label text for this element
+/**
+ * The label text for this element
+ * @type {string}
+ */
 export let label: string;
 
 // The selected value(s) for any select mode
@@ -26,6 +49,9 @@ export let selected: TOption | TOption[] | null = multiple ? [] : null;
 let selectedSingle: TOption;
 // Type casts the selected as array for internal use
 let selectedMultiple: TOption[];
+
+// Controls if the select should style as invalid
+let isVisuallyValid = true;
 
 // Controls the visibility of the dropdown
 let dropdownOpen = false;
@@ -45,6 +71,20 @@ let searchQuery: string;
 // The results of the search
 let filteredOptions: TOption[];
 
+function validate(_selected: TOption | TOption[], _required: boolean) {
+  if (forceInvalid) return false;
+
+  let valid = true;
+  if (_required) {
+    if (multiple) {
+      valid = Array.isArray(_selected) && _selected.length >= min;
+    } else {
+      valid = _selected !== null && _selected !== undefined;
+    }
+  }
+  return valid;
+}
+
 /**
  * Toggles or sets the dropdown open state.
  * @param {boolean} open Whether or not it should be open. If nullish it will
@@ -61,6 +101,11 @@ function toggleOpen(open?: boolean) {
   // If it changed state to opened
   if (lastState !== dropdownOpen && dropdownOpen) {
     optionsListBinds?.unfocusItems();
+  }
+
+  // If it changed state to closed
+  if (lastState !== dropdownOpen && !dropdownOpen) {
+    isVisuallyValid = validate(selected, required);
   }
 }
 
@@ -118,13 +163,20 @@ function handleBadgeRemoval(ev: MouseEvent, option: TOption) {
 $: selectedSingle = Array.isArray(selected) ? null : selected;
 $: selectedMultiple = Array.isArray(selected) ? selected : [];
 
+$: if (forceInvalid) {
+  isVisuallyValid = false;
+}
+
+$: isValid = !forceInvalid && validate(selected, required);
+
 </script>
 
 <div class="select" tabindex="0"
+  class:error={!isVisuallyValid}
   use:keyboardControls={{ multiple, dropdownOpen }}
-  on:actiontoggleSelectedOfFocused={() => optionsListBinds?.toggleSelectedOfFocused()}
-  on:actionFocusPrevious={() => optionsListBinds?.focusPrevious()}
-  on:actionFocusNext={() => optionsListBinds?.focusNext()}
+  on:actiontoggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
+  on:actionFocusPrevious={optionsListBinds.focusPrevious}
+  on:actionFocusNext={optionsListBinds.focusNext}
   on:actionToggleDropdown={handleToggleDropdown}
   on:actionType={handleTyping}>
 
@@ -209,11 +261,31 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
       <div class="select-arrow-aux"></div>
     </div>
 </div>
-
+<div class="error-text" class:invisible={isVisuallyValid}>
+  {#if required}
+    É necessário selecionar {min} {min <= 1 ? "valor" : "valores"}.
+  {:else}
+    Valor inválido.
+  {/if}
+</div>
 
 <style lang="scss">
+  * {
+    --component-background-color: var(--szot-background-color, white);
+    --component-border-radius: var(--szot-border-radius, var(--theme-small-shape));
+    --component-padding-vertical: var(--szot-padding-vertical, var(--theme-fields-padding));
+    --component-padding-horizontal: var(--szot-padding-horizontal, var(--theme-fields-padding));
+    --border-color: var(--theme-fields-outline);
+    // TODO: refactor to a global theme variable
+    --message-font-size: var(--szot-message-font-size, 0.75em);
+    --message-left-spacing: var(--szot-message-left-spacing, 1.5em);
+  }
+
   .hidden {
     display: none;
+  }
+  .invisible {
+    visibility: hidden;
   }
   .badge {
     display: inline-block;
@@ -231,18 +303,12 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
   }
 
   .select {
-
-    --component-background-color: var(--szot-background-color, white);
-    --component-border-radius: var(--szot-border-radius, var(--theme-small-shape));
-    --component-padding-vertical: var(--szot-padding-vertical, var(--theme-fields-padding));
-    --component-padding-horizontal: var(--szot-padding-horizontal, var(--theme-fields-padding));
-
     position: relative;
 
     background-color: var(--component-background-color);
     color: var(--theme-dark-txt);
 
-    border: 0.0625rem solid var(--theme-fields-outline);
+    border: 0.0625rem solid var(--border-color);
     border-radius: var(--component-border-radius);
 
 
@@ -331,6 +397,22 @@ $: selectedMultiple = Array.isArray(selected) ? selected : [];
         }
       }
 
+    }
+  }
+  .error-text{
+    font-size: var(--message-font-size);
+    margin-left: var(--message-left-spacing);
+    color: var(--theme-error);
+  }
+  .error {
+    label {
+      color: var(--theme-error);
+    }
+    --border-color: var(--theme-error);
+    .select-arrow-aux {
+      &::before, &::after {
+        background-color: var(--theme-error);
+      }
     }
   }
 </style>
