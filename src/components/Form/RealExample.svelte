@@ -26,23 +26,28 @@
   <br><hr><br>
 </div>
 
-<Form bind:values bind:isAllValid on:submit>
-  <Input
-    label="email"
-    name="email"
-    type="email"
-    validationFn={validateEmail}
-    required={true}
-  />
-  <Input
-    label="password"
-    name="password"
-    type="password"
-    validationFn={validatePassword}
-    required={true}
-  />
-  <Button type="submit">Submit</Button>
-</Form>
+<div class="my-form">
+  <Form bind:values bind:isAllValid on:submit>
+    <Input
+      label="email"
+      name="email"
+      type="email"
+      validationFn={validateEmail}
+      required={true}
+    />
+    <Input
+      label="password"
+      name="password"
+      type="password"
+      validationFn={validatePassword}
+      required={true}
+    />
+    <Button type="submit" size="small">Submit</Button>
+  </Form>
+</div>
 
-<p><b>Form Values:</b> { JSON.stringify(values) }</p>
-<p><b>Form valid:</b> { isAllValid }</p>
+<div>
+  <br><hr><br>
+  <p><b>Form Values:</b> { JSON.stringify(values) }</p>
+  <p><b>Form valid:</b> { isAllValid }</p>
+</div>

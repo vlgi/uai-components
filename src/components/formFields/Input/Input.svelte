@@ -185,7 +185,7 @@
 <style lang="scss">
   .form-div {
     --margin-bottom: var(--szot-margin-bottom, 1.5rem);
-    --width: var(--szot-width, 12rem);
+    --width: var(--szot-width, 100%);
     --height: var(--szot-height, var(--theme-fields-height));
 
     --input-top: var(--szot-input-top, 0);
