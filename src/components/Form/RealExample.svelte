@@ -16,6 +16,11 @@
     if (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/.test(value)) return true;
     return "So weak! You can do it better.";
   }
+
+  function min10Characters(value: string): string|boolean {
+    if (value.length >= 10) return true;
+    return "Minimum 10 characters";
+  }
 </script>
 
 <div>
@@ -46,6 +51,8 @@
     <Textarea
       label="Notes"
       name="notes"
+      required={true}
+      validationFn={min10Characters}
     />
     <Button type="submit" size="small">Submit</Button>
   </Form>
