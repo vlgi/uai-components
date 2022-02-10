@@ -1,5 +1,6 @@
 <script lang="ts">
   import DraggableButton from "./DraggableButton/DraggableButton.svelte";
+  import Icon from "../Icon/Icon.svelte";
   import type { TBottomMenuItem, TMenuItem, TMenuSubLink } from "./types";
 
   // itens of the menu
@@ -66,7 +67,11 @@
       bind:elBtn
       on:click={ toggleMobileMenu }
     >
-      <i class="icon-search"/>
+    {#if navExpanded}
+      <Icon iconName="close"/>
+    {:else}
+      <Icon iconName="menu"/>
+    {/if}
     </DraggableButton>
   </div>
 
@@ -246,11 +251,6 @@
           height: 300vmax;
           width: 300vmax;
           transition-delay: var(--internal-mobile-toggle-overlay-expanded-delay);
-        }
-
-        :global(.mobile-toggle-btn) {
-          transform: translate(-50%, -50%) rotateZ(45deg);
-          transition-delay: var(--internal-mobile-toggle-btn-expanded-delay);
         }
       }
     }
