@@ -2,7 +2,7 @@
   const data = [
     {
       title: "form fields sizes",
-      description: "used in some form fields elements like inputs, selects",
+      description: "used in some form fields elements like inputs, selects, submit button",
       variables: [
         { name: "--szot-fields-max-width", default: "7.5rem", description: "" },
         { name: "--szot-fields-height", default: "2.2rem", description: "only for small fields like input, select" },

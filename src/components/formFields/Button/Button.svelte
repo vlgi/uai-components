@@ -258,5 +258,10 @@
       padding-top: 120%;
       transition: width 0.2s ease-out, padding-top 0.2s ease-out;
     }
+
+    &[type="submit"] {
+      width: 100%;
+      max-width: var(--theme-fields-max-width);
+    }
   }
 </style>
