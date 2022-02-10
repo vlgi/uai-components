@@ -164,6 +164,7 @@
     {disabled}
     {readonly}
     {...inputAttributes}
+    aria-required={required}
   />
   <label for="" class="form-label" class:required>
     {label}
