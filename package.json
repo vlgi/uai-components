@@ -26,14 +26,14 @@
   "description": "Svelte component package",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/team-tecnologia/templates-and-snippets/svelte-package-template.git"
+    "url": "git+https://gitlab.com/team-tecnologia/public-pkgs/szot-ui.git"
   },
   "author": "szot",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://gitlab.com/team-tecnologia/templates-and-snippets/svelte-package-template/issues"
+    "url": "https://gitlab.com/team-tecnologia/public-pkgs/szot-ui/issues"
   },
-  "homepage": "https://gitlab.com/team-tecnologia/templates-and-snippets/svelte-package-template#readme",
+  "homepage": "https://gitlab.com/team-tecnologia/public-pkgs/szot-ui#readme",
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
