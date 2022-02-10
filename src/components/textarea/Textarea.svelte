@@ -32,7 +32,6 @@
    * @type {string}
    */
   export let name: string;
-  export let type = "text";
   export let disabled = false;
   export let value = "";
   export let required = false;
@@ -96,12 +95,9 @@ const validation = () => {
 
 </script>
 
-<div class="textarea-style-{textareaStyle}" class:invalid>
-  <pre
-		aria-hidden="true"
-		style="--max-auto-height:{maxHeight}"
-	>{`${value}\n`}</pre>
-  <p>
+<div class="textarea-container textarea-style-{textareaStyle}" class:invalid>
+  <div class="textarea-wrapper" style="--max-auto-height:{maxHeight}">
+    <pre aria-hidden="true">{`${value || placeholder}\n`}</pre>
     <textarea
       on:focus={focused}
       on:input={changed}
@@ -114,7 +110,6 @@ const validation = () => {
       data-min-rows={minRows}
       data-max-rows={maxRows}
       {rows}
-      {type}
       {name}
       {placeholder}
       {value}
@@ -123,7 +118,7 @@ const validation = () => {
       {required}
       {...textareaAttributes}
     />
-  </p>
+  </div>
   <label for="" class="label" class:required>
     {label}
   </label>
@@ -133,7 +128,7 @@ const validation = () => {
 </div>
 
 <style lang="scss">
-  div {
+  .textarea-container {
     --label-color: var(--szot-label-color, var(--default-label-color));
     --label-padding: var(--szot-label-padding, 0 0.15rem);
     --label-font-size: var(--szot-label-font-size, 0.75rem);
@@ -147,14 +142,11 @@ const validation = () => {
       --szot-placeholder-color,
       var(--default-placeholder-color)
     );
-    --placeholder-font-size: var(--szot-placeholder-font-size, 0.6rem);
-
     --margin-bottom: var(--szot-margin-bottom, 1.5rem);
     --max-width: var(--szot-fields-max-width, var(--theme-fields-max-width));
     --max-height: var(--szot-max-height, var(--max-auto-height));
-    --font-size: var(--szot-font-size, 0.5rem);
     --resize: var(--szot-resize, none);
-    --padding: var(--szot-padding, var(--theme-global-small-padding));
+    --padding: var(--szot-padding, var(--theme-fields-padding));
 
     --message-font-size: var(--szot-message-font-size, 0.6875rem);
     --message-bottom: var(--szot-texthelp-bottom, -1.2rem);
@@ -209,20 +201,40 @@ const validation = () => {
       display: inline;
     }
   }
-  pre, textarea {
-		font-family: inherit;
-		padding: var(--padding);
-		box-sizing: border-box;
-    min-width: 10rem;
-    min-height: 3rem;
+
+  .textarea-wrapper {
+    position: relative;
 		border: var(--theme-small-border);
     border-color: var(--border-color);
-    border-radius:var(--border-radius) ;
+    border-radius:var(--border-radius);
 
+    min-width: 10rem;
     max-width: var(--max-width);
+    min-height: 3rem;
     max-height: var(--max-height);
 
-		font-size: var(--font-size);
+    overflow: hidden;
+    resize: var(--resize);
+  }
+
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    visibility: hidden;
+  }
+  pre, textarea {
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-style: inherit;
+
+		margin: var(--padding);
+		box-sizing: border-box;
+    width: calc(100% - 2*var(--padding));
+    height: calc(100% - 2*var(--padding));
+    border: none;
+
 		overflow: hidden;
     color: var(--textarea-color);
     background-color: transparent;
@@ -231,37 +243,12 @@ const validation = () => {
   textarea {
     position: absolute;
     overflow-y: auto;
-    top: 0;
-		width: 100%;
-		height: 100%;
-    resize: var(--resize);
+    resize: none;
+    inset: 0;
     scrollbar-width: none;
-    &::-webkit-input-placeholder {
-      font-size: var(--placeholder-font-size);
-      color: var(--placeholder-color);
-    }
-    &:-moz-placeholder {
-      /* Firefox 18- */
-      font-size: var(--placeholder-font-size);
-      color: var(--placeholder-color);
-    }
 
-    &::-moz-placeholder {
-      /* Firefox 19+ */
-      font-size: var(--placeholder-font-size);
-      color: var(--placeholder-color);
-    }
-
-    &:-ms-input-placeholder {
-      font-size: var(--placeholder-font-size);
-      color: var(--placeholder-color);
-    }
-
-    &:focus {
-      outline: none;
-    }
     &::-webkit-scrollbar {
-      width: 0.25rem;
+      width: 0px;
     }
     &::-webkit-scrollbar-track {
       background-color: trasparent;
@@ -271,10 +258,32 @@ const validation = () => {
       background-clip: content-box;
       border: 0.3125rem solid trasparent;
     }
+    &::-webkit-input-placeholder {
+      color: var(--placeholder-color);
+    }
+    &:-moz-placeholder {
+      /* Firefox 18- */
+      color: var(--placeholder-color);
+    }
+
+    &::-moz-placeholder {
+      /* Firefox 19+ */
+      color: var(--placeholder-color);
+    }
+
+    &:-ms-input-placeholder {
+      color: var(--placeholder-color);
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
   .invalid {
-    textarea {
+    .textarea-wrapper {
       border-color: var(--theme-error);
+    }
+    textarea {
       color: var(--theme-error);
 
       &::-webkit-input-placeholder {
@@ -309,26 +318,26 @@ const validation = () => {
     &.helper {
       color: var(--theme-info);
       opacity: 0;
-      transition: opacity 0.5s linear, bottom 0.5s;
+      transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.helper-show {
       opacity: 0.75;
       color: var(--theme-info);
-      transition: opacity 0.5s linear, bottom 0.5s;
+      transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.error {
       color: var(--theme-error);
       opacity: 0;
-      transition: opacity 0.5s linear, bottom 0.5s;
+      transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.error-show {
       color: var(--theme-error);
       opacity: 0.75;
-      transition: opacity 0.5s linear, bottom 0.5s;
+      transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.MsgUp {
       bottom: var(--message-error-bottom-focus);
-      transition: opacity 0.5s linear, bottom 0.5s;
+      transition: opacity 0.2s linear, bottom 0.2s;
     }
   }
 </style>
