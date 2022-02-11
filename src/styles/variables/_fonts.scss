@@ -1,10 +1,14 @@
 * {
   // global font
   --theme-font-family: var(--szot-font-family, 'Open Sans', 'Helvetica Neue', sans-serif);
+  --theme-font-size: var(--szot-font-size, 16px); // generic font-size
 
   // paragraph <p>
   --theme-p-font-weight: var(--szot-p-font-weight, normal);
   --theme-p-font-style: var(--szot-p-font-style, normal);
   --theme-p-font-size: var(--szot-p-font-size, 0.9rem);
   --theme-p-line-height: var(--szot-p-line-height, 1.25rem);
+
+  // form-fields
+  --theme-fields-font-size: var(--szot-fields-font-size, var(--theme-font-size)); // only for small fields like input, select
 }

@@ -1,11 +1,12 @@
 <script lang="ts">
-  type TbadgeStyle = "primary" | "secondary" | "dark" | "light" | "outline";
+  import type { TbadgeStyle } from "./types";
+
   /** Select the theme color pattern that will be used or Custom to define your own color. */
   export let badgeStyle: TbadgeStyle = "primary";
 </script>
 
 <span class="badge {badgeStyle}">
-  <slot />
+  <span class="text"><slot /></span>
 </span>
 
 <style lang="scss">
@@ -48,6 +49,11 @@
 
     background-color: var(--background-color);
     color: var(--color);
+    display: inline-block;
+
+    .text {
+      white-space: nowrap;
+    }
   }
 
 </style>

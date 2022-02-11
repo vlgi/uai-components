@@ -1,5 +1,6 @@
 // just imported the core, if you need grids, ..., import them
-@import "~@ionic/core/css/core.css";
+@import "@ionic/core/css/core.css"; // works on rollup imports ¯\_(ツ)_/¯
+@import "~@ionic/core/css/core.css"; // works on webpack imports ¯\_(ツ)_/¯
 
 :root {
   // TODO: change this css variable colors to match ours

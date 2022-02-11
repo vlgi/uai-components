@@ -2,50 +2,66 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Introduction" />
 
-# My awesome package
+# Szot UI
 
-## Features
- - list your project features here
+## Introduction
+This package use css variables to set theme, you can see how set them [here](?path=/story/theme-introduction--page).
 
-## How to
+The components docs is inside the `Components` section.
 
-`npm install svelte-pdf-viewer`
+You can see the component example inside the `Canvas`, swithing in the tab menu at the top.
 
-### Svelte
-To use the svelte componente make sure that your bundler know how to handle with typescript, scss, images and font imports.
+You can see the props and all examples inside the `Docs`, swithing in the tab menu at the top.
 
-```html
-<PdfViewer file={ myFileUrl } bind:infos={ pdfInfos }/>
+Every component that can be customized with custom css variables have a section `Custom`, inside the component folder.
 
-<script>
-	import PdfViewer from 'svelte-pdf-viewer'
-	let pdfInfos
-	const myFileUrl = ''
-</script>
+**Note: This lib is made to be used only with `svelte`, is `experimental`, and may NOT follow the `semver`.**
+
+## How to install
+
+Install the package:
+
+```bash
+npm install szot-ui
 ```
 
-### Vanilla
-The vanilla module is bundled into a single js file, with all css and assets inline.
+Import the global style and icons, in your entry point or global css:
 
-You can use the vanilla module as a normal npm js module, or as a [browser module](https://javascript.info/modules-intro) using the `svelte-pdf-viewer/dist/index.mjs` file.
-
-```html
-<div id="container">
-</div>
-
-<script>
-	import PdfViewer from 'svelte-pdf-viewer'
-    const myFileUrl = ''
-    
-    new PdfViewer({
-        target: document.querySelector('#container'),
-        props: {
-            file: myFileUrl
-        }
-    })
-</script>
-
+```scss
+import "szot-ui/src/styles/global.scss";
 ```
 
-## Props / Events / Slots / Documentation / Demo
-See on [External/SveltePdfViewer](?path=/docs/external-sveltepdfviewer--default) docs
+**NOTE: make sure that you bundler can handle with scss, images and fonts, to import the styles and icons**
+
+Use the components =)
+
+```html
+<script lang="ts">
+  import {
+    Input,
+    Form,
+  } from "szot-ui";
+
+  export let values: Record<string, unknown>;
+  export let isAllValid: boolean;
+
+  function validateEmail(value: string): string|boolean {
+    if (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(value)) return true;
+    return "Type a valid e-mail.";
+  }
+</script>
+
+<div class="my-form">
+  <Form bind:values bind:isAllValid on:submit>
+    <Input
+      label="email"
+      name="email"
+      type="email"
+      iconPosition="left"
+      icon="mail"
+      validationFn={validateEmail}
+      required={true}
+    />
+    <Button type="submit">Submit</Button>
+  </Form>
+```
