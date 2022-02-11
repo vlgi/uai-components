@@ -166,11 +166,11 @@
 </div>
 
 <style lang="scss">
+  @use "src/styles/mixins" as m;
+
   .textarea-container {
     --label-color: var(--szot-label-color, var(--default-label-color));
     --label-padding: var(--szot-label-padding, 0 0.15rem);
-    --label-font-size: var(--szot-label-font-size, 0.75rem);
-    --label-font-weight: var(--szot-label-font-weight, 600);
     --label-background-color: var(--szot-label-background-color, white);
 
     --textarea-color: var(--szot-textarea-color, var(--default-textarea-color));
@@ -185,7 +185,6 @@
     --max-height: var(--szot-max-height, var(--max-auto-height));
     --padding: var(--szot-padding, var(--theme-fields-padding));
 
-    --message-font-size: var(--szot-message-font-size, 0.6875rem);
     --message-bottom: var(--szot-texthelp-bottom, -1.2rem);
     --message-left: var(--szot-texthelp-left, 1rem);
     --message-error-bottom-focus: var(
@@ -227,11 +226,10 @@
     top: -0.5rem;
     left: 0.8rem;
     padding: var(--label-padding);
-    font-size: var(--label-font-size);
-    font-weight: var(--label-font-weight);
 
     color: var(--label-color);
     background-color: var(--label-background-color);
+    @include m.form-field-label-floated-size;
 
     &.required::after {
       content: "*";
@@ -268,13 +266,13 @@
     line-height: inherit;
     font-style: inherit;
 
-        margin: var(--padding);
-        box-sizing: border-box;
+    margin: var(--padding);
+    box-sizing: border-box;
     width: calc(100% - 2*var(--padding));
     height: calc(100% - 2*var(--padding));
     border: none;
 
-        overflow: hidden;
+    overflow: hidden;
     color: var(--textarea-color);
     background-color: transparent;
     }
@@ -342,7 +340,7 @@
         color: var(--theme-error);
       }
     }
-    .label {
+  .label {
       color: var(--theme-error);
     }
   }
@@ -350,29 +348,22 @@
     position: absolute;
     z-index: 1;
     max-width: 11rem;
-    font-size: var(--message-font-size);
     bottom: var(--message-bottom);
     left: var(--message-left);
 
     &.helper {
-      color: var(--theme-info);
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.helper-show {
-      opacity: 0.75;
-      color: var(--theme-info);
-      transition: opacity 0.2s linear, bottom 0.2s;
+      @include m.form-field-helper-text();
     }
     &.error {
-      color: var(--theme-error);
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.error-show {
-      color: var(--theme-error);
-      opacity: 0.75;
-      transition: opacity 0.2s linear, bottom 0.2s;
+      @include m.form-field-error-text();
     }
     &.MsgUp {
       bottom: var(--message-error-bottom-focus);
