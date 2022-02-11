@@ -211,7 +211,6 @@
       var(--default-border-color-focus)
     );
 
-    --icon-margin: var(--szot-icon-margin, 0.5rem 0.5rem);
     --icon-color: var(--szot-icon-color, var(--default-icon-color));
 
     --message-bottom: var(--szot-texthelp-bottom, -1.2rem);
@@ -328,7 +327,7 @@
   }
   .icons-left {
     .form-input {
-      padding: 1rem 1rem 1rem 2rem;
+      padding: var(--input-padding) var(--input-padding) var(--input-padding) 2rem;
     }
 
     .form-label {
@@ -337,21 +336,23 @@
 
     .icon {
       position: absolute;
+      top: 0;
       left: 0;
-      margin: var(--icon-margin);
+      margin: calc(var(--input-padding)*1.2) 0 var(--input-padding) .5rem;
       color: var(--icon-color);
     }
   }
 
   .icons-right {
     .form-input {
-      padding: 1rem 1.7rem 1rem 1rem;
+      padding: var(--input-padding) 2rem var(--input-padding) var(--input-padding);
     }
 
     .icon {
       position: absolute;
+      top: 0;
       right: 0;
-      margin: var(--icon-margin);
+      margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
       color: var(--icon-color);
     }
   }
@@ -363,6 +364,7 @@
     left: var(--message-left);
 
     &.helper {
+      @include m.form-field-helper-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
     }
@@ -370,6 +372,7 @@
       @include m.form-field-helper-text();
     }
     &.error {
+      @include m.form-field-error-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
     }
