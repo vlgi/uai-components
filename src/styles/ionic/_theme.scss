@@ -1,61 +1,61 @@
 // just imported the core, if you need grids, ..., import them
-@import '~@ionic/core/css/core.css';
+@import "~@ionic/core/css/core.css";
 
 :root {
   // TODO: change this css variable colors to match ours
-	--ion-color-primary: #80ff;
-	--ion-color-primary-rgb: 0,128,255;
-	--ion-color-primary-contrast: #ffffff;
-	--ion-color-primary-contrast-rgb: 255,255,255;
-	--ion-color-primary-shade: #0071e0;
-	--ion-color-primary-tint: #1a8dff;
+  --ion-color-primary: var(--theme-primary);
+  --ion-color-primary-rgb: var(--theme-primary);
+  --ion-color-primary-contrast: var(--theme-txt-on-primary-surface);
+  --ion-color-primary-contrast-rgb: var(--theme-txt-on-primary-surface);
+  --ion-color-primary-shade: #00000012;
+  --ion-color-primary-tint: #00000012;
 
-	--ion-color-secondary: #80ff;
-	--ion-color-secondary-rgb: 0,128,255;
-	--ion-color-secondary-contrast: #ffffff;
-	--ion-color-secondary-contrast-rgb: 255,255,255;
-	--ion-color-secondary-shade: #0071e0;
-	--ion-color-secondary-tint: #1a8dff;
+  --ion-color-secondary: var(--theme-secondary);
+  --ion-color-secondary-rgb: var(--theme-secondary);
+  --ion-color-secondary-contrast: var(--theme-txt-on-secondary-surface);
+  --ion-color-secondary-contrast-rgb: var(--theme-txt-on-secondary-surface);
+  --ion-color-secondary-shade: #00000012;
+  --ion-color-secondary-tint: #00000012;
 
-	--ion-color-tertiary: #5260ff;
-	--ion-color-tertiary-rgb: 82,96,255;
-	--ion-color-tertiary-contrast: #ffffff;
-	--ion-color-tertiary-contrast-rgb: 255,255,255;
-	--ion-color-tertiary-shade: #4854e0;
-	--ion-color-tertiary-tint: #6370ff;
+  --ion-color-light: var(--theme-light);
+  --ion-color-light-rgb: var(--theme-light);
+  --ion-color-light-contrast: var(--theme-txt-on-light-surface);
+  --ion-color-light-contrast-rgb: var(--theme-txt-on-light-surface);
+  --ion-color-light-shade: #00000012;
+  --ion-color-light-tint: #00000012;
 
-	--ion-color-success: #2dd36f;
-	--ion-color-success-rgb: 45,211,111;
-	--ion-color-success-contrast: #000000;
-	--ion-color-success-contrast-rgb: 0,0,0;
-	--ion-color-success-shade: #28ba62;
-	--ion-color-success-tint: #42d77d;
+  --ion-color-dark: var(--theme-dark);
+  --ion-color-dark-rgb: var(--theme-dark);
+  --ion-color-dark-contrast: var(--theme-txt-on-dark-surface);
+  --ion-color-dark-contrast-rgb: var(--theme-txt-on-dark-surface);
+  --ion-color-dark-shade: #00000012;
+  --ion-color-dark-tint: #00000012;
 
-	--ion-color-warning: #ffc409;
-	--ion-color-warning-rgb: 255,196,9;
-	--ion-color-warning-contrast: #000000;
-	--ion-color-warning-contrast-rgb: 0,0,0;
-	--ion-color-warning-shade: #e0ac08;
-	--ion-color-warning-tint: #ffca22;
+  --ion-color-success: var(--theme-success);
+  --ion-color-success-rgb: var(--theme-success);
+  --ion-color-success-contrast: #000000;
+  --ion-color-success-contrast-rgb: 0, 0, 0;
+  --ion-color-success-shade: var(--theme-success);
+  --ion-color-success-tint: var(--theme-success);
 
-	--ion-color-danger: #eb445a;
-	--ion-color-danger-rgb: 235,68,90;
-	--ion-color-danger-contrast: #ffffff;
-	--ion-color-danger-contrast-rgb: 255,255,255;
-	--ion-color-danger-shade: #cf3c4f;
-	--ion-color-danger-tint: #ed576b;
+  --ion-color-warning: var(--theme-warning);
+  --ion-color-warning-rgb: var(--theme-warning);
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: var(--theme-warning);
+  --ion-color-warning-tint: var(--theme-warning);
 
-	--ion-color-medium: #92949c;
-	--ion-color-medium-rgb: 146,148,156;
-	--ion-color-medium-contrast: #000000;
-	--ion-color-medium-contrast-rgb: 0,0,0;
-	--ion-color-medium-shade: #808289;
-	--ion-color-medium-tint: #9d9fa6;
+  --ion-color-danger: var(--theme-danger);
+  --ion-color-danger-rgb: var(--theme-danger);
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: var(--theme-danger);
+  --ion-color-danger-tint: var(--theme-danger);
 
-	--ion-color-light: #f4f5f8;
-	--ion-color-light-rgb: 244,245,248;
-	--ion-color-light-contrast: #000000;
-	--ion-color-light-contrast-rgb: 0,0,0;
-	--ion-color-light-shade: #d7d8da;
-	--ion-color-light-tint: #f5f6f9;
+  --ion-color-medium: var(--theme-neutral);
+  --ion-color-medium-rgb: var(--theme-neutral);
+  --ion-color-medium-contrast: #000000;
+  --ion-color-medium-contrast-rgb: 0, 0, 0;
+  --ion-color-medium-shade: var(--theme-neutral);
+  --ion-color-medium-tint: var(--theme-neutral);
 }
