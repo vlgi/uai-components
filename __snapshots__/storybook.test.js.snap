@@ -48,6 +48,71 @@ exports[`Storyshots Components/Badge Theme 1`] = `
 </section>
 `;
 
+exports[`Storyshots Components/DatePicker Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <div
+      class="svelte-n6wmjn"
+    >
+      <div
+        class="form-div input-style-primary svelte-1q9ns05 icons-right"
+      >
+        <input
+          aria-required="false"
+          class="form-input border-outline svelte-1q9ns05"
+          id="open-date-input-2"
+          placeholder=" "
+          type="text"
+        />
+         
+        <label
+          class="form-label svelte-1q9ns05"
+          for=""
+        >
+          Data de Nascimento
+        </label>
+         
+        <div
+          class="icon svelte-1q9ns05"
+        >
+          <span
+            class="icon-calendar"
+          />
+        </div>
+         
+        <p
+          class="helper svelte-1q9ns05"
+        >
+          
+        </p>
+         
+        <p
+          class="error svelte-1q9ns05"
+        >
+          
+        </p>
+      </div>
+       
+      <ion-popover
+        class="svelte-n6wmjn"
+        show-backdrop="false"
+      >
+        <ion-datetime
+          cancel-text="Cancelar"
+          class="svelte-n6wmjn"
+          done-text="Confirmar"
+          id="popover-datetime-2"
+          mode="md"
+          show-default-buttons="true"
+        />
+      </ion-popover>
+    </div>
+  </div>
+</section>
+`;
+
 exports[`Storyshots Components/FormFields/Button Custom Example 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -379,6 +444,7 @@ exports[`Storyshots Components/FormFields/Input Borders None 1`] = `
       <input
         aria-required="false"
         class="form-input border-bottom svelte-1q9ns05"
+        id=""
         placeholder=" "
         type="password"
       />
@@ -420,6 +486,7 @@ exports[`Storyshots Components/FormFields/Input Custom Example 1`] = `
       <input
         aria-required="false"
         class="form-input border-outline svelte-1q9ns05"
+        id=""
         placeholder=" "
         type="name"
       />
@@ -459,6 +526,7 @@ exports[`Storyshots Components/FormFields/Input Custom Validation And Required 1
       <input
         aria-required="true"
         class="form-input border-outline svelte-1q9ns05"
+        id=""
         placeholder=" "
         type="text"
       />
@@ -500,6 +568,7 @@ exports[`Storyshots Components/FormFields/Input Default 1`] = `
       <input
         aria-required="false"
         class="form-input border-outline svelte-1q9ns05"
+        id=""
         placeholder=" "
         type="email"
       />
@@ -539,6 +608,7 @@ exports[`Storyshots Components/FormFields/Input Force Invalid 1`] = `
       <input
         aria-required="false"
         class="form-input border-outline svelte-1q9ns05"
+        id=""
         placeholder=" "
         type="text"
       />
@@ -578,6 +648,7 @@ exports[`Storyshots Components/FormFields/Input Readonly 1`] = `
       <input
         aria-required="false"
         class="form-input border-outline svelte-1q9ns05"
+        id=""
         placeholder=" "
         readonly=""
         type="text"
@@ -625,6 +696,7 @@ exports[`Storyshots Components/FormFields/Input Required 1`] = `
       <input
         aria-required="true"
         class="form-input border-outline svelte-1q9ns05"
+        id=""
         placeholder=" "
         type="text"
       />
@@ -664,6 +736,7 @@ exports[`Storyshots Components/FormFields/Input Whith Icon 1`] = `
       <input
         aria-required="false"
         class="form-input border-bottom svelte-1q9ns05"
+        id=""
         placeholder=" "
         type="tel"
       />
@@ -710,6 +783,7 @@ exports[`Storyshots Components/FormFields/Input Whith Icon Left 1`] = `
       <input
         aria-required="false"
         class="form-input border-outline svelte-1q9ns05"
+        id=""
         placeholder=" "
         type="tel"
       />
