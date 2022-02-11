@@ -4,10 +4,10 @@
       title: "Simple colors",
       description: "Have a general use. This will set text and surface colors too.",
       variables: [
-        { name: "--szot-primary", default: "#2b4c7e" },
-        { name: "--szot-secondary", default: "#606d80" },
-        { name: "--szot-dark", default: "#1f1f20" },
-        { name: "--szot-light", default: "#c4c4c4" },
+        { name: "--szot-primary", default: "#FC6627" },
+        { name: "--szot-secondary", default: "#167070" },
+        { name: "--szot-dark", default: "#5F5F5F " },
+        { name: "--szot-light", default: "#F9F9F9" },
       ],
     },
     {
