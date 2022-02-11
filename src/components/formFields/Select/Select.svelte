@@ -207,107 +207,108 @@ onDestroy(() => {
 });
 </script>
 
-<div class="select" tabindex="0"
-  class:error={!isVisuallyValid}
-  use:keyboardControls={{ multiple, dropdownOpen }}
-  on:actiontoggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
-  on:actionFocusPrevious={optionsListBinds.focusPrevious}
-  on:actionFocusNext={optionsListBinds.focusNext}
-  on:actionToggleDropdown={handleToggleDropdown}
-  on:actionType={handleTyping}
-  bind:this={wrapperElement}
->
+<div class="select-wrapper" bind:this={wrapperElement}>
+  <div class="select" tabindex="0"
+    class:error={!isVisuallyValid}
+    use:keyboardControls={{ multiple, dropdownOpen }}
+    on:actiontoggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
+    on:actionFocusPrevious={optionsListBinds.focusPrevious}
+    on:actionFocusNext={optionsListBinds.focusNext}
+    on:actionToggleDropdown={handleToggleDropdown}
+    on:actionType={handleTyping}
+  >
 
-    <!-- Floating label for the select -->
-    <label class="select-label"
-      id="{id}-label"
-      for="{id}-custom"
-      on:click={() => toggleOpen()}
-      class:floated={dropdownOpen || isFilled(selected)}>
-      {label}
-    </label>
+      <!-- Floating label for the select -->
+      <label class="select-label"
+        id="{id}-label"
+        for="{id}-custom"
+        on:click={() => toggleOpen()}
+        class:floated={dropdownOpen || isFilled(selected)}>
+        {label}
+      </label>
 
-    <!-- Select's box that shows which option is selected -->
-    <div class="select-box" role="combobox" tabindex="-1"
-      class:selected-multiple={multiple && isFilled(selected)}
-      on:click={() => toggleOpen()}
-      id="{id}-custom"
-      aria-controls="{id}-listbox"
-      aria-labelledby="{id}-label"
-      aria-haspopup="listbox"
-      aria-expanded={dropdownOpen ? "true" : "false"}>
+      <!-- Select's box that shows which option is selected -->
+      <div class="select-box" role="combobox" tabindex="-1"
+        class:selected-multiple={multiple && isFilled(selected)}
+        on:click={() => toggleOpen()}
+        id="{id}-custom"
+        aria-controls="{id}-listbox"
+        aria-labelledby="{id}-label"
+        aria-haspopup="listbox"
+        aria-expanded={dropdownOpen ? "true" : "false"}>
 
-      {#if multiple && selectedMultiple.length > 0}
-        {#each selectedMultiple as option}
-          <span class="badge">
-            <Badge {badgeStyle}>
-              {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
-            </Badge>
-          </span>
+        {#if multiple && selectedMultiple.length > 0}
+          {#each selectedMultiple as option}
+            <span class="badge">
+              <Badge {badgeStyle}>
+                {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
+              </Badge>
+            </span>
+          {/each}
+        {:else if !multiple && selectedSingle}
+          {selectedSingle ? selectedSingle.text : ""}
+        {:else}
+          Selecione
+        {/if}
+
+      </div>
+
+      <!-- Floating box with extra related data -->
+      <div class="select-dropdown-menu" class:closed={!dropdownOpen}>
+
+        <!-- Search input -->
+        <SearchInput
+          searchable={["text"]}
+          items={options}
+          bind:searchQuery
+          bind:filtered={filteredOptions}
+          bind:focus={focusSearch}
+          bind:inputBind={searchBind}/>
+
+        <!-- List of all selectable options -->
+        <OptionsList
+          id="{id}-listbox"
+          labelledBy="{id}-label"
+          options={filteredOptions}
+          on:changeSelected={handleSelectedChange}
+          bind:selected
+          bind:focused
+          bind:unfocusItems={optionsListBinds.unfocusItems}
+          bind:focusNext={optionsListBinds.focusNext}
+          bind:focusPrevious={optionsListBinds.focusPrevious}
+          bind:toggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
+          />
+
+      </div>
+
+      <!-- For form compatibility -->
+      <select class="hidden"
+        {...selectAttributes}
+        { id }
+        { name }
+        disabled
+        {multiple}
+        value={selected}>
+        {#each options as option}
+          <option value={option}>
+            {option.text}
+          </option>
         {/each}
-      {:else if !multiple && selectedSingle}
-        {selectedSingle ? selectedSingle.text : ""}
-      {:else}
-        Selecione
-      {/if}
+      </select>
 
-    </div>
-
-    <!-- Floating box with extra related data -->
-    <div class="select-dropdown-menu" class:closed={!dropdownOpen}>
-
-      <!-- Search input -->
-      <SearchInput
-        searchable={["text"]}
-        items={options}
-        bind:searchQuery
-        bind:filtered={filteredOptions}
-        bind:focus={focusSearch}
-        bind:inputBind={searchBind}/>
-
-      <!-- List of all selectable options -->
-      <OptionsList
-        id="{id}-listbox"
-        labelledBy="{id}-label"
-        options={filteredOptions}
-        on:changeSelected={handleSelectedChange}
-        bind:selected
-        bind:focused
-        bind:unfocusItems={optionsListBinds.unfocusItems}
-        bind:focusNext={optionsListBinds.focusNext}
-        bind:focusPrevious={optionsListBinds.focusPrevious}
-        bind:toggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
-        />
-
-    </div>
-
-    <!-- For form compatibility -->
-    <select class="hidden"
-      {...selectAttributes}
-      { id }
-      { name }
-      disabled
-      {multiple}
-      value={selected}>
-      {#each options as option}
-        <option value={option}>
-          {option.text}
-        </option>
-      {/each}
-    </select>
-
-    <div class="select-arrow" class:flipped={dropdownOpen}
-      on:click={() => toggleOpen()}>
-      <div class="select-arrow-aux"></div>
-    </div>
+      <div class="select-arrow" class:flipped={dropdownOpen}
+        on:click={() => toggleOpen()}>
+        <div class="select-arrow-aux"></div>
+      </div>
+  </div>
+  <p class="error-text" class:invisible={isVisuallyValid}>
+    {#if required}
+      É necessário selecionar {min} {min <= 1 ? "valor" : "valores"}.
+    {:else}
+      Valor inválido.
+    {/if}
+  </p>
 </div>
-<p class="error-text" class:invisible={isVisuallyValid}>
-  {#if required}
-    É necessário selecionar {min} {min <= 1 ? "valor" : "valores"}.
-  {:else}
-    Valor inválido.
-  {/if}
-</p>
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
