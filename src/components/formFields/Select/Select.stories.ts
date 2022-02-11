@@ -7,7 +7,6 @@ import SelectWrapper from "./SelectWrapper.svelte";
 export default {
   title: "Components/FormFields/Select",
   component: Select,
-
 };
 
 const Template = (_args: ArgType) => {

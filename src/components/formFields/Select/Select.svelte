@@ -6,8 +6,10 @@ import type { TFormContext } from "../../Form/types";
 
 import OptionsList from "./OptionsList/OptionsList.svelte";
 import SearchInput from "./SearchInput/SearchInput.svelte";
+import Badge from "../../Badge/Badge.svelte";
 import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
 import type { TOption, TOptionsListBinds } from "./types";
+import type { TbadgeStyle } from "../../Badge/types";
 
 // True if the select should select multiple values
 export let multiple = false;
@@ -47,6 +49,12 @@ export let label: string;
 
 // The selected value(s) for any select mode
 export let selected: TOption | TOption[] | null = multiple ? [] : null;
+
+// the select style
+export let selectStyle = "primary";
+
+// At the multiple select, this will set the badge style
+export let badgeStyle: TbadgeStyle = "outline";
 
 // ====== Internal control ====== //
 
@@ -231,8 +239,10 @@ onDestroy(() => {
 
       {#if multiple && selectedMultiple.length > 0}
         {#each selectedMultiple as option}
-          <span class="badge" on:click|preventDefault|stopPropagation>
-            {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
+          <span class="badge">
+            <Badge {badgeStyle}>
+              {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
+            </Badge>
           </span>
         {/each}
       {:else if !multiple && selectedSingle}
@@ -317,19 +327,11 @@ onDestroy(() => {
   .invisible {
     visibility: hidden;
   }
-  .badge {
-    display: inline-block;
-    font-size: 0.875rem;
-    border: 1px solid var(--theme-fields-outline);
-    border-radius: 25px;
-    padding: 1px 5px;
-    margin: 0.25rem;
-    span {
-      font-size: 1.3em;
-      line-height: 0.875rem;
-      vertical-align: -10%;
-      cursor: pointer;
-    }
+
+  .select-box {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.2rem;
   }
 
   .select {
@@ -342,7 +344,6 @@ onDestroy(() => {
 
     border: 0.0625rem solid var(--border-color);
     border-radius: var(--component-border-radius);
-
 
     &-label {
       position: absolute;
@@ -364,10 +365,6 @@ onDestroy(() => {
       padding: var(--component-padding-vertical) var(--component-padding-horizontal);
 
       cursor: pointer;
-
-      &.selected-multiple {
-        padding: calc(0.6 * var(--component-padding-vertical)) calc(0.6 * var(--component-padding-horizontal));
-      }
     }
 
     &-dropdown-menu {
