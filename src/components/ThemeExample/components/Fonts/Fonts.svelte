@@ -5,6 +5,7 @@
       description: "",
       variables: [
         { name: "--szot-font-family", default: "'Open Sans', 'Helvetica Neue', sans-serif", description: "" },
+        { name: "--szot-font-size", default: "16px", description: "generic usage" },
       ],
     },
     {
@@ -15,6 +16,13 @@
         { name: "--szot-p-font-style", default: "normal", description: "" },
         { name: " --szot-p-font-size", default: ".9rem", description: "" },
         { name: "--szot-p-line-height", default: "1.25rem", description: "" },
+      ],
+    },
+    {
+      title: "Form Fields",
+      description: "Used in form fields components, like select, textarea, input, ...",
+      variables: [
+        { name: "--szot-fields-font-size", default: "(--szot-font-size", description: "this will automatically set label and helper text too" },
       ],
     },
     {
