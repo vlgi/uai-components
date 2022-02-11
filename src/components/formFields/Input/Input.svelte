@@ -16,10 +16,10 @@
   /** choose border type */
   export let border: Tborders = "outline";
 
-  type TborderStyle = "primary" | "secondary" | "dark" | "light";
+  type TinputStyle = "primary" | "secondary" | "dark" | "light";
 
   /** choose default theme colors */
-  export let inputStyle: TborderStyle = "primary";
+  export let inputStyle: TinputStyle = "primary";
 
   /** write a helpertext if needed */
   export let helperText = "";
@@ -59,6 +59,7 @@
   export let disabled = false;
   export let readonly = false;
   export let required = false;
+  export let id = "";
 
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};
@@ -158,6 +159,7 @@
     class="form-input border-{border}"
     placeholder=" "
     {name}
+    {id}
     {type}
     {value}
     {disabled}
