@@ -301,24 +301,24 @@ onDestroy(() => {
       <div class="select-arrow-aux"></div>
     </div>
 </div>
-<div class="error-text" class:invisible={isVisuallyValid}>
+<p class="error-text" class:invisible={isVisuallyValid}>
   {#if required}
     É necessário selecionar {min} {min <= 1 ? "valor" : "valores"}.
   {:else}
     Valor inválido.
   {/if}
-</div>
+</p>
 
 <style lang="scss">
+  @use "src/styles/mixins" as m;
+
   * {
     --component-background-color: var(--szot-background-color, white);
     --component-border-radius: var(--szot-border-radius, var(--theme-small-shape));
     --component-padding-vertical: var(--szot-padding-vertical, var(--theme-fields-padding));
     --component-padding-horizontal: var(--szot-padding-horizontal, var(--theme-fields-padding));
     --border-color: var(--theme-fields-outline);
-    // TODO: refactor to a global theme variable
-    --message-font-size: var(--szot-message-font-size, 0.75em);
-    --message-left-spacing: var(--szot-message-left-spacing, 1.5em);
+    --message-left-spacing: var(--szot-message-left-spacing, 1rem);
   }
 
   .hidden {
@@ -350,13 +350,14 @@ onDestroy(() => {
       top: var(--component-padding-vertical);
       left: var(--component-padding-horizontal);
       background-color: var(--component-background-color);
+      @include m.form-field-label-size;
 
       transform-origin: 0 30%;
 
       transition: top 200ms, transform 200ms;
       &.floated {
         top: -0.7em;
-        transform: scale(0.8);
+        @include m.form-field-label-floated-size;
       }
     }
 
@@ -429,9 +430,8 @@ onDestroy(() => {
     }
   }
   .error-text{
-    font-size: var(--message-font-size);
     margin-left: var(--message-left-spacing);
-    color: var(--theme-error);
+    @include m.form-field-error-text();
   }
   .error {
     label {
