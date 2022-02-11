@@ -86,6 +86,7 @@
 
 <style lang="scss">
   .modal-overlay {
+    --bg-color: var(--szot-bg-color, white);
     --width: var(--szot-width, fit-content);
     --height: var(--szot-height, fit-content);
     --max-height: var(--szot-max-height, calc(100vh - 1.2rem));
@@ -118,7 +119,7 @@
     .modal-container {
       display: grid;
       grid: auto 1fr auto / 1fr;
-      background: white;
+      background: var(--bg-color);
 
       width: var(--width);
       height: var(--height);
