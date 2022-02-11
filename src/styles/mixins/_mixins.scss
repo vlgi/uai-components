@@ -24,3 +24,27 @@
     background: var(--theme-light);
   }
 }
+
+@mixin form-field-helper-text {
+  font-size: calc(0.7 * var(--theme-fields-font-size));
+  opacity: 0.75;
+  color: var(--theme-info);
+}
+
+@mixin form-field-error-text {
+  font-size: calc(0.7 * var(--theme-fields-font-size));
+  opacity: 0.75;
+  color: var(--theme-error);
+}
+
+@mixin form-field-label-size {
+  font-size: calc(0.85 * var(--theme-fields-font-size));
+}
+
+@mixin form-field-label-floated-size {
+  font-size: calc(0.7 * var(--theme-fields-font-size));
+}
+
+@mixin form-field-text-size {
+  font-size: var(--theme-fields-font-size);
+}
