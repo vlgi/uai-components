@@ -182,6 +182,8 @@
 </div>
 
 <style lang="scss">
+  @use "src/styles/mixins" as m;
+
   .form-div {
     --margin-bottom: var(--szot-margin-bottom, 1.5rem);
     --width: var(--szot-width, 100%);
@@ -189,7 +191,6 @@
 
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
-    --input-font-size: var(--szot-input-font-size, 0.625rem);
     --input-padding: var(--szot-input-padding, var(--theme-fields-padding));
     --input-color: var(--szot-input-color, var(--default-input-color));
     --border-color: var(--szot-border-color, var(--default-border-color));
@@ -198,12 +199,9 @@
     --label-left: var(--szot-label-left, 1.2rem);
     --label-padding: var(--szot-label-padding, 0rem);
     --label-color: var(--szot-label-color, var(--default-label-color));
-    --label-font-size: var(--szot-label-font-size, 0.8125rem);
     --background-color: var(--szot-background-color, white);
 
     --label-focus-left: var(--szot-label-focus-left, 0.8rem);
-    --input-focus-weigth: var(--szot-input-focus-weigth, 400);
-    --input-focus-font-size: var(--szot-input-focus-font-size, 0.6875rem);
     --input-focus-color: var(
       --szot-input-focus-color,
       var(--default-input-focus-color)
@@ -216,7 +214,6 @@
     --icon-margin: var(--szot-icon-margin, 0.5rem 0.5rem);
     --icon-color: var(--szot-icon-color, var(--default-icon-color));
 
-    --message-font-size: var(--szot-message-font-size, 0.6875rem);
     --message-bottom: var(--szot-texthelp-bottom, -1.2rem);
     --message-left: var(--szot-texthelp-left, 1rem);
     --message-error-bottom-focus: var(--szot-message-error-bottom-focus, -2rem);
@@ -270,7 +267,6 @@
       }
     }
     position: relative;
-    height: var(--height);
     margin-bottom: var(--margin-bottom);
     width: var(--width);
     max-width: var(--theme-fields-max-width);
@@ -289,33 +285,27 @@
       border-radius: var(--border-radius);
     }
 
-    position: absolute;
     width: 100%;
-    height: 100%;
-    font-size: var(--input-font-size);
     outline: none;
     padding: var(--input-padding);
     background: none;
-    z-index: 1;
     color: var(--input-color);
+    font-size: inherit;
 
     &:focus + .form-label {
       z-index: 10;
       top: 0;
       left: var(--label-focus-left);
       transform: translateY(-55%);
-      font-weight: var(--input-focus-weigth);
       color: var(--input-focus-color);
-      font-size: var(--label-font-size);
       border-color: var(--border-color-focus);
+      @include m.form-field-label-floated-size;
     }
     &:not(:placeholder-shown).form-input:not(:focus) + .form-label {
       top: 0;
       left: var(--label-focus-left);
       transform: translateY(-55%);
       z-index: 10;
-      font-weight: var(--input-focus-weigth);
-      font-size: var(--label-font-size);
     }
   }
 
@@ -327,9 +317,9 @@
     transform: translateY(-50%);
     padding: var(--label-padding);
     color: var(--label-color);
-    font-size: var(--label-font-size);
     background-color: var(--background-color);
     transition: 0.2s;
+    @include m.form-field-label-size;
 
     &.required::after {
       content: "*";
@@ -368,30 +358,23 @@
   p {
     position: absolute;
     z-index: 1;
-    font-size: var(--message-font-size);
     transition: opacity 0.2s linear, bottom 0.2s;
     bottom: var(--message-bottom);
     left: var(--message-left);
 
     &.helper {
-      color: var(--theme-info);
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.helper-show {
-      opacity: 0.75;
-      color: var(--theme-info);
-      transition: opacity 0.2s linear, bottom 0.2s;
+      @include m.form-field-helper-text();
     }
     &.error {
-      color: var(--theme-error);
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
     }
     &.error-show {
-      color: var(--theme-error);
-      opacity: 0.75;
-      transition: opacity 0.2s linear, bottom 0.2s;
+      @include m.form-field-error-text();
     }
     &.MsgUp {
       bottom: var(--message-error-bottom-focus);
