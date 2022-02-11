@@ -190,7 +190,7 @@
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
     --input-font-size: var(--szot-input-font-size, 0.625rem);
-    --input-padding: var(--szot-input-padding, 0rem 1rem);
+    --input-padding: var(--szot-input-padding, var(--theme-fields-padding));
     --input-color: var(--szot-input-color, var(--default-input-color));
     --border-color: var(--szot-border-color, var(--default-border-color));
     --border-radius: var(--szot-border-radius, var(--theme-small-shape));

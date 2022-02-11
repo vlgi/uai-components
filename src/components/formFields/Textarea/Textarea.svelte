@@ -245,9 +245,8 @@
     border-color: var(--border-color);
     border-radius:var(--border-radius);
 
-    min-width: 10rem;
+    width: 100%;
     max-width: var(--max-width);
-    min-height: 3rem;
     max-height: var(--max-height);
 
     overflow: hidden;
