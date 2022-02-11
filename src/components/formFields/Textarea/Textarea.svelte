@@ -220,6 +220,8 @@
 
     position: relative;
     margin-bottom: var(--margin-bottom);
+    height: fit-content;
+    width: 100%;
   }
   .label {
     position: absolute;
