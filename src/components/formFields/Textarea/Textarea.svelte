@@ -354,6 +354,7 @@
     left: var(--message-left);
 
     &.helper {
+      @include m.form-field-helper-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
     }
@@ -361,6 +362,7 @@
       @include m.form-field-helper-text();
     }
     &.error {
+      @include m.form-field-error-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
     }
