@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import type { ArgType } from "@storybook/addons";
 import Dialog from "./Dialog.svelte";
 import DialogOpenCloseExampleComponent from "./DialogOpenCloseExample.svelte";
@@ -29,6 +30,10 @@ const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
     Component: Dialog,
     props,
+    on: {
+      confirm: action("on:confirm"),
+      cancel: action("on:confirm"),
+    },
   });
   ret.args = _args;
   return ret;

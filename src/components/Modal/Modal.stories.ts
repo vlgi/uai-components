@@ -1,4 +1,5 @@
 import type { ArgType } from "@storybook/addons";
+import { action } from "@storybook/addon-actions";
 import Modal from "./Modal.svelte";
 import ModalForTest from "./ModalForTest.svelte";
 import ModalForInceptionTest from "./ModalForInceptionTest.svelte";
@@ -18,6 +19,9 @@ const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
     Component: ModalForTest,
     props,
+    on: {
+      closeModal: action("on:closeModal"),
+    },
   });
   ret.args = _args;
   return ret;
