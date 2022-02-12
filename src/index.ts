@@ -1,4 +1,5 @@
 import "./ionic-components";
+import _Dialog from "./components/Dialog/Dialog.svelte";
 
 export { default as Badge } from "./components/Badge/Badge.svelte";
 export { default as Icon } from "./components/Icon/Icon.svelte";
@@ -10,3 +11,10 @@ export { default as SearchInput } from "./components/formFields/Select/SearchInp
 export { default as Input } from "./components/formFields/Input/Input.svelte";
 export { default as Button } from "./components/formFields/Button/Button.svelte";
 export { default as Textarea } from "./components/formFields/Textarea/Textarea.svelte";
+
+
+// add shorthand to dialog component as static methods
+export const Dialog = {
+  ..._Dialog.prototype,
+  ...DialogShorthand,
+};
