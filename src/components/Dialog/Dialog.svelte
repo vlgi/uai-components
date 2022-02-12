@@ -200,6 +200,7 @@
     display: flex;
     justify-content: space-between;
     direction: rtl;
+    gap: 1rem;
   }
 
   .d-content {
