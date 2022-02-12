@@ -14,6 +14,9 @@ export default {
       skip: true,
     },
     storyshots: false,
+    docs: {
+      page: null,
+    },
   },
 };
 
