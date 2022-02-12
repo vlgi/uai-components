@@ -1,5 +1,6 @@
 import type { ArgType } from "@storybook/addons";
 import Dialog from "./Dialog.svelte";
+import DialogOpenCloseExampleComponent from "./DialogOpenCloseExample.svelte";
 
 export default {
   title: "Components/Dialog",
@@ -47,4 +48,8 @@ export const Confirm = Template({
 export const Error = Template({
   type: "error",
   content: "Sorry, something goes wrong.",
+});
+
+export const DialogOpenCloseExample = () => ({
+  Component: DialogOpenCloseExampleComponent,
 });

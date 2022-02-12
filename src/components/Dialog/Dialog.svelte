@@ -51,7 +51,7 @@
     opened = false;
     /**
      * fired when click on `cancel` button or `x` or pressed `Esc`/`clickOut`
-     * if `disableCloseOnEvents` is disabled
+     * if `disableCloseOnEvents` is false
     */
     dispatch("cancel");
   }
