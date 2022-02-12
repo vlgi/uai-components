@@ -11,3 +11,33 @@ This docs is different because modal have fixed position,
 and apears above all elements.
 
 <ArgsTable of={Modal} />
+
+
+## Usage Example
+```html
+<script lang="ts">
+  import { Modal } from "szto-ui";
+
+  export let opened = false;
+
+  function openModal() {
+    opened = true;
+  }
+</script>
+
+<button on:click={openModal}>Open</button>
+
+<Modal bind:opened>
+  <div slot="modal-header">
+    <span>My modal header</span>
+  </div>
+  <div slot="modal-content">
+    <p>
+      Lorem ipsum dolor sit.
+    </p>
+  </div>
+  <div slot="modal-footer">
+    <span>My modal footer</span>
+  </div>
+</Modal>
+```
