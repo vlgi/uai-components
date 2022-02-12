@@ -7,6 +7,11 @@ import ModalForCustomScrollTest from "./ModalForCustomScrollTest.svelte";
 export default {
   title: "Components/Modal",
   component: Modal,
+  parameters: {
+    docs: {
+      page: null,
+    },
+  },
 };
 
 const Template = (_args: ArgType) => {

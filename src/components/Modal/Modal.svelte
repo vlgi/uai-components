@@ -41,6 +41,8 @@
     if (modalContexts[modalContexts.length - 1] === id) {
       modalContexts.pop();
       opened = false;
+
+      // fired when modal is closed
       dispatcher("closeModal");
     }
 
@@ -67,17 +69,20 @@
 
 {#if opened }
   <div class="modal-overlay" on:click={closeModal}>
-    <div class="modal-container" on:click|stopPropagation|preventDefault>
+    <div class="modal-container" on:click|stopPropagation|preventDefault={() => true}>
       {#if !disableHeader}
         <header class="modal-header">
+          <!-- Set the modal header. e.g.: you can add a title, some buttons -->
           <slot name="modal-header"></slot>
           <button class="modal-close" on:click={ closeModal }>&#10006;</button>
         </header>
       {/if}
       <div class="modal-content">
+          <!-- Set the modal content. e.g.: you can add a a text, a form, ... -->
         <slot name="modal-content"></slot>
       </div>
       <div class="modal-footer">
+          <!-- Set the modal footer. e.g.: you can add a diclaimer, some buttons -->
         <slot name="modal-footer"></slot>
       </div>
     </div>
