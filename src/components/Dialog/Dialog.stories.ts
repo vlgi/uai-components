@@ -32,7 +32,7 @@ const Template = (_args: ArgType) => {
     props,
     on: {
       confirm: action("on:confirm"),
-      cancel: action("on:confirm"),
+      cancel: action("on:cancel"),
     },
   });
   ret.args = _args;

@@ -40,7 +40,13 @@
   let typeIsOthers = false;
   let signalsIconAndPrefix: TSignalsIconAndPrefix = null;
 
+  // used to prevent events be fired twice, because on:closeModal fire close event
+  let blockSendEvent = false;
+
   function sendConfirm() {
+    if (blockSendEvent) return;
+    blockSendEvent = true;
+
     opened = false;
 
     // fired when click on `confirm` button or `ok` button (displayed with "info", "warning", ...)
@@ -48,6 +54,9 @@
   }
 
   function sendCancel() {
+    if (blockSendEvent) return;
+    blockSendEvent = true;
+
     opened = false;
     /**
      * fired when click on `cancel` button or `x` or pressed `Esc`/`clickOut`
@@ -76,6 +85,11 @@
   $: if (typeIsOthers) {
     showHeader = true;
     signalsIconAndPrefix = getSignalsIconAndPrefix(type);
+  }
+
+  // reset the block send event mechanism when dialog open
+  $: if (opened) {
+    blockSendEvent = false;
   }
 </script>
 
