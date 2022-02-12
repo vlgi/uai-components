@@ -2,6 +2,7 @@ import { action } from "@storybook/addon-actions";
 import type { ArgType } from "@storybook/addons";
 import Dialog from "./Dialog.svelte";
 import DialogOpenCloseExampleComponent from "./DialogOpenCloseExample.svelte";
+import DialogShorthandComponent from "./DialogShorthand.svelte";
 
 export default {
   title: "Components/Dialog",
@@ -58,3 +59,18 @@ export const Error = Template({
 export const DialogOpenCloseExample = () => ({
   Component: DialogOpenCloseExampleComponent,
 });
+
+const DialogShorthandTemplate = (_args: ArgType) => {
+  const ret = ({ ...props }) => ({
+    Component: DialogShorthandComponent,
+    props,
+    on: {
+      confirm: action("on:confirm"),
+      cancel: action("on:cancel"),
+    },
+  });
+  ret.args = _args;
+  return ret;
+};
+
+export const DialogShorthandExample = DialogShorthandTemplate({});
