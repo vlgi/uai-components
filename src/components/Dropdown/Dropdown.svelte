@@ -1,15 +1,7 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
-
-  type TPosition =
-    "leftTop"
-    |"leftBottom"
-    |"rightTop"
-    |"rightBottom"
-    |"topLeft"
-    |"topRight"
-    |"bottomLeft"
-    |"bottomRight";
+  import type { TPosition } from "./types";
+  import { getDropdownPosition } from "./dropdownPositionHelper";
 
   export let opened = true;
 
@@ -17,60 +9,23 @@
   export let targetId: string;
 
   // the dropdown position relative to the trigger
-  export let dropdownPosition: TPosition = "bottomRight";
+  export let dropdownAlignment: TPosition = "bottomRight";
 
   // Helps throttle the scroll event
   let ticking = false;
   let triggerElement: HTMLElement;
   let dropdownElement: HTMLElement;
 
-  function isDropdownvisible(dTop: number, dLeft: number) {
-
-  }
-
-  function getDropdownPosition(
-    _dropdownPosition: TPosition,
-    triggerRect: DOMRect,
-    dropdownRect: DOMRect,
-  ): { top: number, left: number } {
-    let pLeft: number;
-    let pTop: number;
+  function setDropdownPosition(_dropdownAlignment: TPosition) {
+    const triggerRect = triggerElement.getBoundingClientRect();
+    const dropdownRect = dropdownElement.getBoundingClientRect();
 
     console.log(triggerRect, {
       offsetTop: triggerElement.offsetTop,
       offsetLeft: triggerElement.offsetLeft,
     });
 
-    // set position
-    if (_dropdownPosition.includes("bottom")) {
-      pTop = triggerRect.top + triggerRect.height;
-    } else if (_dropdownPosition.includes("top")) {
-      pTop = triggerRect.top - dropdownRect.height;
-    } else if (_dropdownPosition.includes("left")) {
-      pLeft = triggerRect.left - dropdownRect.width;
-    } else if (_dropdownPosition.includes("right")) {
-      pLeft = triggerRect.left + triggerRect.width;
-    }
-
-    // set alignment
-    if (_dropdownPosition.includes("Right")) {
-      pLeft = triggerRect.left + triggerRect.width - dropdownRect.width;
-    } else if (_dropdownPosition.includes("Left")) {
-      pLeft = triggerRect.left;
-    } else if (_dropdownPosition.includes("Top")) {
-      pTop = triggerRect.top;
-    } else if (_dropdownPosition.includes("Bottom")) {
-      pTop = triggerRect.top - dropdownRect.height + triggerRect.height;
-    }
-
-    return { left: pLeft, top: pTop };
-  }
-
-  function setDropdownPosition(_dropdownPosition: TPosition) {
-    const triggerRect = triggerElement.getBoundingClientRect();
-    const dropdownRect = dropdownElement.getBoundingClientRect();
-
-    const { left, top } = getDropdownPosition(_dropdownPosition, triggerRect, dropdownRect);
+    const { left, top } = getDropdownPosition(_dropdownAlignment, triggerRect, dropdownRect);
 
     // TODOD - verify if the current position is visible
 
@@ -87,7 +42,7 @@
   function handleScroll() {
     if (!ticking) {
       window.requestAnimationFrame(() => {
-        setDropdownPosition(dropdownPosition);
+        setDropdownPosition(dropdownAlignment);
         ticking = false;
       });
 
@@ -105,9 +60,9 @@
 
   /**
    * On open, and after dropdown element be mounted, set the initial position.
-   * Every time that dropdownPosition change set the position too
+   * Every time that dropdownAlignment change set the position too
   */
-  $: if (dropdownElement) setDropdownPosition(dropdownPosition);
+  $: if (dropdownElement) setDropdownPosition(dropdownAlignment);
 
   // Set this reactive to handle with opened being changed without click on the trigger
   $: if (opened) {

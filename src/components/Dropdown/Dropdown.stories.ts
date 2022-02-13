@@ -6,7 +6,7 @@ export default {
   title: "Components/Dropdown",
   component: Dropdown,
   argTypes: {
-    dropdownPosition: {
+    dropdownAlignment: {
       control: {
         type: "select",
         options: [
@@ -35,37 +35,37 @@ const Template = (_args: ArgType) => {
 
 export const Default = Template({
   triggerId: "Default",
-  dropdownPosition: "bottomRight",
+  dropdownAlignment: "bottomRight",
   triggerPosition: { top: 0, left: 0 },
 });
 
 export const RightAlignment = Template({
   triggerId: "RightAlignment",
-  dropdownPosition: "rightTop",
+  dropdownAlignment: "rightTop",
   triggerPosition: { top: 0, left: 0 },
 });
 
 export const LeftAlignmentWithAutoAdjust = Template({
   triggerId: "LeftAlignmentWithAutoAdjust",
-  dropdownPosition: "leftTop",
+  dropdownAlignment: "leftTop",
   triggerPosition: { top: 0, left: 0 },
 });
 
 export const RightAlignmentWithAutoAdjust = Template({
   triggerId: "RightAlignmentWithAutoAdjust",
-  dropdownPosition: "rightTop",
+  dropdownAlignment: "rightTop",
   triggerPosition: { top: 0, left: 250 },
 });
 
 export const BottomAlignmentWithAutoAdjust = Template({
   triggerId: "RightAlignmentWithAutoAdjust",
-  dropdownPosition: "rightTop",
+  dropdownAlignment: "rightTop",
   triggerPosition: { top: 290, left: 0 },
 });
 
 export const largeScroll = Template({
   triggerId: "RightAlignmentWithAutoAdjust",
-  dropdownPosition: "rightTop",
+  dropdownAlignment: "rightTop",
   triggerPosition: { top: 290, left: 290 },
   scrollSize: { x: 600, y: 600 },
 });
