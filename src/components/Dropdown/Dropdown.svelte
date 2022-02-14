@@ -1,7 +1,11 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
   import type { TPosition } from "./types";
-  import { getDropdownPosition } from "./dropdownPositionHelper";
+  import {
+    getDropdownPosition,
+    getValidDropdownAlignments,
+    getBestValidAlignment,
+  } from "./dropdownPositionHelper";
 
   export let opened = true;
 
@@ -16,21 +20,39 @@
   let triggerElement: HTMLElement;
   let dropdownElement: HTMLElement;
 
-  function setDropdownPosition(_dropdownAlignment: TPosition) {
+  function open() {
+    opened = true;
+  }
+
+  function close() {
+    opened = false;
+  }
+
+  function setDropdownPosition(_dropdownAlignment: TPosition, count = 0) {
     const triggerRect = triggerElement.getBoundingClientRect();
     const dropdownRect = dropdownElement.getBoundingClientRect();
 
-    console.log(triggerRect, {
-      offsetTop: triggerElement.offsetTop,
-      offsetLeft: triggerElement.offsetLeft,
-    });
+    const validAlignments = getValidDropdownAlignments(
+      triggerElement,
+      dropdownRect,
+    );
 
-    const { left, top } = getDropdownPosition(_dropdownAlignment, triggerRect, dropdownRect);
+    if (count > 1) throw new Error("Infinit loop at setDropdownPosition");
 
-    // TODOD - verify if the current position is visible
+    if (validAlignments.includes(_dropdownAlignment)) {
+      const { top, left } = getDropdownPosition(_dropdownAlignment, triggerRect, dropdownRect);
 
-    dropdownElement.style.top = `${top}px`;
-    dropdownElement.style.left = `${left}px`;
+      // initialize not visible to not conflict with "getValidDropdownAlignments" function
+      dropdownElement.style.visibility = "visible";
+      dropdownElement.style.top = `${top}px`;
+      dropdownElement.style.left = `${left}px`;
+    } else if (validAlignments.length > 0) {
+      const betterAlignment = getBestValidAlignment(_dropdownAlignment, validAlignments);
+      setDropdownPosition(betterAlignment, count + 1);
+    } else {
+      // if there's no valid position, make the dropdown invisible
+      dropdownElement.style.visibility = "hidden";
+    }
   }
 
   /**
@@ -48,14 +70,6 @@
 
       ticking = true;
     }
-  }
-
-  function open() {
-    opened = true;
-  }
-
-  function close() {
-    opened = false;
   }
 
   /**
@@ -102,5 +116,8 @@
     border-radius: var(--theme-medium-shape);
 
     background: var(--bg-color);
+
+    // initialize not visible to not conflict with "getValidDropdownAlignments" function
+    visibility: hidden;
   }
 </style>
