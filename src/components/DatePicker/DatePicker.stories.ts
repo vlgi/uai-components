@@ -72,3 +72,9 @@ const Template = (_args: ArgType) => {
 export const Default = Template({
   label: "Data de Nascimento",
 });
+
+export const CustomExample = Template({
+  label: "Data de Entrada",
+  inputStyle: "secondary",
+  border: "bottom",
+});

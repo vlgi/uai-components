@@ -39,28 +39,25 @@
     {inputStyle}
     {...$$restProps}
     bind:value
-    id="open-date-input-2"
+    id="open-popover"
     {icon}
     />
-      <ion-popover trigger="open-date-input-2" show-backdrop="false">
-        <ion-datetime
-          color={inputStyle}
-          {min}
-          {max}
-          {presentation}
-          done-text={doneText}
-          cancel-text={cancelText}
-          mode="md"
-          show-default-buttons={true}
-          id="popover-datetime-2"
-          on:ionChange={updateDate}/>
-      </ion-popover>
+    <ion-popover trigger="open-popover" show-backdrop="false">
+      <ion-datetime
+      color={inputStyle}
+      {min}
+      {max}
+      {presentation}
+      done-text={doneText}
+      cancel-text={cancelText}
+      mode="md"
+      show-default-buttons={true}
+      id="popover-datetime-2"
+      on:ionChange={updateDate}/>
+    </ion-popover>
 </div>
 
 <style lang="scss">
-  div {
-    --szot-icon-margin: 0.5rem 1rem;
-  }
   ion-popover {
     height: 30rem;
   }
