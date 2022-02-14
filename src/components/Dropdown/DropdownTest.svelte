@@ -3,36 +3,46 @@
   import Button from "../formFields/Button/Button.svelte";
 
   export let triggerId: string;
-  export let triggerPosition: { top: number, left: number };
-  export let scrollSize = { x: 0, y: 0 };
+  export let triggerStyle = "top:0; left:0";
+  export let scrollStyle = "";
+  export let containerStyle = "width:300px; height:300px; margin: 100px 300px";
 </script>
 
-<div class="container">
+<div
+  class="container"
+  style={containerStyle}
+  >
   <div
     class="button-wrapper"
     id={triggerId}
-    style="top:{triggerPosition.top}px; left:{triggerPosition.left}px"
+    style={triggerStyle}
   >
     <Button>Open</Button>
   </div>
 
   <Dropdown targetId={triggerId} {...$$restProps}>
-    Olá
+    <span class="item">Item 1</span>
+    <span class="item">Item 2</span>
+    <span class="item">Item 3 Long text</span>
+    <span class="item">Item 4</span>
+    <span class="item">Item 5 Long Long Long text</span>
   </Dropdown>
 
   <div
     class="add-scroll"
-    style="width:{scrollSize.x}px; height:{scrollSize.y}px"
-    ></div>
+    style={scrollStyle}
+  ></div>
 </div>
 
 <style lang="scss">
-
   .container {
-    width: 300px;
-    height: 300px;
     overflow: auto;
     position: relative;
+    border: solid 2px black;
+  }
+
+  .item {
+    display: block;
   }
 
   .button-wrapper {

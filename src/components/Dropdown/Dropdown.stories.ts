@@ -36,36 +36,71 @@ const Template = (_args: ArgType) => {
 export const Default = Template({
   triggerId: "Default",
   dropdownAlignment: "bottomRight",
-  triggerPosition: { top: 0, left: 0 },
 });
+
+Default.parameters = {
+  docs: {
+    source: {
+      language: "html",
+      code: `
+<script lang="ts">
+  import Dropdown from "./Dropdown.svelte";
+  import Button from "../formFields/Button/Button.svelte";
+</script>
+
+<div class="button-wrapper" id="demo-dropdown">
+  <Button>Open</Button>
+</div>
+
+<Dropdown targetId="demo-dropdown">
+  <span class="item">Item 1</span>
+  <span class="item">Item 2</span>
+  <span class="item">Item 3 Long text</span>
+  <span class="item">Item 4</span>
+  <span class="item">Item 5 Long Long Long text</span>
+</Dropdown>
+
+<style lang="scss">
+  .item {
+    display: block;
+  }
+
+  .button-wrapper {
+    width: fit-content;
+    height: fit-content;
+  }
+</style>
+      `,
+    },
+  },
+};
 
 export const RightAlignment = Template({
   triggerId: "RightAlignment",
   dropdownAlignment: "rightTop",
-  triggerPosition: { top: 0, left: 0 },
 });
 
-export const LeftAlignmentWithAutoAdjust = Template({
-  triggerId: "LeftAlignmentWithAutoAdjust",
+export const LeftAlignment = Template({
+  triggerId: "LeftAlignment",
   dropdownAlignment: "leftTop",
-  triggerPosition: { top: 0, left: 0 },
+});
+
+export const BottomAlignment = Template({
+  triggerId: "BottomAlignment",
+  dropdownAlignment: "rightTop",
+  triggerStyle: "top:290px; left:0",
 });
 
 export const RightAlignmentWithAutoAdjust = Template({
   triggerId: "RightAlignmentWithAutoAdjust",
   dropdownAlignment: "rightTop",
-  triggerPosition: { top: 0, left: 250 },
-});
-
-export const BottomAlignmentWithAutoAdjust = Template({
-  triggerId: "RightAlignmentWithAutoAdjust",
-  dropdownAlignment: "rightTop",
-  triggerPosition: { top: 290, left: 0 },
+  triggerStyle: "top:0; left:250px",
 });
 
 export const largeScroll = Template({
-  triggerId: "RightAlignmentWithAutoAdjust",
+  triggerId: "largeScroll",
   dropdownAlignment: "rightTop",
-  triggerPosition: { top: 290, left: 290 },
-  scrollSize: { x: 600, y: 600 },
+  triggerStyle: "top:100vw; left:100vw",
+  scrollStyle: "width:250vw; height:250vh",
+  containerStyle: "width:calc(100vw - 120px); height:calc(99vh - 120px); margin: 50px",
 });
