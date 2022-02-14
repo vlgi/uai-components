@@ -120,6 +120,9 @@
 <style lang="scss">
   .dropdown {
     --bg-color: var(--szot-bg-color, white);
+    --padding: var(--szot-padding, var(--theme-global-medium-padding));
+    --shadow: var(--szot-shadow, var(--theme-low-shadow));
+    --border-radius: var(--szot-border-radius, var(--theme-medium-shape));
 
     // internal variables
     --arrow-size: 0.625rem;
@@ -178,9 +181,9 @@
 
     width: fit-content;
     height: fit-content;
-    padding: var(--theme-global-medium-padding);
-    filter: drop-shadow(var(--theme-low-shadow));
-    border-radius: var(--theme-medium-shape);
+    padding: var(--padding);
+    filter: drop-shadow(var(--shadow));
+    border-radius: var(--border-radius);
     margin: var(--margin);
 
     background: var(--bg-color);
