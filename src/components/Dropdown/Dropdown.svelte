@@ -26,6 +26,7 @@
   let ticking = false;
   let triggerElement: HTMLElement;
   let dropdownElement: HTMLElement;
+  let selectedDropdownAlignment: TPosition;
 
   function open() {
     opened = true;
@@ -48,6 +49,7 @@
 
     if (validAlignments.includes(_dropdownAlignment) || !enableAutAdjust) {
       const { top, left } = getDropdownPosition(_dropdownAlignment, triggerRect, dropdownRect);
+      selectedDropdownAlignment = _dropdownAlignment;
 
       // initialize not visible to not conflict with "getValidDropdownAlignments" function
       dropdownElement.style.visibility = "visible";
@@ -105,26 +107,104 @@
 </script>
 
 {#if opened}
-  <div class="dropdown" bind:this={dropdownElement} use:actionOutClick on:actionOutClick={close}>
+  <div
+    class="dropdown dropdown-{selectedDropdownAlignment}"
+    bind:this={dropdownElement}
+    use:actionOutClick
+    on:actionOutClick={close}
+  >
     <slot></slot>
   </div>
 {/if}
 
 <style lang="scss">
   .dropdown {
-    --bg-color: var(--szot-bg-color, red);
+    --bg-color: var(--szot-bg-color, white);
+
+    // internal variables
+    --arrow-size: 0.625rem;
+
+    // Set arrow position based on dropdown position
+    &-bottomRight {
+      --arrow-top: calc(var(--arrow-size) * -1);
+      --arrow-right: calc(var(--arrow-size) * 2);
+      --arrow-rotation: 0deg;
+      --margin: calc(var(--arrow-size) * .7);
+    }
+    &-bottomLeft {
+      --arrow-top: calc(var(--arrow-size) * -1);
+      --arrow-left: calc(var(--arrow-size) * 2);
+      --arrow-rotation: 0deg;
+      --margin: calc(var(--arrow-size) * .7) calc(var(--arrow-size) * -.7);
+    }
+    &-topRight {
+      --arrow-bottom: calc(var(--arrow-size) * -1);
+      --arrow-right: calc(var(--arrow-size) * 2);
+      --arrow-rotation: 180deg;
+      --margin: calc(var(--arrow-size) * -.7) calc(var(--arrow-size) * .7);
+    }
+    &-topLeft {
+      --arrow-bottom: calc(var(--arrow-size) * -1);
+      --arrow-left: calc(var(--arrow-size) * 2);
+      --arrow-rotation: 180deg;
+      --margin: calc(var(--arrow-size) * -.7);
+    }
+    &-rightBottom {
+      --arrow-left: calc(var(--arrow-size) * -1.4);
+      --arrow-bottom: calc(var(--arrow-size) * 2);
+      --arrow-rotation: -90deg;
+      --margin: calc(var(--arrow-size) * .7) calc(var(--arrow-size) * .4);
+    }
+    &-rightTop {
+      --arrow-left: calc(var(--arrow-size) * -1.4);
+      --arrow-top: calc(var(--arrow-size) * 2);
+      --arrow-rotation: -90deg;
+      --margin: calc(var(--arrow-size) * -.7) calc(var(--arrow-size) * .4);
+    }
+    &-leftBottom {
+      --arrow-right: calc(var(--arrow-size) * -1.4);
+      --arrow-bottom: calc(var(--arrow-size) * 2);
+      --arrow-rotation: 90deg;
+      --margin: calc(var(--arrow-size) * .7) calc(var(--arrow-size) * -.4);
+    }
+    &-leftTop {
+      --arrow-right: calc(var(--arrow-size) * -1.4);
+      --arrow-top: calc(var(--arrow-size) * 2);
+      --arrow-rotation: 90deg;
+      --margin: calc(var(--arrow-size) * -.7) calc(var(--arrow-size) * -.4);
+    }
 
     position: fixed;
 
     width: fit-content;
     height: fit-content;
     padding: var(--theme-global-medium-padding);
-    box-shadow: var(--theme-medium-shadow);
+    filter: drop-shadow(var(--theme-low-shadow));
     border-radius: var(--theme-medium-shape);
+    margin: var(--margin);
 
     background: var(--bg-color);
 
     // initialize not visible to not conflict with "getValidDropdownAlignments" function
     visibility: hidden;
+
+    // arrow
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+
+      border-left: solid var(--arrow-size) transparent;
+      border-right: solid var(--arrow-size) transparent;
+      border-top: solid 0 ;
+      border-bottom: solid var(--arrow-size) var(--bg-color);
+
+      top: var(--arrow-top, unset);
+      left: var(--arrow-left, unset);
+      bottom: var(--arrow-bottom, unset);
+      right: var(--arrow-right, unset);
+
+      transform: rotateZ(var(--arrow-rotation));
+    }
   }
 </style>
