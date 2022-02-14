@@ -33,9 +33,10 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
-export const Default = Template({
+export const Default: any = Template({
   triggerId: "Default",
   dropdownAlignment: "bottomRight",
+  opened: true,
 });
 
 Default.parameters = {
@@ -75,26 +76,36 @@ Default.parameters = {
   },
 };
 
+export const OpenClose = Template({
+  triggerId: "OpenClose",
+  dropdownAlignment: "bottomRight",
+  opened: false,
+});
+
 export const RightAlignment = Template({
   triggerId: "RightAlignment",
   dropdownAlignment: "rightTop",
+  opened: true,
 });
 
 export const LeftAlignment = Template({
   triggerId: "LeftAlignment",
   dropdownAlignment: "leftTop",
+  opened: true,
 });
 
 export const BottomAlignment = Template({
   triggerId: "BottomAlignment",
   dropdownAlignment: "rightTop",
   triggerStyle: "top:290px; left:0",
+  opened: true,
 });
 
 export const RightAlignmentWithAutoAdjust = Template({
   triggerId: "RightAlignmentWithAutoAdjust",
   dropdownAlignment: "rightTop",
   triggerStyle: "top:0; left:250px",
+  opened: true,
 });
 
 export const largeScroll = Template({
@@ -103,4 +114,5 @@ export const largeScroll = Template({
   triggerStyle: "top:100vw; left:100vw",
   scrollStyle: "width:250vw; height:250vh",
   containerStyle: "width:calc(100vw - 120px); height:calc(99vh - 120px); margin: 50px",
+  opened: true,
 });

@@ -7,7 +7,7 @@
     getBestValidAlignment,
   } from "./dropdownPositionHelper";
 
-  export let opened = true;
+  export let opened = false;
 
   // the trigger element (the element must be able to dispatch click, hover events and id unique)
   export let targetId: string;
