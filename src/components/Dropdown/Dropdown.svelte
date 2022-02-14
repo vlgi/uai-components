@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
   import type { TPosition } from "./types";
+  import { actionOutClick } from "../../actions/clickOutside/clickOutside";
   import {
     getDropdownPosition,
     getValidDropdownAlignments,
@@ -98,7 +99,7 @@
 </script>
 
 {#if opened}
-  <div class="dropdown" bind:this={dropdownElement}>
+  <div class="dropdown" bind:this={dropdownElement} use:actionOutClick on:actionOutClick={close}>
     <slot></slot>
   </div>
 {/if}
