@@ -50,9 +50,6 @@ export let label: string;
 // The selected value(s) for any select mode
 export let selected: TOption | TOption[] | null = multiple ? [] : null;
 
-// the select style
-export let selectStyle = "primary";
-
 // At the multiple select, this will set the badge style
 export let badgeStyle: TbadgeStyle = "outline";
 
