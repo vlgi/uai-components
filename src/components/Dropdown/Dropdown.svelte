@@ -16,6 +16,12 @@
   // the dropdown position relative to the trigger
   export let dropdownAlignment: TPosition = "bottomRight";
 
+  /**
+   * Set to false to disable auto ajust.
+   * This will make the dropdown always visible.
+   */
+  export let enableAutAdjust = true;
+
   // Helps throttle the scroll event
   let ticking = false;
   let triggerElement: HTMLElement;
@@ -40,7 +46,7 @@
 
     if (count > 1) throw new Error("Infinit loop at setDropdownPosition");
 
-    if (validAlignments.includes(_dropdownAlignment)) {
+    if (validAlignments.includes(_dropdownAlignment) || !enableAutAdjust) {
       const { top, left } = getDropdownPosition(_dropdownAlignment, triggerRect, dropdownRect);
 
       // initialize not visible to not conflict with "getValidDropdownAlignments" function

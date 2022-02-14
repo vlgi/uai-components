@@ -108,6 +108,14 @@ export const RightAlignmentWithAutoAdjust = Template({
   opened: true,
 });
 
+export const RightAlignmentWithoutAutoAdjust = Template({
+  triggerId: "RightAlignmentWithoutAutoAdjust",
+  dropdownAlignment: "rightTop",
+  triggerStyle: "top:0; left:250px",
+  opened: true,
+  enableAutAdjust: false,
+});
+
 export const largeScroll = Template({
   triggerId: "largeScroll",
   dropdownAlignment: "rightTop",
