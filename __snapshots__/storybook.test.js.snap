@@ -8,9 +8,13 @@ exports[`Storyshots Components/Badge Border 1`] = `
     style=""
   >
     <span
-      class="badge outline svelte-zsk4sa"
+      class="badge outline svelte-1ypa5ei"
     >
-      Badge
+      <span
+        class="text svelte-1ypa5ei"
+      >
+        Badge
+      </span>
     </span>
   </div>
 </section>
@@ -24,9 +28,13 @@ exports[`Storyshots Components/Badge Custom Example 1`] = `
     style="--szot-color:#FFFFFF; --szot-background-color:#FC6627;"
   >
     <span
-      class="badge primary svelte-zsk4sa"
+      class="badge primary svelte-1ypa5ei"
     >
-      New
+      <span
+        class="text svelte-1ypa5ei"
+      >
+        New
+      </span>
     </span>
   </div>
 </section>
@@ -40,9 +48,13 @@ exports[`Storyshots Components/Badge Theme 1`] = `
     style=""
   >
     <span
-      class="badge dark svelte-zsk4sa"
+      class="badge dark svelte-1ypa5ei"
     >
-      Badge
+      <span
+        class="text svelte-1ypa5ei"
+      >
+        Badge
+      </span>
     </span>
   </div>
 </section>
@@ -374,17 +386,17 @@ exports[`Storyshots Components/FormFields/Input Borders None 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1q9ns05"
+      class="form-div input-style-primary svelte-ahmgy1"
     >
       <input
         aria-required="false"
-        class="form-input border-bottom svelte-1q9ns05"
+        class="form-input border-bottom svelte-ahmgy1"
         placeholder=" "
         type="password"
       />
        
       <label
-        class="form-label svelte-1q9ns05"
+        class="form-label svelte-ahmgy1"
         for=""
       >
         Senha
@@ -392,13 +404,13 @@ exports[`Storyshots Components/FormFields/Input Borders None 1`] = `
        
        
       <p
-        class="helper svelte-1q9ns05"
+        class="helper svelte-ahmgy1"
       >
         
       </p>
        
       <p
-        class="error svelte-1q9ns05"
+        class="error svelte-ahmgy1"
       >
         
       </p>
@@ -415,17 +427,17 @@ exports[`Storyshots Components/FormFields/Input Custom Example 1`] = `
     style="--szot-label-font-size: 10px;--szot-height: 1.5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-input-color: #db984b;--szot-input-focus-color: #ce4007;--szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;--szot-border-radius: 1.5rem;"
   >
     <div
-      class="form-div input-style-primary svelte-1q9ns05"
+      class="form-div input-style-primary svelte-ahmgy1"
     >
       <input
         aria-required="false"
-        class="form-input border-outline svelte-1q9ns05"
+        class="form-input border-outline svelte-ahmgy1"
         placeholder=" "
         type="name"
       />
        
       <label
-        class="form-label svelte-1q9ns05"
+        class="form-label svelte-ahmgy1"
         for=""
       >
         Teste
@@ -433,13 +445,13 @@ exports[`Storyshots Components/FormFields/Input Custom Example 1`] = `
        
        
       <p
-        class="helper svelte-1q9ns05"
+        class="helper svelte-ahmgy1"
       >
         Digite 'erro' para ser invalido
       </p>
        
       <p
-        class="error svelte-1q9ns05"
+        class="error svelte-ahmgy1"
       >
         
       </p>
@@ -454,17 +466,17 @@ exports[`Storyshots Components/FormFields/Input Custom Validation And Required 1
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1q9ns05"
+      class="form-div input-style-primary svelte-ahmgy1"
     >
       <input
         aria-required="true"
-        class="form-input border-outline svelte-1q9ns05"
+        class="form-input border-outline svelte-ahmgy1"
         placeholder=" "
         type="text"
       />
        
       <label
-        class="form-label svelte-1q9ns05 required"
+        class="form-label svelte-ahmgy1 required"
         for=""
       >
         Name
@@ -472,13 +484,13 @@ exports[`Storyshots Components/FormFields/Input Custom Validation And Required 1
        
        
       <p
-        class="helper svelte-1q9ns05"
+        class="helper svelte-ahmgy1"
       >
         Digite 'erro' para ser invalido
       </p>
        
       <p
-        class="error svelte-1q9ns05"
+        class="error svelte-ahmgy1"
       >
         
       </p>
@@ -495,17 +507,17 @@ exports[`Storyshots Components/FormFields/Input Default 1`] = `
     style=""
   >
     <div
-      class="form-div input-style-primary svelte-1q9ns05"
+      class="form-div input-style-primary svelte-ahmgy1"
     >
       <input
         aria-required="false"
-        class="form-input border-outline svelte-1q9ns05"
+        class="form-input border-outline svelte-ahmgy1"
         placeholder=" "
         type="email"
       />
        
       <label
-        class="form-label svelte-1q9ns05"
+        class="form-label svelte-ahmgy1"
         for=""
       >
         Email
@@ -513,13 +525,13 @@ exports[`Storyshots Components/FormFields/Input Default 1`] = `
        
        
       <p
-        class="helper svelte-1q9ns05"
+        class="helper svelte-ahmgy1"
       >
         Digite um email válido
       </p>
        
       <p
-        class="error svelte-1q9ns05"
+        class="error svelte-ahmgy1"
       >
         
       </p>
@@ -534,17 +546,17 @@ exports[`Storyshots Components/FormFields/Input Force Invalid 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1q9ns05 invalid"
+      class="form-div input-style-primary svelte-ahmgy1 invalid"
     >
       <input
         aria-required="false"
-        class="form-input border-outline svelte-1q9ns05"
+        class="form-input border-outline svelte-ahmgy1"
         placeholder=" "
         type="text"
       />
        
       <label
-        class="form-label svelte-1q9ns05"
+        class="form-label svelte-ahmgy1"
         for=""
       >
         Name
@@ -552,13 +564,13 @@ exports[`Storyshots Components/FormFields/Input Force Invalid 1`] = `
        
        
       <p
-        class="helper svelte-1q9ns05"
+        class="helper svelte-ahmgy1"
       >
         
       </p>
        
       <p
-        class="error svelte-1q9ns05 error-show"
+        class="error svelte-ahmgy1 error-show"
       >
         Mensagem de erro customizada
       </p>
@@ -573,25 +585,25 @@ exports[`Storyshots Components/FormFields/Input Readonly 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1q9ns05 icons-right"
+      class="form-div input-style-primary svelte-ahmgy1 icons-right"
     >
       <input
         aria-required="false"
-        class="form-input border-outline svelte-1q9ns05"
+        class="form-input border-outline svelte-ahmgy1"
         placeholder=" "
         readonly=""
         type="text"
       />
        
       <label
-        class="form-label svelte-1q9ns05"
+        class="form-label svelte-ahmgy1"
         for=""
       >
         Aviso
       </label>
        
       <div
-        class="icon svelte-1q9ns05"
+        class="icon svelte-ahmgy1"
       >
         <span
           class="icon-info"
@@ -599,13 +611,13 @@ exports[`Storyshots Components/FormFields/Input Readonly 1`] = `
       </div>
        
       <p
-        class="helper svelte-1q9ns05"
+        class="helper svelte-ahmgy1"
       >
         Apenas um exemplo
       </p>
        
       <p
-        class="error svelte-1q9ns05"
+        class="error svelte-ahmgy1"
       >
         
       </p>
@@ -620,17 +632,17 @@ exports[`Storyshots Components/FormFields/Input Required 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1q9ns05"
+      class="form-div input-style-primary svelte-ahmgy1"
     >
       <input
         aria-required="true"
-        class="form-input border-outline svelte-1q9ns05"
+        class="form-input border-outline svelte-ahmgy1"
         placeholder=" "
         type="text"
       />
        
       <label
-        class="form-label svelte-1q9ns05 required"
+        class="form-label svelte-ahmgy1 required"
         for=""
       >
         Name
@@ -638,13 +650,13 @@ exports[`Storyshots Components/FormFields/Input Required 1`] = `
        
        
       <p
-        class="helper svelte-1q9ns05"
+        class="helper svelte-ahmgy1"
       >
         
       </p>
        
       <p
-        class="error svelte-1q9ns05"
+        class="error svelte-ahmgy1"
       >
         
       </p>
@@ -659,24 +671,24 @@ exports[`Storyshots Components/FormFields/Input Whith Icon 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1q9ns05 icons-right"
+      class="form-div input-style-primary svelte-ahmgy1 icons-right"
     >
       <input
         aria-required="false"
-        class="form-input border-bottom svelte-1q9ns05"
+        class="form-input border-bottom svelte-ahmgy1"
         placeholder=" "
         type="tel"
       />
        
       <label
-        class="form-label svelte-1q9ns05"
+        class="form-label svelte-ahmgy1"
         for=""
       >
         Celular 1
       </label>
        
       <div
-        class="icon svelte-1q9ns05"
+        class="icon svelte-ahmgy1"
       >
         <span
           class="icon-phone"
@@ -684,13 +696,13 @@ exports[`Storyshots Components/FormFields/Input Whith Icon 1`] = `
       </div>
        
       <p
-        class="helper svelte-1q9ns05"
+        class="helper svelte-ahmgy1"
       >
         
       </p>
        
       <p
-        class="error svelte-1q9ns05"
+        class="error svelte-ahmgy1"
       >
         
       </p>
@@ -705,24 +717,24 @@ exports[`Storyshots Components/FormFields/Input Whith Icon Left 1`] = `
 >
   <div>
     <div
-      class="form-div input-style-primary svelte-1q9ns05 icons-left"
+      class="form-div input-style-primary svelte-ahmgy1 icons-left"
     >
       <input
         aria-required="false"
-        class="form-input border-outline svelte-1q9ns05"
+        class="form-input border-outline svelte-ahmgy1"
         placeholder=" "
         type="tel"
       />
        
       <label
-        class="form-label svelte-1q9ns05"
+        class="form-label svelte-ahmgy1"
         for=""
       >
         Celular 2
       </label>
        
       <div
-        class="icon svelte-1q9ns05"
+        class="icon svelte-ahmgy1"
       >
         <span
           class="icon-phone"
@@ -730,13 +742,13 @@ exports[`Storyshots Components/FormFields/Input Whith Icon Left 1`] = `
       </div>
        
       <p
-        class="helper svelte-1q9ns05"
+        class="helper svelte-ahmgy1"
       >
         
       </p>
        
       <p
-        class="error svelte-1q9ns05"
+        class="error svelte-ahmgy1"
       >
         
       </p>
@@ -750,178 +762,182 @@ exports[`Storyshots Components/FormFields/Select Multiple 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-hk052"
-    tabindex="0"
+    class="select-wrapper svelte-lk9n1j"
   >
-    <label
-      class="select-label svelte-hk052"
-      for="doce-custom"
-      id="doce-label"
-    >
-      Sobremesas
-    </label>
-     
     <div
-      aria-controls="doce-listbox"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-labelledby="doce-label"
-      class="select-box svelte-hk052"
-      id="doce-custom"
-      role="combobox"
-      tabindex="-1"
+      class="select svelte-lk9n1j"
+      tabindex="0"
     >
-      Selecione
-    </div>
-     
-    <div
-      class="select-dropdown-menu svelte-hk052 closed"
-    >
-      <input
-        class="search svelte-1ara2mn"
-        placeholder="Pesquise ou Selecione..."
-        tabindex="-1"
-        type="text"
-      />
+      <label
+        class="select-label svelte-lk9n1j"
+        for="doce-custom"
+        id="doce-label"
+      >
+        Sobremesas
+      </label>
        
       <div
+        aria-controls="doce-listbox"
+        aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="doce-label"
-        class="select-menu svelte-12mc5sn"
-        id="doce-listbox"
-        role="listbox"
+        class="select-box svelte-lk9n1j"
+        id="doce-custom"
+        role="combobox"
         tabindex="-1"
       >
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
+        Selecione
+      </div>
+       
+      <div
+        class="select-dropdown-menu svelte-lk9n1j closed"
+      >
+        <input
+          class="search svelte-1ara2mn"
+          placeholder="Pesquise ou Selecione..."
           tabindex="-1"
+          type="text"
+        />
+         
+        <div
+          aria-labelledby="doce-label"
+          class="select-menu svelte-12mc5sn"
+          id="doce-listbox"
+          role="listbox"
+          tabindex="-1"
+        >
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Brigadeiro
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pudim
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Rabanada
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Beijinho
+             
+          </div>
+          
+        </div>
+      </div>
+       
+      <select
+        class="hidden svelte-lk9n1j"
+        disabled=""
+        id="doce"
+        multiple=""
+        name="doce"
+      >
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Brigadeiro
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pudim
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Rabanada
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Beijinho
            
-        </div>
-        
+        </option>
+      </select>
+       
+      <div
+        class="select-arrow svelte-lk9n1j"
+      >
+        <div
+          class="select-arrow-aux svelte-lk9n1j"
+        />
       </div>
     </div>
      
-    <select
-      class="hidden svelte-hk052"
-      disabled=""
-      id="doce"
-      multiple=""
-      name="doce"
+    <p
+      class="error-text svelte-lk9n1j invisible"
     >
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho
-         
-      </option>
-    </select>
-     
-    <div
-      class="select-arrow svelte-hk052"
-    >
-      <div
-        class="select-arrow-aux svelte-hk052"
-      />
-    </div>
-  </div>
-   
-  <div
-    class="error-text svelte-hk052 invisible"
-  >
-    Valor inválido.
+      Valor inválido.
+    </p>
   </div>
    
   <header>
@@ -947,178 +963,182 @@ exports[`Storyshots Components/FormFields/Select Multiple Force Invalid 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-hk052 error"
-    tabindex="0"
+    class="select-wrapper svelte-lk9n1j"
   >
-    <label
-      class="select-label svelte-hk052"
-      for="doce-custom"
-      id="doce-label"
-    >
-      Sobremesas
-    </label>
-     
     <div
-      aria-controls="doce-listbox"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-labelledby="doce-label"
-      class="select-box svelte-hk052"
-      id="doce-custom"
-      role="combobox"
-      tabindex="-1"
+      class="select svelte-lk9n1j error"
+      tabindex="0"
     >
-      Selecione
-    </div>
-     
-    <div
-      class="select-dropdown-menu svelte-hk052 closed"
-    >
-      <input
-        class="search svelte-1ara2mn"
-        placeholder="Pesquise ou Selecione..."
-        tabindex="-1"
-        type="text"
-      />
+      <label
+        class="select-label svelte-lk9n1j"
+        for="doce-custom"
+        id="doce-label"
+      >
+        Sobremesas
+      </label>
        
       <div
+        aria-controls="doce-listbox"
+        aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="doce-label"
-        class="select-menu svelte-12mc5sn"
-        id="doce-listbox"
-        role="listbox"
+        class="select-box svelte-lk9n1j"
+        id="doce-custom"
+        role="combobox"
         tabindex="-1"
       >
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
+        Selecione
+      </div>
+       
+      <div
+        class="select-dropdown-menu svelte-lk9n1j closed"
+      >
+        <input
+          class="search svelte-1ara2mn"
+          placeholder="Pesquise ou Selecione..."
           tabindex="-1"
+          type="text"
+        />
+         
+        <div
+          aria-labelledby="doce-label"
+          class="select-menu svelte-12mc5sn"
+          id="doce-listbox"
+          role="listbox"
+          tabindex="-1"
+        >
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Brigadeiro
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pudim
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Rabanada
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Beijinho
+             
+          </div>
+          
+        </div>
+      </div>
+       
+      <select
+        class="hidden svelte-lk9n1j"
+        disabled=""
+        id="doce"
+        multiple=""
+        name="doce"
+      >
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Brigadeiro
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pudim
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Rabanada
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Beijinho
            
-        </div>
-        
+        </option>
+      </select>
+       
+      <div
+        class="select-arrow svelte-lk9n1j"
+      >
+        <div
+          class="select-arrow-aux svelte-lk9n1j"
+        />
       </div>
     </div>
      
-    <select
-      class="hidden svelte-hk052"
-      disabled=""
-      id="doce"
-      multiple=""
-      name="doce"
+    <p
+      class="error-text svelte-lk9n1j"
     >
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho
-         
-      </option>
-    </select>
-     
-    <div
-      class="select-arrow svelte-hk052"
-    >
-      <div
-        class="select-arrow-aux svelte-hk052"
-      />
-    </div>
-  </div>
-   
-  <div
-    class="error-text svelte-hk052"
-  >
-    Valor inválido.
+      Valor inválido.
+    </p>
   </div>
    
   <header>
@@ -1144,1133 +1164,1137 @@ exports[`Storyshots Components/FormFields/Select Multiple Long 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-hk052"
-    tabindex="0"
+    class="select-wrapper svelte-lk9n1j"
   >
-    <label
-      class="select-label svelte-hk052"
-      for="doce-custom"
-      id="doce-label"
-    >
-      Sobremesas
-    </label>
-     
     <div
-      aria-controls="doce-listbox"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-labelledby="doce-label"
-      class="select-box svelte-hk052"
-      id="doce-custom"
-      role="combobox"
-      tabindex="-1"
+      class="select svelte-lk9n1j"
+      tabindex="0"
     >
-      Selecione
-    </div>
-     
-    <div
-      class="select-dropdown-menu svelte-hk052 closed"
-    >
-      <input
-        class="search svelte-1ara2mn"
-        placeholder="Pesquise ou Selecione..."
-        tabindex="-1"
-        type="text"
-      />
+      <label
+        class="select-label svelte-lk9n1j"
+        for="doce-custom"
+        id="doce-label"
+      >
+        Sobremesas
+      </label>
        
       <div
+        aria-controls="doce-listbox"
+        aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="doce-label"
-        class="select-menu svelte-12mc5sn"
-        id="doce-listbox"
-        role="listbox"
+        class="select-box svelte-lk9n1j"
+        id="doce-custom"
+        role="combobox"
         tabindex="-1"
       >
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
+        Selecione
+      </div>
+       
+      <div
+        class="select-dropdown-menu svelte-lk9n1j closed"
+      >
+        <input
+          class="search svelte-1ara2mn"
+          placeholder="Pesquise ou Selecione..."
           tabindex="-1"
+          type="text"
+        />
+         
+        <div
+          aria-labelledby="doce-label"
+          class="select-menu svelte-12mc5sn"
+          id="doce-listbox"
+          role="listbox"
+          tabindex="-1"
+        >
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Brigadeiro 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pudim 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Rabanada 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Beijinho 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã 1
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê 1
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo 1
+             
+          </div>
+          
+        </div>
+      </div>
+       
+      <select
+        class="hidden svelte-lk9n1j"
+        disabled=""
+        id="doce"
+        multiple=""
+        name="doce"
+      >
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Brigadeiro 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pudim 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Rabanada 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Beijinho 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã 1
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê 1
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo 1
            
-        </div>
-        
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 1
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 1
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 1
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 1
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 19
+           
+        </option>
+      </select>
+       
+      <div
+        class="select-arrow svelte-lk9n1j"
+      >
+        <div
+          class="select-arrow-aux svelte-lk9n1j"
+        />
       </div>
     </div>
      
-    <select
-      class="hidden svelte-hk052"
-      disabled=""
-      id="doce"
-      multiple=""
-      name="doce"
+    <p
+      class="error-text svelte-lk9n1j invisible"
     >
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 19
-         
-      </option>
-    </select>
-     
-    <div
-      class="select-arrow svelte-hk052"
-    >
-      <div
-        class="select-arrow-aux svelte-hk052"
-      />
-    </div>
-  </div>
-   
-  <div
-    class="error-text svelte-hk052 invisible"
-  >
-    Valor inválido.
+      Valor inválido.
+    </p>
   </div>
    
   <header>
@@ -2296,182 +2320,186 @@ exports[`Storyshots Components/FormFields/Select Multiple Required 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-hk052"
-    tabindex="0"
+    class="select-wrapper svelte-lk9n1j"
   >
-    <label
-      class="select-label svelte-hk052"
-      for="doce-custom"
-      id="doce-label"
-    >
-      Sobremesas
-    </label>
-     
     <div
-      aria-controls="doce-listbox"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-labelledby="doce-label"
-      class="select-box svelte-hk052"
-      id="doce-custom"
-      role="combobox"
-      tabindex="-1"
+      class="select svelte-lk9n1j"
+      tabindex="0"
     >
-      Selecione
-    </div>
-     
-    <div
-      class="select-dropdown-menu svelte-hk052 closed"
-    >
-      <input
-        class="search svelte-1ara2mn"
-        placeholder="Pesquise ou Selecione..."
-        tabindex="-1"
-        type="text"
-      />
+      <label
+        class="select-label svelte-lk9n1j"
+        for="doce-custom"
+        id="doce-label"
+      >
+        Sobremesas
+      </label>
        
       <div
+        aria-controls="doce-listbox"
+        aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="doce-label"
-        class="select-menu svelte-12mc5sn"
-        id="doce-listbox"
-        role="listbox"
+        class="select-box svelte-lk9n1j"
+        id="doce-custom"
+        role="combobox"
         tabindex="-1"
       >
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
+        Selecione
+      </div>
+       
+      <div
+        class="select-dropdown-menu svelte-lk9n1j closed"
+      >
+        <input
+          class="search svelte-1ara2mn"
+          placeholder="Pesquise ou Selecione..."
           tabindex="-1"
+          type="text"
+        />
+         
+        <div
+          aria-labelledby="doce-label"
+          class="select-menu svelte-12mc5sn"
+          id="doce-listbox"
+          role="listbox"
+          tabindex="-1"
+        >
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Brigadeiro
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pudim
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Rabanada
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Beijinho
+             
+          </div>
+          
+        </div>
+      </div>
+       
+      <select
+        class="hidden svelte-lk9n1j"
+        disabled=""
+        id="doce"
+        multiple=""
+        name="doce"
+      >
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Brigadeiro
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pudim
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Rabanada
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Beijinho
            
-        </div>
-        
+        </option>
+      </select>
+       
+      <div
+        class="select-arrow svelte-lk9n1j"
+      >
+        <div
+          class="select-arrow-aux svelte-lk9n1j"
+        />
       </div>
     </div>
      
-    <select
-      class="hidden svelte-hk052"
-      disabled=""
-      id="doce"
-      multiple=""
-      name="doce"
+    <p
+      class="error-text svelte-lk9n1j invisible"
     >
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho
-         
-      </option>
-    </select>
-     
-    <div
-      class="select-arrow svelte-hk052"
-    >
-      <div
-        class="select-arrow-aux svelte-hk052"
-      />
-    </div>
-  </div>
-   
-  <div
-    class="error-text svelte-hk052 invisible"
-  >
-    É necessário selecionar 
-    2
-     
-    valores
-    .
+      É necessário selecionar 
+      2
+       
+      valores
+      .
+    </p>
   </div>
    
   <header>
@@ -2497,214 +2525,242 @@ exports[`Storyshots Components/FormFields/Select Multiple Selected 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-hk052"
-    tabindex="0"
+    class="select-wrapper svelte-lk9n1j"
   >
-    <label
-      class="select-label svelte-hk052 floated"
-      for="doce-custom"
-      id="doce-label"
-    >
-      Sobremesas
-    </label>
-     
     <div
-      aria-controls="doce-listbox"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-labelledby="doce-label"
-      class="select-box svelte-hk052 selected-multiple"
-      id="doce-custom"
-      role="combobox"
-      tabindex="-1"
+      class="select svelte-lk9n1j"
+      tabindex="0"
     >
-      <span
-        class="badge svelte-hk052"
+      <label
+        class="select-label svelte-lk9n1j floated"
+        for="doce-custom"
+        id="doce-label"
       >
-        Torta alemã
-         
-        <span
-          class="svelte-hk052"
-        >
-          ×
-        </span>
-         
-      </span>
-      <span
-        class="badge svelte-hk052"
-      >
-        Pavê
-         
-        <span
-          class="svelte-hk052"
-        >
-          ×
-        </span>
-         
-      </span>
-      <span
-        class="badge svelte-hk052"
-      >
-        Bolo
-         
-        <span
-          class="svelte-hk052"
-        >
-          ×
-        </span>
-         
-      </span>
-      
-    </div>
-     
-    <div
-      class="select-dropdown-menu svelte-hk052 closed"
-    >
-      <input
-        class="search svelte-1ara2mn"
-        placeholder="Pesquise ou Selecione..."
-        tabindex="-1"
-        type="text"
-      />
+        Sobremesas
+      </label>
        
       <div
+        aria-controls="doce-listbox"
+        aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="doce-label"
-        class="select-menu svelte-12mc5sn"
-        id="doce-listbox"
-        role="listbox"
+        class="select-box svelte-lk9n1j selected-multiple"
+        id="doce-custom"
+        role="combobox"
         tabindex="-1"
       >
-        <div
-          class="select-option svelte-12mc5sn selected"
-          role="option"
+        <span
+          class="badge svelte-lk9n1j"
+        >
+          <span
+            class="badge outline svelte-1ypa5ei"
+          >
+            <span
+              class="text svelte-1ypa5ei"
+            >
+              Torta alemã
+               
+              <span
+                class="svelte-lk9n1j"
+              >
+                ×
+              </span>
+            </span>
+          </span>
+           
+        </span>
+        <span
+          class="badge svelte-lk9n1j"
+        >
+          <span
+            class="badge outline svelte-1ypa5ei"
+          >
+            <span
+              class="text svelte-1ypa5ei"
+            >
+              Pavê
+               
+              <span
+                class="svelte-lk9n1j"
+              >
+                ×
+              </span>
+            </span>
+          </span>
+           
+        </span>
+        <span
+          class="badge svelte-lk9n1j"
+        >
+          <span
+            class="badge outline svelte-1ypa5ei"
+          >
+            <span
+              class="text svelte-1ypa5ei"
+            >
+              Bolo
+               
+              <span
+                class="svelte-lk9n1j"
+              >
+                ×
+              </span>
+            </span>
+          </span>
+           
+        </span>
+        
+      </div>
+       
+      <div
+        class="select-dropdown-menu svelte-lk9n1j closed"
+      >
+        <input
+          class="search svelte-1ara2mn"
+          placeholder="Pesquise ou Selecione..."
           tabindex="-1"
+          type="text"
+        />
+         
+        <div
+          aria-labelledby="doce-label"
+          class="select-menu svelte-12mc5sn"
+          id="doce-listbox"
+          role="listbox"
+          tabindex="-1"
+        >
+          <div
+            class="select-option svelte-12mc5sn selected"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn selected"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn selected"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Brigadeiro
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pudim
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Rabanada
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Beijinho
+             
+          </div>
+          
+        </div>
+      </div>
+       
+      <select
+        class="hidden svelte-lk9n1j"
+        disabled=""
+        id="doce"
+        multiple=""
+        name="doce"
+      >
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn selected"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn selected"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Brigadeiro
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pudim
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Rabanada
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Beijinho
            
-        </div>
-        
+        </option>
+      </select>
+       
+      <div
+        class="select-arrow svelte-lk9n1j"
+      >
+        <div
+          class="select-arrow-aux svelte-lk9n1j"
+        />
       </div>
     </div>
      
-    <select
-      class="hidden svelte-hk052"
-      disabled=""
-      id="doce"
-      multiple=""
-      name="doce"
+    <p
+      class="error-text svelte-lk9n1j invisible"
     >
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho
-         
-      </option>
-    </select>
-     
-    <div
-      class="select-arrow svelte-hk052"
-    >
-      <div
-        class="select-arrow-aux svelte-hk052"
-      />
-    </div>
-  </div>
-   
-  <div
-    class="error-text svelte-hk052 invisible"
-  >
-    Valor inválido.
+      Valor inválido.
+    </p>
   </div>
    
   <header>
@@ -2739,177 +2795,181 @@ exports[`Storyshots Components/FormFields/Select Simple Force Invalid 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-hk052 error"
-    tabindex="0"
+    class="select-wrapper svelte-lk9n1j"
   >
-    <label
-      class="select-label svelte-hk052"
-      for="doce-custom"
-      id="doce-label"
-    >
-      Sobremesas
-    </label>
-     
     <div
-      aria-controls="doce-listbox"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-labelledby="doce-label"
-      class="select-box svelte-hk052"
-      id="doce-custom"
-      role="combobox"
-      tabindex="-1"
+      class="select svelte-lk9n1j error"
+      tabindex="0"
     >
-      Selecione
-    </div>
-     
-    <div
-      class="select-dropdown-menu svelte-hk052 closed"
-    >
-      <input
-        class="search svelte-1ara2mn"
-        placeholder="Pesquise ou Selecione..."
-        tabindex="-1"
-        type="text"
-      />
+      <label
+        class="select-label svelte-lk9n1j"
+        for="doce-custom"
+        id="doce-label"
+      >
+        Sobremesas
+      </label>
        
       <div
+        aria-controls="doce-listbox"
+        aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="doce-label"
-        class="select-menu svelte-12mc5sn"
-        id="doce-listbox"
-        role="listbox"
+        class="select-box svelte-lk9n1j"
+        id="doce-custom"
+        role="combobox"
         tabindex="-1"
       >
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
+        Selecione
+      </div>
+       
+      <div
+        class="select-dropdown-menu svelte-lk9n1j closed"
+      >
+        <input
+          class="search svelte-1ara2mn"
+          placeholder="Pesquise ou Selecione..."
           tabindex="-1"
+          type="text"
+        />
+         
+        <div
+          aria-labelledby="doce-label"
+          class="select-menu svelte-12mc5sn"
+          id="doce-listbox"
+          role="listbox"
+          tabindex="-1"
+        >
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Brigadeiro
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pudim
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Rabanada
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Beijinho
+             
+          </div>
+          
+        </div>
+      </div>
+       
+      <select
+        class="hidden svelte-lk9n1j"
+        disabled=""
+        id="doce"
+        name="doce"
+      >
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Brigadeiro
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pudim
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Rabanada
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Beijinho
            
-        </div>
-        
+        </option>
+      </select>
+       
+      <div
+        class="select-arrow svelte-lk9n1j"
+      >
+        <div
+          class="select-arrow-aux svelte-lk9n1j"
+        />
       </div>
     </div>
      
-    <select
-      class="hidden svelte-hk052"
-      disabled=""
-      id="doce"
-      name="doce"
+    <p
+      class="error-text svelte-lk9n1j"
     >
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho
-         
-      </option>
-    </select>
-     
-    <div
-      class="select-arrow svelte-hk052"
-    >
-      <div
-        class="select-arrow-aux svelte-hk052"
-      />
-    </div>
-  </div>
-   
-  <div
-    class="error-text svelte-hk052"
-  >
-    Valor inválido.
+      Valor inválido.
+    </p>
   </div>
    
   <header>
@@ -2937,1132 +2997,1136 @@ exports[`Storyshots Components/FormFields/Select Simple Long 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-hk052"
-    tabindex="0"
+    class="select-wrapper svelte-lk9n1j"
   >
-    <label
-      class="select-label svelte-hk052"
-      for="doce-custom"
-      id="doce-label"
-    >
-      Sobremesas
-    </label>
-     
     <div
-      aria-controls="doce-listbox"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-labelledby="doce-label"
-      class="select-box svelte-hk052"
-      id="doce-custom"
-      role="combobox"
-      tabindex="-1"
+      class="select svelte-lk9n1j"
+      tabindex="0"
     >
-      Selecione
-    </div>
-     
-    <div
-      class="select-dropdown-menu svelte-hk052 closed"
-    >
-      <input
-        class="search svelte-1ara2mn"
-        placeholder="Pesquise ou Selecione..."
-        tabindex="-1"
-        type="text"
-      />
+      <label
+        class="select-label svelte-lk9n1j"
+        for="doce-custom"
+        id="doce-label"
+      >
+        Sobremesas
+      </label>
        
       <div
+        aria-controls="doce-listbox"
+        aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="doce-label"
-        class="select-menu svelte-12mc5sn"
-        id="doce-listbox"
-        role="listbox"
+        class="select-box svelte-lk9n1j"
+        id="doce-custom"
+        role="combobox"
         tabindex="-1"
       >
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
+        Selecione
+      </div>
+       
+      <div
+        class="select-dropdown-menu svelte-lk9n1j closed"
+      >
+        <input
+          class="search svelte-1ara2mn"
+          placeholder="Pesquise ou Selecione..."
           tabindex="-1"
+          type="text"
+        />
+         
+        <div
+          aria-labelledby="doce-label"
+          class="select-menu svelte-12mc5sn"
+          id="doce-listbox"
+          role="listbox"
+          tabindex="-1"
+        >
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Brigadeiro 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pudim 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Rabanada 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Beijinho 0
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã 1
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê 1
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo 1
+             
+          </div>
+          
+        </div>
+      </div>
+       
+      <select
+        class="hidden svelte-lk9n1j"
+        disabled=""
+        id="doce"
+        name="doce"
+      >
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Brigadeiro 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pudim 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Rabanada 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Beijinho 0
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã 1
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê 1
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo 1
            
-        </div>
-        
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 1
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 1
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 1
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 1
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 2
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 3
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 4
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 5
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 6
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 7
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 8
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 9
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 10
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 11
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 12
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 13
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 14
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 15
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 16
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 17
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 18
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Torta alemã 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pavê 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Bolo 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Brigadeiro 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Pudim 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Rabanada 19
+           
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
+        >
+          Beijinho 19
+           
+        </option>
+      </select>
+       
+      <div
+        class="select-arrow svelte-lk9n1j"
+      >
+        <div
+          class="select-arrow-aux svelte-lk9n1j"
+        />
       </div>
     </div>
      
-    <select
-      class="hidden svelte-hk052"
-      disabled=""
-      id="doce"
-      name="doce"
+    <p
+      class="error-text svelte-lk9n1j invisible"
     >
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 0
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 1
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 2
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 3
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 4
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 5
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 6
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 7
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 8
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 9
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 10
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 11
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 12
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 13
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 14
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 15
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 16
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 17
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 18
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada 19
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho 19
-         
-      </option>
-    </select>
-     
-    <div
-      class="select-arrow svelte-hk052"
-    >
-      <div
-        class="select-arrow-aux svelte-hk052"
-      />
-    </div>
-  </div>
-   
-  <div
-    class="error-text svelte-hk052 invisible"
-  >
-    Valor inválido.
+      Valor inválido.
+    </p>
   </div>
    
   <header>
@@ -4090,181 +4154,185 @@ exports[`Storyshots Components/FormFields/Select Simple Required 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-hk052"
-    tabindex="0"
+    class="select-wrapper svelte-lk9n1j"
   >
-    <label
-      class="select-label svelte-hk052"
-      for="doce-custom"
-      id="doce-label"
-    >
-      Sobremesas
-    </label>
-     
     <div
-      aria-controls="doce-listbox"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-labelledby="doce-label"
-      class="select-box svelte-hk052"
-      id="doce-custom"
-      role="combobox"
-      tabindex="-1"
+      class="select svelte-lk9n1j"
+      tabindex="0"
     >
-      Selecione
-    </div>
-     
-    <div
-      class="select-dropdown-menu svelte-hk052 closed"
-    >
-      <input
-        class="search svelte-1ara2mn"
-        placeholder="Pesquise ou Selecione..."
-        tabindex="-1"
-        type="text"
-      />
+      <label
+        class="select-label svelte-lk9n1j"
+        for="doce-custom"
+        id="doce-label"
+      >
+        Sobremesas
+      </label>
        
       <div
+        aria-controls="doce-listbox"
+        aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="doce-label"
-        class="select-menu svelte-12mc5sn"
-        id="doce-listbox"
-        role="listbox"
+        class="select-box svelte-lk9n1j"
+        id="doce-custom"
+        role="combobox"
         tabindex="-1"
       >
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
+        Selecione
+      </div>
+       
+      <div
+        class="select-dropdown-menu svelte-lk9n1j closed"
+      >
+        <input
+          class="search svelte-1ara2mn"
+          placeholder="Pesquise ou Selecione..."
           tabindex="-1"
+          type="text"
+        />
+         
+        <div
+          aria-labelledby="doce-label"
+          class="select-menu svelte-12mc5sn"
+          id="doce-listbox"
+          role="listbox"
+          tabindex="-1"
+        >
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Brigadeiro
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pudim
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Rabanada
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Beijinho
+             
+          </div>
+          
+        </div>
+      </div>
+       
+      <select
+        class="hidden svelte-lk9n1j"
+        disabled=""
+        id="doce"
+        name="doce"
+      >
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Brigadeiro
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pudim
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Rabanada
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Beijinho
            
-        </div>
-        
+        </option>
+      </select>
+       
+      <div
+        class="select-arrow svelte-lk9n1j"
+      >
+        <div
+          class="select-arrow-aux svelte-lk9n1j"
+        />
       </div>
     </div>
      
-    <select
-      class="hidden svelte-hk052"
-      disabled=""
-      id="doce"
-      name="doce"
+    <p
+      class="error-text svelte-lk9n1j invisible"
     >
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho
-         
-      </option>
-    </select>
-     
-    <div
-      class="select-arrow svelte-hk052"
-    >
-      <div
-        class="select-arrow-aux svelte-hk052"
-      />
-    </div>
-  </div>
-   
-  <div
-    class="error-text svelte-hk052 invisible"
-  >
-    É necessário selecionar 
-    1
-     
-    valor
-    .
+      É necessário selecionar 
+      1
+       
+      valor
+      .
+    </p>
   </div>
    
   <header>
@@ -4292,177 +4360,181 @@ exports[`Storyshots Components/FormFields/Select Single 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-hk052"
-    tabindex="0"
+    class="select-wrapper svelte-lk9n1j"
   >
-    <label
-      class="select-label svelte-hk052"
-      for="doce-custom"
-      id="doce-label"
-    >
-      Sobremesas
-    </label>
-     
     <div
-      aria-controls="doce-listbox"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-labelledby="doce-label"
-      class="select-box svelte-hk052"
-      id="doce-custom"
-      role="combobox"
-      tabindex="-1"
+      class="select svelte-lk9n1j"
+      tabindex="0"
     >
-      Selecione
-    </div>
-     
-    <div
-      class="select-dropdown-menu svelte-hk052 closed"
-    >
-      <input
-        class="search svelte-1ara2mn"
-        placeholder="Pesquise ou Selecione..."
-        tabindex="-1"
-        type="text"
-      />
+      <label
+        class="select-label svelte-lk9n1j"
+        for="doce-custom"
+        id="doce-label"
+      >
+        Sobremesas
+      </label>
        
       <div
+        aria-controls="doce-listbox"
+        aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="doce-label"
-        class="select-menu svelte-12mc5sn"
-        id="doce-listbox"
-        role="listbox"
+        class="select-box svelte-lk9n1j"
+        id="doce-custom"
+        role="combobox"
         tabindex="-1"
       >
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
+        Selecione
+      </div>
+       
+      <div
+        class="select-dropdown-menu svelte-lk9n1j closed"
+      >
+        <input
+          class="search svelte-1ara2mn"
+          placeholder="Pesquise ou Selecione..."
           tabindex="-1"
+          type="text"
+        />
+         
+        <div
+          aria-labelledby="doce-label"
+          class="select-menu svelte-12mc5sn"
+          id="doce-listbox"
+          role="listbox"
+          tabindex="-1"
+        >
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Brigadeiro
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pudim
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Rabanada
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Beijinho
+             
+          </div>
+          
+        </div>
+      </div>
+       
+      <select
+        class="hidden svelte-lk9n1j"
+        disabled=""
+        id="doce"
+        name="doce"
+      >
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Brigadeiro
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pudim
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Rabanada
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Beijinho
            
-        </div>
-        
+        </option>
+      </select>
+       
+      <div
+        class="select-arrow svelte-lk9n1j"
+      >
+        <div
+          class="select-arrow-aux svelte-lk9n1j"
+        />
       </div>
     </div>
      
-    <select
-      class="hidden svelte-hk052"
-      disabled=""
-      id="doce"
-      name="doce"
+    <p
+      class="error-text svelte-lk9n1j invisible"
     >
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho
-         
-      </option>
-    </select>
-     
-    <div
-      class="select-arrow svelte-hk052"
-    >
-      <div
-        class="select-arrow-aux svelte-hk052"
-      />
-    </div>
-  </div>
-   
-  <div
-    class="error-text svelte-hk052 invisible"
-  >
-    Valor inválido.
+      Valor inválido.
+    </p>
   </div>
    
   <header>
@@ -4490,177 +4562,181 @@ exports[`Storyshots Components/FormFields/Select Single Selected 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="select svelte-hk052"
-    tabindex="0"
+    class="select-wrapper svelte-lk9n1j"
   >
-    <label
-      class="select-label svelte-hk052 floated"
-      for="doce-custom"
-      id="doce-label"
-    >
-      Sobremesas
-    </label>
-     
     <div
-      aria-controls="doce-listbox"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-labelledby="doce-label"
-      class="select-box svelte-hk052"
-      id="doce-custom"
-      role="combobox"
-      tabindex="-1"
+      class="select svelte-lk9n1j"
+      tabindex="0"
     >
-      Torta alemã
-    </div>
-     
-    <div
-      class="select-dropdown-menu svelte-hk052 closed"
-    >
-      <input
-        class="search svelte-1ara2mn"
-        placeholder="Pesquise ou Selecione..."
-        tabindex="-1"
-        type="text"
-      />
+      <label
+        class="select-label svelte-lk9n1j floated"
+        for="doce-custom"
+        id="doce-label"
+      >
+        Sobremesas
+      </label>
        
       <div
+        aria-controls="doce-listbox"
+        aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="doce-label"
-        class="select-menu svelte-12mc5sn"
-        id="doce-listbox"
-        role="listbox"
+        class="select-box svelte-lk9n1j"
+        id="doce-custom"
+        role="combobox"
         tabindex="-1"
       >
-        <div
-          class="select-option svelte-12mc5sn selected"
-          role="option"
+        Torta alemã
+      </div>
+       
+      <div
+        class="select-dropdown-menu svelte-lk9n1j closed"
+      >
+        <input
+          class="search svelte-1ara2mn"
+          placeholder="Pesquise ou Selecione..."
           tabindex="-1"
+          type="text"
+        />
+         
+        <div
+          aria-labelledby="doce-label"
+          class="select-menu svelte-12mc5sn"
+          id="doce-listbox"
+          role="listbox"
+          tabindex="-1"
+        >
+          <div
+            class="select-option svelte-12mc5sn selected"
+            role="option"
+            tabindex="-1"
+          >
+            Torta alemã
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pavê
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Bolo
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Brigadeiro
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Pudim
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Rabanada
+             
+          </div>
+          <div
+            class="select-option svelte-12mc5sn"
+            role="option"
+            tabindex="-1"
+          >
+            Beijinho
+             
+          </div>
+          
+        </div>
+      </div>
+       
+      <select
+        class="hidden svelte-lk9n1j"
+        disabled=""
+        id="doce"
+        name="doce"
+      >
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Torta alemã
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pavê
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Bolo
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Brigadeiro
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Pudim
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Rabanada
            
-        </div>
-        <div
-          class="select-option svelte-12mc5sn"
-          role="option"
-          tabindex="-1"
+        </option>
+        <option
+          class="svelte-lk9n1j"
+          value="[object Object]"
         >
           Beijinho
            
-        </div>
-        
+        </option>
+      </select>
+       
+      <div
+        class="select-arrow svelte-lk9n1j"
+      >
+        <div
+          class="select-arrow-aux svelte-lk9n1j"
+        />
       </div>
     </div>
      
-    <select
-      class="hidden svelte-hk052"
-      disabled=""
-      id="doce"
-      name="doce"
+    <p
+      class="error-text svelte-lk9n1j invisible"
     >
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Torta alemã
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pavê
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Bolo
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Brigadeiro
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Pudim
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Rabanada
-         
-      </option>
-      <option
-        class="svelte-hk052"
-        value="[object Object]"
-      >
-        Beijinho
-         
-      </option>
-    </select>
-     
-    <div
-      class="select-arrow svelte-hk052"
-    >
-      <div
-        class="select-arrow-aux svelte-hk052"
-      />
-    </div>
-  </div>
-   
-  <div
-    class="error-text svelte-hk052 invisible"
-  >
-    Valor inválido.
+      Valor inválido.
+    </p>
   </div>
    
   <header>
@@ -4691,22 +4767,22 @@ exports[`Storyshots Components/FormFields/Textarea Custom Example 1`] = `
     style="--szot-border-radius: 1rem; --szot-max-height: 5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-textarea-color: #db984b;--szot-border-color: #c56d09;--szot-placeholder-color:#db984b;"
   >
     <div
-      class="textarea-container textarea-style-primary svelte-1ufxfkx"
+      class="textarea-container textarea-style-primary svelte-l8zdpq"
     >
       <div
-        class="textarea-wrapper svelte-1ufxfkx"
+        class="textarea-wrapper svelte-l8zdpq"
         style="--max-auto-height: 4.2rem;"
       >
         <pre
           aria-hidden="true"
-          class="svelte-1ufxfkx"
+          class="svelte-l8zdpq"
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos maxime accusamus laborum fuga ratione veritatis aliquam totam nam illo harum veniam minima vero atque iusto exercitationem repellendus, commodi mollitia sapiente!
 
         </pre>
          
         <textarea
-          class="svelte-1ufxfkx"
+          class="svelte-l8zdpq"
           data-max-rows="4"
           data-min-rows="4"
           placeholder=""
@@ -4715,20 +4791,20 @@ exports[`Storyshots Components/FormFields/Textarea Custom Example 1`] = `
       </div>
        
       <label
-        class="label svelte-1ufxfkx"
+        class="label svelte-l8zdpq"
         for=""
       >
         Teste
       </label>
        
       <p
-        class="helper message svelte-1ufxfkx"
+        class="helper message svelte-l8zdpq"
       >
         Digite 'erro' para ser invalido
       </p>
        
       <p
-        class="error message svelte-1ufxfkx"
+        class="error message svelte-l8zdpq"
       >
         deu ruim
       </p>
@@ -4745,22 +4821,22 @@ exports[`Storyshots Components/FormFields/Textarea Default 1`] = `
     style=""
   >
     <div
-      class="textarea-container textarea-style-secondary svelte-1ufxfkx"
+      class="textarea-container textarea-style-secondary svelte-l8zdpq"
     >
       <div
-        class="textarea-wrapper svelte-1ufxfkx"
+        class="textarea-wrapper svelte-l8zdpq"
         style="--max-auto-height: auto;"
       >
         <pre
           aria-hidden="true"
-          class="svelte-1ufxfkx"
+          class="svelte-l8zdpq"
         >
           Digite algo:
 
         </pre>
          
         <textarea
-          class="svelte-1ufxfkx"
+          class="svelte-l8zdpq"
           data-max-rows="0"
           data-min-rows="3"
           placeholder="Digite algo:"
@@ -4769,20 +4845,20 @@ exports[`Storyshots Components/FormFields/Textarea Default 1`] = `
       </div>
        
       <label
-        class="label svelte-1ufxfkx"
+        class="label svelte-l8zdpq"
         for=""
       >
         Conte sua história
       </label>
        
       <p
-        class="helper message svelte-1ufxfkx"
+        class="helper message svelte-l8zdpq"
       >
         Digite o quanto você quiser
       </p>
        
       <p
-        class="error message svelte-1ufxfkx"
+        class="error message svelte-l8zdpq"
       >
         deu ruim
       </p>
@@ -4799,22 +4875,22 @@ exports[`Storyshots Components/FormFields/Textarea Readonly 1`] = `
     style=""
   >
     <div
-      class="textarea-container textarea-style-secondary svelte-1ufxfkx"
+      class="textarea-container textarea-style-secondary svelte-l8zdpq"
     >
       <div
-        class="textarea-wrapper svelte-1ufxfkx"
+        class="textarea-wrapper svelte-l8zdpq"
         style="--max-auto-height: auto;"
       >
         <pre
           aria-hidden="true"
-          class="svelte-1ufxfkx"
+          class="svelte-l8zdpq"
         >
           Você não pode editar o que está aqui
 
         </pre>
          
         <textarea
-          class="svelte-1ufxfkx"
+          class="svelte-l8zdpq"
           data-max-rows="0"
           data-min-rows="3"
           placeholder="Você não pode editar o que está aqui"
@@ -4824,20 +4900,20 @@ exports[`Storyshots Components/FormFields/Textarea Readonly 1`] = `
       </div>
        
       <label
-        class="label svelte-1ufxfkx"
+        class="label svelte-l8zdpq"
         for=""
       >
         Conte sua história
       </label>
        
       <p
-        class="helper message svelte-1ufxfkx"
+        class="helper message svelte-l8zdpq"
       >
         
       </p>
        
       <p
-        class="error message svelte-1ufxfkx"
+        class="error message svelte-l8zdpq"
       >
         deu ruim
       </p>
@@ -4854,22 +4930,22 @@ exports[`Storyshots Components/FormFields/Textarea Required 1`] = `
     style=""
   >
     <div
-      class="textarea-container textarea-style-secondary svelte-1ufxfkx"
+      class="textarea-container textarea-style-secondary svelte-l8zdpq"
     >
       <div
-        class="textarea-wrapper svelte-1ufxfkx"
+        class="textarea-wrapper svelte-l8zdpq"
         style="--max-auto-height: auto;"
       >
         <pre
           aria-hidden="true"
-          class="svelte-1ufxfkx"
+          class="svelte-l8zdpq"
         >
           Digite algo:
 
         </pre>
          
         <textarea
-          class="svelte-1ufxfkx"
+          class="svelte-l8zdpq"
           data-max-rows="0"
           data-min-rows="3"
           placeholder="Digite algo:"
@@ -4879,20 +4955,20 @@ exports[`Storyshots Components/FormFields/Textarea Required 1`] = `
       </div>
        
       <label
-        class="label svelte-1ufxfkx required"
+        class="label svelte-l8zdpq required"
         for=""
       >
         Conte sua história
       </label>
        
       <p
-        class="helper message svelte-1ufxfkx"
+        class="helper message svelte-l8zdpq"
       >
         
       </p>
        
       <p
-        class="error message svelte-1ufxfkx"
+        class="error message svelte-l8zdpq"
       >
         deu ruim
       </p>
@@ -4907,22 +4983,22 @@ exports[`Storyshots Components/FormFields/Textarea Resizable 1`] = `
 >
   <div>
     <div
-      class="textarea-container textarea-style-secondary svelte-1ufxfkx"
+      class="textarea-container textarea-style-secondary svelte-l8zdpq"
     >
       <div
-        class="textarea-wrapper svelte-1ufxfkx resizable"
+        class="textarea-wrapper svelte-l8zdpq resizable"
         style="--max-auto-height: auto;"
       >
         <pre
           aria-hidden="true"
-          class="svelte-1ufxfkx"
+          class="svelte-l8zdpq"
         >
           Digite algo:
 
         </pre>
          
         <textarea
-          class="svelte-1ufxfkx"
+          class="svelte-l8zdpq"
           data-max-rows="0"
           data-min-rows="3"
           placeholder="Digite algo:"
@@ -4931,20 +5007,20 @@ exports[`Storyshots Components/FormFields/Textarea Resizable 1`] = `
       </div>
        
       <label
-        class="label svelte-1ufxfkx"
+        class="label svelte-l8zdpq"
         for=""
       >
         Conte sua história
       </label>
        
       <p
-        class="helper message svelte-1ufxfkx"
+        class="helper message svelte-l8zdpq"
       >
         
       </p>
        
       <p
-        class="error message svelte-1ufxfkx"
+        class="error message svelte-l8zdpq"
       >
         deu ruim
       </p>
