@@ -7,11 +7,6 @@ import DialogShorthandComponent from "./DialogShorthand.svelte";
 export default {
   title: "Components/Dialog",
   component: Dialog,
-  parameters: {
-    docs: {
-      page: null,
-    },
-  },
   argTypes: {
     type: {
       control: {
