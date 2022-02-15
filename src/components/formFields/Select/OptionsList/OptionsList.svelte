@@ -178,7 +178,7 @@ $: if (options) {
 </div>
 
 <style lang="scss">
-  @use '../../../../styles/mixins' as m;
+  @use 'src/styles/mixins' as m;
 
   .select {
     &-menu {
