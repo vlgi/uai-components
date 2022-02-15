@@ -5,11 +5,17 @@
 <script lang="ts">
   import { createEventDispatcher, onDestroy } from "svelte";
 
-  // don't show the header
+  // don't show the header (including the x button)
   export let disableHeader = false;
 
   // open and close the modal (make a bind to sync, or use the close Modal event)
   export let opened = false;
+
+  // when true if "Escape" is pressed will close the modal
+  export let closeOnEsc = true;
+
+  // when true if user click out the modal will close it
+  export let closeOnClickOut = true;
 
   const dispatcher = createEventDispatcher();
   const id = Symbol("my-self");
@@ -41,6 +47,8 @@
     if (modalContexts[modalContexts.length - 1] === id) {
       modalContexts.pop();
       opened = false;
+
+      // fired when modal is closed
       dispatcher("closeModal");
     }
 
@@ -51,7 +59,11 @@
   }
 
   function handleKey(ev: KeyboardEvent) {
-    if (ev.key === "Escape") closeModal();
+    if (ev.key === "Escape" && closeOnEsc) closeModal();
+  }
+
+  function handleClickOut() {
+    if (closeOnClickOut) closeModal();
   }
 
   $: if (opened) {
@@ -66,18 +78,21 @@
 <svelte:window on:keydown={handleKey}/>
 
 {#if opened }
-  <div class="modal-overlay" on:click={closeModal}>
-    <div class="modal-container" on:click|stopPropagation|preventDefault>
+  <div class="modal-overlay" on:click={handleClickOut}>
+    <div class="modal-container" on:click|stopPropagation|preventDefault={() => true}>
       {#if !disableHeader}
         <header class="modal-header">
+          <!-- Set the modal header. e.g.: you can add a title, some buttons -->
           <slot name="modal-header"></slot>
           <button class="modal-close" on:click={ closeModal }>&#10006;</button>
         </header>
       {/if}
       <div class="modal-content">
+          <!-- Set the modal content. e.g.: you can add a a text, a form, ... -->
         <slot name="modal-content"></slot>
       </div>
       <div class="modal-footer">
+          <!-- Set the modal footer. e.g.: you can add a diclaimer, some buttons -->
         <slot name="modal-footer"></slot>
       </div>
     </div>

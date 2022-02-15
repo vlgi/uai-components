@@ -3,8 +3,11 @@
   import Icon from "../Icon/Icon.svelte";
   import type { TBottomMenuItem, TMenuItem, TMenuSubLink } from "./types";
 
-  // itens of the menu
-  export let items: TMenuItem[] = [];
+  /**
+   * itens of the menu
+   * @type {array}
+   */
+  export let items: TMenuItem[];
 
   // itens to show at the bottom, without scroll
   export let bottomItems: TBottomMenuItem[] = [];
@@ -12,11 +15,11 @@
   // switch menu to mobile mode
   export let mobileMode = false;
 
-  // logo imagem when menu is collapsed
-  export let collapsedLogoImg: string;
+  // path to the logo imagem when menu is collapsed
+  export let collapsedLogoImg = "";
 
-  // logo imagem when menu is expanded
-  export let expandedLogoImg: string;
+  // path to the logo imagem when menu is expanded
+  export let expandedLogoImg = "";
 
   let panIsActive = false;
   let navExpanded = false;

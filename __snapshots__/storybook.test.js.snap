@@ -60,6 +60,314 @@ exports[`Storyshots Components/Badge Theme 1`] = `
 </section>
 `;
 
+exports[`Storyshots Components/Dialog Confirm 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-hidden="false"
+    class="d-content dialog-wrapper dialog-type-confirm svelte-1rk41bg"
+    role="dialog"
+  >
+    <div
+      class="modal-overlay svelte-ktn048"
+    >
+      <div
+        class="modal-container svelte-ktn048"
+      >
+         
+        <div
+          class="modal-content svelte-ktn048"
+        >
+          <div
+            class="d-content svelte-1rk41bg"
+            slot="modal-content"
+          >
+            <p
+              class="content svelte-1rk41bg"
+            >
+              hi! please confirme to go on.
+            </p>
+          </div>
+        </div>
+         
+        <div
+          class="modal-footer"
+        >
+          <div
+            class="d-content svelte-1rk41bg"
+            slot="modal-footer"
+          >
+            <div
+              class="button-container svelte-1rk41bg"
+            >
+              <button
+                class="button small button-style-dark button-style-type-outline svelte-4xwich"
+                name="button"
+                type="button"
+              >
+                Confirmar
+              </button>
+               
+               
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Dialog Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-hidden="false"
+    class="d-content dialog-wrapper dialog-type-confirmCancel svelte-1rk41bg"
+    role="dialog"
+  >
+    <div
+      class="modal-overlay svelte-ktn048"
+    >
+      <div
+        class="modal-container svelte-ktn048"
+      >
+         
+        <div
+          class="modal-content svelte-ktn048"
+        >
+          <div
+            class="d-content svelte-1rk41bg"
+            slot="modal-content"
+          >
+            <p
+              class="content svelte-1rk41bg"
+            >
+              hi! please confirme to go on.
+            </p>
+          </div>
+        </div>
+         
+        <div
+          class="modal-footer"
+        >
+          <div
+            class="d-content svelte-1rk41bg"
+            slot="modal-footer"
+          >
+            <div
+              class="button-container svelte-1rk41bg"
+            >
+              <button
+                class="button small button-style-dark button-style-type-outline svelte-4xwich"
+                name="button"
+                type="button"
+              >
+                Confirmar
+              </button>
+               
+              <button
+                class="button small button-style-dark button-style-type-filled svelte-4xwich"
+                name="button"
+                type="button"
+              >
+                Cancelar
+              </button>
+               
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Dialog Dialog Open Close Example 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button>
+    Open
+  </button>
+   
+  <div
+    aria-hidden="true"
+    class="d-content dialog-wrapper dialog-type-confirmCancel svelte-1rk41bg"
+    role="dialog"
+  >
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Dialog Dialog Shorthand Example 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button>
+    Open
+  </button>
+</section>
+`;
+
+exports[`Storyshots Components/Dialog Error 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-hidden="false"
+    class="d-content dialog-wrapper dialog-type-error svelte-1rk41bg"
+    role="dialog"
+  >
+    <div
+      class="modal-overlay svelte-ktn048"
+    >
+      <div
+        class="modal-container svelte-ktn048"
+      >
+        <header
+          class="modal-header svelte-ktn048"
+        >
+          <div
+            class="d-content svelte-1rk41bg"
+            slot="modal-header"
+          >
+            <span
+              class="title svelte-1rk41bg"
+            >
+              <span
+                class="icon-close-circle"
+              />
+               
+              Erro: 
+               
+              my dialog title
+            </span>
+          </div>
+           
+          <button
+            class="modal-close svelte-ktn048"
+          >
+            ✖
+          </button>
+        </header>
+         
+        <div
+          class="modal-content svelte-ktn048"
+        >
+          <div
+            class="d-content svelte-1rk41bg"
+            slot="modal-content"
+          >
+            <p
+              class="content svelte-1rk41bg"
+            >
+              Sorry, something goes wrong.
+            </p>
+          </div>
+        </div>
+         
+        <div
+          class="modal-footer"
+        >
+          <div
+            class="d-content svelte-1rk41bg"
+            slot="modal-footer"
+          >
+            <div
+              class="button-container svelte-1rk41bg"
+            >
+               
+               
+              <button
+                class="button small button-style-dark button-style-type-filled svelte-4xwich"
+                name="button"
+                type="button"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+`;
+
+exports[`Storyshots Components/Dialog With Close On Esc Or Click Out 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-hidden="false"
+    class="d-content dialog-wrapper dialog-type-confirmCancel svelte-1rk41bg"
+    role="dialog"
+  >
+    <div
+      class="modal-overlay svelte-ktn048"
+    >
+      <div
+        class="modal-container svelte-ktn048"
+      >
+         
+        <div
+          class="modal-content svelte-ktn048"
+        >
+          <div
+            class="d-content svelte-1rk41bg"
+            slot="modal-content"
+          >
+            <p
+              class="content svelte-1rk41bg"
+            >
+              hi! please confirme to go on.
+            </p>
+          </div>
+        </div>
+         
+        <div
+          class="modal-footer"
+        >
+          <div
+            class="d-content svelte-1rk41bg"
+            slot="modal-footer"
+          >
+            <div
+              class="button-container svelte-1rk41bg"
+            >
+              <button
+                class="button small button-style-dark button-style-type-outline svelte-4xwich"
+                name="button"
+                type="button"
+              >
+                Confirmar
+              </button>
+               
+              <button
+                class="button small button-style-dark button-style-type-filled svelte-4xwich"
+                name="button"
+                type="button"
+              >
+                Cancelar
+              </button>
+               
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+`;
+
 exports[`Storyshots Components/FormFields/Button Custom Example 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -5064,13 +5372,13 @@ exports[`Storyshots Components/Modal Default 1`] = `
   </button>
    
   <div
-    class="modal-overlay svelte-1coaisb"
+    class="modal-overlay svelte-ktn048"
   >
     <div
-      class="modal-container svelte-1coaisb"
+      class="modal-container svelte-ktn048"
     >
       <header
-        class="modal-header svelte-1coaisb"
+        class="modal-header svelte-ktn048"
       >
         <div
           slot="modal-header"
@@ -5081,14 +5389,14 @@ exports[`Storyshots Components/Modal Default 1`] = `
         </div>
          
         <button
-          class="modal-close svelte-1coaisb"
+          class="modal-close svelte-ktn048"
         >
           ✖
         </button>
       </header>
        
       <div
-        class="modal-content svelte-1coaisb"
+        class="modal-content svelte-ktn048"
       >
         <div
           slot="modal-content"
@@ -5129,13 +5437,13 @@ exports[`Storyshots Components/Modal Long Content 1`] = `
   </button>
    
   <div
-    class="modal-overlay svelte-1coaisb"
+    class="modal-overlay svelte-ktn048"
   >
     <div
-      class="modal-container svelte-1coaisb"
+      class="modal-container svelte-ktn048"
     >
       <header
-        class="modal-header svelte-1coaisb"
+        class="modal-header svelte-ktn048"
       >
         <div
           slot="modal-header"
@@ -5146,14 +5454,14 @@ exports[`Storyshots Components/Modal Long Content 1`] = `
         </div>
          
         <button
-          class="modal-close svelte-1coaisb"
+          class="modal-close svelte-ktn048"
         >
           ✖
         </button>
       </header>
        
       <div
-        class="modal-content svelte-1coaisb"
+        class="modal-content svelte-ktn048"
       >
         <div
           slot="modal-content"
