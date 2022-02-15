@@ -1,65 +1,71 @@
 import Dialog from "./Dialog.svelte";
 
+type TDialogTypes = "confirm"|"confirmCancel"|"info"|"error"|"warning"|"success";
 type TOptions = {
   title: string,
   content: string
 }
 
-function createDialog(
-  type: string,
-  options: TOptions,
-  onConfirm: ()=> void,
-  onCancel: ()=> void,
-): void {
-  // create container and append to the DOM
-  const containerEl = document.createElement("div");
-  document.body.appendChild(containerEl);
+export default class DialogShorthand extends Dialog {
+  static createDialog(
+    type: TDialogTypes,
+    options: TOptions,
+    onConfirm: ()=> void,
+    onCancel: ()=> void,
+  ): void {
+    // create container and append to the DOM
+    const containerEl = document.createElement("div");
+    document.body.appendChild(containerEl);
 
-  // render the dialog component
-  const dialog = new Dialog({
-    target: containerEl,
-    props: {
-      ...options,
-      type,
-      opened: true,
-    },
-  });
+    // render the dialog component
+    const dialog = new Dialog({
+      target: containerEl,
+      props: {
+        ...options,
+        type,
+        opened: true,
+      },
+    });
 
-  function removeComponentOnClose() {
-    containerEl.remove();
+    function removeComponentOnClose() {
+      containerEl.remove();
+    }
+
+    function handleConfirm() {
+      onConfirm();
+      removeComponentOnClose();
+    }
+
+    function handleCancel() {
+      onCancel();
+      removeComponentOnClose();
+    }
+
+    dialog.$on("confirm", handleConfirm);
+    dialog.$on("cancel", handleCancel);
   }
 
-  function handleConfirm() {
-    onConfirm();
-    removeComponentOnClose();
+  static confirm(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+    this.createDialog("confirm", options, onConfirm, onCancel);
   }
 
-  function handleCancel() {
-    onCancel();
-    removeComponentOnClose();
+  static confirmCancel(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+    this.createDialog("confirmCancel", options, onConfirm, onCancel);
   }
 
-  dialog.$on("confirm", handleConfirm);
-  dialog.$on("cancel", handleCancel);
+  static error(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+    this.createDialog("error", options, onConfirm, onCancel);
+  }
+
+  static warning(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+    this.createDialog("warning", options, onConfirm, onCancel);
+  }
+
+  static success(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+    this.createDialog("success", options, onConfirm, onCancel);
+  }
+
+  static info(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+    this.createDialog("info", options, onConfirm, onCancel);
+  }
 }
-
-export default {
-  confirm: (options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void => (
-    createDialog("confirm", options, onConfirm, onCancel)
-  ),
-  confirmCancel: (options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void => (
-    createDialog("confirmCancel", options, onConfirm, onCancel)
-  ),
-  error: (options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void => (
-    createDialog("error", options, onConfirm, onCancel)
-  ),
-  warning: (options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void => (
-    createDialog("warning", options, onConfirm, onCancel)
-  ),
-  success: (options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void => (
-    createDialog("success", options, onConfirm, onCancel)
-  ),
-  info: (options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void => (
-    createDialog("info", options, onConfirm, onCancel)
-  ),
-};
