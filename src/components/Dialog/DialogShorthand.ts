@@ -10,8 +10,8 @@ export default class DialogShorthand extends Dialog {
   static createDialog(
     type: TDialogTypes,
     options: TOptions,
-    onConfirm: ()=> void,
-    onCancel: ()=> void,
+    onConfirm?: ()=> void,
+    onCancel?: ()=> void,
   ): void {
     // create container and append to the DOM
     const containerEl = document.createElement("div");
@@ -32,12 +32,12 @@ export default class DialogShorthand extends Dialog {
     }
 
     function handleConfirm() {
-      onConfirm();
+      if (onConfirm) onConfirm();
       removeComponentOnClose();
     }
 
     function handleCancel() {
-      onCancel();
+      if (onCancel) onCancel();
       removeComponentOnClose();
     }
 
@@ -45,27 +45,27 @@ export default class DialogShorthand extends Dialog {
     dialog.$on("cancel", handleCancel);
   }
 
-  static confirm(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+  static confirm(options: TOptions, onConfirm?: ()=> void, onCancel?: ()=> void): void {
     this.createDialog("confirm", options, onConfirm, onCancel);
   }
 
-  static confirmCancel(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+  static confirmCancel(options: TOptions, onConfirm?: ()=> void, onCancel?: ()=> void): void {
     this.createDialog("confirmCancel", options, onConfirm, onCancel);
   }
 
-  static error(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+  static error(options: TOptions, onConfirm?: ()=> void, onCancel?: ()=> void): void {
     this.createDialog("error", options, onConfirm, onCancel);
   }
 
-  static warning(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+  static warning(options: TOptions, onConfirm?: ()=> void, onCancel?: ()=> void): void {
     this.createDialog("warning", options, onConfirm, onCancel);
   }
 
-  static success(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+  static success(options: TOptions, onConfirm?: ()=> void, onCancel?: ()=> void): void {
     this.createDialog("success", options, onConfirm, onCancel);
   }
 
-  static info(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void {
+  static info(options: TOptions, onConfirm?: ()=> void, onCancel?: ()=> void): void {
     this.createDialog("info", options, onConfirm, onCancel);
   }
 }
