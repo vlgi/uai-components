@@ -16,9 +16,7 @@
   /** Enter label text */
   export let label = "";
   /** number of initial lines */
-  export let rows = 3;
-  /** minimum number of lines */
-  export let minRows = rows;
+  export let rows = 2;
   /** maximum number of lines before scroll */
   export let maxRows = 0;
   /** set an error message */
@@ -109,6 +107,7 @@
   };
 
   $: if (forceInvalid) validation();
+  $: minHeight = `${1 + rows * 1.2}em`;
   $: maxHeight = maxRows ? `${1 + maxRows * 0.8}rem` : "auto";
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
@@ -139,7 +138,11 @@
     class:resizable
     style="--max-auto-height:{maxHeight}"
   >
-    <pre aria-hidden="true">{`${value || placeholder}\n`}</pre>
+    <pre style="min-height:{minHeight}; max-height:{maxHeight}"
+      aria-hidden="true"
+    >
+      {`${value || placeholder}\n`}
+    </pre>
     <textarea
       on:focus={focused}
       on:input={changed}
@@ -149,8 +152,6 @@
       on:input
       on:change
       bind:this={textareaElement}
-      data-min-rows={minRows}
-      data-max-rows={maxRows}
       {rows}
       {name}
       {id}
