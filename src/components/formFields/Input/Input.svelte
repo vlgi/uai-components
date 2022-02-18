@@ -66,7 +66,6 @@
   let invalid = forceInvalid;
   let helper = false;
   let eMsg = "";
-  let MsgUp = false;
   let wrapperElement: HTMLElement;
 
   const isInsideContext = hasContext("FormContext");
@@ -77,12 +76,16 @@
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function focused() {
-    helper = !helper;
-    MsgUp = !MsgUp;
-  }
+    if (invalid) {
+      helper = false;
+    } else {
+      helper = !helper;
+    }
+}
 
   function changed() {
     invalid = false;
+    helper = true;
   }
 
   function checkStatus(answer: undefined|string|boolean) {
@@ -176,7 +179,7 @@
   <p class="helper" class:helper-show={helper}>
     {helperText}
   </p>
-  <p class="error" class:error-show={invalid} class:MsgUp>
+  <p class="error" class:error-show={invalid}>
     {eMsg}
   </p>
 </div>
@@ -378,10 +381,6 @@
     }
     &.error-show {
       @include m.form-field-error-text();
-    }
-    &.MsgUp {
-      bottom: var(--message-error-bottom-focus);
-      transition: opacity 0.2s linear, bottom 0.2s;
     }
   }
 </style>

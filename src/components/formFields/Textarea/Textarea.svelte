@@ -50,7 +50,6 @@
 
   let eMsg = "deu ruim";
   let helper = false;
-  let MsgUp = false;
   let invalid = forceInvalid;
   let wrapperElement: HTMLElement;
 
@@ -62,8 +61,11 @@
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
   const focused = () => {
-    helper = !helper;
-    MsgUp = !MsgUp;
+    if (invalid) {
+      helper = false;
+    } else {
+      helper = !helper;
+    }
   };
 
   const checkStatus = (answer: undefined|string|boolean) => {
@@ -83,6 +85,7 @@
 
   const changed = () => {
     invalid = false;
+    helper = true;
   };
 
   const validation = () => {
@@ -162,7 +165,7 @@
   </label>
 
   <p class="helper message" class:helper-show={helper}>{helperText}</p>
-  <p class="error message" class:error-show={invalid} class:MsgUp>{eMsg}</p>
+  <p class="error message" class:error-show={invalid}>{eMsg}</p>
 </div>
 
 <style lang="scss">
@@ -368,10 +371,6 @@
     }
     &.error-show {
       @include m.form-field-error-text();
-    }
-    &.MsgUp {
-      bottom: var(--message-error-bottom-focus);
-      transition: opacity 0.2s linear, bottom 0.2s;
     }
   }
 </style>
