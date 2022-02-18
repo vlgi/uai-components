@@ -59,6 +59,7 @@
   export let disabled = false;
   export let readonly = false;
   export let required = false;
+  export let id = "input";
 
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};
@@ -67,6 +68,7 @@
   let helper = false;
   let eMsg = "";
   let wrapperElement: HTMLElement;
+
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -162,13 +164,14 @@
     placeholder=" "
     {name}
     {type}
+    {id}
     {value}
     {disabled}
     {readonly}
     {...inputAttributes}
     aria-required={required}
   />
-  <label for="" class="form-label" class:required>
+  <label for="{id}" class="form-label" class:required>
     {label}
   </label>
   {#if icon}

@@ -44,6 +44,7 @@
   export let required = false;
   export let readonly = false;
   export let placeholder = "";
+  export let id = "textarea";
 
   // Other attributes for the HTML textarea element
   export let textareaAttributes: Record<string, string> = {};
@@ -152,6 +153,7 @@
       data-max-rows={maxRows}
       {rows}
       {name}
+      {id}
       {placeholder}
       {value}
       {disabled}
@@ -160,7 +162,7 @@
       {...textareaAttributes}
     />
   </div>
-  <label for="" class="label" class:required>
+  <label for="{id}" class="label" class:required>
     {label}
   </label>
 
