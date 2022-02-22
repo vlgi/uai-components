@@ -59,6 +59,7 @@
   export let disabled = false;
   export let readonly = false;
   export let required = false;
+  export let id = "input";
 
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};
@@ -66,8 +67,8 @@
   let invalid = forceInvalid;
   let helper = false;
   let eMsg = "";
-  let MsgUp = false;
   let wrapperElement: HTMLElement;
+
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -77,12 +78,16 @@
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function focused() {
-    helper = !helper;
-    MsgUp = !MsgUp;
-  }
+    if (invalid) {
+      helper = false;
+    } else {
+      helper = !helper;
+    }
+}
 
   function changed() {
     invalid = false;
+    helper = true;
   }
 
   function checkStatus(answer: undefined|string|boolean) {
@@ -159,13 +164,14 @@
     placeholder=" "
     {name}
     {type}
+    {id}
     {value}
     {disabled}
     {readonly}
     {...inputAttributes}
     aria-required={required}
   />
-  <label for="" class="form-label" class:required>
+  <label for="{id}" class="form-label" class:required>
     {label}
   </label>
   {#if icon}
@@ -176,7 +182,7 @@
   <p class="helper" class:helper-show={helper}>
     {helperText}
   </p>
-  <p class="error" class:error-show={invalid} class:MsgUp>
+  <p class="error" class:error-show={invalid}>
     {eMsg}
   </p>
 </div>
@@ -378,10 +384,6 @@
     }
     &.error-show {
       @include m.form-field-error-text();
-    }
-    &.MsgUp {
-      bottom: var(--message-error-bottom-focus);
-      transition: opacity 0.2s linear, bottom 0.2s;
     }
   }
 </style>

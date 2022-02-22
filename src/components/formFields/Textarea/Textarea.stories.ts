@@ -25,6 +25,8 @@ export default {
     label: { table: { category: "other properties" } },
     type: { table: { category: "other properties" } },
     name: { table: { category: "other properties" } },
+    rows: { table: { category: "other properties" } },
+    maxRows: { table: { category: "other properties" } },
     disabled: { table: { category: "other properties" } },
     readonly: { table: { category: "other properties" } },
     textareaElement: { table: { category: "other properties" } },
@@ -89,9 +91,9 @@ export const CustomExample: any = Template({
   value: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos maxime accusamus laborum fuga ratione veritatis aliquam totam nam illo harum veniam minima vero atque iusto exercitationem repellendus, commodi mollitia sapiente!",
   helperText: "Digite 'erro' para ser invalido",
   type: "text",
-  rows: 4,
+  rows: 3,
   maxRows: 4,
-  style: "--szot-border-radius: 1rem; --szot-max-height: 5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-textarea-color: #db984b;--szot-border-color: #c56d09;--szot-placeholder-color:#db984b;",
+  style: "--szot-border-radius: 1rem;--szot-max-height: 8rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-textarea-color: #db984b;--szot-border-color: #c56d09;--szot-placeholder-color:#db984b;",
 });
 CustomExample.parameters = {
   docs: {

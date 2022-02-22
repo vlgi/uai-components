@@ -16,9 +16,7 @@
   /** Enter label text */
   export let label = "";
   /** number of initial lines */
-  export let rows = 3;
-  /** minimum number of lines */
-  export let minRows = rows;
+  export let rows = 2;
   /** maximum number of lines before scroll */
   export let maxRows = 0;
   /** set an error message */
@@ -44,13 +42,13 @@
   export let required = false;
   export let readonly = false;
   export let placeholder = "";
+  export let id = "textarea";
 
   // Other attributes for the HTML textarea element
   export let textareaAttributes: Record<string, string> = {};
 
   let eMsg = "deu ruim";
   let helper = false;
-  let MsgUp = false;
   let invalid = forceInvalid;
   let wrapperElement: HTMLElement;
 
@@ -62,8 +60,11 @@
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
   const focused = () => {
-    helper = !helper;
-    MsgUp = !MsgUp;
+    if (invalid) {
+      helper = false;
+    } else {
+      helper = !helper;
+    }
   };
 
   const checkStatus = (answer: undefined|string|boolean) => {
@@ -83,6 +84,7 @@
 
   const changed = () => {
     invalid = false;
+    helper = true;
   };
 
   const validation = () => {
@@ -105,6 +107,7 @@
   };
 
   $: if (forceInvalid) validation();
+  $: minHeight = `${1 + rows * 1.2}em`;
   $: maxHeight = maxRows ? `${1 + maxRows * 0.8}rem` : "auto";
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
@@ -135,7 +138,11 @@
     class:resizable
     style="--max-auto-height:{maxHeight}"
   >
-    <pre aria-hidden="true">{`${value || placeholder}\n`}</pre>
+    <pre style="min-height:{minHeight}; max-height:{maxHeight}"
+      aria-hidden="true"
+    >
+      {`${value || placeholder}\n`}
+    </pre>
     <textarea
       on:focus={focused}
       on:input={changed}
@@ -145,10 +152,9 @@
       on:input
       on:change
       bind:this={textareaElement}
-      data-min-rows={minRows}
-      data-max-rows={maxRows}
       {rows}
       {name}
+      {id}
       {placeholder}
       {value}
       {disabled}
@@ -157,12 +163,12 @@
       {...textareaAttributes}
     />
   </div>
-  <label for="" class="label" class:required>
+  <label for="{id}" class="label" class:required>
     {label}
   </label>
 
   <p class="helper message" class:helper-show={helper}>{helperText}</p>
-  <p class="error message" class:error-show={invalid} class:MsgUp>{eMsg}</p>
+  <p class="error message" class:error-show={invalid}>{eMsg}</p>
 </div>
 
 <style lang="scss">
@@ -368,10 +374,6 @@
     }
     &.error-show {
       @include m.form-field-error-text();
-    }
-    &.MsgUp {
-      bottom: var(--message-error-bottom-focus);
-      transition: opacity 0.2s linear, bottom 0.2s;
     }
   }
 </style>
