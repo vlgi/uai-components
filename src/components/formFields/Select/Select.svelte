@@ -245,7 +245,7 @@ onDestroy(() => {
         {:else if !multiple && selectedSingle}
           {selectedSingle ? selectedSingle.text : ""}
         {:else}
-          Selecione
+          <span class="fade-out" class:faded={!dropdownOpen}>Selecione</span>
         {/if}
 
       </div>
@@ -325,6 +325,12 @@ onDestroy(() => {
   }
   .invisible {
     visibility: hidden;
+  }
+  .fade-out {
+    transition: opacity var(--open-transition-duration);
+    &.faded {
+      opacity: 0;
+    }
   }
 
   .select-box {
