@@ -87,6 +87,8 @@
   },
   "dependencies": {
     "@ionic/core": "^6.0.2",
+    "@types/cleave.js": "^1.4.6",
+    "cleave.js": "^1.6.0",
     "hammerjs": "^2.0.8",
     "svelte": "^3.24.0"
   }
