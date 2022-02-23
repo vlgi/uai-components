@@ -317,6 +317,7 @@ onDestroy(() => {
     --component-padding-horizontal: var(--szot-padding-horizontal, var(--theme-fields-padding));
     --border-color: var(--theme-fields-outline);
     --message-left-spacing: var(--szot-message-left-spacing, 1rem);
+    --open-transition-duration: var(--szot-open-transition-duration, 200ms);
   }
 
   .hidden {
@@ -352,7 +353,7 @@ onDestroy(() => {
 
       transform-origin: 0 30%;
 
-      transition: top 200ms, transform 200ms;
+      transition: top var(--open-transition-duration), transform var(--open-transition-duration);
       &.floated {
         top: -0.7em;
         @include m.form-field-label-floated-size;
@@ -377,7 +378,7 @@ onDestroy(() => {
       border-radius: 0 0 var(--component-border-radius) var(--component-border-radius);
       padding: 0 var(--component-padding-horizontal);
 
-      transition: max-height 200ms, padding 200ms;
+      transition: max-height var(--open-transition-duration), padding var(--open-transition-duration);
       &.closed {
         max-height: 0;
         padding-top: 0;
@@ -395,7 +396,7 @@ onDestroy(() => {
       top: calc(var(--component-padding-vertical) + calc(1rem - var(--component-arrow-size)) / 2);
       right: var(--component-padding-horizontal);
 
-      transition: transform 200ms;
+      transition: transform var(--open-transition-duration);
       transform-origin: 50% 75%;
       &.flipped {
         transform: rotate(180deg);
