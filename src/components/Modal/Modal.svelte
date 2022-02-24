@@ -4,6 +4,7 @@
 
 <script lang="ts">
   import { createEventDispatcher, onDestroy } from "svelte";
+  import Button from "../formFields/Button/Button.svelte";
 
   // don't show the header (including the x button)
   export let disableHeader = false;
@@ -84,7 +85,13 @@
         <header class="modal-header">
           <!-- Set the modal header. e.g.: you can add a title, some buttons -->
           <slot name="modal-header"></slot>
-          <button class="modal-close" on:click={ closeModal }>&#10006;</button>
+
+          <Button
+            icon="close"
+            buttonStyle="light"
+            size="round"
+            on:click={ closeModal }
+          ></Button>
         </header>
       {/if}
       <div class="modal-content">
@@ -150,25 +157,10 @@
 
     .modal-header {
       display: grid;
-      grid-template-columns: 1fr 50px;
-      grid-gap: 10px;
+      grid-template-columns: 1fr auto;
+      grid-gap: 0.5em;
       border-radius: 15px 15px 0 0;
       align-items: center;
-
-      button.modal-close {
-        grid-column: 2/3;
-        justify-self: center;
-        align-self: flex-start;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        color: var(--close-txt-color);
-        background-color: var(--close-bg-color);
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: var(--theme-small-shape);
-        margin-left: auto;
-      }
     }
 
     .modal-content {
