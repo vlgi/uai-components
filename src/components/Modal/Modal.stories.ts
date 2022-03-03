@@ -4,6 +4,7 @@ import Modal from "./Modal.svelte";
 import ModalForTest from "./ModalForTest.svelte";
 import ModalForInceptionTest from "./ModalForInceptionTest.svelte";
 import ModalForCustomScrollTest from "./ModalForCustomScrollTest.svelte";
+import ModalWithHeaderIconsWrapper from "./ModalWithHeaderIcons.svelte";
 
 export default {
   title: "Components/Modal",
@@ -48,4 +49,11 @@ export const ModalInsideModal = () => ({
 
 export const ModalInsideDivScroll = () => ({
   Component: ModalForCustomScrollTest,
+});
+
+export const ModalWithHeaderIcons = () => ({
+  Component: ModalWithHeaderIconsWrapper,
+  props: {
+    opened: true,
+  },
 });
