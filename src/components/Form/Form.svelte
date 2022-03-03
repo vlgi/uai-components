@@ -19,7 +19,7 @@
   // True if all fields are valid (readonly)
   export let isAllValid: boolean|null = null;
 
-  const fieldsData: Record<string, TFieldData> = {};
+  let fieldsData: Record<string, TFieldData> = {};
   const dispatcher = createEventDispatcher();
 
   /**
@@ -49,6 +49,8 @@
 
   const removeFieldFromContext: TRemoveFieldFromContext = (fieldName: string) => {
     delete fieldsData[fieldName];
+    // force update
+    fieldsData = fieldsData;
   };
 
   const fireSubmit: TFireSubmit = async () => {
