@@ -120,7 +120,10 @@
     --close-txt-color: var(--szot-close-txt-color, var(--theme-txt-on-light-surface));
 
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
