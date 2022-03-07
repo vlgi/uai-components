@@ -76,7 +76,6 @@ export let inputAttributes: Record<string, string> = {};
 export let cleaveOptions: CleaveOptions = {};
 
 let cleave: Cleave;
-let lockValueChange = false;
 
 /* ================== Overriding the context ================== */
 
@@ -136,7 +135,6 @@ function instantiateCleave() {
     ...cleaveOptions,
     onValueChanged: ({ target }: TCleaveEvent) => {
       const { rawValue, value: maskedValue } = target;
-      lockValueChange = true;
       value = rawValue;
       internalInputValue = maskedValue;
     },
@@ -158,13 +156,7 @@ $: if (cleaveOptions && inputElement) {
 }
 
 // Keep value consistent when updating
-$: if (cleave) {
-  if (lockValueChange) {
-    lockValueChange = false;
-  } else {
-    cleave.setRawValue(`${value}`);
-  }
-}
+$: if (cleave) cleave.setRawValue(`${value}`);
 
 // Update form state correctly
 $: if (addedToContext) setFieldValue(name, value, isValid);
