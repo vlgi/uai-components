@@ -5,12 +5,12 @@ import CleaveInputWrapper from "./CleaveInputWrapper.svelte";
 
 describe("CleaveInput", () => {
   it("will work with defaults", async () => {
-    const { findByRole } = render(CleaveInputWrapper, {
+    const { findAllByRole } = render(CleaveInputWrapper, {
       props: {
         name: "maskedInput",
       },
     });
-    const inputEl = await findByRole("textbox") as HTMLInputElement;
+    const inputEl = (await findAllByRole("textbox") as HTMLInputElement[])[0];
 
     expect(inputEl).toBeTruthy();
   });
