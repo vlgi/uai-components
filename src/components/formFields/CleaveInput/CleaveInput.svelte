@@ -58,6 +58,7 @@ export let inputElement: HTMLInputElement|null = null;
 export let name: string;
 export let type = "text";
 export let value = "";
+export let internalInputValue = "";
 export let disabled = false;
 export let readonly = false;
 export let required = false;
@@ -134,9 +135,10 @@ function instantiateCleave() {
   cleave = new Cleave(inputElement, {
     ...cleaveOptions,
     onValueChanged: ({ target }: TCleaveEvent) => {
-      const { rawValue } = target;
+      const { rawValue, value: maskedValue } = target;
       lockValueChange = true;
       value = rawValue;
+      internalInputValue = maskedValue;
     },
   });
 }
@@ -160,7 +162,7 @@ $: if (cleave) {
   if (lockValueChange) {
     lockValueChange = false;
   } else {
-    cleave.setRawValue(value);
+    cleave.setRawValue(`${value}`);
   }
 }
 
@@ -173,6 +175,7 @@ $: if (addedToContext) setFieldValue(name, value, isValid);
   on:change
   on:input
   {name}
+  bind:value={internalInputValue}
   bind:inputElement
   bind:isValid
   {inputAttributes}
