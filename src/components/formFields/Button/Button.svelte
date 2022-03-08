@@ -261,7 +261,7 @@
 
     &[type="submit"] {
       width: 100%;
-      max-width: var(--theme-fields-max-width);
+      max-width: var(--szot-max-width, var(--theme-fields-max-width));
     }
   }
 </style>

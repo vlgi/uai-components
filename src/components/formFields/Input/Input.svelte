@@ -274,7 +274,7 @@
     margin-bottom: var(--margin-bottom);
     width: var(--width);
     height: fit-content;
-    max-width: var(--theme-fields-max-width);
+    max-width: var(--szot-max-width, var(--theme-fields-max-width));
     box-sizing: border-box;
   }
 

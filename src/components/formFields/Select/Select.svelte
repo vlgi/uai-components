@@ -342,7 +342,7 @@ onDestroy(() => {
   .select {
     position: relative;
     width: 100%;
-    max-width: var(--theme-fields-max-width);
+    max-width: var(--szot-max-width, var(--theme-fields-max-width));
 
     background-color: var(--component-background-color);
     color: var(--theme-dark-txt);
