@@ -187,7 +187,7 @@
       var(--default-placeholder-color)
     );
     --margin-bottom: var(--szot-margin-bottom, 1.5rem);
-    --max-width: var(--szot-fields-max-width, var(--theme-fields-max-width));
+    --max-width: var(--szot-max-width, var(--theme-fields-max-width));
     --max-height: var(--szot-max-height, var(--max-auto-height));
     --padding: var(--szot-padding, var(--theme-fields-padding));
 

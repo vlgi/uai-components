@@ -13,6 +13,8 @@ export let values;
  */
 export let inputComponent;
 
+let inputValue = "";
+
 </script>
 
 <Form bind:values bind:isAllValid>
@@ -37,3 +39,13 @@ export let inputComponent;
 <p>
   <b>Form values:</b> { JSON.stringify(values) }
 </p>
+
+<b>change value</b>
+<input type="text" bind:value={inputValue} />
+<button
+  on:click={() => {
+    value = +inputValue;
+  }}
+>
+  change value
+</button>
