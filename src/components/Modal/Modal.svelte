@@ -18,6 +18,7 @@
   // when true if user click out the modal will close it
   export let closeOnClickOut = true;
 
+  let modalOverlayElement: HTMLElement;
   const dispatcher = createEventDispatcher();
   const id = Symbol("my-self");
 
@@ -63,8 +64,8 @@
     if (ev.key === "Escape" && closeOnEsc) closeModal();
   }
 
-  function handleClickOut() {
-    if (closeOnClickOut) closeModal();
+  function handleClickOut(ev: Event) {
+    if (closeOnClickOut && ev.target === modalOverlayElement) closeModal();
   }
 
   $: if (opened) {
@@ -79,8 +80,8 @@
 <svelte:window on:keydown={handleKey}/>
 
 {#if opened }
-  <div class="modal-overlay" on:click={handleClickOut}>
-    <div class="modal-container" on:click|stopPropagation|preventDefault={() => true}>
+  <div class="modal-overlay" bind:this={modalOverlayElement} on:click={handleClickOut}>
+    <div class="modal-container">
       {#if !disableHeader}
         <header class="modal-header">
           <!-- Set the modal header. e.g.: you can add a title, some buttons -->
