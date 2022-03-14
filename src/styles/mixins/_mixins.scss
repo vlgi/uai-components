@@ -1,7 +1,7 @@
-@mixin custom-scrollbar {
+@mixin custom-scrollbar($color) {
 
   scrollbar-width: thin;
-  scrollbar-color: var(--theme-dark) transparent;
+  scrollbar-color: $color transparent;
 
   /* width */
   &::-webkit-scrollbar {
@@ -15,7 +15,7 @@
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: var(--theme-dark);
+    background: $color;
     border-radius: 1.5625rem / 3.125rem;
   }
 

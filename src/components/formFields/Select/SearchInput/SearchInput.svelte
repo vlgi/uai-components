@@ -79,7 +79,8 @@
 
     padding: var(--theme-fields-padding);
 
-    border: 0.0625rem solid var(--theme-fields-outline);
+    border: var(--theme-small-border);
+    border-color: var(--component-color);
     border-radius: var(--theme-small-shape);
 
     &::placeholder {

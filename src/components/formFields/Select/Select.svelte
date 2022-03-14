@@ -53,6 +53,19 @@ export let selected: TOption | TOption[] | null = multiple ? [] : null;
 // At the multiple select, this will set the badge style
 export let badgeStyle: TbadgeStyle = "outline";
 
+type TSelectBorders = "bottom" | "outline";
+/**
+ * Choose border type of the select component.
+ */
+export let selectBorder: TSelectBorders = "outline";
+
+type TSelectStyle = "primary" | "secondary" | "dark" | "light";
+
+/**
+ * Choose one of the theme styles.
+ */
+export let selectStyle: TSelectStyle = "primary";
+
 // ====== Internal control ====== //
 
 // Type casts the selected as TOption for internal use
@@ -205,7 +218,7 @@ onDestroy(() => {
 </script>
 
 <div class="select-wrapper" bind:this={wrapperElement}>
-  <div class="select" tabindex="0"
+  <div class="select border-{selectBorder} style-{selectStyle}" tabindex="0"
     class:error={!isVisuallyValid}
     use:keyboardControls={{ multiple, dropdownOpen }}
     on:actiontoggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
@@ -251,7 +264,11 @@ onDestroy(() => {
       </div>
 
       <!-- Floating box with extra related data -->
-      <div class="select-dropdown-menu" class:closed={!dropdownOpen}>
+      <div
+        class="select-dropdown-menu"
+        class:closed={!dropdownOpen}
+        class:with-borders={selectBorder === "bottom"}
+      >
 
         <!-- Search input -->
         <SearchInput
@@ -315,9 +332,12 @@ onDestroy(() => {
     --component-border-radius: var(--szot-border-radius, var(--theme-small-shape));
     --component-padding-vertical: var(--szot-padding-vertical, var(--theme-fields-padding));
     --component-padding-horizontal: var(--szot-padding-horizontal, var(--theme-fields-padding));
-    --border-color: var(--theme-fields-outline);
+    --component-border: var(--theme-small-border);
     --message-left-spacing: var(--szot-message-left-spacing, 1rem);
     --open-transition-duration: var(--szot-open-transition-duration, 200ms);
+
+    // Will be defined later
+    // --component-color
   }
 
   .hidden {
@@ -345,16 +365,44 @@ onDestroy(() => {
     max-width: var(--szot-max-width, var(--theme-fields-max-width));
 
     background-color: var(--component-background-color);
-    color: var(--theme-dark-txt);
+    color: var(--component-color);
 
-    border: 0.0625rem solid var(--border-color);
-    border-radius: var(--component-border-radius);
+    // hack the specificity
+    &.select.select {
+      border-color: var(--szot-border-color, var(--component-color));
+    }
+
+    &.border {
+      &-outline {
+        border: var(--component-border);
+        border-radius: var(--component-border-radius);
+      }
+      &-bottom {
+        border-bottom: var(--component-border);
+      }
+    }
+
+    &.style {
+      &-primary {
+        --component-color: var(--theme-primary-txt);
+      }
+      &-secondary {
+        --component-color: var(--theme-secondary-txt);
+      }
+      &-dark {
+        --component-color: var(--theme-dark-txt);
+      }
+      &-light {
+        --component-color: var(--theme-light-txt);
+      }
+    }
 
     &-label {
       position: absolute;
       top: var(--component-padding-vertical);
       left: var(--component-padding-horizontal);
       background-color: var(--component-background-color);
+      color: var(--szot-label-color, var(--component-color));
       @include m.form-field-label-size;
 
       transform-origin: 0 30%;
@@ -385,6 +433,23 @@ onDestroy(() => {
       padding: 0 var(--component-padding-horizontal);
 
       transition: max-height var(--open-transition-duration), padding var(--open-transition-duration);
+      &.with-borders {
+        padding-top: var(--component-padding-vertical);
+        border: var(--component-border);
+        border-color: var(--component-color);
+        border-bottom: none;
+        border-radius: 0;
+
+        transition:
+          max-height var(--open-transition-duration),
+          padding var(--open-transition-duration),
+          border var(--open-transition-duration);
+
+        &.closed {
+          border-top-width: 0;
+        }
+      }
+
       &.closed {
         max-height: 0;
         padding-top: 0;
@@ -417,7 +482,7 @@ onDestroy(() => {
           content: '';
           display: block;
           position: absolute;
-          background-color: var(--theme-fields-outline);
+          background-color: var(--component-color);
         }
 
         &::before {
@@ -442,7 +507,10 @@ onDestroy(() => {
     label {
       color: var(--theme-error);
     }
-    --border-color: var(--theme-error);
+    // hack the specificity
+    &.error.error {
+      --component-color: var(--theme-error);
+    }
     .select-arrow-aux {
       &::before, &::after {
         background-color: var(--theme-error);
