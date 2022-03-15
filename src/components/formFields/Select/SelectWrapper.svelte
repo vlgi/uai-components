@@ -24,6 +24,7 @@ export let forceInvalid;
   {required}
   {min}
   {forceInvalid}
+  {...$$restProps}
   bind:isValid
   bind:selected/>
 

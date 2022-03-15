@@ -184,7 +184,7 @@ $: if (options) {
     &-menu {
       overflow-y: auto;
       overflow-x: hidden;
-      @include m.custom-scrollbar;
+      @include m.custom-scrollbar(var(--component-color));
     }
 
     &-option {

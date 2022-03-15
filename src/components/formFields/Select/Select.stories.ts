@@ -7,6 +7,23 @@ import SelectWrapper from "./SelectWrapper.svelte";
 export default {
   title: "Components/FormFields/Select",
   component: Select,
+  argTypes: {
+    selectStyle: {
+      table: { category: "visual properties" },
+      control: {
+        type: "select",
+        options: ["primary", "secondary", "dark", "light"],
+      },
+    },
+    selectBorder: {
+      table: { category: "visual properties" },
+      control: {
+        type: "select",
+        options: ["bottom", "outline"],
+      },
+    },
+    badgeStyle: { table: { category: "visual properties" } },
+  },
 };
 
 const Template = (_args: ArgType) => {
