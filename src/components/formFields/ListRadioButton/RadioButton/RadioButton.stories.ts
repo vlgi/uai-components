@@ -20,3 +20,11 @@ const Template = (_args: ArgType) => {
 };
 
 export const Default = Template({});
+
+export const DefaultChecked = Template({
+  checked: true,
+});
+
+export const Filled = Template({
+  filled: true,
+});
