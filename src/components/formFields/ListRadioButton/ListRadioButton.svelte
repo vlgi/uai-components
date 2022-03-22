@@ -18,7 +18,6 @@
   {#each radioOptions as radio, i}
     <li>
       <RadioButton
-        {...$$restProps}
         {name}
         filled={filled}
         id="{name}-{i}"
