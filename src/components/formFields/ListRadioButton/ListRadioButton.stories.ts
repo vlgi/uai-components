@@ -11,9 +11,6 @@ const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
     Component: ListRadioButton,
     props,
-    on: {
-      submit: action("submit"),
-    },
   });
   ret.args = _args;
   return ret;
