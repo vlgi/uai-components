@@ -7,6 +7,8 @@
     checked?: boolean;
   };
 
+  type TRadioStyleType = "filled" | "not-filled";
+
   export let name = "radio-list";
   /**
    * The listName property for this element
@@ -14,10 +16,10 @@
    */
   export let listName: string;
   /**
-   * The filled property for this element
-   * @type {string}
+   * The radioStyleType property for this element
+   * @type {TRadioStyleType}
    */
-  export let filled: boolean;
+  export let radioStyleType: TRadioStyleType;
 
   /**
    * All possible options that can be selected
@@ -32,7 +34,7 @@
     <li>
       <RadioButton
         {name}
-        {filled}
+        {radioStyleType}
         id="{name}-{i}"
         value={radio.value}
         label={radio.label}

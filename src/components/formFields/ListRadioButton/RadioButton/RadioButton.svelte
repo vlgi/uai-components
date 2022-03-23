@@ -1,4 +1,6 @@
 <script lang="ts">
+  type TRadioStyleType = "filled" | "not-filled";
+
   /**
    * The label text for this element
    * @type {string}
@@ -18,10 +20,10 @@
    */
   export let value: string;
   /**
-   * The filled property for this element
-   * @type {boolean}
+   * The radioStyleType property for this element
+   * @type {TRadioStyleType}
    */
-  export let filled: boolean;
+  export let radioStyleType: TRadioStyleType = "not-filled";
   /**
    * The checked property for this element
    * @type {boolean}
@@ -36,8 +38,7 @@
     {name}
     {id}
     {value}
-    class:filled
-    class="radio-input"
+    class="radio-input radio-style-type-{radioStyleType}"
     {checked}
   />
 
@@ -57,16 +58,16 @@
     padding: 0 0.375rem;
     margin: var(--radio-margin);
 
-    input[type="radio"] {
+    .radio-input {
       display: none;
     }
 
-    label {
+    .radio-label {
       color: var(--radio-label-color);
       font-weight: normal;
     }
 
-    label:before {
+    .radio-label:before {
       content: " ";
       display: inline-block;
       position: relative;
@@ -79,7 +80,7 @@
       background-color: transparent;
     }
 
-    input[type="radio"]:checked + label:after {
+    .radio-input:checked + .radio-label:after {
       width: calc(var(--radio-size) - 0.5rem);
       height: calc(var(--radio-size) - 0.5rem);
       border-radius: calc(var(--radio-size) / 2);
@@ -91,7 +92,7 @@
       background: var(--radio-color);
     }
 
-    .filled:checked + label:before {
+    .radio-style-type-filled:checked + .radio-label:before {
       background-color: var(--radio-color);
     }
   }
