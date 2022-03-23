@@ -27,7 +27,7 @@
     display: inline-block;
     position: relative;
     padding: 0 6px;
-    margin: 10px 0 0;
+    margin: var(--szot-radio-margin, 0 0 0 0);
   }
 
   .radio-item input[type="radio"] {
@@ -43,7 +43,7 @@
     content: " ";
     display: inline-block;
     position: relative;
-    top: 5px;
+    top: 3px;
     margin: 0 5px 0 0;
     width: var(--szot-radio-size, 16px);
     height: var(--szot-radio-size, 16px);
@@ -57,7 +57,7 @@
     height: calc(var(--szot-radio-size, 16px) - 8px);
     border-radius: calc(var(--szot-radio-size, 16px)/2);
     position: absolute;
-    top: 9px;
+    top: 7px;
     left: 10px;
     content: " ";
     display: block;
