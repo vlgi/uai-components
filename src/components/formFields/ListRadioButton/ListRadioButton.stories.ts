@@ -1,5 +1,4 @@
 import type { ArgType } from "@storybook/addons";
-import { action } from "@storybook/addon-actions";
 import ListRadioButton from "./ListRadioButton.svelte";
 
 export default {
@@ -63,5 +62,5 @@ export const FilledRadios = Template({
   name: "optionList",
   listName: "Escolha uma opção",
   radioOptions,
-  filled: true,
+  radioStyleType: "filled",
 });

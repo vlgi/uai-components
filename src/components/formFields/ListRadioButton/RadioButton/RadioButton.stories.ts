@@ -1,5 +1,4 @@
 import type { ArgType } from "@storybook/addons";
-import { action } from "@storybook/addon-actions";
 import RadioButton from "./RadioButton.svelte";
 
 export default {
@@ -23,7 +22,7 @@ export const DefaultChecked = Template({
 });
 
 export const Filled = Template({
-  filled: true,
+  radioStyleType: "filled",
 });
 
 export const Labeled = Template({
