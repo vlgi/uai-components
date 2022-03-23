@@ -1,9 +1,31 @@
 <script lang="ts">
+  /**
+   * The label text for this element
+   * @type {string}
+   */
   export let label: string;
+  /**
+   * The name text for this element
+   * @type {string}
+   */
   export let name: string;
-  export let id: string;
+
+  export let id = "radioId";
+
+  /**
+   * The Value text for this element
+   * @type {string}
+   */
   export let value: string;
+  /**
+   * The filled property for this element
+   * @type {boolean}
+   */
   export let filled: boolean;
+  /**
+   * The checked property for this element
+   * @type {boolean}
+   */
   export let checked: boolean;
 </script>
 

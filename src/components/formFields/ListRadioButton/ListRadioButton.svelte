@@ -2,15 +2,28 @@
   import RadioButton from "./RadioButton/RadioButton.svelte";
 
   type TRadioProps = {
-    value: string,
-    label: string,
-    checked?: boolean
-  }
+    value: string;
+    label?: string;
+    checked?: boolean;
+  };
 
-  export let name: string;
+  export let name = "radio-list";
+  /**
+   * The listName property for this element
+   * @type {string}
+   */
   export let listName: string;
+  /**
+   * The filled property for this element
+   * @type {string}
+   */
   export let filled: boolean;
-  export let radioOptions: TRadioProps[];
+
+  /**
+   * All possible options that can be selected
+   * @type {array}
+   */
+  export let radioOptions: TRadioProps[] = [];
 </script>
 
 <span class="radio-title">{listName}</span>
@@ -19,7 +32,7 @@
     <li>
       <RadioButton
         {name}
-        filled={filled}
+        {filled}
         id="{name}-{i}"
         value={radio.value}
         label={radio.label}
