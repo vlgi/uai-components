@@ -19,12 +19,21 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
-export const Default = Template({});
+export const Default = Template({
+  id: "radioId",
+});
 
 export const DefaultChecked = Template({
   checked: true,
+  id: "radioId",
 });
 
 export const Filled = Template({
   filled: true,
+  id: "radioId",
+});
+
+export const Labeled = Template({
+  id: "radioId",
+  label: "Item",
 });
