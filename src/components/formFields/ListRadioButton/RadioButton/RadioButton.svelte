@@ -1,6 +1,9 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
+
   type TRadioStyleType = "filled" | "not-filled";
 
+  const dispatch = createEventDispatcher();
   /**
    * The label text for this element
    * @type {string}
@@ -16,9 +19,9 @@
 
   /**
    * The Value text for this element
-   * @type {string}
+   * @type {unknown}
    */
-  export let value: string;
+  export let value: unknown;
   /**
    * The radioStyleType property for this element
    * @type {TRadioStyleType}
@@ -29,6 +32,8 @@
    * @type {boolean}
    */
   export let checked: boolean;
+
+  let inputElement;
 </script>
 
 <div class="radio-item">
@@ -40,6 +45,10 @@
     {value}
     class="radio-input radio-style-type-{radioStyleType}"
     {checked}
+    bind:this={inputElement}
+    on:click={() => {
+      dispatch("checkItem", inputElement);
+    }}
   />
 
   <label for={id} class="radio-label">{label !== undefined ? label : ""}</label>
