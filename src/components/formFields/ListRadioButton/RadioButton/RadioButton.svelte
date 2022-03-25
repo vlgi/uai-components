@@ -1,14 +1,17 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import {
+    onMount, getContext, hasContext, onDestroy,
+} from "svelte";
+  import type { TFormContext } from "../../../Form/types";
 
   type TRadioStyleType = "filled" | "not-filled";
 
-  const dispatch = createEventDispatcher();
   /**
    * The label text for this element
    * @type {string}
    */
   export let label: string;
+
   /**
    * The name text for this element
    * @type {string}
@@ -18,22 +21,112 @@
   export let id = "radioId";
 
   /**
-   * The Value text for this element
-   * @type {string}
-   */
-  export let value: unknown;
-  /**
-   * The radioStyleType property for this element
+   * The radioStyleType text for this element
    * @type {string}
    */
   export let radioStyleType: TRadioStyleType = "not-filled";
+
+  /** Enter a message in case it is invalid */
+  export let errorMsg = "";
+
+  /**
+   * Pass the function to validation.
+   * Return true/undefined if valid,
+   * or a string to show the error, or false to show the "errorMsg" props.
+   */
+  export let validationFn: (
+    value: string
+  ) => undefined | string | boolean = () => true; //eslint-disable-line
+
+  /** if you want to force invalid, change it to true */
+  export let forceInvalid = false;
+
+  /** shows if the component is valid (readonly) */
+  export let isValid = true;
+
   /**
    * The checked property for this element
    * @type {boolean}
    */
-  export let checked: boolean;
+  export let checked = false;
 
-  let inputElement;
+  /**
+   * The input element (readonly)
+   * @type {HTMLInputElement}
+   * */
+  export let inputElement: HTMLInputElement | null = null;
+
+  let value = "";
+  export let required = false;
+
+  let invalid = forceInvalid;
+  // const helper = false;
+  let eMsg = "";
+  let wrapperElement: HTMLElement;
+
+  const isInsideContext = hasContext("FormContext");
+  const { setFieldValue, addFieldToContext, removeFieldFromContext } = isInsideContext && getContext<TFormContext>("FormContext");
+
+  function checkStatus(answer: undefined | string | boolean) {
+    if (answer === true || answer === undefined) {
+      isValid = true;
+      invalid = !isValid;
+    } else if (answer === false) {
+      isValid = false;
+      invalid = !isValid;
+      eMsg = errorMsg;
+    } else if (typeof answer === "string") {
+      isValid = false;
+      invalid = !isValid;
+      eMsg = answer;
+    }
+  }
+
+  function validation() {
+    if (forceInvalid) {
+      isValid = false;
+      invalid = !isValid;
+      eMsg = errorMsg;
+    } else if (required && !value) {
+      isValid = false;
+      invalid = !isValid;
+      eMsg = "Este campo é obrigatorio";
+    } else {
+      checkStatus(validationFn(value));
+    }
+  }
+
+  function setValue(ev: HTMLInputElement) {
+    inputElement = ev;
+    const x = ev.value;
+    value = x;
+  }
+
+  $: if (forceInvalid) validation();
+
+  // run only after mounted, because setFieldValue, must become after addFieldToContext
+  $: if (inputElement && isInsideContext) {
+    setFieldValue(name, value, isValid);
+  }
+
+  onMount(() => {
+    if (isInsideContext) {
+      addFieldToContext(
+        name,
+        value,
+        isValid,
+        required,
+        wrapperElement,
+        validation,
+      );
+    }
+  });
+
+  onDestroy(() => {
+    if (isInsideContext) {
+      removeFieldFromContext(name);
+    }
+  });
 </script>
 
 <div class="radio-item">
@@ -42,12 +135,11 @@
     type="radio"
     {name}
     {id}
-    {value}
     class="radio-input radio-style-type-{radioStyleType}"
     {checked}
     bind:this={inputElement}
     on:click={() => {
-      dispatch("checkItem", inputElement);
+      setValue(inputElement);
     }}
   />
 

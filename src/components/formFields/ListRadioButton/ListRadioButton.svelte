@@ -1,8 +1,4 @@
 <script lang="ts">
-  import {
-    onMount, getContext, hasContext, onDestroy,
-} from "svelte";
-  import type { TFormContext } from "../../Form/types";
   import RadioButton from "./RadioButton/RadioButton.svelte";
 
   type TRadioProps = {
@@ -23,7 +19,7 @@
    * The radioStyleType property for this element
    * @type {string}
    */
-  export let radioStyleType: TRadioStyleType;
+  export let radioStyleType: TRadioStyleType = "not-filled";
 
   /**
    * All possible options that can be selected
@@ -61,10 +57,6 @@
   let invalid = forceInvalid;
   // const helper = false;
   let eMsg = "";
-  let wrapperElement: HTMLElement;
-
-  const isInsideContext = hasContext("FormContext");
-  const { setFieldValue, addFieldToContext, removeFieldFromContext } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function checkStatus(answer: undefined | string | boolean) {
     if (answer === true || answer === undefined) {
@@ -102,30 +94,6 @@
   }
 
   $: if (forceInvalid) validation();
-
-  // run only after mounted, because setFieldValue, must become after addFieldToContext
-  $: if (inputElement && isInsideContext) {
-    setFieldValue(name, value, isValid);
-  }
-
-  onMount(() => {
-    if (isInsideContext) {
-      addFieldToContext(
-        name,
-        value,
-        isValid,
-        required,
-        wrapperElement,
-        validation,
-      );
-    }
-  });
-
-  onDestroy(() => {
-    if (isInsideContext) {
-      removeFieldFromContext(name);
-    }
-  });
 </script>
 
 <span class="radio-title">{listName}</span>
