@@ -16,9 +16,9 @@
    * The name text for this element
    * @type {string}
    */
-  export let name: string;
+  export let name = "radio-item";
 
-  export let id = "radioId";
+  export let id = name;
 
   /**
    * The radioStyleType text for this element
