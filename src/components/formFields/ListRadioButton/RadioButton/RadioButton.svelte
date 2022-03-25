@@ -10,7 +10,7 @@
    * The label text for this element
    * @type {string}
    */
-  export let label: string;
+  export let label = "";
 
   /**
    * The name text for this element
