@@ -21,7 +21,7 @@
   export let listName: string;
   /**
    * The radioStyleType property for this element
-   * @type {TRadioStyleType}
+   * @type {string}
    */
   export let radioStyleType: TRadioStyleType;
 

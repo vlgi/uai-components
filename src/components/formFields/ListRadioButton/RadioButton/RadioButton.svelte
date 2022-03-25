@@ -19,12 +19,12 @@
 
   /**
    * The Value text for this element
-   * @type {unknown}
+   * @type {string}
    */
   export let value: unknown;
   /**
    * The radioStyleType property for this element
-   * @type {TRadioStyleType}
+   * @type {string}
    */
   export let radioStyleType: TRadioStyleType = "not-filled";
   /**
