@@ -3,6 +3,7 @@
   import Textarea from "../formFields/Textarea/Textarea.svelte";
   import Select from "../formFields/Select/Select.svelte";
   import Button from "../formFields/Button/Button.svelte";
+  import ListCheckbox from "../formFields/ListCheckbox/ListCheckbox.svelte";
   import Form from "./Form.svelte";
 
   export let values: Record<string, unknown>;
@@ -18,7 +19,22 @@
     { text: "Beijinho" },
   ];
 
-  function validateEmail(value: string): string|boolean {
+  const checkboxItems = [
+    {
+      value: "strawberry",
+      label: "Morango",
+    },
+    {
+      value: "chocolate",
+      label: "Chocolate",
+    },
+    {
+      value: "carrot",
+      label: "Cenoura",
+    },
+  ];
+
+  function validateEmail(value: string): string | boolean {
     if (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(value)) return true;
     return "Type a valid e-mail.";
   }
@@ -79,6 +95,13 @@
       multiple={true}
       min={2}
       options={simpleDessertsOptions}
+      required={true}
+    />
+    <ListCheckbox
+      name="which-cake"
+      {checkboxItems}
+      listName="Qual bolo você prefere?"
+      checkboxStyleType="notFilled"
       required={true}
     />
     <Button type="submit">Submit</Button>
