@@ -29,7 +29,7 @@
    * All possible options that can be selected
    * @type {array}
    */
-  export let checkboxOptions: TCheckboxProps[] = [];
+  export let checkboxItems: TCheckboxProps[] = [];
 
   /** Enter a message in case it is invalid */
   export let errorMsg = "";
@@ -139,7 +139,7 @@
 <div class="list-checkbox-box">
   <span class="checkbox-title" class:invalid>{listName}</span>
   <ul class="list-checkbox" class:invalid>
-    {#each checkboxOptions as checkbox, i}
+    {#each checkboxItems as checkbox, i}
       <li>
         <Checkbox
           {name}

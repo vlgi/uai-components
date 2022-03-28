@@ -15,67 +15,67 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
-const checkboxOptions = [
+const checkboxItems = [
   {
-    value: "firstOption",
-    label: "Opção 1",
+    value: "firstItem",
+    label: "Item 1",
   },
   {
-    value: "secondOption",
-    label: "Opção 2",
+    value: "secondItem",
+    label: "Item 2",
   },
   {
-    value: "thirdOption",
-    label: "Opção 3",
+    value: "thirdItem",
+    label: "Item 3",
   },
 ];
 
-const checkboxOptionsChecked = [
+const checkboxItemsChecked = [
   {
-    value: "firstOption",
-    label: "Opção 1",
+    value: "firstItem",
+    label: "Item 1",
   },
   {
-    value: "secondOption",
-    label: "Opção 2",
+    value: "secondItem",
+    label: "Item 2",
     checked: true,
   },
   {
-    value: "thirdOption",
-    label: "Opção 3",
+    value: "thirdItem",
+    label: "Item 3",
   },
 ];
 
 export const Default = Template({
-  name: "optionList",
-  listName: "Escolha uma opção",
-  checkboxOptions,
+  name: "checklist",
+  listName: "Lista de Afazeres",
+  checkboxItems,
 });
 
 export const DefaultChecked = Template({
-  name: "optionList",
-  listName: "Escolha uma opção",
-  checkboxOptions: checkboxOptionsChecked,
+  name: "checklist",
+  listName: "Lista de Afazeres",
+  checkboxItems: checkboxItemsChecked,
 });
 
 export const FilledCheckbox = Template({
-  name: "optionList",
-  listName: "Escolha uma opção",
-  checkboxOptions,
+  name: "checklist",
+  listName: "Lista de Afazeres",
+  checkboxItems,
   checkboxStyleType: "filled",
 });
 
 export const forceInvalid = Template({
-  name: "optionList",
-  listName: "Escolha uma opção",
-  checkboxOptions,
+  name: "checklist",
+  listName: "Lista de Afazeres",
+  checkboxItems,
   forceInvalid: true,
 });
 
 export const CustomExample: any = Template({
-  name: "optionList",
-  listName: "Escolha uma opção",
-  checkboxOptions,
+  name: "checklist",
+  listName: "Lista de Afazeres",
+  checkboxItems,
   checkboxStyleType: "notFilled",
   style: "--szot-checkbox-margin: 3px 2px 0px; --szot-checkbox-size:18px; --szot-checkbox-color: #555; --szot-checkbox-label: #555;",
 });
@@ -87,18 +87,18 @@ CustomExample.parameters = {
     <script lang="ts">
       import ListCheckbox from "./ListCheckbox.svelte";
 
-      const checkboxOptions = [
+      const checkboxItems = [
         {
-          value: "firstOption",
-          label: "Opção 1",
+          value: "firstItem",
+          label: "Item 1",
         },
         {
-          value: "secondOption",
-          label: "Opção 2",
+          value: "secondItem",
+          label: "Item 2",
         },
         {
-          value: "thirdOption",
-          label: "Opção 3",
+          value: "thirdItem",
+          label: "Item 3",
         },
       ];
     </script>
@@ -109,9 +109,9 @@ CustomExample.parameters = {
     --szot-checkbox-label: #555;"
       >
       <ListCheckbox
-        name="optionList"
-        listName="Escolha uma opção"
-        {checkboxOptions}
+        name="checklist"
+        listName="Lista de Afazeres"
+        {checkboxItems}
         checkboxStyleType="notFilled"
       />
     </div>
