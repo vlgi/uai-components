@@ -166,12 +166,7 @@
       color: var(--radio-label-color);
     }
     .list-radio {
-      margin-top: 0.7rem;
       list-style: none;
-      li {
-        margin-bottom: 0.3rem;
-        margin-left: 0.2rem;
-      }
     }
     .invalid {
       --szot-radio-color: var(--theme-error);
