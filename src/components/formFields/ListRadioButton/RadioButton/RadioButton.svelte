@@ -29,24 +29,6 @@
    */
   export let radioStyleType: TRadioStyleType = "notFilled";
 
-  /** Enter a message in case it is invalid */
-  export let errorMsg = "";
-
-  /**
-   * The function that will be used for extra validation on this field.
-   * It is expected to return true/undefined if valid,
-   * or a string to show the error, or false to show the "errorMsg" props.
-   */
-  export let validationFn: (
-    value: string
-  )=> undefined | string | boolean = () => true;
-
-  /** if you want to force invalid, change it to true */
-  export let forceInvalid = false;
-
-  /** shows if the component is valid (readonly) */
-  export let isValid = true;
-
   /**
    * If received on props, defines if the radio is default checked.
    * @type {boolean}
@@ -62,42 +44,10 @@
   let value = "";
   export let required = false;
 
-  let invalid = forceInvalid;
-  // const helper = false;
-  let eMsg = "";
   let wrapperElement: HTMLElement;
 
   const isInsideContext = hasContext("FormContext");
   const { setFieldValue, addFieldToContext, removeFieldFromContext } = isInsideContext && getContext<TFormContext>("FormContext");
-
-  function checkStatus(answer: undefined | string | boolean) {
-    if (answer === true || answer === undefined) {
-      isValid = true;
-      invalid = !isValid;
-    } else if (answer === false) {
-      isValid = false;
-      invalid = !isValid;
-      eMsg = errorMsg;
-    } else if (typeof answer === "string") {
-      isValid = false;
-      invalid = !isValid;
-      eMsg = answer;
-    }
-  }
-
-  function validation() {
-    if (forceInvalid) {
-      isValid = false;
-      invalid = !isValid;
-      eMsg = errorMsg;
-    } else if (required && !value) {
-      isValid = false;
-      invalid = !isValid;
-      eMsg = "Este campo é obrigatorio";
-    } else {
-      checkStatus(validationFn(value));
-    }
-  }
 
   function setValue(ev: HTMLInputElement) {
     dispatch("checkItem", ev);
@@ -106,19 +56,18 @@
     value = x;
   }
 
-  $: if (forceInvalid) validation();
-
   // run only after mounted, because setFieldValue, must become after addFieldToContext
   $: if (inputElement && isInsideContext) {
-    setFieldValue(name, value, isValid);
+    setFieldValue(name, value, true);
   }
 
   onMount(() => {
     if (isInsideContext) {
+      let validation;
       addFieldToContext(
         name,
         value,
-        isValid,
+        true, // isValid Always True
         required,
         wrapperElement,
         validation,
