@@ -165,7 +165,10 @@
 <style lang="scss">
   @use "src/styles/mixins" as m;
   .list-checkbox-box {
-    --checkbox-label-color: var(--szot-checkbox-label, var(--theme-primary-txt));
+    --checkbox-label-color: var(
+      --szot-checkbox-label,
+      var(--theme-primary-txt)
+    );
     box-sizing: border-box;
 
     .checkbox-title {

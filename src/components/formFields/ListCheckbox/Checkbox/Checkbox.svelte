@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import {
     onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
+} from "svelte";
   import type { TFormContext } from "../../../Form/types";
 
   type TCheckboxStyleType = "filled" | "notFilled";
@@ -97,16 +97,21 @@
     }}
   />
 
-  <label for={id} class="checkbox-label">{label !== undefined ? label : ""}</label>
+  <label for={id} class="checkbox-label"
+    >{label !== undefined ? label : ""}</label
+  >
 </div>
 
 <style lang="scss">
-    .checkbox-item {
+  .checkbox-item {
     --checkbox-margin: var(--szot-checkbox-margin, 0);
     --checkbox-size: var(--szot-checkbox-size, 1rem);
     --border-color: var(--szot-border-color, var(--theme-primary-txt));
     --checkbox-color: var(--szot-checkbox-color, var(--border-color));
-    --checkbox-label-color: var(--szot-checkbox-label, var(--theme-primary-txt));
+    --checkbox-label-color: var(
+      --szot-checkbox-label,
+      var(--theme-primary-txt)
+    );
 
     display: inline-block;
     position: relative;
