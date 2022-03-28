@@ -100,7 +100,7 @@
     <ListCheckbox
       name="which-cake"
       {checkboxItems}
-      listName="Qual bolo você prefere?"
+      listName="Quais bolos você gosta?"
       checkboxStyleType="notFilled"
       required={true}
     />
