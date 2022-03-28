@@ -1,7 +1,7 @@
 <script lang="ts">
   import {
     onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
+} from "svelte";
   import RadioButton from "./RadioButton/RadioButton.svelte";
   import type { TFormContext } from "../../Form/types";
 
@@ -18,7 +18,7 @@
    * The listName property for this element
    * @type {string}
    */
-  export let listName: string;
+  export let listName = "";
   /**
    * The radioStyleType property for this element
    * @type {string}
@@ -132,52 +132,62 @@
   });
 </script>
 
-<span class="radio-title" class:invalid>{listName}</span>
-<ul class="list-radio" class:invalid>
-  {#each radioOptions as radio, i}
-    <li>
-      <RadioButton
-        {name}
-        {radioStyleType}
-        id="{name}-{i}"
-        bind:value={radio.value}
-        label={radio.label}
-        bind:checked={radio.checked}
-        on:checkItem={setChecked}
-        aria-required={required}
-        {required}
-      />
-    </li>
-  {/each}
-  <p class="error" class:error-show={!isValid}>
-    {eMsg}
-  </p>
-</ul>
+<div class="list-radio-box">
+  <span class="radio-title" class:invalid>{listName}</span>
+  <ul class="list-radio" class:invalid>
+    {#each radioOptions as radio, i}
+      <li>
+        <RadioButton
+          {name}
+          {radioStyleType}
+          id="{name}-{i}"
+          bind:value={radio.value}
+          label={radio.label}
+          bind:checked={radio.checked}
+          on:checkItem={setChecked}
+          aria-required={required}
+          {required}
+        />
+      </li>
+    {/each}
+    <p class="error" class:error-show={!isValid}>
+      {eMsg}
+    </p>
+  </ul>
+</div>
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
-  .list-radio {
-    margin-top: 0.7rem;
-    list-style: none;
-    li {
-      margin-bottom: 0.3rem;
-      margin-left: 0.2rem;
-    }
-  }
-  .invalid {
-    --szot-radio-color: var(--theme-error);
-    --szot-radio-label: var(--theme-error);
-    color: var(--theme-error);
-  }
+  .list-radio-box {
+    --radio-label-color: var(--szot-radio-label, var(--theme-primary-txt));
+    box-sizing: border-box;
 
-  .error {
-    @include m.form-field-error-text();
-    display: none;
-    opacity: 0;
-    transition: opacity 0.2s linear, bottom 0.2s;
-  }
-  .error-show {
-    display: inherit;
-    @include m.form-field-error-text();
+    .radio-title {
+      color: var(--radio-label-color);
+    }
+    .list-radio {
+      margin-top: 0.7rem;
+      list-style: none;
+      li {
+        margin-bottom: 0.3rem;
+        margin-left: 0.2rem;
+      }
+    }
+    .invalid {
+      --szot-radio-color: var(--theme-error);
+      --szot-radio-label: var(--theme-error);
+      color: var(--theme-error);
+    }
+
+    .error {
+      @include m.form-field-error-text();
+      display: none;
+      opacity: 0;
+      transition: opacity 0.2s linear, bottom 0.2s;
+    }
+    .error-show {
+      display: inherit;
+      @include m.form-field-error-text();
+    }
   }
 </style>

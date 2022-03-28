@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import {
     onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
+} from "svelte";
   import type { TFormContext } from "../../../Form/types";
 
   type TRadioStyleType = "filled" | "not-filled";
@@ -155,9 +155,9 @@
   .radio-item {
     --radio-margin: var(--szot-radio-margin, 0);
     --radio-size: var(--szot-radio-size, 1rem);
-    --border-color: var(--szot-border-color, #5f5f5f);
+    --border-color: var(--szot-border-color, var(--theme-primary-txt));
     --radio-color: var(--szot-radio-color, var(--border-color));
-    --radio-label-color: var(--szot-radio-label, #5f5f5f);
+    --radio-label-color: var(--szot-radio-label, var(--theme-primary-txt));
 
     display: inline-block;
     position: relative;
