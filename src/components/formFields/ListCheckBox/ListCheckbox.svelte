@@ -57,6 +57,7 @@
 
   export let value = [];
   export let required = false;
+  export let min = 1;
 
   let invalid = forceInvalid;
   // const helper = false;
@@ -85,10 +86,8 @@
     isValid = true;
     if (forceInvalid) {
       isValid = false;
-      eMsg = "Valor inválido";
     } else if (required) {
-      isValid = value !== [] && value !== null && value !== undefined;
-      eMsg = "Selecione uma opção";
+      isValid = Array.isArray(value) && value.length >= min;
     } else {
       checkStatus(validationFn(value));
     }
@@ -117,12 +116,11 @@
 
   onMount(() => {
     if (isInsideContext) {
-      const isRequired = required;
       addFieldToContext(
         name,
         value,
         isValid,
-        isRequired,
+        required,
         wrapperElement,
         validation,
       );
@@ -155,7 +153,11 @@
       </li>
     {/each}
     <p class="error" class:error-show={!isValid}>
-      {eMsg}
+      {#if required}
+        É necessário selecionar {min} {min <= 1 ? "valor" : "valores"}.
+      {:else}
+        Valor inválido.
+      {/if}
     </p>
   </ul>
 </div>
