@@ -110,7 +110,7 @@
 
     display: inline-block;
     position: relative;
-    padding: 0 0.375rem;
+    padding: 0 0.375em;
     margin: var(--radio-margin);
 
     .radio-input {
@@ -126,22 +126,22 @@
       content: " ";
       display: inline-block;
       position: relative;
-      top: 0.1875rem;
-      margin: 0 0.3125rem 0 0;
+      top: 0.1875em;
+      margin: 0 0.3125em 0 0;
       width: var(--radio-size);
       height: var(--radio-size);
       border-radius: calc(var(--radio-size) / 2);
-      border: 0.125rem solid var(--radio-color);
+      border: 0.125em solid var(--radio-color);
       background-color: transparent;
     }
 
     .radio-input:checked + .radio-label:after {
-      width: calc(var(--radio-size) - 0.5rem);
-      height: calc(var(--radio-size) - 0.5rem);
+      width: calc(var(--radio-size) - 0.5em);
+      height: calc(var(--radio-size) - 0.5em);
       border-radius: calc(var(--radio-size) / 2);
       position: absolute;
-      top: 0.4375rem;
-      left: 0.625rem;
+      top: 0.4375em;
+      left: 0.625em;
       content: " ";
       display: block;
       background: var(--radio-color);
