@@ -55,7 +55,7 @@
    * */
   export let inputElement: HTMLInputElement | null = null;
 
-  let value = "";
+  export let value = "";
   export let required = false;
 
   let invalid = forceInvalid;
