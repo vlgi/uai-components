@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import {
     onMount, getContext, hasContext, onDestroy,
-} from "svelte";
+  } from "svelte";
   import type { TFormContext } from "../../../Form/types";
 
   type TRadioStyleType = "filled" | "notFilled";
@@ -19,7 +19,7 @@
    * The name for the radio element
    * @type {string}
    */
-  export let name = "radio-item";
+  export let name: string;
 
   export let id = name;
 
