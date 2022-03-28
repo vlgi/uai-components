@@ -34,6 +34,7 @@ const checkboxItemsChecked = [
   {
     value: "firstItem",
     label: "Item 1",
+    checked: true,
   },
   {
     value: "secondItem",
@@ -43,6 +44,7 @@ const checkboxItemsChecked = [
   {
     value: "thirdItem",
     label: "Item 3",
+    checked: true,
   },
 ];
 
