@@ -85,7 +85,7 @@
     isValid = true;
     if (forceInvalid) {
       isValid = false;
-      eMsg = errorMsg;
+      eMsg = "Valor inválido";
     } else if (required) {
       isValid = value !== "" && value !== null && value !== undefined;
       eMsg = "Selecione uma opção";
@@ -97,11 +97,10 @@
 
   function setChecked(ev: CustomEvent) {
     eMsg = "";
-    isValid = true;
-    invalid = !isValid;
     inputElement = ev.detail as HTMLInputElement;
     const x = (ev.detail as HTMLInputElement).value;
     value = x;
+    validation();
   }
 
   $: if (forceInvalid) validation();

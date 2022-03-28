@@ -65,6 +65,13 @@ export const FilledRadios = Template({
   radioStyleType: "filled",
 });
 
+export const forceInvalid = Template({
+  name: "optionList",
+  listName: "Escolha uma opção",
+  radioOptions,
+  forceInvalid: true,
+});
+
 export const CustomExample: any = Template({
   name: "optionList",
   listName: "Escolha uma opção",
