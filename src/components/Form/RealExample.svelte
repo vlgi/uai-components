@@ -110,6 +110,7 @@
       {radioOptions}
       listName="Qual bolo você prefere?"
       radioStyleType="not-filled"
+      required={true}
     />
     <Button type="submit">Submit</Button>
   </Form>

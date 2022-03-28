@@ -1,10 +1,13 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
   import {
     onMount, getContext, hasContext, onDestroy,
-} from "svelte";
+  } from "svelte";
   import type { TFormContext } from "../../../Form/types";
 
   type TRadioStyleType = "filled" | "not-filled";
+
+  const dispatch = createEventDispatcher();
 
   /**
    * The label text for this element
@@ -97,6 +100,7 @@
   }
 
   function setValue(ev: HTMLInputElement) {
+    dispatch("checkItem", ev);
     inputElement = ev;
     const x = ev.value;
     value = x;
@@ -120,6 +124,7 @@
         validation,
       );
     }
+    if (checked) setValue(inputElement);
   });
 
   onDestroy(() => {
