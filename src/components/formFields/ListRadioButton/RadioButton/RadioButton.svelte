@@ -5,7 +5,7 @@
 } from "svelte";
   import type { TFormContext } from "../../../Form/types";
 
-  type TRadioStyleType = "filled" | "not-filled";
+  type TRadioStyleType = "filled" | "notFilled";
 
   const dispatch = createEventDispatcher();
 
@@ -27,7 +27,7 @@
    * The radioStyleType text for this element
    * @type {string}
    */
-  export let radioStyleType: TRadioStyleType = "not-filled";
+  export let radioStyleType: TRadioStyleType = "notFilled";
 
   /** Enter a message in case it is invalid */
   export let errorMsg = "";

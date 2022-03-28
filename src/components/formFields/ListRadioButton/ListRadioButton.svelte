@@ -11,7 +11,7 @@
     checked?: boolean;
   };
 
-  type TRadioStyleType = "filled" | "not-filled";
+  type TRadioStyleType = "filled" | "notFilled";
 
   export let name = "radio-list";
   /**
@@ -23,7 +23,7 @@
    * The radioStyleType property for this element
    * @type {string}
    */
-  export let radioStyleType: TRadioStyleType = "not-filled";
+  export let radioStyleType: TRadioStyleType = "notFilled";
 
   /**
    * All possible options that can be selected

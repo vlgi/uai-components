@@ -76,7 +76,7 @@ export const CustomExample: any = Template({
   name: "optionList",
   listName: "Escolha uma opção",
   radioOptions,
-  radioStyleType: "not-filled",
+  radioStyleType: "notFilled",
   style: "--szot-radio-margin: 3px 2px 0px; --szot-radio-size:18px; --szot-radio-color: #555; --szot-radio-label: #555;",
 });
 CustomExample.parameters = {
@@ -112,7 +112,7 @@ CustomExample.parameters = {
         name="optionList"
         listName="Escolha uma opção"
         {radioOptions}
-        radioStyleType="not-filled"
+        radioStyleType="notFilled"
       />
     </div>
     `,
