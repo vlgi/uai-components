@@ -16,7 +16,7 @@
   export let label = "";
 
   /**
-   * The name text for this element
+   * The name for the radio element
    * @type {string}
    */
   export let name = "radio-item";
@@ -33,13 +33,13 @@
   export let errorMsg = "";
 
   /**
-   * Pass the function to validation.
-   * Return true/undefined if valid,
+   * The function that will be used for extra validation on this field.
+   * It is expected to return true/undefined if valid,
    * or a string to show the error, or false to show the "errorMsg" props.
    */
   export let validationFn: (
     value: string
-  ) => undefined | string | boolean = () => true; //eslint-disable-line
+  )=> undefined | string | boolean = () => true;
 
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
@@ -48,7 +48,7 @@
   export let isValid = true;
 
   /**
-   * The checked property for this element
+   * If received on props, defines if the radio is default checked.
    * @type {boolean}
    */
   export let checked = false;
