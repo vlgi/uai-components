@@ -41,7 +41,7 @@
    * */
   export let inputElement: HTMLInputElement | null = null;
 
-  let value = "";
+  export let value: unknown = name;
   export let required = false;
 
   let wrapperElement: HTMLElement;
@@ -57,7 +57,7 @@
   }
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
-  $: if (inputElement && isInsideContext) {
+  $: if (inputElement && isInsideContext && checked) {
     setFieldValue(name, value, true);
   }
 
@@ -89,6 +89,7 @@
     type="checkbox"
     {name}
     {id}
+    bind:value
     class="checkbox-input checkbox-style-type-{checkboxStyleType}"
     {checked}
     bind:this={inputElement}
