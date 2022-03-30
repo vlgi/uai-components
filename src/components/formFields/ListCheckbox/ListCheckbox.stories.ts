@@ -60,13 +60,6 @@ export const DefaultChecked = Template({
   checkboxItems: checkboxItemsChecked,
 });
 
-export const FilledCheckbox = Template({
-  name: "checklist",
-  listName: "Lista de Afazeres",
-  checkboxItems,
-  checkboxStyleType: "filled",
-});
-
 export const forceInvalid = Template({
   name: "checklist",
   listName: "Lista de Afazeres",
@@ -78,7 +71,6 @@ export const CustomExample: any = Template({
   name: "checklist",
   listName: "Lista de Afazeres",
   checkboxItems,
-  checkboxStyleType: "notFilled",
   style: "--szot-checkbox-margin: 3px 2px 0px; --szot-checkbox-size:18px; --szot-checkbox-color: #555; --szot-checkbox-label: #555;",
 });
 CustomExample.parameters = {
@@ -114,7 +106,6 @@ CustomExample.parameters = {
         name="checklist"
         listName="Lista de Afazeres"
         {checkboxItems}
-        checkboxStyleType="notFilled"
       />
     </div>
     `,

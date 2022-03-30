@@ -101,7 +101,6 @@
       name="which-cake"
       {checkboxItems}
       listName="Quais bolos você gosta?"
-      checkboxStyleType="notFilled"
       required={true}
     />
     <Button type="submit">Submit</Button>

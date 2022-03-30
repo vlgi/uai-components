@@ -8,7 +8,6 @@
   export let isValid;
   export let forceInvalid;
   export let listName;
-  export let checkboxStyleType;
   export let style;
 </script>
 
@@ -20,7 +19,6 @@
     {name}
     {required}
     {forceInvalid}
-    {checkboxStyleType}
     on:input
     on:change
     bind:isValid

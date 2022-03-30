@@ -21,10 +21,6 @@ export const DefaultChecked = Template({
   checked: true,
 });
 
-export const Filled = Template({
-  checkboxStyleType: "filled",
-});
-
 export const Labeled = Template({
   label: "Item",
 });

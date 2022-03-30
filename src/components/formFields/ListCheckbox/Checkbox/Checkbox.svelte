@@ -5,7 +5,6 @@
 } from "svelte";
   import type { TFormContext } from "../../../Form/types";
 
-  type TCheckboxStyleType = "filled" | "notFilled";
 
   const dispatch = createEventDispatcher();
 
@@ -23,11 +22,6 @@
 
   export let id = name;
 
-  /**
-   * The checkboxStyleType text for this element
-   * @type {string}
-   */
-  export let checkboxStyleType: TCheckboxStyleType = "notFilled";
 
   /**
    * If received on props, defines if the checkbox is default checked.
@@ -90,7 +84,7 @@
     {name}
     {id}
     bind:value
-    class="checkbox-input checkbox-style-type-{checkboxStyleType}"
+    class="checkbox-input"
     {checked}
     bind:this={inputElement}
     on:click={() => {
@@ -105,8 +99,9 @@
 
 <style lang="scss">
   .checkbox-item {
-    --checkbox-margin: var(--szot-checkbox-margin, 0);
+    --checkbox-margin: var(--szot-checkbox-margin, 0.3125rem);
     --checkbox-size: var(--szot-checkbox-size, 1rem);
+    --border-size: var(--szot-border-size, 0.15em);
     --border-color: var(--szot-border-color, var(--theme-primary-txt));
     --checkbox-color: var(--szot-checkbox-color, var(--border-color));
     --checkbox-label-color: var(
@@ -114,45 +109,47 @@
       var(--theme-primary-txt)
     );
 
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
     position: relative;
     padding: 0 0.375em;
     margin: var(--checkbox-margin);
 
     .checkbox-input {
-      display: none;
+      /* Remove most all native input styles */
+      appearance: none;
+      margin-right: 20px;
+
+      color: var(--checkbox-color);
+      width: var(--checkbox-size);
+      height: var(--checkbox-size);
+      border: var(--border-size) solid var(--checkbox-color);
+      border-radius: var(--border-size);
+      transform: translateY(-0.075em);
+
+      display: grid;
+      place-content: center;
+    }
+
+    .checkbox-input::before {
+      content: "";
+      width: calc(var(--checkbox-size) - 0.5em);
+      height: calc(var(--checkbox-size) - 0.5em);
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      transform: scale(0);
+      transform-origin: bottom left;
+      transition: 120ms transform ease-in-out;
+      background-color: var(--checkbox-color);
+    }
+
+    .checkbox-input:checked::before {
+      transform: scale(1);
     }
 
     .checkbox-label {
       color: var(--checkbox-label-color);
       font-weight: normal;
-    }
-
-    .checkbox-label:before {
-      content: " ";
-      display: inline-block;
-      position: relative;
-      top: 0.1875em;
-      margin: 0 0.3125em 0 0;
-      width: var(--checkbox-size);
-      height: var(--checkbox-size);
-      border: 0.125em solid var(--checkbox-color);
-      background-color: transparent;
-    }
-
-    .checkbox-input:checked + .checkbox-label:after {
-      width: calc(var(--checkbox-size) - 0.5em);
-      height: calc(var(--checkbox-size) - 0.5em);
-      position: absolute;
-      top: 0.4375em;
-      left: 0.625em;
-      content: " ";
-      display: block;
-      background: var(--checkbox-color);
-    }
-
-    .checkbox-style-type-filled:checked + .checkbox-label:before {
-      background-color: var(--checkbox-color);
     }
   }
 </style>

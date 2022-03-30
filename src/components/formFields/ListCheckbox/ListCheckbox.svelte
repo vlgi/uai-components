@@ -11,19 +11,12 @@
     checked?: boolean;
   };
 
-  type TCheckboxStyleType = "filled" | "notFilled";
-
   export let name = "checkbox-list";
   /**
    * The listName property for this element
    * @type {string}
    */
   export let listName = "";
-  /**
-   * The checkboxStyleType property for this element
-   * @type {string}
-   */
-  export let checkboxStyleType: TCheckboxStyleType = "notFilled";
 
   /**
    * All possible options that can be selected
@@ -141,7 +134,6 @@
       <li>
         <Checkbox
           {name}
-          {checkboxStyleType}
           id="{name}-{i}"
           bind:value={checkbox.value}
           label={checkbox.label}
