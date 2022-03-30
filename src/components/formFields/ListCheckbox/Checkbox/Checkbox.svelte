@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import {
     onMount, getContext, hasContext, onDestroy,
-} from "svelte";
+  } from "svelte";
   import type { TFormContext } from "../../../Form/types";
 
 
@@ -41,7 +41,9 @@
   let wrapperElement: HTMLElement;
 
   const isInsideContext = hasContext("FormContext");
-  const { setFieldValue, addFieldToContext, removeFieldFromContext } = isInsideContext && getContext<TFormContext>("FormContext");
+  const {
+    setFieldValue, addFieldToContext, removeFieldFromContext,
+  } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function setValue(ev: HTMLInputElement) {
     dispatch("checkItem", ev);
