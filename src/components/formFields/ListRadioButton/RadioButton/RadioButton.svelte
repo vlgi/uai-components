@@ -47,7 +47,9 @@
   let wrapperElement: HTMLElement;
 
   const isInsideContext = hasContext("FormContext");
-  const { setFieldValue, addFieldToContext, removeFieldFromContext } = isInsideContext && getContext<TFormContext>("FormContext");
+  const {
+    setFieldValue, addFieldToContext, removeFieldFromContext,
+  } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function setValue(ev: HTMLInputElement) {
     dispatch("checkItem", ev);
