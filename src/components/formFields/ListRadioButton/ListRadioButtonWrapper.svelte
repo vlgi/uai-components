@@ -1,15 +1,52 @@
 <script lang="ts">
   import ListRadioButton from "./ListRadioButton.svelte";
 
-  export let radioOptions;
-  export let name;
-  export let value;
-  export let required;
-  export let isValid;
-  export let forceInvalid;
-  export let listName;
-  export let radioStyleType;
-  export let style;
+  type TRadioProps = {
+    value: unknown;
+    label?: string;
+    checked?: boolean;
+  };
+  /**
+   * All possible options that can be selected
+   * @type {array}
+   */
+  export let radioOptions: TRadioProps[];
+  /**
+   * The name property for this element
+   * @type {string}
+   */
+  export let name: string;
+  /**
+   * The required validation for this element
+   * @type {boolean}
+   */
+  export let required: boolean;
+  /**
+   * Makes this element always invalid
+   * @type {boolean}
+   */
+  export let forceInvalid: boolean;
+  /**
+   * The listName property for this element
+   * @type {string}
+   */
+  export let listName: string;
+  /**
+   * The style types for this element
+   * @type {string}
+   */
+  export let radioStyleType: "filled" | "notFilled";
+
+  /**
+   * Set own styles for test
+   * @type {string}
+   */
+  export let style: string;
+  /**
+   * Value displayed on "checked"
+   * @type {string}
+   */
+  export let value: string;
 </script>
 
 <div {style}>
@@ -23,7 +60,6 @@
   {radioStyleType}
   on:input
   on:change
-  bind:isValid
   bind:value
   />
 </div>
