@@ -75,6 +75,7 @@
     setFieldValue,
     addFieldToContext,
     removeFieldFromContext,
+    fireSubmit,
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function focused() {
@@ -124,6 +125,13 @@
     value = x;
   }
 
+  function submitOnEnter(ev: KeyboardEvent) {
+    if (ev.key === "Enter") {
+      // eslint-disable-next-line no-void
+      void fireSubmit();
+    }
+  }
+
   $: if (forceInvalid) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
@@ -150,6 +158,7 @@
   class:icons-right={iconPosition === "right" && icon}
   class:invalid
   bind:this={wrapperElement}
+  on:keypress={submitOnEnter}
 >
   <input
     on:focus={focused}
