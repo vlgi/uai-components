@@ -1,5 +1,6 @@
 <script lang="ts">
   import Input from "../formFields/Input/Input.svelte";
+  import CleaveInput from "../formFields/CleaveInput/CleaveInput.svelte";
   import Textarea from "../formFields/Textarea/Textarea.svelte";
   import Select from "../formFields/Select/Select.svelte";
   import Button from "../formFields/Button/Button.svelte";
@@ -76,6 +77,15 @@
       type="password"
       validationFn={validatePassword}
       required={true}
+    />
+    <CleaveInput
+      label="age"
+      name="age"
+      cleaveOptions={{
+        numeral: true,
+        numericOnly: true,
+        numeralThousandsGroupStyle: "none",
+      }}
     />
     <Textarea
       label="Notes"
