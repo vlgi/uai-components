@@ -89,8 +89,9 @@
   // run only after mounted, because setFieldValue, must become after addFieldToContext
   $: if (wrapperElement && isInsideContext) {
     setFieldValue(name, value, isValid);
-    if (value) validation();
   }
+
+  $: if (value) validation();
 
   onMount(() => {
     if (isInsideContext) {
