@@ -1,5 +1,6 @@
 import type { ArgType } from "@storybook/addons";
-import ListCheckbox from "./ListCheckboxWrapper.svelte";
+import ListCheckboxWrapper from "./ListCheckboxWrapper.svelte";
+import ListCheckbox from "./ListCheckbox.svelte";
 
 export default {
   title: "Components/FormFields/ListCheckbox",
@@ -8,7 +9,7 @@ export default {
 
 const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
-    Component: ListCheckbox,
+    Component: ListCheckboxWrapper,
     props,
   });
   ret.args = _args;
