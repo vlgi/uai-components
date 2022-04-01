@@ -23,16 +23,22 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
-export const Default = Template({});
-
-export const DefaultChecked = Template({
-  checked: true,
+export const Default = Template({
+  name: "default",
+  value: "default",
+  group: "",
 });
 
 export const Filled = Template({
   radioStyleType: "filled",
+  name: "filled",
+  value: "filled",
+  group: "filled",
 });
 
 export const Labeled = Template({
   label: "Item",
+  name: "labeled",
+  value: "labeled",
+  group: "labeled",
 });

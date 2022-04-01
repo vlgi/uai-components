@@ -1,10 +1,4 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
-  import {
-    onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
-  import type { TFormContext } from "../../../Form/types";
-
   type TRadioStyleType = "filled" | "notFilled";
 
   /**
@@ -31,72 +25,26 @@
    */
   export let radioStyleType: TRadioStyleType = "notFilled";
 
-  /**
-   * If received on props, defines if the radio is default checked.
-   * @type {boolean}
-   */
-  export let checked = false;
+  export let value: string;
+
+  export let group: string;
 
   /**
    * The input element (readonly)
    * @type {HTMLInputElement}
    * */
   export let inputElement: HTMLInputElement | null = null;
-
-  let value = "";
-  let wrapperElement: HTMLElement;
-  const dispatch = createEventDispatcher();
-
-  const isInsideContext = hasContext("FormContext");
-  const {
-    setFieldValue, addFieldToContext, removeFieldFromContext,
-  } = isInsideContext && getContext<TFormContext>("FormContext");
-
-  function setValue(ev: HTMLInputElement) {
-    dispatch("checkItem", ev);
-    inputElement = ev;
-    const x = ev.value;
-    value = x;
-  }
-
-  // run only after mounted, because setFieldValue, must become after addFieldToContext
-  $: if (inputElement && isInsideContext) {
-    setFieldValue(name, value, true);
-  }
-
-  onMount(() => {
-    if (isInsideContext) {
-      addFieldToContext(
-        name,
-        value,
-        true, // isValid Always True
-        false,
-        wrapperElement,
-        () => true,
-      );
-    }
-    if (checked) setValue(inputElement);
-  });
-
-  onDestroy(() => {
-    if (isInsideContext) {
-      removeFieldFromContext(name);
-    }
-  });
 </script>
 
 <div class="radio-item">
   <input
-    {...$$restProps}
     type="radio"
     {name}
     {id}
+    {value}
+    bind:group
     class="radio-input radio-style-type-{radioStyleType}"
-    {checked}
     bind:this={inputElement}
-    on:click={() => {
-      setValue(inputElement);
-    }}
   />
 
   <label for={id} class="radio-label">{label !== undefined ? label : ""}</label>
