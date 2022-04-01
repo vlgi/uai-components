@@ -110,13 +110,11 @@
       required={true}
     />
     <ListCheckbox
-      name="which-cake"
+      name="liked-cakes"
       {checkboxItems}
       listName="Quais bolos você gosta?"
       required={true}
-      max={2}
     />
-
     <Checkbox
       name="sold-your-soul"
       label="Declaro que li e concordo com os termos de uso"
