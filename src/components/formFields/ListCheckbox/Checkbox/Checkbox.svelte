@@ -58,8 +58,8 @@
     }
   }
 
-  function setValue(ev: HTMLInputElement) {
-    dispatch("checkItem", ev);
+  function setValue(el: HTMLInputElement) {
+    dispatch("checkItem", el);
   }
 
   $: if (checked) validation();
@@ -74,7 +74,7 @@
       addFieldToContext(
         name,
         checked === true ? value : false,
-        true, // isValid Always True
+        isValid,
         required,
         wrapperElement,
         validation,
