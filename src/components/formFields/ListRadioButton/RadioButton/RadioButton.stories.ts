@@ -4,6 +4,14 @@ import RadioButton from "./RadioButton.svelte";
 export default {
   title: "Components/FormFields/RadioButton",
   component: RadioButton,
+  argTypes: {
+    radioStyleType: {
+      control: {
+        type: "select",
+        options: ["filled", "notFilled"],
+      },
+    },
+  },
 };
 
 const Template = (_args: ArgType) => {
