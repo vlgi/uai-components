@@ -6,9 +6,8 @@
   import type { TFormContext } from "../../Form/types";
 
   type TRadioProps = {
-    value: unknown;
+    value: string;
     label?: string;
-    checked?: boolean;
   };
 
   type TRadioStyleType = "filled" | "notFilled";
@@ -97,14 +96,6 @@
     invalid = !isValid;
   }
 
-  function setChecked(ev: CustomEvent) {
-    eMsg = "";
-    inputElement = ev.detail as HTMLInputElement;
-    const x = (ev.detail as HTMLInputElement).value;
-    value = x;
-    validation();
-  }
-
   $: if (forceInvalid) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
@@ -142,12 +133,9 @@
           {name}
           {radioStyleType}
           id="{name}-{i}"
-          bind:value={radio.value}
+          bind:group={value}
+          value={radio.value}
           label={radio.label}
-          bind:checked={radio.checked}
-          on:checkItem={setChecked}
-          aria-required={required}
-          {required}
         />
       </li>
     {/each}
