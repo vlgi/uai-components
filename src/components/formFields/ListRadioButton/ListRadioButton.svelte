@@ -89,6 +89,7 @@
   // run only after mounted, because setFieldValue, must become after addFieldToContext
   $: if (wrapperElement && isInsideContext) {
     setFieldValue(name, value, isValid);
+    if (value) validation();
   }
 
   onMount(() => {
@@ -111,7 +112,7 @@
   });
 </script>
 
-<div class="list-radio-box">
+<div class="list-radio-box" bind:this={wrapperElement}>
   <span class="radio-title" class:invalid={!isValid}>{listName}</span>
   <ul class="list-radio" class:invalid={!isValid}>
     {#each radioOptions as radio, i}
