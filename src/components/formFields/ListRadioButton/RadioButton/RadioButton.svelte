@@ -47,7 +47,15 @@
     bind:this={inputElement}
   />
 
-  <label for={id} class="radio-label">{label !== undefined ? label : ""}</label>
+  <label for={id} class="radio-label">
+    <div class="radio-button">
+      <div class="radio-button-inner"></div>
+    </div>
+
+    <span>
+      {label !== undefined ? label : ""}
+    </span>
+  </label>
 </div>
 
 <style lang="scss">
@@ -59,7 +67,6 @@
     --radio-label-color: var(--szot-radio-label, var(--theme-primary-txt));
 
     display: inline-block;
-    position: relative;
     padding: 0 0.375em;
     margin: var(--radio-margin);
 
@@ -70,13 +77,14 @@
     .radio-label {
       color: var(--radio-label-color);
       font-weight: normal;
+      display: inline-flex;
+      align-items: center;
     }
 
-    .radio-label:before {
-      content: " ";
-      display: inline-block;
-      position: relative;
-      top: 0.1875em;
+    .radio-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       margin: 0 0.3125em 0 0;
       width: var(--radio-size);
       height: var(--radio-size);
@@ -85,20 +93,21 @@
       background-color: transparent;
     }
 
-    .radio-input:checked + .radio-label:after {
+    .radio-button-inner {
       width: calc(var(--radio-size) - 0.5em);
       height: calc(var(--radio-size) - 0.5em);
-      border-radius: calc(var(--radio-size) / 2);
-      position: absolute;
-      top: 0.4375em;
-      left: 0.625em;
-      content: " ";
-      display: block;
       background: var(--radio-color);
+      border-radius: calc(var(--radio-size) / 2);
+      opacity: 0;
     }
 
-    .radio-style-type-filled:checked + .radio-label:before {
-      background-color: var(--radio-color);
+    .radio-input:checked + .radio-label .radio-button-inner {
+      opacity: 1;
+    }
+
+    .radio-style-type-filled:checked + .radio-label .radio-button-inner {
+      width: var(--radio-size);
+      height: var(--radio-size);
     }
   }
 </style>
