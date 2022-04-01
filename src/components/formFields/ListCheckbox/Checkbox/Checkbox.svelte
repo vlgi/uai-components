@@ -50,18 +50,20 @@
   function setValue(ev: HTMLInputElement) {
     dispatch("checkItem", ev);
     value = ev.value;
-    const oldValue = getFieldContext(name);
-    if (Array.isArray(oldValue)) {
-      if (oldValue.includes(value)) {
-        valueShown = oldValue.filter((item) => item !== value);
+    if (isInsideContext) {
+      const oldValue = getFieldContext(name);
+      if (Array.isArray(oldValue)) {
+        if (oldValue.includes(value)) {
+          valueShown = oldValue.filter((item) => item !== value);
+        } else {
+          valueShown = oldValue.concat(value);
+        }
       } else {
-        valueShown = oldValue.concat(value);
+        valueShown = oldValue ? [oldValue].concat(value) : value;
       }
-    } else {
-      valueShown = oldValue ? [oldValue].concat(value) : value;
-    }
-    if (oldValue === false) {
-      valueShown = checked ? value : "";
+      if (oldValue === false) {
+        valueShown = checked ? value : "";
+      }
     }
   }
 
@@ -142,7 +144,6 @@
       border: var(--border-size) solid var(--checkbox-color);
       border-radius: var(--border-size);
       transform: translateY(-0.075em);
-
       display: grid;
       place-content: center;
     }
