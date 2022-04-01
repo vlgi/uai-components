@@ -19,18 +19,22 @@
     { text: "Beijinho" },
   ];
 
+  // Exemplo será alterado
   const checkboxItems = [
     {
       value: "strawberry",
       label: "Morango",
+      name: "opa",
     },
     {
       value: "chocolate",
       label: "Chocolate",
+      name: "opa",
     },
     {
       value: "carrot",
       label: "Cenoura",
+      name: "opa",
     },
   ];
 
@@ -102,6 +106,7 @@
       {checkboxItems}
       listName="Quais bolos você gosta?"
       required={true}
+      min={2}
     />
     <Button type="submit">Submit</Button>
   </Form>

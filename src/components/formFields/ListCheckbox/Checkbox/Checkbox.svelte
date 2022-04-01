@@ -2,9 +2,8 @@
   import { createEventDispatcher } from "svelte";
   import {
     onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
+} from "svelte";
   import type { TFormContext } from "../../../Form/types";
-
 
   const dispatch = createEventDispatcher();
 
@@ -22,7 +21,6 @@
 
   export let id = name;
 
-
   /**
    * If received on props, defines if the checkbox is default checked.
    * @type {boolean}
@@ -36,25 +34,40 @@
   export let inputElement: HTMLInputElement | null = null;
 
   export let value: unknown = name;
+  let valueShown: Array<unknown> | unknown;
   export let required = false;
 
   let wrapperElement: HTMLElement;
 
   const isInsideContext = hasContext("FormContext");
   const {
-    setFieldValue, addFieldToContext, removeFieldFromContext,
+    setFieldValue,
+    addFieldToContext,
+    removeFieldFromContext,
+    getFieldContext,
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function setValue(ev: HTMLInputElement) {
     dispatch("checkItem", ev);
-    inputElement = ev;
-    const x = ev.value;
-    value = x;
+    value = ev.value;
+    const oldValue = getFieldContext(name);
+    if (Array.isArray(oldValue)) {
+      if (oldValue.includes(value)) {
+        valueShown = oldValue.filter((item) => item !== value);
+      } else {
+        valueShown = oldValue.concat(value);
+      }
+    } else {
+      valueShown = oldValue ? [oldValue].concat(value) : value;
+    }
+    if (oldValue === false) {
+      valueShown = checked ? value : "";
+    }
   }
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
-  $: if (inputElement && isInsideContext && checked) {
-    setFieldValue(name, value, true);
+  $: if (inputElement && isInsideContext) {
+    setFieldValue(name, valueShown, true);
   }
 
   onMount(() => {
@@ -62,7 +75,7 @@
       let validation;
       addFieldToContext(
         name,
-        value,
+        valueShown,
         true, // isValid Always True
         required,
         wrapperElement,
@@ -87,7 +100,7 @@
     {id}
     bind:value
     class="checkbox-input"
-    {checked}
+    bind:checked
     bind:this={inputElement}
     on:click={() => {
       setValue(inputElement);

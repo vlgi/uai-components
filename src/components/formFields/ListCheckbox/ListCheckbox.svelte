@@ -1,12 +1,9 @@
 <script lang="ts">
-  import {
-    onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
   import Checkbox from "./Checkbox/Checkbox.svelte";
-  import type { TFormContext } from "../../Form/types";
 
   type TCheckboxProps = {
-    value: unknown;
+    name?: string,
+    value?: unknown;
     label?: string;
     checked?: boolean;
   };
@@ -24,8 +21,6 @@
    */
   export let checkboxItems: TCheckboxProps[] = [];
 
-  /** Enter a message in case it is invalid */
-  export let errorMsg = "";
 
   /**
    * Pass the function to validation.
@@ -34,7 +29,7 @@
    */
   export let validationFn: (
     value: Array<string>
-  ) => undefined | string | boolean = () => true; //eslint-disable-line
+  )=> undefined | string | boolean = () => true;
 
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
@@ -53,14 +48,6 @@
   export let min = 1;
 
   let invalid = forceInvalid;
-  // const helper = false;
-  let eMsg = "";
-  let wrapperElement: HTMLElement;
-
-  const isInsideContext = hasContext("FormContext");
-  const {
-    setFieldValue, addFieldToContext, removeFieldFromContext,
-  } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function checkStatus(answer: undefined | string | boolean) {
     if (answer === true || answer === undefined) {
@@ -69,11 +56,9 @@
     } else if (answer === false) {
       isValid = false;
       invalid = !isValid;
-      eMsg = errorMsg;
     } else if (typeof answer === "string") {
       isValid = false;
       invalid = !isValid;
-      eMsg = answer;
     }
   }
 
@@ -90,7 +75,6 @@
   }
 
   function setChecked(ev: CustomEvent) {
-    eMsg = "";
     inputElement = ev.detail as HTMLInputElement;
     const x = (ev.detail as HTMLInputElement).value;
     if (value.includes(x)) {
@@ -104,29 +88,6 @@
 
   $: if (forceInvalid) validation();
 
-  // run only after mounted, because setFieldValue, must become after addFieldToContext
-  $: if (inputElement && isInsideContext) {
-    setFieldValue(name, value, isValid);
-  }
-
-  onMount(() => {
-    if (isInsideContext) {
-      addFieldToContext(
-        name,
-        value,
-        isValid,
-        required,
-        wrapperElement,
-        validation,
-      );
-    }
-  });
-
-  onDestroy(() => {
-    if (isInsideContext) {
-      removeFieldFromContext(name);
-    }
-  });
 </script>
 
 <div class="list-checkbox-box">
@@ -135,10 +96,10 @@
     {#each checkboxItems as checkbox, i}
       <li>
         <Checkbox
-          {name}
+          name={checkbox.name}
           id="{name}-{i}"
-          bind:value={checkbox.value}
           label={checkbox.label}
+          value={checkbox.value}
           bind:checked={checkbox.checked}
           on:checkItem={setChecked}
           aria-required={required}
