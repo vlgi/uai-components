@@ -25,12 +25,10 @@
     {
       value: "strawberry",
       label: "Morango",
-      checked: true,
     },
     {
       value: "chocolate",
       label: "Chocolate",
-      checked: true,
     },
     {
       value: "carrot",
@@ -106,13 +104,14 @@
       {checkboxItems}
       listName="Quais bolos você gosta?"
       required={true}
-      min={2}
+      max={2}
     />
 
     <Checkbox
       name="sold-your-soul"
       label="Declaro que li e concordo com os termos de uso"
-      value={true}
+      required={true}
+      --szot-checkbox-margin="1rem 0 0"
     />
     <Button type="submit">Submit</Button>
   </Form>

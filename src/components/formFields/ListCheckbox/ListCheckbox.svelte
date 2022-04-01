@@ -1,9 +1,5 @@
 <script lang="ts">
-  import {
-    getContext,
-    hasContext,
-    setContext,
-  } from "svelte";
+  import { getContext, hasContext, setContext } from "svelte";
   import Checkbox from "./Checkbox/Checkbox.svelte";
   import type { TFormContext, TAddFieldToContext } from "../../Form/types";
 
@@ -36,7 +32,7 @@
    */
   export let validationFn: (
     value: Array<string>
-  ) => undefined | string | boolean = () => true; //eslint-disable-line
+  )=> undefined | string | boolean = () => true;
 
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
@@ -53,8 +49,8 @@
   export let value = [];
   export let required = false;
   export let min = 1;
+  export let max = 10;
 
-  let invalid = forceInvalid;
   let eMsg = "";
   let addedToContext = false;
 
@@ -66,6 +62,30 @@
     fireSubmit,
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
+  function checkStatus(answer: undefined | string | boolean) {
+    if (answer === true || answer === undefined) {
+      isValid = true;
+    } else if (answer === false) {
+      isValid = false;
+      eMsg = errorMsg;
+    } else if (typeof answer === "string") {
+      isValid = false;
+      eMsg = answer;
+    }
+  }
+
+  function validation() {
+    isValid = true;
+    if (forceInvalid) {
+      isValid = false;
+      eMsg = "Há um erro nos campos selecionados.";
+    } else if (required) {
+      isValid = Array.isArray(value) && value.length >= min;
+    } else {
+      checkStatus(validationFn(value));
+    }
+  }
+
   // Create an overriding add context function
   const addFieldToContextOverride: TAddFieldToContext = (
     _fieldName: string,
@@ -73,15 +93,14 @@
     _isValid: boolean,
     _isRequired: boolean,
     _htmlElement: HTMLElement,
-    _validation: ()=> void,
   ) => {
     addFieldToContext(
       _fieldName,
       _value,
-      _isValid,
-      _isRequired,
+      isValid,
+      required,
       _htmlElement,
-      _validation,
+      validation,
     );
     addedToContext = true;
   };
@@ -96,33 +115,6 @@
     });
   }
 
-  function checkStatus(answer: undefined | string | boolean) {
-    if (answer === true || answer === undefined) {
-      isValid = true;
-      invalid = !isValid;
-    } else if (answer === false) {
-      isValid = false;
-      invalid = !isValid;
-      eMsg = errorMsg;
-    } else if (typeof answer === "string") {
-      isValid = false;
-      invalid = !isValid;
-      eMsg = answer;
-    }
-  }
-
-  function validation() {
-    isValid = true;
-    if (forceInvalid) {
-      isValid = false;
-    } else if (required) {
-      isValid = Array.isArray(value) && value.length >= min;
-    } else {
-      checkStatus(validationFn(value));
-    }
-    invalid = !isValid;
-  }
-
   function setChecked(ev: CustomEvent) {
     eMsg = "";
     inputElement = ev.detail as HTMLInputElement;
@@ -133,8 +125,9 @@
       value = value.concat(x);
     }
     value = value.sort();
-    validation();
   }
+
+  $: if (value.length >= 1) validation();
 
   $: if (forceInvalid) validation();
 
@@ -148,8 +141,8 @@
 </script>
 
 <div class="list-checkbox-box">
-  <span class="checkbox-title" class:invalid>{listName}</span>
-  <ul class="list-checkbox" class:invalid>
+  <span class="checkbox-title" class:invalid={!isValid}>{listName}</span>
+  <ul class="list-checkbox" class:invalid={!isValid}>
     {#each checkboxItems as checkbox, i}
       <li>
         <Checkbox
@@ -159,16 +152,19 @@
           bind:value={checkbox.value}
           bind:checked={checkbox.checked}
           on:checkItem={setChecked}
-          aria-required={required}
-          {required}
+          required={false}
         />
       </li>
     {/each}
     <p class="error" class:error-show={!isValid}>
       {#if required}
-        É necessário selecionar {min} {min <= 1 ? "valor" : "valores"}.
+        {#if value.length > max}
+          Você deve selecionar no máximo {max} {max <= 1 ? "opção" : "opções"}.
+        {:else}
+          É necessário selecionar {min} {min <= 1 ? "opção" : "opções"}.
+        {/if}
       {:else}
-        Valor inválido.
+        {eMsg}
       {/if}
     </p>
   </ul>

@@ -27,6 +27,12 @@
    */
   export let checked = false;
 
+  /** if you want to force invalid, change it to true */
+  export let forceInvalid = false;
+
+  /** shows if the component is valid (readonly) */
+  export let isValid = true;
+
   /**
    * The input element (readonly)
    * @type {HTMLInputElement}
@@ -43,9 +49,20 @@
     setFieldValue, addFieldToContext, removeFieldFromContext,
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
+  function validation() {
+    isValid = true;
+    if (forceInvalid) {
+      isValid = false;
+    } else if (required) {
+      isValid = checked;
+    }
+  }
+
   function setValue(ev: HTMLInputElement) {
     dispatch("checkItem", ev);
   }
+
+  $: if (checked) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
   $: if (inputElement && isInsideContext) {
@@ -54,7 +71,6 @@
 
   onMount(() => {
     if (isInsideContext) {
-      let validation;
       addFieldToContext(
         name,
         checked === true ? value : false,
@@ -74,7 +90,7 @@
   });
 </script>
 
-<div class="checkbox-item">
+<div class="checkbox-item" class:invalid={!isValid}>
   <input
     {...$$restProps}
     type="checkbox"
@@ -89,12 +105,19 @@
     }}
   />
 
-  <label for={id} class="checkbox-label"
-    >{label !== undefined ? label : ""}</label
-  >
+  <label for={id} class="checkbox-label">
+    {label !== undefined ? label : ""}
+  </label>
 </div>
+<p class="error" class:error-show={!isValid}>
+  {#if required}
+    Este campo é obrigatório
+  {/if}
+</p>
 
 <style lang="scss">
+  @use "src/styles/mixins" as m;
+
   .checkbox-item {
     --checkbox-margin: var(--szot-checkbox-margin, 0.3125rem);
     --checkbox-size: var(--szot-checkbox-size, 1rem);
@@ -147,5 +170,21 @@
       color: var(--checkbox-label-color);
       font-weight: normal;
     }
+  }
+  .invalid {
+    --szot-checkbox-color: var(--theme-error);
+    --szot-checkbox-label: var(--theme-error);
+    color: var(--theme-error);
+  }
+
+  .error {
+    @include m.form-field-error-text();
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s linear, bottom 0.2s;
+  }
+  .error-show {
+    display: inherit;
+    @include m.form-field-error-text();
   }
 </style>
