@@ -2,7 +2,6 @@
   import { setContext, createEventDispatcher } from "svelte";
   import type {
     TAddFieldToContext,
-    TGetFieldContext,
     TSetFieldValue,
     TRemoveFieldFromContext,
     TFireSubmit,
@@ -38,14 +37,6 @@
 
     fieldsData[fieldName].value = value;
     fieldsData[fieldName].isValid = isvalid;
-  };
-
-  const getFieldContext: TGetFieldContext = (fieldName) => {
-    if (fieldsData[fieldName] === undefined) {
-      throw new Error("This field was not added to the context yet.");
-    } else {
-      return fieldsData[fieldName].value;
-    }
   };
 
   const addFieldToContext: TAddFieldToContext = (
@@ -106,7 +97,6 @@
     addFieldToContext,
     removeFieldFromContext,
     fireSubmit,
-    getFieldContext,
   };
   setContext("FormContext", formContextObj);
 </script>

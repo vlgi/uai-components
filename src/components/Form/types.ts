@@ -25,8 +25,6 @@ export type TAddFieldToContext = (
  */
 export type TSetFieldValue = (fieldName: string, value: unknown, isvalid: boolean)=> void;
 
-export type TGetFieldContext = (fieldName: string)=> unknown | boolean;
-
 /**
  * Remove the formfield from the form context.
  * Use when your formfield component be destroyed
@@ -45,5 +43,4 @@ export type TFormContext = {
   addFieldToContext: TAddFieldToContext,
   removeFieldFromContext: TRemoveFieldFromContext,
   fireSubmit: TFireSubmit,
-  getFieldContext?: TGetFieldContext,
 }

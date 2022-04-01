@@ -1,9 +1,14 @@
 <script lang="ts">
+  import {
+    getContext,
+    hasContext,
+    setContext,
+  } from "svelte";
   import Checkbox from "./Checkbox/Checkbox.svelte";
+  import type { TFormContext, TAddFieldToContext } from "../../Form/types";
 
   type TCheckboxProps = {
-    name?: string,
-    value?: unknown;
+    value: unknown;
     label?: string;
     checked?: boolean;
   };
@@ -21,6 +26,8 @@
    */
   export let checkboxItems: TCheckboxProps[] = [];
 
+  /** Enter a message in case it is invalid */
+  export let errorMsg = "";
 
   /**
    * Pass the function to validation.
@@ -29,7 +36,7 @@
    */
   export let validationFn: (
     value: Array<string>
-  )=> undefined | string | boolean = () => true;
+  ) => undefined | string | boolean = () => true; //eslint-disable-line
 
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
@@ -48,6 +55,46 @@
   export let min = 1;
 
   let invalid = forceInvalid;
+  let eMsg = "";
+  let addedToContext = false;
+
+  const isInsideContext = hasContext("FormContext");
+  const {
+    setFieldValue,
+    addFieldToContext,
+    removeFieldFromContext,
+    fireSubmit,
+  } = isInsideContext && getContext<TFormContext>("FormContext");
+
+  // Create an overriding add context function
+  const addFieldToContextOverride: TAddFieldToContext = (
+    _fieldName: string,
+    _value: unknown,
+    _isValid: boolean,
+    _isRequired: boolean,
+    _htmlElement: HTMLElement,
+    _validation: ()=> void,
+  ) => {
+    addFieldToContext(
+      _fieldName,
+      _value,
+      _isValid,
+      _isRequired,
+      _htmlElement,
+      _validation,
+    );
+    addedToContext = true;
+  };
+
+  // Override the context with our proxy
+  if (isInsideContext) {
+    setContext<TFormContext>("FormContext", {
+      setFieldValue: () => undefined,
+      addFieldToContext: addFieldToContextOverride,
+      removeFieldFromContext,
+      fireSubmit,
+    });
+  }
 
   function checkStatus(answer: undefined | string | boolean) {
     if (answer === true || answer === undefined) {
@@ -56,9 +103,11 @@
     } else if (answer === false) {
       isValid = false;
       invalid = !isValid;
+      eMsg = errorMsg;
     } else if (typeof answer === "string") {
       isValid = false;
       invalid = !isValid;
+      eMsg = answer;
     }
   }
 
@@ -75,6 +124,7 @@
   }
 
   function setChecked(ev: CustomEvent) {
+    eMsg = "";
     inputElement = ev.detail as HTMLInputElement;
     const x = (ev.detail as HTMLInputElement).value;
     if (value.includes(x)) {
@@ -88,6 +138,13 @@
 
   $: if (forceInvalid) validation();
 
+  // run only after mounted, because setFieldValue, must become after addFieldToContext
+  $: if (inputElement && isInsideContext) {
+    setFieldValue(name, value, isValid);
+  }
+
+  // Update form state correctly
+  $: if (addedToContext) setFieldValue(name, value, isValid);
 </script>
 
 <div class="list-checkbox-box">
@@ -96,10 +153,10 @@
     {#each checkboxItems as checkbox, i}
       <li>
         <Checkbox
-          name={checkbox.name}
+          {name}
           id="{name}-{i}"
           label={checkbox.label}
-          value={checkbox.value}
+          bind:value={checkbox.value}
           bind:checked={checkbox.checked}
           on:checkItem={setChecked}
           aria-required={required}

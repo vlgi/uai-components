@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import {
     onMount, getContext, hasContext, onDestroy,
-} from "svelte";
+  } from "svelte";
   import type { TFormContext } from "../../../Form/types";
 
   const dispatch = createEventDispatcher();
@@ -33,43 +33,23 @@
    * */
   export let inputElement: HTMLInputElement | null = null;
 
-  export let value: unknown = name;
-  let valueShown: Array<unknown> | unknown;
+  export let value: unknown = true;
   export let required = false;
 
   let wrapperElement: HTMLElement;
 
   const isInsideContext = hasContext("FormContext");
   const {
-    setFieldValue,
-    addFieldToContext,
-    removeFieldFromContext,
-    getFieldContext,
+    setFieldValue, addFieldToContext, removeFieldFromContext,
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function setValue(ev: HTMLInputElement) {
     dispatch("checkItem", ev);
-    value = ev.value;
-    if (isInsideContext) {
-      const oldValue = getFieldContext(name);
-      if (Array.isArray(oldValue)) {
-        if (oldValue.includes(value)) {
-          valueShown = oldValue.filter((item) => item !== value);
-        } else {
-          valueShown = oldValue.concat(value);
-        }
-      } else {
-        valueShown = oldValue ? [oldValue].concat(value) : value;
-      }
-      if (oldValue === false) {
-        valueShown = checked ? value : "";
-      }
-    }
   }
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
   $: if (inputElement && isInsideContext) {
-    setFieldValue(name, valueShown, true);
+    setFieldValue(name, checked === true ? value : false, true);
   }
 
   onMount(() => {
@@ -77,7 +57,7 @@
       let validation;
       addFieldToContext(
         name,
-        valueShown,
+        checked === true ? value : false,
         true, // isValid Always True
         required,
         wrapperElement,

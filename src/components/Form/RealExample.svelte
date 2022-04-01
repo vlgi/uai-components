@@ -4,6 +4,7 @@
   import Select from "../formFields/Select/Select.svelte";
   import Button from "../formFields/Button/Button.svelte";
   import ListCheckbox from "../formFields/ListCheckbox/ListCheckbox.svelte";
+  import Checkbox from "../formFields/ListCheckbox/Checkbox/Checkbox.svelte";
   import Form from "./Form.svelte";
 
   export let values: Record<string, unknown>;
@@ -24,17 +25,16 @@
     {
       value: "strawberry",
       label: "Morango",
-      name: "opa",
+      checked: true,
     },
     {
       value: "chocolate",
       label: "Chocolate",
-      name: "opa",
+      checked: true,
     },
     {
       value: "carrot",
       label: "Cenoura",
-      name: "opa",
     },
   ];
 
@@ -107,6 +107,12 @@
       listName="Quais bolos você gosta?"
       required={true}
       min={2}
+    />
+
+    <Checkbox
+      name="sold-your-soul"
+      label="Declaro que li e concordo com os termos de uso"
+      value={true}
     />
     <Button type="submit">Submit</Button>
   </Form>
