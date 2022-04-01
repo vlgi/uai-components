@@ -7,8 +7,6 @@
 
   type TRadioStyleType = "filled" | "notFilled";
 
-  const dispatch = createEventDispatcher();
-
   /**
    * The label text for this element
    * @type {string}
@@ -21,6 +19,10 @@
    */
   export let name: string;
 
+  /**
+   * The name for the radio element, default is equal to name
+   * @type {string}
+   */
   export let id = name;
 
   /**
@@ -42,9 +44,8 @@
   export let inputElement: HTMLInputElement | null = null;
 
   let value = "";
-  export let required = false;
-
   let wrapperElement: HTMLElement;
+  const dispatch = createEventDispatcher();
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -65,14 +66,13 @@
 
   onMount(() => {
     if (isInsideContext) {
-      let validation;
       addFieldToContext(
         name,
         value,
         true, // isValid Always True
-        required,
+        false,
         wrapperElement,
-        validation,
+        () => true,
       );
     }
     if (checked) setValue(inputElement);
