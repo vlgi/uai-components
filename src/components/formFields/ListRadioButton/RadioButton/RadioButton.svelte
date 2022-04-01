@@ -66,7 +66,7 @@
     --radio-color: var(--szot-radio-color, var(--border-color));
     --radio-label-color: var(--szot-radio-label, var(--theme-primary-txt));
 
-    display: inline-block;
+    display: flex;
     padding: 0 0.375em;
     margin: var(--radio-margin);
 
@@ -94,15 +94,16 @@
     }
 
     .radio-button-inner {
-      width: calc(var(--radio-size) - 0.5em);
-      height: calc(var(--radio-size) - 0.5em);
+      width: 0;
+      height: 0;
       background: var(--radio-color);
       border-radius: calc(var(--radio-size) / 2);
-      opacity: 0;
+      transition: width ease-in-out 200ms, height ease-in-out 200ms,;
     }
 
     .radio-input:checked + .radio-label .radio-button-inner {
-      opacity: 1;
+      width: calc(var(--radio-size) - 0.5em);
+      height: calc(var(--radio-size) - 0.5em);
     }
 
     .radio-style-type-filled:checked + .radio-label .radio-button-inner {
