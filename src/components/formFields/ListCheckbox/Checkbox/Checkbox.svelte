@@ -27,6 +27,11 @@
    */
   export let checked = false;
 
+  /**
+   * Value is not expected to be set manually, only by changing "checked"
+   */
+  export let value: string | boolean = true;
+
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
 
@@ -39,7 +44,6 @@
    * */
   export let inputElement: HTMLInputElement | null = null;
 
-  export let value: unknown = true;
   export let required = false;
 
   let wrapperElement: HTMLElement;

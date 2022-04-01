@@ -4,7 +4,7 @@
   import type { TFormContext, TAddFieldToContext } from "../../Form/types";
 
   type TCheckboxProps = {
-    value: unknown;
+    value: string;
     label?: string;
     checked?: boolean;
   };
