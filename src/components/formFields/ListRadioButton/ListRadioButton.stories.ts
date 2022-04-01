@@ -1,5 +1,6 @@
 import type { ArgType } from "@storybook/addons";
-import ListRadioButton from "./ListRadioButtonWrapper.svelte";
+import ListRadioButton from "./ListRadioButton.svelte";
+import ListRadioButtonWrapper from "./ListRadioButtonWrapper.svelte";
 
 export default {
   title: "Components/FormFields/ListRadioButton",
@@ -8,7 +9,7 @@ export default {
 
 const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
-    Component: ListRadioButton,
+    Component: ListRadioButtonWrapper,
     props,
   });
   ret.args = _args;
