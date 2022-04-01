@@ -48,17 +48,9 @@
   /** shows if the component is valid (readonly) */
   export let isValid = true;
 
-  /**
-   * The input element (readonly)
-   * @type {HTMLInputElement}
-   * */
-  export let inputElement: HTMLInputElement | null = null;
-
   export let value = "";
   export let required = false;
 
-  let invalid = forceInvalid;
-  // const helper = false;
   let eMsg = "";
   let wrapperElement: HTMLElement;
 
@@ -70,14 +62,11 @@
   function checkStatus(answer: undefined | string | boolean) {
     if (answer === true || answer === undefined) {
       isValid = true;
-      invalid = !isValid;
     } else if (answer === false) {
       isValid = false;
-      invalid = !isValid;
       eMsg = errorMsg;
     } else if (typeof answer === "string") {
       isValid = false;
-      invalid = !isValid;
       eMsg = answer;
     }
   }
@@ -86,31 +75,29 @@
     isValid = true;
     if (forceInvalid) {
       isValid = false;
-      eMsg = "Valor inválido";
+      eMsg = errorMsg;
     } else if (required) {
       isValid = value !== "" && value !== null && value !== undefined;
       eMsg = "Selecione uma opção";
     } else {
       checkStatus(validationFn(value));
     }
-    invalid = !isValid;
   }
 
   $: if (forceInvalid) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
-  $: if (inputElement && isInsideContext) {
+  $: if (wrapperElement && isInsideContext) {
     setFieldValue(name, value, isValid);
   }
 
   onMount(() => {
     if (isInsideContext) {
-      const isRequired = required;
       addFieldToContext(
         name,
         value,
         isValid,
-        isRequired,
+        required,
         wrapperElement,
         validation,
       );
@@ -125,8 +112,8 @@
 </script>
 
 <div class="list-radio-box">
-  <span class="radio-title" class:invalid>{listName}</span>
-  <ul class="list-radio" class:invalid>
+  <span class="radio-title" class:invalid={!isValid}>{listName}</span>
+  <ul class="list-radio" class:invalid={!isValid}>
     {#each radioOptions as radio, i}
       <li>
         <RadioButton
