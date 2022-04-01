@@ -28,12 +28,6 @@
   export let value: string;
 
   export let group: string;
-
-  /**
-   * The input element (readonly)
-   * @type {HTMLInputElement}
-   * */
-  export let inputElement: HTMLInputElement | null = null;
 </script>
 
 <div class="radio-item">
@@ -44,7 +38,6 @@
     {value}
     bind:group
     class="radio-input radio-style-type-{radioStyleType}"
-    bind:this={inputElement}
   />
 
   <label for={id} class="radio-label">
