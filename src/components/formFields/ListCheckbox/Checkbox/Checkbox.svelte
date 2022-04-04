@@ -133,7 +133,7 @@
 
     display: flex;
     flex-direction: row;
-    width: fit-content !important; // It was breaking on iphone 5 resolution.
+    width: fit-content;
     position: relative;
     padding: 0 0.375em;
     margin: var(--checkbox-margin);
@@ -144,7 +144,7 @@
       margin-right: 20px;
 
       color: var(--checkbox-color);
-      width: var(--checkbox-size);
+      min-width: var(--checkbox-size);
       height: var(--checkbox-size);
       border: var(--border-size) solid var(--checkbox-color);
       border-radius: var(--border-size);
