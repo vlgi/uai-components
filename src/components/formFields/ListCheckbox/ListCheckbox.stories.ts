@@ -51,26 +51,26 @@ const checkboxItemsChecked = [
 
 export const Default = Template({
   name: "checklist",
-  listName: "Lista de Afazeres",
+  title: "Lista de Afazeres",
   checkboxItems,
 });
 
 export const DefaultChecked = Template({
   name: "checklist",
-  listName: "Lista de Afazeres",
+  title: "Lista de Afazeres",
   checkboxItems: checkboxItemsChecked,
 });
 
 export const forceInvalid = Template({
   name: "checklist",
-  listName: "Lista de Afazeres",
+  title: "Lista de Afazeres",
   checkboxItems,
   forceInvalid: true,
 });
 
 export const CustomExample: any = Template({
   name: "checklist",
-  listName: "Lista de Afazeres",
+  title: "Lista de Afazeres",
   checkboxItems,
   style: "--szot-checkbox-margin: 3px 2px 0px; --szot-checkbox-size:18px; --szot-checkbox-color: #555; --szot-checkbox-label: #555;",
 });
@@ -105,7 +105,7 @@ CustomExample.parameters = {
       >
       <ListCheckbox
         name="checklist"
-        listName="Lista de Afazeres"
+        title="Lista de Afazeres"
         {checkboxItems}
       />
     </div>

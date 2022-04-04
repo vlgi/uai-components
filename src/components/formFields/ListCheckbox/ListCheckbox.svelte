@@ -127,9 +127,6 @@
   $: if (wrapperElement && isInsideContext) {
     setFieldValue(name, value, isValid);
   }
-
-  // Update form state correctly
-  $: if (wrapperElement) setFieldValue(name, value, isValid);
 </script>
 
 <div class="list-checkbox-wrapper" bind:this={wrapperElement}>
