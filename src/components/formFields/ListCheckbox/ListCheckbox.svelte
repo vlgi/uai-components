@@ -43,7 +43,7 @@
   export let value = [];
   export let required = false;
   export let min = 1;
-  export let max = 10;
+  export let max = null;
 
   let eMsg = "";
   let wrapperElement: HTMLElement;
@@ -74,7 +74,8 @@
       isValid = false;
       eMsg = errorMsg;
     } else if (required) {
-      isValid = Array.isArray(value) && value.length >= min;
+      isValid = Array.isArray(value) && value.length >= min
+      && (max !== null ? value.length <= max : true);
     } else {
       checkStatus(validationFn(value));
     }
@@ -147,7 +148,7 @@
     {/each}
     <p class="error" class:error-show={!isValid}>
       {#if required}
-        {#if value.length > max}
+        {#if max !== null && value.length >= max}
           Você deve selecionar no máximo {max} {max <= 1 ? "opção" : "opções"}.
         {:else}
           É necessário selecionar {min} {min <= 1 ? "opção" : "opções"}.
