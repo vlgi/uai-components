@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { getContext, hasContext, setContext } from "svelte";
+  import {
+    getContext, hasContext, setContext, onMount, onDestroy,
+  } from "svelte";
   import Checkbox from "./Checkbox/Checkbox.svelte";
-  import type { TFormContext, TAddFieldToContext } from "../../Form/types";
+  import type { TFormContext } from "../../Form/types";
 
   type TCheckboxProps = {
     value: string;
@@ -49,6 +51,7 @@
   let wrapperElement: HTMLElement;
 
   const isInsideContext = hasContext("FormContext");
+  let addedToContext = false;
   const {
     setFieldValue,
     addFieldToContext,
@@ -81,33 +84,35 @@
     }
   }
 
-  // Create an overriding add context function
-  const addFieldToContextOverride: TAddFieldToContext = (
-    _fieldName: string,
-    _value: unknown,
-    _isValid: boolean,
-    _isRequired: boolean,
-    _htmlElement: HTMLElement,
-  ) => {
-    addFieldToContext(
-      _fieldName,
-      _value,
-      isValid,
-      required,
-      _htmlElement,
-      validation,
-    );
-  };
-
   // Override the context with our proxy
   if (isInsideContext) {
     setContext<TFormContext>("FormContext", {
       setFieldValue: () => undefined,
-      addFieldToContext: addFieldToContextOverride,
-      removeFieldFromContext,
+      addFieldToContext: () => undefined,
+      removeFieldFromContext: () => undefined,
       fireSubmit,
     });
+    addedToContext = hasContext("FormContext");
   }
+
+  onMount(() => {
+    if (addedToContext) {
+      addFieldToContext(
+        name,
+        value,
+        isValid,
+        required,
+        wrapperElement,
+        validation,
+      );
+    }
+  });
+
+  onDestroy(() => {
+    if (addedToContext) {
+      removeFieldFromContext(name);
+    }
+  });
 
   function setChecked(ev: CustomEvent) {
     eMsg = "";
@@ -125,7 +130,7 @@
   $: if (forceInvalid) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
-  $: if (wrapperElement && isInsideContext) {
+  $: if (wrapperElement && addedToContext) {
     setFieldValue(name, value, isValid);
   }
 </script>
