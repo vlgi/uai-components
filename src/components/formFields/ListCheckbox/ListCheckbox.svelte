@@ -40,19 +40,13 @@
   /** shows if the component is valid (readonly) */
   export let isValid = true;
 
-  /**
-   * The input element (readonly)
-   * @type {HTMLInputElement}
-   * */
-  export let inputElement: HTMLInputElement | null = null;
-
   export let value = [];
   export let required = false;
   export let min = 1;
   export let max = 10;
 
   let eMsg = "";
-  let addedToContext = false;
+  let wrapperElement: HTMLElement;
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -102,7 +96,6 @@
       _htmlElement,
       validation,
     );
-    addedToContext = true;
   };
 
   // Override the context with our proxy
@@ -117,8 +110,7 @@
 
   function setChecked(ev: CustomEvent) {
     eMsg = "";
-    inputElement = ev.detail as HTMLInputElement;
-    const x = (ev.detail as HTMLInputElement).value;
+    const x = ev.detail as string;
     if (value.includes(x)) {
       value = value.filter((item) => item !== x);
     } else {
@@ -132,15 +124,15 @@
   $: if (forceInvalid) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
-  $: if (inputElement && isInsideContext) {
+  $: if (wrapperElement && isInsideContext) {
     setFieldValue(name, value, isValid);
   }
 
   // Update form state correctly
-  $: if (addedToContext) setFieldValue(name, value, isValid);
+  $: if (wrapperElement) setFieldValue(name, value, isValid);
 </script>
 
-<div class="list-checkbox-box">
+<div class="list-checkbox-box" bind:this={wrapperElement}>
   <span class="checkbox-title" class:invalid={!isValid}>{listName}</span>
   <ul class="list-checkbox" class:invalid={!isValid}>
     {#each checkboxItems as checkbox, i}
@@ -149,8 +141,8 @@
           {name}
           id="{name}-{i}"
           label={checkbox.label}
-          bind:value={checkbox.value}
-          bind:checked={checkbox.checked}
+          value={checkbox.value}
+          checked={checkbox.checked}
           on:checkItem={setChecked}
           required={false}
         />

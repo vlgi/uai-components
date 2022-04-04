@@ -62,8 +62,8 @@
     }
   }
 
-  function setValue(el: HTMLInputElement) {
-    dispatch("checkItem", el);
+  function dispatchValue() {
+    dispatch("checkItem", value);
   }
 
   $: if (checked) validation();
@@ -84,7 +84,7 @@
         validation,
       );
     }
-    if (checked) setValue(inputElement);
+    if (checked) dispatchValue();
   });
 
   onDestroy(() => {
@@ -100,12 +100,11 @@
     type="checkbox"
     {name}
     {id}
-    bind:value
     class="checkbox-input"
     bind:checked
     bind:this={inputElement}
     on:click={() => {
-      setValue(inputElement);
+      dispatchValue();
     }}
   />
 
