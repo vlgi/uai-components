@@ -4,6 +4,7 @@
   import Textarea from "../formFields/Textarea/Textarea.svelte";
   import Select from "../formFields/Select/Select.svelte";
   import Button from "../formFields/Button/Button.svelte";
+  import ListRadioButton from "../formFields/ListRadioButton/ListRadioButton.svelte";
   import ListCheckbox from "../formFields/ListCheckbox/ListCheckbox.svelte";
   import Checkbox from "../formFields/ListCheckbox/Checkbox/Checkbox.svelte";
   import Form from "./Form.svelte";
@@ -21,8 +22,7 @@
     { text: "Beijinho" },
   ];
 
-  // Exemplo será alterado
-  const checkboxItems = [
+  const listOptions = [
     {
       value: "strawberry",
       label: "Morango",
@@ -42,12 +42,18 @@
     return "Type a valid e-mail.";
   }
 
-  function validatePassword(value: string): string|boolean {
-    if (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/.test(value)) return true;
+  function validatePassword(value: string): string | boolean {
+    if (
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/.test(
+        value,
+      )
+    ) {
+      return true;
+    }
     return "So weak! You can do it better.";
   }
 
-  function min10Characters(value: string): string|boolean {
+  function min10Characters(value: string): string | boolean {
     if (value.length >= 10) return true;
     return "Minimum 10 characters";
   }
@@ -56,10 +62,12 @@
 <div>
   <h1>Real Form Usage Example</h1>
   <p>
-    This form use our real components,
-    and shows an example using all possible form fields
+    This form use our real components, and shows an example using all possible
+    form fields
   </p>
-  <br><hr><br>
+  <br />
+  <hr />
+  <br />
 </div>
 
 <div class="my-form">
@@ -109,9 +117,17 @@
       options={simpleDessertsOptions}
       required={true}
     />
+    <ListRadioButton
+      name="which-cake"
+      radioOptions={listOptions}
+      listName="Qual bolo você prefere?"
+      radioStyleType="notFilled"
+      required={true}
+    />
+    <br />
     <ListCheckbox
       name="liked-cakes"
-      {checkboxItems}
+      checkboxItems={listOptions}
       listName="Quais bolos você gosta?"
       required={true}
     />
@@ -126,7 +142,9 @@
 </div>
 
 <div>
-  <br><hr><br>
-  <p><b>Form Values:</b> { JSON.stringify(values) }</p>
-  <p><b>Form valid:</b> { isAllValid }</p>
+  <br />
+  <hr />
+  <br />
+  <p><b>Form Values:</b> {JSON.stringify(values)}</p>
+  <p><b>Form valid:</b> {isAllValid}</p>
 </div>
