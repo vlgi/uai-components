@@ -72,7 +72,7 @@
     isValid = true;
     if (forceInvalid) {
       isValid = false;
-      eMsg = "Há um erro nos campos selecionados.";
+      eMsg = errorMsg;
     } else if (required) {
       isValid = Array.isArray(value) && value.length >= min;
     } else {
