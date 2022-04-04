@@ -96,7 +96,6 @@
 
 <div class="checkbox-item" class:invalid={!isValid}>
   <input
-    {...$$restProps}
     type="checkbox"
     {name}
     {id}
