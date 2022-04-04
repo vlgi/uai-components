@@ -128,7 +128,7 @@
     <ListCheckbox
       name="liked-cakes"
       checkboxItems={listOptions}
-      listName="Quais bolos você gosta?"
+      title="Quais bolos você gosta?"
       required={true}
     />
     <Checkbox

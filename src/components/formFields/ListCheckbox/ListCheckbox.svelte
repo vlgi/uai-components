@@ -11,10 +11,10 @@
 
   export let name = "checkbox-list";
   /**
-   * The listName property for this element
+   * The title property for this element
    * @type {string}
    */
-  export let listName = "";
+  export let title = "";
 
   /**
    * All possible options that can be selected
@@ -132,8 +132,8 @@
   $: if (wrapperElement) setFieldValue(name, value, isValid);
 </script>
 
-<div class="list-checkbox-box" bind:this={wrapperElement}>
-  <span class="checkbox-title" class:invalid={!isValid}>{listName}</span>
+<div class="list-checkbox-wrapper" bind:this={wrapperElement}>
+  <span class="checkbox-title" class:invalid={!isValid}>{title}</span>
   <ul class="list-checkbox" class:invalid={!isValid}>
     {#each checkboxItems as checkbox, i}
       <li>
@@ -164,7 +164,7 @@
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
-  .list-checkbox-box {
+  .list-checkbox-wrapper {
     --checkbox-label-color: var(
       --szot-checkbox-label,
       var(--theme-primary-txt)
