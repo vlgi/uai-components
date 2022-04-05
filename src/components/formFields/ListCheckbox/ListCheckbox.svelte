@@ -160,7 +160,7 @@
     {#each checkboxItems as checkbox, i}
       <li>
         <Checkbox
-          {name}
+          name="{name}-{i}"
           id="{name}-{i}"
           label={checkbox.label}
           value={checkbox.value}
