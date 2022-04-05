@@ -47,10 +47,10 @@
   export let isValid = true;
 
   /**
-   * The value for the checkbox element
+   * The value for the checkbox element (readonly)
    * @type {Array<string>}
    */
-  export let value = [];
+  export let value: Array<string> = [];
   /**
    * If true, user should mark at least 1 item, defined by "min" property.
    */
@@ -63,7 +63,7 @@
    * Max checked items, must be used with "required"
    * @type {number}
    */
-  export let max = null;
+  export let max: number = null;
 
   let eMsg = "";
   let wrapperElement: HTMLElement;
