@@ -46,9 +46,23 @@
   /** shows if the component is valid (readonly) */
   export let isValid = true;
 
+  /**
+   * The value for the checkbox element
+   * @type {Array<string>}
+   */
   export let value = [];
+  /**
+   * If true, user should mark at least 1 item, defined by "min" property.
+   */
   export let required = false;
+  /**
+   * Min checked items, must be used with "required"
+   */
   export let min = 1;
+  /**
+   * Max checked items, must be used with "required"
+   * @type {number}
+   */
   export let max = null;
 
   let eMsg = "";

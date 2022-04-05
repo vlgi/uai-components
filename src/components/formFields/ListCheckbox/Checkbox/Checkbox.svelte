@@ -19,6 +19,10 @@
    */
   export let name: string;
 
+  /**
+   * The id for the checkbox element
+   * @type {string}
+   */
   export let id = name;
 
   /**

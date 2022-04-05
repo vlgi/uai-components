@@ -66,6 +66,7 @@ export const forceInvalid = Template({
   title: "Lista de Afazeres",
   checkboxItems,
   forceInvalid: true,
+  errorMsg: "Mensagem de erro",
 });
 
 export const CustomExample: any = Template({

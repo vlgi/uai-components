@@ -2,7 +2,7 @@
   import ListCheckbox from "./ListCheckbox.svelte";
 
   export let style: string;
-  export let value;
+  export let value: Array<string>;
 </script>
 
 <div {style}>
