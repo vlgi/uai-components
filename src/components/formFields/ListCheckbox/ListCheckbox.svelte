@@ -166,7 +166,6 @@
           value={checkbox.value}
           checked={checkbox.checked}
           on:checkItem={setChecked}
-          required={false}
         />
       </li>
     {/each}
