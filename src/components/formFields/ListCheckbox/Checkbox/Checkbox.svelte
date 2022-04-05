@@ -50,8 +50,6 @@
 
   export let required = false;
 
-  let wrapperElement: HTMLElement;
-
   const isInsideContext = hasContext("FormContext");
   const {
     setFieldValue, addFieldToContext, removeFieldFromContext,
@@ -84,7 +82,7 @@
         checked === true ? value : false,
         isValid,
         required,
-        wrapperElement,
+        inputElement,
         validation,
       );
     }
