@@ -1,6 +1,10 @@
 <script lang="ts">
   import {
-    getContext, hasContext, setContext, onMount, onDestroy,
+    getContext,
+    hasContext,
+    setContext,
+    onMount,
+    onDestroy,
   } from "svelte";
   import Checkbox from "./Checkbox/Checkbox.svelte";
   import type { TFormContext } from "../../Form/types";
@@ -77,7 +81,8 @@
       isValid = false;
       eMsg = errorMsg;
     } else if (required) {
-      isValid = Array.isArray(value) && value.length >= min
+      isValid = Array.isArray(value)
+      && value.length >= min
       && (max !== null ? value.length <= max : true);
     } else {
       checkStatus(validationFn(value));
@@ -167,23 +172,28 @@
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
+  @use "src/styles/variables" as v;
   .list-checkbox-wrapper {
     --checkbox-label-color: var(
       --szot-checkbox-label,
       var(--theme-primary-txt)
     );
-    box-sizing: border-box;
+
+    .invalid {
+      --szot-checkbox-color: var(--theme-error);
+      --szot-checkbox-label: var(--theme-error);
+
+      &.checkbox-title {
+        color: var(--theme-error);
+      }
+    }
 
     .checkbox-title {
       color: var(--checkbox-label-color);
     }
+
     .list-checkbox {
       list-style: none;
-    }
-    .invalid {
-      --szot-checkbox-color: var(--theme-error);
-      --szot-checkbox-label: var(--theme-error);
-      color: var(--theme-error);
     }
 
     .error {
@@ -192,6 +202,7 @@
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
     }
+
     .error-show {
       display: inherit;
       @include m.form-field-error-text();
