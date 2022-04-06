@@ -2,15 +2,15 @@
   import ListCheckbox from "./ListCheckbox.svelte";
 
   export let style: string;
-  export let value: Array<string>;
+  export let values: Array<string>;
 </script>
 
 <div {style}>
   <ListCheckbox
     {...$$restProps}
-    bind:value
+    bind:values
   />
 </div>
 
 <header><b>Checked:</b></header>
-<p>{JSON.stringify(value)}</p>
+<p>{JSON.stringify(values)}</p>

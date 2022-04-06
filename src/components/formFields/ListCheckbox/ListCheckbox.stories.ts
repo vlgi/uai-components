@@ -31,24 +31,6 @@ const checkboxItems = [
   },
 ];
 
-const checkboxItemsChecked = [
-  {
-    value: "firstItem",
-    label: "Item 1",
-    checked: true,
-  },
-  {
-    value: "secondItem",
-    label: "Item 2",
-    checked: true,
-  },
-  {
-    value: "thirdItem",
-    label: "Item 3",
-    checked: true,
-  },
-];
-
 export const Default = Template({
   name: "checklist",
   title: "Lista de Afazeres",
@@ -58,7 +40,8 @@ export const Default = Template({
 export const DefaultChecked = Template({
   name: "checklist",
   title: "Lista de Afazeres",
-  checkboxItems: checkboxItemsChecked,
+  checkboxItems,
+  values: ["firstItem", "thirdItem"],
 });
 
 export const forceInvalid = Template({

@@ -12,10 +12,9 @@
   type TCheckboxProps = {
     value: string;
     label?: string;
-    checked?: boolean;
   };
 
-  export let name = "checkbox-list";
+  export let name;
   /**
    * The title property for this element
    * @type {string}
@@ -50,7 +49,7 @@
    * The value for the checkbox element (readonly)
    * @type {Array<string>}
    */
-  export let value: Array<string> = [];
+  export let values: Array<string> = [];
   /**
    * If true, user should mark at least 1 item, defined by "min" property.
    */
@@ -95,11 +94,11 @@
       isValid = false;
       eMsg = errorMsg;
     } else if (required) {
-      isValid = Array.isArray(value)
-      && value.length >= min
-      && (max !== null ? value.length <= max : true);
+      isValid = Array.isArray(values)
+      && values.length >= min
+      && (max !== null ? values.length <= max : true);
     } else {
-      checkStatus(validationFn(value));
+      checkStatus(validationFn(values));
     }
   }
 
@@ -118,7 +117,7 @@
     if (addedToContext) {
       addFieldToContext(
         name,
-        value,
+        values,
         isValid,
         required,
         wrapperElement,
@@ -136,21 +135,21 @@
   function setChecked(ev: CustomEvent) {
     eMsg = "";
     const x = ev.detail as string;
-    if (value.includes(x)) {
-      value = value.filter((item) => item !== x);
+    if (values.includes(x)) {
+      values = values.filter((item) => item !== x);
     } else {
-      value = value.concat(x);
+      values = values.concat(x);
     }
-    value = value.sort();
+    values = values.sort();
   }
 
-  $: if (value.length >= 1) validation();
+  $: if (values.length >= 1) validation();
 
   $: if (forceInvalid) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
   $: if (wrapperElement && addedToContext) {
-    setFieldValue(name, value, isValid);
+    setFieldValue(name, values, isValid);
   }
 </script>
 
@@ -164,14 +163,14 @@
           id="{name}-{i}"
           label={checkbox.label}
           value={checkbox.value}
-          checked={checkbox.checked}
+          checked={values.includes(checkbox.value)}
           on:checkItem={setChecked}
         />
       </li>
     {/each}
     <p class="error" class:error-show={!isValid}>
       {#if required}
-        {#if max !== null && value.length >= max}
+        {#if max !== null && values.length >= max}
           Você deve selecionar no máximo {max} {max <= 1 ? "opção" : "opções"}.
         {:else}
           É necessário selecionar {min} {min <= 1 ? "opção" : "opções"}.
