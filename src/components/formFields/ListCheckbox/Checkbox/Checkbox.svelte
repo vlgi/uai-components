@@ -20,7 +20,7 @@
   export let name: string;
 
   /**
-   * The id for the checkbox element
+   * The id for the checkbox element. Default = name
    * @type {string}
    */
   export let id = name;
@@ -35,9 +35,6 @@
    * Value is not expected to be set manually, only by changing "checked"
    */
   export let value: string | boolean = true;
-
-  /** if you want to force invalid, change it to true */
-  export let forceInvalid = false;
 
   /** shows if the component is valid (readonly) */
   export let isValid = true;
@@ -57,9 +54,7 @@
 
   function validation() {
     isValid = true;
-    if (forceInvalid) {
-      isValid = false;
-    } else if (required) {
+    if (required) {
       isValid = checked;
     }
   }
@@ -135,6 +130,7 @@
 
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: fit-content;
     position: relative;
     padding: 0 0.375em;
@@ -188,7 +184,7 @@
     transition: opacity 0.2s linear, bottom 0.2s;
   }
   .error-show {
-    display: inherit;
+    display: unset;
     @include m.form-field-error-text();
   }
 </style>
