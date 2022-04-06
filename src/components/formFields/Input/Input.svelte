@@ -56,6 +56,7 @@
   export let name: string;
   export let type = "text";
   export let value = "";
+  export let cleaveValue = null;
   export let disabled = false;
   export let readonly = false;
   export let required = false;
@@ -111,7 +112,10 @@
       isValid = false;
       invalid = !isValid;
       eMsg = errorMsg;
-    } else if (required && !value) {
+    } else if (
+      (required && !value)
+      || (required && value !== "" && cleaveValue === "")
+    ) {
       isValid = false;
       invalid = !isValid;
       eMsg = "Este campo é obrigatorio";
