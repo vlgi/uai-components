@@ -5,6 +5,8 @@
   import Select from "../formFields/Select/Select.svelte";
   import Button from "../formFields/Button/Button.svelte";
   import ListRadioButton from "../formFields/ListRadioButton/ListRadioButton.svelte";
+  import ListCheckbox from "../formFields/ListCheckbox/ListCheckbox.svelte";
+  import Checkbox from "../formFields/ListCheckbox/Checkbox/Checkbox.svelte";
   import Form from "./Form.svelte";
 
   export let values: Record<string, unknown>;
@@ -20,7 +22,7 @@
     { text: "Beijinho" },
   ];
 
-  const radioOptions = [
+  const listOptions = [
     {
       value: "strawberry",
       label: "Morango",
@@ -117,10 +119,23 @@
     />
     <ListRadioButton
       name="which-cake"
-      {radioOptions}
+      radioOptions={listOptions}
       listName="Qual bolo você prefere?"
       radioStyleType="notFilled"
       required={true}
+    />
+    <br />
+    <ListCheckbox
+      name="liked-cakes"
+      checkboxItems={listOptions}
+      title="Quais bolos você gosta?"
+      required={true}
+    />
+    <Checkbox
+      name="sold-your-soul"
+      label="Declaro que li e concordo com os termos de uso"
+      required={true}
+      --szot-checkbox-margin="1rem 0 0"
     />
     <Button type="submit">Submit</Button>
   </Form>
