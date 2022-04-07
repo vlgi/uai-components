@@ -90,6 +90,13 @@ const {
   fireSubmit,
 } = isInsideContext && getContext<TFormContext>("FormContext");
 
+function cleaveValidation(_value: string) {
+  if (required && !_value) {
+    return "Este campo é obrigatorio";
+  }
+  return validationFn(_value);
+}
+
 // Create an overriding add context function
 const addFieldToContextOverride: TAddFieldToContext = (
   _fieldName: string,
@@ -182,7 +189,7 @@ $: if (addedToContext) setFieldValue(name, value, isValid);
   {readonly}
   {required}
   {type}
-  validationFn={() => validationFn(value)}
+  validationFn={() => cleaveValidation(value)}
   {forceInvalid}
   {...$$restProps}
-  />
+/>
