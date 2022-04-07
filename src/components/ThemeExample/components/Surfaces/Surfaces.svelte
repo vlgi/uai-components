@@ -27,7 +27,7 @@
       variables: [
         {
           variable: "--szot-small-shape",
-          default: "2rem",
+          default: "1.25rem",
           description: "used in objects with small sizes, like a button, input, badge",
         },
         {
