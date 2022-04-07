@@ -168,7 +168,6 @@ $: if (addedToContext) setFieldValue(name, value, isValid);
   on:input
   {name}
   bind:value={internalInputValue}
-  bind:cleaveValue={value}
   bind:inputElement
   bind:isValid
   {inputAttributes}
