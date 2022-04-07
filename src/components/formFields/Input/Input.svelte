@@ -94,14 +94,11 @@
   function checkStatus(answer: undefined|string|boolean) {
     if (answer === true || answer === undefined) {
       isValid = true;
-      invalid = !isValid;
     } else if (answer === false) {
       isValid = false;
-      invalid = !isValid;
       eMsg = errorMsg;
     } else if (typeof answer === "string") {
       isValid = false;
-      invalid = !isValid;
       eMsg = answer;
     }
   }
@@ -109,11 +106,8 @@
   function validation() {
     if (forceInvalid) {
       isValid = false;
-      invalid = !isValid;
-      eMsg = errorMsg;
     } else if (required && !value) {
       isValid = false;
-      invalid = !isValid;
       eMsg = "Este campo é obrigatorio";
     } else {
       checkStatus(validationFn(value));
@@ -130,6 +124,12 @@
       // eslint-disable-next-line no-void
       void fireSubmit();
     }
+  }
+
+  $: invalid = forceInvalid || !isValid;
+
+  $: if (forceInvalid) {
+    eMsg = errorMsg;
   }
 
   $: if (forceInvalid) validation();
