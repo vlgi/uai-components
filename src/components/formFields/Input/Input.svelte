@@ -125,6 +125,11 @@
     value = x;
   }
 
+  // function to form context force input value
+  function forceValue(_value: unknown) {
+    value = _value as string;
+  }
+
   function submitOnEnter(ev: KeyboardEvent) {
     if (ev.key === "Enter") {
       // eslint-disable-next-line no-void
@@ -141,7 +146,7 @@
 
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(name, value, isValid, required, wrapperElement, validation);
+      addFieldToContext(name, value, isValid, required, wrapperElement, validation, forceValue);
     }
   });
 

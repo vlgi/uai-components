@@ -195,6 +195,11 @@ function handleBadgeRemoval(ev: MouseEvent, option: TOption) {
   ev.preventDefault();
 }
 
+// function to form context force input value
+function forceValue(_value: unknown) {
+  selected = _value as TOption | TOption[] | null;
+}
+
 $: if (forceInvalid) validate();
 $: selectedSingle = Array.isArray(selected) ? null : selected;
 $: selectedMultiple = Array.isArray(selected) ? selected : [];
@@ -206,7 +211,7 @@ $: if (wrapperElement && isInsideContext) {
 
 onMount(() => {
   if (isInsideContext) {
-    addFieldToContext(name, selected, isValid, required, wrapperElement, validate);
+    addFieldToContext(name, selected, isValid, required, wrapperElement, validate, forceValue);
   }
 });
 

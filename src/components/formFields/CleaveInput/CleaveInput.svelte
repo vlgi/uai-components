@@ -90,6 +90,11 @@ const {
   fireSubmit,
 } = isInsideContext && getContext<TFormContext>("FormContext");
 
+// function to form context force input value
+const forceValue = (_value: unknown) => {
+  value = _value as string;
+};
+
 // Create an overriding add context function
 const addFieldToContextOverride: TAddFieldToContext = (
   _fieldName: string,
@@ -106,6 +111,7 @@ const addFieldToContextOverride: TAddFieldToContext = (
     _isRequired,
     _htmlElement,
     _validation,
+    forceValue,
   );
   addedToContext = true;
 };
@@ -156,7 +162,7 @@ $: if (cleaveOptions && inputElement) {
 }
 
 // Keep value consistent when updating
-$: if (cleave) cleave.setRawValue(`${value}`);
+$: if (cleave) cleave.setRawValue(value);
 
 // Update form state correctly
 $: if (addedToContext) setFieldValue(name, value, isValid);
