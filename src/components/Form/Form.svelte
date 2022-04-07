@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { setContext, createEventDispatcher } from "svelte";
+  import { setContext, createEventDispatcher, onMount } from "svelte";
   import type {
     TAddFieldToContext,
     TSetFieldValue,
@@ -15,6 +15,7 @@
     htmlElement: HTMLElement;
     value?: unknown;
     forceValidation: ()=> void;
+    setValue: (value: unknown)=> void;
   };
 
   // All fields values (readonly)
@@ -34,6 +35,8 @@
 
   let fieldsData: Record<string, TFieldData> = {};
   const dispatcher = createEventDispatcher();
+
+  const savedValues = JSON.parse(localStorage.getItem(storageKey) || "{}") as Record<string, unknown>;
 
   /**
    * Context functions
@@ -55,13 +58,23 @@
     isRequired,
     htmlElement,
     forceValidation,
+    setValue,
   ) => {
+    let fieldValue = value;
+
+    if (Object.keys(savedValues).includes(fieldName)) {
+      const oldValue = savedValues[fieldName];
+      fieldValue = oldValue;
+      if (setValue) setValue(oldValue);
+    }
+
     fieldsData[fieldName] = {
       isValid,
       isRequired,
       htmlElement,
-      value,
+      value: fieldValue,
       forceValidation,
+      setValue,
     };
   };
 
