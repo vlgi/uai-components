@@ -6,7 +6,7 @@
 
   type TtextareaStyle = "primary" | "secondary" | "dark" | "light";
   /** choose default theme colors */
-  export let textareaStyle: TtextareaStyle = "primary";
+  export let textareaStyle: TtextareaStyle = "dark";
   /** pass the function to validation */
   export let validationFn: (value: string)=> undefined|string|boolean = () => true;
   /** if you want to force invalid, change it to true */

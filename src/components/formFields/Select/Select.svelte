@@ -64,7 +64,7 @@ type TSelectStyle = "primary" | "secondary" | "dark" | "light";
 /**
  * Choose one of the theme styles.
  */
-export let selectStyle: TSelectStyle = "primary";
+export let selectStyle: TSelectStyle = "dark";
 
 // ====== Internal control ====== //
 

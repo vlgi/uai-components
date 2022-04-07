@@ -19,7 +19,7 @@
   type TborderStyle = "primary" | "secondary" | "dark" | "light";
 
   /** choose default theme colors */
-  export let inputStyle: TborderStyle = "primary";
+  export let inputStyle: TborderStyle = "dark";
 
   /** write a helpertext if needed */
   export let helperText = "";
