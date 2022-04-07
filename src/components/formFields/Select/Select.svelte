@@ -410,6 +410,7 @@ onDestroy(() => {
       transition: top var(--open-transition-duration), font-size var(--open-transition-duration);
       &.floated {
         top: -0.7em;
+        padding: 0 0.3125rem;
         @include m.form-field-label-floated-size;
       }
     }

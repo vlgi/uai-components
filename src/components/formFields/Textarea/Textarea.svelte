@@ -176,7 +176,7 @@
 
   .textarea-container {
     --label-color: var(--szot-label-color, var(--default-label-color));
-    --label-padding: var(--szot-label-padding, 0 0.15rem);
+    --label-padding: var(--szot-label-padding, 0 0.3125rem);
     --label-background-color: var(--szot-label-background-color, white);
 
     --textarea-color: var(--szot-textarea-color, var(--default-textarea-color));
@@ -283,7 +283,7 @@
     overflow: hidden;
     color: var(--textarea-color);
     background-color: transparent;
-    }
+  }
 
   textarea {
     position: absolute;
@@ -348,7 +348,7 @@
         color: var(--theme-error);
       }
     }
-  .label {
+    .label {
       color: var(--theme-error);
     }
   }
