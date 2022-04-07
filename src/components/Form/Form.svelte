@@ -23,6 +23,15 @@
   // True if all fields are valid (readonly)
   export let isAllValid: boolean | null = null;
 
+  /**
+   * Enable form to be auto saved on local storage.
+   * To reset the store call: `localStorage.removeItem("<your-storageKey>")`;
+   */
+  export let saveOnStorage = false;
+
+  // key that storage will have. Required if saveOnStorage is enabled
+  export let storageKey = "";
+
   let fieldsData: Record<string, TFieldData> = {};
   const dispatcher = createEventDispatcher();
 
@@ -89,6 +98,10 @@
   $: values = Object.fromEntries(
     Object.entries(fieldsData).map(([k, v]) => [k, v.value]),
   );
+
+  $: if (saveOnStorage) {
+    localStorage.setItem(storageKey, JSON.stringify(values));
+  }
 
   $: isAllValid = Object.values(fieldsData).every((v: TFieldData) => v.isValid);
 

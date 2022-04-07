@@ -10,6 +10,7 @@
   import Form from "./Form.svelte";
 
   export let values: Record<string, unknown>;
+  export let valuesFromCookies: string;
   export let isAllValid: boolean;
 
   const simpleDessertsOptions = [
@@ -57,13 +58,21 @@
     if (value.length >= 10) return true;
     return "Minimum 10 characters";
   }
+
+  function resetFormCookies() {
+    localStorage.removeItem("my-form-cookie-key");
+    valuesFromCookies = localStorage.getItem("my-form-cookie-key");
+  }
+
+  //  if values change, show value defined in cookie just for test
+  $: if (values) valuesFromCookies = localStorage.getItem("my-form-cookie-key");
 </script>
 
 <div>
   <h1>Real Form Usage Example</h1>
   <p>
     This form use our real components, and shows an example using all possible
-    form fields
+    form fields, with auto save on cookies enabled.
   </p>
   <br />
   <hr />
@@ -71,7 +80,7 @@
 </div>
 
 <div class="my-form">
-  <Form bind:values bind:isAllValid on:submit>
+  <Form bind:values bind:isAllValid on:submit saveOnStorage={true} storageKey="my-form-cookie-key">
     <Input
       label="email"
       name="email"
@@ -145,6 +154,9 @@
   <br />
   <hr />
   <br />
+  <Button buttonStyle="dark" on:click={resetFormCookies}>Reset store</Button>
+  <br />
   <p><b>Form Values:</b> {JSON.stringify(values)}</p>
+  <p><b>Form Cookies:</b> {valuesFromCookies}</p>
   <p><b>Form valid:</b> {isAllValid}</p>
 </div>
