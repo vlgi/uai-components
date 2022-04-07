@@ -87,12 +87,16 @@
       required={true}
     />
     <CleaveInput
-      label="age"
-      name="age"
+      label="Dinheiro"
+      name="money"
+      required={true}
       cleaveOptions={{
+        prefix: "R$ ",
         numeral: true,
-        numericOnly: true,
-        numeralThousandsGroupStyle: "none",
+        delimiter: ".",
+        noImmediatePrefix: true,
+        numeralDecimalMark: ",",
+        rawValueTrimPrefix: true,
       }}
     />
     <Textarea
