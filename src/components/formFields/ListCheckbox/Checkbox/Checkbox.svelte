@@ -32,7 +32,7 @@
   export let checked = false;
 
   /**
-   * Value is not expected to be set manually, only by changing "checked"
+   * Value returned to the form (if inside a form) on checked=true
    */
   export let value: string | boolean = true;
 
@@ -63,6 +63,11 @@
     dispatch("checkItem", value);
   }
 
+  // function to form context force input value
+  function forceValue(_value: unknown) {
+    checked = (_value as string | boolean) === value;
+  }
+
   $: if (checked) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
@@ -79,6 +84,7 @@
         required,
         inputElement,
         validation,
+        forceValue,
       );
     }
     if (checked) dispatchValue();

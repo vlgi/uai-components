@@ -7,6 +7,8 @@
  * @param htmlElement the most external layer of the component, e.g.: a wrapper div
  * @param forceValidation a function to force the field validate,
  *                        the field must set again the value and isvalid using 'setFieldValue'
+ * @param setValue a function to set field value. Used to restore the values saved
+ *                 on localStorage on mounted
  */
 export type TAddFieldToContext = (
   fieldName: string,
@@ -15,6 +17,7 @@ export type TAddFieldToContext = (
   isRequired: boolean,
   htmlElement: HTMLElement,
   forceValidation: ()=> void,
+  setValue: (value: unknown)=> void,
 )=> void;
 
 /**

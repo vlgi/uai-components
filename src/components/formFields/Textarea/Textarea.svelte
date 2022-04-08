@@ -106,6 +106,11 @@
     value = x;
   };
 
+  // function to form context force input value
+  const forceValue = (_value: unknown) => {
+    value = _value as string;
+  };
+
   $: if (forceInvalid) validation();
   $: minHeight = `${1 + rows * 1.2}em`;
   $: maxHeight = maxRows ? `${1 + maxRows * 0.8}rem` : "auto";
@@ -117,7 +122,7 @@
 
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(name, value, isValid, required, wrapperElement, validation);
+      addFieldToContext(name, value, isValid, required, wrapperElement, validation, forceValue);
     }
   });
 
