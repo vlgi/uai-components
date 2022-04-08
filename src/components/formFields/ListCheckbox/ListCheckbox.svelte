@@ -188,7 +188,7 @@
   .list-checkbox-wrapper {
     --checkbox-label-color: var(
       --szot-checkbox-label,
-      var(--theme-primary-txt)
+      var(--theme-dark-txt)
     );
 
     .invalid {
