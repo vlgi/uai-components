@@ -64,7 +64,7 @@
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};
 
-  let invalid = forceInvalid;
+  let visuallyInvalid = forceInvalid;
   let helper = false;
   let eMsg = "";
   let wrapperElement: HTMLElement;
@@ -79,7 +79,7 @@
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function focused() {
-    if (invalid) {
+    if (visuallyInvalid) {
       helper = false;
     } else {
       helper = !helper;
@@ -87,21 +87,21 @@
 }
 
   function changed() {
-    invalid = false;
+    visuallyInvalid = false;
     helper = true;
   }
 
   function checkStatus(answer: undefined|string|boolean) {
     if (answer === true || answer === undefined) {
       isValid = true;
-      invalid = !isValid;
+      visuallyInvalid = !isValid;
     } else if (answer === false) {
       isValid = false;
-      invalid = !isValid;
+      visuallyInvalid = !isValid;
       eMsg = errorMsg;
     } else if (typeof answer === "string") {
       isValid = false;
-      invalid = !isValid;
+      visuallyInvalid = !isValid;
       eMsg = answer;
     }
   }
@@ -109,11 +109,11 @@
   function validation() {
     if (forceInvalid) {
       isValid = false;
-      invalid = !isValid;
+      visuallyInvalid = !isValid;
       eMsg = errorMsg;
     } else if (required && !value) {
       isValid = false;
-      invalid = !isValid;
+      visuallyInvalid = !isValid;
       eMsg = "Este campo é obrigatorio";
     } else {
       checkStatus(validationFn(value));
@@ -161,7 +161,7 @@
   class="form-div input-style-{inputStyle}"
   class:icons-left={iconPosition === "left" && icon}
   class:icons-right={iconPosition === "right" && icon}
-  class:invalid
+  class:visuallyInvalid
   bind:this={wrapperElement}
   on:keypress={submitOnEnter}
 >
@@ -196,7 +196,7 @@
   <p class="helper" class:helper-show={helper}>
     {helperText}
   </p>
-  <p class="error" class:error-show={invalid}>
+  <p class="error" class:error-show={visuallyInvalid}>
     {eMsg}
   </p>
 </div>
@@ -269,7 +269,7 @@
       --default-border-color-focus: var(--theme-light-txt);
       --default-border-color: var(--theme-ligth-txt);
     }
-    &.invalid {
+    &.visuallyInvalid {
       .form-input {
         border-color: var(--theme-error);
         color: var(--theme-error);
