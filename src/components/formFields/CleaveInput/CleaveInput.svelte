@@ -90,6 +90,13 @@ const {
   fireSubmit,
 } = isInsideContext && getContext<TFormContext>("FormContext");
 
+function cleaveValidation(_value: string) {
+  if (required && !_value) {
+    return "Este campo é obrigatorio";
+  }
+  return validationFn(_value);
+}
+
 // function to form context force input value
 const forceValue = (_value: unknown) => {
   value = _value as string;
@@ -188,7 +195,7 @@ $: if (addedToContext) setFieldValue(name, value, isValid);
   {readonly}
   {required}
   {type}
-  validationFn={() => validationFn(value)}
+  validationFn={() => cleaveValidation(value)}
   {forceInvalid}
   {...$$restProps}
-  />
+/>

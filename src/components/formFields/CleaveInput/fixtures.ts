@@ -28,7 +28,10 @@ export const cepMaskConfig = {
 };
 
 export const currencyMaskConfig = {
+  prefix: "R$ ",
   numeral: true,
-  numeralDecimalMark: ",",
   delimiter: ".",
+  noImmediatePrefix: true,
+  numeralDecimalMark: ",",
+  rawValueTrimPrefix: true,
 };
