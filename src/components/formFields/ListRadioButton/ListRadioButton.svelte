@@ -84,6 +84,11 @@
     }
   }
 
+  // function to form context force input value
+  function forceValue(_value: unknown) {
+    value = _value as string;
+  }
+
   $: if (forceInvalid) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
@@ -102,6 +107,7 @@
         required,
         wrapperElement,
         validation,
+        forceValue,
       );
     }
   });
@@ -137,7 +143,7 @@
 <style lang="scss">
   @use "src/styles/mixins" as m;
   .list-radio-box {
-    --radio-label-color: var(--szot-radio-label, var(--theme-primary-txt));
+    --radio-label-color: var(--szot-radio-label, var(--theme-dark-txt));
     box-sizing: border-box;
 
     .radio-title {

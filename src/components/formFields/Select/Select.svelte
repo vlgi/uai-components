@@ -64,7 +64,7 @@ type TSelectStyle = "primary" | "secondary" | "dark" | "light";
 /**
  * Choose one of the theme styles.
  */
-export let selectStyle: TSelectStyle = "primary";
+export let selectStyle: TSelectStyle = "dark";
 
 // ====== Internal control ====== //
 
@@ -195,6 +195,11 @@ function handleBadgeRemoval(ev: MouseEvent, option: TOption) {
   ev.preventDefault();
 }
 
+// function to form context force input value
+function forceValue(_value: unknown) {
+  selected = _value as TOption | TOption[] | null;
+}
+
 $: if (forceInvalid) validate();
 $: selectedSingle = Array.isArray(selected) ? null : selected;
 $: selectedMultiple = Array.isArray(selected) ? selected : [];
@@ -206,7 +211,7 @@ $: if (wrapperElement && isInsideContext) {
 
 onMount(() => {
   if (isInsideContext) {
-    addFieldToContext(name, selected, isValid, required, wrapperElement, validate);
+    addFieldToContext(name, selected, isValid, required, wrapperElement, validate, forceValue);
   }
 });
 
@@ -410,6 +415,7 @@ onDestroy(() => {
       transition: top var(--open-transition-duration), font-size var(--open-transition-duration);
       &.floated {
         top: -0.7em;
+        padding: 0 0.3125rem;
         @include m.form-field-label-floated-size;
       }
     }

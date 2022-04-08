@@ -6,7 +6,7 @@
 
   type TtextareaStyle = "primary" | "secondary" | "dark" | "light";
   /** choose default theme colors */
-  export let textareaStyle: TtextareaStyle = "primary";
+  export let textareaStyle: TtextareaStyle = "dark";
   /** pass the function to validation */
   export let validationFn: (value: string)=> undefined|string|boolean = () => true;
   /** if you want to force invalid, change it to true */
@@ -106,6 +106,11 @@
     value = x;
   };
 
+  // function to form context force input value
+  const forceValue = (_value: unknown) => {
+    value = _value as string;
+  };
+
   $: if (forceInvalid) validation();
   $: minHeight = `${1 + rows * 1.2}em`;
   $: maxHeight = maxRows ? `${1 + maxRows * 0.8}rem` : "auto";
@@ -117,7 +122,7 @@
 
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(name, value, isValid, required, wrapperElement, validation);
+      addFieldToContext(name, value, isValid, required, wrapperElement, validation, forceValue);
     }
   });
 
@@ -176,7 +181,7 @@
 
   .textarea-container {
     --label-color: var(--szot-label-color, var(--default-label-color));
-    --label-padding: var(--szot-label-padding, 0 0.15rem);
+    --label-padding: var(--szot-label-padding, 0 0.3125rem);
     --label-background-color: var(--szot-label-background-color, white);
 
     --textarea-color: var(--szot-textarea-color, var(--default-textarea-color));
@@ -283,7 +288,7 @@
     overflow: hidden;
     color: var(--textarea-color);
     background-color: transparent;
-    }
+  }
 
   textarea {
     position: absolute;
@@ -348,7 +353,7 @@
         color: var(--theme-error);
       }
     }
-  .label {
+    .label {
       color: var(--theme-error);
     }
   }

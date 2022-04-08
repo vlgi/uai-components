@@ -14,7 +14,7 @@
   // choose whether to have borders on the button
   export let buttonStyleType: TButtonStyleType = "filled";
   // choose default theme colors or disabled disable button
-  export let buttonStyle: TButtonStyle = "primary";
+  export let buttonStyle: TButtonStyle = "dark";
   // disable the button
   export let disabled = false;
   // choose which side the icon should be on

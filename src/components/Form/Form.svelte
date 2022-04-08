@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { setContext, createEventDispatcher } from "svelte";
+  import { setContext, createEventDispatcher, onMount } from "svelte";
   import type {
     TAddFieldToContext,
     TSetFieldValue,
@@ -15,6 +15,7 @@
     htmlElement: HTMLElement;
     value?: unknown;
     forceValidation: ()=> void;
+    setValue: (value: unknown)=> void;
   };
 
   // All fields values (readonly)
@@ -23,8 +24,19 @@
   // True if all fields are valid (readonly)
   export let isAllValid: boolean | null = null;
 
+  /**
+   * Enable form to be auto saved on local storage.
+   * To reset the store call: `localStorage.removeItem("<your-storageKey>")`;
+   */
+  export let saveOnStorage = false;
+
+  // key that storage will have. Required if saveOnStorage is enabled
+  export let storageKey = "";
+
   let fieldsData: Record<string, TFieldData> = {};
   const dispatcher = createEventDispatcher();
+
+  const savedValues = JSON.parse(localStorage.getItem(storageKey) || "{}") as Record<string, unknown>;
 
   /**
    * Context functions
@@ -46,13 +58,23 @@
     isRequired,
     htmlElement,
     forceValidation,
+    setValue,
   ) => {
+    let fieldValue = value;
+
+    if (Object.keys(savedValues).includes(fieldName)) {
+      const oldValue = savedValues[fieldName];
+      fieldValue = oldValue;
+      if (setValue) setValue(oldValue);
+    }
+
     fieldsData[fieldName] = {
       isValid,
       isRequired,
       htmlElement,
-      value,
+      value: fieldValue,
       forceValidation,
+      setValue,
     };
   };
 
@@ -89,6 +111,10 @@
   $: values = Object.fromEntries(
     Object.entries(fieldsData).map(([k, v]) => [k, v.value]),
   );
+
+  $: if (saveOnStorage) {
+    localStorage.setItem(storageKey, JSON.stringify(values));
+  }
 
   $: isAllValid = Object.values(fieldsData).every((v: TFieldData) => v.isValid);
 

@@ -32,7 +32,7 @@
   export let checked = false;
 
   /**
-   * Value is not expected to be set manually, only by changing "checked"
+   * Value returned to the form (if inside a form) on checked=true
    */
   export let value: string | boolean = true;
 
@@ -63,6 +63,11 @@
     dispatch("checkItem", value);
   }
 
+  // function to form context force input value
+  function forceValue(_value: unknown) {
+    checked = (_value as string | boolean) === value;
+  }
+
   $: if (checked) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
@@ -79,6 +84,7 @@
         required,
         inputElement,
         validation,
+        forceValue,
       );
     }
     if (checked) dispatchValue();
@@ -121,11 +127,11 @@
     --checkbox-margin: var(--szot-checkbox-margin, 0.3125rem);
     --checkbox-size: var(--szot-checkbox-size, 1rem);
     --border-size: var(--szot-border-size, 0.15em);
-    --border-color: var(--szot-border-color, var(--theme-primary-txt));
+    --border-color: var(--szot-border-color, var(--theme-dark-txt));
     --checkbox-color: var(--szot-checkbox-color, var(--border-color));
     --checkbox-label-color: var(
       --szot-checkbox-label,
-      var(--theme-primary-txt)
+      var(--theme-dark-txt)
     );
 
     display: flex;

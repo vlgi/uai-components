@@ -19,7 +19,7 @@
   type TborderStyle = "primary" | "secondary" | "dark" | "light";
 
   /** choose default theme colors */
-  export let inputStyle: TborderStyle = "primary";
+  export let inputStyle: TborderStyle = "dark";
 
   /** write a helpertext if needed */
   export let helperText = "";
@@ -119,6 +119,11 @@
     value = x;
   }
 
+  // function to form context force input value
+  function forceValue(_value: unknown) {
+    value = _value as string;
+  }
+
   function submitOnEnter(ev: KeyboardEvent) {
     if (ev.key === "Enter") {
       // eslint-disable-next-line no-void
@@ -141,7 +146,7 @@
 
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(name, value, isValid, required, wrapperElement, validation);
+      addFieldToContext(name, value, isValid, required, wrapperElement, validation, forceValue);
     }
   });
 
@@ -313,6 +318,7 @@
       transform: translateY(-55%);
       color: var(--input-focus-color);
       border-color: var(--border-color-focus);
+      padding: 0 0.3125rem;
       @include m.form-field-label-floated-size;
     }
     &:not(:placeholder-shown).form-input:not(:focus) + .form-label {
@@ -326,7 +332,7 @@
   .form-label {
     position: absolute;
     display: block;
-    top: 50%;
+    top: 47%;
     left: var(--label-left);
     transform: translateY(-50%);
     padding: var(--label-padding);

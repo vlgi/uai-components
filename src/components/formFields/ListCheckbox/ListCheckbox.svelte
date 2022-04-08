@@ -102,6 +102,11 @@
     }
   }
 
+  // function to form context force input value
+  function forceValue(_value: unknown) {
+    values = _value as Array<string>;
+  }
+
   // Override the context with our proxy
   if (isInsideContext) {
     setContext<TFormContext>("FormContext", {
@@ -122,6 +127,7 @@
         required,
         wrapperElement,
         validation,
+        forceValue,
       );
     }
   });
@@ -188,7 +194,7 @@
   .list-checkbox-wrapper {
     --checkbox-label-color: var(
       --szot-checkbox-label,
-      var(--theme-primary-txt)
+      var(--theme-dark-txt)
     );
 
     .invalid {
