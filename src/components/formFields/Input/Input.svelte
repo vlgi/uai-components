@@ -87,7 +87,7 @@
 }
 
   function changed() {
-    isValid = true;
+    invalid = false;
     helper = true;
   }
 
