@@ -90,6 +90,7 @@
     "@types/cleave.js": "^1.4.6",
     "cleave.js": "^1.6.0",
     "hammerjs": "^2.0.8",
+    "resolve-url-loader": "^5.0.0",
     "svelte": "^3.24.0"
   }
 }
