@@ -189,9 +189,9 @@
     {label}
   </label>
   {#if icon}
-    <div class="icon">
+    <label for="{id}" class="icon">
       <Icon iconName={icon} />
-    </div>
+    </label>
   {/if}
   <p class="helper" class:helper-show={helper}>
     {helperText}
