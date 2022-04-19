@@ -180,29 +180,29 @@
   @use "src/styles/mixins" as m;
 
   .textarea-container {
-    --label-color: var(--szot-label-color, var(--default-label-color));
-    --label-padding: var(--szot-label-padding, 0 0.3125rem);
-    --label-background-color: var(--szot-label-background-color, white);
+    --label-color: var(--szot-textarea-label-color, var(--default-label-color));
+    --label-padding: var(--szot-textarea-label-padding, 0 0.3125rem);
+    --label-background-color: var(--szot-textarea-label-background-color, white);
 
-    --textarea-color: var(--szot-textarea-color, var(--default-textarea-color));
-    --border-color: var(--szot-border-color, var(--default-border-color));
-    --border: var(--szot-border, var(--theme-small-border));
+    --textarea-color: var(--szot-textarea-textarea-color, var(--default-textarea-color));
+    --border-color: var(--szot-textarea-border-color, var(--default-border-color));
+    --border: var(--szot-textarea-border, var(--theme-small-border));
     --placeholder-color: var(
-      --szot-placeholder-color,
+      --szot-textarea-placeholder-color,
       var(--default-placeholder-color)
     );
-    --margin-bottom: var(--szot-margin-bottom, 1.5rem);
-    --max-width: var(--szot-max-width, var(--theme-fields-max-width));
-    --max-height: var(--szot-max-height, var(--max-auto-height));
-    --padding: var(--szot-padding, var(--theme-fields-padding));
+    --margin-bottom: var(--szot-textarea-margin-bottom, 1.5rem);
+    --max-width: var(--szot-textarea-max-width, var(--theme-fields-max-width));
+    --max-height: var(--szot-textarea-max-height, var(--max-auto-height));
+    --padding: var(--szot-textarea-padding, var(--theme-fields-padding));
 
-    --message-bottom: var(--szot-texthelp-bottom, -1.2rem);
-    --message-left: var(--szot-texthelp-left, 1rem);
+    --message-bottom: var(--szot-textarea-texthelp-bottom, -1.2rem);
+    --message-left: var(--szot-textarea-texthelp-left, 1rem);
     --message-error-bottom-focus: var(
-      --szot-message-error-bottom-focus,
+      --szot-textarea-message-error-bottom-focus,
       -2rem
     );
-    --border-radius: var(--szot-border-radius, var(--theme-small-shape));
+    --border-radius: var(--szot-textarea-border-radius, var(--theme-small-shape));
 
     &.textarea-style-primary {
       --default-label-color: var(--theme-primary-txt);

@@ -37,7 +37,7 @@ export const Border = Template({
 
 export const CustomExample: any = Template({
   labelSlot: "New",
-  style: "--szot-color:#FFFFFF; --szot-background-color:#FC6627;",
+  style: "--szot-badge-color:#FFFFFF; --szot-badge-background-color:#FC6627;",
 });
 CustomExample.parameters = {
   docs: {
@@ -48,7 +48,7 @@ CustomExample.parameters = {
   import Badge from "./Badge.svelte";
 </script>
 
-<Badge --szot-color="#FFFFFF" --szot-background-color="#FC6627">
+<Badge --szot-badge-color="#FFFFFF" --szot-badge-background-color="#FC6627">
   New
 </Badge>
 `,

@@ -154,9 +154,9 @@
     --nav-width: var(--szot-nav-width, 4.5rem);
     --nav-expanded-width: var(--szot-nav-expanded-width, 300px);
     --nav-logo-height: var(--szot-nav-logo-height, 5rem);
-    --nav-text-size: var(--szot-text-size, 1rem);
-    --nav-icon-size: var(--szot-icon-size, 1.5rem);
-    --nav-item-max-height: var(--szot-item-max-height, 50px);
+    --nav-text-size: var(--szot-nav-text-size, 1rem);
+    --nav-icon-size: var(--szot-nav-icon-size, 1.5rem);
+    --nav-item-max-height: var(--szot-nav-item-max-height, 50px);
 
     // nav paddings
     --nav-padding: var(--szot-nav-width, 0.4rem);
@@ -166,13 +166,13 @@
     // nav colors
     --nav-background-color: var(--szot-nav-background-color, #f0f0f0);
     --nav-txt-color: var(--szot-nav-txt-color, var(--theme-dark-txt));
-    --nav-items-hover-color: var(--szot-items-hover-color, var(--theme-light-surface));
-    --nav-items-active-background: var(--szot-items-active-background, var(--theme-dark-surface));
-    --nav-items-active-txt-color: var(--szot-items-active-txt-color, var(--theme-txt-on-dark-surface));
-    --nav-sub-items-active-highlight: var(--szot-sub-items-active-highlight, var(--nav-items-active-txt-color));
+    --nav-items-hover-color: var(--szot-nav-items-hover-color, var(--theme-light-surface));
+    --nav-items-active-background: var(--szot-nav-items-active-background, var(--theme-dark-surface));
+    --nav-items-active-txt-color: var(--szot-nav-items-active-txt-color, var(--theme-txt-on-dark-surface));
+    --nav-sub-items-active-highlight: var(--szot-nav-sub-items-active-highlight, var(--nav-items-active-txt-color));
 
     // other variables
-    --nav-items-active-border: var(--szot-items-active-border, none);
+    --nav-items-active-border: var(--szot-nav-items-active-border, none);
     --nav-animation-speed: var(--szot-nav-animation-speed, 350ms);
     --nav-z-index: var(--szot-nav-z-index, 9999);
     --nav-shadow: var(--szot-nav-shadow, var(--theme-high-shadow));

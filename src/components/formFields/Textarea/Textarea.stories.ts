@@ -93,7 +93,13 @@ export const CustomExample: any = Template({
   type: "text",
   rows: 3,
   maxRows: 4,
-  style: "--szot-border-radius: 1rem;--szot-max-height: 8rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-textarea-color: #db984b;--szot-border-color: #c56d09;--szot-placeholder-color:#db984b;",
+  style: "--szot-textarea-border-radius: 1rem;"
+          + "--szot-textarea-max-height: 8rem;"
+          + "--szot-textarea-background-color: #ffffff;"
+          + "--szot-textarea-label-color: #c56d09;"
+          + "--szot-textarea-textarea-color: #db984b;"
+          + "--szot-textarea-border-color: #c56d09;"
+          + "--szot-textarea-placeholder-color:#db984b;",
 });
 CustomExample.parameters = {
   docs: {
@@ -111,10 +117,10 @@ CustomExample.parameters = {
       };
     </script>
 
-    <div style="--szot-border-radius: 1rem;
-      --szot-max-height: 5rem;--szot-background-color: #ffffff;
-      --szot-label-color: #c56d09;--szot-textarea-color: #db984b;
-      --szot-border-color: #c56d09;--szot-placeholder-color:#db984b;"
+    <div style="--szot-textarea-border-radius: 1rem;
+      --szot-textarea-max-height: 5rem;--szot-textarea-background-color: #ffffff;
+      --szot-textarea-label-color: #c56d09;--szot-textarea-textarea-color: #db984b;
+      --szot-textarea-border-color: #c56d09;--szot-textarea-placeholder-color:#db984b;"
       >
       <Textarea validationFn: validTest,
         label="Teste"

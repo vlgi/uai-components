@@ -11,10 +11,10 @@
 
 <style lang="scss">
   .badge {
-    --color: var(--szot-color, var(--default-color));
-    --background-color: var(--szot-background-color, var(--default-background-color));
-    --border: var(--szot-border, var(--default-border));
-    --font-size: var(--szot-font-size, .9rem);
+    --color: var(--szot-badge-color, var(--default-color));
+    --background-color: var(--szot-badge-background-color, var(--default-background-color));
+    --border: var(--szot-badge-border, var(--default-border));
+    --font-size: var(--szot-badge-font-size, .9rem);
 
     &.primary {
       --default-background-color: var(--theme-primary-surface);

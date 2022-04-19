@@ -205,36 +205,36 @@
   @use "src/styles/mixins" as m;
 
   .form-div {
-    --margin-bottom: var(--szot-margin-bottom, 1.5rem);
+    --margin-bottom: var(--szot-input-margin-bottom, 1.5rem);
     --width: var(--szot-width, 100%);
 
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
     --input-padding: var(--szot-input-padding, var(--theme-fields-padding));
     --input-color: var(--szot-input-color, var(--default-input-color));
-    --border-color: var(--szot-border-color, var(--default-border-color));
-    --border-radius: var(--szot-border-radius, var(--theme-small-shape));
+    --border-color: var(--szot-input-border-color, var(--default-border-color));
+    --border-radius: var(--szot-input-border-radius, var(--theme-small-shape));
 
-    --label-left: var(--szot-label-left, 1.2rem);
-    --label-padding: var(--szot-label-padding, 0rem);
-    --label-color: var(--szot-label-color, var(--default-label-color));
-    --background-color: var(--szot-background-color, white);
+    --label-left: var(--szot-input-label-left, 1.2rem);
+    --label-padding: var(--szot-input-label-padding, 0rem);
+    --label-color: var(--szot-input-label-color, var(--default-label-color));
+    --background-color: var(--szot-input-background-color, white);
 
-    --label-focus-left: var(--szot-label-focus-left, 0.8rem);
+    --label-focus-left: var(--szot-input-label-focus-left, 0.8rem);
     --input-focus-color: var(
       --szot-input-focus-color,
       var(--default-input-focus-color)
     );
     --border-color-focus: var(
-      --szot-border-color-focus,
+      --szot-input-border-color-focus,
       var(--default-border-color-focus)
     );
 
-    --icon-color: var(--szot-icon-color, var(--default-icon-color));
+    --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
 
-    --message-bottom: var(--szot-texthelp-bottom, -1.2rem);
-    --message-left: var(--szot-texthelp-left, 1rem);
-    --message-error-bottom-focus: var(--szot-message-error-bottom-focus, -2rem);
+    --message-bottom: var(--szot-input-texthelp-bottom, -1.2rem);
+    --message-left: var(--szot-input-texthelp-left, 1rem);
+    --message-error-bottom-focus: var(--szot-input-message-error-bottom-focus, -2rem);
     &.input-style-primary {
       --default-label-color: var(--theme-primary-txt);
       --default-input-color: var(--theme-primary-txt);
@@ -288,7 +288,7 @@
     margin-bottom: var(--margin-bottom);
     width: var(--width);
     height: fit-content;
-    max-width: var(--szot-max-width, var(--theme-fields-max-width));
+    max-width: var(--szot-input-max-width, var(--theme-fields-max-width));
     box-sizing: border-box;
   }
 

@@ -333,13 +333,13 @@ onDestroy(() => {
   @use "src/styles/mixins" as m;
 
   * {
-    --component-background-color: var(--szot-background-color, white);
-    --component-border-radius: var(--szot-border-radius, var(--theme-small-shape));
-    --component-padding-vertical: var(--szot-padding-vertical, var(--theme-fields-padding));
-    --component-padding-horizontal: var(--szot-padding-horizontal, var(--theme-fields-padding));
+    --component-background-color: var(--szot-select-background-color, white);
+    --component-border-radius: var(--szot-select-border-radius, var(--theme-small-shape));
+    --component-padding-vertical: var(--szot-select-padding-vertical, var(--theme-fields-padding));
+    --component-padding-horizontal: var(--szot-select-padding-horizontal, var(--theme-fields-padding));
     --component-border: var(--theme-small-border);
-    --message-left-spacing: var(--szot-message-left-spacing, 1rem);
-    --open-transition-duration: var(--szot-open-transition-duration, 200ms);
+    --message-left-spacing: var(--szot-select-message-left-spacing, 1rem);
+    --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
 
     // Will be defined later
     // --component-color
@@ -367,14 +367,14 @@ onDestroy(() => {
   .select {
     position: relative;
     width: 100%;
-    max-width: var(--szot-max-width, var(--theme-fields-max-width));
+    max-width: var(--szot-select-max-width, var(--theme-fields-max-width));
 
     background-color: var(--component-background-color);
     color: var(--component-color);
 
     // hack the specificity
     &.select.select {
-      border-color: var(--szot-border-color, var(--component-color));
+      border-color: var(--szot-select-border-color, var(--component-color));
     }
 
     &.border {
@@ -407,7 +407,7 @@ onDestroy(() => {
       top: var(--component-padding-vertical);
       left: var(--component-padding-horizontal);
       background-color: var(--component-background-color);
-      color: var(--szot-label-color, var(--component-color));
+      color: var(--szot-select-label-color, var(--component-color));
       @include m.form-field-label-size;
 
       transform-origin: 0 30%;

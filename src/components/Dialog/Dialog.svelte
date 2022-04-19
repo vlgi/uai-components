@@ -209,6 +209,6 @@
 
   .title, .content {
     color: var(--txt-color, var(--theme-txt-on-signal-color));
-    font-weight: var(--txt-weight, normal);
+    font-weight: var(--txt-weight, var(--theme-p-font-weight));
   }
 </style>

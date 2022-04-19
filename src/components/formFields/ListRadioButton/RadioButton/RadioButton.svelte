@@ -55,7 +55,7 @@
   .radio-item {
     --radio-margin: var(--szot-radio-margin, 0);
     --radio-size: var(--szot-radio-size, 1rem);
-    --border-color: var(--szot-border-color, var(--theme-dark-txt));
+    --border-color: var(--szot-radio-border-color, var(--theme-dark-txt));
     --radio-color: var(--szot-radio-color, var(--border-color));
     --radio-label-color: var(--szot-radio-label, var(--theme-dark-txt));
 

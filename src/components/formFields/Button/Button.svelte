@@ -71,26 +71,26 @@
     --default-opacity-hover: 85%;
     --default-effect-color: rgba(184, 182, 182, 0.2);
     // external variables
-    --opacity-hover: var(--szot-opacity-hover, var(--default-opacity-hover));
+    --opacity-hover: var(--szot-button-opacity-hover, var(--default-opacity-hover));
     --background-color: var(
-      --szot-background-color,
+      --szot-button-background-color,
       var(--default-background-color)
     );
-    --color: var(--szot-color, var(--default-color));
-    --border: var(--szot-border, var(--default-border));
+    --color: var(--szot-button-color, var(--default-color));
+    --border: var(--szot-button-border, var(--default-border));
     --effect-color-after-click: var(
-      --szot-effect-color-after-click,
+      --szot-button-effect-color-after-click,
       var(--default-effect-color)
     );
-    --text-transform: (--szot-text-transform, capitalize);
-    --border-radius: var(--szot-border-radius, var(--theme-small-shape));
-    --font-size: var(--szot-font-size, 0.9rem);
+    --text-transform: (--szot-button-text-transform, capitalize);
+    --border-radius: var(--szot-button-border-radius, var(--theme-small-shape));
+    --font-size: var(--szot-button-font-size, 0.9rem);
 
-    --padding-large: var(--szot-padding, 0.625rem 2.1875rem);
-    --padding-medium: var(--szot-padding, 0.5625rem 3.4688rem);
-    --padding-small: var(--szot-padding, 0.3125rem 0.625rem);
+    --padding-large: var(--szot-button-padding, 0.625rem 2.1875rem);
+    --padding-medium: var(--szot-button-padding, 0.5625rem 3.4688rem);
+    --padding-small: var(--szot-button-padding, 0.3125rem 0.625rem);
 
-    --margin-icon: var(--szot-margin-icon, -0.1rem 1rem);
+    --margin-icon: var(--szot-button-margin-icon, -0.1rem 1rem);
 
     &.button-style-primary {
       --default-background-color: var(--theme-primary-surface);

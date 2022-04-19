@@ -202,7 +202,7 @@ $: if (options) {
       }
 
       &.focused, &:hover {
-        background-color: var(--szot-focused-color, #f2f2f2);
+        background-color: var(--szot-optionsList-focused-color, #f2f2f2);
       }
     }
   }

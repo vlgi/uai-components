@@ -1,10 +1,11 @@
-import { Meta } from '@storybook/addon-docs';
-import menuSizeImg from '../../assets/docs-img/menu-sizes.png'
-import menuPaddingImg from '../../assets/docs-img/menu-padding.png'
+import { Meta } from "@storybook/addon-docs";
+import menuSizeImg from "../../assets/docs-img/menu-sizes.png";
+import menuPaddingImg from "../../assets/docs-img/menu-padding.png";
 
 <Meta title="Components/SideMenu/Custom" />
 
 # The menu
+
 The menu is defined as fixed, and because of that the Docs page doens't work very well.
 
 When using this menu you can set you own rule to says when use the desktop and mobile mode.
@@ -17,24 +18,23 @@ You can customize the menu style using the following css variables.
 
 ## Sizes
 
-<img src={ menuSizeImg } alt="Menu size img"/>
+<img src={menuSizeImg} alt="Menu size img" />
 
-| Variable                  | Default | Description |
-|---------------------------|---------|-------------|
-| --szot-nav-width          | 4.5rem  |             |
-| --szot-nav-expanded-width | 300px   |             |
-| --szot-nav-logo-height    | 5rem    |             |
-| --szot-text-size          | 1rem    |             |
-| --szot-icon-size          | 1.5rem  |             |
-| --szot-item-max-height    | 50px    |             |
-
+| Variable                   | Default | Description |
+| -------------------------- | ------- | ----------- |
+| --szot-nav-width           | 4.5rem  |             |
+| --szot-nav-expanded-width  | 300px   |             |
+| --szot-nav-logo-height     | 5rem    |             |
+| --szot-nav-text-size       | 1rem    |             |
+| --szot-nav-icon-size       | 1.5rem  |             |
+| --szot-nav-item-max-height | 50px    |             |
 
 ## Paddings
 
-<img src={ menuPaddingImg } alt="Menu padding img"/>
+<img src={menuPaddingImg} alt="Menu padding img" />
 
-| Variable               | Default     | Description |
-|------------------------|-------------|-------------|
+| Variable                    | Default     | Description |
+| --------------------------- | ----------- | ----------- |
 | --szot-nav-padding          | 0.4rem      |             |
 | --szot-nav-logo-padding     | .6rem .3rem |             |
 | --szot-nav-external-padding | 0px         |             |
@@ -44,21 +44,21 @@ NOTE: to ajust the logo image,
 you must ajust the paddings and height to ajust the centralization.
 **
 
-
 ## Colors
-| Variable                          | Default                       | Description                                                              |
-|-----------------------------------|-------------------------------|--------------------------------------------------------------------------|
-| --szot-nav-background-color       | #f0f0f0                       | The bg color of the menu, and button animation.                          |
-| --szot-nav-txt-color              | --szot-dark-txt               | The color of the menu itens and icons                                    |
-| --szot-items-hover-color          | --szot-light-surface          | The bg color of the menu itens                                           |
-| --szot-items-active-background    | --szot-dark-surface           | The bg color of the current active item                                  |
-| --szot-items-active-txt-color     | --szot-txt-on-dark-surface    | The text color of the current active item                                |
-| --szot-sub-items-active-highlight | --szot-items-active-txt-color | The underline color of the current active subitem, inside the group item |
 
+| Variable                              | Default                       | Description                                                              |
+| ------------------------------------- | ----------------------------- | ------------------------------------------------------------------------ |
+| --szot-nav-background-color           | #f0f0f0                       | The bg color of the menu, and button animation.                          |
+| --szot-nav-txt-color                  | --szot-dark-txt               | The color of the menu itens and icons                                    |
+| --szot-nav-items-hover-color          | --szot-light-surface          | The bg color of the menu itens                                           |
+| --szot-nav-items-active-background    | --szot-dark-surface           | The bg color of the current active item                                  |
+| --szot-nav-items-active-txt-color     | --szot-txt-on-dark-surface    | The text color of the current active item                                |
+| --szot-nav-sub-items-active-highlight | --szot-items-active-txt-color | The underline color of the current active subitem, inside the group item |
 
 ## Other variables
+
 | Variable                             | Default                                                   | Description                                                                               |
-|--------------------------------------|-----------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| ------------------------------------ | --------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | --szot-items-active-border           | none                                                      | You can set the border of the current active item instead of setting the background color |
 | --szot-nav-animation-speed           | 350ms                                                     | Change the expand animation speed                                                         |
 | --szot-nav-z-index                   | 9999                                                      | Set nav bar z-index                                                                       |

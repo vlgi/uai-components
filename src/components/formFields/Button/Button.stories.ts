@@ -148,7 +148,10 @@ export const RoundDisabled = Template({
 export const CustomExample: any = Template({
   labelSlot: "orange",
   style:
-      "--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-buttonStyleType: 2px solid #ffc7a7; --szot-border-radius: 1.5rem",
+      "--szot-button-color:#ffc7a7;"
+      + "--szot-button-background-color:#FC6627;"
+      + "--szot-button-buttonStyleType: 2px solid #ffc7a7;"
+      + "--szot-button-border-radius: 1.5rem",
 });
 
 CustomExample.parameters = {
@@ -160,7 +163,10 @@ CustomExample.parameters = {
     import Button from "./Button.svelte";
   </script>
 
-  <div style="--szot-color:#ffc7a7;--szot-background-color:#FC6627;--szot-buttonStyleType: 2px solid #ffc7a7; --szot-border-radius: 1.5rem" >
+  <div style="--szot-button-color:#ffc7a7;
+      --szot-button-background-color:#FC6627;
+      --szot-button-buttonStyleType: 2px solid #ffc7a7;
+      --szot-button-border-radius: 1.5rem" >
     <Button>
       orange
     </Button>

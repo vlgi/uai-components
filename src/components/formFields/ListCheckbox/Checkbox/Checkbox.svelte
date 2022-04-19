@@ -126,8 +126,8 @@
   .checkbox-item {
     --checkbox-margin: var(--szot-checkbox-margin, 0.3125rem);
     --checkbox-size: var(--szot-checkbox-size, 1rem);
-    --border-size: var(--szot-border-size, 0.15em);
-    --border-color: var(--szot-border-color, var(--theme-dark-txt));
+    --border-size: var(--szot-checkbox-border-size, 0.15em);
+    --border-color: var(--szot-checkbox-border-color, var(--theme-dark-txt));
     --checkbox-color: var(--szot-checkbox-color, var(--border-color));
     --checkbox-label-color: var(
       --szot-checkbox-label,
