@@ -206,7 +206,7 @@
 
   .form-div {
     --margin-bottom: var(--szot-input-margin-bottom, 1.5rem);
-    --width: var(--szot-width, 100%);
+    --max-width: var(--szot-max-width, --theme-fields-max-width);
 
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
@@ -218,23 +218,19 @@
     --label-left: var(--szot-input-label-left, 1.2rem);
     --label-padding: var(--szot-input-label-padding, 0rem);
     --label-color: var(--szot-input-label-color, var(--default-label-color));
+    --label-font-size: var(--szot-input-label-font-size, var(--theme-fields-font-size));
     --background-color: var(--szot-input-background-color, white);
 
     --label-focus-left: var(--szot-input-label-focus-left, 0.8rem);
-    --input-focus-color: var(
-      --szot-input-focus-color,
-      var(--default-input-focus-color)
-    );
-    --border-color-focus: var(
-      --szot-input-border-color-focus,
-      var(--default-border-color-focus)
-    );
+    --input-focus-color: var(--szot-input-focus-color,var(--default-input-focus-color));
+    --border-color-focus: var(--szot-input-border-color-focus,var(--default-border-color-focus));
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
 
     --message-bottom: var(--szot-input-texthelp-bottom, -1.2rem);
     --message-left: var(--szot-input-texthelp-left, 1rem);
     --message-error-bottom-focus: var(--szot-input-message-error-bottom-focus, -2rem);
+
     &.input-style-primary {
       --default-label-color: var(--theme-primary-txt);
       --default-input-color: var(--theme-primary-txt);
@@ -286,7 +282,7 @@
     }
     position: relative;
     margin-bottom: var(--margin-bottom);
-    width: var(--width);
+    max-width: var(--max-width);
     height: fit-content;
     max-width: var(--szot-input-max-width, var(--theme-fields-max-width));
     box-sizing: border-box;
@@ -309,7 +305,7 @@
     padding: var(--input-padding);
     background: none;
     color: var(--input-color);
-    font-size: inherit;
+    font-size: var(--theme-fields-font-size);
 
     &:focus + .form-label {
       z-index: 10;
@@ -377,6 +373,7 @@
       color: var(--icon-color);
     }
   }
+
   p {
     position: absolute;
     z-index: 1;

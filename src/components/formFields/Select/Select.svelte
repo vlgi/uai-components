@@ -341,8 +341,8 @@ onDestroy(() => {
     --message-left-spacing: var(--szot-select-message-left-spacing, 1rem);
     --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
 
-    // Will be defined later
-    // --component-color
+    --component-label-color: var(--szot-select-label-color, var(--component-color));
+    --component-border-color: var(--szot-select-border-color, var(--component-color));
   }
 
   .hidden {
@@ -370,11 +370,11 @@ onDestroy(() => {
     max-width: var(--szot-select-max-width, var(--theme-fields-max-width));
 
     background-color: var(--component-background-color);
-    color: var(--component-color);
+    color: var(--component-label-color);
 
     // hack the specificity
     &.select.select {
-      border-color: var(--szot-select-border-color, var(--component-color));
+      border-color: var(--component-border-color);
     }
 
     &.border {
@@ -407,7 +407,7 @@ onDestroy(() => {
       top: var(--component-padding-vertical);
       left: var(--component-padding-horizontal);
       background-color: var(--component-background-color);
-      color: var(--szot-select-label-color, var(--component-color));
+      color: var(--component-label-color);
       @include m.form-field-label-size;
 
       transform-origin: 0 30%;
@@ -442,7 +442,7 @@ onDestroy(() => {
       &.with-borders {
         padding-top: var(--component-padding-vertical);
         border: var(--component-border);
-        border-color: var(--component-color);
+        border-color: var(--component-border-color);
         border-bottom: none;
         border-radius: 0;
 
@@ -488,7 +488,7 @@ onDestroy(() => {
           content: '';
           display: block;
           position: absolute;
-          background-color: var(--component-color);
+          background-color: var(--component-border-color);
         }
 
         &::before {

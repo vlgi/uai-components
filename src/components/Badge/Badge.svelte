@@ -36,7 +36,7 @@
       --default-color: var(--theme-txt-on-light-surface);
     }
     &.outline {
-      --default-border: 0.0563rem solid #5F5F5F;
+      --default-border: var(--theme-small-border);
     }
 
     font-size: var(--font-size);

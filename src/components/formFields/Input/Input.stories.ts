@@ -133,8 +133,7 @@ export const CustomExample: any = Template({
   label: "Teste",
   helperText: "Digite 'erro' para ser invalido",
   type: "name",
-  style: "--szot-input-label-font-size: 10px;"
-          + "--szot-input-height: 1.5rem;"
+  style: "--szot-input-height: 1.5rem;"
           + "--szot-input-background-color: #ffffff;"
           + "--szot-input-label-color: #c56d09;"
           + "--szot-input-color: #db984b;"
@@ -159,7 +158,7 @@ CustomExample.parameters = {
       };
     </script>
 
-    <div style="--szot-input-label-font-size: 10px;--szot-input-height: 1.5rem;
+    <div style="--szot-input-height: 1.5rem;
       --szot-input-background-color: #ffffff;--szot-input-label-color: #c56d09;
       --szot-input-color: #db984b;--szot-input-focus-color: #ce4007;
       --szot-input-border-color-focus: #ce4007;--szot-input-border-color: #c56d09;

@@ -72,10 +72,7 @@
     --default-effect-color: rgba(184, 182, 182, 0.2);
     // external variables
     --opacity-hover: var(--szot-button-opacity-hover, var(--default-opacity-hover));
-    --background-color: var(
-      --szot-button-background-color,
-      var(--default-background-color)
-    );
+    --background-color: var(--szot-button-background-color, var(--default-background-color));
     --color: var(--szot-button-color, var(--default-color));
     --border: var(--szot-button-border, var(--default-border));
     --effect-color-after-click: var(
@@ -84,13 +81,15 @@
     );
     --text-transform: (--szot-button-text-transform, capitalize);
     --border-radius: var(--szot-button-border-radius, var(--theme-small-shape));
-    --font-size: var(--szot-button-font-size, 0.9rem);
+    --font-size: var(--szot-button-font-size, var(--theme-fields-font-size));
 
     --padding-large: var(--szot-button-padding, 0.625rem 2.1875rem);
     --padding-medium: var(--szot-button-padding, 0.5625rem 3.4688rem);
     --padding-small: var(--szot-button-padding, 0.3125rem 0.625rem);
 
     --margin-icon: var(--szot-button-margin-icon, -0.1rem 1rem);
+
+    --max-width: var(--szot-button-max-width, var(--theme-fields-max-width));
 
     &.button-style-primary {
       --default-background-color: var(--theme-primary-surface);
@@ -261,7 +260,7 @@
 
     &[type="submit"] {
       width: 100%;
-      max-width: var(--szot-max-width, var(--theme-fields-max-width));
+      max-width: var(--max-width);
     }
   }
 </style>

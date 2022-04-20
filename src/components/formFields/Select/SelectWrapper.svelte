@@ -14,6 +14,7 @@ export let selected;
 export let forceInvalid;
 </script>
 
+<div style="">
 <Select
   {label}
   {options}
@@ -40,3 +41,4 @@ export let forceInvalid;
 {/if}
 
 <p><b>isValid:</b> {isValid}</p>
+</div>
