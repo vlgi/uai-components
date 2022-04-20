@@ -23,6 +23,7 @@
 </ul>
 
 <style lang="scss">
+  @use 'src/styles/mixins' as m;
   h2 {
     margin-top: 1rem;
   }
@@ -61,16 +62,11 @@
   }
 
   .text {
-    color: red;
+    @include m.text-color(red);
   }
 
   .text-gradient {
-    background: linear-gradient(-30deg, rgba(252,0,47,0.938813025210084) 0%, rgba(170,255,6,1) 100%);
-    color: transparent;
-
-    // can i use 94.52%
-    background-clip: text;
-    -webkit-background-clip: text;
+    @include m.text-color(linear-gradient(-30deg, rgba(252,0,47,0.938813025210084) 0%, rgba(170,255,6,1) 100%));
   }
 
   /** gradiente no borda */
@@ -83,39 +79,10 @@
   }
 
   .border {
-    border: 5px solid red;
+    @include m.border(5px, red);
   }
 
   .border-gradient {
-    border: 5px solid transparent;
-    position: relative;
-
-    &::before {
-      content: "";
-
-      z-index: -1;
-      box-sizing: content-box;
-      position: absolute;
-      inset: 50% 0 0 50%;
-      width: 100%;
-      height: 100%;
-      transform: translate(-50%, -50%);
-
-      border-radius: inherit;
-      border: inherit;
-
-      background: linear-gradient(-30deg, rgba(252,0,47,0.938813025210084) 0%, rgba(170,255,6,1) 100%);
-      background-origin: border-box;
-
-      // can i use 94.8%
-      mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content,
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
+    @include m.border(5px, linear-gradient(-30deg, rgba(252,0,47,0.938813025210084) 0%, rgba(170,255,6,1) 100%));
   }
 </style>
