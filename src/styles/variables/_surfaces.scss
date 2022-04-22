@@ -12,8 +12,8 @@
   --theme-medium-shadow: var(--szot-medium-shadow, 0 4px 4px rgba(0,0,0,.07));
   --theme-high-shadow: var(--szot-high-shadow, 4px 4px 4px rgba(0,0,0,.07));
 
-  // Border size/type/color
-  --theme-small-border: var(--szot-small-border, 0.0625rem solid #333);
-  --theme-medium-border: var(--szot-medium-border, 0.0625rem solid #ccc);
-  --theme-large-border: var(--szot-large-border, 0.0625rem solid #ddd);
+  // Border size
+  --theme-small-border: var(--szot-small-border, 0.0625rem);
+  --theme-medium-border: var(--szot-medium-border, 0.0625rem);
+  --theme-large-border: var(--szot-large-border, 0.0625rem);
 }

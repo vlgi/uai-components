@@ -52,11 +52,12 @@
 </div>
 
 <style lang="scss">
+
+  @use 'src/styles/mixins' as m;
   .radio-item {
     --radio-margin: var(--szot-radio-margin, 0);
     --radio-size: var(--szot-radio-size, 1rem);
-    --border-color: var(--szot-radio-border-color, var(--theme-dark-txt));
-    --radio-color: var(--szot-radio-color, var(--border-color));
+    --radio-color: var(--szot-radio-color, var(--theme-dark-txt));
     --radio-label-color: var(--szot-radio-label-color, var(--theme-dark-txt));
 
     display: flex;
@@ -68,7 +69,7 @@
     }
 
     .radio-label {
-      color: var(--radio-label-color);
+      @include m.text-color(var(--radio-label-color));
       font-weight: normal;
       display: inline-flex;
       align-items: center;
@@ -82,8 +83,8 @@
       width: var(--radio-size);
       height: var(--radio-size);
       border-radius: calc(var(--radio-size) / 2);
-      border: 0.125em solid var(--radio-color);
-      background-color: transparent;
+      @include m.border(0.125em, var(--radio-color));
+      background: transparent;
     }
 
     .radio-button-inner {

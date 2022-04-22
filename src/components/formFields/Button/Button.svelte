@@ -45,42 +45,87 @@
 
   $: round = (size === "round");
 </script>
-
-<button
-  {type}
-  {name}
-  class="button {size} button-style-{buttonStyle} button-style-type-{buttonStyleType}"
-  class:disabled
-  {disabled}
-  on:click={submitForm}
-  on:click
->
-  {#if round}
-    <div class="icon"><Icon iconName={icon} /></div>
-  {:else if icon && !round}
-    <div class="icon-{positionIcon}"><Icon iconName={icon} /></div>
-    <div class="texto-{positionIcon}"><slot /></div>
-  {:else}
-    <slot />
-  {/if}
-</button>
+<div class="container style-{buttonStyle} style-type-{buttonStyleType}" class:disabled>
+  <button
+    {type}
+    {name}
+    class="button {size} button-style-{buttonStyle} button-style-type-{buttonStyleType}"
+    class:disabled
+    {disabled}
+    on:click={submitForm}
+    on:click
+  >
+    {#if round}
+      <div class="icon"><Icon iconName={icon} /></div>
+    {:else if icon && !round}
+      <div class="icon-{positionIcon}"><Icon iconName={icon} /></div>
+      <div class="text text-{positionIcon}"><slot /></div>
+    {:else}
+      <div class="text">
+        <slot />
+      </div>
+    {/if}
+  </button>
+</div>
 
 <style lang="scss">
+  @use 'src/styles/mixins' as m;
+
+  .container {
+    --background-color: var(--szot-button-background-color, var(--default-background-color));
+    --border: var(--szot-button-border, var(--default-border));
+    --border-color: var(--szot-button-border-color, var(--default-border-color));
+    --border-radius: var(--szot-button-border-radius, var(--theme-small-shape));
+    &.style-primary {
+      --default-background-color: var(--theme-primary-surface);
+    }
+    &.style-secondary {
+      --default-background-color: var(--theme-secondary-surface);
+    }
+    &.style-dark {
+      --default-background-color: var(--theme-dark-surface);
+    }
+    &.style-light {
+      --default-background-color: var(--theme-light-surface);
+    }
+    &.style-type-outline {
+      --default-border: var(--theme-small-border);
+      --default-background-color: none;
+      --default-border-color: #333;
+      --background-none: none;
+    }
+    &.style-type-filled {
+      --default-border: none;
+    }
+    &.style-type-not-filled {
+      --default-border: none;
+      --background-none: none;
+      --default-background-color: none;
+      background: none !important;
+    }
+    &.disabled {
+      background: var(--background-none, #7d7d7d) !important;
+      --default-border-color: var(--default-background-color, #b1b1b1);
+    }
+
+    display: inline-block;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    @include m.border(var(--border), var(--border-color));
+  }
   .button {
     // internal variables
     --default-opacity-hover: 85%;
     --default-effect-color: rgba(184, 182, 182, 0.2);
     // external variables
     --opacity-hover: var(--szot-button-opacity-hover, var(--default-opacity-hover));
-    --background-color: var(--szot-button-background-color, var(--default-background-color));
     --color: var(--szot-button-color, var(--default-color));
-    --border: var(--szot-button-border, var(--default-border));
+    --internal-icon-color: var(--color);
     --effect-color-after-click: var(
       --szot-button-effect-color-after-click,
       var(--default-effect-color)
     );
     --text-transform: (--szot-button-text-transform, capitalize);
-    --border-radius: var(--szot-button-border-radius, var(--theme-small-shape));
     --font-size: var(--szot-button-font-size, var(--theme-fields-font-size));
 
     --padding-large: var(--szot-button-padding, 0.625rem 2.1875rem);
@@ -92,19 +137,15 @@
     --max-width: var(--szot-button-max-width, var(--theme-fields-max-width));
 
     &.button-style-primary {
-      --default-background-color: var(--theme-primary-surface);
       --default-color: var(--theme-txt-on-primary-surface);
     }
     &.button-style-secondary {
-      --default-background-color: var(--theme-secondary-surface);
       --default-color: var(--theme-txt-on-secondary-surface);
     }
     &.button-style-dark {
-      --default-background-color: var(--theme-dark-surface);
       --default-color: var(--theme-txt-on-dark-surface);
     }
     &.button-style-light {
-      --default-background-color: var(--theme-light-surface);
       --default-color: var(--theme-txt-on-light-surface);
     }
     &.round {
@@ -127,7 +168,7 @@
         right: 0;
         margin: var(--margin-icon);
       }
-      .texto-right {
+      .text-right {
         position: relative;
         transform: translate(-0.6rem, 0);
       }
@@ -136,7 +177,7 @@
         left: 0;
         margin: var(--margin-icon);
       }
-      .texto-left {
+      .text-left {
         position: relative;
         transform: translate(0.6rem, 0);
       }
@@ -150,7 +191,7 @@
         left: 0;
         margin: var(--margin-icon);
       }
-      .texto-left {
+      .text-left {
         position: relative;
         transform: translate(0.5rem, 0rem);
       }
@@ -159,7 +200,7 @@
         right: 0;
         margin: var(--margin-icon);
       }
-      .texto-right {
+      .text-right {
         position: relative;
         transform: translate(-0.5rem, 0rem);
       }
@@ -173,7 +214,7 @@
         left: -0.5rem;
         margin: var(--margin-icon);
       }
-      .texto-left {
+      .text-left {
         position: relative;
         margin-left: 1.5625rem;
       }
@@ -183,42 +224,31 @@
         right: -0.5rem;
         margin: var(--margin-icon);
       }
-      .texto-right {
+      .text-right {
         position: relative;
         margin-right: 1.5rem;
       }
     }
     &.button-style-type-outline {
-      --default-border: var(--theme-small-border);
-      --default-background-color: none;
       --default-opacity-hover: 60%;
       --default-color: var(--theme-txt-on-light-surface);
-      --background-none: none;
     }
     &.button-style-type-filled {
       --default-border: none;
     }
     &.button-style-type-not-filled {
-      --default-border: none;
-      --default-background-color: none;
       --default-opacity-hover: 60%;
       --default-color: var(--theme-txt-on-light-surface);
-      --background-none: none;
     }
     &.disabled {
       --default-color: #b1b1b1;
-      --default-background-color: var(--background-none, #7d7d7d);
       --disabled-opacity-hover: 100%;
       --default-effect-color: var(--default-background-color);
       cursor: initial;
-      border-color: #b1b1b1;
     }
 
     text-transform: var(--text-transform);
-    color: var(--color);
-    background-color: var(--background-color);
-    border: var(--border);
-
+    background: transparent;
     position: relative;
     display: block;
     outline: none;
@@ -229,13 +259,17 @@
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: var(--font-size);
+    border: none;
+    .text {
+      @include m.text-color(var(--color));
+    }
 
     &:hover {
       transition: background-color 0.3s;
       opacity: var(--opacity-hover);
     }
     &:before {
-      background-color: var(--effect-color-after-click);
+      background: var(--effect-color-after-click);
       content: "";
       position: absolute;
       top: 50%;

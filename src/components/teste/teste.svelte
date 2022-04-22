@@ -56,6 +56,7 @@
   /** gradiente no texto */
   .text, .text-gradient {
     display: inline-block;
+    box-sizing: border-box;
     margin: 0 1rem;
     font-weight: 700;
     font-size: 20px;
@@ -72,6 +73,7 @@
   /** gradiente no borda */
   .border, .border-gradient {
     display: inline-block;
+    box-sizing: border-box;
     margin: 0 1rem;
     width: 100px;
     height: 100px;

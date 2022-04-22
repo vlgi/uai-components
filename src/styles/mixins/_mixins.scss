@@ -28,13 +28,11 @@
 @mixin form-field-helper-text {
   font-size: calc(0.7 * var(--theme-fields-font-size));
   opacity: 0.75;
-  color: var(--theme-info);
 }
 
 @mixin form-field-error-text {
   font-size: calc(0.7 * var(--theme-fields-font-size));
   opacity: 0.75;
-  color: var(--theme-error);
 }
 
 @mixin form-field-label-size {

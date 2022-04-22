@@ -10,6 +10,7 @@
 </span>
 
 <style lang="scss">
+  @use 'src/styles/mixins' as m;
   .badge {
     --color: var(--szot-badge-color, var(--default-color));
     --background-color: var(--szot-badge-background-color, var(--default-background-color));
@@ -36,6 +37,7 @@
       --default-color: var(--theme-txt-on-light-surface);
     }
     &.outline {
+      --default-color: var(--theme-txt-on-light-surface);
       --default-border: var(--theme-small-border);
     }
 
@@ -46,13 +48,12 @@
 
     border: var(--border);
     border-radius: var(--theme-small-shape);
-
-    background-color: var(--background-color);
-    color: var(--color);
+    background: var(--background-color);
     display: inline-block;
 
     .text {
       white-space: nowrap;
+      @include m.text-color(var(--color));
     }
   }
 

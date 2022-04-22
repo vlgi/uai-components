@@ -174,6 +174,8 @@
 </div>
 
 <style lang="scss">
+
+  @use 'src/styles/mixins' as m;
   .dialog-wrapper {
     --txt-color: inherit;
   }
@@ -208,7 +210,7 @@
   }
 
   .title, .content {
-    color: var(--txt-color, var(--theme-txt-on-signal-color));
+    @include m.text-color(var(--txt-color, var(--theme-txt-on-signal-color)));
     font-weight: var(--txt-weight, var(--theme-p-font-weight));
   }
 </style>

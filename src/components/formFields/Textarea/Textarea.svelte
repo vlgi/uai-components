@@ -169,7 +169,9 @@
     />
   </div>
   <label for="{id}" class="label" class:required>
-    {label}
+    <div class="label-text">
+      {label}
+    </div>
   </label>
 
   <p class="helper message" class:helper-show={helper}>{helperText}</p>
@@ -229,6 +231,8 @@
       --default-placeholder-color: var(--theme-light-txt);
     }
 
+    @include m.border(var(--theme-small-border), var(--border-color));
+    border-radius:var(--border-radius);
     position: relative;
     margin-bottom: var(--margin-bottom);
     height: fit-content;
@@ -239,23 +243,23 @@
     top: -0.5rem;
     left: 0.8rem;
     padding: var(--label-padding);
-
-    color: var(--label-color);
-    background-color: var(--label-background-color);
+    background: var(--label-background-color);
     @include m.form-field-label-floated-size;
 
-    &.required::after {
-      content: "*";
-      display: inline;
+    .label-text {
+      @include m.text-color(var(--label-color));
+    }
+
+    &.required {
+      .label-text::after{
+        content: "*";
+        display: inline;
+      }
     }
   }
 
   .textarea-wrapper {
     position: relative;
-    border: var(--theme-small-border);
-    border-color: var(--border-color);
-    border-radius:var(--border-radius);
-
     width: 100%;
     max-width: var(--max-width);
     max-height: var(--max-height);
@@ -284,10 +288,10 @@
     width: calc(100% - 2*var(--padding));
     height: calc(100% - 2*var(--padding));
     border: none;
-
-    overflow: hidden;
-    color: var(--textarea-color);
     background-color: transparent;
+    overflow: hidden;
+    @include m.text-color(var(--textarea-color));
+    caret-color: #333333;
   }
 
   textarea {
@@ -309,20 +313,20 @@
       border: 0.3125rem solid trasparent;
     }
     &::-webkit-input-placeholder {
-      color: var(--placeholder-color);
+      @include m.text-color(var(--placeholder-color));
     }
     &:-moz-placeholder {
       /* Firefox 18- */
-      color: var(--placeholder-color);
+      @include m.text-color(var(--placeholder-color));
     }
 
     &::-moz-placeholder {
       /* Firefox 19+ */
-      color: var(--placeholder-color);
+      @include m.text-color(var(--placeholder-color));
     }
 
     &:-ms-input-placeholder {
-      color: var(--placeholder-color);
+      @include m.text-color(var(--placeholder-color));
     }
 
     &:focus {
@@ -330,31 +334,31 @@
     }
   }
   .invalid {
-    .textarea-wrapper {
-      border-color: var(--theme-error);
-    }
+    @include m.border(var(--theme-small-border), var(--theme-error));
     textarea {
-      color: var(--theme-error);
+      @include m.text-color(var(--theme-error));
 
       &::-webkit-input-placeholder {
-        color: var(--theme-error);
+        @include m.text-color(var(--theme-error));
       }
       &:-moz-placeholder {
         /* Firefox 18- */
-        color: var(--theme-error);
+        @include m.text-color(var(--theme-error));
       }
 
       &::-moz-placeholder {
         /* Firefox 19+ */
-        color: var(--theme-error);
+        @include m.text-color(var(--theme-error));
       }
 
       &:-ms-input-placeholder {
-        color: var(--theme-error);
+        @include m.text-color(var(--theme-error));
       }
     }
     .label {
-      color: var(--theme-error);
+      .label-text {
+        @include m.text-color(var(--theme-error));
+      }
     }
   }
   .message {
@@ -368,17 +372,21 @@
       @include m.form-field-helper-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
+      @include m.text-color(var(--theme-info));
     }
     &.helper-show {
       @include m.form-field-helper-text();
+      @include m.text-color(var(--theme-info));
     }
     &.error {
       @include m.form-field-error-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
+      @include m.text-color(var(--theme-error));
     }
     &.error-show {
       @include m.form-field-error-text();
+      @include m.text-color(var(--theme-error));
     }
   }
 </style>

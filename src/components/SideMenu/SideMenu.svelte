@@ -149,6 +149,8 @@
 </div>
 
 <style lang="scss">
+
+  @use 'src/styles/mixins' as m;
   .nav-menu-container {
     // nav sizes
     --nav-width: var(--szot-nav-width, 4.5rem);
@@ -332,7 +334,7 @@
         transition: width ease 1ms 500ms, max-height ease 150ms 0ms;
         text-decoration: none;
         cursor: pointer;
-        color: var(--nav-txt-color);
+        @include m.text-color(var(--nav-txt-color));
         background-color: transparent;
 
         @extend %on-nav-hover-animate-n1-container;
@@ -343,8 +345,8 @@
 
         &--active-true {
           border: var(--nav-items-active-border);
+          @include m.text-color(var(--nav-items-active-txt-color));
           background-color: var(--nav-items-active-background);
-          color: var(--nav-items-active-txt-color);
         }
       }
 
@@ -353,6 +355,7 @@
 
         &::before {
           font-size: var(--nav-icon-size);
+          @include m.text-color(var(--nav-txt-color));
         }
       }
 
@@ -364,6 +367,7 @@
         transition: opacity 250ms ease-in 250ms;
         text-decoration: none;
         cursor: pointer;
+        @include m.text-color(var(--nav-txt-color));
 
         @extend %on-nav-hover-animate-n1-text;
       }
@@ -404,7 +408,7 @@
           }
 
           &--active-true .n2-item {
-            color: var(--nav-items-active-txt-color);
+            @include m.text-color(var(--nav-items-active-txt-color));
           }
 
           i {
@@ -431,7 +435,7 @@
                 width: 4rem;
                 height: .18rem;
                 border-radius: .3rem;
-                background-color: var(--nav-sub-items-active-highlight);
+                background: var(--nav-sub-items-active-highlight);
                 position: absolute;
                 bottom: -.2rem;
                 left: 0;

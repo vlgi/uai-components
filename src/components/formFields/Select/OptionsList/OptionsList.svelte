@@ -198,11 +198,11 @@ $: if (options) {
       transition: background-color 200ms;
 
       &.selected {
-        color: var(--theme-light-txt);
+        @include m.text-color(var(--theme-light-txt));
       }
 
       &.focused, &:hover {
-        background-color: var(--szot-optionsList-focused-color, #f2f2f2);
+        background: var(--szot-optionsList-focused-color, #f2f2f2);
       }
     }
   }

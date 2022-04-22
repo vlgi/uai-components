@@ -59,7 +59,7 @@
   export let disabled = false;
   export let readonly = false;
   export let required = false;
-  export let id = name;
+  export let id = "name";
 
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};
@@ -68,6 +68,7 @@
   let helper = false;
   let eMsg = "";
   let wrapperElement: HTMLElement;
+  let inFocus = false;
 
 
   const isInsideContext = hasContext("FormContext");
@@ -79,6 +80,7 @@
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function focused() {
+    inFocus = !inFocus;
     if (visuallyInvalid) {
       helper = false;
     } else {
@@ -158,10 +160,11 @@
 </script>
 
 <div
-  class="form-div input-style-{inputStyle}"
+  class="form-div input-style-{inputStyle} border-{border}"
   class:icons-left={iconPosition === "left" && icon}
   class:icons-right={iconPosition === "right" && icon}
   class:visuallyInvalid
+  class:inFocus
   bind:this={wrapperElement}
   on:keypress={submitOnEnter}
 >
@@ -174,7 +177,7 @@
     on:input
     on:change
     bind:this={inputElement}
-    class="form-input border-{border}"
+    class="form-input"
     placeholder=" "
     {name}
     {type}
@@ -186,7 +189,9 @@
     aria-required={required}
   />
   <label for="{id}" class="form-label" class:required>
-    {label}
+    <div class="label-text">
+      {label}
+    </div>
   </label>
   {#if icon}
     <div class="icon">
@@ -264,21 +269,31 @@
       --default-border-color-focus: var(--theme-light-txt);
       --default-border-color: var(--theme-ligth-txt);
     }
+    &.inFocus {
+      --border-color: var(--border-color-focus);
+    }
     &.visuallyInvalid {
+      --border-color: var(--theme-error);
       .form-input {
-        border-color: var(--theme-error);
-        color: var(--theme-error);
-        + .form-label + .icon {
-          color: var(--theme-error);
+        @include m.text-color(var(--theme-error));
+        + .label-text + .icon {
+          @include m.text-color(var(--theme-error));
         }
-        + .form-label {
-          color: var(--theme-error);
-        }
-        &:focus {
-          border-color: var(--theme-error);
-        }
+        + .label-text {
+          @include m.text-color(var(--theme-error));
+        }        
       }
     }
+    &.border-outline {
+      @include m.border(var(--theme-small-border), var(--border-color));
+      border-radius: var(--border-radius);
+    }
+    &.border-bottom {
+      border: 0;
+      border-bottom: var(--theme-small-border) solid var(--border-color);
+      border-image: var(--border-color) 1;
+    }
+
     position: relative;
     margin-bottom: var(--margin-bottom);
     max-width: var(--max-width);
@@ -288,33 +303,25 @@
   }
 
   .form-input {
-    &.border-bottom {
-      border: 0;
-      border-bottom: var(--theme-small-border);
-      border-color: var(--border-color);
-    }
-    &.border-outline {
-      border: var(--theme-small-border);
-      border-color: var(--border-color);
-      border-radius: var(--border-radius);
-    }
-
     width: 100%;
     outline: none;
     padding: var(--input-padding);
     background: none;
-    color: var(--input-color);
+    @include m.text-color(var(--input-color));
+    caret-color: #333333;
     font-size: var(--theme-fields-font-size);
+    border:none;
 
     &:focus + .form-label {
       z-index: 10;
       top: 0;
       left: var(--label-focus-left);
       transform: translateY(-55%);
-      color: var(--input-focus-color);
-      border-color: var(--border-color-focus);
       padding: 0 0.3125rem;
       @include m.form-field-label-floated-size;
+      .label-text {
+        @include m.text-color(var(--input-focus-color));
+      }
     }
     &:not(:placeholder-shown).form-input:not(:focus) + .form-label {
       top: 0;
@@ -331,14 +338,19 @@
     left: var(--label-left);
     transform: translateY(-50%);
     padding: var(--label-padding);
-    color: var(--label-color);
-    background-color: var(--background-color);
+    background: var(--background-color);
     transition: 0.2s;
     @include m.form-field-label-size;
 
-    &.required::after {
-      content: "*";
-      display: inline;
+    .label-text {
+      @include m.text-color(var(--label-color));
+    }
+
+    &.required {
+      .label-text::after{
+        content: "*";
+        display: inline;
+      }
     }
   }
   .icons-left {
@@ -355,7 +367,8 @@
       top: 0;
       left: 0;
       margin: calc(var(--input-padding)*1.2) 0 var(--input-padding) .5rem;
-      color: var(--icon-color);
+      --internal-icon-color: var(--icon-color);
+      --internal-icon-line-height: 1rem;
     }
   }
 
@@ -369,7 +382,8 @@
       top: 0;
       right: 0;
       margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
-      color: var(--icon-color);
+      --internal-icon-color: var(--icon-color);
+      --internal-icon-line-height: 1rem;
     }
   }
 
@@ -384,17 +398,21 @@
       @include m.form-field-helper-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
+      @include m.text-color(var(--theme-info));
     }
     &.helper-show {
       @include m.form-field-helper-text();
+      @include m.text-color(var(--theme-info));
     }
     &.error {
       @include m.form-field-error-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
+      @include m.text-color(var(--theme-error));
     }
     &.error-show {
       @include m.form-field-error-text();
+      @include m.text-color(var(--theme-error));
     }
   }
 </style>

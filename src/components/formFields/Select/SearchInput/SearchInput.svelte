@@ -79,15 +79,14 @@
     width: 100%;
 
     padding: var(--theme-fields-padding);
-
-    border: var(--theme-small-border);
-    border-color: var(--component-label-color);
-    border-radius: var(--theme-small-shape);
     text-overflow: ellipsis;
+    border: none;
+    border-radius: var(--theme-small-shape);
+    outline: none;
+    
 
     &::placeholder {
       color: var(--theme-light-txt);
     }
-
   }
 </style>

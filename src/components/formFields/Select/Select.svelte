@@ -239,7 +239,9 @@ onDestroy(() => {
         for="{id}-custom"
         on:click={() => toggleOpen()}
         class:floated={dropdownOpen || isFilled(selected)}>
-        {label}
+        <div class="label-text">
+          {label}
+        </div>
       </label>
 
       <!-- Select's box that shows which option is selected -->
@@ -276,14 +278,15 @@ onDestroy(() => {
       >
 
         <!-- Search input -->
-        <SearchInput
-          searchable={["text"]}
-          items={options}
-          bind:searchQuery
-          bind:filtered={filteredOptions}
-          bind:focus={focusSearch}
-          bind:inputBind={searchBind}/>
-
+        <div class="searchInput">
+          <SearchInput
+            searchable={["text"]}
+            items={options}
+            bind:searchQuery
+            bind:filtered={filteredOptions}
+            bind:focus={focusSearch}
+            bind:inputBind={searchBind}/>
+        </div>
         <!-- List of all selectable options -->
         <OptionsList
           id="{id}-listbox"
@@ -331,7 +334,6 @@ onDestroy(() => {
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
-
   * {
     --component-background-color: var(--szot-select-background-color, white);
     --component-border-radius: var(--szot-select-border-radius, var(--theme-small-shape));
@@ -340,7 +342,6 @@ onDestroy(() => {
     --component-border: var(--theme-small-border);
     --message-left-spacing: var(--szot-select-message-left-spacing, 1rem);
     --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
-
     --component-label-color: var(--szot-select-label-color, var(--component-color));
     --component-border-color: var(--szot-select-border-color, var(--component-color));
   }
@@ -368,22 +369,20 @@ onDestroy(() => {
     position: relative;
     width: 100%;
     max-width: var(--szot-select-max-width, var(--theme-fields-max-width));
-
-    background-color: var(--component-background-color);
-    color: var(--component-label-color);
+    @include m.text-color(var(--component-label-color));
 
     // hack the specificity
     &.select.select {
-      border-color: var(--component-border-color);
+      @include m.border(var(--component-border), var(--component-border-color));
     }
 
     &.border {
       &-outline {
-        border: var(--component-border);
+        @include m.border(var(--component-border), var(--component-border-color));
         border-radius: var(--component-border-radius);
       }
       &-bottom {
-        border-bottom: var(--component-border);
+        border-bottom: var(--component-border) solid;
       }
     }
 
@@ -407,7 +406,6 @@ onDestroy(() => {
       top: var(--component-padding-vertical);
       left: var(--component-padding-horizontal);
       background-color: var(--component-background-color);
-      color: var(--component-label-color);
       @include m.form-field-label-size;
 
       transform-origin: 0 30%;
@@ -417,6 +415,9 @@ onDestroy(() => {
         top: -0.7em;
         padding: 0 0.3125rem;
         @include m.form-field-label-floated-size;
+      }
+      .label-text {
+        @include m.text-color(var(--component-label-color));
       }
     }
 
@@ -439,10 +440,14 @@ onDestroy(() => {
       padding: 0 var(--component-padding-horizontal);
 
       transition: max-height var(--open-transition-duration), padding var(--open-transition-duration);
+
+      .searchInput {
+        @include m.border(var(--component-border), var(--component-border-color));
+        border-radius: var(--theme-small-shape);
+      }
       &.with-borders {
         padding-top: var(--component-padding-vertical);
-        border: var(--component-border);
-        border-color: var(--component-border-color);
+        @include m.border(var(--component-border), var(--component-border-color));
         border-bottom: none;
         border-radius: 0;
 
@@ -508,10 +513,13 @@ onDestroy(() => {
   .error-text{
     margin-left: var(--message-left-spacing);
     @include m.form-field-error-text();
+    @include m.text-color(var(--theme-error));
   }
   .error {
     label {
-      color: var(--theme-error);
+      .label-text {
+        @include m.text-color(var(--theme-error));
+      }
     }
     // hack the specificity
     &.error.error {
