@@ -88,5 +88,6 @@
     &::placeholder {
       color: var(--theme-light-txt);
     }
+
   }
 </style>

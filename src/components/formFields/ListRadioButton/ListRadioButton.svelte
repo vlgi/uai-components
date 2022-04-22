@@ -143,7 +143,7 @@
 <style lang="scss">
   @use "src/styles/mixins" as m;
   .list-radio-box {
-    --radio-label-color: var(--szot-radio-label, var(--theme-dark-txt));
+    --radio-label-color: var(--szot-radio-label-color, var(--theme-dark-txt));
     box-sizing: border-box;
 
     .radio-title {
@@ -154,7 +154,7 @@
     }
     .invalid {
       --szot-radio-color: var(--theme-error);
-      --szot-radio-label: var(--theme-error);
+      --szot-radio-label-color: var(--theme-error);
       color: var(--theme-error);
     }
 

@@ -130,7 +130,7 @@
     --border-color: var(--szot-checkbox-border-color, var(--theme-dark-txt));
     --checkbox-color: var(--szot-checkbox-color, var(--border-color));
     --checkbox-label-color: var(
-      --szot-checkbox-label,
+      --szot-checkbox-label-color,
       var(--theme-dark-txt)
     );
 
@@ -179,7 +179,7 @@
   }
   .invalid {
     --szot-checkbox-color: var(--theme-error);
-    --szot-checkbox-label: var(--theme-error);
+    --szot-checkbox-label-color: var(--theme-error);
     color: var(--theme-error);
   }
 

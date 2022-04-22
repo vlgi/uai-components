@@ -199,7 +199,7 @@
 
     .invalid {
       --szot-checkbox-color: var(--theme-error);
-      --szot-checkbox-label: var(--theme-error);
+      --szot-checkbox-label-color: var(--theme-error);
 
       &.checkbox-title {
         color: var(--theme-error);

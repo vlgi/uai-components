@@ -218,7 +218,6 @@
     --label-left: var(--szot-input-label-left, 1.2rem);
     --label-padding: var(--szot-input-label-padding, 0rem);
     --label-color: var(--szot-input-label-color, var(--default-label-color));
-    --label-font-size: var(--szot-input-label-font-size, var(--theme-fields-font-size));
     --background-color: var(--szot-input-background-color, white);
 
     --label-focus-left: var(--szot-input-label-focus-left, 0.8rem);

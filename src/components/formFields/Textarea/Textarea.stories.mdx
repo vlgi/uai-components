@@ -10,23 +10,22 @@ import Textarea from "./TextareaWrapperForTest.svelte";
 
 ## Gerais
 
-| CSS Property                  | Descripiton                 |
-| ----------------------------- | --------------------------- |
-| --szot-textarea-margin-bottom | Set component bottom margin |
+| CSS Property                  | Descripiton                 | Default |
+| ----------------------------- | --------------------------- | ------- |
+| --szot-textarea-margin-bottom | Set component bottom margin | 1.5rem  |
 
 ## On the textarea
 
-| CSS Property                          | Descripiton                             |
-| ------------------------------------- | --------------------------------------- |
-| --szot-textarea-max-width             | Sets the max-width of the textarea      |
-| --szot-textarea-max-height            | sets the maximum height of the textarea |
-| --szot-textarea-font-size             | Set the font size of textarea           |
-| --szot-textarea-placeholder-font-size | Sets the placeholder font size          |
-| --szot-textarea-placeholder-color     | Sets placeholder color                  |
-| --szot-textarea-textarea-color        | Set textarea text color                 |
-| --szot-textarea-border-color          | Sets the component's border color       |
-| --szot-textarea-padding               | Sets a custom padding                   |
-| --szot-textarea-border                | Sets a custom border                    |
+| CSS Property                      | Descripiton                             | Default                  |
+| --------------------------------- | --------------------------------------- | ------------------------ |
+| --szot-textarea-max-width         | Sets the max-width of the textarea      | --theme-fields-max-width |
+| --szot-textarea-max-height        | sets the maximum height of the textarea | undefined                |
+| --szot-textarea-font-size         | Set the font size of textarea           | inherit                  |
+| --szot-textarea-placeholder-color | Sets placeholder color                  | --theme-dark-txt         |
+| --szot-textarea-textarea-color    | Set textarea text color                 | --theme-dark-txt         |
+| --szot-textarea-border-color      | Sets the component's border color       | --theme-dark-txt         |
+| --szot-textarea-padding           | Sets a custom padding                   | --theme-fields-padding   |
+| --szot-textarea-border            | Sets a custom border                    | --theme-small-border     |
 
 ## On the label
 
@@ -40,12 +39,11 @@ import Textarea from "./TextareaWrapperForTest.svelte";
 
 ## Messages
 
-| CSS Property                               | Descripiton                                                     |
-| ------------------------------------------ | --------------------------------------------------------------- |
-| --szot-textarea-message-font-size          | Set the font size of messages                                   |
-| --szot-textarea-message-bottom             | Set message text position to the bottom                         |
-| --szot-textarea-message-left               | Set message position to left                                    |
-| --szot-textarea-message-error-bottom-focus | Set error text position to low when helper text is also showing |
+| CSS Property                               | Descripiton                                                     | Default |
+| ------------------------------------------ | --------------------------------------------------------------- | ------- |
+| --szot-textarea-message-bottom             | Set message text position to the bottom                         | -1.2rem |
+| --szot-textarea-message-left               | Set message position to left                                    | 1rem    |
+| --szot-textarea-message-error-bottom-focus | Set error text position to low when helper text is also showing | -2rem   |
 
 <p>
   In addition to these variables, this component also uses the theme variables

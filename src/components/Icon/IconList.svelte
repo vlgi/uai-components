@@ -47,7 +47,9 @@
 </p>
 <br>
 <p>
-  NOTE: For now, you only can use the listed icons, can't add more.
+  NOTE: For now, you only can use the listed icons, can't add more. <br />
+  <br /> You can change icon color using "--szot-icon-color" and size using "--szot-icon-font-size"
+  and "--szot-icon-line-height"
 </p>
 <br>
 <hr>
