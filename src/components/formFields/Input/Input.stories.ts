@@ -9,6 +9,7 @@ export default {
   argTypes: {
     onInput: { action: "on:input" },
     onChange: { action: "on:change" },
+    onClick: { action: "on:click" },
     inputStyle: {
       table: { category: "visual properties" },
       control: {
@@ -57,6 +58,7 @@ const Template = (_args: ArgType) => {
     on: {
       input: action("on:input"),
       change: action("on:change"),
+      click: action("on:click"),
     },
   });
   ret.args = _args;
