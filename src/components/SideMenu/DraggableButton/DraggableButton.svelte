@@ -54,12 +54,16 @@
   bind:this={ elBtn }
   on:click
 >
-  <slot/>
+  <div class="text">
+    <slot/>
+  </div>
 </button>
 
 <style lang="scss">
+
+  @use 'src/styles/mixins' as m;
   .mobile-toggle-btn {
-    background-color: var(--theme-dark-surface);
+    background: var(--theme-dark-surface);
     border-radius: 100%;
     border: none;
     height: 3rem;
@@ -68,9 +72,12 @@
     transform: translate(-50%, -50%);
     bottom: -1.5rem;
     right: -1.5rem;
-    color: var(--theme-txt-on-dark-surface);
     cursor: pointer;
     box-shadow: var(--theme-low-shadow);
     z-index: 100;
+  }
+
+  .text {
+    @include m.text-color(var(--theme-txt-on-dark-surface));
   }
 </style>

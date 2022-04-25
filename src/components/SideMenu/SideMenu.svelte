@@ -264,7 +264,7 @@
     nav {
       display: grid;
       grid-template-rows: auto auto 1fr auto auto;
-      background-color: var(--nav-background-color);
+      background: var(--nav-background-color);
       height: calc(100% - 2*var(--nav-external-padding));
       top: var(--nav-external-padding);
       left: 0;
@@ -308,7 +308,7 @@
 
         img {
           height: 100%;
-          background-color: var(--nav-background-color);
+          background: var(--nav-background-color);
         }
       }
 
@@ -335,18 +335,18 @@
         text-decoration: none;
         cursor: pointer;
         @include m.text-color(var(--nav-txt-color));
-        background-color: transparent;
+        background: transparent;
 
         @extend %on-nav-hover-animate-n1-container;
 
         &:not([class*="active-true"]):hover {
-          background-color: var(--nav-items-hover-color);
+          background: var(--nav-items-hover-color);
         }
 
         &--active-true {
           border: var(--nav-items-active-border);
           @include m.text-color(var(--nav-items-active-txt-color));
-          background-color: var(--nav-items-active-background);
+          background: var(--nav-items-active-background);
         }
       }
 
