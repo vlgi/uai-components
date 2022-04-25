@@ -137,7 +137,7 @@ export const CustomExample: any = Template({
           + "--szot-input-background-color: #ffffff;"
           + "--szot-input-label-color: #c56d09;"
           + "--szot-input-text-color: #db984b;"
-          + "--szot-input-focus-color: #ce4007;"
+          + "--szot-input-label-focus-color: #ce4007;"
           + "--szot-input-border-color-focus: #ce4007;"
           + "--szot-input-border-color: #c56d09;"
           + "--szot-input-border-radius: 1.5rem;",
@@ -160,7 +160,7 @@ CustomExample.parameters = {
 
     <div style="--szot-input-height: 1.5rem;
       --szot-input-background-color: #ffffff;--szot-input-label-color: #c56d09;
-      --szot-input-text-color: #db984b;--szot-input-focus-color: #ce4007;
+      --szot-input-text-color: #db984b;--szot-input-label-focus-color: #ce4007;
       --szot-input-border-color-focus: #ce4007;--szot-input-border-color: #c56d09;
       --szot-input-border-radius: 1.5rem;" >
       <Input 

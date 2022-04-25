@@ -225,7 +225,8 @@
     --background-color: var(--szot-input-background-color, white);
 
     --label-focus-left: var(--szot-input-label-focus-left, 0.8rem);
-    --input-focus-color: var(--szot-input-focus-color,var(--default-input-focus-color));
+    --label-focus-color: var(--szot-input-label-focus-color, var(--label-color));
+    --label-not-focus-color: var(--szot-input-label-not-focus-color, var(--label-color));
     --border-color-focus: var(--szot-input-border-color-focus,var(--default-border-color-focus));
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
@@ -238,7 +239,6 @@
       --default-label-color: var(--theme-primary-txt);
       --default-input-color: var(--theme-primary-txt);
       --default-icon-color: var(--theme-primary-txt);
-      --default-input-focus-color: var(--theme-primary-txt);
       --default-border-color-focus: var(--theme-primary-txt);
       --default-border-color: var(--theme-primary-txt);
     }
@@ -247,7 +247,6 @@
       --default-label-color: var(--theme-secondary-txt);
       --default-input-color: var(--theme-secondary-txt);
       --default-icon-color: var(--theme-secondary-txt);
-      --default-input-focus-color: var(--theme-secondary-txt);
       --default-border-color-focus: var(--theme-secondary-txt);
       --default-border-color: var(--theme-secondary-txt);
     }
@@ -256,7 +255,6 @@
       --default-label-color: var(--theme-dark-txt);
       --default-input-color: var(--theme-dark-txt);
       --default-icon-color: var(--theme-dark-txt);
-      --default-input-focus-color: var(--theme-dark-txt);
       --default-border-color-focus: var(--theme-dark-txt);
       --default-border-color: var(--theme-dark-txt);
     }
@@ -264,7 +262,6 @@
       --default-label-color: var(--theme-light-txt);
       --default-input-color: var(--theme-light-txt);
       --default-icon-color: var(--theme-light-txt);
-      --default-input-focus-color: var(--theme-light-txt);
       --default-border-color-focus: var(--theme-light-txt);
       --default-border-color: var(--theme-ligth-txt);
     }
@@ -273,6 +270,9 @@
     }
     &.visuallyInvalid {
       --border-color: var(--theme-error);
+      --label-color: var(--theme-error);
+      --label-focus-color: var(--theme-error);
+      --label-not-focus-color: var(--theme-error);
       .form-input {
         @include m.text-color(var(--theme-error));
         + .label-text + .icon {
@@ -320,7 +320,7 @@
       padding: 0 0.3125rem;
       @include m.form-field-label-floated-size;
       .label-text {
-        @include m.text-color(var(--input-focus-color));
+        @include m.text-color(var(--label-focus-color));
       }
     }
     &:not(:placeholder-shown).form-input:not(:focus) + .form-label {
@@ -328,6 +328,9 @@
       left: var(--label-focus-left);
       transform: translateY(-55%);
       z-index: 10;
+      .label-text {
+        @include m.text-color(var(--label-not-focus-color));
+      } 
     }
   }
 
