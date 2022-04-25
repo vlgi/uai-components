@@ -15,6 +15,7 @@
     --color: var(--szot-badge-color, var(--default-color));
     --background-color: var(--szot-badge-background-color, var(--default-background-color));
     --border: var(--szot-badge-border, var(--default-border));
+    --border-color: var(--szot-badge-border-color, #333);
     --font-size: var(--szot-badge-font-size, .9rem);
 
     &.primary {
@@ -44,9 +45,8 @@
     font-size: var(--font-size);
     padding-left: var(--theme-fields-padding);
     padding-right: var(--theme-fields-padding);
-    text-align: center;
-
-    border: var(--border);
+    text-align: center; 
+    @include m.border(var(--border), var(--border-color));
     border-radius: var(--theme-small-shape);
     background: var(--background-color);
     display: inline-block;
