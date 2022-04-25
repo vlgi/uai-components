@@ -235,6 +235,7 @@
     border-radius:var(--border-radius);
     position: relative;
     margin-bottom: var(--margin-bottom);
+    margin-top: 0.9375rem;
     height: fit-content;
     width: 100%;
     max-width: var(--max-width);

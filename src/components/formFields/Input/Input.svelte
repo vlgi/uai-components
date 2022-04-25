@@ -158,7 +158,6 @@
     }
   });
 </script>
-
 <div
   class="form-div input-style-{inputStyle} border-{border}"
   class:icons-left={iconPosition === "left" && icon}
@@ -296,6 +295,7 @@
 
     position: relative;
     margin-bottom: var(--margin-bottom);
+    margin-top: 0.9375rem;
     max-width: var(--max-width);
     height: fit-content;
     max-width: var(--szot-input-max-width, var(--theme-fields-max-width));

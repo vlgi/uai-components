@@ -368,6 +368,7 @@ onDestroy(() => {
   .select {
     position: relative;
     width: 100%;
+    margin-top: 0.9375rem;
     max-width: var(--szot-select-max-width, var(--theme-fields-max-width));
     @include m.text-color(var(--component-label-color));
 
