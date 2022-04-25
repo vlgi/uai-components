@@ -117,11 +117,12 @@ CustomExample.parameters = {
       };
     </script>
 
-    <div style="--szot-textarea-border-radius: 1rem;
+    <div
+      style="--szot-textarea-border-radius: 1rem;
       --szot-textarea-max-height: 5rem;--szot-textarea-background-color: #ffffff;
       --szot-textarea-label-color: #c56d09;--szot-textarea-textarea-color: #db984b;
-      --szot-textarea-border-color: #c56d09;--szot-textarea-placeholder-color:#db984b;"
-      >
+      --szot-textarea-border-color: #c56d09;--szot-textarea-placeholder-color:#db984b;" 
+    >
       <Textarea validationFn: validTest,
         label="Teste"
         placeholder="Aqui o tamanho é estático, então haverá scroll"

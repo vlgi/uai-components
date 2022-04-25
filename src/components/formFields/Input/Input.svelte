@@ -215,7 +215,7 @@
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
     --input-padding: var(--szot-input-padding, var(--theme-fields-padding));
-    --input-text-color: var(--szot-text-input-color, var(--default-input-color));
+    --input-text-color: var(--szot-input-text-color, var(--default-input-color));
     --border-color: var(--szot-input-border-color, var(--default-border-color));
     --border-radius: var(--szot-input-border-radius, var(--theme-small-shape));
 

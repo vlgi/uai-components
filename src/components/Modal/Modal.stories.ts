@@ -9,11 +9,6 @@ import ModalWithHeaderIconsWrapper from "./ModalWithHeaderIcons.svelte";
 export default {
   title: "Components/Modal",
   component: Modal,
-  parameters: {
-    docs: {
-      page: null,
-    },
-  },
 };
 
 const Template = (_args: ArgType) => {
@@ -29,13 +24,13 @@ const Template = (_args: ArgType) => {
 };
 
 export const Default = Template({
-  opened: true,
+  opened: false,
 });
 
 const content = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil velit distinctio incidunt? Maiores ratione libero dolorum recusandae cum inventore officia ipsam, sunt cupiditate doloribus, reiciendis architecto praesentium ullam impedit necessitatibus?";
 const largeContent = Array(40).fill(content).join("\n");
 export const LongContent = Template({
-  opened: true,
+  opened: false,
   content: largeContent,
 });
 
@@ -54,6 +49,6 @@ export const ModalInsideDivScroll = () => ({
 export const ModalWithHeaderIcons = () => ({
   Component: ModalWithHeaderIconsWrapper,
   props: {
-    opened: true,
+    opened: false,
   },
 });
