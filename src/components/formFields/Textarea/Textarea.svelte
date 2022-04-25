@@ -237,6 +237,7 @@
     margin-bottom: var(--margin-bottom);
     height: fit-content;
     width: 100%;
+    max-width: var(--max-width);
   }
   .label {
     position: absolute;
