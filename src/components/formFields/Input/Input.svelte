@@ -27,6 +27,9 @@
   /** Enter a message in case it is invalid */
   export let errorMsg = "";
 
+  /** Enable the icon click */
+  export let iconClick = false;
+
   /**
    * Pass the function to validation.
    * Return true/undefined if valid,
@@ -188,9 +191,15 @@
     {label}
   </label>
   {#if icon}
-    <button class="icon" on:click>
-      <Icon iconName={icon}/>
-    </button>
+    {#if iconClick}
+      <button class="icon icon-cursor" on:click>
+        <Icon iconName={icon}/>
+      </button>
+    {:else}
+      <label for={id} class="icon">
+        <Icon iconName={icon}/>
+      </label>
+    {/if}
   {/if}
   <p class="helper" class:helper-show={helper}>
     {helperText}
@@ -362,7 +371,6 @@
       border: 0;
       margin: calc(var(--input-padding)*1.2) 0 var(--input-padding) .5rem;
       color: var(--icon-color);
-      cursor: pointer;
       z-index: 1;
     }
   }
@@ -380,7 +388,6 @@
       border: 0;
       margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
       color: var(--icon-color);
-      cursor: pointer;
     }
   }
   p {
@@ -406,5 +413,9 @@
     &.error-show {
       @include m.form-field-error-text();
     }
+  }
+
+  .icon-cursor {
+    cursor: pointer;
   }
 </style>

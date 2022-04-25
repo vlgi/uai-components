@@ -128,6 +128,15 @@ export const WhithIconLeft = Template({
   name: "phone",
 });
 
+export const enableIconClick = Template({
+  label: "Celular 2",
+  icon: "phone",
+  iconPosition: "left",
+  type: "tel",
+  name: "phone",
+  iconClick: true,
+});
+
 export const Readonly = Template({
   label: "Aviso",
   type: "text",
