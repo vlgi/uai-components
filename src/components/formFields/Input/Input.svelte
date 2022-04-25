@@ -69,7 +69,6 @@
   let eMsg = "";
   let wrapperElement: HTMLElement;
 
-
   const isInsideContext = hasContext("FormContext");
   const {
     setFieldValue,
@@ -189,9 +188,9 @@
     {label}
   </label>
   {#if icon}
-    <label for="{id}" class="icon">
-      <Icon iconName={icon} />
-    </label>
+    <button class="icon" on:click>
+      <Icon iconName={icon}/>
+    </button>
   {/if}
   <p class="helper" class:helper-show={helper}>
     {helperText}
@@ -359,8 +358,12 @@
       position: absolute;
       top: 0;
       left: 0;
+      background-color: transparent;
+      border: 0;
       margin: calc(var(--input-padding)*1.2) 0 var(--input-padding) .5rem;
       color: var(--icon-color);
+      cursor: pointer;
+      z-index: 1;
     }
   }
 
@@ -373,8 +376,11 @@
       position: absolute;
       top: 0;
       right: 0;
+      background-color: transparent;
+      border: 0;
       margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
       color: var(--icon-color);
+      cursor: pointer;
     }
   }
   p {

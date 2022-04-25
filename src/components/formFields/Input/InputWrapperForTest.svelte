@@ -9,5 +9,7 @@
     {...$$restProps}
     on:input
     on:change
+    on:click
+    name="nad"
   />
 </div>
