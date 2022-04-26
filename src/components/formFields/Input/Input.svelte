@@ -27,6 +27,9 @@
   /** Enter a message in case it is invalid */
   export let errorMsg = "";
 
+  /** Enable the icon click */
+  export let iconClick = false;
+
   /**
    * Pass the function to validation.
    * Return true/undefined if valid,
@@ -69,7 +72,6 @@
   let eMsg = "";
   let wrapperElement: HTMLElement;
   let inFocus = false;
-
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -193,9 +195,15 @@
     </div>
   </label>
   {#if icon}
-    <div class="icon">
-      <Icon iconName={icon} />
-    </div>
+    {#if iconClick}
+      <button class="icon icon-cursor" on:click>
+        <Icon iconName={icon}/>
+      </button>
+    {:else}
+      <label for={id} class="icon">
+        <Icon iconName={icon}/>
+      </label>
+    {/if}
   {/if}
   <p class="helper" class:helper-show={helper}>
     {helperText}
@@ -280,7 +288,7 @@
         }
         + .label-text {
           @include m.text-color(var(--theme-error));
-        }        
+        }
       }
     }
     &.border-outline {
@@ -330,7 +338,7 @@
       z-index: 10;
       .label-text {
         @include m.text-color(var(--label-not-focus-color));
-      } 
+      }
     }
   }
 
@@ -369,6 +377,8 @@
       position: absolute;
       top: 0;
       left: 0;
+      background-color: transparent;
+      border: 0;
       margin: calc(var(--input-padding)*1.2) 0 var(--input-padding) .5rem;
       --internal-icon-color: var(--icon-color);
       --internal-icon-line-height: 1rem;
@@ -384,6 +394,8 @@
       position: absolute;
       top: 0;
       right: 0;
+      background-color: transparent;
+      border: 0;
       margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
       --internal-icon-color: var(--icon-color);
       --internal-icon-line-height: 1rem;
@@ -417,5 +429,9 @@
       @include m.form-field-error-text();
       @include m.text-color(var(--theme-error));
     }
+  }
+
+  .icon-cursor {
+    cursor: pointer;
   }
 </style>

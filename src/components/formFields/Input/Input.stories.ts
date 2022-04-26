@@ -9,6 +9,7 @@ export default {
   argTypes: {
     onInput: { action: "on:input" },
     onChange: { action: "on:change" },
+    onClick: { action: "on:click" },
     inputStyle: {
       table: { category: "visual properties" },
       control: {
@@ -57,6 +58,7 @@ const Template = (_args: ArgType) => {
     on: {
       input: action("on:input"),
       change: action("on:change"),
+      click: action("on:click"),
     },
   });
   ret.args = _args;
@@ -76,12 +78,14 @@ export const Default = Template({
   helperText: "Digite um email válido",
   errorMsg: "Falhou, tente novamente",
   type: "email",
+  name: "Email",
 });
 
 export const Required = Template({
   label: "Name",
   type: "text",
   required: true,
+  name: "name",
 });
 
 export const CustomValidationAndRequired = Template({
@@ -90,6 +94,7 @@ export const CustomValidationAndRequired = Template({
   required: true,
   validationFn: validTest,
   helperText: "Digite 'erro' para ser invalido",
+  name: "name",
 });
 
 export const ForceInvalid = Template({
@@ -97,12 +102,14 @@ export const ForceInvalid = Template({
   type: "text",
   forceInvalid: true,
   errorMsg: "Mensagem de erro customizada",
+  name: "name",
 });
 
 export const BordersNone = Template({
   label: "Senha",
   type: "password",
   border: "bottom",
+  name: "senha",
 });
 
 export const WhithIcon = Template({
@@ -110,6 +117,7 @@ export const WhithIcon = Template({
   type: "tel",
   border: "bottom",
   icon: "phone",
+  name: "phone",
 });
 
 export const WhithIconLeft = Template({
@@ -117,6 +125,16 @@ export const WhithIconLeft = Template({
   icon: "phone",
   iconPosition: "left",
   type: "tel",
+  name: "phone",
+});
+
+export const enableIconClick = Template({
+  label: "Celular 2",
+  icon: "phone",
+  iconPosition: "left",
+  type: "tel",
+  name: "phone",
+  iconClick: true,
 });
 
 export const Readonly = Template({
@@ -126,6 +144,7 @@ export const Readonly = Template({
   value: "Não escreva aqui",
   readonly: true,
   helperText: "Apenas um exemplo",
+  name: "warning",
 });
 
 export const CustomExample: any = Template({
@@ -163,10 +182,10 @@ CustomExample.parameters = {
       --szot-input-text-color: #db984b;--szot-input-label-focus-color: #ce4007;
       --szot-input-border-color-focus: #ce4007;--szot-input-border-color: #c56d09;
       --szot-input-border-radius: 1.5rem;" >
-      <Input 
-        label="Teste" 
-        type="name" 
-        validationFn={validTest} 
+      <Input
+        label="Teste"
+        type="name"
+        validationFn={validTest}
         helperText="Digite 'erro' para ser invalido"/>
     </div>
     `,
