@@ -27,6 +27,9 @@
   /** Enter a message in case it is invalid */
   export let errorMsg = "";
 
+  /** Enable the icon click */
+  export let iconClick = false;
+
   /**
    * Pass the function to validation.
    * Return true/undefined if valid,
@@ -68,7 +71,6 @@
   let helper = false;
   let eMsg = "";
   let wrapperElement: HTMLElement;
-
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -189,9 +191,15 @@
     {label}
   </label>
   {#if icon}
-    <div class="icon">
-      <Icon iconName={icon} />
-    </div>
+    {#if iconClick}
+      <button class="icon icon-cursor" on:click>
+        <Icon iconName={icon}/>
+      </button>
+    {:else}
+      <label for={id} class="icon">
+        <Icon iconName={icon}/>
+      </label>
+    {/if}
   {/if}
   <p class="helper" class:helper-show={helper}>
     {helperText}
@@ -359,8 +367,11 @@
       position: absolute;
       top: 0;
       left: 0;
+      background-color: transparent;
+      border: 0;
       margin: calc(var(--input-padding)*1.2) 0 var(--input-padding) .5rem;
       color: var(--icon-color);
+      z-index: 1;
     }
   }
 
@@ -373,6 +384,8 @@
       position: absolute;
       top: 0;
       right: 0;
+      background-color: transparent;
+      border: 0;
       margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
       color: var(--icon-color);
     }
@@ -400,5 +413,9 @@
     &.error-show {
       @include m.form-field-error-text();
     }
+  }
+
+  .icon-cursor {
+    cursor: pointer;
   }
 </style>
