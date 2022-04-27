@@ -12,6 +12,12 @@
   --theme-dark-txt: var(--szot-dark-txt, var(--theme-dark));
   --theme-light-txt: var(--szot-light-txt, var(--theme-light));
 
+  // inserted text color
+  --theme-primary-inserted-text: var(--szot-primary-inserted-text, #FC6627);
+  --theme-secondary-inserted-text: var(--szot-secondary-inserted-text, #167070);
+  --theme-dark-inserted-text: var(--szot-dark-inserted-text, #5F5F5F);
+  --theme-light-inserted-text: var(--szot-light-inserted-text, #F9F9F9);
+
   // surface colors
   --theme-primary-surface: var(--szot-primary-surface, var(--theme-primary));
   --theme-secondary-surface: var(--szot-secondary-surface, var(--theme-secondary));

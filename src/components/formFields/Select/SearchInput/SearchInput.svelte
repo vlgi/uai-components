@@ -74,7 +74,7 @@
 
 <style lang="scss">
   .search {
-    color: var(--theme-dark-txt);
+    color: var(--theme-dark-inserted-text);
     background-color: var(--component-background-color);
     width: 100%;
 

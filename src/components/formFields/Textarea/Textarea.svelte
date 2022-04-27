@@ -186,7 +186,7 @@
     --label-padding: var(--szot-textarea-label-padding, 0 0.3125rem);
     --label-background-color: var(--szot-textarea-label-background-color, white);
 
-    --textarea-color: var(--szot-textarea-textarea-color, var(--default-textarea-color));
+    --textarea-color-text: var(--szot-textarea-color-text, var(--default-textarea-color));
     --border-color: var(--szot-textarea-border-color, var(--default-border-color));
     --border: var(--szot-textarea-border, var(--theme-small-border));
     --placeholder-color: var(
@@ -208,25 +208,25 @@
 
     &.textarea-style-primary {
       --default-label-color: var(--theme-primary-txt);
-      --default-textarea-color: var(--theme-primary-txt);
+      --default-textarea-color: var(--theme-primary-inserted-text);
       --default-border-color: var(--theme-primary-txt);
       --default-placeholder-color: var(--theme-primary-txt);
     }
     &.textarea-style-secondary {
       --default-label-color: var(--theme-secondary-txt);
-      --default-textarea-color: var(--theme-secondary-txt);
+      --default-textarea-color: var(--theme-secondary-inserted-text);
       --default-border-color: var(--theme-secondary-txt);
       --default-placeholder-color: var(--theme-secondary-txt);
     }
     &.textarea-style-dark {
       --default-label-color: var(--theme-dark-txt);
-      --default-textarea-color: var(--theme-dark-txt);
+      --default-textarea-color: var(--theme-dark-inserted-text);
       --default-border-color: var(--theme-dark-txt);
       --default-placeholder-color: var(--theme-dark-txt);
     }
     &.textarea-style-light {
       --default-label-color: var(--theme-light-txt);
-      --default-textarea-color: var(--theme-light-txt);
+      --default-textarea-color: var(--theme-light-inserted-text);
       --default-border-color: var(--theme-light-txt);
       --default-placeholder-color: var(--theme-light-txt);
     }
@@ -265,7 +265,6 @@
     width: 100%;
     max-width: var(--max-width);
     max-height: var(--max-height);
-
     overflow: hidden;
 
     &.resizable {
@@ -292,8 +291,7 @@
     border: none;
     background-color: transparent;
     overflow: hidden;
-    @include m.text-color(var(--textarea-color));
-    caret-color: #333333;
+    color: var(--textarea-color-text);
   }
 
   textarea {

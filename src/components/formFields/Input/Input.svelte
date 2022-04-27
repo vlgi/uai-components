@@ -245,7 +245,7 @@
 
     &.input-style-primary {
       --default-label-color: var(--theme-primary-txt);
-      --default-input-color: var(--theme-primary-txt);
+      --default-input-color: var(--theme-primary-inserted-text);
       --default-icon-color: var(--theme-primary-txt);
       --default-border-color-focus: var(--theme-primary-txt);
       --default-border-color: var(--theme-primary-txt);
@@ -253,7 +253,7 @@
 
     &.input-style-secondary {
       --default-label-color: var(--theme-secondary-txt);
-      --default-input-color: var(--theme-secondary-txt);
+      --default-input-color: var(--theme-secondary-inserted-text);
       --default-icon-color: var(--theme-secondary-txt);
       --default-border-color-focus: var(--theme-secondary-txt);
       --default-border-color: var(--theme-secondary-txt);
@@ -261,14 +261,14 @@
 
     &.input-style-dark {
       --default-label-color: var(--theme-dark-txt);
-      --default-input-color: var(--theme-dark-txt);
+      --default-input-color: var(--theme-dark-inserted-text);
       --default-icon-color: var(--theme-dark-txt);
       --default-border-color-focus: var(--theme-dark-txt);
       --default-border-color: var(--theme-dark-txt);
     }
     &.input-style-light {
       --default-label-color: var(--theme-light-txt);
-      --default-input-color: var(--theme-light-txt);
+      --default-input-color: var(--theme-light-inserted-text);
       --default-icon-color: var(--theme-light-txt);
       --default-border-color-focus: var(--theme-light-txt);
       --default-border-color: var(--theme-ligth-txt);
@@ -315,8 +315,7 @@
     outline: none;
     padding: var(--input-padding);
     background: none;
-    @include m.text-color(var(--input-text-color));
-    caret-color: #333333;
+    color: var(--input-text-color);
     font-size: var(--theme-fields-font-size);
     border:none;
 

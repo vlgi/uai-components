@@ -31,6 +31,16 @@
       ],
     },
     {
+      title: "inserted text color",
+      description: "You can ovewrite the surface colors. input text colors and textarea",
+      variables: [
+        { name: "--szot-primary-inserted-text", default: "#FC6627" },
+        { name: "--szot-secondary-inserted-text", default: "#167070" },
+        { name: "--szot-dark-inserted-text", default: "#5F5F5F" },
+        { name: "--szot-light-inserted-text", default: "#F9F9F9" },
+      ],
+    },
+    {
       title: "text on surface colors",
       description: "",
       variables: [
