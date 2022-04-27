@@ -111,7 +111,6 @@
       }}
     />
   </div>
-
   <label for={id} class="checkbox-label">
     {label !== undefined ? label : ""}
   </label>
@@ -127,8 +126,8 @@
 
   .checkbox-item {
     --checkbox-margin: var(--szot-checkbox-margin, 0.3125rem);
-    --checkbox-size: var(--szot-checkbox-size, 1rem);
-    --border-size: var(--szot-checkbox-border-size, 0.15em);
+    --checkbox-size: var(--szot-checkbox-size, .7rem);
+    --border-size: var(--szot-checkbox-border-size, 0.15rem);
     --border-radius: var(--szot-checkbox-border-radius, var(--border-size));
     --checkbox-color: var(--szot-checkbox-color, var(--theme-dark-txt));
     --checkbox-label-color: var(
@@ -145,6 +144,7 @@
     margin: var(--checkbox-margin);
 
     .border {
+      box-sizing: content-box;
       @include m.border(var(--border-size), var(--checkbox-color));
       border-radius: var(--border-radius);
     }
@@ -152,19 +152,17 @@
     .checkbox-input {
       /* Remove most all native input styles */
       appearance: none;
-
-      @include m.text-color(var(--checkbox-color));
       min-width: var(--checkbox-size);
       height: var(--checkbox-size);
-      transform: translateY(-0.075em);
+      transform: translateY(-0.025em);
       display: grid;
       place-content: center;
     }
 
     .checkbox-input::before {
       content: "";
-      width: calc(var(--checkbox-size) - 0.5em);
-      height: calc(var(--checkbox-size) - 0.5em);
+      width: calc(var(--checkbox-size) - 0.125em);
+      height: calc(var(--checkbox-size) - 0.125em);
       clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
       transform: scale(0);
       transform-origin: bottom left;
