@@ -250,7 +250,7 @@
     text-transform: var(--text-transform);
     background: transparent;
     position: relative;
-    display: block;
+    display: flex;
     outline: none;
     overflow: hidden;
     justify-content: center;
