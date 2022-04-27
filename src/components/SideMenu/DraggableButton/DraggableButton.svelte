@@ -54,9 +54,7 @@
   bind:this={ elBtn }
   on:click
 >
-  <div class="text">
-    <slot/>
-  </div>
+  <slot/>
 </button>
 
 <style lang="scss">
@@ -75,9 +73,6 @@
     cursor: pointer;
     box-shadow: var(--theme-low-shadow);
     z-index: 100;
-  }
-
-  .text {
-    @include m.text-color(var(--theme-txt-on-dark-surface));
+    --internal-icon-color: var(--theme-txt-on-dark-surface);
   }
 </style>

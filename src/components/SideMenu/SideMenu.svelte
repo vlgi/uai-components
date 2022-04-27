@@ -102,8 +102,8 @@
             href={ n1.path }
             on:click={ closeMenu }
           >
-            <i class={ n1.icon }/>
-            <span class="n1-item-text">{ n1.text }</span>
+            <i class="active-{ n1.isActive } { n1.icon }"/>
+            <span class="n1-item-text active-{ n1.isActive }">{ n1.text }</span>
           </a>
         {/if}
 
@@ -112,8 +112,8 @@
           <div
             class="n1-group n1-group--active-{ isGroupActive(n1.items) }"
           >
-            <i class={ n1.icon }/>
-            <span class="n1-group-text">{ n1.text }</span>
+            <i class="active-{ isGroupActive(n1.items) } { n1.icon }"/>
+            <span class="n1-group-text active-{ isGroupActive(n1.items) }">{ n1.text }</span>
 
             <!-- n2 item -->
             {#each n1.items as n2}
@@ -122,7 +122,7 @@
                 href={ n2.path }
                 on:click={ closeMenu }
               >
-                <span class="n2-item-text">{ n2.text }</span>
+                <span class="n2-item-text active-{ n2.isActive }">{ n2.text }</span>
               </a>
             {/each}
           </div>
@@ -139,8 +139,8 @@
             href={ item.path }
             on:click={ closeMenu }
           >
-            <i class={ item.icon }/>
-            <span class="nav-bottom-items-text">{ item.text }</span>
+            <i class="active-{ item.isActive } { item.icon }"/>
+            <span class="nav-bottom-items-text active-{ item.isActive }">{ item.text }</span>
           </a>
         {/each}
       </div>
@@ -334,7 +334,6 @@
         transition: width ease 1ms 500ms, max-height ease 150ms 0ms;
         text-decoration: none;
         cursor: pointer;
-        @include m.text-color(var(--nav-txt-color));
         background: transparent;
 
         @extend %on-nav-hover-animate-n1-container;
@@ -345,7 +344,6 @@
 
         &--active-true {
           border: var(--nav-items-active-border);
-          @include m.text-color(var(--nav-items-active-txt-color));
           background: var(--nav-items-active-background);
         }
       }
@@ -356,6 +354,10 @@
         &::before {
           font-size: var(--nav-icon-size);
           @include m.text-color(var(--nav-txt-color));
+        }
+
+        &.active-true::before {
+          @include m.text-color(var(--nav-items-active-txt-color));
         }
       }
 
@@ -368,7 +370,9 @@
         text-decoration: none;
         cursor: pointer;
         @include m.text-color(var(--nav-txt-color));
-
+        &.active-true {
+          @include m.text-color(var(--nav-items-active-txt-color));
+        }
         @extend %on-nav-hover-animate-n1-text;
       }
 
@@ -388,7 +392,6 @@
           i {
             @include n1-icon();
           }
-
           .n1-item-text {
             @include n1-text();
           }
@@ -407,7 +410,7 @@
             }
           }
 
-          &--active-true .n2-item {
+          &--active-true .n2-item-text {
             @include m.text-color(var(--nav-items-active-txt-color));
           }
 
@@ -424,7 +427,6 @@
             margin-top: .7rem;
             font-weight: 400;
             position: relative;
-
             &:hover:not(&--active-true) {
               opacity: .7;
             }

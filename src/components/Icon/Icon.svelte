@@ -9,8 +9,8 @@
   @use 'src/styles/mixins' as m;
   span::before {
     @include m.text-color(var(--szot-icon-color, var(--internal-icon-color, var(--theme-dark-txt))));
-    font-size: var(--szot-icon-font-size, 1.25rem);
-    line-height: var(--szot-icon-line-height, var(--internal-icon-line-height, 1.3rem));
+    font-size: var(--szot-icon-font-size, var(--internal-icon-font-size, 1.25rem));
+    line-height: var(--szot-icon-line-height, var(--internal-icon-line-height, 1.4rem));
   }
 
 </style>
