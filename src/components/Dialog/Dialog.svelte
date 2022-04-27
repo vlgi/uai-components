@@ -132,7 +132,7 @@
       {:else}
 
         <!-- Buttons -->
-        <div class="button-container" class:others={typeIsOthers}>
+        <div class="button-container">
           {#if type === "confirm" || type === "confirmCancel"}
             <Button
               buttonStyle="dark"
@@ -200,13 +200,9 @@
 
   .button-container {
     display: flex;
+    justify-content: space-between;
     flex-direction: row-reverse;
-    justify-content: center;
     gap: 1rem;
-
-    &.others {
-      justify-content: end;
-    } 
   }
 
   .d-content {

@@ -36,6 +36,7 @@ const Template = (_args: ArgType) => {
 };
 
 export const Default = Template({
+  content: "Um monete de coisa aleatoria Um monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoria",
 });
 
 export const WithCloseOnEscOrClickOut = Template({
