@@ -370,8 +370,6 @@ onDestroy(() => {
     width: 100%;
     margin-top: 0.9375rem;
     max-width: var(--szot-select-max-width, var(--theme-fields-max-width));
-    @include m.text-color(var(--component-label-color));
-
     // hack the specificity
     &.select.select {
       @include m.border(var(--component-border), var(--component-border-color));
@@ -406,7 +404,7 @@ onDestroy(() => {
       position: absolute;
       top: var(--component-padding-vertical);
       left: var(--component-padding-horizontal);
-      background-color: var(--component-background-color);
+      background: var(--component-background-color);
       @include m.form-field-label-size;
 
       transform-origin: 0 30%;
@@ -425,7 +423,7 @@ onDestroy(() => {
     &-box {
       border-radius: var(--component-border-radius);
       padding: var(--component-padding-vertical) var(--component-padding-horizontal);
-
+      @include m.text-color(var(--component-label-color));
       cursor: pointer;
     }
 
@@ -494,7 +492,7 @@ onDestroy(() => {
           content: '';
           display: block;
           position: absolute;
-          background-color: var(--component-border-color);
+          background: var(--component-border-color);
         }
 
         &::before {
