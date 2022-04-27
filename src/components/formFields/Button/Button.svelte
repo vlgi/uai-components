@@ -156,7 +156,7 @@
 
       .icon {
         position: absolute;
-        top: 20%;
+        top: 18%;
         left: 18%;
       }
     }
