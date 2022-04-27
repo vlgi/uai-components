@@ -109,16 +109,16 @@
 
 <style lang="scss">
   .modal-overlay {
-    --bg-color: var(--szot-bg-color, white);
-    --width: var(--szot-width, fit-content);
-    --height: var(--szot-height, fit-content);
-    --max-height: var(--szot-max-height, calc(100vh - 1.2rem));
-    --max-width: var(--szot-max-width, calc(100vw - 1.2rem));
-    --overlay-color: var(--szot-overlay-color, #ccc);
-    --overlay-blur: var(--szot-overlay-blur, 2px);
-    --z-index: var(--szot-z-index, 9999);
-    --close-bg-color: var(--szot-close-bg-color, var(--theme-light-surface));
-    --close-txt-color: var(--szot-close-txt-color, var(--theme-txt-on-light-surface));
+    --bg-color: var(--szot-modal-bg-color, white);
+    --width: var(--szot-modal-width, fit-content);
+    --height: var(--szot-modal-height, fit-content);
+    --max-height: var(--szot-modal-max-height, calc(100vh - 1.2rem));
+    --max-width: var(--szot-modal-max-width, calc(100vw - 1.2rem));
+    --overlay-color: var(--szot-modal-overlay-color, #ccc);
+    --overlay-blur: var(--szot-modal-overlay-blur, 2px);
+    --z-index: var(--szot-modal-z-index, 9999);
+    --close-bg-color: var(--szot-modal-close-bg-color, var(--theme-light-surface));
+    --close-txt-color: var(--szot-modal-close-txt-color, var(--theme-txt-on-light-surface));
 
     position: fixed;
     top: 0;

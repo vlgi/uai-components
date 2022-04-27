@@ -102,8 +102,8 @@
             href={ n1.path }
             on:click={ closeMenu }
           >
-            <i class={ n1.icon }/>
-            <span class="n1-item-text">{ n1.text }</span>
+            <i class="active-{ n1.isActive } { n1.icon }"/>
+            <span class="n1-item-text active-{ n1.isActive }">{ n1.text }</span>
           </a>
         {/if}
 
@@ -112,8 +112,8 @@
           <div
             class="n1-group n1-group--active-{ isGroupActive(n1.items) }"
           >
-            <i class={ n1.icon }/>
-            <span class="n1-group-text">{ n1.text }</span>
+            <i class="active-{ isGroupActive(n1.items) } { n1.icon }"/>
+            <span class="n1-group-text active-{ isGroupActive(n1.items) }">{ n1.text }</span>
 
             <!-- n2 item -->
             {#each n1.items as n2}
@@ -122,7 +122,7 @@
                 href={ n2.path }
                 on:click={ closeMenu }
               >
-                <span class="n2-item-text">{ n2.text }</span>
+                <span class="n2-item-text active-{ n2.isActive }">{ n2.text }</span>
               </a>
             {/each}
           </div>
@@ -139,8 +139,8 @@
             href={ item.path }
             on:click={ closeMenu }
           >
-            <i class={ item.icon }/>
-            <span class="nav-bottom-items-text">{ item.text }</span>
+            <i class="active-{ item.isActive } { item.icon }"/>
+            <span class="nav-bottom-items-text active-{ item.isActive }">{ item.text }</span>
           </a>
         {/each}
       </div>
@@ -149,14 +149,16 @@
 </div>
 
 <style lang="scss">
+
+  @use 'src/styles/mixins' as m;
   .nav-menu-container {
     // nav sizes
     --nav-width: var(--szot-nav-width, 4.5rem);
     --nav-expanded-width: var(--szot-nav-expanded-width, 300px);
     --nav-logo-height: var(--szot-nav-logo-height, 5rem);
-    --nav-text-size: var(--szot-text-size, 1rem);
-    --nav-icon-size: var(--szot-icon-size, 1.5rem);
-    --nav-item-max-height: var(--szot-item-max-height, 50px);
+    --nav-text-size: var(--szot-nav-text-size, 1rem);
+    --nav-icon-size: var(--szot-nav-icon-size, 1.5rem);
+    --nav-item-max-height: var(--szot-nav-item-max-height, 50px);
 
     // nav paddings
     --nav-padding: var(--szot-nav-width, 0.4rem);
@@ -166,13 +168,13 @@
     // nav colors
     --nav-background-color: var(--szot-nav-background-color, #f0f0f0);
     --nav-txt-color: var(--szot-nav-txt-color, var(--theme-dark-txt));
-    --nav-items-hover-color: var(--szot-items-hover-color, var(--theme-light-surface));
-    --nav-items-active-background: var(--szot-items-active-background, var(--theme-dark-surface));
-    --nav-items-active-txt-color: var(--szot-items-active-txt-color, var(--theme-txt-on-dark-surface));
-    --nav-sub-items-active-highlight: var(--szot-sub-items-active-highlight, var(--nav-items-active-txt-color));
+    --nav-items-hover-color: var(--szot-nav-items-hover-color, var(--theme-light-surface));
+    --nav-items-active-background: var(--szot-nav-items-active-background, var(--theme-dark-surface));
+    --nav-items-active-txt-color: var(--szot-nav-items-active-txt-color, var(--theme-txt-on-dark-surface));
+    --nav-sub-items-active-highlight: var(--szot-nav-sub-items-active-highlight, var(--nav-items-active-txt-color));
 
     // other variables
-    --nav-items-active-border: var(--szot-items-active-border, none);
+    --nav-items-active-border: var(--szot-nav-items-active-border, none);
     --nav-animation-speed: var(--szot-nav-animation-speed, 350ms);
     --nav-z-index: var(--szot-nav-z-index, 9999);
     --nav-shadow: var(--szot-nav-shadow, var(--theme-high-shadow));
@@ -262,7 +264,7 @@
     nav {
       display: grid;
       grid-template-rows: auto auto 1fr auto auto;
-      background-color: var(--nav-background-color);
+      background: var(--nav-background-color);
       height: calc(100% - 2*var(--nav-external-padding));
       top: var(--nav-external-padding);
       left: 0;
@@ -306,7 +308,7 @@
 
         img {
           height: 100%;
-          background-color: var(--nav-background-color);
+          background: var(--nav-background-color);
         }
       }
 
@@ -332,19 +334,17 @@
         transition: width ease 1ms 500ms, max-height ease 150ms 0ms;
         text-decoration: none;
         cursor: pointer;
-        color: var(--nav-txt-color);
-        background-color: transparent;
+        background: transparent;
 
         @extend %on-nav-hover-animate-n1-container;
 
         &:not([class*="active-true"]):hover {
-          background-color: var(--nav-items-hover-color);
+          background: var(--nav-items-hover-color);
         }
 
         &--active-true {
           border: var(--nav-items-active-border);
-          background-color: var(--nav-items-active-background);
-          color: var(--nav-items-active-txt-color);
+          background: var(--nav-items-active-background);
         }
       }
 
@@ -353,6 +353,11 @@
 
         &::before {
           font-size: var(--nav-icon-size);
+          @include m.text-color(var(--nav-txt-color));
+        }
+
+        &.active-true::before {
+          @include m.text-color(var(--nav-items-active-txt-color));
         }
       }
 
@@ -364,7 +369,10 @@
         transition: opacity 250ms ease-in 250ms;
         text-decoration: none;
         cursor: pointer;
-
+        @include m.text-color(var(--nav-txt-color));
+        &.active-true {
+          @include m.text-color(var(--nav-items-active-txt-color));
+        }
         @extend %on-nav-hover-animate-n1-text;
       }
 
@@ -384,7 +392,6 @@
           i {
             @include n1-icon();
           }
-
           .n1-item-text {
             @include n1-text();
           }
@@ -403,8 +410,8 @@
             }
           }
 
-          &--active-true .n2-item {
-            color: var(--nav-items-active-txt-color);
+          &--active-true .n2-item-text {
+            @include m.text-color(var(--nav-items-active-txt-color));
           }
 
           i {
@@ -420,7 +427,6 @@
             margin-top: .7rem;
             font-weight: 400;
             position: relative;
-
             &:hover:not(&--active-true) {
               opacity: .7;
             }
@@ -431,7 +437,7 @@
                 width: 4rem;
                 height: .18rem;
                 border-radius: .3rem;
-                background-color: var(--nav-sub-items-active-highlight);
+                background: var(--nav-sub-items-active-highlight);
                 position: absolute;
                 bottom: -.2rem;
                 left: 0;

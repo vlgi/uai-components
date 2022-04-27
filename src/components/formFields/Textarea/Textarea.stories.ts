@@ -88,12 +88,14 @@ const validTest = (value: string): undefined | string | boolean => {
 export const CustomExample: any = Template({
   validationFn: validTest,
   label: "Teste",
-  value: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos maxime accusamus laborum fuga ratione veritatis aliquam totam nam illo harum veniam minima vero atque iusto exercitationem repellendus, commodi mollitia sapiente!",
   helperText: "Digite 'erro' para ser invalido",
   type: "text",
+  placeholder: "Digite algo:",
   rows: 3,
-  maxRows: 4,
-  style: "--szot-border-radius: 1rem;--szot-max-height: 8rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-textarea-color: #db984b;--szot-border-color: #c56d09;--szot-placeholder-color:#db984b;",
+  style: "--szot-textarea-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-textarea-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-textarea-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-textarea-placeholder-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
 });
 CustomExample.parameters = {
   docs: {
@@ -111,11 +113,14 @@ CustomExample.parameters = {
       };
     </script>
 
-    <div style="--szot-border-radius: 1rem;
-      --szot-max-height: 5rem;--szot-background-color: #ffffff;
-      --szot-label-color: #c56d09;--szot-textarea-color: #db984b;
-      --szot-border-color: #c56d09;--szot-placeholder-color:#db984b;"
-      >
+    <div
+      style="--szot-textarea-border-radius: 1rem;
+      --szot-textarea-max-height: 5rem;--szot-textarea-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+      --szot-textarea-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-textarea-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-textarea-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-textarea-placeholder-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+    >
       <Textarea validationFn: validTest,
         label="Teste"
         placeholder="Aqui o tamanho é estático, então haverá scroll"

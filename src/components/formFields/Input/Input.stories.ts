@@ -152,8 +152,13 @@ export const CustomExample: any = Template({
   label: "Teste",
   helperText: "Digite 'erro' para ser invalido",
   type: "name",
-  name: "name",
-  style: "--szot-label-font-size: 10px;--szot-height: 1.5rem;--szot-background-color: #ffffff;--szot-label-color: #c56d09;--szot-input-color: #db984b;--szot-input-focus-color: #ce4007;--szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;--szot-border-radius: 1.5rem;",
+  style: "--szot-input-height: 1.5rem;"
+          + "--szot-input-background-color: #ffffff;"
+          + "--szot-input-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-input-border-color-focus: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-input-border-radius: 1.5rem;",
 });
 CustomExample.parameters = {
   docs: {
@@ -171,12 +176,19 @@ CustomExample.parameters = {
       };
     </script>
 
-    <div style="--szot-label-font-size: 10px;--szot-height: 1.5rem;
-      --szot-background-color: #ffffff;--szot-label-color: #c56d09;
-      --szot-input-color: #db984b;--szot-input-focus-color: #ce4007;
-      --szot-border-color-focus: #ce4007;--szot-border-color: #c56d09;
-      --szot-border-radius: 1.5rem;" >
-      <Input label="Teste" type="name" validationFn={validTest} helperText="Digite 'erro' para ser invalido"/>
+    <div style="--szot-input-height: 1.5rem;
+      --szot-input-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-label-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-text-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-border-color-focus: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-border-radius: 1.5rem;" >
+      <Input
+        label="Teste"
+        type="name"
+        validationFn={validTest}
+        helperText="Digite 'erro' para ser invalido"/>
     </div>
     `,
     },

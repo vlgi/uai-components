@@ -193,21 +193,21 @@
   @use "src/styles/variables" as v;
   .list-checkbox-wrapper {
     --checkbox-label-color: var(
-      --szot-checkbox-label,
+      --szot-checkbox-label-color,
       var(--theme-dark-txt)
     );
 
     .invalid {
       --szot-checkbox-color: var(--theme-error);
-      --szot-checkbox-label: var(--theme-error);
+      --szot-checkbox-label-color: var(--theme-error);
 
       &.checkbox-title {
-        color: var(--theme-error);
+        @include m.text-color(var(--theme-error));
       }
     }
 
     .checkbox-title {
-      color: var(--checkbox-label-color);
+      @include m.text-color(var(--checkbox-label-color));
     }
 
     .list-checkbox {

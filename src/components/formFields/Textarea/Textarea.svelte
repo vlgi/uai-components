@@ -169,7 +169,9 @@
     />
   </div>
   <label for="{id}" class="label" class:required>
-    {label}
+    <div class="label-text">
+      {label}
+    </div>
   </label>
 
   <p class="helper message" class:helper-show={helper}>{helperText}</p>
@@ -180,86 +182,89 @@
   @use "src/styles/mixins" as m;
 
   .textarea-container {
-    --label-color: var(--szot-label-color, var(--default-label-color));
-    --label-padding: var(--szot-label-padding, 0 0.3125rem);
-    --label-background-color: var(--szot-label-background-color, white);
+    --label-color: var(--szot-textarea-label-color, var(--default-label-color));
+    --label-padding: var(--szot-textarea-label-padding, 0 0.3125rem);
+    --label-background-color: var(--szot-textarea-label-background-color, white);
 
-    --textarea-color: var(--szot-textarea-color, var(--default-textarea-color));
-    --border-color: var(--szot-border-color, var(--default-border-color));
-    --border: var(--szot-border, var(--theme-small-border));
+    --textarea-color-text: var(--szot-textarea-color-text, var(--default-textarea-color));
+    --border-color: var(--szot-textarea-border-color, var(--default-border-color));
+    --border: var(--szot-textarea-border, var(--theme-small-border));
     --placeholder-color: var(
-      --szot-placeholder-color,
+      --szot-textarea-placeholder-color,
       var(--default-placeholder-color)
     );
-    --margin-bottom: var(--szot-margin-bottom, 1.5rem);
-    --max-width: var(--szot-max-width, var(--theme-fields-max-width));
-    --max-height: var(--szot-max-height, var(--max-auto-height));
-    --padding: var(--szot-padding, var(--theme-fields-padding));
+    --margin-bottom: var(--szot-textarea-margin-bottom, 1.5rem);
+    --max-width: var(--szot-textarea-max-width, var(--theme-fields-max-width));
+    --max-height: var(--szot-textarea-max-height, var(--max-auto-height));
+    --padding: var(--szot-textarea-padding, var(--theme-fields-padding));
 
-    --message-bottom: var(--szot-texthelp-bottom, -1.2rem);
-    --message-left: var(--szot-texthelp-left, 1rem);
+    --message-bottom: var(--szot-textarea-texthelp-bottom, -1.2rem);
+    --message-left: var(--szot-textarea-texthelp-left, 1rem);
     --message-error-bottom-focus: var(
-      --szot-message-error-bottom-focus,
+      --szot-textarea-message-error-bottom-focus,
       -2rem
     );
-    --border-radius: var(--szot-border-radius, var(--theme-small-shape));
+    --border-radius: var(--szot-textarea-border-radius, var(--theme-small-shape));
 
     &.textarea-style-primary {
       --default-label-color: var(--theme-primary-txt);
-      --default-textarea-color: var(--theme-primary-txt);
+      --default-textarea-color: var(--theme-primary-inserted-text);
       --default-border-color: var(--theme-primary-txt);
       --default-placeholder-color: var(--theme-primary-txt);
     }
     &.textarea-style-secondary {
       --default-label-color: var(--theme-secondary-txt);
-      --default-textarea-color: var(--theme-secondary-txt);
+      --default-textarea-color: var(--theme-secondary-inserted-text);
       --default-border-color: var(--theme-secondary-txt);
       --default-placeholder-color: var(--theme-secondary-txt);
     }
     &.textarea-style-dark {
       --default-label-color: var(--theme-dark-txt);
-      --default-textarea-color: var(--theme-dark-txt);
+      --default-textarea-color: var(--theme-dark-inserted-text);
       --default-border-color: var(--theme-dark-txt);
       --default-placeholder-color: var(--theme-dark-txt);
     }
     &.textarea-style-light {
       --default-label-color: var(--theme-light-txt);
-      --default-textarea-color: var(--theme-light-txt);
+      --default-textarea-color: var(--theme-light-inserted-text);
       --default-border-color: var(--theme-light-txt);
       --default-placeholder-color: var(--theme-light-txt);
     }
 
+    @include m.border(var(--theme-small-border), var(--border-color));
+    border-radius:var(--border-radius);
     position: relative;
     margin-bottom: var(--margin-bottom);
+    margin-top: 0.9375rem;
     height: fit-content;
     width: 100%;
+    max-width: var(--max-width);
   }
   .label {
     position: absolute;
     top: -0.5rem;
     left: 0.8rem;
     padding: var(--label-padding);
-
-    color: var(--label-color);
-    background-color: var(--label-background-color);
+    background: var(--label-background-color);
     @include m.form-field-label-floated-size;
 
-    &.required::after {
-      content: "*";
-      display: inline;
+    .label-text {
+      @include m.text-color(var(--label-color));
+    }
+
+    &.required {
+      .label-text::after{
+        content: "*";
+        display: inline;
+      }
     }
   }
 
   .textarea-wrapper {
     position: relative;
-    border: var(--theme-small-border);
-    border-color: var(--border-color);
-    border-radius:var(--border-radius);
-
     width: 100%;
     max-width: var(--max-width);
     max-height: var(--max-height);
-
     overflow: hidden;
 
     &.resizable {
@@ -284,10 +289,9 @@
     width: calc(100% - 2*var(--padding));
     height: calc(100% - 2*var(--padding));
     border: none;
-
-    overflow: hidden;
-    color: var(--textarea-color);
     background-color: transparent;
+    overflow: hidden;
+    color: var(--textarea-color-text);
   }
 
   textarea {
@@ -309,20 +313,20 @@
       border: 0.3125rem solid trasparent;
     }
     &::-webkit-input-placeholder {
-      color: var(--placeholder-color);
+      @include m.text-color(var(--placeholder-color));
     }
     &:-moz-placeholder {
       /* Firefox 18- */
-      color: var(--placeholder-color);
+      @include m.text-color(var(--placeholder-color));
     }
 
     &::-moz-placeholder {
       /* Firefox 19+ */
-      color: var(--placeholder-color);
+      @include m.text-color(var(--placeholder-color));
     }
 
     &:-ms-input-placeholder {
-      color: var(--placeholder-color);
+      @include m.text-color(var(--placeholder-color));
     }
 
     &:focus {
@@ -330,31 +334,31 @@
     }
   }
   .invalid {
-    .textarea-wrapper {
-      border-color: var(--theme-error);
-    }
+    @include m.border(var(--theme-small-border), var(--theme-error));
     textarea {
-      color: var(--theme-error);
+      @include m.text-color(var(--theme-error));
 
       &::-webkit-input-placeholder {
-        color: var(--theme-error);
+        @include m.text-color(var(--theme-error));
       }
       &:-moz-placeholder {
         /* Firefox 18- */
-        color: var(--theme-error);
+        @include m.text-color(var(--theme-error));
       }
 
       &::-moz-placeholder {
         /* Firefox 19+ */
-        color: var(--theme-error);
+        @include m.text-color(var(--theme-error));
       }
 
       &:-ms-input-placeholder {
-        color: var(--theme-error);
+        @include m.text-color(var(--theme-error));
       }
     }
     .label {
-      color: var(--theme-error);
+      .label-text {
+        @include m.text-color(var(--theme-error));
+      }
     }
   }
   .message {
@@ -368,17 +372,21 @@
       @include m.form-field-helper-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
+      @include m.text-color(var(--theme-info));
     }
     &.helper-show {
       @include m.form-field-helper-text();
+      @include m.text-color(var(--theme-info));
     }
     &.error {
       @include m.form-field-error-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
+      @include m.text-color(var(--theme-error));
     }
     &.error-show {
       @include m.form-field-error-text();
+      @include m.text-color(var(--theme-error));
     }
   }
 </style>

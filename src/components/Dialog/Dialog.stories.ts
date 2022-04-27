@@ -36,6 +36,7 @@ const Template = (_args: ArgType) => {
 };
 
 export const Default = Template({
+  content: "Um monete de coisa aleatoria Um monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoria",
 });
 
 export const WithCloseOnEscOrClickOut = Template({
@@ -49,6 +50,11 @@ export const Confirm = Template({
 export const Error = Template({
   type: "error",
   content: "Sorry, something goes wrong.",
+});
+
+export const Success = Template({
+  type: "success",
+  content: "Great, everything worked out.",
 });
 
 export const DialogOpenCloseExample = () => ({

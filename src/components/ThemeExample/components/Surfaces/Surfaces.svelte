@@ -48,17 +48,17 @@
       variables: [
         {
           variable: "--szot-small-border",
-          default: "0.0625rem solid #333",
+          default: "0.0625rem",
           description: "used in objects with small sizes, like a button, input, badge",
         },
         {
           variable: "--szot-medium-border",
-          default: "0.0625rem solid #ccc",
+          default: "0.0625rem",
           description: "medium size, like a card, accordion",
         },
         {
           variable: "--szot-large-border",
-          default: "0.0625rem solid #ddd",
+          default: "0.0625rem",
           description: "large size, like a modal",
         },
       ],
@@ -143,19 +143,19 @@
   }
 
   .--szot-small-border {
-    border: var(--theme-small-border);
+    border: var(--theme-small-border) solid #333;
     width: 4rem;
     height: 2rem;
   }
 
   .--szot-medium-border {
-    border: var(--theme-medium-border);
+    border: var(--theme-medium-border) solid #333;;
     width: 20rem;
     height: 10rem;
   }
 
   .--szot-large-border{
-    border: var(--theme-large-border);
+    border: var(--theme-large-border) solid #333;;
     width: 60rem;
     height: 30rem;
   }

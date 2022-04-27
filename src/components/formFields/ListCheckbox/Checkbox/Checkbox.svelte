@@ -98,18 +98,19 @@
 </script>
 
 <div class="checkbox-item" class:invalid={!isValid}>
-  <input
-    type="checkbox"
-    {name}
-    {id}
-    class="checkbox-input"
-    bind:checked
-    bind:this={inputElement}
-    on:click={() => {
-      dispatchValue();
-    }}
-  />
-
+  <div class="border">
+    <input
+      type="checkbox"
+      {name}
+      {id}
+      class="checkbox-input"
+      bind:checked
+      bind:this={inputElement}
+      on:click={() => {
+        dispatchValue();
+      }}
+    />
+  </div>
   <label for={id} class="checkbox-label">
     {label !== undefined ? label : ""}
   </label>
@@ -125,12 +126,12 @@
 
   .checkbox-item {
     --checkbox-margin: var(--szot-checkbox-margin, 0.3125rem);
-    --checkbox-size: var(--szot-checkbox-size, 1rem);
-    --border-size: var(--szot-border-size, 0.15em);
-    --border-color: var(--szot-border-color, var(--theme-dark-txt));
-    --checkbox-color: var(--szot-checkbox-color, var(--border-color));
+    --checkbox-size: var(--szot-checkbox-size, .7rem);
+    --border-size: var(--szot-checkbox-border-size, 0.15rem);
+    --border-radius: var(--szot-checkbox-border-radius, var(--border-size));
+    --checkbox-color: var(--szot-checkbox-color, var(--theme-dark-txt));
     --checkbox-label-color: var(
-      --szot-checkbox-label,
+      --szot-checkbox-label-color,
       var(--theme-dark-txt)
     );
 
@@ -142,30 +143,31 @@
     padding: 0 0.375em;
     margin: var(--checkbox-margin);
 
+    .border {
+      box-sizing: content-box;
+      @include m.border(var(--border-size), var(--checkbox-color));
+      border-radius: var(--border-radius);
+    }
+
     .checkbox-input {
       /* Remove most all native input styles */
       appearance: none;
-      margin-right: 20px;
-
-      color: var(--checkbox-color);
       min-width: var(--checkbox-size);
       height: var(--checkbox-size);
-      border: var(--border-size) solid var(--checkbox-color);
-      border-radius: var(--border-size);
-      transform: translateY(-0.075em);
+      transform: translateY(-0.025em);
       display: grid;
       place-content: center;
     }
 
     .checkbox-input::before {
       content: "";
-      width: calc(var(--checkbox-size) - 0.5em);
-      height: calc(var(--checkbox-size) - 0.5em);
+      width: calc(var(--checkbox-size) - 0.125em);
+      height: calc(var(--checkbox-size) - 0.125em);
       clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
       transform: scale(0);
       transform-origin: bottom left;
       transition: 120ms transform ease-in-out;
-      background-color: var(--checkbox-color);
+      background: var(--checkbox-color);
     }
 
     .checkbox-input:checked::before {
@@ -173,14 +175,15 @@
     }
 
     .checkbox-label {
-      color: var(--checkbox-label-color);
+      margin-left: 20px;
+      @include m.text-color(var(--checkbox-label-color));
       font-weight: normal;
     }
   }
   .invalid {
     --szot-checkbox-color: var(--theme-error);
-    --szot-checkbox-label: var(--theme-error);
-    color: var(--theme-error);
+    --szot-checkbox-label-color: var(--theme-error);
+    @include m.text-color(var(--theme-error));
   }
 
   .error {

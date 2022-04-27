@@ -239,7 +239,9 @@ onDestroy(() => {
         for="{id}-custom"
         on:click={() => toggleOpen()}
         class:floated={dropdownOpen || isFilled(selected)}>
-        {label}
+        <div class="label-text">
+          {label}
+        </div>
       </label>
 
       <!-- Select's box that shows which option is selected -->
@@ -276,14 +278,15 @@ onDestroy(() => {
       >
 
         <!-- Search input -->
-        <SearchInput
-          searchable={["text"]}
-          items={options}
-          bind:searchQuery
-          bind:filtered={filteredOptions}
-          bind:focus={focusSearch}
-          bind:inputBind={searchBind}/>
-
+        <div class="searchInput">
+          <SearchInput
+            searchable={["text"]}
+            items={options}
+            bind:searchQuery
+            bind:filtered={filteredOptions}
+            bind:focus={focusSearch}
+            bind:inputBind={searchBind}/>
+        </div>
         <!-- List of all selectable options -->
         <OptionsList
           id="{id}-listbox"
@@ -331,18 +334,16 @@ onDestroy(() => {
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
-
   * {
-    --component-background-color: var(--szot-background-color, white);
-    --component-border-radius: var(--szot-border-radius, var(--theme-small-shape));
-    --component-padding-vertical: var(--szot-padding-vertical, var(--theme-fields-padding));
-    --component-padding-horizontal: var(--szot-padding-horizontal, var(--theme-fields-padding));
+    --component-background-color: var(--szot-select-background-color, white);
+    --component-border-radius: var(--szot-select-border-radius, var(--theme-small-shape));
+    --component-padding-vertical: var(--szot-select-padding-vertical, var(--theme-fields-padding));
+    --component-padding-horizontal: var(--szot-select-padding-horizontal, var(--theme-fields-padding));
     --component-border: var(--theme-small-border);
-    --message-left-spacing: var(--szot-message-left-spacing, 1rem);
-    --open-transition-duration: var(--szot-open-transition-duration, 200ms);
-
-    // Will be defined later
-    // --component-color
+    --message-left-spacing: var(--szot-select-message-left-spacing, 1rem);
+    --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
+    --component-label-color: var(--szot-select-label-color, var(--component-color));
+    --component-border-color: var(--szot-select-border-color, var(--component-color));
   }
 
   .hidden {
@@ -367,23 +368,20 @@ onDestroy(() => {
   .select {
     position: relative;
     width: 100%;
-    max-width: var(--szot-max-width, var(--theme-fields-max-width));
-
-    background-color: var(--component-background-color);
-    color: var(--component-color);
-
+    margin-top: 0.9375rem;
+    max-width: var(--szot-select-max-width, var(--theme-fields-max-width));
     // hack the specificity
     &.select.select {
-      border-color: var(--szot-border-color, var(--component-color));
+      @include m.border(var(--component-border), var(--component-border-color));
     }
 
     &.border {
       &-outline {
-        border: var(--component-border);
+        @include m.border(var(--component-border), var(--component-border-color));
         border-radius: var(--component-border-radius);
       }
       &-bottom {
-        border-bottom: var(--component-border);
+        border-bottom: var(--component-border) solid;
       }
     }
 
@@ -406,8 +404,7 @@ onDestroy(() => {
       position: absolute;
       top: var(--component-padding-vertical);
       left: var(--component-padding-horizontal);
-      background-color: var(--component-background-color);
-      color: var(--szot-label-color, var(--component-color));
+      background: var(--component-background-color);
       @include m.form-field-label-size;
 
       transform-origin: 0 30%;
@@ -418,12 +415,15 @@ onDestroy(() => {
         padding: 0 0.3125rem;
         @include m.form-field-label-floated-size;
       }
+      .label-text {
+        @include m.text-color(var(--component-label-color));
+      }
     }
 
     &-box {
       border-radius: var(--component-border-radius);
       padding: var(--component-padding-vertical) var(--component-padding-horizontal);
-
+      @include m.text-color(var(--component-label-color));
       cursor: pointer;
     }
 
@@ -439,10 +439,14 @@ onDestroy(() => {
       padding: 0 var(--component-padding-horizontal);
 
       transition: max-height var(--open-transition-duration), padding var(--open-transition-duration);
+
+      .searchInput {
+        @include m.border(var(--component-border), var(--component-border-color));
+        border-radius: var(--theme-small-shape);
+      }
       &.with-borders {
         padding-top: var(--component-padding-vertical);
-        border: var(--component-border);
-        border-color: var(--component-color);
+        @include m.border(var(--component-border), var(--component-border-color));
         border-bottom: none;
         border-radius: 0;
 
@@ -488,7 +492,7 @@ onDestroy(() => {
           content: '';
           display: block;
           position: absolute;
-          background-color: var(--component-color);
+          background: var(--component-border-color);
         }
 
         &::before {
@@ -508,10 +512,13 @@ onDestroy(() => {
   .error-text{
     margin-left: var(--message-left-spacing);
     @include m.form-field-error-text();
+    @include m.text-color(var(--theme-error));
   }
   .error {
     label {
-      color: var(--theme-error);
+      .label-text {
+        @include m.text-color(var(--theme-error));
+      }
     }
     // hack the specificity
     &.error.error {

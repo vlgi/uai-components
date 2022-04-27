@@ -10,11 +10,13 @@
 </span>
 
 <style lang="scss">
+  @use 'src/styles/mixins' as m;
   .badge {
-    --color: var(--szot-color, var(--default-color));
-    --background-color: var(--szot-background-color, var(--default-background-color));
-    --border: var(--szot-border, var(--default-border));
-    --font-size: var(--szot-font-size, .9rem);
+    --color: var(--szot-badge-color, var(--default-color));
+    --background-color: var(--szot-badge-background-color, var(--default-background-color));
+    --border: var(--szot-badge-border, var(--default-border));
+    --border-color: var(--szot-badge-border-color, #333);
+    --font-size: var(--szot-badge-font-size, .9rem);
 
     &.primary {
       --default-background-color: var(--theme-primary-surface);
@@ -36,23 +38,22 @@
       --default-color: var(--theme-txt-on-light-surface);
     }
     &.outline {
-      --default-border: 0.0563rem solid #5F5F5F;
+      --default-color: var(--theme-txt-on-light-surface);
+      --default-border: var(--theme-small-border);
     }
 
     font-size: var(--font-size);
     padding-left: var(--theme-fields-padding);
     padding-right: var(--theme-fields-padding);
-    text-align: center;
-
-    border: var(--border);
+    text-align: center; 
+    @include m.border(var(--border), var(--border-color));
     border-radius: var(--theme-small-shape);
-
-    background-color: var(--background-color);
-    color: var(--color);
+    background: var(--background-color);
     display: inline-block;
 
     .text {
       white-space: nowrap;
+      @include m.text-color(var(--color));
     }
   }
 

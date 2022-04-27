@@ -28,13 +28,11 @@
 @mixin form-field-helper-text {
   font-size: calc(0.7 * var(--theme-fields-font-size));
   opacity: 0.75;
-  color: var(--theme-info);
 }
 
 @mixin form-field-error-text {
   font-size: calc(0.7 * var(--theme-fields-font-size));
   opacity: 0.75;
-  color: var(--theme-error);
 }
 
 @mixin form-field-label-size {
@@ -47,4 +45,55 @@
 
 @mixin form-field-text-size {
   font-size: var(--theme-fields-font-size);
+}
+
+
+/*
+ You can use this to set border with gradient or solid colors, like:
+    @include m.border(solid, 2px, linear-gradient(-30deg, rgba(252,0,47,0.938813025210084) 0%, rgba(170,255,6,1) 100%));
+    @include m.border(solid, 2px, red);
+
+ NOTE: to overwrite the border you must do this on the before element.
+ NOTE2: This don't accept border style
+*/
+@mixin border($size, $image_or_color...) {
+  border: #{$size} solid transparent;
+  position: relative;
+
+  &::before {
+    content: "";
+
+    z-index: -1;
+    box-sizing: content-box;
+    position: absolute;
+    inset: 50% 0 0 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+
+    border-radius: inherit;
+    border: inherit;
+
+    background: $image_or_color;
+    background-origin: border-box;
+
+    // can i use 94.8%
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0) border-box;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+@mixin text-color($image_or_color...) {
+  color: transparent;
+  background: $image_or_color;
+
+  // can i use 94.52%
+  background-clip: text;
+  -webkit-background-clip: text;
 }

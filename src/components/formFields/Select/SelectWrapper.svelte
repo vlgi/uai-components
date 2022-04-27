@@ -12,8 +12,10 @@ export let min;
 export let isValid;
 export let selected;
 export let forceInvalid;
+export let style: string;
 </script>
 
+<div {style}>
 <Select
   {label}
   {options}
@@ -40,3 +42,4 @@ export let forceInvalid;
 {/if}
 
 <p><b>isValid:</b> {isValid}</p>
+</div>

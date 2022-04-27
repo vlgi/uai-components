@@ -123,3 +123,37 @@ export const MultipleForceInvalid = Template({
   options,
   forceInvalid: true,
 });
+
+export const CustomExample: any = Template({
+  multiple: false,
+  id: "doce",
+  name: "doce",
+  label: "Sobremesas",
+  options,
+  style: "--szot-select-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
+});
+
+CustomExample.parameters = {
+  docs: {
+    source: {
+      language: "html",
+      code: `
+    <div
+      style="--szot-select-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+    >
+      <Select
+        multiple={false} 
+        id="doce" name="doce" 
+        label="Sobremesas" 
+        options={[
+          {"text":"Torta alemã"},{"text":"Pavê"},{"text":"Bolo"},{"text":"Brigadeiro"},
+          {"text":"Pudim"},{"text":"Rabanada"},{"text":"Beijinho"},
+        ]}
+      />
+    </div>
+    `,
+    },
+  },
+};

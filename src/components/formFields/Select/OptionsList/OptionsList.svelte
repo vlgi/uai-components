@@ -170,7 +170,9 @@ $: if (options) {
             toggleSelected(option);
             focused = -1;
           }}>
-          {option.text}
+          <div class="text">
+            {option.text}
+          </div>
         </div>
       {/each}
     {/if}
@@ -194,15 +196,20 @@ $: if (options) {
       padding: 0.15rem .5rem;
       border-radius: var(--theme-small-shape);
       cursor: pointer;
-
       transition: background-color 200ms;
 
+      .text {
+        @include m.text-color(var(--component-label-color));
+      }
+
       &.selected {
-        color: var(--theme-light-txt);
+        .text {
+          @include m.text-color(var(--theme-light-txt));
+        }
       }
 
       &.focused, &:hover {
-        background-color: var(--szot-focused-color, #f2f2f2);
+        background: var(--szot-optionsList-focused-color, #f2f2f2);
       }
     }
   }
