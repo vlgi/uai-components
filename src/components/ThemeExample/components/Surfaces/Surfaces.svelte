@@ -143,19 +143,19 @@
   }
 
   .--szot-small-border {
-    border: var(--theme-small-border);
+    border: var(--theme-small-border) solid #333;
     width: 4rem;
     height: 2rem;
   }
 
   .--szot-medium-border {
-    border: var(--theme-medium-border);
+    border: var(--theme-medium-border) solid #333;;
     width: 20rem;
     height: 10rem;
   }
 
   .--szot-large-border{
-    border: var(--theme-large-border);
+    border: var(--theme-large-border) solid #333;;
     width: 60rem;
     height: 30rem;
   }
