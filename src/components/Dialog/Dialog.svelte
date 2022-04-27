@@ -214,6 +214,7 @@
   }
 
   .title, .content {
+    --internal-icon-color: var(--txt-color, var(--theme-txt-on-signal-color));
     @include m.text-color(var(--txt-color, var(--theme-txt-on-signal-color)));
     font-weight: var(--txt-weight, var(--theme-p-font-weight));
   }

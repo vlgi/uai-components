@@ -51,6 +51,11 @@ export const Error = Template({
   content: "Sorry, something goes wrong.",
 });
 
+export const Success = Template({
+  type: "success",
+  content: "Great, everything worked out.",
+});
+
 export const DialogOpenCloseExample = () => ({
   Component: DialogOpenCloseExampleComponent,
 });
