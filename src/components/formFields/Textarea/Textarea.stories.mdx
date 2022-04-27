@@ -16,16 +16,16 @@ import Textarea from "./TextareaWrapperForTest.svelte";
 
 ## On the textarea
 
-| CSS Property                      | Descripiton                             | Default                  |
-| --------------------------------- | --------------------------------------- | ------------------------ |
-| --szot-textarea-max-width         | Sets the max-width of the textarea      | --theme-fields-max-width |
-| --szot-textarea-max-height        | sets the maximum height of the textarea | undefined                |
-| --szot-textarea-font-size         | Set the font size of textarea           | inherit                  |
-| --szot-textarea-placeholder-color | Sets placeholder color                  | --theme-dark-txt         |
-| --szot-textarea-textarea-color    | Set textarea text color                 | --theme-dark-txt         |
-| --szot-textarea-border-color      | Sets the component's border color       | --theme-dark-txt         |
-| --szot-textarea-padding           | Sets a custom padding                   | --theme-fields-padding   |
-| --szot-textarea-border            | Sets a custom border                    | --theme-small-border     |
+| CSS Property                      | Descripiton                                         | Default                   |
+| --------------------------------- | --------------------------------------------------- | ------------------------- |
+| --szot-textarea-max-width         | Sets the max-width of the textarea                  | --szot-fields-max-width   |
+| --szot-textarea-max-height        | sets the maximum height of the textarea             | undefined                 |
+| --szot-textarea-font-size         | Set the font size of textarea                       | inherit                   |
+| --szot-textarea-placeholder-color | Sets placeholder color                              | --szot-dark-txt           |
+| --szot-textarea-color-text        | Set textarea text color (does not support gradient) | --szot-dark-inserted-text |
+| --szot-textarea-border-color      | Sets the component's border color                   | --szot-dark-txt           |
+| --szot-textarea-padding           | Sets a custom padding                               | --szot-fields-padding     |
+| --szot-textarea-border            | Sets a custom border                                | --szot-small-border       |
 
 ## On the label
 
@@ -46,9 +46,9 @@ import Textarea from "./TextareaWrapperForTest.svelte";
 | --szot-textarea-message-error-bottom-focus | Set error text position to low when helper text is also showing | -2rem   |
 
 <p>
-  In addition to these variables, this component also uses the theme variables
-  for, font-family, sizes, large-shape, small-border, the 4 main theme colors
-  and the colors for error and information.
+  In addition to these variables, this component also uses the szot variables
+  for, font-family, sizes, large-shape, small-border, the 4 main szot colors and
+  the colors for error and information.
 </p>
 
 <p>

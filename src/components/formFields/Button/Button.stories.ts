@@ -148,9 +148,8 @@ export const RoundDisabled = Template({
 export const CustomExample: any = Template({
   labelSlot: "orange",
   style:
-      "--szot-button-color:#ffc7a7;"
-      + "--szot-button-background-color:#FC6627;"
-      + "--szot-button-buttonStyleType: 2px solid #ffc7a7;"
+      "--szot-button-color: #333;"
+      + "--szot-button-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
       + "--szot-button-border-radius: 1.5rem",
 });
 

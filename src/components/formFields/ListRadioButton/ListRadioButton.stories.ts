@@ -80,8 +80,8 @@ export const CustomExample: any = Template({
   radioStyleType: "notFilled",
   style: "--szot-radio-margin: 3px 2px 0px;"
           + "--szot-radio-size:18px;"
-          + "--szot-radio-color: #555;"
-          + "--szot-radio-label: #555;",
+          + "--szot-radio-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-radio-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
 });
 CustomExample.parameters = {
   docs: {
@@ -109,8 +109,8 @@ CustomExample.parameters = {
 
     <div style="--szot-radio-margin: 3px 2px 0px;
     --szot-radio-size:20px;
-    --szot-radio-color: #555;
-    --szot-radio-label: #555;"
+    --szot-radio-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);;
+    --szot-radio-label: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);;"
       >
       <ListRadioButton
         name="optionList"

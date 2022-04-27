@@ -147,7 +147,7 @@
     box-sizing: border-box;
 
     .radio-title {
-      color: var(--radio-label-color);
+      @include m.text-color(var(--radio-label-color));
     }
     .list-radio {
       list-style: none;
@@ -155,7 +155,7 @@
     .invalid {
       --szot-radio-color: var(--theme-error);
       --szot-radio-label-color: var(--theme-error);
-      color: var(--theme-error);
+      @include m.text-color(var(--theme-error));
     }
 
     .error {

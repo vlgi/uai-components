@@ -56,7 +56,8 @@ export const CustomExample: any = Template({
   name: "checklist",
   title: "Lista de Afazeres",
   checkboxItems,
-  style: "--szot-checkbox-margin: 3px 2px 0px; --szot-checkbox-size:18px; --szot-checkbox-color: #555; --szot-checkbox-label: #555;",
+  style: "--szot-checkbox-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-checkbox-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
 });
 CustomExample.parameters = {
   docs: {
@@ -84,8 +85,8 @@ CustomExample.parameters = {
 
     <div style="--szot-checkbox-margin: 3px 2px 0px;
     --szot-checkbox-size:20px;
-    --szot-checkbox-color: #555;
-    --szot-checkbox-label: #555;"
+    --szot-checkbox-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);;
+    --szot-checkbox-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);;"
       >
       <ListCheckbox
         name="checklist"

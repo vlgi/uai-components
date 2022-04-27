@@ -154,11 +154,10 @@ export const CustomExample: any = Template({
   type: "name",
   style: "--szot-input-height: 1.5rem;"
           + "--szot-input-background-color: #ffffff;"
-          + "--szot-input-label-color: #c56d09;"
-          + "--szot-input-text-color: #db984b;"
-          + "--szot-input-label-focus-color: #ce4007;"
-          + "--szot-input-border-color-focus: #ce4007;"
-          + "--szot-input-border-color: #c56d09;"
+          + "--szot-input-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-input-border-color-focus: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
           + "--szot-input-border-radius: 1.5rem;",
 });
 CustomExample.parameters = {
@@ -178,9 +177,12 @@ CustomExample.parameters = {
     </script>
 
     <div style="--szot-input-height: 1.5rem;
-      --szot-input-background-color: #ffffff;--szot-input-label-color: #c56d09;
-      --szot-input-text-color: #db984b;--szot-input-label-focus-color: #ce4007;
-      --szot-input-border-color-focus: #ce4007;--szot-input-border-color: #c56d09;
+      --szot-input-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-label-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-text-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-border-color-focus: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      --szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
       --szot-input-border-radius: 1.5rem;" >
       <Input
         label="Teste"

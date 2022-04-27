@@ -74,7 +74,6 @@
       display: inline-flex;
       align-items: center;
     }
-
     .radio-button {
       display: inline-flex;
       align-items: center;

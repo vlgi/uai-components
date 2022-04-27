@@ -12,9 +12,10 @@ export let min;
 export let isValid;
 export let selected;
 export let forceInvalid;
+export let style: string;
 </script>
 
-<div style="">
+<div {style}>
 <Select
   {label}
   {options}
