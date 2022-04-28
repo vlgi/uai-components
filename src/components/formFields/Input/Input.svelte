@@ -62,7 +62,7 @@
   export let disabled = false;
   export let readonly = false;
   export let required = false;
-  export let id = "name";
+  export let id = name;
 
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};

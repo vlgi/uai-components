@@ -42,7 +42,7 @@
   export let required = false;
   export let readonly = false;
   export let placeholder = "";
-  export let id = "textarea";
+  export let id = name;
 
   // Other attributes for the HTML textarea element
   export let textareaAttributes: Record<string, string> = {};
