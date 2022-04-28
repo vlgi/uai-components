@@ -218,6 +218,7 @@
 
   .form-div {
     --margin-bottom: var(--szot-input-margin-bottom, 1.5rem);
+    --margin-top: var(--szot-input-margin-top, 0.5rem);
     --max-width: var(--szot-input-max-width, --theme-fields-max-width);
 
     --input-top: var(--szot-input-top, 0);
@@ -304,7 +305,7 @@
 
     position: relative;
     margin-bottom: var(--margin-bottom);
-    margin-top: 0.9375rem;
+    margin-top: var(--margin-top);
     max-width: var(--max-width);
     height: fit-content;
     max-width: var(--szot-input-max-width, var(--theme-fields-max-width));

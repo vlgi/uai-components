@@ -194,6 +194,7 @@
       var(--default-placeholder-color)
     );
     --margin-bottom: var(--szot-textarea-margin-bottom, 1.5rem);
+    --margin-top: var(--szot-textarea-margin-top, 0.5rem);
     --max-width: var(--szot-textarea-max-width, var(--theme-fields-max-width));
     --max-height: var(--szot-textarea-max-height, var(--max-auto-height));
     --padding: var(--szot-textarea-padding, var(--theme-fields-padding));
@@ -235,7 +236,7 @@
     border-radius:var(--border-radius);
     position: relative;
     margin-bottom: var(--margin-bottom);
-    margin-top: 0.9375rem;
+    margin-top: var(--margin-top);
     height: fit-content;
     width: 100%;
     max-width: var(--max-width);
