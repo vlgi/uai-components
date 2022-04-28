@@ -292,6 +292,7 @@
     background-color: transparent;
     overflow: hidden;
     color: var(--textarea-color-text);
+    border-radius:var(--border-radius);
   }
 
   textarea {

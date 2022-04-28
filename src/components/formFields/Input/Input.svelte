@@ -319,6 +319,7 @@
     color: var(--input-text-color);
     font-size: var(--theme-fields-font-size);
     border:none;
+    border-radius: var(--border-radius);
 
     &:focus + .form-label {
       z-index: 10;
