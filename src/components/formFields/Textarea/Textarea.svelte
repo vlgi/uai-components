@@ -277,6 +277,7 @@
     white-space: pre-wrap;
     word-wrap: break-word;
     visibility: hidden;
+    border-radius:var(--border-radius);
   }
   pre, textarea {
     font-family: inherit;
@@ -293,7 +294,7 @@
     background-color: transparent;
     overflow: hidden;
     color: var(--textarea-color-text);
-    border-radius:var(--border-radius);
+    
   }
 
   textarea {
@@ -302,6 +303,7 @@
     resize: none;
     inset: 0;
     scrollbar-width: none;
+    
 
     &::-webkit-scrollbar {
       width: 0px;
