@@ -224,6 +224,7 @@
     --input-left: var(--szot-input-left, 0);
     --input-padding: var(--szot-input-padding, var(--theme-fields-padding));
     --input-text-color: var(--szot-input-text-color, var(--default-input-color));
+    --border: var(--szot-input-border, var(--theme-small-border));
     --border-color: var(--szot-input-border-color, var(--default-border-color));
     --border-radius: var(--szot-input-border-radius, var(--theme-small-shape));
 
@@ -282,7 +283,7 @@
       --label-focus-color: var(--theme-error);
       --label-not-focus-color: var(--theme-error);
       .form-input {
-        @include m.text-color(var(--theme-error));
+        color: var(--theme-error);
         + .label-text + .icon {
           @include m.text-color(var(--theme-error));
         }
@@ -292,12 +293,12 @@
       }
     }
     &.border-outline {
-      @include m.border(var(--theme-small-border), var(--border-color));
+      @include m.border(var(--border), var(--border-color));
       border-radius: var(--border-radius);
     }
     &.border-bottom {
       border: 0;
-      border-bottom: var(--theme-small-border) solid var(--border-color);
+      border-bottom: var(--border) solid var(--border-color);
       border-image: var(--border-color) 1;
     }
 

@@ -231,7 +231,7 @@
       --default-placeholder-color: var(--theme-light-txt);
     }
 
-    @include m.border(var(--theme-small-border), var(--border-color));
+    @include m.border(var(--border), var(--border-color));
     border-radius:var(--border-radius);
     position: relative;
     margin-bottom: var(--margin-bottom);
@@ -334,9 +334,9 @@
     }
   }
   .invalid {
-    @include m.border(var(--theme-small-border), var(--theme-error));
+    @include m.border(var(--border), var(--theme-error));
     textarea {
-      @include m.text-color(var(--theme-error));
+      color: var(--theme-error);
 
       &::-webkit-input-placeholder {
         @include m.text-color(var(--theme-error));
