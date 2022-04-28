@@ -342,6 +342,14 @@
         @include m.text-color(var(--label-not-focus-color));
       }
     }
+
+    // remove  highlight autocomplete
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+    }
   }
 
   .form-label {

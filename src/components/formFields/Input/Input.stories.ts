@@ -78,7 +78,7 @@ export const Default = Template({
   helperText: "Digite um email válido",
   errorMsg: "Falhou, tente novamente",
   type: "email",
-  name: "Email",
+  name: "email",
 });
 
 export const Required = Template({
