@@ -59,6 +59,7 @@
 @mixin border($size, $image_or_color...) {
   border: #{$size} solid transparent;
   position: relative;
+  z-index: 1;
 
   &::before {
     content: "";
