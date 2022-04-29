@@ -62,7 +62,7 @@
   export let disabled = false;
   export let readonly = false;
   export let required = false;
-  export let id = "name";
+  export let id = name;
 
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};
@@ -218,12 +218,14 @@
 
   .form-div {
     --margin-bottom: var(--szot-input-margin-bottom, 1.5rem);
+    --margin-top: var(--szot-input-margin-top, 0.5rem);
     --max-width: var(--szot-input-max-width, --theme-fields-max-width);
 
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
     --input-padding: var(--szot-input-padding, var(--theme-fields-padding));
     --input-text-color: var(--szot-input-text-color, var(--default-input-color));
+    --border: var(--szot-input-border, var(--theme-small-border));
     --border-color: var(--szot-input-border-color, var(--default-border-color));
     --border-radius: var(--szot-input-border-radius, var(--theme-small-shape));
 
@@ -282,7 +284,7 @@
       --label-focus-color: var(--theme-error);
       --label-not-focus-color: var(--theme-error);
       .form-input {
-        @include m.text-color(var(--theme-error));
+        color: var(--theme-error);
         + .label-text + .icon {
           @include m.text-color(var(--theme-error));
         }
@@ -292,18 +294,18 @@
       }
     }
     &.border-outline {
-      @include m.border(var(--theme-small-border), var(--border-color));
+      @include m.border(var(--border), var(--border-color));
       border-radius: var(--border-radius);
     }
     &.border-bottom {
       border: 0;
-      border-bottom: var(--theme-small-border) solid var(--border-color);
+      border-bottom: var(--border) solid var(--border-color);
       border-image: var(--border-color) 1;
     }
 
     position: relative;
     margin-bottom: var(--margin-bottom);
-    margin-top: 0.9375rem;
+    margin-top: var(--margin-top);
     max-width: var(--max-width);
     height: fit-content;
     max-width: var(--szot-input-max-width, var(--theme-fields-max-width));
@@ -318,6 +320,7 @@
     color: var(--input-text-color);
     font-size: var(--theme-fields-font-size);
     border:none;
+    border-radius: var(--border-radius);
 
     &:focus + .form-label {
       z-index: 10;
@@ -338,6 +341,14 @@
       .label-text {
         @include m.text-color(var(--label-not-focus-color));
       }
+    }
+
+    // remove  highlight autocomplete
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
     }
   }
 

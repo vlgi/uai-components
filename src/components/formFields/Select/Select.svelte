@@ -335,6 +335,7 @@ onDestroy(() => {
 <style lang="scss">
   @use "src/styles/mixins" as m;
   * {
+    --margin-top: var(--szot-select-margin-top, 0.5rem);
     --component-background-color: var(--szot-select-background-color, white);
     --component-border-radius: var(--szot-select-border-radius, var(--theme-small-shape));
     --component-padding-vertical: var(--szot-select-padding-vertical, var(--theme-fields-padding));
@@ -368,7 +369,7 @@ onDestroy(() => {
   .select {
     position: relative;
     width: 100%;
-    margin-top: 0.9375rem;
+    margin-top: var(--margin-top);
     max-width: var(--szot-select-max-width, var(--theme-fields-max-width));
     // hack the specificity
     &.select.select {

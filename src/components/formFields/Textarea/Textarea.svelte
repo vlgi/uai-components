@@ -42,7 +42,7 @@
   export let required = false;
   export let readonly = false;
   export let placeholder = "";
-  export let id = "textarea";
+  export let id = name;
 
   // Other attributes for the HTML textarea element
   export let textareaAttributes: Record<string, string> = {};
@@ -194,6 +194,7 @@
       var(--default-placeholder-color)
     );
     --margin-bottom: var(--szot-textarea-margin-bottom, 1.5rem);
+    --margin-top: var(--szot-textarea-margin-top, 0.5rem);
     --max-width: var(--szot-textarea-max-width, var(--theme-fields-max-width));
     --max-height: var(--szot-textarea-max-height, var(--max-auto-height));
     --padding: var(--szot-textarea-padding, var(--theme-fields-padding));
@@ -231,11 +232,11 @@
       --default-placeholder-color: var(--theme-light-txt);
     }
 
-    @include m.border(var(--theme-small-border), var(--border-color));
+    @include m.border(var(--border), var(--border-color));
     border-radius:var(--border-radius);
     position: relative;
     margin-bottom: var(--margin-bottom);
-    margin-top: 0.9375rem;
+    margin-top: var(--margin-top);
     height: fit-content;
     width: 100%;
     max-width: var(--max-width);
@@ -276,6 +277,7 @@
     white-space: pre-wrap;
     word-wrap: break-word;
     visibility: hidden;
+    border-radius:var(--border-radius);
   }
   pre, textarea {
     font-family: inherit;
@@ -292,6 +294,7 @@
     background-color: transparent;
     overflow: hidden;
     color: var(--textarea-color-text);
+    
   }
 
   textarea {
@@ -300,6 +303,7 @@
     resize: none;
     inset: 0;
     scrollbar-width: none;
+    
 
     &::-webkit-scrollbar {
       width: 0px;
@@ -334,9 +338,9 @@
     }
   }
   .invalid {
-    @include m.border(var(--theme-small-border), var(--theme-error));
+    @include m.border(var(--border), var(--theme-error));
     textarea {
-      @include m.text-color(var(--theme-error));
+      color: var(--theme-error);
 
       &::-webkit-input-placeholder {
         @include m.text-color(var(--theme-error));
