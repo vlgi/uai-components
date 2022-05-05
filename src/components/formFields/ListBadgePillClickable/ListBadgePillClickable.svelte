@@ -11,11 +11,13 @@
 
   type TBadgeProps = {
     value: string;
+    checked: boolean;
     label?: string;
   };
 
   type TIconPosition = "left" | "right" | "both" | "none";
   type TBadgeStyle = "light" | "dark";
+  type TDirection = "column" | "row";
 
   export let name;
   /**
@@ -76,6 +78,11 @@
    * Set the style of the label, border and icon in the badge
    */
   export let badgeStyle: TBadgeStyle = "dark";
+
+  /**
+   * Set if the badges will be displayed in a row or a column
+   */
+  export let direction: TDirection = "row";
 
   let eMsg = "";
   let wrapperElement: HTMLElement;
@@ -172,22 +179,21 @@
   }
 </script>
 
-<div class="list-badge-wrapper" bind:this={wrapperElement}>
+<div class="list-badge-wrapper display-badges-{direction}" bind:this={wrapperElement}>
   <span class="badge-title" class:invalid={!isValid}>{title}</span>
-  <ul class="list-badge" class:invalid={!isValid}>
     {#each checkboxItems as checkbox, i}
-      <li>
+      <div class="badge-container" class:invalid={!isValid}>
         <BadgePillClickable
           name="{name}-{i}"
           id="{name}-{i}"
           label={checkbox.label}
           value={checkbox.value}
-          checked={values.includes(checkbox.value)}
+          checked={checkbox.checked}
           {iconPosition}
           {badgeStyle}
           on:checkItem={setChecked}
         />
-      </li>
+      </div>
     {/each}
     <p class="error" class:error-show={!isValid}>
       {#if required}
@@ -200,8 +206,8 @@
         {eMsg}
       {/if}
     </p>
-  </ul>
 </div>
+<p>{JSON.stringify(values)}</p>
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
@@ -211,6 +217,17 @@
       --szot-badge-pill-label-color,
       var(--theme-dark-txt)
     );
+
+    display: flex;
+    flex-wrap: wrap;
+
+    &.display-badges-row {
+      flex-direction: row;
+    }
+
+    &.display-badges-column {
+      flex-direction: column;
+    }
 
     .invalid {
       --szot-badge-pill-color: var(--theme-error);
@@ -225,8 +242,8 @@
       @include m.text-color(var(--badge-pill-label-color));
     }
 
-    .list-badge {
-      list-style: none;
+    .badge-container {
+      width: fit-content;
     }
 
     .error {
