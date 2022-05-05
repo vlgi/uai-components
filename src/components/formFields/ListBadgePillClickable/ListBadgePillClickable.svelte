@@ -30,7 +30,7 @@
    * All possible options that can be selected
    * @type {array}
    */
-  export let checkboxItems: TBadgeProps[] = [];
+  export let badgeItems: TBadgeProps[] = [];
 
   /** Enter a message in case it is invalid */
   export let errorMsg = "";
@@ -181,14 +181,14 @@
 
 <div class="list-badge-wrapper display-badges-{direction}" bind:this={wrapperElement}>
   <span class="badge-title" class:invalid={!isValid}>{title}</span>
-    {#each checkboxItems as checkbox, i}
+    {#each badgeItems as badge, i}
       <div class="badge-container" class:invalid={!isValid}>
         <BadgePillClickable
           name="{name}-{i}"
           id="{name}-{i}"
-          label={checkbox.label}
-          value={checkbox.value}
-          checked={checkbox.checked}
+          label={badge.label}
+          value={badge.value}
+          checked={badge.checked}
           {iconPosition}
           {badgeStyle}
           on:checkItem={setChecked}
@@ -207,16 +207,16 @@
       {/if}
     </p>
 </div>
-<p>{JSON.stringify(values)}</p>
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
   @use "src/styles/variables" as v;
   .list-badge-wrapper {
-    --badge-pill-label-color: var(
-      --szot-badge-pill-label-color,
-      var(--theme-dark-txt)
-    );
+    --badge-pill-margin: var(--szot-badge-pill-margin, 0.3125rem);
+    --badge-pill-min-height: var(--szot-badge-pill-min-height, 1.875rem);
+    --badge-pill-height: var(--szot-badge-pill-height, auto);
+    --border-size: var(--szot-badge-pill-border-size, 0.15rem);
+    --border-radius: var(--szot-badge-pill-border-radius, 1rem);
 
     display: flex;
     flex-wrap: wrap;
