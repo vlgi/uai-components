@@ -78,20 +78,23 @@
     --border-radius: var(--szot-button-border-radius, var(--theme-small-shape));
     &.style-primary {
       --default-background-color: var(--theme-primary-surface);
+      --default-border-color: var(--theme-primary-surface);
     }
     &.style-secondary {
       --default-background-color: var(--theme-secondary-surface);
+      --default-border-color: var(--theme-secondary-surface);
     }
     &.style-dark {
       --default-background-color: var(--theme-dark-surface);
+      --default-border-color: var(--theme-dark-surface);
     }
     &.style-light {
       --default-background-color: var(--theme-light-surface);
+      --default-border-color: var(--theme-light-surface);
     }
     &.style-type-outline {
       --default-border: var(--theme-small-border);
       --default-background-color: none;
-      --default-border-color: #333;
       --background-none: none;
     }
     &.style-type-filled {
@@ -231,14 +234,12 @@
     }
     &.button-style-type-outline {
       --default-opacity-hover: 60%;
-      --default-color: var(--theme-txt-on-light-surface);
     }
     &.button-style-type-filled {
       --default-border: none;
     }
     &.button-style-type-not-filled {
       --default-opacity-hover: 60%;
-      --default-color: var(--theme-txt-on-light-surface);
     }
     &.disabled {
       --default-color: #b1b1b1;
