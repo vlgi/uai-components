@@ -115,6 +115,7 @@
   class:invalid={!isValid}
   class:on={checked}
   class:off={!checked}
+  {id}
   on:click={dispatchValue}
   on:click={() => {
     checked = !checked;
