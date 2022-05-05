@@ -18,14 +18,17 @@ const Template = (_args: ArgType) => {
 const checkboxItems = [
   {
     value: "firstItem",
+    checked: false,
     label: "Item 1",
   },
   {
     value: "secondItem",
+    checked: false,
     label: "Item 2",
   },
   {
     value: "thirdItem",
+    checked: false,
     label: "Item 3",
   },
 ];
