@@ -204,7 +204,7 @@ $: if (options) {
 
       &.selected {
         .text {
-          @include m.text-color(var(--theme-light-txt));
+          @include m.text-color(var(--component-background-color));
         }
       }
 

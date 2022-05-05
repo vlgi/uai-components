@@ -510,6 +510,12 @@ onDestroy(() => {
 
     }
   }
+
+  .badge {
+    --szot-badge-color: var(--component-color);
+    --szot-badge-border-color: var(--component-color);
+  }
+  
   .error-text{
     margin-left: var(--message-left-spacing);
     @include m.form-field-error-text();
@@ -524,10 +530,12 @@ onDestroy(() => {
     // hack the specificity
     &.error.error {
       --component-color: var(--theme-error);
+      --szot-select-label-color: var(--theme-error);
+      --szot-select-border-color: var(--theme-error);
     }
     .select-arrow-aux {
       &::before, &::after {
-        background-color: var(--theme-error);
+        background: var(--theme-error);
       }
     }
   }
