@@ -93,7 +93,7 @@ Custom.parameters = {
     label="test"
     iconPosition="left"
     checked={true}
-  >
+  />
 </div>
 `,
     },
