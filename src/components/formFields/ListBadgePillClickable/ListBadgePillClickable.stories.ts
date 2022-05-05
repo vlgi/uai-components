@@ -99,6 +99,14 @@ export const WithIcons = Template({
   badgeItems,
 });
 
+export const Invalid = Template({
+  required: true,
+  forceInvalid: true,
+  iconPosition: "left",
+  min: 5,
+  badgeItems,
+});
+
 export const Custom: any = Template({
   iconPosition: "right",
   badgeStyle: "light",
