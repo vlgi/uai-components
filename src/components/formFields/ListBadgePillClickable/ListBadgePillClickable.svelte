@@ -20,11 +20,6 @@
   type TDirection = "column" | "row";
 
   export let name;
-  /**
-   * The title property for this element
-   * @type {string}
-   */
-  export let title = "";
 
   /**
    * All possible options that can be selected
@@ -180,7 +175,6 @@
 </script>
 
 <div class="list-badge-wrapper display-badges-{direction}" bind:this={wrapperElement}>
-  <span class="badge-title" class:invalid={!isValid}>{title}</span>
     {#each badgeItems as badge, i}
       <div class="badge-container" class:invalid={!isValid}>
         <BadgePillClickable
@@ -212,12 +206,6 @@
   @use "src/styles/mixins" as m;
   @use "src/styles/variables" as v;
   .list-badge-wrapper {
-    --badge-pill-margin: var(--szot-badge-pill-margin, 0.3125rem);
-    --badge-pill-min-height: var(--szot-badge-pill-min-height, 1.875rem);
-    --badge-pill-height: var(--szot-badge-pill-height, auto);
-    --border-size: var(--szot-badge-pill-border-size, 0.15rem);
-    --border-radius: var(--szot-badge-pill-border-radius, 1rem);
-
     display: flex;
     flex-wrap: wrap;
 
@@ -230,16 +218,9 @@
     }
 
     .invalid {
-      --szot-badge-pill-color: var(--theme-error);
+      --szot-badge-pill-border-color: var(--theme-error);
       --szot-badge-pill-label-color: var(--theme-error);
-
-      &.badge-title {
-        @include m.text-color(var(--theme-error));
-      }
-    }
-
-    .badge-title {
-      @include m.text-color(var(--badge-pill-label-color));
+      --szot-badge-pill-icon-color: var(--theme-error);
     }
 
     .badge-container {
