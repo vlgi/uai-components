@@ -159,8 +159,8 @@
     &.round {
       border-radius: 1.0625rem;
       padding: 0;
-      width: 1.91rem;
-      height: 1.96rem;
+      width: 1.875rem;
+      height: 1.875rem;
 
       .icon {
         position: absolute;
