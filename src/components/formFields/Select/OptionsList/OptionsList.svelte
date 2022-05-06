@@ -204,7 +204,8 @@ $: if (options) {
 
       &.selected {
         .text {
-          @include m.text-color(var(--theme-light-txt));
+          @include m.text-color(var(--component-label-color));
+          opacity: 0.5;
         }
       }
 

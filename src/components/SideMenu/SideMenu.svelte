@@ -154,16 +154,16 @@
   .nav-menu-container {
     // nav sizes
     --nav-width: var(--szot-nav-width, 4.5rem);
-    --nav-expanded-width: var(--szot-nav-expanded-width, 300px);
+    --nav-expanded-width: var(--szot-nav-expanded-width, 18.75rem);
     --nav-logo-height: var(--szot-nav-logo-height, 5rem);
     --nav-text-size: var(--szot-nav-text-size, 1rem);
     --nav-icon-size: var(--szot-nav-icon-size, 1.5rem);
-    --nav-item-max-height: var(--szot-nav-item-max-height, 50px);
+    --nav-item-max-height: var(--szot-nav-item-max-height, 3.125rem);
 
     // nav paddings
-    --nav-padding: var(--szot-nav-width, 0.4rem);
-    --nav-logo-padding: var(--szot-nav-padding, .6rem .3rem);
-    --nav-external-padding: var(--szot-nav-external-padding, 0px);
+    --nav-padding: var(--szot-nav-padding, 0.4rem);
+    --nav-logo-padding: var(--szot-nav-logo-padding, .6rem .3rem);
+    --nav-external-padding: var(--szot-nav-external-padding, 0);
 
     // nav colors
     --nav-background-color: var(--szot-nav-background-color, #f0f0f0);
@@ -281,9 +281,8 @@
         width: var(--nav-expanded-width);
         transition: width ease-in-out 450ms;
         transition-delay: var(--internal-nav-expanded-transition-delay);
-
         %on-nav-hover-animate-n1-container {
-          width: 16rem;
+          width: calc(var(--nav-expanded-width) - 2*var(--nav-padding));
           transition: width ease 1ms 0ms, max-height ease 400ms 0ms, background-color ease-in-out 150ms, border-radius ease-in-out 150ms;
         }
 
@@ -313,7 +312,7 @@
       }
 
       hr {
-        width: calc(var(--nav-width) - 2 * var(--nav-padding) - 6px);
+        width: calc(var(--nav-width) - 2 * var(--nav-padding) - 0.4rem);
         margin: 0 calc(var(--nav-padding));
         border-color: var(--nav-txt-color);
       }
@@ -331,7 +330,7 @@
         padding: var(--nav-padding);
         padding-left: 0;
         overflow: hidden;
-        transition: width ease 1ms 500ms, max-height ease 150ms 0ms;
+        transition: width ease 1ms 375ms, max-height ease 150ms 0ms;
         text-decoration: none;
         cursor: pointer;
         background: transparent;

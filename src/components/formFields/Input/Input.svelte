@@ -219,7 +219,7 @@
   .form-div {
     --margin-bottom: var(--szot-input-margin-bottom, 1.5rem);
     --margin-top: var(--szot-input-margin-top, 0.5rem);
-    --max-width: var(--szot-input-max-width, --theme-fields-max-width);
+    --max-width: var(--szot-input-max-width, var(--theme-fields-max-width));
 
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
@@ -308,12 +308,11 @@
     margin-top: var(--margin-top);
     max-width: var(--max-width);
     height: fit-content;
-    max-width: var(--szot-input-max-width, var(--theme-fields-max-width));
     box-sizing: border-box;
   }
 
   .form-input {
-    width: 100%;
+    width: var(--max-width);
     outline: none;
     padding: var(--input-padding);
     background: none;
@@ -348,6 +347,7 @@
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
+      -webkit-text-fill-color: var(--input-text-color);
       transition: background-color 5000s ease-in-out 0s;
     }
   }
@@ -390,8 +390,8 @@
       background-color: transparent;
       border: 0;
       margin: calc(var(--input-padding)*1.2) 0 var(--input-padding) .5rem;
-      --internal-icon-color: var(--icon-color);
-      --internal-icon-line-height: 1rem;
+      --szot-icon-color: var(--icon-color);
+      --szot-icon-line-height: 1rem;
     }
   }
 
@@ -407,8 +407,8 @@
       background-color: transparent;
       border: 0;
       margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
-      --internal-icon-color: var(--icon-color);
-      --internal-icon-line-height: 1rem;
+      --szot-icon-color: var(--icon-color);
+      --szot-icon-line-height: 1rem;
     }
   }
 

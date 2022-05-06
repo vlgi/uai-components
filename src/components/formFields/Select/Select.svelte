@@ -9,7 +9,7 @@ import SearchInput from "./SearchInput/SearchInput.svelte";
 import Badge from "../../Badge/Badge.svelte";
 import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
 import type { TOption, TOptionsListBinds } from "./types";
-import type { TbadgeStyle } from "../../Badge/types";
+import type { TbadgeStyle, TbadgeStyleType } from "../../Badge/types";
 
 // True if the select should select multiple values
 export let multiple = false;
@@ -50,9 +50,6 @@ export let label: string;
 // The selected value(s) for any select mode
 export let selected: TOption | TOption[] | null = multiple ? [] : null;
 
-// At the multiple select, this will set the badge style
-export let badgeStyle: TbadgeStyle = "outline";
-
 type TSelectBorders = "bottom" | "outline";
 /**
  * Choose border type of the select component.
@@ -65,6 +62,11 @@ type TSelectStyle = "primary" | "secondary" | "dark" | "light";
  * Choose one of the theme styles.
  */
 export let selectStyle: TSelectStyle = "dark";
+
+// At the multiple select, this will set the badge style
+export let badgeStyle: TbadgeStyle = selectStyle;
+
+export let badgeStyleType: TbadgeStyleType = "outline";
 
 // ====== Internal control ====== //
 
@@ -256,8 +258,8 @@ onDestroy(() => {
 
         {#if multiple && selectedMultiple.length > 0}
           {#each selectedMultiple as option}
-            <span class="badge">
-              <Badge {badgeStyle}>
+            <span class="badge badge-{badgeStyleType}">
+              <Badge {badgeStyle} {badgeStyleType}>
                 {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
               </Badge>
             </span>
@@ -345,6 +347,8 @@ onDestroy(() => {
     --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
     --component-label-color: var(--szot-select-label-color, var(--component-color));
     --component-border-color: var(--szot-select-border-color, var(--component-color));
+    --select-badge-color: var(--szot-select-badge-color, var(--szot-select-label-color));
+    --select-badge-border-color: var(--szot-select-badge-border-color, var(--szot-select-border-color));
   }
 
   .hidden {
@@ -510,6 +514,12 @@ onDestroy(() => {
 
     }
   }
+
+  .badge {
+    --szot-badge-color: var(--select-badge-color);
+    --szot-badge-border-color: var(--select-badge-border-color);
+  }
+
   .error-text{
     margin-left: var(--message-left-spacing);
     @include m.form-field-error-text();
@@ -524,11 +534,26 @@ onDestroy(() => {
     // hack the specificity
     &.error.error {
       --component-color: var(--theme-error);
+      --szot-select-label-color: var(--theme-error);
+      --szot-select-border-color: var(--theme-error);
+
+      .badge {
+        --szot-badge-color: var(--theme-error);
+        --szot-badge-border-color: var(--theme-error);
+
+        &-filled {
+          --szot-badge-background-color: var(--theme-error);
+          --szot-badge-color: var(--theme-txt-on-signal-color);
+          --szot-badge-border-color: transparent;
+        }
+      }
+
     }
     .select-arrow-aux {
       &::before, &::after {
-        background-color: var(--theme-error);
+        background: var(--theme-error);
       }
     }
+
   }
 </style>

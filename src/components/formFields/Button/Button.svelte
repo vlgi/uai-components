@@ -78,30 +78,34 @@
     --border-radius: var(--szot-button-border-radius, var(--theme-small-shape));
     &.style-primary {
       --default-background-color: var(--theme-primary-surface);
+      --default-border-color: var(--theme-primary-surface);
     }
     &.style-secondary {
       --default-background-color: var(--theme-secondary-surface);
+      --default-border-color: var(--theme-secondary-surface);
     }
     &.style-dark {
       --default-background-color: var(--theme-dark-surface);
+      --default-border-color: var(--theme-dark-surface);
     }
     &.style-light {
       --default-background-color: var(--theme-light-surface);
+      --default-border-color: var(--theme-light-surface);
     }
     &.style-type-outline {
       --default-border: var(--theme-small-border);
       --default-background-color: none;
-      --default-border-color: #333;
       --background-none: none;
     }
     &.style-type-filled {
       --default-border: none;
     }
     &.style-type-not-filled {
-      --default-border: none;
-      --background-none: none;
-      --default-background-color: none;
-      background: none !important;
+      --default-border: transparent;
+      --background-none: transparent;
+      --default-background-color: transparent;
+      --border-color: transparent;
+      background: transparent !important;
     }
     &.disabled {
       background: var(--background-none, #7d7d7d) !important;
@@ -120,7 +124,7 @@
     // external variables
     --opacity-hover: var(--szot-button-opacity-hover, var(--default-opacity-hover));
     --color: var(--szot-button-color, var(--default-color));
-    --internal-icon-color: var(--color);
+    --szot-icon-color: var(--color, var(--szot-button-icon-color));
     --effect-color-after-click: var(
       --szot-button-effect-color-after-click,
       var(--default-effect-color)
@@ -138,15 +142,19 @@
 
     &.button-style-primary {
       --default-color: var(--theme-txt-on-primary-surface);
+      --not-filled-color: var(--theme-primary-txt);
     }
     &.button-style-secondary {
       --default-color: var(--theme-txt-on-secondary-surface);
+      --not-filled-color: var(--theme-secondary-txt);
     }
     &.button-style-dark {
       --default-color: var(--theme-txt-on-dark-surface);
+      --not-filled-color: var(--theme-dark-txt);
     }
     &.button-style-light {
       --default-color: var(--theme-txt-on-light-surface);
+      --not-filled-color: var(--theme-light-txt);
     }
     &.round {
       border-radius: 1.0625rem;
@@ -230,15 +238,15 @@
       }
     }
     &.button-style-type-outline {
+      --default-color: var(--default-border-color);
       --default-opacity-hover: 60%;
-      --default-color: var(--theme-txt-on-light-surface);
     }
     &.button-style-type-filled {
       --default-border: none;
     }
     &.button-style-type-not-filled {
+      --default-color: var(--not-filled-color);
       --default-opacity-hover: 60%;
-      --default-color: var(--theme-txt-on-light-surface);
     }
     &.disabled {
       --default-color: #b1b1b1;
