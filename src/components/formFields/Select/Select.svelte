@@ -258,7 +258,7 @@ onDestroy(() => {
 
         {#if multiple && selectedMultiple.length > 0}
           {#each selectedMultiple as option}
-            <span class="badge">
+            <span class="badge badge-{badgeStyleType}">
               <Badge {badgeStyle} {badgeStyleType}>
                 {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
               </Badge>
@@ -347,8 +347,8 @@ onDestroy(() => {
     --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
     --component-label-color: var(--szot-select-label-color, var(--component-color));
     --component-border-color: var(--szot-select-border-color, var(--component-color));
-    --szot-select-badge-color: var(--component-label-color);
-    --szot-select-badge-border-color: var(--component-border-color);
+    --select-badge-color: var(--szot-select-badge-color, var(--szot-select-label-color));
+    --select-badge-border-color: var(--szot-select-badge-border-color, var(--szot-select-border-color));
   }
 
   .hidden {
@@ -516,10 +516,10 @@ onDestroy(() => {
   }
 
   .badge {
-    --szot-badge-color: var(--szot-select-badge-color);
-    --szot-badge-border-color: var(--szot-select-badge-border-color);
+    --szot-badge-color: var(--select-badge-color);
+    --szot-badge-border-color: var(--select-badge-border-color);
   }
-  
+
   .error-text{
     margin-left: var(--message-left-spacing);
     @include m.form-field-error-text();
@@ -536,11 +536,24 @@ onDestroy(() => {
       --component-color: var(--theme-error);
       --szot-select-label-color: var(--theme-error);
       --szot-select-border-color: var(--theme-error);
+
+      .badge {
+        --szot-badge-color: var(--theme-error);
+        --szot-badge-border-color: var(--theme-error);
+
+        &-filled {
+          --szot-badge-background-color: var(--theme-error);
+          --szot-badge-color: var(--theme-txt-on-signal-color);
+          --szot-badge-border-color: transparent;
+        }
+      }
+
     }
     .select-arrow-aux {
       &::before, &::after {
         background: var(--theme-error);
       }
     }
+
   }
 </style>
