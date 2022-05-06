@@ -101,10 +101,11 @@
       --default-border: none;
     }
     &.style-type-not-filled {
-      --default-border: none;
-      --background-none: none;
-      --default-background-color: none;
-      background: none !important;
+      --default-border: transparent;
+      --background-none: transparent;
+      --default-background-color: transparent;
+      --border-color: transparent;
+      background: transparent !important;
     }
     &.disabled {
       background: var(--background-none, #7d7d7d) !important;
@@ -233,6 +234,7 @@
       }
     }
     &.button-style-type-outline {
+      --default-color: var(--default-border-color);
       --default-opacity-hover: 60%;
     }
     &.button-style-type-filled {
