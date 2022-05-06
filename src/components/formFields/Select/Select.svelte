@@ -50,9 +50,6 @@ export let label: string;
 // The selected value(s) for any select mode
 export let selected: TOption | TOption[] | null = multiple ? [] : null;
 
-// At the multiple select, this will set the badge style
-export let badgeStyle: TbadgeStyle = "outline";
-
 type TSelectBorders = "bottom" | "outline";
 /**
  * Choose border type of the select component.
@@ -65,6 +62,9 @@ type TSelectStyle = "primary" | "secondary" | "dark" | "light";
  * Choose one of the theme styles.
  */
 export let selectStyle: TSelectStyle = "dark";
+
+// At the multiple select, this will set the badge style
+export let badgeStyle: TbadgeStyle = selectStyle;
 
 // ====== Internal control ====== //
 
@@ -257,7 +257,7 @@ onDestroy(() => {
         {#if multiple && selectedMultiple.length > 0}
           {#each selectedMultiple as option}
             <span class="badge">
-              <Badge {badgeStyle}>
+              <Badge {badgeStyle} outline={true}>
                 {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
               </Badge>
             </span>
@@ -512,8 +512,8 @@ onDestroy(() => {
   }
 
   .badge {
-    --szot-badge-color: var(--component-color);
-    --szot-badge-border-color: var(--component-color);
+    --internal-badge-color: var(--component-label-color);
+    --internal-badge-border-color: var(--component-border-color);
   }
   
   .error-text{
