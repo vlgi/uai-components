@@ -4,6 +4,6 @@
 @use './mixins' as m;
 @use './ionic';
 
-:root {
+* {
     @include m.custom-scrollbar();
 }
