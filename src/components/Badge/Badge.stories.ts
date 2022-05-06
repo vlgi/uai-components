@@ -9,7 +9,12 @@ export default {
     badgeStyle: {
       control: {
         type: "select",
-        options: ["primary", "secondary", "dark", "light", "outline"],
+        options: ["primary", "secondary", "dark", "light"],
+      },
+    },
+    outline: {
+      control: {
+        type: "boolean",
       },
     },
   },
@@ -32,7 +37,8 @@ export const Theme = Template({
 
 export const Border = Template({
   labelSlot: "Badge",
-  badgeStyle: "outline",
+  badgeStyle: "light",
+  outline: true,
 });
 
 export const CustomExample: any = Template({

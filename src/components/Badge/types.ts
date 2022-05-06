@@ -1,1 +1,1 @@
-export type TbadgeStyle = "primary" | "secondary" | "dark" | "light" | "outline";
+export type TbadgeStyle = "primary" | "secondary" | "dark" | "light";
