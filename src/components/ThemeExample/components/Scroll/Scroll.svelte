@@ -22,30 +22,34 @@
       <p class="description">{ d.description }</p>
     </header>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Variable Name</th>
-          <th>Default Value</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each d.variables as v}
+    <div class="table-scroll-wrapper">
+      <table>
+        <thead>
           <tr>
-            <td>{v.name}</td>
-            <td>{v.default}</td>
-            <td>{v.description}</td>
+            <th>Variable Name</th>
+            <th>Default Value</th>
+            <th>Description</th>
           </tr>
-        {/each}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {#each d.variables as v}
+            <tr>
+              <td>{v.name}</td>
+              <td>{v.default}</td>
+              <td>{v.description}</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+      <div class="spacer"></div>
+    </div>
   </section>
 {/each}
 
 <style lang="scss">
   section {
     margin: 2rem 0;
+    height: 200vh;
   }
 
   header {
@@ -68,6 +72,16 @@
 
   thead tr {
     background: #ddd;
+  }
+
+  .table-scroll-wrapper {
+    height: 50vh;
+    overflow-y: auto;
+    width: fit-content;
+
+    .spacer {
+      height: 100vh;
+    }
   }
 
 </style>
