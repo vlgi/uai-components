@@ -163,7 +163,7 @@
     // nav paddings
     --nav-padding: var(--szot-nav-padding, 0.4rem);
     --nav-logo-padding: var(--szot-nav-logo-padding, .6rem .3rem);
-    --nav-external-padding: var(--szot-nav-external-padding, 0rem);
+    --nav-external-padding: var(--szot-nav-external-padding, 0);
 
     // nav colors
     --nav-background-color: var(--szot-nav-background-color, #f0f0f0);
