@@ -2,7 +2,7 @@
   const data = [
     {
       title: "Scroll Variables",
-      description: "variables to customize global scroll",
+      description: "variables to customize global scroll (does not support gradient)",
       variables: [
         { name: "--szot-scroll-bar-color", default: "#333", description: "" },
         { name: "--szot-scroll-bar-hover-color", default: "#33333380", description: "" },
