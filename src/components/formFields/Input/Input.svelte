@@ -390,8 +390,8 @@
       background-color: transparent;
       border: 0;
       margin: calc(var(--input-padding)*1.2) 0 var(--input-padding) .5rem;
-      --internal-icon-color: var(--icon-color);
-      --internal-icon-line-height: 1rem;
+      --szot-icon-color: var(--icon-color);
+      --szot-icon-line-height: 1rem;
     }
   }
 
@@ -407,8 +407,8 @@
       background-color: transparent;
       border: 0;
       margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
-      --internal-icon-color: var(--icon-color);
-      --internal-icon-line-height: 1rem;
+      --szot-icon-color: var(--icon-color);
+      --szot-icon-line-height: 1rem;
     }
   }
 

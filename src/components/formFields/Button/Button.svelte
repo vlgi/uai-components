@@ -124,7 +124,7 @@
     // external variables
     --opacity-hover: var(--szot-button-opacity-hover, var(--default-opacity-hover));
     --color: var(--szot-button-color, var(--default-color));
-    --internal-icon-color: var(--color);
+    --szot-icon-color: var(--color, var(--szot-button-icon-color));
     --effect-color-after-click: var(
       --szot-button-effect-color-after-click,
       var(--default-effect-color)
@@ -142,15 +142,19 @@
 
     &.button-style-primary {
       --default-color: var(--theme-txt-on-primary-surface);
+      --not-filled-color: var(--theme-primary-txt);
     }
     &.button-style-secondary {
       --default-color: var(--theme-txt-on-secondary-surface);
+      --not-filled-color: var(--theme-secondary-txt);
     }
     &.button-style-dark {
       --default-color: var(--theme-txt-on-dark-surface);
+      --not-filled-color: var(--theme-dark-txt);
     }
     &.button-style-light {
       --default-color: var(--theme-txt-on-light-surface);
+      --not-filled-color: var(--theme-light-txt);
     }
     &.round {
       border-radius: 1.0625rem;
@@ -241,6 +245,7 @@
       --default-border: none;
     }
     &.button-style-type-not-filled {
+      --default-color: var(--not-filled-color);
       --default-opacity-hover: 60%;
     }
     &.disabled {

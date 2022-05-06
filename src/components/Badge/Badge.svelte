@@ -1,26 +1,23 @@
 <script lang="ts">
-  import type { TbadgeStyle } from "./types";
+  import type { TbadgeStyle, TbadgeStyleType } from "./types";
 
   /** Select the theme color pattern that will be used or Custom to define your own color. */
   export let badgeStyle: TbadgeStyle = "primary";
 
-  export let outline = false;
+  export let badgeStyleType: TbadgeStyleType = "filled";
 </script>
 
-<span class="badge {badgeStyle} outline-{outline}">
+<span class="badge {badgeStyle} {badgeStyleType}">
   <span class="text"><slot /></span>
 </span>
 
 <style lang="scss">
   @use 'src/styles/mixins' as m;
   .badge {
-    --color: var(--szot-badge-color, var(--internal-badge-color, var(--default-color)));
+    --color: var(--szot-badge-color, var(--default-color));
     --background-color: var(--szot-badge-background-color, var(--default-background-color));
     --border: var(--szot-badge-border, var(--default-border));
-    --border-color: var(
-      --szot-badge-border-color, 
-      var(--internal-badge-border-color, var(--default-border-color)
-    ));
+    --border-color: var(--szot-badge-border-color, var(--default-border-color));
     --font-size: var(--szot-badge-font-size, .9rem);
 
     &.primary {
@@ -47,13 +44,19 @@
       --default-border-color: var(--theme-light-surface);
     }
 
-    &.outline-false {
+    &.filled {
       --border-color: transparent;
     }
-    &.outline-true {
+    &.outline {
       --default-color: var(--border-color);
       --default-background-color: transparent;
       --default-border: var(--theme-small-border);
+    }
+
+    &.not-filled {
+      --default-color: var(--default-border-color);
+      --border-color: transparent;
+      --default-background-color: transparent;
     }
 
     font-size: var(--font-size);

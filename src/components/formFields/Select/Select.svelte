@@ -9,7 +9,7 @@ import SearchInput from "./SearchInput/SearchInput.svelte";
 import Badge from "../../Badge/Badge.svelte";
 import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
 import type { TOption, TOptionsListBinds } from "./types";
-import type { TbadgeStyle } from "../../Badge/types";
+import type { TbadgeStyle, TbadgeStyleType } from "../../Badge/types";
 
 // True if the select should select multiple values
 export let multiple = false;
@@ -65,6 +65,8 @@ export let selectStyle: TSelectStyle = "dark";
 
 // At the multiple select, this will set the badge style
 export let badgeStyle: TbadgeStyle = selectStyle;
+
+export let badgeStyleType: TbadgeStyleType = "outline";
 
 // ====== Internal control ====== //
 
@@ -257,7 +259,7 @@ onDestroy(() => {
         {#if multiple && selectedMultiple.length > 0}
           {#each selectedMultiple as option}
             <span class="badge">
-              <Badge {badgeStyle} outline={true}>
+              <Badge {badgeStyle} {badgeStyleType}>
                 {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
               </Badge>
             </span>
@@ -345,6 +347,8 @@ onDestroy(() => {
     --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
     --component-label-color: var(--szot-select-label-color, var(--component-color));
     --component-border-color: var(--szot-select-border-color, var(--component-color));
+    --szot-select-badge-color: var(--component-label-color);
+    --szot-select-badge-border-color: var(--component-border-color);
   }
 
   .hidden {
@@ -512,8 +516,8 @@ onDestroy(() => {
   }
 
   .badge {
-    --internal-badge-color: var(--component-label-color);
-    --internal-badge-border-color: var(--component-border-color);
+    --szot-badge-color: var(--szot-select-badge-color);
+    --szot-badge-border-color: var(--szot-select-badge-border-color);
   }
   
   .error-text{
