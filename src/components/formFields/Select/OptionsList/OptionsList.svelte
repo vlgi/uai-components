@@ -186,8 +186,13 @@ $: if (options) {
     &-menu {
       overflow-y: auto;
       overflow-x: hidden;
-      @include m.custom-scrollbar(var(--component-color));
-    }
+      @include m.custom-scrollbar();
+      :global() {
+        --szot-scroll-bar-color: var(--component-color);
+        --szot-scroll-bar-hover-color: var(--component-color);
+        --szot-scroll-background-color: transparent;
+      }
+    } 
 
     &-option {
       font-size: 0.875rem;

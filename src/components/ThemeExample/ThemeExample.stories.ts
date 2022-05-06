@@ -5,6 +5,7 @@ import ThemeSizes from "./components/Sizes/Sizes.svelte";
 import ThemeFonts from "./components/Fonts/Fonts.svelte";
 import ThemeSpacings from "./components/Spacings/Spacings.svelte";
 import ThemeSurfaces from "./components/Surfaces/Surfaces.svelte";
+import ThemeScroll from "./components/Scroll/Scroll.svelte";
 
 export default {
   title: "Theme",
@@ -37,4 +38,8 @@ export const Spacings = () => ({
 
 export const Surfaces = () => ({
   Component: ThemeSurfaces,
+});
+
+export const Scroll = () => ({
+  Component: ThemeScroll,
 });
