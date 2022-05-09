@@ -3,6 +3,7 @@
   import {
     onMount, getContext, hasContext, onDestroy,
   } from "svelte";
+  import Icon from "../../../Icon/Icon.svelte";
   import type { TFormContext } from "../../../Form/types";
 
   type TIconPosition = "left" | "right" | "both" | "none";
@@ -140,13 +141,13 @@
     />
   </div>
   {#if iconPosition === "left" || iconPosition === "both"}
-    <span class="icon-close-circle"/>
+    <Icon iconName="close-circle" />
   {/if}
   <label for={id} class="badge-label">
     {label !== undefined ? label : ""}
   </label>
   {#if iconPosition === "right" || iconPosition === "both"}
-    <span class="icon-close-circle"/>
+    <Icon iconName="close-circle" />
   {/if}
 </div>
 
@@ -194,6 +195,8 @@
       --default-icon-color: var(--theme-secondary-txt);
     }
 
+    --szot-icon-color: var(--badge-pill-icon-color);
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -211,10 +214,6 @@
       @include m.text-color(var(--badge-pill-label-color));
       font-weight: normal;
       margin-inline: 0.5rem;
-    }
-
-    .icon-close-circle {
-      color: var(--badge-pill-icon-color);
     }
   }
 
