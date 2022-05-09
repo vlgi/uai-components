@@ -42,17 +42,14 @@ const Template = (_args: ArgType) => {
 const badgeItems = [
   {
     value: "firstItem",
-    checked: false,
     label: "Item 1",
   },
   {
     value: "secondItem",
-    checked: false,
     label: "Item 2",
   },
   {
     value: "thirdItem",
-    checked: false,
     label: "Item 3",
   },
 ];
@@ -60,27 +57,22 @@ const badgeItems = [
 const badgeItems2 = [
   {
     value: "firstItem",
-    checked: true,
     label: "Item 1",
   },
   {
     value: "secondItem",
-    checked: false,
     label: "Item 2",
   },
   {
     value: "thirdItem",
-    checked: false,
     label: "Item 3",
   },
   {
     value: "forthItem",
-    checked: true,
     label: "Item 4",
   },
   {
     value: "fifthItem",
-    checked: false,
     label: "Item 5",
   },
 ];

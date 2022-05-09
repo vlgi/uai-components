@@ -11,8 +11,12 @@
 
   type TBadgeProps = {
     value: string;
-    checked: boolean;
     label?: string;
+  };
+
+  type TMapValueCheck = {
+    value: string;
+    checked: boolean;
   };
 
   type TIconPosition = "left" | "right" | "both" | "none";
@@ -81,6 +85,11 @@
 
   let eMsg = "";
   let wrapperElement: HTMLElement;
+
+  let checkedList: TMapValueCheck[] = badgeItems.map((e) => ({
+    value: e.value,
+    checked: false,
+  }));
 
   const isInsideContext = hasContext("FormContext");
   let addedToContext = false;
@@ -172,6 +181,11 @@
   $: if (wrapperElement && addedToContext) {
     setFieldValue(name, values, isValid);
   }
+
+  $: checkedList = checkedList.map((c) => ({
+    value: c.value,
+    checked: values.includes(c.value),
+  }));
 </script>
 
 <div class="list-badge-wrapper display-badges-{direction}" bind:this={wrapperElement}>
@@ -182,7 +196,7 @@
           id="{name}-{i}"
           label={badge.label}
           value={badge.value}
-          checked={badge.checked}
+          bind:checked={checkedList[i].checked}
           {iconPosition}
           {badgeStyle}
           on:checkItem={setChecked}
