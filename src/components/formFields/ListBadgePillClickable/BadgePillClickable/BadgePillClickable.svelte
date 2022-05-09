@@ -202,6 +202,7 @@
     justify-content: center;
     align-items: center;
     width: fit-content;
+    max-width: var(--szot-fields-max-width, auto);
     height: var(--badge-pill-height);
     min-height: var(--badge-pill-min-height);
     position: relative;
@@ -212,6 +213,7 @@
 
     .badge-label {
       @include m.text-color(var(--badge-pill-label-color));
+      font-size: var(--szot-fields-font-size, 1rem);
       font-weight: normal;
       margin-inline: 0.5rem;
     }
