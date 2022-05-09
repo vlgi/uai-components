@@ -60,6 +60,8 @@
 
   export let required = false;
 
+  let wrapperElement: HTMLElement;
+
   const isInsideContext = hasContext("FormContext");
   const {
     setFieldValue, addFieldToContext, removeFieldFromContext,
@@ -98,7 +100,7 @@
         checked === true ? value : false,
         isValid,
         required,
-        inputElement,
+        wrapperElement,
         validation,
         forceValue,
       );
@@ -119,6 +121,7 @@
   class:on={checked}
   class:off={!checked}
   {id}
+  bind:this={wrapperElement}
   on:click={dispatchValue}
   on:click={() => {
     checked = !checked;
@@ -146,6 +149,7 @@
     <span class="icon-close-circle"/>
   {/if}
 </div>
+
 <p class="error" class:error-show={!isValid}>
   {#if required}
     Este campo é obrigatório
