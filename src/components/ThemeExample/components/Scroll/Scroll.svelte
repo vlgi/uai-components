@@ -8,7 +8,7 @@
         { name: "--szot-scroll-bar-hover-color", default: "#33333380", description: "" },
         { name: "--szot-scroll-background-color", default: "transparent", description: "" },
         { name: "--szot-scroll-size-firefox", default: "thin", description: "você pode passar qualquer valor que a propriedade 'scrollbar-width' aceita." },
-        { name: "--szot-scroll-bar-width", default: "0.3125rem", description: "" },
+        { name: "--szot-scroll-bar-width", default: "0.3125rem", description: "você pode passar valores em 'rem', 'px' ou 'em'." },
         { name: "--szot-scroll-bar-radius", default: "1.5625rem / 3.125rem", description: "" },
       ],
     },
