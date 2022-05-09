@@ -237,7 +237,7 @@
     --label-focus-left: var(--szot-input-label-focus-left, 0.8rem);
     --label-focus-color: var(--szot-input-label-focus-color, var(--label-color));
     --label-not-focus-color: var(--szot-input-label-not-focus-color, var(--label-color));
-    --border-color-focus: var(--szot-input-border-color-focus,var(--default-border-color-focus));
+    --border-color-focus: var(--szot-input-border-color-focus, var(--default-border-color));
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
 
@@ -249,7 +249,6 @@
       --default-label-color: var(--theme-primary-txt);
       --default-input-color: var(--theme-primary-inserted-text);
       --default-icon-color: var(--theme-primary-txt);
-      --default-border-color-focus: var(--theme-primary-txt);
       --default-border-color: var(--theme-primary-txt);
     }
 
@@ -257,7 +256,6 @@
       --default-label-color: var(--theme-secondary-txt);
       --default-input-color: var(--theme-secondary-inserted-text);
       --default-icon-color: var(--theme-secondary-txt);
-      --default-border-color-focus: var(--theme-secondary-txt);
       --default-border-color: var(--theme-secondary-txt);
     }
 
@@ -265,14 +263,12 @@
       --default-label-color: var(--theme-dark-txt);
       --default-input-color: var(--theme-dark-inserted-text);
       --default-icon-color: var(--theme-dark-txt);
-      --default-border-color-focus: var(--theme-dark-txt);
       --default-border-color: var(--theme-dark-txt);
     }
     &.input-style-light {
       --default-label-color: var(--theme-light-txt);
       --default-input-color: var(--theme-light-inserted-text);
       --default-icon-color: var(--theme-light-txt);
-      --default-border-color-focus: var(--theme-light-txt);
       --default-border-color: var(--theme-ligth-txt);
     }
     &.inFocus {
@@ -333,10 +329,12 @@
       }
     }
     &:not(:placeholder-shown).form-input:not(:focus) + .form-label {
+      z-index: 10;
       top: 0;
       left: var(--label-focus-left);
       transform: translateY(-55%);
-      z-index: 10;
+      padding: 0 0.3125rem;
+      @include m.form-field-label-floated-size;
       .label-text {
         @include m.text-color(var(--label-not-focus-color));
       }
