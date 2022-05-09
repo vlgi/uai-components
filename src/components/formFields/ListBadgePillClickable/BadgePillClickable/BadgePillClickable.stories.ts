@@ -18,7 +18,7 @@ export default {
       table: { category: "visual properties" },
       control: {
         type: "select",
-        options: ["dark", "light"],
+        options: ["dark", "light", "primary", "secondary"],
       },
     },
   },
