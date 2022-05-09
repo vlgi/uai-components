@@ -20,7 +20,7 @@
   };
 
   type TIconPosition = "left" | "right" | "both" | "none";
-  type TBadgeStyle = "light" | "dark";
+  type TBadgeStyle = "light" | "dark" | "primary" | "secondary";
   type TDirection = "column" | "row";
 
   export let name;

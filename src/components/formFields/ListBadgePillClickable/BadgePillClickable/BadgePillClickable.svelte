@@ -6,7 +6,7 @@
   import type { TFormContext } from "../../../Form/types";
 
   type TIconPosition = "left" | "right" | "both" | "none";
-  type TBadgeStyle = "light" | "dark";
+  type TBadgeStyle = "light" | "dark" | "primary" | "secondary";
 
   const dispatch = createEventDispatcher();
 
@@ -176,6 +176,18 @@
       --default-border-color: var(--theme-light-txt);
       --default-label-color: var(--theme-light-txt);
       --default-icon-color: var(--theme-light-txt);
+    }
+
+    &.badge-style-primary {
+      --default-border-color: var(--theme-primary-txt);
+      --default-label-color: var(--theme-primary-txt);
+      --default-icon-color: var(--theme-primary-txt);
+    }
+
+    &.badge-style-secondary {
+      --default-border-color: var(--theme-secondary-txt);
+      --default-label-color: var(--theme-secondary-txt);
+      --default-icon-color: var(--theme-secondary-txt);
     }
 
     display: flex;
