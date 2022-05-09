@@ -22,6 +22,7 @@
     {checked}
     {iconPosition}
     {badgeStyle}
+    on:checkItem
     {...$$restProps}
   />
 </div>

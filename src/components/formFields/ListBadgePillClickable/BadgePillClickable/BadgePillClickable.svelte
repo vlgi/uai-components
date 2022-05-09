@@ -73,6 +73,9 @@
   }
 
   function dispatchValue() {
+    /**
+     * Dispatch event with the value of the bagde component when click in the badge
+     */
     dispatch("checkItem", value);
   }
 
