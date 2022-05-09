@@ -1,27 +1,27 @@
-@mixin custom-scrollbar($color) {
+@mixin custom-scrollbar() {
 
-  scrollbar-width: thin;
-  scrollbar-color: $color transparent;
+  scrollbar-width: var(--scroll-size-firefox);
+  scrollbar-color: var(--scroll-bar-color) var(--scroll-background-color);
 
   /* width */
   &::-webkit-scrollbar {
-    width: 0.3125rem;
+    width: var(--scroll-bar-width);
   }
 
   /* Track */
   &::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--scroll-background-color);
   }
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: $color;
-    border-radius: 1.5625rem / 3.125rem;
+    background: var(--scroll-bar-color);
+    border-radius: var(--scroll-bar-radius);
   }
 
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
-    background: var(--theme-light);
+    background: var(--scroll-bar-hover-color);
   }
 }
 

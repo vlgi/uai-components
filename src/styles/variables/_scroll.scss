@@ -1,0 +1,11 @@
+
+* {
+  --scroll-bar-color: var(--szot-scroll-bar-color, #333);
+  --scroll-bar-hover-color: var(--szot-scroll-bar-hover-color, #33333380);
+  --scroll-background-color: var(--szot-scroll-background-color, transparent);
+
+  --scroll-size-firefox: var(--szot-scroll-size-firefox, thin);
+  --scroll-bar-width: var(--szot-scroll-bar-width, 0.3125rem);
+  --scroll-bar-radius: var(--szot-scroll-bar-radius, 1.5625rem / 3.125rem);
+}
+
