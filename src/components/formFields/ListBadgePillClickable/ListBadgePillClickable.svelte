@@ -189,32 +189,33 @@
 </script>
 
 <div class="list-badge-wrapper display-badges-{direction}" bind:this={wrapperElement}>
-    {#each badgeItems as badge, i}
-      <div class="badge-container" class:invalid={!isValid}>
-        <BadgePillClickable
-          name="{name}-{i}"
-          id="{name}-{i}"
-          label={badge.label}
-          value={badge.value}
-          bind:checked={checkedList[i].checked}
-          {iconPosition}
-          {badgeStyle}
-          on:checkItem={setChecked}
-        />
-      </div>
-    {/each}
-    <p class="error" class:error-show={!isValid}>
-      {#if required}
-        {#if max !== null && values.length >= max}
-          Você deve selecionar no máximo {max} {max <= 1 ? "opção" : "opções"}.
-        {:else}
-          É necessário selecionar {min} {min <= 1 ? "opção" : "opções"}.
-        {/if}
-      {:else}
-        {eMsg}
-      {/if}
-    </p>
+  {#each badgeItems as badge, i}
+    <div class="badge-container" class:invalid={!isValid}>
+      <BadgePillClickable
+        name="{name}-{i}"
+        id="{name}-{i}"
+        label={badge.label}
+        value={badge.value}
+        bind:checked={checkedList[i].checked}
+        {iconPosition}
+        {badgeStyle}
+        on:checkItem={setChecked}
+      />
+    </div>
+  {/each}
 </div>
+
+<p class="error" class:error-show={!isValid}>
+  {#if required}
+    {#if max !== null && values.length >= max}
+      Você deve selecionar no máximo {max} {max <= 1 ? "opção" : "opções"}.
+    {:else}
+      É necessário selecionar {min} {min <= 1 ? "opção" : "opções"}.
+    {/if}
+  {:else}
+    {eMsg}
+  {/if}
+</p>
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
@@ -241,16 +242,17 @@
       width: fit-content;
     }
 
-    .error {
-      @include m.form-field-error-text();
-      display: none;
-      opacity: 0;
-      transition: opacity 0.2s linear, bottom 0.2s;
-    }
+  }
 
-    .error-show {
-      display: inherit;
-      @include m.form-field-error-text();
-    }
+  .error {
+    @include m.form-field-error-text();
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s linear, bottom 0.2s;
+  }
+
+  .error-show {
+    display: inherit;
+    @include m.form-field-error-text();
   }
 </style>
