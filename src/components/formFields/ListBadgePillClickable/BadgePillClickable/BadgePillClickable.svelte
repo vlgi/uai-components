@@ -164,6 +164,7 @@
     --badge-pill-border-color: var(--szot-badge-pill-border-color, var(--default-border-color));
     --badge-pill-label-color: var(--szot-badge-pill-label-color, var(--default-label-color));
     --badge-pill-icon-color: var(--szot-badge-pill-icon-color, var(--default-icon-color));
+    --badge-pill-background-color: var(--szot-badge-pill-background-color, green);
 
     &.badge-style-dark {
       --default-border-color: var(--theme-dark-txt);
@@ -209,8 +210,6 @@
   }
 
   .on {
-    --badge-pill-background-color: var(--szot-badge-pill-background-color, green);
-
     background: var(--badge-pill-background-color);
   }
 
