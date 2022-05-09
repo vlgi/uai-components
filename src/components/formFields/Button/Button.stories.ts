@@ -70,6 +70,7 @@ export const LargeIcon = Template({
   icon: "upload",
   labelSlot: "Enviar documentos",
   positionIcon: "right",
+  style: "--szot-button-max-width: 20rem",
 });
 
 export const mediumSimple = Template({

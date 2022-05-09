@@ -137,8 +137,9 @@
     --padding-small: var(--szot-button-padding, 0.3125rem 0.625rem);
 
     --margin-icon: var(--szot-button-margin-icon, -0.1rem 1rem);
-
+    
     --max-width: var(--szot-button-max-width, var(--theme-fields-max-width));
+    --width: var(--szot-button-width, 100%);
 
     &.button-style-primary {
       --default-color: var(--theme-txt-on-primary-surface);
@@ -163,9 +164,9 @@
       height: 1.875rem;
 
       .icon {
-        position: absolute;
-        top: 18%;
-        left: 18%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
       }
     }
     &.large {
@@ -268,6 +269,8 @@
     transition: background-color 0.3s;
     font-size: var(--font-size);
     border: none;
+    width: var(--width);
+    max-width: var(--max-width);
     .text {
       @include m.text-color(var(--color));
     }
@@ -298,11 +301,6 @@
       width: 120%;
       padding-top: 120%;
       transition: width 0.2s ease-out, padding-top 0.2s ease-out;
-    }
-
-    &[type="submit"] {
-      width: 100%;
-      max-width: var(--max-width);
     }
   }
 </style>
