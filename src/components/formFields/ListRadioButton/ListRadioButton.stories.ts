@@ -31,50 +31,35 @@ const radioOptions = [
   },
 ];
 
-const radioOptionsChecked = [
-  {
-    value: "firstOption",
-    label: "Opção 1",
-  },
-  {
-    value: "secondOption",
-    label: "Opção 2",
-    checked: true,
-  },
-  {
-    value: "thirdOption",
-    label: "Opção 3",
-  },
-];
-
 export const Default = Template({
-  name: "optionList",
+  name: "defaultOptionList",
   listName: "Escolha uma opção",
   radioOptions,
 });
 
 export const DefaultChecked = Template({
-  name: "optionList",
+  name: "defaultCheckedOptionList",
   listName: "Escolha uma opção",
-  radioOptions: radioOptionsChecked,
+  radioOptions,
+  value: "thirdOption",
 });
 
 export const FilledRadios = Template({
-  name: "optionList",
+  name: "filledRadiosOptionList",
   listName: "Escolha uma opção",
   radioOptions,
   radioStyleType: "filled",
 });
 
 export const forceInvalid = Template({
-  name: "optionList",
+  name: "forceInvalidOptionList",
   listName: "Escolha uma opção",
   radioOptions,
   forceInvalid: true,
 });
 
 export const CustomExample: any = Template({
-  name: "optionList",
+  name: "customExampleOptionList",
   listName: "Escolha uma opção",
   radioOptions,
   radioStyleType: "notFilled",
