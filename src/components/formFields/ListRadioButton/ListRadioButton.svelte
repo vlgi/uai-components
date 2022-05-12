@@ -48,6 +48,10 @@
   /** shows if the component is valid (readonly) */
   export let isValid = true;
 
+  /**
+   * The value for the checked item. Defines which radio button starts checked
+   * by receiving its value
+   */
   export let value = "";
   export let required = false;
 
