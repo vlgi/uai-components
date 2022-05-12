@@ -444,11 +444,6 @@ onDestroy(() => {
       padding: 0 var(--component-padding-horizontal);
 
       transition: max-height var(--open-transition-duration), padding var(--open-transition-duration);
-
-      .searchInput {
-        @include m.border(var(--component-border), var(--component-border-color));
-        border-radius: var(--theme-small-shape);
-      }
       &.with-borders {
         padding-top: var(--component-padding-vertical);
         @include m.border(var(--component-border), var(--component-border-color));

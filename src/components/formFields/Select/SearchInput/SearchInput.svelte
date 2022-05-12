@@ -66,13 +66,20 @@
     .filter(({ concatenated }) => concatenated.match(regex) !== null)
     .map(({ index }) => items[index]);
 </script>
-
-<input type="text" class="search" tabindex="-1"
-  placeholder="Pesquise ou Selecione..."
-  bind:value={searchQuery}
-  bind:this={inputBind}/>
-
+<div>
+  <input type="text" class="search" tabindex="-1"
+    placeholder="Pesquise ou Selecione..."
+    bind:value={searchQuery}
+    bind:this={inputBind}/>
+</div>
 <style lang="scss">
+  @use "src/styles/mixins" as m;
+
+  div {
+    @include m.border(var(--component-border), var(--component-border-color));
+    border-radius: var(--theme-small-shape);
+    margin: 0.375rem 0 0.125rem 0;
+  }
   .search {
     color: var(--theme-dark-inserted-text);
     background-color: var(--component-background-color);
@@ -80,11 +87,9 @@
 
     padding: var(--theme-fields-padding);
     text-overflow: ellipsis;
-    border: none;
+    border: var(--component-border) solid transparent;
     border-radius: var(--theme-small-shape);
     outline: none;
-    
-
     &::placeholder {
       color: var(--theme-light-txt);
     }
