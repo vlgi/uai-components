@@ -167,18 +167,22 @@
       title="Quais bolos você gosta?"
       required={true}
     />
-    <span class="popsicle-span">
-      Quais Picolés você gosta?
-    </span>
+    <div>
+      <span class="popsicle-span">
+        Quais Picolés você gosta?
+      </span>
+    </div>
     <ListBadgePillClickable
       name="liked-popsicle"
       badgeItems={popsicleOptions}
       required={true}
       --szot-badge-pill-background-color="#87cefa"
     />
-    <span class="popsicle-span">
-      Qual seu picolé favorito?
-    </span>
+    <div>
+      <span class="popsicle-span">
+        Qual seu picolé favorito?
+      </span>
+    </div>
     <ListBadgePillClickable
       name="best-popsicle"
       badgeItems={popsicleOptions}
