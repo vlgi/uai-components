@@ -81,6 +81,11 @@ export const Default = Template({
   badgeItems,
 });
 
+export const Checked = Template({
+  badgeItems,
+  values: ["firstItem", "thirdItem"],
+});
+
 export const Column = Template({
   direction: "column",
   badgeItems,
