@@ -50,7 +50,8 @@
   export let isValid = true;
 
   /**
-   * The value for the badge element (readonly)
+   * The values of checked items. Defines which badge starts checked
+   * by receiving a list of item names
    * @type {Array<string>}
    */
   export let values: Array<string> = [];
