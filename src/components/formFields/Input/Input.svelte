@@ -219,7 +219,7 @@
   .form-div {
     --margin-bottom: var(--szot-input-margin-bottom, 1.5rem);
     --margin-top: var(--szot-input-margin-top, 0.5rem);
-    --max-width: var(--szot-input-max-width, --theme-fields-max-width);
+    --max-width: var(--szot-input-max-width, var(--theme-fields-max-width));
 
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
@@ -237,7 +237,7 @@
     --label-focus-left: var(--szot-input-label-focus-left, 0.8rem);
     --label-focus-color: var(--szot-input-label-focus-color, var(--label-color));
     --label-not-focus-color: var(--szot-input-label-not-focus-color, var(--label-color));
-    --border-color-focus: var(--szot-input-border-color-focus,var(--default-border-color-focus));
+    --border-color-focus: var(--szot-input-border-color-focus, var(--default-border-color));
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
 
@@ -249,7 +249,6 @@
       --default-label-color: var(--theme-primary-txt);
       --default-input-color: var(--theme-primary-inserted-text);
       --default-icon-color: var(--theme-primary-txt);
-      --default-border-color-focus: var(--theme-primary-txt);
       --default-border-color: var(--theme-primary-txt);
     }
 
@@ -257,7 +256,6 @@
       --default-label-color: var(--theme-secondary-txt);
       --default-input-color: var(--theme-secondary-inserted-text);
       --default-icon-color: var(--theme-secondary-txt);
-      --default-border-color-focus: var(--theme-secondary-txt);
       --default-border-color: var(--theme-secondary-txt);
     }
 
@@ -265,14 +263,12 @@
       --default-label-color: var(--theme-dark-txt);
       --default-input-color: var(--theme-dark-inserted-text);
       --default-icon-color: var(--theme-dark-txt);
-      --default-border-color-focus: var(--theme-dark-txt);
       --default-border-color: var(--theme-dark-txt);
     }
     &.input-style-light {
       --default-label-color: var(--theme-light-txt);
       --default-input-color: var(--theme-light-inserted-text);
       --default-icon-color: var(--theme-light-txt);
-      --default-border-color-focus: var(--theme-light-txt);
       --default-border-color: var(--theme-ligth-txt);
     }
     &.inFocus {
@@ -308,12 +304,11 @@
     margin-top: var(--margin-top);
     max-width: var(--max-width);
     height: fit-content;
-    max-width: var(--szot-input-max-width, var(--theme-fields-max-width));
     box-sizing: border-box;
   }
 
   .form-input {
-    width: 100%;
+    width: var(--max-width);
     outline: none;
     padding: var(--input-padding);
     background: none;
@@ -334,10 +329,12 @@
       }
     }
     &:not(:placeholder-shown).form-input:not(:focus) + .form-label {
+      z-index: 10;
       top: 0;
       left: var(--label-focus-left);
       transform: translateY(-55%);
-      z-index: 10;
+      padding: 0 0.3125rem;
+      @include m.form-field-label-floated-size;
       .label-text {
         @include m.text-color(var(--label-not-focus-color));
       }
@@ -348,6 +345,7 @@
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
+      -webkit-text-fill-color: var(--input-text-color);
       transition: background-color 5000s ease-in-out 0s;
     }
   }
@@ -390,8 +388,8 @@
       background-color: transparent;
       border: 0;
       margin: calc(var(--input-padding)*1.2) 0 var(--input-padding) .5rem;
-      --internal-icon-color: var(--icon-color);
-      --internal-icon-line-height: 1rem;
+      --szot-icon-color: var(--icon-color);
+      --szot-icon-line-height: 1rem;
     }
   }
 
@@ -407,8 +405,8 @@
       background-color: transparent;
       border: 0;
       margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
-      --internal-icon-color: var(--icon-color);
-      --internal-icon-line-height: 1rem;
+      --szot-icon-color: var(--icon-color);
+      --szot-icon-line-height: 1rem;
     }
   }
 

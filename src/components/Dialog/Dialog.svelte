@@ -177,7 +177,7 @@
 
   @use 'src/styles/mixins' as m;
   .dialog-wrapper {
-    --txt-color: inherit;
+    --txt-color: var(--szot-dialog-text-color, inherit);
   }
 
   /** Change modal bg color */
@@ -210,7 +210,7 @@
   }
 
   .title, .content {
-    --internal-icon-color: var(--txt-color, var(--theme-txt-on-signal-color));
+    --szot-icon-color: var(--txt-color, var(--theme-txt-on-signal-color));
     @include m.text-color(var(--txt-color, var(--theme-txt-on-signal-color)));
     font-weight: var(--txt-weight, var(--theme-p-font-weight));
   }

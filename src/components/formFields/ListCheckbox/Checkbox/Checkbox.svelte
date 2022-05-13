@@ -87,7 +87,6 @@
         forceValue,
       );
     }
-    if (checked) dispatchValue();
   });
 
   onDestroy(() => {

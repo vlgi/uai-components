@@ -46,7 +46,8 @@
   export let isValid = true;
 
   /**
-   * The value for the checkbox element (readonly)
+   * The values of checked items. Defines which checkboxes starts checked
+   * by receiving a list of item names
    * @type {Array<string>}
    */
   export let values: Array<string> = [];

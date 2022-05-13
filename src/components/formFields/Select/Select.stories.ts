@@ -22,7 +22,13 @@ export default {
         options: ["bottom", "outline"],
       },
     },
-    badgeStyle: { table: { category: "visual properties" } },
+    badgeStyle: {
+      table: { category: "visual properties" },
+      control: {
+        type: "select",
+        options: ["primary", "secondary", "dark", "light"],
+      },
+    },
   },
 };
 
@@ -144,9 +150,9 @@ CustomExample.parameters = {
       "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
     >
       <Select
-        multiple={false} 
-        id="doce" name="doce" 
-        label="Sobremesas" 
+        multiple={false}
+        id="doce" name="doce"
+        label="Sobremesas"
         options={[
           {"text":"Torta alemã"},{"text":"Pavê"},{"text":"Bolo"},{"text":"Brigadeiro"},
           {"text":"Pudim"},{"text":"Rabanada"},{"text":"Beijinho"},

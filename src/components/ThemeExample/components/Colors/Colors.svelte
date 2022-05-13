@@ -22,7 +22,10 @@
     },
     {
       title: "surface colors",
-      description: "You can ovewrite the surface colors.",
+      description: "Colors of the text entered in the input and in the textarea."
+      + "(this variable is separated only because the input and the textarea do not"
+      + "support gradient in the inserted text).",
+
       variables: [
         { name: "--szot-primary-surface", default: "--szot-primary" },
         { name: "--szot-secondary-surface", default: "--szot-secondary" },
@@ -32,7 +35,7 @@
     },
     {
       title: "inserted text color",
-      description: "You can ovewrite the surface colors. input text colors and textarea",
+      description: "Colors of the text entered in the input and in the textarea.",
       variables: [
         { name: "--szot-primary-inserted-text", default: "#FC6627" },
         { name: "--szot-secondary-inserted-text", default: "#167070" },
