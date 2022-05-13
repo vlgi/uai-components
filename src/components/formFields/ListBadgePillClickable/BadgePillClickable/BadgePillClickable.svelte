@@ -127,18 +127,15 @@
     checked = !checked;
   }}
 >
-  <div class="badge-container">
-    <input
-      type="checkbox"
-      {name}
-      {id}
-      bind:checked
-      bind:this={inputElement}
-      on:click={() => {
-        dispatchValue();
-      }}
-    />
-  </div>
+  <input
+    type="hidden"
+    {name}
+    {id}
+    bind:this={inputElement}
+    on:click={() => {
+      dispatchValue();
+    }}
+  />
   {#if iconPosition === "left" || iconPosition === "both"}
     <Icon iconName="close-circle" />
   {/if}
@@ -231,10 +228,6 @@
 
   .off {
     background: none;
-  }
-
-  .badge-container {
-    display: none;
   }
 
   .error {
