@@ -91,7 +91,9 @@
       height: 0;
       background: var(--radio-color);
       border-radius: calc(var(--radio-size) / 2);
-      transition: width ease-in-out 200ms, height ease-in-out 200ms,;
+      transition: width ease-in-out 200ms, height ease-in-out 200ms;
+      margin-top: 0.25rem;
+      margin-left: 0.25rem;
     }
 
     .radio-input:checked + .radio-label .radio-button-inner {
@@ -102,6 +104,7 @@
     .radio-style-type-filled:checked + .radio-label .radio-button-inner {
       width: var(--radio-size);
       height: var(--radio-size);
+      position: absolute;
     }
   }
 </style>

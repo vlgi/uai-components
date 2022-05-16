@@ -74,18 +74,13 @@
 </div>
 <style lang="scss">
   @use "src/styles/mixins" as m;
-
-  div {
-    @include m.border(var(--component-border), var(--component-border-color));
-    border-radius: var(--theme-small-shape);
-    margin: 0.375rem 0 0.125rem 0;
-  }
   .search {
     color: var(--theme-dark-inserted-text);
     background-color: var(--component-background-color);
     width: 100%;
-
-    padding: var(--theme-fields-padding);
+    margin-top: 0.375rem;
+    margin-left: 0.0625rem;
+    padding: 0.5rem var(--theme-fields-padding);
     text-overflow: ellipsis;
     border: var(--component-border) solid transparent;
     border-radius: var(--theme-small-shape);

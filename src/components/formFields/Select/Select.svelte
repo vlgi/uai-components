@@ -364,6 +364,11 @@ onDestroy(() => {
     }
   }
 
+  .searchInput {
+    @include m.border(var(--component-border), var(--component-border-color));
+    border-radius: var(--theme-small-shape);
+  }
+
   .select-box {
     display: flex;
     flex-flow: row wrap;

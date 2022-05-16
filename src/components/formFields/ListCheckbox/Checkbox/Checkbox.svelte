@@ -161,12 +161,15 @@
 
     .checkbox-input::before {
       content: "";
+      position: absolute;
       width: calc(var(--checkbox-size) - 0.125em);
       height: calc(var(--checkbox-size) - 0.125em);
       clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
       transform: scale(0);
       transform-origin: bottom left;
       transition: 120ms transform ease-in-out;
+      margin-top: 0.1875rem;
+      margin-left: 0.1875rem;
       background: var(--checkbox-color);
     }
 

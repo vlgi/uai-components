@@ -57,7 +57,7 @@
  NOTE2: This don't accept border style
 */
 @mixin border($size, $image_or_color...) {
-  border: 0px double transparent;
+  border: #{$size} double transparent;
   position: relative;
   z-index: 1;
 
@@ -66,22 +66,19 @@
     z-index: -1;
     box-sizing: content-box;
     position: absolute;
-    inset: 50% 0 0 50%;
+    inset: 0;
     width: 100%;
     height: 100%;
-    transform: translate(-50%, -50%);
-    padding: #{$size};
     border: inherit;
     border-radius: inherit;
     display: block;
 
     background: $image_or_color;
     background-origin: border-box;
-    background-clip: padding-box, border-box;
 
     // can i use 94.8%
     mask:
-      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0) border-box;
     -webkit-mask:
       linear-gradient(#fff 0 0) content,
