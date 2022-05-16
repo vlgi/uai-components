@@ -45,6 +45,12 @@ export const Checked = Template({
   checked: true,
 });
 
+export const Invalid = Template({
+  label: "test",
+  required: true,
+  isValid: false,
+});
+
 export const LightTheme = Template({
   label: "test",
   checked: true,
