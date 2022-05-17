@@ -166,6 +166,8 @@
     --badge-pill-label-color: var(--szot-badge-pill-label-color, var(--default-label-color));
     --badge-pill-icon-color: var(--szot-badge-pill-icon-color, var(--default-icon-color));
     --badge-pill-background-color: var(--szot-badge-pill-background-color, green);
+    --badge-pill-max-width: var(--szot-badge-pill-max-width, auto);
+    --badge-pill-font-size: var(--szot-badge-pill-font-size, var(--theme-fields-font-size));
 
     &.badge-style-dark {
       --default-border-color: var(--theme-dark-txt);
@@ -198,7 +200,7 @@
     justify-content: center;
     align-items: center;
     width: fit-content;
-    max-width: var(--szot-fields-max-width, auto);
+    max-width: var(--badge-pill-max-width);
     height: var(--badge-pill-height);
     min-height: var(--badge-pill-min-height);
     position: relative;
@@ -209,7 +211,7 @@
 
     .badge-label {
       @include m.text-color(var(--badge-pill-label-color));
-      font-size: var(--szot-fields-font-size, 1rem);
+      font-size: var(--badge-pill-font-size);
       font-weight: normal;
       margin-inline: 0.5rem;
     }
