@@ -68,8 +68,4 @@
   thead tr {
     background: #ddd;
   }
-
-  input {
-    width: var(--theme-fields-max-width);
-  }
 </style>
