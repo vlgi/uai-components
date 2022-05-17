@@ -116,6 +116,7 @@
     }
 
     &.round {
+      border-radius: 1.0625rem;
       width: 1.875rem;
       height: 1.875rem;
     }
