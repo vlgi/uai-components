@@ -76,8 +76,8 @@
     --border: var(--szot-button-border, var(--default-border));
     --border-color: var(--szot-button-border-color, var(--default-border-color));
     --border-radius: var(--szot-button-border-radius, var(--theme-small-shape));
-    --max-width: var(--szot-button-max-width, var(--theme-fields-max-width));
-    --width: var(--szot-button-width, 100%);
+    --max-width: var(--szot-button-max-width, 12rem);
+    --width: var(--szot-button-width, auto);
 
     &.style-primary {
       --default-background-color: var(--theme-primary-surface);

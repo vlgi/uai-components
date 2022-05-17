@@ -195,7 +195,7 @@
     );
     --margin-bottom: var(--szot-textarea-margin-bottom, 1.5rem);
     --margin-top: var(--szot-textarea-margin-top, 0.5rem);
-    --max-width: var(--szot-textarea-max-width, var(--theme-fields-max-width));
+    --max-width: var(--szot-textarea-max-width, 12rem);
     --max-height: var(--szot-textarea-max-height, var(--max-auto-height));
     --padding: var(--szot-textarea-padding, var(--theme-fields-padding));
 
@@ -294,7 +294,7 @@
     background-color: transparent;
     overflow: hidden;
     color: var(--textarea-color-text);
-    
+
   }
 
   textarea {
@@ -303,7 +303,7 @@
     resize: none;
     inset: 0;
     scrollbar-width: none;
-    
+
 
     &::-webkit-scrollbar {
       width: 0px;
