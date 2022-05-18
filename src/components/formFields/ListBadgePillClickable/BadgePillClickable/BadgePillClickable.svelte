@@ -206,8 +206,8 @@
     position: relative;
     padding: 0 0.375em;
     margin: var(--badge-pill-margin);
-    border: var(--border-size) solid var(--badge-pill-border-color);
     border-radius: var(--border-radius);
+    @include m.border(var(--border-size), var(--badge-pill-border-color));
 
     .badge-label {
       @include m.text-color(var(--badge-pill-label-color));
