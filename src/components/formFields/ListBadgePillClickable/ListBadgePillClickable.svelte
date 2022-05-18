@@ -6,26 +6,30 @@
     onMount,
     onDestroy,
   } from "svelte";
-  import Checkbox from "./Checkbox/Checkbox.svelte";
+  import BadgePillClickable from "./BadgePillClickable/BadgePillClickable.svelte";
   import type { TFormContext } from "../../Form/types";
 
-  type TCheckboxProps = {
+  type TBadgeProps = {
     value: string;
     label?: string;
   };
 
+  type TMapValueCheck = {
+    value: string;
+    checked: boolean;
+  };
+
+  type TIconPosition = "left" | "right" | "both" | "none";
+  type TBadgeStyle = "light" | "dark" | "primary" | "secondary";
+  type TDirection = "column" | "row";
+
   export let name;
-  /**
-   * The title property for this element
-   * @type {string}
-   */
-  export let title = "";
 
   /**
    * All possible options that can be selected
    * @type {array}
    */
-  export let checkboxItems: TCheckboxProps[] = [];
+  export let badgeItems: TBadgeProps[] = [];
 
   /** Enter a message in case it is invalid */
   export let errorMsg = "";
@@ -46,7 +50,7 @@
   export let isValid = true;
 
   /**
-   * The values of checked items. Defines which checkboxes starts checked
+   * The values of checked items. Defines which badge starts checked
    * by receiving a list of item names
    * @type {Array<string>}
    */
@@ -65,8 +69,28 @@
    */
   export let max: number = null;
 
+  /**
+   * Set the position of the X icon in the styled badge
+   */
+  export let iconPosition: TIconPosition = "none";
+
+  /**
+   * Set the style of the label, border and icon in the badge
+   */
+  export let badgeStyle: TBadgeStyle = "dark";
+
+  /**
+   * Set if the badges will be displayed in a row or a column
+   */
+  export let direction: TDirection = "row";
+
   let eMsg = "";
   let wrapperElement: HTMLElement;
+
+  let checkedList: TMapValueCheck[] = badgeItems.map((e) => ({
+    value: e.value,
+    checked: false,
+  }));
 
   const isInsideContext = hasContext("FormContext");
   let addedToContext = false;
@@ -158,73 +182,79 @@
   $: if (wrapperElement && addedToContext) {
     setFieldValue(name, values, isValid);
   }
+
+  $: checkedList = checkedList.map((c) => ({
+    value: c.value,
+    checked: values.includes(c.value),
+  }));
 </script>
 
-<div class="list-checkbox-wrapper" bind:this={wrapperElement}>
-  <span class="checkbox-title" class:invalid={!isValid}>{title}</span>
-  <ul class="list-checkbox" class:invalid={!isValid}>
-    {#each checkboxItems as checkbox, i}
-      <li>
-        <Checkbox
-          name="{name}-{i}"
-          id="{name}-{i}"
-          label={checkbox.label}
-          value={checkbox.value}
-          checked={values.includes(checkbox.value)}
-          on:checkItem={setChecked}
-        />
-      </li>
-    {/each}
-    <p class="error" class:error-show={!isValid}>
-      {#if required}
-        {#if max !== null && values.length >= max}
-          Você deve selecionar no máximo {max} {max <= 1 ? "opção" : "opções"}.
-        {:else}
-          É necessário selecionar {min} {min <= 1 ? "opção" : "opções"}.
-        {/if}
-      {:else}
-        {eMsg}
-      {/if}
-    </p>
-  </ul>
+<div class="list-badge-wrapper display-badges-{direction}" bind:this={wrapperElement}>
+  {#each badgeItems as badge, i}
+    <div class="badge-container" class:invalid={!isValid}>
+      <BadgePillClickable
+        name="{name}-{i}"
+        id="{name}-{i}"
+        label={badge.label}
+        value={badge.value}
+        bind:checked={checkedList[i].checked}
+        {iconPosition}
+        {badgeStyle}
+        on:checkItem={setChecked}
+      />
+    </div>
+  {/each}
 </div>
+
+<p class="error" class:error-show={!isValid}>
+  {#if required}
+    {#if max !== null && values.length >= max}
+      Você deve selecionar no máximo {max} {max <= 1 ? "opção" : "opções"}.
+    {:else}
+      É necessário selecionar {min} {min <= 1 ? "opção" : "opções"}.
+    {/if}
+  {:else}
+    {eMsg}
+  {/if}
+</p>
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
   @use "src/styles/variables" as v;
-  .list-checkbox-wrapper {
-    --checkbox-label-color: var(
-      --szot-checkbox-label-color,
-      var(--theme-dark-txt)
-    );
+  .list-badge-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    &.display-badges-row {
+      flex-direction: row;
+    }
+
+    &.display-badges-column {
+      flex-direction: column;
+    }
 
     .invalid {
-      --szot-checkbox-color: var(--theme-error);
-      --szot-checkbox-label-color: var(--theme-error);
-
-      &.checkbox-title {
-        @include m.text-color(var(--theme-error));
-      }
+      --szot-badge-pill-border-color: var(--theme-error);
+      --szot-badge-pill-label-color: var(--theme-error);
+      --szot-badge-pill-icon-color: var(--theme-error);
     }
 
-    .checkbox-title {
-      @include m.text-color(var(--checkbox-label-color));
+    .badge-container {
+      width: fit-content;
     }
 
-    .list-checkbox {
-      list-style: none;
-    }
+  }
 
-    .error {
-      @include m.form-field-error-text();
-      display: none;
-      opacity: 0;
-      transition: opacity 0.2s linear, bottom 0.2s;
-    }
+  .error {
+    @include m.form-field-error-text();
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s linear, bottom 0.2s;
+  }
 
-    .error-show {
-      display: inherit;
-      @include m.form-field-error-text();
-    }
+  .error-show {
+    display: inherit;
+    color: var(--theme-error);
+    @include m.form-field-error-text();
   }
 </style>
