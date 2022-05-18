@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
 import ThemeColors from "./components/Colors/Colors.svelte";
-import ThemeSizes from "./components/Sizes/Sizes.svelte";
 import ThemeFonts from "./components/Fonts/Fonts.svelte";
 import ThemeSpacings from "./components/Spacings/Spacings.svelte";
 import ThemeSurfaces from "./components/Surfaces/Surfaces.svelte";
@@ -22,10 +21,6 @@ export default {
 
 export const Colors = () => ({
   Component: ThemeColors,
-});
-
-export const Sizes = () => ({
-  Component: ThemeSizes,
 });
 
 export const Fonts = () => ({

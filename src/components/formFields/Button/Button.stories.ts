@@ -151,7 +151,9 @@ export const CustomExample: any = Template({
   style:
       "--szot-button-color: #333;"
       + "--szot-button-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-      + "--szot-button-border-radius: 1.5rem",
+      + "--szot-button-border-radius: 1.5rem;"
+      + "--szot-button-width: 100%;"
+      + "--szot-button-max-width: 100%;",
 });
 
 CustomExample.parameters = {
