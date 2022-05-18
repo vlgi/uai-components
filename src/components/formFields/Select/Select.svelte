@@ -374,7 +374,7 @@ onDestroy(() => {
     position: relative;
     width: 100%;
     margin-top: var(--margin-top);
-    max-width: var(--szot-select-max-width, 12rem);
+    max-width: var(--szot-select-max-width, 100%);
     // hack the specificity
     &.select.select {
       @include m.border(var(--component-border), var(--component-border-color));
