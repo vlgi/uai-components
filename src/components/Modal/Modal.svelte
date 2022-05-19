@@ -108,6 +108,16 @@
 {/if}
 
 <style lang="scss">
+  @keyframes scale-in {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
   .modal-overlay {
     --bg-color: var(--szot-modal-bg-color, white);
     --width: var(--szot-modal-width, fit-content);
@@ -157,6 +167,10 @@
       box-shadow: var(--theme-high-shadow);
 
       z-index: 2;
+
+      -webkit-animation: scale-in 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+	    animation: scale-in 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+
     }
 
     .modal-header {
