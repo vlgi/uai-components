@@ -89,10 +89,11 @@
     on:click={handleClickOut}
   >
     <div
-    class="modal-container"
-    transition:scale="{{
-      duration: 700, delay: 50, opacity: 0.5, start: 0.1, easing: quintOut,
-    }}">
+      class="modal-container"
+      transition:scale="{{
+        duration: 700, delay: 50, opacity: 0.5, start: 0.1, easing: quintOut,
+      }}"
+    >
       {#if !disableHeader}
         <header class="modal-header">
           <!-- Set the modal header. e.g.: you can add a title, some buttons -->
