@@ -3,6 +3,8 @@
 </script>
 
 <script lang="ts">
+  import { fade, scale } from "svelte/transition";
+  import { quintOut } from "svelte/easing";
   import { createEventDispatcher, onDestroy } from "svelte";
   import Button from "../formFields/Button/Button.svelte";
 
@@ -80,8 +82,17 @@
 <svelte:window on:keydown={handleKey}/>
 
 {#if opened }
-  <div class="modal-overlay" bind:this={modalOverlayElement} on:click={handleClickOut}>
-    <div class="modal-container">
+  <div
+    transition:fade="{{ delay: 25, duration: 350 }}"
+    class="modal-overlay"
+    bind:this={modalOverlayElement}
+    on:click={handleClickOut}
+  >
+    <div
+    class="modal-container"
+    transition:scale="{{
+      duration: 700, delay: 50, opacity: 0.5, start: 0.1, easing: quintOut,
+    }}">
       {#if !disableHeader}
         <header class="modal-header">
           <!-- Set the modal header. e.g.: you can add a title, some buttons -->
@@ -108,16 +119,6 @@
 {/if}
 
 <style lang="scss">
-  @keyframes scale-in {
-    0% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
-  }
   .modal-overlay {
     --bg-color: var(--szot-modal-bg-color, white);
     --width: var(--szot-modal-width, fit-content);
@@ -167,9 +168,6 @@
       box-shadow: var(--theme-high-shadow);
 
       z-index: 2;
-
-      -webkit-animation: scale-in 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940);
-	    animation: scale-in 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940);
 
     }
 
