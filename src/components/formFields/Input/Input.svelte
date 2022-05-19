@@ -166,6 +166,7 @@
   class:icons-right={iconPosition === "right" && icon}
   class:visuallyInvalid
   class:inFocus
+  class:hidden={type === "hidden"}
   bind:this={wrapperElement}
   on:keypress={submitOnEnter}
 >
@@ -297,6 +298,14 @@
       border: 0;
       border-bottom: var(--border) solid var(--border-color);
       border-image: var(--border-color) 1;
+    }
+
+    &.hidden {
+      --szot-input-label-color: transparent;
+      --szot-input-background-color: transparent;
+      --szot-input-icon-color: transparent;
+
+      border: none;
     }
 
     position: relative;
