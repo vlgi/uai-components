@@ -5,7 +5,7 @@ import {
 import type { TFormContext } from "../../Form/types";
 
 import OptionsList from "./OptionsList/OptionsList.svelte";
-import SearchInput from "./SearchInput/SearchInput.svelte";
+import SearchInput from "../SearchInput/SearchInput.svelte";
 import Badge from "../../Badge/Badge.svelte";
 import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
 import type { TOption, TOptionsListBinds } from "./types";
@@ -280,15 +280,14 @@ onDestroy(() => {
       >
 
         <!-- Search input -->
-        <div class="searchInput">
-          <SearchInput
-            searchable={["text"]}
-            items={options}
-            bind:searchQuery
-            bind:filtered={filteredOptions}
-            bind:focus={focusSearch}
-            bind:inputBind={searchBind}/>
-        </div>
+        <SearchInput
+          searchable={["text"]}
+          items={options}
+          name=""
+          bind:searchQuery
+          bind:filtered={filteredOptions}
+          bind:focus={focusSearch}
+          bind:inputElement={searchBind}/>
         <!-- List of all selectable options -->
         <OptionsList
           id="{id}-listbox"
@@ -374,7 +373,7 @@ onDestroy(() => {
     position: relative;
     width: 100%;
     margin-top: var(--margin-top);
-    max-width: var(--szot-select-max-width, var(--theme-fields-max-width));
+    max-width: var(--szot-select-max-width, 100%);
     // hack the specificity
     &.select.select {
       @include m.border(var(--component-border), var(--component-border-color));
@@ -445,10 +444,6 @@ onDestroy(() => {
 
       transition: max-height var(--open-transition-duration), padding var(--open-transition-duration);
 
-      .searchInput {
-        @include m.border(var(--component-border), var(--component-border-color));
-        border-radius: var(--theme-small-shape);
-      }
       &.with-borders {
         padding-top: var(--component-padding-vertical);
         @include m.border(var(--component-border), var(--component-border-color));
