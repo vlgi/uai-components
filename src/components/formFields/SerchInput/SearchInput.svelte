@@ -33,7 +33,7 @@
    */
   export let filtered: unknown[] = [];
 
-  // Serach input name //
+  // Search input name //
   export let name: string;
 
   // Other attributes for the HTML input element
