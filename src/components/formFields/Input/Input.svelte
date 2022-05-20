@@ -269,7 +269,7 @@
       --default-label-color: var(--theme-light-txt);
       --default-input-color: var(--theme-light-inserted-text);
       --default-icon-color: var(--theme-light-txt);
-      --default-border-color: var(--theme-ligth-txt);
+      --default-border-color: var(--theme-light-txt);
     }
     &.inFocus {
       --border-color: var(--border-color-focus);
