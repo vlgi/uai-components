@@ -70,11 +70,7 @@
       bind:elBtn
       on:click={ toggleMobileMenu }
     >
-    {#if navExpanded}
-      <Icon iconName="close"/>
-    {:else}
-      <Icon iconName="menu"/>
-    {/if}
+      <Icon iconName={ navExpanded ? "close" : "menu" } />
     </DraggableButton>
   </div>
 
@@ -86,11 +82,7 @@
     tabindex="0"
   >
     <div class="nav-logo">
-      {#if navExpanded}
-        <img src={ expandedLogoImg } alt="Logo" />
-      {:else}
-        <img src={ collapsedLogoImg } alt="Logo" />
-      {/if}
+      <img src={ navExpanded ? expandedLogoImg : collapsedLogoImg } alt="Logo" />
     </div>
     <hr>
     <div class="nav-items">
