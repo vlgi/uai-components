@@ -82,7 +82,8 @@
     tabindex="0"
   >
     <div class="nav-logo">
-      <img src={ navExpanded ? expandedLogoImg : collapsedLogoImg } alt="Logo" />
+      <img class:img-hidden={ navExpanded } src={ expandedLogoImg } alt="Logo" />
+      <img class:img-hidden={ !navExpanded } src={ collapsedLogoImg } alt="Logo" />
     </div>
     <hr>
     <div class="nav-items">
@@ -294,13 +295,22 @@
         max-width: var(--internal-nav-width);
         align-items: center;
         justify-content: flex-start;
-        padding: var(--nav-logo-padding);
         position: relative;
-
         img {
+          opacity: 0;
+          transition: opacity .2s ease-out;
+          
+          padding: var(--nav-logo-padding);
+          position: absolute;
+          width: auto;
           height: 100%;
           background: var(--nav-background-color);
         }
+
+        .img-hidden {
+          opacity: 1;
+        }
+
       }
 
       hr {
