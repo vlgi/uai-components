@@ -23,6 +23,9 @@ remove-internal-stories:
   script:
     - >
       echo '<style>[id*=internal-documentation] {display: none !important;}</style>' > ./.storybook/manager-head.html
+  artifacts:
+    paths:
+      - .storybook
 
 build-storybook:
   stage: build-storybook
