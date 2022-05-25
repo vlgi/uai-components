@@ -36,11 +36,15 @@
   // Search input name //
   export let name: string;
 
+  // input tabindex
+  export let tabindex = "-1";
+
+  // input placeholder
+  export let placeholder = "Pesquise ou Selecione...";
+
   // Other attributes for the HTML input element
-  export let inputAttributes: Record<string, string> = {
-    tabindex: "-1",
-    placeholder: "Pesquise ou Selecione...",
-  };
+  export let inputAttributes: Record<string, string> = {};
+
 
   /**
    * Focus on the input element.
@@ -76,6 +80,10 @@
   $: filtered = (searchConcat as TConcat[])
     .filter(({ concatenated }) => concatenated.match(regex) !== null)
     .map(({ index }) => items[index]);
+
+  $: inputAttributes.tabindex = tabindex;
+  $: inputAttributes.placeholder = placeholder;
+
 </script>
 
 <Input
@@ -85,7 +93,6 @@
   on:input
   {name}
   {inputAttributes}
-
   {...$$restProps}
 />
 
