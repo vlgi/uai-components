@@ -88,7 +88,7 @@
         alt="Logo"
       />
       <img
-        class={!navExpanded ? "img-shown" : "img-hidden"}
+        class={`img-collapsed ${!navExpanded ? "img-shown" : "img-hidden"}`}
         src={collapsedLogoImg}
         alt="Logo"
       />
@@ -307,9 +307,13 @@
         img {
           padding: var(--nav-logo-padding);
           position: absolute;
-          width: auto;
           height: 100%;
+          width: auto;
           background: var(--nav-background-color);
+        }
+
+        .img-collapsed {
+          max-width: 100%;
         }
 
         .img-shown {
