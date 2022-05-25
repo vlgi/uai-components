@@ -68,6 +68,10 @@ export let badgeStyle: TbadgeStyle = selectStyle;
 
 export let badgeStyleType: TbadgeStyleType = "outline";
 
+export let inputStyle: TSelectStyle = selectStyle;
+
+export let inputStyleType: TSelectBorders = "outline";
+
 // ====== Internal control ====== //
 
 // Type casts the selected as TOption for internal use
@@ -279,15 +283,19 @@ onDestroy(() => {
         class:with-borders={selectBorder === "bottom"}
       >
 
-        <!-- Search input -->
-        <SearchInput
-          searchable={["text"]}
-          items={options}
-          name=""
-          bind:searchQuery
-          bind:filtered={filteredOptions}
-          bind:focus={focusSearch}
-          bind:inputElement={searchBind}/>
+        <div class="search-input">
+          <SearchInput
+            searchable={["text"]}
+            items={options}
+            name=""
+            {inputStyle}
+            {inputStyleType}
+            bind:searchQuery
+            bind:filtered={filteredOptions}
+            bind:focus={focusSearch}
+            bind:inputElement={searchBind}
+          />
+        </div>
         <!-- List of all selectable options -->
         <OptionsList
           id="{id}-listbox"
@@ -348,6 +356,8 @@ onDestroy(() => {
     --component-border-color: var(--szot-select-border-color, var(--component-color));
     --select-badge-color: var(--szot-select-badge-color, var(--szot-select-label-color));
     --select-badge-border-color: var(--szot-select-badge-border-color, var(--szot-select-border-color));
+    --search-input-border-color: var(--szot-select-search-input-border-color, var(--szot-select-border-color));
+    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--szot-select-label-color));
   }
 
   .hidden {
@@ -443,6 +453,14 @@ onDestroy(() => {
       padding: 0 var(--component-padding-horizontal);
 
       transition: max-height var(--open-transition-duration), padding var(--open-transition-duration);
+
+      .search-input {
+        --szot-input-background-color: var(--component-background-color);
+        --szot-input-border-color: var(--search-input-border-color);
+        --szot-input-border-color-focus: var(--search-input-border-color);
+        --szot-input-placeholder-color: var(--input-placeholder-color);
+        --szot-input-margin-bottom: 0;
+      }
 
       &.with-borders {
         padding-top: var(--component-padding-vertical);
