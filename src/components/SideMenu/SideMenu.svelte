@@ -318,9 +318,7 @@
 
         .img-hidden {
           opacity: 0;
-          transition-property: opacity;
-          transition-duration: 400ms;
-          transition-timing-function: ease-out;
+          transition: opacity 400ms ease-out;
         }
       }
 
