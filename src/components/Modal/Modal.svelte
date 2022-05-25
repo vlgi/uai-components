@@ -3,6 +3,8 @@
 </script>
 
 <script lang="ts">
+  import { fade, scale } from "svelte/transition";
+  import { quintOut } from "svelte/easing";
   import { createEventDispatcher, onDestroy } from "svelte";
   import Button from "../formFields/Button/Button.svelte";
 
@@ -80,8 +82,18 @@
 <svelte:window on:keydown={handleKey}/>
 
 {#if opened }
-  <div class="modal-overlay" bind:this={modalOverlayElement} on:click={handleClickOut}>
-    <div class="modal-container">
+  <div
+    transition:fade="{{ delay: 25, duration: 250 }}"
+    class="modal-overlay"
+    bind:this={modalOverlayElement}
+    on:click={handleClickOut}
+  >
+    <div
+      class="modal-container"
+      transition:scale="{{
+        duration: 250, delay: 50, opacity: 0.5, start: 0.5, easing: quintOut,
+      }}"
+    >
       {#if !disableHeader}
         <header class="modal-header">
           <!-- Set the modal header. e.g.: you can add a title, some buttons -->
@@ -157,6 +169,7 @@
       box-shadow: var(--theme-high-shadow);
 
       z-index: 2;
+
     }
 
     .modal-header {
