@@ -83,7 +83,7 @@
 
 {#if opened }
   <div
-    transition:fade="{{ delay: 25, duration: 350 }}"
+    transition:fade="{{ delay: 25, duration: 250 }}"
     class="modal-overlay"
     bind:this={modalOverlayElement}
     on:click={handleClickOut}
@@ -91,7 +91,7 @@
     <div
       class="modal-container"
       transition:scale="{{
-        duration: 700, delay: 50, opacity: 0.5, start: 0.1, easing: quintOut,
+        duration: 250, delay: 50, opacity: 0.5, start: 0.5, easing: quintOut,
       }}"
     >
       {#if !disableHeader}
