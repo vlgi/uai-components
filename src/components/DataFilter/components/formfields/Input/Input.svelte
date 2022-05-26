@@ -46,7 +46,7 @@
   function setExternalValue() {
     // skip a tick to get masked value
     setTimeout(() => {
-      maskedValue = inputEl.value;
+      maskedValue = inputEl?.value;
       rawValue = cleave && getUnmaskedValue(cleave, maskedValue);
       if (rawValue === value) return;
       value = rawValue;
@@ -57,7 +57,7 @@
   }
 
   function setInternalValue(_value: string) {
-    if (_value !== rawValue) {
+    if (_value && _value !== rawValue) {
       maskedValue = getMaskedValue(_value);
     }
   }
