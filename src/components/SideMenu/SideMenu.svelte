@@ -314,6 +314,9 @@
 
         .img-collapsed {
           max-width: 100%;
+          object-fit: cover;
+          object-position: left;
+          overflow-x: hidden;
         }
 
         .img-shown {
