@@ -7,6 +7,10 @@
   import ListRadioButton from "../formFields/ListRadioButton/ListRadioButton.svelte";
   import ListCheckbox from "../formFields/ListCheckbox/ListCheckbox.svelte";
   import Checkbox from "../formFields/ListCheckbox/Checkbox/Checkbox.svelte";
+  import BadgePillClickable from
+    "../formFields/ListBadgePillClickable/BadgePillClickable/BadgePillClickable.svelte";
+  import ListBadgePillClickable from
+    "../formFields/ListBadgePillClickable/ListBadgePillClickable.svelte";
   import Form from "./Form.svelte";
 
   export let values: Record<string, unknown>;
@@ -35,6 +39,25 @@
     {
       value: "carrot",
       label: "Cenoura",
+    },
+  ];
+
+  const popsicleOptions = [
+    {
+      value: "strawberry",
+      label: "Morango",
+    },
+    {
+      value: "chocolate",
+      label: "Chocolate",
+    },
+    {
+      value: "lemon",
+      label: "Limão",
+    },
+    {
+      value: "peanuts",
+      label: "Amendoim",
     },
   ];
 
@@ -144,11 +167,42 @@
       title="Quais bolos você gosta?"
       required={true}
     />
+    <div>
+      <span class="popsicle-span">
+        Quais Picolés você gosta?
+      </span>
+    </div>
+    <ListBadgePillClickable
+      name="liked-popsicle"
+      badgeItems={popsicleOptions}
+      required={true}
+      --szot-badge-pill-background-color="#87cefa"
+    />
+    <div>
+      <span class="popsicle-span">
+        Qual seu picolé favorito?
+      </span>
+    </div>
+    <ListBadgePillClickable
+      name="best-popsicle"
+      badgeItems={popsicleOptions}
+      min={1}
+      max={1}
+      iconPosition="right"
+      required={true}
+      --szot-badge-pill-background-color="#87cefa"
+    />
     <Checkbox
       name="sold-your-soul"
       label="Declaro que li e concordo com os termos de uso"
       required={true}
       --szot-checkbox-margin="1rem 0 0"
+    />
+    <BadgePillClickable
+      name="sold-your-soul-again"
+      label="confirme mais uma vez"
+      required={true}
+      --szot-badge-pill-background-color="#87cefa"
     />
     <Button type="submit">Submit</Button>
   </Form>
@@ -164,3 +218,12 @@
   <p><b>Form Cookies:</b> {valuesFromCookies}</p>
   <p><b>Form valid:</b> {isAllValid}</p>
 </div>
+
+<style lang="scss">
+  @use "src/styles/mixins" as m;
+
+  .popsicle-span {
+    @include m.text-color(var(--theme-dark-txt));
+    font-weight: normal;
+  }
+</style>

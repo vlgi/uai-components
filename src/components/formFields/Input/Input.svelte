@@ -166,6 +166,7 @@
   class:icons-right={iconPosition === "right" && icon}
   class:visuallyInvalid
   class:inFocus
+  class:hidden={type === "hidden"}
   bind:this={wrapperElement}
   on:keypress={submitOnEnter}
 >
@@ -219,7 +220,7 @@
   .form-div {
     --margin-bottom: var(--szot-input-margin-bottom, 1.5rem);
     --margin-top: var(--szot-input-margin-top, 0.5rem);
-    --max-width: var(--szot-input-max-width, var(--theme-fields-max-width));
+    --max-width: var(--szot-input-max-width, 100%);
 
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
@@ -325,6 +326,14 @@
       border: 0;
       border-bottom: var(--border) solid var(--border-color);
       border-image: var(--border-color) 1;
+    }
+
+    &.hidden {
+      --szot-input-label-color: transparent;
+      --szot-input-background-color: transparent;
+      --szot-input-icon-color: transparent;
+
+      border: none;
     }
 
     position: relative;

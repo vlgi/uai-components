@@ -9,6 +9,7 @@ stages:
   - install-dependencies
   - lint
   - test
+  - remove-internal-stories
   - build-storybook
   - deploy
 
@@ -16,6 +17,15 @@ install-dependencies:
   stage: install-dependencies
   script:
     - npm install
+
+remove-internal-stories:
+  stage: remove-internal-stories
+  script:
+    - >
+      echo '<style>[id*=internal-documentation] {display: none !important;}</style>' > ./.storybook/manager-head.html
+  artifacts:
+    paths:
+      - .storybook
 
 build-storybook:
   stage: build-storybook

@@ -6,6 +6,7 @@
   /* width */
   &::-webkit-scrollbar {
     width: var(--scroll-bar-width);
+    height: var(--scroll-bar-height);
   }
 
   /* Track */
