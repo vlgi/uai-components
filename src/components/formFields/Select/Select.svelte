@@ -561,6 +561,10 @@ onDestroy(() => {
         }
       }
 
+      .search-input {
+        --szot-input-text-color: var(--theme-error);
+      }
+
     }
     .select-arrow-aux {
       &::before, &::after {
