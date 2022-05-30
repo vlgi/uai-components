@@ -70,11 +70,7 @@
       bind:elBtn
       on:click={ toggleMobileMenu }
     >
-    {#if navExpanded}
-      <Icon iconName="close"/>
-    {:else}
-      <Icon iconName="menu"/>
-    {/if}
+      <Icon iconName={ navExpanded ? "close" : "menu" } />
     </DraggableButton>
   </div>
 
@@ -86,11 +82,16 @@
     tabindex="0"
   >
     <div class="nav-logo">
-      {#if navExpanded}
-        <img src={ expandedLogoImg } alt="Logo" />
-      {:else}
-        <img src={ collapsedLogoImg } alt="Logo" />
-      {/if}
+      <img
+        class={navExpanded ? "img-shown" : "img-hidden"}
+        src={expandedLogoImg}
+        alt="Logo"
+      />
+      <img
+        class={`img-collapsed ${!navExpanded ? "img-shown" : "img-hidden"}`}
+        src={collapsedLogoImg}
+        alt="Logo"
+      />
     </div>
     <hr>
     <div class="nav-items">
@@ -302,12 +303,29 @@
         max-width: var(--internal-nav-width);
         align-items: center;
         justify-content: flex-start;
-        padding: var(--nav-logo-padding);
         position: relative;
-
         img {
+          padding: var(--nav-logo-padding);
+          position: absolute;
           height: 100%;
+          width: auto;
           background: var(--nav-background-color);
+        }
+
+        .img-collapsed {
+          max-width: 100%;
+          object-fit: cover;
+          object-position: left;
+          overflow-x: hidden;
+        }
+
+        .img-shown {
+          opacity: 1;
+        }
+
+        .img-hidden {
+          opacity: 0;
+          transition: opacity 400ms ease-out;
         }
       }
 
