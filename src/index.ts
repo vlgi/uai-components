@@ -7,7 +7,7 @@ export { default as SideMenu } from "./components/SideMenu/SideMenu.svelte";
 export { default as Dropdown } from "./components/Dropdown/Dropdown.svelte";
 
 export { default as Select } from "./components/formFields/Select/Select.svelte";
-export { default as SearchInput } from "./components/formFields/Select/SearchInput/SearchInput.svelte";
+export { default as SearchInput } from "./components/formFields/SearchInput/SearchInput.svelte";
 export { default as Input } from "./components/formFields/Input/Input.svelte";
 export { default as CleaveInput } from "./components/formFields/CleaveInput/CleaveInput.svelte";
 export { default as Button } from "./components/formFields/Button/Button.svelte";

@@ -235,6 +235,11 @@
     --label-color: var(--szot-input-label-color, var(--default-label-color));
     --background-color: var(--szot-input-background-color, white);
 
+    --placeholder-color: var(
+      --szot-input-placeholder-color,
+      var(--default-placeholder-color)
+    );
+
     --label-focus-left: var(--szot-input-label-focus-left, 0.8rem);
     --label-focus-color: var(--szot-input-label-focus-color, var(--label-color));
     --label-not-focus-color: var(--szot-input-label-not-focus-color, var(--label-color));
@@ -251,6 +256,7 @@
       --default-input-color: var(--theme-primary-inserted-text);
       --default-icon-color: var(--theme-primary-txt);
       --default-border-color: var(--theme-primary-txt);
+      --default-placeholder-color: var(--theme-primary-txt);
     }
 
     &.input-style-secondary {
@@ -258,6 +264,7 @@
       --default-input-color: var(--theme-secondary-inserted-text);
       --default-icon-color: var(--theme-secondary-txt);
       --default-border-color: var(--theme-secondary-txt);
+      --default-placeholder-color: var(--theme-secondary-txt);
     }
 
     &.input-style-dark {
@@ -265,12 +272,14 @@
       --default-input-color: var(--theme-dark-inserted-text);
       --default-icon-color: var(--theme-dark-txt);
       --default-border-color: var(--theme-dark-txt);
+      --default-placeholder-color: var(--theme-dark-txt);
     }
     &.input-style-light {
       --default-label-color: var(--theme-light-txt);
       --default-input-color: var(--theme-light-inserted-text);
       --default-icon-color: var(--theme-light-txt);
-      --default-border-color: var(--theme-light-txt);
+      --default-border-color: var(--theme-ligth-txt);
+      --default-placeholder-color: var(--theme-ligth-txt);
     }
     &.inFocus {
       --border-color: var(--border-color-focus);
@@ -286,6 +295,25 @@
           @include m.text-color(var(--theme-error));
         }
         + .label-text {
+          @include m.text-color(var(--theme-error));
+        }
+      }
+
+      input {
+        &::-webkit-input-placeholder {
+          @include m.text-color(var(--theme-error));
+        }
+        &:-moz-placeholder {
+          /* Firefox 18- */
+          @include m.text-color(var(--theme-error));
+        }
+
+        &::-moz-placeholder {
+          /* Firefox 19+ */
+          @include m.text-color(var(--theme-error));
+        }
+
+        &:-ms-input-placeholder {
           @include m.text-color(var(--theme-error));
         }
       }
@@ -416,6 +444,25 @@
       margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
       --szot-icon-color: var(--icon-color);
       --szot-icon-line-height: 1rem;
+    }
+  }
+
+  input {
+    &::-webkit-input-placeholder {
+      @include m.text-color(var(--placeholder-color));
+    }
+    &:-moz-placeholder {
+      /* Firefox 18- */
+      @include m.text-color(var(--placeholder-color));
+    }
+
+    &::-moz-placeholder {
+      /* Firefox 19+ */
+      @include m.text-color(var(--placeholder-color));
+    }
+
+    &:-ms-input-placeholder {
+      @include m.text-color(var(--placeholder-color));
     }
   }
 

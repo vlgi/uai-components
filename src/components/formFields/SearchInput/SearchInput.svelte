@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Input from "../Input/Input.svelte";
+
   // Field concatenation
   type TConcat = {
     index: number,
@@ -6,7 +8,7 @@
   }
 
   // The input reference.
-  export let inputBind: HTMLInputElement = null;
+  export let inputElement: HTMLInputElement = null;
 
   /**
    * The string that is being searched.
@@ -31,11 +33,24 @@
    */
   export let filtered: unknown[] = [];
 
+  // Search input name //
+  export let name: string;
+
+  // input tabindex
+  export let tabindex = "-1";
+
+  // input placeholder
+  export let placeholder = "Pesquise ou Selecione...";
+
+  // Other attributes for the HTML input element
+  export let inputAttributes: Record<string, string> = {};
+
+
   /**
    * Focus on the input element.
    */
   export const focus = (): void => {
-    if (inputBind) inputBind.focus();
+    if (inputElement) inputElement.focus();
   };
 
   // Generate a lookup table with the searchable fields concatenated
@@ -65,28 +80,21 @@
   $: filtered = (searchConcat as TConcat[])
     .filter(({ concatenated }) => concatenated.match(regex) !== null)
     .map(({ index }) => items[index]);
+
+  $: inputAttributes.tabindex = tabindex;
+  $: inputAttributes.placeholder = placeholder;
+
 </script>
 
-<input type="text" class="search" tabindex="-1"
-  placeholder="Pesquise ou Selecione..."
+<Input
   bind:value={searchQuery}
-  bind:this={inputBind}/>
+  bind:inputElement
+  on:change
+  on:input
+  {name}
+  {inputAttributes}
+  {...$$restProps}
+/>
 
 <style lang="scss">
-  .search {
-    color: var(--theme-dark-inserted-text);
-    background-color: var(--component-background-color);
-    width: 100%;
-
-    padding: var(--theme-fields-padding);
-    text-overflow: ellipsis;
-    border: none;
-    border-radius: var(--theme-small-shape);
-    outline: none;
-    
-
-    &::placeholder {
-      color: var(--theme-light-txt);
-    }
-  }
 </style>

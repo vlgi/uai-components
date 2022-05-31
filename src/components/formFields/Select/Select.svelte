@@ -5,7 +5,7 @@ import {
 import type { TFormContext } from "../../Form/types";
 
 import OptionsList from "./OptionsList/OptionsList.svelte";
-import SearchInput from "./SearchInput/SearchInput.svelte";
+import SearchInput from "../SearchInput/SearchInput.svelte";
 import Badge from "../../Badge/Badge.svelte";
 import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
 import type { TOption, TOptionsListBinds } from "./types";
@@ -67,6 +67,10 @@ export let selectStyle: TSelectStyle = "dark";
 export let badgeStyle: TbadgeStyle = selectStyle;
 
 export let badgeStyleType: TbadgeStyleType = "outline";
+
+export let inputStyle: TSelectStyle = selectStyle;
+
+export let inputStyleType: TSelectBorders = "outline";
 
 // ====== Internal control ====== //
 
@@ -279,15 +283,18 @@ onDestroy(() => {
         class:with-borders={selectBorder === "bottom"}
       >
 
-        <!-- Search input -->
-        <div class="searchInput">
+        <div class="search-input">
           <SearchInput
             searchable={["text"]}
             items={options}
+            name=""
+            {inputStyle}
+            {inputStyleType}
             bind:searchQuery
             bind:filtered={filteredOptions}
             bind:focus={focusSearch}
-            bind:inputBind={searchBind}/>
+            bind:inputElement={searchBind}
+          />
         </div>
         <!-- List of all selectable options -->
         <OptionsList
@@ -349,6 +356,8 @@ onDestroy(() => {
     --component-border-color: var(--szot-select-border-color, var(--component-color));
     --select-badge-color: var(--szot-select-badge-color, var(--szot-select-label-color));
     --select-badge-border-color: var(--szot-select-badge-border-color, var(--szot-select-border-color));
+    --search-input-border-color: var(--szot-select-search-input-border-color, var(--szot-select-border-color));
+    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--szot-select-label-color));
   }
 
   .hidden {
@@ -445,10 +454,14 @@ onDestroy(() => {
 
       transition: max-height var(--open-transition-duration), padding var(--open-transition-duration);
 
-      .searchInput {
-        @include m.border(var(--component-border), var(--component-border-color));
-        border-radius: var(--theme-small-shape);
+      .search-input {
+        --szot-input-background-color: var(--component-background-color);
+        --szot-input-border-color: var(--search-input-border-color);
+        --szot-input-border-color-focus: var(--search-input-border-color);
+        --szot-input-placeholder-color: var(--input-placeholder-color);
+        --szot-input-margin-bottom: 0;
       }
+
       &.with-borders {
         padding-top: var(--component-padding-vertical);
         @include m.border(var(--component-border), var(--component-border-color));
@@ -546,6 +559,10 @@ onDestroy(() => {
           --szot-badge-color: var(--theme-txt-on-signal-color);
           --szot-badge-border-color: transparent;
         }
+      }
+
+      .search-input {
+        --szot-input-text-color: var(--theme-error);
       }
 
     }

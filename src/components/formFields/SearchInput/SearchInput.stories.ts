@@ -1,17 +1,16 @@
 import type { ArgType } from "@storybook/addons";
-import { complexDesserts } from "../fixtures";
-// import { action } from "@storybook/addon-actions";
+import { complexDesserts } from "./fixtures";
 import SearchInput from "./SearchInput.svelte";
-import SearchInputWrapper from "./SearchInputWrapper.svelte";
+import Wrapper from "./SearchInputWrapper.svelte";
 
 export default {
-  title: "Internal Documentation/Components/Select/Components/SearchInput",
+  title: "Components/FormFields/SearchInput",
   component: SearchInput,
 };
 
 const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
-    Component: SearchInputWrapper,
+    Component: Wrapper,
     props,
   });
   ret.args = _args;
@@ -20,7 +19,7 @@ const Template = (_args: ArgType) => {
 
 export const Default = Template({
   items: complexDesserts,
-  searchable: ["variety"],
+  searchable: ["variety", "flavor"],
   searchQuery: "",
 });
 

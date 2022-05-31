@@ -1,7 +1,7 @@
 <script lang="ts">
   import SearchInput from "./SearchInput.svelte";
 
-  export let inputBind: HTMLInputElement;
+  export let inputElement: HTMLInputElement;
   export let focus: ()=> void;
   export let searchQuery = "";
   export let filtered: unknown[] = [];
@@ -10,17 +10,19 @@
 </script>
 
 <SearchInput
-  bind:inputBind
+  bind:inputElement
   bind:focus
   bind:searchQuery
   bind:filtered
   {items}
   {searchable}
-  {...$$restProps} />
+  name="search"
+  {...$$restProps}
+/>
 
 <header>
-  <b>Results:</b>
+  <b>Results</b>
 </header>
-{#each filtered as item}
-  <p>{JSON.stringify(item)}</p>
+{#each filtered as filter}
+  <p>{JSON.stringify(filter)}</p>
 {/each}
