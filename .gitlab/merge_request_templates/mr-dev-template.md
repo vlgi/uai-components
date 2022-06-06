@@ -48,10 +48,11 @@ Veja como inserir de forma correta em [gitlab docs - time tracking](https://docs
 
 - [ ] Meu código segue a estilização padrão da página
 - [ ] Eu revisei ou reli o meu próprio código
-- [ ] Documentei onde era mais necessário e dificil de entender no meu código
+- [ ] Documentei onde era mais necessário e difícil de entender no meu código
 - [ ] Segui os formatos de nomenclaturas e normas previstos pelo time
 - [ ] Minhas mudanças não causaram mais avisos de erro
 - [ ] Eu conferi a checklist de atividades, e expliquei no meu merge request caso algo não tenha sido necessário ou possível
 - [ ] As mudanças que esta MR implementa possui testes automatizados
 - [ ] Executei e garanto que os testes automatizados já criados estão todos passando
 - [ ] Executei e garanto que não há erros de lint
+- [ ] Executei e garanto que não há erros de typescript
