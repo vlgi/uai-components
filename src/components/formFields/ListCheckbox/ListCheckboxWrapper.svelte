@@ -1,8 +1,8 @@
-<script lang="ts">
+<script>
   import ListCheckbox from "./ListCheckbox.svelte";
 
-  export let style: string;
-  export let values: Array<string>;
+  export let style;
+  export let values;
 </script>
 
 <div {style}>

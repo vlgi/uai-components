@@ -1,12 +1,13 @@
-<script lang="ts">
+<script>
   import Textarea from "./Textarea.svelte";
 
-  export let style: string;
+  export let style;
 </script>
 
 <div {style}>
-  <Textarea {...$$restProps}
-  on:input
-  on:change
+  <Textarea
+    {...$$restProps}
+    on:input
+    on:change
   />
-</div> 
+</div>

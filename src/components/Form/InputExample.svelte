@@ -31,9 +31,13 @@
     setContextValue();
   }
 
+  function setValue(v: string) {
+    value = v;
+  }
+
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(name, value, isValid, required, inputEl, validate);
+      addFieldToContext(name, value, isValid, required, inputEl, validate, setValue);
     }
   });
 
