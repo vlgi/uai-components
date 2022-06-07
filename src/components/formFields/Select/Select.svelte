@@ -240,7 +240,7 @@ onDestroy(() => {
   >
 
       <!-- Floating label for the select -->
-      <label class="select-label"
+      <label class="select-label" class:required
         id="{id}-label"
         for="{id}-custom"
         on:click={() => toggleOpen()}
@@ -382,6 +382,7 @@ onDestroy(() => {
   .select {
     position: relative;
     width: 100%;
+    outline: none;
     margin-top: var(--margin-top);
     max-width: var(--szot-select-max-width, 100%);
     // hack the specificity
@@ -420,6 +421,7 @@ onDestroy(() => {
       left: var(--component-padding-horizontal);
       background: var(--component-background-color);
       @include m.form-field-label-size;
+      margin-right: 1.3rem;
 
       transform-origin: 0 30%;
 
@@ -431,6 +433,12 @@ onDestroy(() => {
       }
       .label-text {
         @include m.text-color(var(--component-label-color));
+      }
+      &.required {
+        .label-text::after{
+          content: "*";
+          display: inline;
+        }
       }
     }
 
