@@ -366,6 +366,7 @@ onDestroy(() => {
     --component-padding-vertical: var(--szot-select-padding-vertical, var(--theme-fields-padding));
     --component-padding-horizontal: var(--szot-select-padding-horizontal, var(--theme-fields-padding));
     --component-border: var(--theme-small-border);
+    --label-margin-right: var(--select-label-margin-right, 1,3rem);
     --message-left-spacing: var(--szot-select-message-left-spacing, 1rem);
     --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
     --component-label-color: var(--szot-select-label-color, var(--component-color));
@@ -443,7 +444,7 @@ onDestroy(() => {
       left: var(--component-padding-horizontal);
       background: var(--component-background-color);
       @include m.form-field-label-size;
-      margin-right: 1.3rem;
+      margin-right: var(--label-margin-right);
 
       transform-origin: 0 30%;
 
