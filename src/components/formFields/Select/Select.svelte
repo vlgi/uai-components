@@ -15,6 +15,8 @@ import type { TbadgeStyle, TbadgeStyleType } from "../../Badge/types";
 export let multiple = false;
 // Whether the field needs to have at least `min` value
 export let required = false;
+// Change it to true to disable the component
+export let disabled = false;
 /**
  * If the select is multiple and required, it defines the minimum quantity
  * that needs to be selected for the select to be valid.
@@ -228,7 +230,7 @@ onDestroy(() => {
 });
 </script>
 
-<div class="select-wrapper" bind:this={wrapperElement}>
+<div class="select-wrapper" bind:this={wrapperElement} class:select-disabled={disabled}>
   <div class="select border-{selectBorder} style-{selectStyle}" tabindex="0"
     class:error={!isVisuallyValid}
     use:keyboardControls={{ multiple, dropdownOpen }}
@@ -243,7 +245,11 @@ onDestroy(() => {
       <label class="select-label" class:required
         id="{id}-label"
         for="{id}-custom"
-        on:click={() => toggleOpen()}
+        on:click={() => {
+          if (!disabled) {
+            toggleOpen();
+          }
+        }}
         class:floated={dropdownOpen || isFilled(selected)}>
         <div class="label-text">
           {label}
@@ -251,9 +257,13 @@ onDestroy(() => {
       </label>
 
       <!-- Select's box that shows which option is selected -->
-      <div class="select-box" role="combobox" tabindex="-1"
+      <div class="select-box" role="combobox" tabindex="-1" class:select-disabled={disabled}
         class:selected-multiple={multiple && isFilled(selected)}
-        on:click={() => toggleOpen()}
+        on:click={() => {
+          if (!disabled) {
+            toggleOpen();
+          }
+        }}
         id="{id}-custom"
         aria-controls="{id}-listbox"
         aria-labelledby="{id}-label"
@@ -294,6 +304,7 @@ onDestroy(() => {
             bind:filtered={filteredOptions}
             bind:focus={focusSearch}
             bind:inputElement={searchBind}
+            {disabled}
           />
         </div>
         <!-- List of all selectable options -->
@@ -328,7 +339,11 @@ onDestroy(() => {
       </select>
 
       <div class="select-arrow" class:flipped={dropdownOpen}
-        on:click={() => toggleOpen()}>
+        on:click={() => {
+          if (!disabled) {
+            toggleOpen();
+          }
+        }}>
         <div class="select-arrow-aux"></div>
       </div>
   </div>
@@ -449,6 +464,10 @@ onDestroy(() => {
       cursor: pointer;
     }
 
+    &-disabled {
+      cursor: initial;
+      opacity: 0.75;
+    }
     &-dropdown-menu {
       display: grid;
       grid-template-rows: auto 1fr;
@@ -545,6 +564,10 @@ onDestroy(() => {
     margin-left: var(--message-left-spacing);
     @include m.form-field-error-text();
     @include m.text-color(var(--theme-error));
+  }
+
+  .disabled {
+    cursor: normal;
   }
   .error {
     label {
