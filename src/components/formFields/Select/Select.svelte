@@ -233,6 +233,7 @@ onDestroy(() => {
 <div class="select-wrapper" bind:this={wrapperElement} class:select-disabled={disabled}>
   <div class="select border-{selectBorder} style-{selectStyle}" tabindex="0"
     class:error={!isVisuallyValid}
+    class:inFocus={dropdownOpen}
     use:keyboardControls={{ multiple, dropdownOpen }}
     on:actiontoggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
     on:actionFocusPrevious={optionsListBinds.focusPrevious}
@@ -293,7 +294,7 @@ onDestroy(() => {
         class:with-borders={selectBorder === "bottom"}
       >
 
-        <div class="search-input">
+        <div class="search-input" class:inFocus={dropdownOpen}>
           <SearchInput
             searchable={["text"]}
             items={options}
@@ -370,9 +371,9 @@ onDestroy(() => {
     --component-label-color: var(--szot-select-label-color, var(--component-color));
     --component-border-color: var(--szot-select-border-color, var(--component-color));
     --select-badge-color: var(--szot-select-badge-color, var(--szot-select-label-color));
-    --select-badge-border-color: var(--szot-select-badge-border-color, var(--szot-select-border-color));
-    --search-input-border-color: var(--szot-select-search-input-border-color, var(--szot-select-border-color));
-    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--szot-select-label-color));
+    --select-badge-border-color: var(--szot-select-badge-border-color, var(--component-border-color));
+    --search-input-border-color: var(--szot-select-search-input-border-color, var(--component-border-color));
+    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--component-color));
   }
 
   .hidden {
@@ -417,17 +418,23 @@ onDestroy(() => {
 
     &.style {
       &-primary {
-        --component-color: var(--theme-primary-txt);
+        --component-color: var(--select-focus-color, var(--theme-primary-txt));
       }
       &-secondary {
-        --component-color: var(--theme-secondary-txt);
+        --component-color: var(--select-focus-color, var(--theme-secondary-txt));
       }
       &-dark {
-        --component-color: var(--theme-dark-txt);
+        --component-color: var(--select-focus-color, var(--theme-dark-txt));
       }
       &-light {
-        --component-color: var(--theme-light-txt);
+        --component-color: var(--select-focus-color, var(--theme-light-txt));
       }
+    }
+    &.inFocus {
+      --select-focus-color: var(--szot-select-focus-color);
+    }
+    &:focus {
+      --select-focus-color: var(--szot-select-focus-color);
     }
 
     &-label {
