@@ -242,52 +242,53 @@ onDestroy(() => {
     on:actionType={handleTyping}
   >
 
-      <!-- Floating label for the select -->
-      <label class="select-label" class:required
-        id="{id}-label"
-        for="{id}-custom"
-        on:click={() => {
-          if (!disabled) {
-            toggleOpen();
-          }
-        }}
-        class:floated={dropdownOpen || isFilled(selected)}>
-        <div class="label-text">
-          {label}
-        </div>
-      </label>
-
-      <!-- Select's box that shows which option is selected -->
-      <div class="select-box" role="combobox" tabindex="-1" class:select-disabled={disabled}
-        class:selected-multiple={multiple && isFilled(selected)}
-        on:click={() => {
-          if (!disabled) {
-            toggleOpen();
-          }
-        }}
-        id="{id}-custom"
-        aria-controls="{id}-listbox"
-        aria-labelledby="{id}-label"
-        aria-haspopup="listbox"
-        aria-expanded={dropdownOpen ? "true" : "false"}>
-
-        {#if multiple && selectedMultiple.length > 0}
-          {#each selectedMultiple as option}
-            <span class="badge badge-{badgeStyleType}">
-              <Badge {badgeStyle} {badgeStyleType}>
-                {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
-              </Badge>
-            </span>
-          {/each}
-        {:else if !multiple && selectedSingle}
-          {selectedSingle ? selectedSingle.text : ""}
-        {:else}
-          <span class="fade-out" class:faded={!dropdownOpen}>Selecione</span>
-        {/if}
-
+    <!-- Floating label for the select -->
+    <label class="select-label" class:required
+      id="{id}-label"
+      for="{id}-custom"
+      on:click={() => {
+        if (!disabled) {
+          toggleOpen();
+        }
+      }}
+      class:floated={dropdownOpen || isFilled(selected)}>
+      <div class="label-text">
+        {label}
       </div>
+    </label>
 
-      <!-- Floating box with extra related data -->
+    <!-- Select's box that shows which option is selected -->
+    <div class="select-box" role="combobox" tabindex="-1" class:select-disabled={disabled}
+      class:selected-multiple={multiple && isFilled(selected)}
+      on:click={() => {
+        if (!disabled) {
+          toggleOpen();
+        }
+      }}
+      id="{id}-custom"
+      aria-controls="{id}-listbox"
+      aria-labelledby="{id}-label"
+      aria-haspopup="listbox"
+      aria-expanded={dropdownOpen ? "true" : "false"}>
+
+      {#if multiple && selectedMultiple.length > 0}
+        {#each selectedMultiple as option}
+          <span class="badge badge-{badgeStyleType}">
+            <Badge {badgeStyle} {badgeStyleType}>
+              {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
+            </Badge>
+          </span>
+        {/each}
+      {:else if !multiple && selectedSingle}
+        {selectedSingle ? selectedSingle.text : ""}
+      {:else}
+        <span class="fade-out" class:faded={!dropdownOpen}>Selecione</span>
+      {/if}
+
+    </div>
+
+    <!-- Floating box with extra related data -->
+    {#if !disabled}
       <div
         class="select-dropdown-menu"
         class:closed={!dropdownOpen}
@@ -323,30 +324,31 @@ onDestroy(() => {
           />
 
       </div>
+    {/if}
 
-      <!-- For form compatibility -->
-      <select class="hidden"
-        {...selectAttributes}
-        { id }
-        { name }
-        disabled
-        {multiple}
-        value={selected}>
-        {#each options as option}
-          <option value={option}>
-            {option.text}
-          </option>
-        {/each}
-      </select>
+    <!-- For form compatibility -->
+    <select class="hidden"
+      {...selectAttributes}
+      { id }
+      { name }
+      {disabled}
+      {multiple}
+      value={selected}>
+      {#each options as option}
+        <option value={option}>
+          {option.text}
+        </option>
+      {/each}
+    </select>
 
-      <div class="select-arrow" class:flipped={dropdownOpen}
-        on:click={() => {
-          if (!disabled) {
-            toggleOpen();
-          }
-        }}>
-        <div class="select-arrow-aux"></div>
-      </div>
+    <div class="select-arrow" class:flipped={dropdownOpen}
+      on:click={() => {
+        if (!disabled) {
+          toggleOpen();
+        }
+      }}>
+      <div class="select-arrow-aux"></div>
+    </div>
   </div>
   <p class="error-text" class:invisible={isVisuallyValid}>
     {#if required}
@@ -475,6 +477,7 @@ onDestroy(() => {
     &-disabled {
       cursor: initial;
       opacity: 0.75;
+      outline: none;
     }
     &-dropdown-menu {
       display: grid;
