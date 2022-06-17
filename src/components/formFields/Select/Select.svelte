@@ -406,7 +406,7 @@ onDestroy(() => {
     max-width: var(--szot-select-max-width, 100%);
     // hack the specificity
     &.select.select {
-      @include m.border(var(--component-border), var(--component-border-color));
+      @include m.border(var(--component-border), var(--select-focus-color, var(--component-border-color)));
     }
 
     &.border {
@@ -457,7 +457,7 @@ onDestroy(() => {
         @include m.form-field-label-floated-size;
       }
       .label-text {
-        @include m.text-color(var(--component-label-color));
+        @include m.text-color(var(--select-focus-color, var(--component-label-color)));
       }
       &.required {
         .label-text::after{
@@ -470,7 +470,7 @@ onDestroy(() => {
     &-box {
       border-radius: var(--component-border-radius);
       padding: var(--component-padding-vertical) var(--component-padding-horizontal);
-      @include m.text-color(var(--component-label-color));
+      @include m.text-color(var(--select-focus-color, var(--component-label-color)));
       cursor: pointer;
     }
 
@@ -494,8 +494,8 @@ onDestroy(() => {
 
       .search-input {
         --szot-input-background-color: var(--component-background-color);
-        --szot-input-border-color: var(--search-input-border-color);
-        --szot-input-border-color-focus: var(--search-input-border-color);
+        --szot-input-border-color: var(--select-focus-color, var(--search-input-border-color));
+        --szot-input-border-color-focus: var(--select-focus-color, var(--search-input-border-color));
         --szot-input-placeholder-color: var(--input-placeholder-color);
         --szot-input-margin-bottom: 0;
       }
@@ -567,8 +567,8 @@ onDestroy(() => {
   }
 
   .badge {
-    --szot-badge-color: var(--select-badge-color);
-    --szot-badge-border-color: var(--select-badge-border-color);
+    --szot-badge-color: var(--select-focus-color, var(--select-badge-color));
+    --szot-badge-border-color: var(--select-focus-color, var(--select-badge-border-color));
   }
 
   .error-text{

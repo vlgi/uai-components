@@ -137,7 +137,8 @@ export const CustomExample: any = Template({
   label: "Sobremesas",
   options,
   style: "--szot-select-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
+          + "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-select-focus-color: red;",
 });
 
 CustomExample.parameters = {
