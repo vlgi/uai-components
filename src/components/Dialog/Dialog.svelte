@@ -132,12 +132,19 @@
       {:else}
 
         <!-- Buttons -->
+        <!--
+          NOTE: the last rendered button will have the autofocus enabled
+          that means: others > cancel > confirm
+        -->
         <div class="button-container">
           {#if type === "confirm" || type === "confirmCancel"}
             <Button
               buttonStyle="dark"
               buttonStyleType="outline"
               size="small"
+              buttonAttributes={{
+                autofocus: true,
+              }}
               on:click={sendConfirm}
             >
               {confirmButtonTxt}
@@ -149,6 +156,9 @@
               buttonStyle="dark"
               buttonStyleType="filled"
               size="small"
+              buttonAttributes={{
+                autofocus: true,
+              }}
               on:click={sendCancel}
             >
               {cancelButtonTxt}
@@ -160,6 +170,9 @@
               buttonStyle="dark"
               buttonStyleType="filled"
               size="small"
+              buttonAttributes={{
+                autofocus: true,
+              }}
               on:click={sendConfirm}
             >
               {othersButtonTxt}
