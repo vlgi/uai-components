@@ -72,7 +72,10 @@ export let badgeStyleType: TbadgeStyleType = "outline";
 
 export let inputStyle: TSelectStyle = selectStyle;
 
-export let inputStyleType: TSelectBorders = "outline";
+export let inputBorder: TSelectBorders = "outline";
+
+// Other attributes for the HTML input element
+export let inputAttributes: Record<string, string> = {};
 
 // ====== Internal control ====== //
 
@@ -132,21 +135,23 @@ function validate() {
  *                       just change the value.
  */
 function toggleOpen(open?: boolean) {
-  const lastState = dropdownOpen;
-  if (open !== undefined && open !== null) {
-    dropdownOpen = open;
-  } else {
-    dropdownOpen = !dropdownOpen;
-  }
+  if (!disabled) {
+    const lastState = dropdownOpen;
+    if (open !== undefined && open !== null) {
+      dropdownOpen = open;
+    } else {
+      dropdownOpen = !dropdownOpen;
+    }
 
-  // If it changed state to opened
-  if (lastState !== dropdownOpen && dropdownOpen) {
-    optionsListBinds?.unfocusItems();
-  }
+    // If it changed state to opened
+    if (lastState !== dropdownOpen && dropdownOpen) {
+      optionsListBinds?.unfocusItems();
+    }
 
-  // If it changed state to closed
-  if (lastState !== dropdownOpen && !dropdownOpen) {
-    validate();
+    // If it changed state to closed
+    if (lastState !== dropdownOpen && !dropdownOpen) {
+      validate();
+    }
   }
 }
 
@@ -233,7 +238,8 @@ onDestroy(() => {
 <div class="select-wrapper" bind:this={wrapperElement} class:select-disabled={disabled}>
   <div class="select border-{selectBorder} style-{selectStyle}" tabindex="0"
     class:error={!isVisuallyValid}
-    class:inFocus={dropdownOpen}
+    class:select-inFocus={dropdownOpen}
+    on:focus={() => toggleOpen()}
     use:keyboardControls={{ multiple, dropdownOpen }}
     on:actiontoggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
     on:actionFocusPrevious={optionsListBinds.focusPrevious}
@@ -246,11 +252,7 @@ onDestroy(() => {
     <label class="select-label" class:required
       id="{id}-label"
       for="{id}-custom"
-      on:click={() => {
-        if (!disabled) {
-          toggleOpen();
-        }
-      }}
+      on:click={() => toggleOpen()}
       class:floated={dropdownOpen || isFilled(selected)}>
       <div class="label-text">
         {label}
@@ -258,13 +260,10 @@ onDestroy(() => {
     </label>
 
     <!-- Select's box that shows which option is selected -->
-    <div class="select-box" role="combobox" tabindex="-1" class:select-disabled={disabled}
+    <div class="select-box select-{dropdownOpen}" role="combobox" tabindex="-1"
+      class:select-disabled={disabled}
       class:selected-multiple={multiple && isFilled(selected)}
-      on:click={() => {
-        if (!disabled) {
-          toggleOpen();
-        }
-      }}
+      on:click={() => toggleOpen()}
       id="{id}-custom"
       aria-controls="{id}-listbox"
       aria-labelledby="{id}-label"
@@ -288,43 +287,43 @@ onDestroy(() => {
     </div>
 
     <!-- Floating box with extra related data -->
-    {#if !disabled}
-      <div
-        class="select-dropdown-menu"
-        class:closed={!dropdownOpen}
-        class:with-borders={selectBorder === "bottom"}
-      >
+    <div
+      class="select-dropdown-menu"
+      class:closed={!dropdownOpen}
+      class:with-borders={selectBorder === "bottom"}
+    >
 
-        <div class="search-input" class:inFocus={dropdownOpen}>
-          <SearchInput
-            searchable={["text"]}
-            items={options}
-            name=""
-            {inputStyle}
-            {inputStyleType}
-            bind:searchQuery
-            bind:filtered={filteredOptions}
-            bind:focus={focusSearch}
-            bind:inputElement={searchBind}
-            {disabled}
-          />
-        </div>
-        <!-- List of all selectable options -->
-        <OptionsList
-          id="{id}-listbox"
-          labelledBy="{id}-label"
-          options={filteredOptions}
-          on:changeSelected={handleSelectedChange}
-          bind:selected
-          bind:focused
-          bind:unfocusItems={optionsListBinds.unfocusItems}
-          bind:focusNext={optionsListBinds.focusNext}
-          bind:focusPrevious={optionsListBinds.focusPrevious}
-          bind:toggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
-          />
-
+      <div class="search-input">
+        <SearchInput
+          searchable={["text"]}
+          items={options}
+          name=""
+          {disabled}
+          {inputStyle}
+          border={inputBorder}
+          bind:searchQuery
+          bind:filtered={filteredOptions}
+          bind:focus={focusSearch}
+          bind:inputElement={searchBind}
+          {inputAttributes}
+        />
       </div>
-    {/if}
+      <!-- List of all selectable options -->
+      <OptionsList
+        id="{id}-listbox"
+        labelledBy="{id}-label"
+        options={filteredOptions}
+        on:changeSelected={handleSelectedChange}
+        on:changeSelected
+        bind:selected
+        bind:focused
+        bind:unfocusItems={optionsListBinds.unfocusItems}
+        bind:focusNext={optionsListBinds.focusNext}
+        bind:focusPrevious={optionsListBinds.focusPrevious}
+        bind:toggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
+        />
+
+    </div>
 
     <!-- For form compatibility -->
     <select class="hidden"
@@ -342,11 +341,7 @@ onDestroy(() => {
     </select>
 
     <div class="select-arrow" class:flipped={dropdownOpen}
-      on:click={() => {
-        if (!disabled) {
-          toggleOpen();
-        }
-      }}>
+      on:click={() => toggleOpen()}>
       <div class="select-arrow-aux"></div>
     </div>
   </div>
@@ -362,13 +357,14 @@ onDestroy(() => {
 <style lang="scss">
   @use "src/styles/mixins" as m;
   * {
+    --component-color: var(--select-focus-color, var(--theme-color));
     --margin-top: var(--szot-select-margin-top, 0.5rem);
     --component-background-color: var(--szot-select-background-color, white);
     --component-border-radius: var(--szot-select-border-radius, var(--theme-small-shape));
     --component-padding-vertical: var(--szot-select-padding-vertical, var(--theme-fields-padding));
     --component-padding-horizontal: var(--szot-select-padding-horizontal, var(--theme-fields-padding));
     --component-border: var(--theme-small-border);
-    --label-margin-right: var(--select-label-margin-right, 1,3rem);
+    --label-margin-right: var(--select-label-margin-right, 1.3rem);
     --message-left-spacing: var(--szot-select-message-left-spacing, 1rem);
     --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
     --component-label-color: var(--szot-select-label-color, var(--component-color));
@@ -421,22 +417,19 @@ onDestroy(() => {
 
     &.style {
       &-primary {
-        --component-color: var(--select-focus-color, var(--theme-primary-txt));
+        --theme-color: var(--theme-primary-txt);
       }
       &-secondary {
-        --component-color: var(--select-focus-color, var(--theme-secondary-txt));
+        --theme-color: var(--theme-secondary-txt);
       }
       &-dark {
-        --component-color: var(--select-focus-color, var(--theme-dark-txt));
+        --theme-color: var(--theme-dark-txt);
       }
       &-light {
-        --component-color: var(--select-focus-color, var(--theme-light-txt));
+        --theme-color: var(--theme-light-txt);
       }
     }
-    &.inFocus {
-      --select-focus-color: var(--szot-select-focus-color);
-    }
-    &:focus {
+    &-inFocus {
       --select-focus-color: var(--szot-select-focus-color);
     }
 

@@ -47,7 +47,7 @@ export const Single = Template({
   multiple: false,
   id: "doce",
   name: "doce",
-  label: "Sobremesas",
+  label: "Sobremesas asdf asdf asdf asdf asdfs",
   options,
 });
 
@@ -137,8 +137,7 @@ export const CustomExample: any = Template({
   label: "Sobremesas",
   options,
   style: "--szot-select-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-select-focus-color: red;",
+          + "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
 });
 
 CustomExample.parameters = {
