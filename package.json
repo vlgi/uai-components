@@ -15,7 +15,8 @@
     "build-storybook": "build-storybook",
     "test": "jest",
     "test:ui": "npm run test:ui-cli -- --ui --port=6005",
-    "test:ui-cli": "creevey --reportDir='.creevey/report' --screenDir='.creevey/images'"
+    "test:ui-cli": "creevey --reportDir='.creevey/report' --screenDir='.creevey/images'",
+    "check-all": "npm install; npm run test; npm run check; npm run lint"
   },
   "keywords": [
     "svelte"
