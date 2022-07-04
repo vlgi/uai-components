@@ -103,12 +103,15 @@
             icon="close"
             buttonStyle="light"
             size="round"
+            buttonAttributes={{
+              autofocus: true,
+            }}
             on:click={ closeModal }
           ></Button>
         </header>
       {/if}
       <div class="modal-content">
-          <!-- Set the modal content. e.g.: you can add a a text, a form, ... -->
+        <!-- Set the modal content. e.g.: you can add a a text, a form, ... -->
         <slot name="modal-content"></slot>
       </div>
       <div class="modal-footer">

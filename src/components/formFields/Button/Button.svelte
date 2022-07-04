@@ -24,6 +24,9 @@
   // set the button name
   export let name = "button";
 
+  // Other attributes for the HTML button element
+  export let buttonAttributes: Record<string, unknown> = {};
+
   /**
    *  choose an icon from the list
    *  @type {string}
@@ -52,6 +55,7 @@
     class="button {size} button-style-{buttonStyle} button-style-type-{buttonStyleType}"
     class:disabled
     {disabled}
+    {...buttonAttributes}
     on:click={submitForm}
     on:click
   >
