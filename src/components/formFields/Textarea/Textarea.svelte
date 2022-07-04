@@ -184,7 +184,7 @@
   .textarea-container {
     --label-color: var(--szot-textarea-label-color, var(--default-label-color));
     --label-padding: var(--szot-textarea-label-padding, 0 0.3125rem);
-    --label-background-color: var(--szot-textarea-label-background-color, white);
+    --label-background-color: var(--szot-textarea-background-color, white);
 
     --textarea-color-text: var(--szot-textarea-color-text, var(--default-textarea-color));
     --border-color: var(--szot-textarea-border-color, var(--default-border-color));
