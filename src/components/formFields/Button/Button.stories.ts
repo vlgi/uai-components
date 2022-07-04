@@ -148,12 +148,14 @@ export const RoundDisabled = Template({
 
 export const CustomExample: any = Template({
   labelSlot: "orange",
+  icon: "eye",
   style:
       "--szot-button-color: #333;"
       + "--szot-button-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
       + "--szot-button-border-radius: 1.5rem;"
       + "--szot-button-width: 100%;"
-      + "--szot-button-max-width: 100%;",
+      + "--szot-button-max-width: 100%;"
+      + "--szot-button-icon-color: red;",
 });
 
 CustomExample.parameters = {
@@ -168,8 +170,11 @@ CustomExample.parameters = {
   <div style="--szot-button-color:#ffc7a7;
       --szot-button-background-color:#FC6627;
       --szot-button-buttonStyleType: 2px solid #ffc7a7;
+      --szot-button-icon-color: red;
       --szot-button-border-radius: 1.5rem" >
-    <Button>
+    <Button
+      icon="eye"
+    >
       orange
     </Button>
   </div>

@@ -135,7 +135,7 @@
       // external variables
       --opacity-hover: var(--szot-button-opacity-hover, var(--default-opacity-hover));
       --color: var(--szot-button-color, var(--default-color));
-      --szot-icon-color: var(--color, var(--szot-button-icon-color));
+      --szot-icon-color: var(--szot-button-icon-color, var(--color));
       --effect-color-after-click: var(
         --szot-button-effect-color-after-click,
         var(--default-effect-color)
