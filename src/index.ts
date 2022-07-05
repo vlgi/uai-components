@@ -20,5 +20,7 @@ export { default as RadioButton } from "./components/formFields/ListRadioButton/
 export { default as ListBadgePillClickable } from "./components/formFields/ListBadgePillClickable/ListBadgePillClickable.svelte";
 export { default as BadgePillClickable } from "./components/formFields/ListBadgePillClickable/BadgePillClickable/BadgePillClickable.svelte";
 
+export { default as Collapsable } from "./components/Collapsable/Collapsable.svelte";
+
 export { default as Modal } from "./components/Modal/Modal.svelte";
 export { default as Dialog } from "./components/Dialog/DialogShorthand";
