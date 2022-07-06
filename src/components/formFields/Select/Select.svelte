@@ -27,15 +27,15 @@ export let isValid = true;
 // Whether the field should show as invalid
 export let forceInvalid = false;
 /**
- * id attribute for the HTML select element
- * @type {string}
- */
-export let id: string;
-/**
  * name attribute for the HTML select element
  * @type {string}
  */
 export let name: string;
+/**
+ * id attribute for the HTML select element
+ * @type {string}
+ */
+export let id: string = name;
 // Attributes for the HTML select element
 export let selectAttributes: Record<string, string> = {};
 /**
@@ -392,6 +392,7 @@ onDestroy(() => {
     display: flex;
     flex-flow: row wrap;
     gap: 0.2rem;
+    max-width: 90%;
   }
 
   .select {
@@ -439,7 +440,8 @@ onDestroy(() => {
       left: var(--component-padding-horizontal);
       background: var(--component-background-color);
       @include m.form-field-label-size;
-      margin-right: var(--label-margin-right);
+      max-width: 75%;
+      text-overflow: ellipsis;
 
       transform-origin: 0 30%;
 

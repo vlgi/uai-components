@@ -47,8 +47,9 @@ export const Single = Template({
   multiple: false,
   id: "doce",
   name: "doce",
-  label: "Sobremesas asdf asdf asdf asdf asdfs",
+  label: "Sobremesa",
   options,
+  style: "--szot-select-max-width: 8rem",
 });
 
 export const SingleSelected = Template({
