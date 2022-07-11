@@ -143,6 +143,7 @@
       name="favorite-desserts"
       options={simpleDessertsOptions}
       required={true}
+      disabled={true}
     />
     <Select
       label="Disliked Dessert"

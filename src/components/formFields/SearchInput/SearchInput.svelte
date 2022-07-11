@@ -7,6 +7,16 @@
     concatenated: string,
   }
 
+  type TborderStyle = "primary" | "secondary" | "dark" | "light";
+
+  type Tborders = "bottom" | "outline";
+
+  /** choose default theme colors */
+  export let inputStyle: TborderStyle = "dark";
+
+  /** choose border type */
+  export let border: Tborders = "outline";
+
   // The input reference.
   export let inputElement: HTMLInputElement = null;
 
@@ -45,6 +55,7 @@
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};
 
+  export let disabled = false;
 
   /**
    * Focus on the input element.
@@ -92,8 +103,10 @@
   on:change
   on:input
   {name}
+  {disabled}
+  {inputStyle}
+  {border}
   {inputAttributes}
-  {...$$restProps}
 />
 
 <style lang="scss">

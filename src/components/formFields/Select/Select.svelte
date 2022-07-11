@@ -15,6 +15,8 @@ import type { TbadgeStyle, TbadgeStyleType } from "../../Badge/types";
 export let multiple = false;
 // Whether the field needs to have at least `min` value
 export let required = false;
+// Change it to true to disable the component
+export let disabled = false;
 /**
  * If the select is multiple and required, it defines the minimum quantity
  * that needs to be selected for the select to be valid.
@@ -25,15 +27,15 @@ export let isValid = true;
 // Whether the field should show as invalid
 export let forceInvalid = false;
 /**
- * id attribute for the HTML select element
- * @type {string}
- */
-export let id: string;
-/**
  * name attribute for the HTML select element
  * @type {string}
  */
 export let name: string;
+/**
+ * id attribute for the HTML select element
+ * @type {string}
+ */
+export let id: string = name;
 // Attributes for the HTML select element
 export let selectAttributes: Record<string, string> = {};
 /**
@@ -70,7 +72,10 @@ export let badgeStyleType: TbadgeStyleType = "outline";
 
 export let inputStyle: TSelectStyle = selectStyle;
 
-export let inputStyleType: TSelectBorders = "outline";
+export let inputBorder: TSelectBorders = "outline";
+
+// Other attributes for the HTML input element
+export let inputAttributes: Record<string, string> = {};
 
 // ====== Internal control ====== //
 
@@ -130,21 +135,23 @@ function validate() {
  *                       just change the value.
  */
 function toggleOpen(open?: boolean) {
-  const lastState = dropdownOpen;
-  if (open !== undefined && open !== null) {
-    dropdownOpen = open;
-  } else {
-    dropdownOpen = !dropdownOpen;
-  }
+  if (!disabled) {
+    const lastState = dropdownOpen;
+    if (open !== undefined && open !== null) {
+      dropdownOpen = open;
+    } else {
+      dropdownOpen = !dropdownOpen;
+    }
 
-  // If it changed state to opened
-  if (lastState !== dropdownOpen && dropdownOpen) {
-    optionsListBinds?.unfocusItems();
-  }
+    // If it changed state to opened
+    if (lastState !== dropdownOpen && dropdownOpen) {
+      optionsListBinds?.unfocusItems();
+    }
 
-  // If it changed state to closed
-  if (lastState !== dropdownOpen && !dropdownOpen) {
-    validate();
+    // If it changed state to closed
+    if (lastState !== dropdownOpen && !dropdownOpen) {
+      validate();
+    }
   }
 }
 
@@ -228,9 +235,11 @@ onDestroy(() => {
 });
 </script>
 
-<div class="select-wrapper" bind:this={wrapperElement}>
+<div class="select-wrapper" bind:this={wrapperElement} class:select-disabled={disabled}>
   <div class="select border-{selectBorder} style-{selectStyle}" tabindex="0"
     class:error={!isVisuallyValid}
+    class:select-inFocus={dropdownOpen}
+    on:focus={() => toggleOpen()}
     use:keyboardControls={{ multiple, dropdownOpen }}
     on:actiontoggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
     on:actionFocusPrevious={optionsListBinds.focusPrevious}
@@ -239,98 +248,102 @@ onDestroy(() => {
     on:actionType={handleTyping}
   >
 
-      <!-- Floating label for the select -->
-      <label class="select-label"
-        id="{id}-label"
-        for="{id}-custom"
-        on:click={() => toggleOpen()}
-        class:floated={dropdownOpen || isFilled(selected)}>
-        <div class="label-text">
-          {label}
-        </div>
-      </label>
-
-      <!-- Select's box that shows which option is selected -->
-      <div class="select-box" role="combobox" tabindex="-1"
-        class:selected-multiple={multiple && isFilled(selected)}
-        on:click={() => toggleOpen()}
-        id="{id}-custom"
-        aria-controls="{id}-listbox"
-        aria-labelledby="{id}-label"
-        aria-haspopup="listbox"
-        aria-expanded={dropdownOpen ? "true" : "false"}>
-
-        {#if multiple && selectedMultiple.length > 0}
-          {#each selectedMultiple as option}
-            <span class="badge badge-{badgeStyleType}">
-              <Badge {badgeStyle} {badgeStyleType}>
-                {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
-              </Badge>
-            </span>
-          {/each}
-        {:else if !multiple && selectedSingle}
-          {selectedSingle ? selectedSingle.text : ""}
-        {:else}
-          <span class="fade-out" class:faded={!dropdownOpen}>Selecione</span>
-        {/if}
-
+    <!-- Floating label for the select -->
+    <label class="select-label" class:required
+      id="{id}-label"
+      for="{id}-custom"
+      on:click={() => toggleOpen()}
+      class:floated={dropdownOpen || isFilled(selected)}>
+      <div class="label-text">
+        {label}
       </div>
+    </label>
 
-      <!-- Floating box with extra related data -->
-      <div
-        class="select-dropdown-menu"
-        class:closed={!dropdownOpen}
-        class:with-borders={selectBorder === "bottom"}
-      >
+    <!-- Select's box that shows which option is selected -->
+    <div class="select-box select-{dropdownOpen}" role="combobox" tabindex="-1"
+      class:select-disabled={disabled}
+      class:selected-multiple={multiple && isFilled(selected)}
+      on:click={() => toggleOpen()}
+      id="{id}-custom"
+      aria-controls="{id}-listbox"
+      aria-labelledby="{id}-label"
+      aria-haspopup="listbox"
+      aria-expanded={dropdownOpen ? "true" : "false"}>
 
-        <div class="search-input">
-          <SearchInput
-            searchable={["text"]}
-            items={options}
-            name=""
-            {inputStyle}
-            {inputStyleType}
-            bind:searchQuery
-            bind:filtered={filteredOptions}
-            bind:focus={focusSearch}
-            bind:inputElement={searchBind}
-          />
-        </div>
-        <!-- List of all selectable options -->
-        <OptionsList
-          id="{id}-listbox"
-          labelledBy="{id}-label"
-          options={filteredOptions}
-          on:changeSelected={handleSelectedChange}
-          bind:selected
-          bind:focused
-          bind:unfocusItems={optionsListBinds.unfocusItems}
-          bind:focusNext={optionsListBinds.focusNext}
-          bind:focusPrevious={optionsListBinds.focusPrevious}
-          bind:toggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
-          />
-
-      </div>
-
-      <!-- For form compatibility -->
-      <select class="hidden"
-        {...selectAttributes}
-        { id }
-        { name }
-        disabled
-        {multiple}
-        value={selected}>
-        {#each options as option}
-          <option value={option}>
-            {option.text}
-          </option>
+      {#if multiple && selectedMultiple.length > 0}
+        {#each selectedMultiple as option}
+          <span class="badge badge-{badgeStyleType}">
+            <Badge {badgeStyle} {badgeStyleType}>
+              {option.text} <span on:click={(ev) => handleBadgeRemoval(ev, option)}>&times;</span>
+            </Badge>
+          </span>
         {/each}
-      </select>
+      {:else if !multiple && selectedSingle}
+        {selectedSingle ? selectedSingle.text : ""}
+      {:else}
+        <span class="fade-out" class:faded={!dropdownOpen}>Selecione</span>
+      {/if}
 
-      <div class="select-arrow" class:flipped={dropdownOpen}
-        on:click={() => toggleOpen()}>
-        <div class="select-arrow-aux"></div>
+    </div>
+
+    <!-- Floating box with extra related data -->
+    <div
+      class="select-dropdown-menu"
+      class:closed={!dropdownOpen}
+      class:with-borders={selectBorder === "bottom"}
+    >
+
+      <div class="search-input">
+        <SearchInput
+          searchable={["text"]}
+          items={options}
+          name=""
+          {disabled}
+          {inputStyle}
+          border={inputBorder}
+          bind:searchQuery
+          bind:filtered={filteredOptions}
+          bind:focus={focusSearch}
+          bind:inputElement={searchBind}
+          {inputAttributes}
+        />
       </div>
+      <!-- List of all selectable options -->
+      <OptionsList
+        id="{id}-listbox"
+        labelledBy="{id}-label"
+        options={filteredOptions}
+        on:changeSelected={handleSelectedChange}
+        on:changeSelected
+        bind:selected
+        bind:focused
+        bind:unfocusItems={optionsListBinds.unfocusItems}
+        bind:focusNext={optionsListBinds.focusNext}
+        bind:focusPrevious={optionsListBinds.focusPrevious}
+        bind:toggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
+        />
+
+    </div>
+
+    <!-- For form compatibility -->
+    <select class="hidden"
+      {...selectAttributes}
+      { id }
+      { name }
+      {disabled}
+      {multiple}
+      value={selected}>
+      {#each options as option}
+        <option value={option}>
+          {option.text}
+        </option>
+      {/each}
+    </select>
+
+    <div class="select-arrow" class:flipped={dropdownOpen}
+      on:click={() => toggleOpen()}>
+      <div class="select-arrow-aux"></div>
+    </div>
   </div>
   <p class="error-text" class:invisible={isVisuallyValid}>
     {#if required}
@@ -344,20 +357,22 @@ onDestroy(() => {
 <style lang="scss">
   @use "src/styles/mixins" as m;
   * {
+    --component-color: var(--select-focus-color, var(--theme-color));
     --margin-top: var(--szot-select-margin-top, 0.5rem);
     --component-background-color: var(--szot-select-background-color, white);
     --component-border-radius: var(--szot-select-border-radius, var(--theme-small-shape));
     --component-padding-vertical: var(--szot-select-padding-vertical, var(--theme-fields-padding));
     --component-padding-horizontal: var(--szot-select-padding-horizontal, var(--theme-fields-padding));
     --component-border: var(--theme-small-border);
+    --label-margin-right: var(--select-label-margin-right, 1.3rem);
     --message-left-spacing: var(--szot-select-message-left-spacing, 1rem);
     --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
     --component-label-color: var(--szot-select-label-color, var(--component-color));
     --component-border-color: var(--szot-select-border-color, var(--component-color));
     --select-badge-color: var(--szot-select-badge-color, var(--szot-select-label-color));
-    --select-badge-border-color: var(--szot-select-badge-border-color, var(--szot-select-border-color));
-    --search-input-border-color: var(--szot-select-search-input-border-color, var(--szot-select-border-color));
-    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--szot-select-label-color));
+    --select-badge-border-color: var(--szot-select-badge-border-color, var(--component-border-color));
+    --search-input-border-color: var(--szot-select-search-input-border-color, var(--component-border-color));
+    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--component-color));
   }
 
   .hidden {
@@ -377,16 +392,18 @@ onDestroy(() => {
     display: flex;
     flex-flow: row wrap;
     gap: 0.2rem;
+    max-width: 90%;
   }
 
   .select {
     position: relative;
     width: 100%;
+    outline: none;
     margin-top: var(--margin-top);
     max-width: var(--szot-select-max-width, 100%);
     // hack the specificity
     &.select.select {
-      @include m.border(var(--component-border), var(--component-border-color));
+      @include m.border(var(--component-border), var(--select-focus-color, var(--component-border-color)));
     }
 
     &.border {
@@ -401,17 +418,20 @@ onDestroy(() => {
 
     &.style {
       &-primary {
-        --component-color: var(--theme-primary-txt);
+        --theme-color: var(--theme-primary-txt);
       }
       &-secondary {
-        --component-color: var(--theme-secondary-txt);
+        --theme-color: var(--theme-secondary-txt);
       }
       &-dark {
-        --component-color: var(--theme-dark-txt);
+        --theme-color: var(--theme-dark-txt);
       }
       &-light {
-        --component-color: var(--theme-light-txt);
+        --theme-color: var(--theme-light-txt);
       }
+    }
+    &-inFocus {
+      --select-focus-color: var(--szot-select-focus-color);
     }
 
     &-label {
@@ -420,6 +440,8 @@ onDestroy(() => {
       left: var(--component-padding-horizontal);
       background: var(--component-background-color);
       @include m.form-field-label-size;
+      max-width: 75%;
+      text-overflow: ellipsis;
 
       transform-origin: 0 30%;
 
@@ -430,17 +452,28 @@ onDestroy(() => {
         @include m.form-field-label-floated-size;
       }
       .label-text {
-        @include m.text-color(var(--component-label-color));
+        @include m.text-color(var(--select-focus-color, var(--component-label-color)));
+      }
+      &.required {
+        .label-text::after{
+          content: "*";
+          display: inline;
+        }
       }
     }
 
     &-box {
       border-radius: var(--component-border-radius);
       padding: var(--component-padding-vertical) var(--component-padding-horizontal);
-      @include m.text-color(var(--component-label-color));
+      @include m.text-color(var(--select-focus-color, var(--component-label-color)));
       cursor: pointer;
     }
 
+    &-disabled {
+      cursor: initial;
+      opacity: 0.75;
+      outline: none;
+    }
     &-dropdown-menu {
       display: grid;
       grid-template-rows: auto 1fr;
@@ -456,8 +489,8 @@ onDestroy(() => {
 
       .search-input {
         --szot-input-background-color: var(--component-background-color);
-        --szot-input-border-color: var(--search-input-border-color);
-        --szot-input-border-color-focus: var(--search-input-border-color);
+        --szot-input-border-color: var(--select-focus-color, var(--search-input-border-color));
+        --szot-input-border-color-focus: var(--select-focus-color, var(--search-input-border-color));
         --szot-input-placeholder-color: var(--input-placeholder-color);
         --szot-input-margin-bottom: 0;
       }
@@ -529,14 +562,18 @@ onDestroy(() => {
   }
 
   .badge {
-    --szot-badge-color: var(--select-badge-color);
-    --szot-badge-border-color: var(--select-badge-border-color);
+    --szot-badge-color: var(--select-focus-color, var(--select-badge-color));
+    --szot-badge-border-color: var(--select-focus-color, var(--select-badge-border-color));
   }
 
   .error-text{
     margin-left: var(--message-left-spacing);
     @include m.form-field-error-text();
     @include m.text-color(var(--theme-error));
+  }
+
+  .disabled {
+    cursor: normal;
   }
   .error {
     label {

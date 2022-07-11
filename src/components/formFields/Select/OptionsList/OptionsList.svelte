@@ -203,12 +203,12 @@ $: if (options) {
       transition: background-color 200ms;
 
       .text {
-        @include m.text-color(var(--component-label-color));
+        @include m.text-color(var(--select-focus-color, var(--component-label-color)));
       }
 
       &.selected {
         .text {
-          @include m.text-color(var(--component-label-color));
+          @include m.text-color(var(--select-focus-color, var(--component-label-color)));
           opacity: 0.5;
         }
       }
