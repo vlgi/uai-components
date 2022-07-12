@@ -336,6 +336,10 @@
       border: none;
     }
 
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
     position: relative;
     margin-bottom: var(--margin-bottom);
     margin-top: var(--margin-top);
