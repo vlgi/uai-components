@@ -199,6 +199,22 @@
       required={true}
       --szot-checkbox-margin="1rem 0 0"
     />
+    <Checkbox
+      name="strawberry/chocolate"
+      styleType="text-switch"
+      uncheckedText="Morango"
+      checkedText="Chocolate"
+      required={true}
+      --szot-checkbox-margin="1rem 0 0.25rem"
+      --szot-checkbox-switch-width="8.275rem"
+    />
+    <Checkbox
+      name="save-my-choices"
+      label="salvar minhas escolhas"
+      styleType="switch"
+      required={true}
+      --szot-checkbox-margin="1rem 0 1rem"
+    />
     <BadgePillClickable
       name="sold-your-soul-again"
       label="confirme mais uma vez"

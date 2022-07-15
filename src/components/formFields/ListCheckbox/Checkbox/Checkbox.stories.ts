@@ -9,7 +9,7 @@ export default {
     styleType: {
       control: {
         type: "select",
-        options: ["checkbox-input", "switch"],
+        options: ["checkbox-input", "switch", "text-switch"],
       },
     },
   },
@@ -44,6 +44,21 @@ export const SwitchChecked = Template({
   styleType: "switch",
 });
 
+export const TextSwitch = Template({
+  name: "text-switch",
+  styleType: "text-switch",
+  checkedText: "Ativo",
+  uncheckedText: "Inativo",
+});
+
+export const TextSwitchChecked = Template({
+  name: "text-switch",
+  styleType: "text-switch",
+  checked: true,
+  checkedText: "Ativo",
+  uncheckedText: "Inativo",
+});
+
 export const Labeled = Template({
   name: "labeled",
   label: "Item",
@@ -55,6 +70,18 @@ export const CustomSwitchExample: any = Template({
   style: "--szot-checkbox-switch-color: black;"
     + "--szot-checkbox-switch-checked-color: linear-gradient(to bottom, grey, brown);"
     + "--szot-checkbox-switch-width: 3rem;"
+    + "--szot-checkbox-switch-height: 1.32rem;"
+    + "--szot-checkbox-switch-background: lightblue;",
+});
+
+export const CustomTextSwitchExample: any = Template({
+  name: "custom-text-switch",
+  styleType: "text-switch",
+  checkedText: "Ativo",
+  uncheckedText: "Inativo",
+  style: "--szot-checkbox-switch-color: black;"
+    + "--szot-checkbox-switch-checked-color: linear-gradient(to bottom, grey, brown);"
+    + "--szot-checkbox-switch-width: 5rem;"
     + "--szot-checkbox-switch-height: 1.32rem;"
     + "--szot-checkbox-switch-background: lightblue;",
 });
