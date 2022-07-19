@@ -52,6 +52,9 @@
   // input placeholder
   export let placeholder = "Pesquise ou Selecione...";
 
+  // input icon
+  export let icon: string|null = null;
+
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};
 
@@ -106,6 +109,7 @@
   {disabled}
   {inputStyle}
   {border}
+  {icon}
   {inputAttributes}
 />
 

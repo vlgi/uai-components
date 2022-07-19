@@ -27,6 +27,7 @@ export const Searching = Template({
   items: complexDesserts,
   searchable: ["variety"],
   searchQuery: "brownie",
+  icon: "magnify",
 });
 
 export const MultipleFieldsSearching = Template({
