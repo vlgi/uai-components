@@ -166,6 +166,7 @@
   class:icons-right={iconPosition === "right" && icon}
   class:visuallyInvalid
   class:inFocus
+  class:input-disabled={disabled}
   class:hidden={type === "hidden"}
   bind:this={wrapperElement}
   on:keypress={submitOnEnter}
@@ -283,6 +284,11 @@
     }
     &.inFocus {
       --border-color: var(--border-color-focus);
+    }
+
+    &.input-disabled {
+      cursor: initial;
+      opacity: 0.75;
     }
     &.visuallyInvalid {
       --border-color: var(--theme-error);

@@ -88,6 +88,13 @@ export const Required = Template({
   name: "name",
 });
 
+export const Disabled = Template({
+  label: "Name",
+  type: "text",
+  disabled: true,
+  name: "name",
+});
+
 export const CustomValidationAndRequired = Template({
   label: "Name",
   type: "text",
