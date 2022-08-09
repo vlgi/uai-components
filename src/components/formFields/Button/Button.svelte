@@ -284,6 +284,7 @@
       width: var(--width);
       max-width: var(--max-width);
       .text {
+        white-space: nowrap;
         @include m.text-color(var(--color));
       }
 
