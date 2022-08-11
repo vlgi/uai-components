@@ -172,8 +172,8 @@
       &.round {
         border-radius: 1.0625rem;
         padding: 0;
-        width: 1.875rem;
-        height: 1.875rem;
+        width: 100%;
+        height: 100%;
 
         .icon {
           display: flex;
