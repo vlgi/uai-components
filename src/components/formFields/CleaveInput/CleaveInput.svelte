@@ -80,6 +80,8 @@ let cleave: Cleave;
 /* ================== Overriding the context ================== */
 
 let addedToContext = false;
+let auxiliarRawValue: string = null;
+let inputEnabled = false;
 
 // Get the original context
 const isInsideContext = hasContext("FormContext");
@@ -148,7 +150,7 @@ function instantiateCleave() {
     ...cleaveOptions,
     onValueChanged: ({ target }: TCleaveEvent) => {
       const { rawValue, value: maskedValue } = target;
-      value = rawValue;
+      auxiliarRawValue = rawValue;
       internalInputValue = maskedValue;
     },
   });
@@ -161,6 +163,10 @@ function destroyCleave() {
   }
 }
 
+function enableInput() {
+  inputEnabled = true;
+}
+
 // Update masking when changing configuration
 // Also instantiate when inputElement is available
 $: if (cleaveOptions && inputElement) {
@@ -168,17 +174,31 @@ $: if (cleaveOptions && inputElement) {
   instantiateCleave();
 }
 
-// Keep value consistent when updating
-$: if (cleave) cleave.setRawValue(value);
+$: if (cleave || addedToContext) {
+  // Keep value consistent when updating
+  if (cleave) {
+    cleave.setRawValue(value);
+  }
 
-// Update form state correctly
-$: if (addedToContext) setFieldValue(name, value, isValid);
+  // Update form state correctly
+  if (addedToContext) {
+    setFieldValue(name, value, isValid);
+  }
+}
+
+// update when the input event and the onvalue change event trigger
+$: if (inputEnabled && auxiliarRawValue) {
+  value = auxiliarRawValue;
+  auxiliarRawValue = null;
+  inputEnabled = false;
+}
 
 </script>
 
 <Input
   on:change
   on:input
+  on:input={enableInput}
   {name}
   bind:value={internalInputValue}
   bind:inputElement
