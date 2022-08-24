@@ -142,11 +142,11 @@
       />
     </label>
   </div>
-
-  <label for={id} class="checkbox-label">
-    {label !== undefined ? label : ""}
-  </label>
-
+  {#if label !== undefined && label !== "" && label !== null}
+    <label for={id} class="checkbox-label">
+      {label}
+    </label>
+  {/if}
 </div>
 <p class="error" class:error-show={!isValid}>
   {#if required}
@@ -164,6 +164,7 @@
       @each $style in $styles {
         &-#{$style} {
           --checkbox-margin: var(--szot-checkbox-margin, 0.3125rem);
+          --chackbox-padding: var(--szot-checkbox-padding, 0 0.375em);
           --checkbox-size: var(--szot-checkbox-size, 0.7rem);
           --border-size: var(--szot-checkbox-border-size, 0.15rem);
           --border-radius: var(--szot-checkbox-border-radius, var(--border-size));
@@ -208,7 +209,7 @@
     align-items: center;
     width: fit-content;
     position: relative;
-    padding: 0 0.375em;
+    padding: var(--checkbox-padding);
     margin: var(--checkbox-margin);
 
     .border-checkbox-input {
