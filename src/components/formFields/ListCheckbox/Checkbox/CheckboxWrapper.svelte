@@ -11,6 +11,7 @@
     {...$$restProps}
     {name}
     bind:checked
+    on:checkItem
   />
 </div>
 
