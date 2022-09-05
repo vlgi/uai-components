@@ -110,6 +110,7 @@ export const CustomExample = TemplateSingle({
   --szot-collapsable-content-border-color: linear-gradient(to bottom left, red, orange, yellow, green, blue, indigo, violet);
   --szot-collapsable-content-color: linear-gradient(to bottom left, red, orange, yellow, green, blue, indigo, violet);
   --szot-collapsable-icon-color: linear-gradient(to top, magenta, yellow, cyan);
+  --szot-collapsable-title-font-size: 24px;
   `,
 });
 

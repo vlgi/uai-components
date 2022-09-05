@@ -169,6 +169,7 @@
     --content-padding: var(--szot-collapsable-content-padding, var(--padding));
     --content-border-width: var(--szot-collapsable-content-border-width, var(--style-type-content-border-width));
     --content-border-radius: var(--szot-collapsable-content-border-radius, var(--theme-medium-shape));
+    --title-font-size: var(--szot-collapsable-title-font-size, 1rem);
 
     // Style and style type settings
     &.style {
@@ -251,6 +252,7 @@
       padding: var(--padding);
       .title{
         @include m.text-color(var(--color));
+        font-size: var(--title-font-size);
       }
       cursor: pointer;
 
