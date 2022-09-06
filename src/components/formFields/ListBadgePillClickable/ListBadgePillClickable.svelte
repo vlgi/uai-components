@@ -183,7 +183,7 @@
     setFieldValue(name, values, isValid);
   }
 
-  $: checkedList = checkedList.map((c) => ({
+  $: checkedList = badgeItems.map((c) => ({
     value: c.value,
     checked: values.includes(c.value),
   }));
