@@ -137,13 +137,17 @@
     }}
   />
   {#if iconPosition === "left" || iconPosition === "both"}
-    <Icon iconName="close-circle" />
+    {#if checked}
+      <Icon iconName="close-circle" />
+    {/if}
   {/if}
   <label for={id} class="badge-label">
     {label !== undefined ? label : ""}
   </label>
   {#if iconPosition === "right" || iconPosition === "both"}
+    {#if checked}
     <Icon iconName="close-circle" />
+    {/if}
   {/if}
 </div>
 
