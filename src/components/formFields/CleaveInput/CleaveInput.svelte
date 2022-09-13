@@ -1,6 +1,6 @@
 <script lang="ts">
 import {
-  getContext, hasContext, setContext,
+  getContext, hasContext, setContext, tick,
 } from "svelte";
 import Cleave from "cleave.js";
 import type { CleaveOptions } from "cleave.js/options";
@@ -80,7 +80,6 @@ let cleave: Cleave;
 /* ================== Overriding the context ================== */
 
 let addedToContext = false;
-let auxiliarRawValue: string = null;
 let inputEnabled = false;
 
 // Get the original context
@@ -150,8 +149,12 @@ function instantiateCleave() {
     ...cleaveOptions,
     onValueChanged: ({ target }: TCleaveEvent) => {
       const { rawValue, value: maskedValue } = target;
-      auxiliarRawValue = rawValue;
-      internalInputValue = maskedValue;
+
+      if (inputEnabled) {
+        value = rawValue;
+        internalInputValue = maskedValue;
+        inputEnabled = false;
+      }
     },
   });
 }
@@ -170,8 +173,12 @@ function enableInput() {
 // Update masking when changing configuration
 // Also instantiate when inputElement is available
 $: if (cleaveOptions && inputElement) {
-  destroyCleave();
-  instantiateCleave();
+  // to guarantee that input event will be trigger first then cleave input instantiation
+  // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  tick().then(() => {
+    destroyCleave();
+    instantiateCleave();
+  });
 }
 
 $: if (cleave || addedToContext) {
@@ -184,13 +191,6 @@ $: if (cleave || addedToContext) {
   if (addedToContext) {
     setFieldValue(name, value, isValid);
   }
-}
-
-// update when the input event and the onvalue change event trigger
-$: if (inputEnabled && auxiliarRawValue) {
-  value = auxiliarRawValue;
-  auxiliarRawValue = null;
-  inputEnabled = false;
 }
 
 </script>
