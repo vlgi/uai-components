@@ -248,8 +248,8 @@
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
 
-    --message-bottom: var(--szot-input-texthelp-bottom, -1.2rem);
-    --message-left: var(--szot-input-texthelp-left, 1rem);
+    --message-top: var(--szot-input-message-top, calc(37.19px + var(--border)));
+    --message-left: var(--szot-input-message-left, 1rem);
     --message-error-bottom-focus: var(--szot-input-message-error-bottom-focus, -2rem);
 
     &.input-style-primary {
@@ -476,7 +476,7 @@
     position: absolute;
     z-index: 1;
     transition: opacity 0.2s linear, bottom 0.2s;
-    bottom: var(--message-bottom);
+    top: var(--message-top);
     left: var(--message-left);
 
     &.helper {
