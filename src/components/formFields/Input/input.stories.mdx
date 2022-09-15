@@ -24,6 +24,7 @@ import InputTeste from "./InputWrapperForTest.svelte";
 | --szot-input-left              | Set the input position to the left               | 0                         |
 | --szot-input-padding           | Set simple input padding                         | --szot-fields-padding     |
 | --szot-input-text-color        | Set input text color (does not support gradient) | --szot-dark-inserted-text |
+| --szot-input-border            | Set border width                                 | --theme-small-border      |
 | --szot-input-border-color      | Set label focus position on top                  | --szot-dark-txt           |
 | --szot-input-border-radius     | set the border radius                            | --szot-small-shape        |
 | --szot-input-placeholder-color | set the placeholder color                        | --szot-dark-txt           |
@@ -61,11 +62,11 @@ import InputTeste from "./InputWrapperForTest.svelte";
 
 ## Messages
 
-| CSS Property                            | Descripiton                                                     | Default |
-| --------------------------------------- | --------------------------------------------------------------- | ------- |
-| --szot-input-message-bottom             | Set messages position down                                      | -1.2rem |
-| --szot-input-message-left               | Set messages position to left                                   | 1rem    |
-| --szot-input-message-error-bottom-focus | Set error text position to low when helper text is also showing | -2rem   |
+| CSS Property                            | Descripiton                                                     | Default                       |
+| --------------------------------------- | --------------------------------------------------------------- | ----------------------------- |
+| --szot-input-message-top                | Set messages position top                                       | 37.19 + (--szot-input-border) |
+| --szot-input-message-left               | Set messages position to left                                   | 1rem                          |
+| --szot-input-message-error-bottom-focus | Set error text position to low when helper text is also showing | -2rem                         |
 
 <p>
   In addition to these variables, this component also uses the szot variables
