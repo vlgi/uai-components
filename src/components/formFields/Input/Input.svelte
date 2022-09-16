@@ -234,7 +234,7 @@
   }
 
   .form-div {
-    --margin-top: var(--szot-textarea-margin-top, 0.5rem);
+    --margin-top: var(--szot-input-margin-top, 0.5rem);
     --max-width: var(--szot-input-max-width, 100%);
 
     --input-top: var(--szot-input-top, 0);
