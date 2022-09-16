@@ -225,6 +225,7 @@
     .error-show {
       display: inherit;
       @include m.form-field-error-text();
+      @include m.text-color(var(--theme-error));
     }
   }
 </style>

@@ -111,3 +111,14 @@ export const Currency = Template({
   type: "text",
   cleaveOptions: currencyMaskConfig,
 });
+
+export const Required = Template({
+  label: "Saldo",
+  name: "balance",
+  helperText: "Digite um valor válido",
+  errorMsg: "Falhou, tente novamente",
+  type: "text",
+  cleaveOptions: currencyMaskConfig,
+  required: true,
+  value: "1000",
+});

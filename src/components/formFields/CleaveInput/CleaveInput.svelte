@@ -80,7 +80,7 @@ let cleave: Cleave;
 /* ================== Overriding the context ================== */
 
 let addedToContext = false;
-let inputEnabled = false;
+let inputEnabled = true;
 
 // Get the original context
 const isInsideContext = hasContext("FormContext");
