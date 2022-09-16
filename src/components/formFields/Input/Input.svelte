@@ -160,57 +160,64 @@
     }
   });
 </script>
-<div
-  class="form-div input-style-{inputStyle} border-{border}"
-  class:icons-left={iconPosition === "left" && icon}
-  class:icons-right={iconPosition === "right" && icon}
-  class:visuallyInvalid
-  class:inFocus
-  class:input-disabled={disabled}
-  class:hidden={type === "hidden"}
-  bind:this={wrapperElement}
-  on:keypress={submitOnEnter}
->
-  <input
-    on:focus={focused}
-    on:input={changed}
-    on:input={setValue}
-    on:blur={focused}
-    on:blur={validation}
-    on:input
-    on:change
-    bind:this={inputElement}
-    class="form-input"
-    placeholder=" "
-    {name}
-    {type}
-    {id}
-    {value}
-    {disabled}
-    {readonly}
-    {...inputAttributes}
-    aria-required={required}
-  />
-  <label for="{id}" class="form-label" class:required>
-    <div class="label-text">
-      {label}
-    </div>
-  </label>
-  {#if icon}
-    {#if iconClick}
-      <button class="icon icon-cursor" on:click>
-        <Icon iconName={icon}/>
-      </button>
-    {:else}
-      <label for={id} class="icon">
-        <Icon iconName={icon}/>
-      </label>
+<div class="content-container">
+
+  <div
+    class="form-div input-style-{inputStyle} border-{border}"
+    class:icons-left={iconPosition === "left" && icon}
+    class:icons-right={iconPosition === "right" && icon}
+    class:visuallyInvalid
+    class:inFocus
+    class:input-disabled={disabled}
+    class:hidden={type === "hidden"}
+    bind:this={wrapperElement}
+    on:keypress={submitOnEnter}
+  >
+    <input
+      on:focus={focused}
+      on:input={changed}
+      on:input={setValue}
+      on:blur={focused}
+      on:blur={validation}
+      on:input
+      on:change
+      bind:this={inputElement}
+      class="form-input"
+      placeholder=" "
+      {name}
+      {type}
+      {id}
+      {value}
+      {disabled}
+      {readonly}
+      {...inputAttributes}
+      aria-required={required}
+    />
+    <label for="{id}" class="form-label" class:required>
+      <div class="label-text">
+        {label}
+      </div>
+    </label>
+    {#if icon}
+      {#if iconClick}
+        <button class="icon icon-cursor" on:click>
+          <Icon iconName={icon}/>
+        </button>
+      {:else}
+        <label for={id} class="icon">
+          <Icon iconName={icon}/>
+        </label>
+      {/if}
     {/if}
-  {/if}
+  </div>
   <p class="helper" class:helper-show={helper}>
     {helperText}
   </p>
-  <p class="error" class:error-show={visuallyInvalid}>
+  <p
+    class="error"
+    class:error-show={visuallyInvalid}
+    class:show={(helper && helperText?.length > 0) || visuallyInvalid}
+  >
     {eMsg}
   </p>
 </div>
@@ -218,9 +225,16 @@
 <style lang="scss">
   @use "src/styles/mixins" as m;
 
-  .form-div {
+  .content-container {
     --margin-bottom: var(--szot-input-margin-bottom, 1.5rem);
-    --margin-top: var(--szot-input-margin-top, 0.5rem);
+
+    --message-top: var(--szot-input-message-top, calc(37.19px + var(--border)));
+    --message-left: var(--szot-input-message-left, 1rem);
+    --message-error-bottom-focus: var(--szot-input-message-error-bottom-focus, -2rem);
+  }
+
+  .form-div {
+    --margin-top: var(--szot-textarea-margin-top, 0.5rem);
     --max-width: var(--szot-input-max-width, 100%);
 
     --input-top: var(--szot-input-top, 0);
@@ -247,10 +261,6 @@
     --border-color-focus: var(--szot-input-border-color-focus, var(--default-border-color));
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
-
-    --message-top: var(--szot-input-message-top, calc(37.19px + var(--border)));
-    --message-left: var(--szot-input-message-left, 1rem);
-    --message-error-bottom-focus: var(--szot-input-message-error-bottom-focus, -2rem);
 
     &.input-style-primary {
       --default-label-color: var(--theme-primary-txt);
@@ -343,7 +353,6 @@
     }
 
     position: relative;
-    margin-bottom: var(--margin-bottom);
     margin-top: var(--margin-top);
     max-width: var(--max-width);
     height: fit-content;
@@ -473,31 +482,38 @@
   }
 
   p {
-    position: absolute;
-    z-index: 1;
+    position: relative;
     transition: opacity 0.2s linear, bottom 0.2s;
-    top: var(--message-top);
-    left: var(--message-left);
+    margin-left: var(--message-left);
 
     &.helper {
       @include m.form-field-helper-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
+      height: 0;
       @include m.text-color(var(--theme-info));
     }
     &.helper-show {
       @include m.form-field-helper-text();
       @include m.text-color(var(--theme-info));
+      height: fit-content;
     }
     &.error {
       @include m.form-field-error-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
       @include m.text-color(var(--theme-error));
+      height: 0;
+      margin-bottom: var(--margin-bottom);
     }
     &.error-show {
       @include m.form-field-error-text();
       @include m.text-color(var(--theme-error));
+      height: fit-content;
+    }
+
+    &.show {
+      margin-bottom: calc(var(--margin-bottom) - 20px);
     }
   }
 
