@@ -243,7 +243,7 @@
     transition: opacity 0.2s linear, bottom 0.2s;
   }
   .error-show {
-    display: unset;
+    display: block;
     color: var(--theme-error);
     @include m.form-field-error-text();
   }

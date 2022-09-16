@@ -429,6 +429,7 @@
   .error-show {
     display: unset;
     @include m.form-field-error-text();
+    @include m.text-color(var(--theme-error));
   }
 
 

@@ -170,6 +170,7 @@
     }
     .error-show {
       display: inherit;
+      @include m.text-color(var(--theme-error));
       @include m.form-field-error-text();
     }
   }
