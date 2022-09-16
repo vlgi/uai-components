@@ -133,53 +133,73 @@
   });
 </script>
 
-<div
-  class="textarea-container textarea-style-{textareaStyle}"
-  class:invalid
-  bind:this={wrapperElement}
->
+<div class="content-container">
   <div
-    class="textarea-wrapper"
-    class:resizable
-    style="--max-auto-height:{maxHeight}"
+    class="textarea-container textarea-style-{textareaStyle}"
+    class:invalid
+    bind:this={wrapperElement}
   >
-    <pre style="min-height:{minHeight}; max-height:{maxHeight}"
-      aria-hidden="true"
+    <div
+      class="textarea-wrapper"
+      class:resizable
+      style="--max-auto-height:{maxHeight}"
     >
-      {`${value || placeholder}\n`}
-    </pre>
-    <textarea
-      on:focus={focused}
-      on:input={changed}
-      on:input={setValue}
-      on:blur={focused}
-      on:blur={validation}
-      on:input
-      on:change
-      bind:this={textareaElement}
-      {rows}
-      {name}
-      {id}
-      {placeholder}
-      {value}
-      {disabled}
-      {readonly}
-      {required}
-      {...textareaAttributes}
-    />
-  </div>
-  <label for="{id}" class="label" class:required>
-    <div class="label-text">
-      {label}
+      <pre style="min-height:{minHeight}; max-height:{maxHeight}"
+        aria-hidden="true"
+      >
+        {`${value || placeholder}\n`}
+      </pre>
+      <textarea
+        on:focus={focused}
+        on:input={changed}
+        on:input={setValue}
+        on:blur={focused}
+        on:blur={validation}
+        on:input
+        on:change
+        bind:this={textareaElement}
+        {rows}
+        {name}
+        {id}
+        {placeholder}
+        {value}
+        {disabled}
+        {readonly}
+        {required}
+        {...textareaAttributes}
+      />
     </div>
-  </label>
+    <label for="{id}" class="label" class:required>
+      <div class="label-text">
+        {label}
+      </div>
+    </label>
 
+  </div>
   <p class="helper message" class:helper-show={helper}>{helperText}</p>
-  <p class="error message" class:error-show={invalid}>{eMsg}</p>
+  <p
+    class="error message"
+    class:error-show={invalid}
+    class:show={(helper && helperText?.length > 0) || invalid}
+  >
+    {eMsg}
+  </p>
 </div>
 
 <style lang="scss">
   @use "src/styles/mixins" as m;
+
+  .content-container {
+    --margin-bottom: var(--szot-textarea-margin-bottom, 1.5rem);
+
+    --message-left: var(--szot-textarea-message-left, 1rem);
+    --message-error-bottom-focus: var(
+      --szot-textarea-message-error-bottom-focus,
+      -2rem
+    );
+
+    margin-bottom: calc(var(--margin-bottom) - 20px);
+  }
 
   .textarea-container {
     --label-color: var(--szot-textarea-label-color, var(--default-label-color));
@@ -193,18 +213,11 @@
       --szot-textarea-placeholder-color,
       var(--default-placeholder-color)
     );
-    --margin-bottom: var(--szot-textarea-margin-bottom, 1.5rem);
     --margin-top: var(--szot-textarea-margin-top, 0.5rem);
     --max-width: var(--szot-textarea-max-width, 100%);
     --max-height: var(--szot-textarea-max-height, var(--max-auto-height));
     --padding: var(--szot-textarea-padding, var(--theme-fields-padding));
 
-    --message-bottom: var(--szot-textarea-texthelp-bottom, -1.2rem);
-    --message-left: var(--szot-textarea-texthelp-left, 1rem);
-    --message-error-bottom-focus: var(
-      --szot-textarea-message-error-bottom-focus,
-      -2rem
-    );
     --border-radius: var(--szot-textarea-border-radius, var(--theme-small-shape));
 
     &.textarea-style-primary {
@@ -235,7 +248,6 @@
     @include m.border(var(--border), var(--border-color));
     border-radius:var(--border-radius);
     position: relative;
-    margin-bottom: var(--margin-bottom);
     margin-top: var(--margin-top);
     height: fit-content;
     width: 100%;
@@ -366,31 +378,38 @@
     }
   }
   .message {
-    position: absolute;
-    z-index: 1;
+    position: relative;
     max-width: 11rem;
-    bottom: var(--message-bottom);
-    left: var(--message-left);
+    margin-left: var(--message-left);
 
     &.helper {
       @include m.form-field-helper-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
       @include m.text-color(var(--theme-info));
+      height: 0;
     }
     &.helper-show {
       @include m.form-field-helper-text();
       @include m.text-color(var(--theme-info));
+      height: fit-content;
     }
     &.error {
       @include m.form-field-error-text();
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
       @include m.text-color(var(--theme-error));
+      height: 0;
+      margin-bottom: var(--margin-bottom);
     }
     &.error-show {
       @include m.form-field-error-text();
       @include m.text-color(var(--theme-error));
+      height: fit-content;
+    }
+
+    &.show {
+      margin-bottom: calc(var(--margin-bottom) - 20px);
     }
   }
 </style>
