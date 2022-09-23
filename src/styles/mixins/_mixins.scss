@@ -99,3 +99,18 @@
   background-clip: text;
   -webkit-background-clip: text;
 }
+
+@mixin clip-path-border($border_width, $label_width, $label_height, $label_padding, $label_left, $icon_width: 0px) {
+  --top-left-corner-component: 0 0;
+  --top-right-corner-component: 100% 0%;
+  --bottom-left-corner-component: 0% 100%;
+  --bottom-right-corner-component: 100% 100%;
+  --top-left-corner-label: calc(#{$label_left} + #{$border_width} - #{$label_padding} + #{$icon_width}) 0;
+  --top-right-corner-label: calc(#{$label_left} + #{$border_width} + #{$label_width} + #{$label_padding} + #{$icon_width}) 0;
+  --bottom-left-corner-label: calc(#{$label_left} + #{$border_width} - #{$label_padding} + #{$icon_width}) calc((#{$label_height} / 2) + #{$border_width});
+  --bottom-right-corner-label: calc(#{$label_left} + #{$border_width} + #{$label_width} + #{$label_padding} + #{$icon_width}) calc((#{$label_height} / 2) + #{$border_width});
+
+  clip-path: polygon(var(--top-left-corner-component), var(--top-left-corner-label), var(--bottom-left-corner-label),
+        var(--bottom-right-corner-label), var(--top-right-corner-label), var(--top-right-corner-component),
+        var(--bottom-right-corner-component), var(--bottom-left-corner-component));
+}

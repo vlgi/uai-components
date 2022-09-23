@@ -168,6 +168,7 @@ export const CustomExample: any = Template({
           + "--szot-input-border-radius: 1.5rem;"
           + "--szot-input-border: 10px;",
 });
+
 CustomExample.parameters = {
   docs: {
     source: {

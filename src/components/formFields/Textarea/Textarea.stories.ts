@@ -92,11 +92,12 @@ export const CustomExample: any = Template({
   type: "text",
   placeholder: "Digite algo:",
   rows: 3,
-  style: "--szot-textarea-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-textarea-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+  style: "--szot-textarea-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
           + "--szot-textarea-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-textarea-placeholder-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
+          + "--szot-textarea-placeholder-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+          + "--szot-textarea-border: 10px;",
 });
+
 CustomExample.parameters = {
   docs: {
     source: {
