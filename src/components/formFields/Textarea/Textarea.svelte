@@ -51,6 +51,8 @@
   let helper = false;
   let invalid = forceInvalid;
   let wrapperElement: HTMLElement;
+  let clipPathVariables = "";
+  let labelComponent: HTMLElement;
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -120,6 +122,12 @@
     setFieldValue(name, value, isValid);
   }
 
+  $: if (wrapperElement && labelComponent) {
+    clipPathVariables = `--border-width: ${getComputedStyle(wrapperElement).borderWidth};`
+                + `--label-height: ${getComputedStyle(labelComponent).height};`
+                + `--label-width: ${getComputedStyle(labelComponent).width};`;
+  }
+
   onMount(() => {
     if (isInsideContext) {
       addFieldToContext(name, value, isValid, required, wrapperElement, validation, forceValue);
@@ -133,7 +141,10 @@
   });
 </script>
 
-<div class="content-container">
+<div
+  class="content-container"
+  style={clipPathVariables}
+>
   <div
     class="textarea-container textarea-style-{textareaStyle}"
     class:invalid
@@ -169,7 +180,7 @@
         {...textareaAttributes}
       />
     </div>
-    <label for="{id}" class="label" class:required>
+    <label for="{id}" class="label" class:required bind:this={labelComponent}>
       <div class="label-text">
         {label}
       </div>
@@ -199,12 +210,21 @@
     );
 
     margin-bottom: calc(var(--margin-bottom) - 20px);
+    .textarea-container::before {
+      @include m.clip-path-border(
+        var(--border-width),
+        var(--label-width),
+        var(--label-height),
+        0px,
+        12.8px,
+      );
+    }
   }
 
   .textarea-container {
     --label-color: var(--szot-textarea-label-color, var(--default-label-color));
     --label-padding: var(--szot-textarea-label-padding, 0 0.3125rem);
-    --label-background-color: var(--szot-textarea-background-color, white);
+    --label-background-color: var(--szot-textarea-background-color, transparent);
 
     --textarea-color-text: var(--szot-textarea-color-text, var(--default-textarea-color));
     --border-color: var(--szot-textarea-border-color, var(--default-border-color));

@@ -106,6 +106,9 @@ let searchQuery: string;
 let filteredOptions: TOption[];
 
 let wrapperElement: HTMLElement;
+let clipPathVariables = "";
+let labelComponent: HTMLElement;
+let applyClipPath = false;
 
 const isInsideContext = hasContext("FormContext");
 const {
@@ -222,6 +225,15 @@ $: if (wrapperElement && isInsideContext) {
   setFieldValue(name, selected, isValid);
 }
 
+$: if (wrapperElement && labelComponent) {
+  clipPathVariables = `--border-width: ${getComputedStyle(wrapperElement).borderWidth};`
+              + `--label-height: ${getComputedStyle(labelComponent).height};`
+              + `--label-width: ${getComputedStyle(labelComponent).width};`;
+}
+
+$: applyClipPath = (dropdownOpen
+  || (selected && (!Array.isArray(selected) || selected?.length !== 0)));
+
 onMount(() => {
   if (isInsideContext) {
     addFieldToContext(name, selected, isValid, required, wrapperElement, validate, forceValue);
@@ -235,8 +247,16 @@ onDestroy(() => {
 });
 </script>
 
-<div class="select-wrapper" bind:this={wrapperElement} class:select-disabled={disabled}>
-  <div class="select border-{selectBorder} style-{selectStyle}" tabindex="0"
+<div
+  class="select-wrapper"
+  bind:this={wrapperElement}
+  class:select-disabled={disabled}
+  style={clipPathVariables}
+  class:apply-clip-path={applyClipPath}
+>
+  <div
+    tabindex="0"
+    class="select border-{selectBorder} style-{selectStyle}"
     class:error={!isVisuallyValid}
     class:select-inFocus={dropdownOpen}
     on:focus={() => toggleOpen()}
@@ -249,18 +269,25 @@ onDestroy(() => {
   >
 
     <!-- Floating label for the select -->
-    <label class="select-label" class:required
+    <label
+      class="select-label"
+      class:required
       id="{id}-label"
       for="{id}-custom"
       on:click={() => toggleOpen()}
-      class:floated={dropdownOpen || isFilled(selected)}>
+      class:floated={dropdownOpen || isFilled(selected)}
+      bind:this={labelComponent}
+    >
       <div class="label-text">
         {label}
       </div>
     </label>
 
     <!-- Select's box that shows which option is selected -->
-    <div class="select-box select-{dropdownOpen}" role="combobox" tabindex="-1"
+    <div
+      class="select-box select-{dropdownOpen}"
+      role="combobox"
+      tabindex="-1"
       class:select-disabled={disabled}
       class:selected-multiple={multiple && isFilled(selected)}
       on:click={() => toggleOpen()}
@@ -359,7 +386,7 @@ onDestroy(() => {
   * {
     --component-color: var(--select-focus-color, var(--theme-color));
     --margin-top: var(--szot-select-margin-top, 0.5rem);
-    --component-background-color: var(--szot-select-background-color, white);
+    --component-background-color: var(--szot-select-background-color, transparent);
     --component-border-radius: var(--szot-select-border-radius, var(--theme-small-shape));
     --component-padding-vertical: var(--szot-select-padding-vertical, var(--theme-fields-padding));
     --component-padding-horizontal: var(--szot-select-padding-horizontal, var(--theme-fields-padding));
@@ -373,6 +400,20 @@ onDestroy(() => {
     --select-badge-border-color: var(--szot-select-badge-border-color, var(--component-border-color));
     --search-input-border-color: var(--szot-select-search-input-border-color, var(--component-border-color));
     --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--component-color));
+  }
+
+  .select-wrapper {
+    &.apply-clip-path {
+      .select::before {
+        @include m.clip-path-border(
+          var(--border-width),
+          var(--label-width),
+          var(--label-height),
+          0px,
+          var(--component-padding-horizontal)
+        );
+      }
+    }
   }
 
   .hidden {

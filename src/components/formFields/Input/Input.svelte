@@ -72,6 +72,10 @@
   let eMsg = "";
   let wrapperElement: HTMLElement;
   let inFocus = false;
+  let clipPathVariables = "";
+  let labelComponent: HTMLElement;
+  let iconComponent: HTMLElement;
+  let applyClipPath = false;
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -148,6 +152,15 @@
     setFieldValue(name, value, isValid);
   }
 
+  $: if (wrapperElement && labelComponent) {
+    clipPathVariables = `--border-width: ${getComputedStyle(wrapperElement).borderWidth};`
+                + `--label-height: ${getComputedStyle(labelComponent).height};`
+                + `--label-width: ${getComputedStyle(labelComponent).width};`
+                + `--icon-width: ${icon && iconPosition === "left" ? getComputedStyle(iconComponent)?.width : "0px"};`;
+  }
+
+  $: applyClipPath = (inFocus || value?.length > 0);
+
   onMount(() => {
     if (isInsideContext) {
       addFieldToContext(name, value, isValid, required, wrapperElement, validation, forceValue);
@@ -160,8 +173,11 @@
     }
   });
 </script>
-<div class="content-container">
-
+<div
+  class="content-container"
+  class:apply-clip-path={applyClipPath}
+  style={clipPathVariables}
+>
   <div
     class="form-div input-style-{inputStyle} border-{border}"
     class:icons-left={iconPosition === "left" && icon}
@@ -193,18 +209,18 @@
       {...inputAttributes}
       aria-required={required}
     />
-    <label for="{id}" class="form-label" class:required>
+    <label for="{id}" class="form-label" class:required bind:this={labelComponent}>
       <div class="label-text">
         {label}
       </div>
     </label>
     {#if icon}
       {#if iconClick}
-        <button class="icon icon-cursor" on:click>
+        <button class="icon icon-cursor" on:click bind:this={iconComponent}>
           <Icon iconName={icon}/>
         </button>
       {:else}
-        <label for={id} class="icon">
+        <label for={id} class="icon" bind:this={iconComponent}>
           <Icon iconName={icon}/>
         </label>
       {/if}
@@ -231,6 +247,21 @@
     --message-top: var(--szot-input-message-top, calc(37.19px + var(--border)));
     --message-left: var(--szot-input-message-left, 1rem);
     --message-error-bottom-focus: var(--szot-input-message-error-bottom-focus, -2rem);
+
+    --label-left: var(--szot-input-label-left, 1.2rem);
+
+    &.apply-clip-path {
+      .border-outline::before {
+        @include m.clip-path-border(
+          var(--border-width),
+          calc((0.7 / 0.85) * var(--label-width)),
+          calc((0.7 / 0.85) * var(--label-height)),
+          6px,
+          var(--label-left),
+          var(--icon-width, 0px),
+        );
+      }
+    }
   }
 
   .form-div {
@@ -245,10 +276,9 @@
     --border-color: var(--szot-input-border-color, var(--default-border-color));
     --border-radius: var(--szot-input-border-radius, var(--theme-small-shape));
 
-    --label-left: var(--szot-input-label-left, 1.2rem);
     --label-padding: var(--szot-input-label-padding, 0rem);
     --label-color: var(--szot-input-label-color, var(--default-label-color));
-    --background-color: var(--szot-input-background-color, white);
+    --background-color: var(--szot-input-background-color, transparent);
 
     --placeholder-color: var(
       --szot-input-placeholder-color,
@@ -300,6 +330,7 @@
       cursor: initial;
       opacity: 0.75;
     }
+
     &.visuallyInvalid {
       --border-color: var(--theme-error);
       --label-color: var(--theme-error);
