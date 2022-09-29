@@ -93,7 +93,7 @@
   }
 </script>
 
-<div class="d-content dialog-wrapper dialog-type-{type}" role="dialog" aria-hidden={!opened}>
+<div class="d-content dialog-wrapper dialog-wrapper-container dialog-type-{type}" role="dialog" aria-hidden={!opened}>
   <Modal
     bind:opened
     closeOnClickOut={!disableCloseOnEvents}
@@ -138,45 +138,51 @@
         -->
         <div class="button-container">
           {#if type === "confirm" || type === "confirmCancel"}
-            <Button
-              buttonStyle="dark"
-              buttonStyleType="outline"
-              size="small"
-              buttonAttributes={{
-                autofocus: true,
-              }}
-              on:click={sendConfirm}
-            >
-              {confirmButtonTxt}
-            </Button>
+            <div class="confirm-button-container">
+              <Button
+                buttonStyle="dark"
+                buttonStyleType="filled"
+                size="small"
+                buttonAttributes={{
+                  autofocus: true,
+                }}
+                on:click={sendConfirm}
+              >
+                {confirmButtonTxt}
+              </Button>
+            </div>
           {/if}
 
           {#if type === "confirmCancel"}
-            <Button
-              buttonStyle="dark"
-              buttonStyleType="filled"
-              size="small"
-              buttonAttributes={{
-                autofocus: true,
-              }}
-              on:click={sendCancel}
-            >
-              {cancelButtonTxt}
-            </Button>
+            <div class="cancel-button-container">
+              <Button
+                buttonStyle="dark"
+                buttonStyleType="outline"
+                size="small"
+                buttonAttributes={{
+                  autofocus: true,
+                }}
+                on:click={sendCancel}
+              >
+                {cancelButtonTxt}
+              </Button>
+            </div>
           {/if}
 
           {#if typeIsOthers}
-            <Button
-              buttonStyle="dark"
-              buttonStyleType="filled"
-              size="small"
-              buttonAttributes={{
-                autofocus: true,
-              }}
-              on:click={sendConfirm}
-            >
-              {othersButtonTxt}
-            </Button>
+            <div class="others-button-container">
+              <Button
+                buttonStyle="dark"
+                buttonStyleType="filled"
+                size="small"
+                buttonAttributes={{
+                  autofocus: true,
+                }}
+                on:click={sendConfirm}
+              >
+                {othersButtonTxt}
+              </Button>
+            </div>
           {/if}
         </div>
         <!-- /Buttons -->
