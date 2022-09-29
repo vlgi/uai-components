@@ -11,7 +11,22 @@ css variables.
 
 For the content, header, and footer, you can change every thing using the slots.
 
-The text color can be customized with the variable: --szot-dialog-text-color,
-if not set the default is inherit.
+| CSS Property                   | Descripiton                               | Default |
+| ------------------------------ | ----------------------------------------- | ------- |
+| --szot-dialog-text-color       | change the color of text inside dialog    | inherit |
 
-**NOTE: using css variables for the `Button` will change all the buttons inside dialog.**
+You can also use custom variables from [Modal](?path=/story/components-modal-custom--page) component to change Dialog, once the Dialog is a Modal.
+
+If you want to change only the dialog properties, you need to reference globally the `dialog-wrapper-container`
+class and change css properties of modal inside this class.
+
+# Buttons Style
+
+For change style of buttons of dialog separately, you need to reference globally the classes of every button
+container and change the css custom properties of [Buttons](?path=/story/components-formfields-button-custom--page) inside every container.
+
+| Button         | Container Class          |
+| -------------- | ------------------------ |
+| cancel button  | cancel-button-container  |
+| confirm button | confirm-button-container |
+| other button   | others-button-container  |

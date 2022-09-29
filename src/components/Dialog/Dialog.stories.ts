@@ -3,6 +3,7 @@ import type { ArgType } from "@storybook/addons";
 import Dialog from "./Dialog.svelte";
 import DialogOpenCloseExampleComponent from "./DialogOpenCloseExample.svelte";
 import DialogShorthandComponent from "./DialogShorthand.svelte";
+import DialogCustomExampleComponent from "./DialogCustomExample.svelte";
 
 export default {
   title: "Components/Dialog",
@@ -75,3 +76,22 @@ const DialogShorthandTemplate = (_args: ArgType) => {
 };
 
 export const DialogShorthandExample = DialogShorthandTemplate({});
+
+const CustomTemplate = (_args: ArgType) => {
+  const ret = ({ ...props }) => ({
+    Component: DialogCustomExampleComponent,
+    props,
+    on: {
+      confirm: action("on:confirm"),
+      cancel: action("on:cancel"),
+    },
+  });
+  ret.args = _args;
+  return ret;
+};
+
+export const CustomExample = CustomTemplate({
+  style: "--szot-dialog-text-color: green; --szot-modal-bg-color: red;",
+  title: "Test",
+  content: "testing component style",
+});
