@@ -4,9 +4,7 @@ import { Meta } from "@storybook/addon-docs";
 
 # Checkbox Custom
 
-<p>
-  You can change the css variables globally, like:
-</p>
+<p>You can change the css variables globally, like:</p>
 
 ```css
 :root {
@@ -15,8 +13,8 @@ import { Meta } from "@storybook/addon-docs";
 ```
 
 <p>
-  But you can change globally the css variables of a specific style type by setting
-  the values of the variables of the class .checkbox.style-type-
+  But you can change globally the css variables of a specific style type by
+  setting the values of the variables of the class .checkbox.style-type-
   <strong>styleType</strong>, where <strong>styleType</strong> is the name of the
   style type ("checkbox-input" , "switch" , "text-switch"). If you want to use this
   feature locally, you need to use the where css feature.
@@ -46,26 +44,29 @@ import { Meta } from "@storybook/addon-docs";
 
 ## Custom variables for checkbox button
 
-| CSS Property                  | Description                 | Default         |
-| ----------------------------- | --------------------------- | --------------- |
-| --szot-checkbox-margin        | Set checkbox margin         | 0.3125rem       |
-| --szot-checkbox-padding       | Set checkbox padding        | 0 0.375em       |
-| --szot-checkbox-size          | Set checkbox button size    | 1rem            |
-| --szot-checkbox-color         | Set component border color  | --szot-dark-txt |
-| --szot-checkbox-label-color   | Set checkbox label color    | --szot-dark-txt |
-| --szot-checkbox-border-radius | Set component border radius | 0.15em          |
-| --szot-checkbox-border-size   | sets the border thickness   | 0.15em          |
+| CSS Property                      | Description                             | Default          |
+| --------------------------------- | --------------------------------------- | ---------------- |
+| --szot-checkbox-margin            | Set checkbox margin                     | 0.3125rem        |
+| --szot-checkbox-padding           | Set checkbox padding                    | 0 0.375em        |
+| --szot-checkbox-size              | Set checkbox button size                | 1rem             |
+| --szot-checkbox-color             | Set component color                     | --szot-dark-txt  |
+| --szot-checkbox-checked-color     | Set component color on checked          | --checkbox-color |
+| --szot-checkbox-label-color       | Set checkbox label color                | --szot-dark-txt  |
+| --szot-checkbox-border-radius     | Set component border radius             | 0.15em           |
+| --szot-checkbox-border-size       | Set the border thickness                | 0.15em           |
+| --szot-checkbox-label-margin-left | set distance between checkbox and label | 1.25rem          |
 
 ## Custom variables for checkbox button with "switch" styleType
 
-| CSS Property                         | Description                   | Default          |
-| ------------------------------------ | ----------------------------- | ---------------- |
-| --szot-checkbox-switch-background    | Set switch background         | #cecece          |
-| --szot-checkbox-switch-color         | Set switch button color       | --theme-dark-txt |
-| --szot-checkbox-switch-checked-color | Set switch color when checked | --switch-color   |
-| --szot-checkbox-switch-width         | Set switch button width       | 3.25rem          |
-| --szot-checkbox-switch-height        | Set switch button height      | 1.5rem           |
-| --szot-checkbox-border-radius        | Set component border radius   | 2.125rem         |
+| CSS Property                         | Description                             | Default          |
+| ------------------------------------ | --------------------------------------- | ---------------- |
+| --szot-checkbox-switch-background    | Set switch background                   | #cecece          |
+| --szot-checkbox-switch-color         | Set switch button color                 | --theme-dark-txt |
+| --szot-checkbox-switch-checked-color | Set switch color when checked           | --switch-color   |
+| --szot-checkbox-switch-width         | Set switch button width                 | 3.25rem          |
+| --szot-checkbox-switch-height        | Set switch button height                | 1.5rem           |
+| --szot-checkbox-border-radius        | Set component border radius             | 2.125rem         |
+| --szot-checkbox-label-margin-left    | set distance between checkbox and label | 1.25rem          |
 
 ## Custom variables for checkbox button with "text-switch" styleType
 
