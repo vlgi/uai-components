@@ -109,7 +109,7 @@
 </script>
 
 <div class="checkbox style-type-{styleType}" class:invalid={!isValid}>
-  <div class="border-{styleType}" class:text-switch={styleType === "text-switch"}>
+  <div class="border-{styleType}" class:checked class:text-switch={styleType === "text-switch"}>
     <input
       type="checkbox"
       {name}
@@ -164,15 +164,17 @@
       @each $style in $styles {
         &-#{$style} {
           --checkbox-margin: var(--szot-checkbox-margin, 0.3125rem);
-          --chackbox-padding: var(--szot-checkbox-padding, 0 0.375em);
+          --checkbox-padding: var(--szot-checkbox-padding, 0 0.375em);
           --checkbox-size: var(--szot-checkbox-size, 0.7rem);
           --border-size: var(--szot-checkbox-border-size, 0.15rem);
           --border-radius: var(--szot-checkbox-border-radius, var(--border-size));
           --checkbox-color: var(--szot-checkbox-color, var(--theme-dark-txt));
+          --checkbox-checked-color: var(--szot-checkbox-checked-color, var(--checkbox-color));
           --checkbox-label-color: var(
             --szot-checkbox-label-color,
             var(--theme-dark-txt)
           );
+          --checkbox-label-margin-left: var(--szot-checkbox-label-margin-left, 1.25rem);
         }
       }
 
@@ -218,6 +220,12 @@
       border-radius: var(--border-radius);
     }
 
+    .border-checkbox-input {
+      &.checked {
+        @include m.border(var(--border-size), var(--checkbox-checked-color));
+      }
+    }
+
     .checkbox-input {
       /* Remove most all native input styles */
       appearance: none;
@@ -241,10 +249,11 @@
 
     .checkbox-input:checked::before {
       transform: scale(1);
+      background: var(--checkbox-checked-color);
     }
 
     .checkbox-label {
-      margin-left: 20px;
+      margin-left: var(--checkbox-label-margin-left);
       @include m.text-color(var(--checkbox-label-color));
       font-weight: normal;
     }
