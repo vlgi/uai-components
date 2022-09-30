@@ -10,6 +10,7 @@
     {...$$restProps}
     on:input
     on:change
+    on:click
     bind:value
   />
 </div>
