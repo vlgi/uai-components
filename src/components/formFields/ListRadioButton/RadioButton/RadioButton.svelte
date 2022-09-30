@@ -38,6 +38,7 @@
     {id}
     {value}
     bind:group
+    on:click
     class="radio-input radio-style-type-{radioStyleType}"
   />
 

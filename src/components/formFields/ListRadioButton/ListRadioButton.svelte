@@ -1,6 +1,6 @@
 <script lang="ts">
   import {
-    onMount, getContext, hasContext, onDestroy,
+    onMount, getContext, hasContext, onDestroy, createEventDispatcher,
   } from "svelte";
   import RadioButton from "./RadioButton/RadioButton.svelte";
   import type { TFormContext } from "../../Form/types";
@@ -57,6 +57,10 @@
 
   let eMsg = "";
   let wrapperElement: HTMLElement;
+
+  const dispatcher = createEventDispatcher<{
+    click: TRadioProps
+  }>();
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -135,6 +139,7 @@
           bind:group={value}
           value={radio.value}
           label={radio.label}
+          on:click={() => dispatcher("click", radio)}
         />
       </li>
     {/each}

@@ -1,10 +1,12 @@
 import type { ArgType } from "@storybook/addons";
+import { action } from "@storybook/addon-actions";
 import RadioButton from "./RadioButton.svelte";
 
 export default {
   title: "Components/FormFields/RadioButton",
   component: RadioButton,
   argTypes: {
+    onClick: { action: "on:click" },
     radioStyleType: {
       control: {
         type: "select",
@@ -18,6 +20,9 @@ const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
     Component: RadioButton,
     props,
+    on: {
+      click: action("on:click"),
+    },
   });
   ret.args = _args;
   return ret;

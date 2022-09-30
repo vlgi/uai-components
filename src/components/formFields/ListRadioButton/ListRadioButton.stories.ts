@@ -1,4 +1,5 @@
 import type { ArgType } from "@storybook/addons";
+import { action } from "@storybook/addon-actions";
 import ListRadioButton from "./ListRadioButton.svelte";
 import ListRadioButtonWrapper from "./ListRadioButtonWrapper.svelte";
 
@@ -11,6 +12,9 @@ const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
     Component: ListRadioButtonWrapper,
     props,
+    on: {
+      click: action("on:click"),
+    },
   });
   ret.args = _args;
   return ret;
