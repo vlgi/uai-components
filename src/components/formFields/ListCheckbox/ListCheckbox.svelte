@@ -139,13 +139,14 @@
     }
   });
 
-  function setChecked(ev: CustomEvent) {
-    eMsg = "";
-    const x = ev.detail as string;
-    if (values.includes(x)) {
-      values = values.filter((item) => item !== x);
+  function setChecked(ev: CustomEvent<{ value: string|boolean, checked: boolean } >) {
+    eMsg = ""; // reset the error message
+
+    const { checked, value } = ev.detail;
+    if (checked) {
+      values = values.concat(String(value));
     } else {
-      values = values.concat(x);
+      values = values.filter((item) => item !== value);
     }
     values = values.sort();
   }

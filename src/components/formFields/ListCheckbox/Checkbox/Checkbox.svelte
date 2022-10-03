@@ -7,7 +7,9 @@
 
   type TCheckboxStyleType = "checkbox-input" | "switch" | "text-switch";
 
-  const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher<{
+    checkItem: { value: string|boolean, checked: boolean }
+  }>();
 
   /**
    * The label text for this element
@@ -34,7 +36,8 @@
   export let checked = false;
 
   /**
-   * Value returned to the form (if inside a form) on checked=true
+   * Value returned to the form and to the event checkItem on checked=true,
+   * if checked is false will return false to the form and to the event.
    */
   export let value: string | boolean = true;
 
@@ -71,10 +74,14 @@
     }
   }
 
-  function dispatchValue() {
-    dispatch("checkItem", value);
+  function handleCheck() {
+    // await a svelte tick to process checked bind;
+    checked = !checked;
+    dispatch("checkItem", {
+      value,
+      checked,
+    });
   }
-
   // function to form context force input value
   function forceValue(_value: unknown) {
     checked = (_value as string | boolean) === value;
@@ -115,20 +122,15 @@
       {name}
       {id}
       class={styleType}
-      bind:checked
+      {checked}
       bind:this={inputElement}
-      on:click={() => {
-        dispatchValue();
-      }}
+      on:click={handleCheck}
     />
     {#if styleType === "switch"}
       <span
         class="slider"
         class:checked
-        on:click={() => {
-          checked = !checked;
-          dispatchValue();
-        }}
+        on:click={handleCheck}
       >
         <span class="slider-checked" />
       </span>
