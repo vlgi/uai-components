@@ -91,7 +91,12 @@ const CustomTemplate = (_args: ArgType) => {
 };
 
 export const CustomExample = CustomTemplate({
-  style: "--szot-dialog-text-color: green; --szot-modal-bg-color: red;",
+  style: "--szot-dialog-text-color: green;"
+        + "--szot-modal-bg-color: red;"
+        + "--szot-modal-padding: 3rem;"
+        + "--szot-modal-close-txt-color: yellow;"
+        + "--szot-modal-close-bg-color: purple;",
   title: "Test",
   content: "testing component style",
+  showHeader: true,
 });

@@ -98,16 +98,17 @@
         <header class="modal-header">
           <!-- Set the modal header. e.g.: you can add a title, some buttons -->
           <slot name="modal-header"></slot>
-
-          <Button
-            icon="close"
-            buttonStyle="light"
-            size="round"
-            buttonAttributes={{
-              autofocus: true,
-            }}
-            on:click={ closeModal }
-          ></Button>
+          <div class="close-button-container">
+            <Button
+              icon="close"
+              buttonStyle="light"
+              size="round"
+              buttonAttributes={{
+                autofocus: true,
+              }}
+              on:click={ closeModal }
+            />
+          </div>
         </header>
       {/if}
       <div class="modal-content">
@@ -134,6 +135,7 @@
     --z-index: var(--szot-modal-z-index, 9999);
     --close-bg-color: var(--szot-modal-close-bg-color, var(--theme-light-surface));
     --close-txt-color: var(--szot-modal-close-txt-color, var(--theme-txt-on-light-surface));
+    --padding: var(--szot-modal-padding, 0.6rem);
 
     position: fixed;
     top: 0;
@@ -166,7 +168,7 @@
       height: var(--height);
       max-height: var(--max-height);
       max-width: var(--max-width);
-      padding: .6rem;
+      padding: var(--padding);
 
       border-radius: var(--theme-large-shape);
       box-shadow: var(--theme-high-shadow);
@@ -181,6 +183,11 @@
       grid-gap: 0.5em;
       border-radius: 15px 15px 0 0;
       align-items: center;
+
+      .close-button-container {
+        --szot-button-background-color: var(--close-bg-color);
+        --szot-button-icon-color: var(--close-txt-color);
+      }
     }
 
     .modal-content {

@@ -3,7 +3,8 @@ import Dialog from "./Dialog.svelte";
 type TDialogTypes = "confirm"|"confirmCancel"|"info"|"error"|"warning"|"success";
 type TOptions = {
   title: string,
-  content: string
+  content: string,
+  showHeader?: boolean,
 }
 
 export default class DialogShorthand extends Dialog {
