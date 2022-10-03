@@ -1,6 +1,6 @@
 {
   "name": "szot-ui-experimental",
-  "version": "1.13.1",
+  "version": "1.14.0",
   "svelte": "dist/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.umd.js",
@@ -9,7 +9,7 @@
     "prebuild": "rm -rf ./dist",
     "build": "rollup -c",
     "prepublishOnly": "npm run build",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check": "svelte-check --tsconfig ./tsconfig.json --threshold error",
     "lint": "npx eslint ./",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
