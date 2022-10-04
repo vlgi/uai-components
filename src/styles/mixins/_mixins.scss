@@ -105,10 +105,17 @@
   --top-right-corner-component: 100% 0%;
   --bottom-left-corner-component: 0% 100%;
   --bottom-right-corner-component: 100% 100%;
-  --top-left-corner-label: calc(#{$label_left} + #{$border_width} - #{$label_padding} + #{$icon_width}) 0;
-  --top-right-corner-label: calc(#{$label_left} + #{$border_width} + #{$label_width} + #{$label_padding} + #{$icon_width}) 0;
-  --bottom-left-corner-label: calc(#{$label_left} + #{$border_width} - #{$label_padding} + #{$icon_width}) calc((#{$label_height} / 2) + #{$border_width});
-  --bottom-right-corner-label: calc(#{$label_left} + #{$border_width} + #{$label_width} + #{$label_padding} + #{$icon_width}) calc((#{$label_height} / 2) + #{$border_width});
+
+  --horizontal-dislocation: calc(#{$label_left} + #{$icon_width} + #{$border_width});
+  --left-side: calc(var(--horizontal-dislocation) - #{$label_padding});
+  --right-side: calc(var(--left-side) + #{$label_width} + #{$label_padding});
+  --top-side: 0;
+  --bottom-side: calc((#{$label_height} / 2) + #{$border_width});
+
+  --top-left-corner-label: var(--left-side) var(--top-side);
+  --top-right-corner-label: var(--right-side) var(--top-side);
+  --bottom-left-corner-label: var(--left-side) var(--bottom-side);
+  --bottom-right-corner-label: var(--right-side) var(--bottom-side);
 
   clip-path: polygon(var(--top-left-corner-component), var(--top-left-corner-label), var(--bottom-left-corner-label),
         var(--bottom-right-corner-label), var(--top-right-corner-label), var(--top-right-corner-component),

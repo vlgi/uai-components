@@ -2,6 +2,7 @@
   import {
     onMount, getContext, hasContext, onDestroy,
   } from "svelte";
+  import { actionWatchSize } from "../../../actions/watchSize/watchSize";
   import type { TFormContext } from "../../Form/types";
 
   type TtextareaStyle = "primary" | "secondary" | "dark" | "light";
@@ -51,7 +52,11 @@
   let helper = false;
   let invalid = forceInvalid;
   let wrapperElement: HTMLElement;
-  let clipPathVariables = "";
+  let clipPathVariables = {
+    borderWidth: "0px",
+    labelWidth: "0px",
+    labelHeight: "0px",
+  };
   let labelComponent: HTMLElement;
 
   const isInsideContext = hasContext("FormContext");
@@ -113,6 +118,14 @@
     value = _value as string;
   };
 
+  function handleLabelResize(ev: CustomEvent<ResizeObserverSize>) {
+    clipPathVariables = {
+      ...clipPathVariables,
+      labelHeight: `${ev.detail.blockSize}px`,
+      labelWidth: `${ev.detail.inlineSize}px`,
+    };
+  }
+
   $: if (forceInvalid) validation();
   $: minHeight = `${1 + rows * 1.2}em`;
   $: maxHeight = maxRows ? `${1 + maxRows * 0.8}rem` : "auto";
@@ -123,9 +136,10 @@
   }
 
   $: if (wrapperElement && labelComponent) {
-    clipPathVariables = `--border-width: ${getComputedStyle(wrapperElement).borderWidth};`
-                + `--label-height: ${getComputedStyle(labelComponent).height};`
-                + `--label-width: ${getComputedStyle(labelComponent).width};`;
+    clipPathVariables = {
+      ...clipPathVariables,
+      borderWidth: `${getComputedStyle(wrapperElement).borderWidth}`,
+    };
   }
 
   onMount(() => {
@@ -143,7 +157,11 @@
 
 <div
   class="content-container"
-  style={clipPathVariables}
+  style="
+    --border-width: {clipPathVariables.borderWidth};
+    --label-height: {clipPathVariables.labelHeight};
+    --label-width: {clipPathVariables.labelWidth};
+  "
 >
   <div
     class="textarea-container textarea-style-{textareaStyle}"
@@ -180,7 +198,14 @@
         {...textareaAttributes}
       />
     </div>
-    <label for="{id}" class="label" class:required bind:this={labelComponent}>
+    <label
+      for="{id}"
+      class="label"
+      class:required
+      bind:this={labelComponent}
+      use:actionWatchSize
+      on:actionResize={handleLabelResize}
+    >
       <div class="label-text">
         {label}
       </div>

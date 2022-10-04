@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { setContext, createEventDispatcher, onMount } from "svelte";
+  import { setContext, createEventDispatcher } from "svelte";
   import type {
     TAddFieldToContext,
     TSetFieldValue,

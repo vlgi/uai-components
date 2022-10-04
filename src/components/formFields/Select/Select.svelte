@@ -10,6 +10,7 @@ import Badge from "../../Badge/Badge.svelte";
 import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
 import type { TOption, TOptionsListBinds } from "./types";
 import type { TbadgeStyle, TbadgeStyleType } from "../../Badge/types";
+import { actionWatchSize } from "../../../actions/watchSize/watchSize";
 
 // True if the select should select multiple values
 export let multiple = false;
@@ -106,7 +107,11 @@ let searchQuery: string;
 let filteredOptions: TOption[];
 
 let wrapperElement: HTMLElement;
-let clipPathVariables = "";
+let clipPathVariables = {
+  borderWidth: "0px",
+  labelWidth: "0px",
+  labelHeight: "0px",
+};
 let labelComponent: HTMLElement;
 let applyClipPath = false;
 
@@ -216,6 +221,14 @@ function forceValue(_value: unknown) {
   selected = _value as TOption | TOption[] | null;
 }
 
+function handleLabelResize(ev: CustomEvent<ResizeObserverSize>) {
+  clipPathVariables = {
+    ...clipPathVariables,
+    labelHeight: `${ev.detail.blockSize}px`,
+    labelWidth: `${ev.detail.inlineSize}px`,
+  };
+}
+
 $: if (forceInvalid) validate();
 $: selectedSingle = Array.isArray(selected) ? null : selected;
 $: selectedMultiple = Array.isArray(selected) ? selected : [];
@@ -226,9 +239,10 @@ $: if (wrapperElement && isInsideContext) {
 }
 
 $: if (wrapperElement && labelComponent) {
-  clipPathVariables = `--border-width: ${getComputedStyle(wrapperElement).borderWidth};`
-              + `--label-height: ${getComputedStyle(labelComponent).height};`
-              + `--label-width: ${getComputedStyle(labelComponent).width};`;
+  clipPathVariables = {
+    ...clipPathVariables,
+    borderWidth: getComputedStyle(wrapperElement).borderWidth,
+  };
 }
 
 $: applyClipPath = (dropdownOpen
@@ -251,7 +265,11 @@ onDestroy(() => {
   class="select-wrapper"
   bind:this={wrapperElement}
   class:select-disabled={disabled}
-  style={clipPathVariables}
+  style="
+    --border-width: {clipPathVariables.borderWidth};
+    --label-height: {clipPathVariables.labelHeight};
+    --label-width: {clipPathVariables.labelWidth};
+  "
   class:apply-clip-path={applyClipPath}
 >
   <div
@@ -277,6 +295,8 @@ onDestroy(() => {
       on:click={() => toggleOpen()}
       class:floated={dropdownOpen || isFilled(selected)}
       bind:this={labelComponent}
+      use:actionWatchSize
+      on:actionResize={handleLabelResize}
     >
       <div class="label-text">
         {label}
