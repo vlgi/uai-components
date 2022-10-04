@@ -3,7 +3,7 @@
 
   let fontSize = 1;
   let slowAdjust = false;
-  let target = window.innerWidth/2;
+  let target = window.innerWidth / 2;
   let inlineSize: number;
   let blockSize: number;
 
