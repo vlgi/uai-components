@@ -2,6 +2,7 @@
   import {
     onMount, getContext, hasContext, onDestroy,
   } from "svelte";
+  import { actionWatchSize } from "../../../actions/watchSize/watchSize";
   import type { TFormContext } from "../../Form/types";
   import Icon from "../../Icon/Icon.svelte";
 
@@ -72,9 +73,13 @@
   let eMsg = "";
   let wrapperElement: HTMLElement;
   let inFocus = false;
-  let clipPathVariables = "";
+  let clipPathVariables = {
+    borderWidth: "0px",
+    iconWidth: "0px",
+    labelWidth: "0px",
+    labelHeight: "0px",
+  };
   let labelComponent: HTMLElement;
-  let iconComponent: HTMLElement;
   let applyClipPath = false;
 
   const isInsideContext = hasContext("FormContext");
@@ -145,6 +150,14 @@
     }
   }
 
+  function handleLabelResize(ev: CustomEvent<ResizeObserverSize>) {
+    clipPathVariables = {
+      ...clipPathVariables,
+      labelHeight: `${ev.detail.blockSize}px`,
+      labelWidth: `${ev.detail.inlineSize}px`,
+    };
+  }
+
   $: if (forceInvalid) validation();
 
   // run only after mounted, because setFieldValue, must become after addFieldToContext
@@ -153,10 +166,11 @@
   }
 
   $: if (wrapperElement && labelComponent) {
-    clipPathVariables = `--border-width: ${getComputedStyle(wrapperElement).borderWidth};`
-                + `--label-height: ${getComputedStyle(labelComponent).height};`
-                + `--label-width: ${getComputedStyle(labelComponent).width};`
-                + `--icon-width: ${icon && iconPosition === "left" ? getComputedStyle(iconComponent)?.width : "0px"};`;
+    clipPathVariables = {
+      ...clipPathVariables,
+      borderWidth: getComputedStyle(wrapperElement).borderWidth,
+      iconWidth: icon && iconPosition === "left" ? getComputedStyle(labelComponent)?.marginLeft : "0px",
+    };
   }
 
   $: applyClipPath = (inFocus || value?.length > 0);
@@ -176,7 +190,12 @@
 <div
   class="content-container"
   class:apply-clip-path={applyClipPath}
-  style={clipPathVariables}
+  style="
+    --border-width: {clipPathVariables.borderWidth};
+    --label-height: {clipPathVariables.labelHeight};
+    --label-width: {clipPathVariables.labelWidth};
+    --icon-width: {clipPathVariables.iconWidth};
+  "
 >
   <div
     class="form-div input-style-{inputStyle} border-{border}"
@@ -209,18 +228,25 @@
       {...inputAttributes}
       aria-required={required}
     />
-    <label for="{id}" class="form-label" class:required bind:this={labelComponent}>
+    <label
+      for="{id}"
+      class="form-label"
+      class:required
+      bind:this={labelComponent}
+      use:actionWatchSize
+      on:actionResize={handleLabelResize}
+    >
       <div class="label-text">
         {label}
       </div>
     </label>
     {#if icon}
       {#if iconClick}
-        <button class="icon icon-cursor" on:click bind:this={iconComponent}>
+        <button class="icon icon-cursor" on:click>
           <Icon iconName={icon}/>
         </button>
       {:else}
-        <label for={id} class="icon" bind:this={iconComponent}>
+        <label for={id} class="icon">
           <Icon iconName={icon}/>
         </label>
       {/if}
@@ -254,10 +280,10 @@
       .border-outline::before {
         @include m.clip-path-border(
           var(--border-width),
-          calc((0.7 / 0.85) * var(--label-width)),
-          calc((0.7 / 0.85) * var(--label-height)),
-          6px,
-          var(--label-left),
+          var(--label-width),
+          var(--label-height),
+          0px,
+          var(--label-focus-left),
           var(--icon-width, 0px),
         );
       }
@@ -338,10 +364,10 @@
       --label-not-focus-color: var(--theme-error);
       .form-input {
         color: var(--theme-error);
-        + .label-text + .icon {
+        & ~ .icon {
           @include m.text-color(var(--theme-error));
         }
-        + .label-text {
+        & ~ .form-label .label-text {
           @include m.text-color(var(--theme-error));
         }
       }
@@ -400,26 +426,17 @@
     border:none;
     border-radius: var(--border-radius);
 
-    &:focus + .form-label {
-      z-index: 10;
-      top: 0;
-      left: var(--label-focus-left);
-      transform: translateY(-55%);
-      padding: 0 0.3125rem;
-      @include m.form-field-label-floated-size;
-      .label-text {
-        @include m.text-color(var(--label-focus-color));
-      }
-    }
-    &:not(:placeholder-shown).form-input:not(:focus) + .form-label {
-      z-index: 10;
-      top: 0;
-      left: var(--label-focus-left);
-      transform: translateY(-55%);
-      padding: 0 0.3125rem;
-      @include m.form-field-label-floated-size;
-      .label-text {
-        @include m.text-color(var(--label-not-focus-color));
+    &:focus, &:not(:placeholder-shown) {
+      & + .form-label {
+        z-index: 10;
+        top: 0;
+        left: var(--label-focus-left);
+        transform: translateY(-55%);
+        padding: 0 0.3125rem;
+        @include m.form-field-label-floated-size;
+        .label-text {
+          @include m.text-color(var(--label-focus-color));
+        }
       }
     }
 

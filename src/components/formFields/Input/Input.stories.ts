@@ -119,7 +119,7 @@ export const BordersNone = Template({
   name: "senha",
 });
 
-export const WhithIcon = Template({
+export const WithIcon = Template({
   label: "Celular 1",
   type: "tel",
   border: "bottom",
@@ -127,7 +127,7 @@ export const WhithIcon = Template({
   name: "phone",
 });
 
-export const WhithIconLeft = Template({
+export const WithIconLeft = Template({
   label: "Celular 2",
   icon: "phone",
   iconPosition: "left",
