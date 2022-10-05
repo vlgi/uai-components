@@ -3,8 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "allowJs": true,
-    "sourceMap": true
+    "sourceMap": true,
   },
-  "include": ["src/**/*", "setupTests.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules/*", "public/*"]
 }
