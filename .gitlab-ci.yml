@@ -7,8 +7,6 @@ cache: #  Parameter 'cache' to cache the installation files for your projects de
 
 stages:
   - install-dependencies
-  - lint
-  - ts
   - test
   - remove-internal-stories
   - build-storybook
@@ -17,7 +15,9 @@ stages:
 install-dependencies:
   stage: install-dependencies
   script:
-    - npm install
+    - npm ci
+  only:
+    - master # or dev, the branch you want to publish
 
 remove-internal-stories:
   stage: remove-internal-stories
@@ -32,6 +32,8 @@ build-storybook:
   stage: build-storybook
   script:
     - npm run build-storybook
+  only:
+    - master # or dev, the branch you want to publish
 
   artifacts:
     paths:
@@ -40,13 +42,13 @@ build-storybook:
     - master # or dev, the branch you want to publish
 
 lint:
-  stage: lint
+  stage: test
   script: npm run lint
   only:
     - master # or dev, the branch you want to publish
 
 ts:
-  stage: ts
+  stage: test
   script: npm run check
   only:
     - master # or dev, the branch you want to publish
