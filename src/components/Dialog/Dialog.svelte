@@ -30,6 +30,12 @@
   export let othersButtonTxt = "Ok";
 
   /**
+   * If true, hide close button in the modal
+   * @type {boolean}
+   */
+  export let hideCloseButton = false;
+
+  /**
    * The dialog types
    * @type {"confirm"|"confirmCancel"|"info"|"error"|"warning"|"success"}
    * */
@@ -100,6 +106,7 @@
     closeOnEsc={!disableCloseOnEvents}
     on:closeModal={sendCancel}
     disableHeader={!showHeader}
+    {hideCloseButton}
   >
     <div class="d-content" slot="modal-header">
       {#if haveSlot("dialog-header")}
@@ -197,24 +204,29 @@
   @use 'src/styles/mixins' as m;
   .dialog-wrapper {
     --txt-color: var(--szot-dialog-text-color, var(--theme-txt-on-signal-color));
+    --txt-header-color: var(--szot-dialog-text-color-header, var(--theme-txt-on-signal-color));
+    --txt-weight: var(--szot-dialog-text-weight, 400);
+    --txt-header-weight: var(--szot-dialog-text-weight-header, 700);
+    --txt-header-size: var(--szot-dialog-text-size-header, 0.875rem);
+    --txt-size: var(--szot-dialog-text-size, 0.8125rem);
   }
 
   /** Change modal bg color */
   .dialog-type-error {
     --txt-color: var(--theme-error);
-    --txt-weight: bold;
+    --txt-header-color: var(--theme-error);
   }
   .dialog-type-warning {
     --txt-color: var(--theme-warning);
-    --txt-weight: bold;
+    --txt-header-color: var(--theme-warning);
   }
   .dialog-type-info {
     --txt-color: var(--theme-info);
-    --txt-weight: bold;
+    --txt-header-color: var(--theme-info);
   }
   .dialog-type-success {
     --txt-color: var(--theme-success);
-    --txt-weight: bold;
+    --txt-header-color: var(--theme-success);
   }
 
   .button-container {
@@ -228,9 +240,17 @@
     display: contents;
   }
 
-  .title, .content {
+  .title {
+    --szot-icon-color: var(--txt-header-color);
+    @include m.text-color(var(--txt-header-color));
+    font-size: var(--txt-header-size);
+    font-weight: var(--txt-header-weight);
+  }
+
+  .content {
     --szot-icon-color: var(--txt-color);
     @include m.text-color(var(--txt-color));
-    font-weight: var(--txt-weight, var(--theme-p-font-weight));
+    font-size: var(--txt-size);
+    font-weight: var(--txt-weight);
   }
 </style>

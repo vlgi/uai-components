@@ -5,6 +5,7 @@ type TOptions = {
   title: string,
   content: string,
   showHeader?: boolean,
+  hideCloseButton?: boolean,
 }
 
 export default class DialogShorthand extends Dialog {

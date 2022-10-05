@@ -20,6 +20,12 @@
   // when true if user click out the modal will close it
   export let closeOnClickOut = true;
 
+  /**
+   * If true, hide close button in the modal
+   * @type {boolean}
+   */
+  export let hideCloseButton = false;
+
   let modalOverlayElement: HTMLElement;
   const dispatcher = createEventDispatcher();
   const id = Symbol("my-self");
@@ -98,17 +104,19 @@
         <header class="modal-header">
           <!-- Set the modal header. e.g.: you can add a title, some buttons -->
           <slot name="modal-header"></slot>
-          <div class="close-button-container">
-            <Button
-              icon="close"
-              buttonStyle="light"
-              size="round"
-              buttonAttributes={{
-                autofocus: true,
-              }}
-              on:click={ closeModal }
-            />
-          </div>
+          {#if !hideCloseButton}
+            <div class="close-button-container">
+              <Button
+                icon="close"
+                buttonStyle="light"
+                size="round"
+                buttonAttributes={{
+                  autofocus: true,
+                }}
+                on:click={ closeModal }
+              />
+            </div>
+          {/if}
         </header>
       {/if}
       <div class="modal-content">
@@ -136,6 +144,7 @@
     --close-bg-color: var(--szot-modal-close-bg-color, var(--theme-light-surface));
     --close-txt-color: var(--szot-modal-close-txt-color, var(--theme-txt-on-light-surface));
     --padding: var(--szot-modal-padding, 0.6rem);
+    --margin-content: var(--szot-modal-margin-content, .6rem 0);
 
     position: fixed;
     top: 0;
@@ -192,7 +201,7 @@
 
     .modal-content {
       overflow-y: auto;
-      margin: .6rem 0;
+      margin: var(--margin-content);
     }
   }
 </style>

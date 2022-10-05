@@ -9,4 +9,9 @@
 </script>
 
 <button on:click={openDialog}>Open</button>
-<Dialog bind:opened title="my dialog title" content="hi! please confirme to go on."/>
+<Dialog
+  bind:opened
+  title="my dialog title"
+  content="hi! please confirme to go on."
+  {...$$restProps}
+/>

@@ -11,7 +11,7 @@
 <div class="scroll-container">
   <button on:click={openModal}>Open</button>
 
-  <Modal bind:opened>
+  <Modal bind:opened {...$$restProps}>
     <div slot="modal-header">
       <span>My modal header</span>
     </div>
