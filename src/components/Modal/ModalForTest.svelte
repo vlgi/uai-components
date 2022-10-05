@@ -12,7 +12,7 @@
 
 <button on:click={openModal}>Open</button>
 
-<Modal bind:opened {disableHeader} on:closeModal>
+<Modal bind:opened {disableHeader} on:closeModal {...$$restProps}>
   <div slot="modal-header">
     <span>My modal header</span>
   </div>
