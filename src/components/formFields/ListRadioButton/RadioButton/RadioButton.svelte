@@ -60,6 +60,7 @@
   .radio-item {
     --radio-margin: var(--szot-radio-margin, 0);
     --radio-size: var(--szot-radio-size, 1rem);
+    --radio-filled-gap: var(--szot-radio-filled-gap, .5rem);
     --radio-gap-label: var(--szot-radio-gap-label, 0);
     --radio-color: var(--szot-radio-color, var(--theme-dark-txt));
     --radio-border: var(--szot-radio-border, 0.125em);
@@ -111,8 +112,8 @@
     }
 
     .radio-input:checked + .radio-label .radio-button-inner {
-      width: calc(var(--radio-size) - 0.5em);
-      height: calc(var(--radio-size) - 0.5em);
+      width: calc(var(--radio-size) - var(--radio-filled-gap));
+      height: calc(var(--radio-size) - var(--radio-filled-gap));
     }
 
     .radio-style-type-filled:checked + .radio-label .radio-button-inner {
