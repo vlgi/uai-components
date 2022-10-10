@@ -155,7 +155,8 @@ export const CustomExample: any = Template({
       + "--szot-button-border-radius: 1.5rem;"
       + "--szot-button-width: 100%;"
       + "--szot-button-max-width: 100%;"
-      + "--szot-button-icon-color: red;",
+      + "--szot-button-icon-color: red;"
+      + "--szot-button-white-space: normal;",
 });
 
 CustomExample.parameters = {
