@@ -48,7 +48,10 @@
 
   $: round = (size === "round");
 </script>
-<div class="container {size} style-{buttonStyle} style-type-{buttonStyleType}" class:disabled>
+<div
+  class="container {size} style-{buttonStyle} style-type-{buttonStyleType}"
+  class:disabled
+>
   <button
     {type}
     {name}
@@ -82,6 +85,7 @@
     --border-radius: var(--szot-button-border-radius, var(--theme-small-shape));
     --max-width: var(--szot-button-max-width, 100%);
     --width: var(--szot-button-width, auto);
+    --white-space-text: var(--szot-button-white-space, nowrap);
 
     &.style-primary {
       --default-background-color: var(--theme-primary-surface);
@@ -284,7 +288,7 @@
       width: var(--width);
       max-width: var(--max-width);
       .text {
-        white-space: nowrap;
+        white-space: var(--white-space-text);
         @include m.text-color(var(--color));
       }
 
