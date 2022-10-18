@@ -511,6 +511,8 @@
   }
 
   input {
+    min-height: calc(2 * var(--input-padding) + 1.43rem);
+
     &::-webkit-input-placeholder {
       @include m.text-color(var(--placeholder-color));
     }
