@@ -1,5 +1,5 @@
-<script context="module">
-  const modalContexts = [];
+<script context="module" lang="ts">
+  let modalContexts: symbol[] = [];
 </script>
 
 <script lang="ts">
@@ -52,37 +52,48 @@
     scrolltoggle(true);
   }
 
-  function closeModal() {
-    // close if I'm the most external modal
-    if (modalContexts[modalContexts.length - 1] === id) {
-      modalContexts.pop();
-      opened = false;
+  function removeMeFromTheContext() {
+    modalContexts = modalContexts.filter((modalID) => modalID !== id);
+  }
 
-      // fired when modal is closed
-      dispatcher("closeModal");
-    }
+  function onClose() {
+    removeMeFromTheContext();
 
-    // if is the last modal remove the scroll lock
+    // if there isn't more modal opened release the scroll
     if (modalContexts.length === 0) {
       scrolltoggle(false);
+    }
+
+    // fired when modal is closed
+    dispatcher("closeModal");
+  }
+
+  function closeIfIsLastModal() {
+    if (modalContexts[modalContexts.length - 1] === id) {
+      opened = false;
     }
   }
 
   function handleKey(ev: KeyboardEvent) {
-    if (ev.key === "Escape" && closeOnEsc) closeModal();
+    if (ev.key === "Escape" && closeOnEsc) closeIfIsLastModal();
   }
 
   function handleClickOut(ev: Event) {
-    if (closeOnClickOut && ev.target === modalOverlayElement) closeModal();
+    if (closeOnClickOut && ev.target === modalOverlayElement) closeIfIsLastModal();
   }
 
   $: if (opened) {
     onOpen();
   } else {
-    closeModal();
+    onClose();
   }
 
-  onDestroy(closeModal);
+  onDestroy(() => {
+    opened = false;
+
+    // call again, because after ondestroy svelte doens't run the variables reactions again
+    onClose();
+  });
 </script>
 
 <svelte:window on:keydown={handleKey}/>
@@ -113,7 +124,9 @@
                 buttonAttributes={{
                   autofocus: true,
                 }}
-                on:click={ closeModal }
+                on:click={() => {
+                  opened = false;
+                }}
               />
             </div>
           {/if}
