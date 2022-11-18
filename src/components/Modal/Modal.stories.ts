@@ -5,6 +5,7 @@ import ModalForTest from "./ModalForTest.svelte";
 import ModalForInceptionTest from "./ModalForInceptionTest.svelte";
 import ModalForCustomScrollTest from "./ModalForCustomScrollTest.svelte";
 import ModalWithHeaderIconsWrapper from "./ModalWithHeaderIcons.svelte";
+import ModalForOpenOtherInsideWapper from "./ModalForOpenOtherInside.svelte";
 
 export default {
   title: "Components/Modal",
@@ -51,4 +52,8 @@ export const ModalWithHeaderIcons = () => ({
   props: {
     opened: false,
   },
+});
+
+export const ModalForOpenOtherInside = () => ({
+  Component: ModalForOpenOtherInsideWapper,
 });
