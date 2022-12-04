@@ -15,7 +15,7 @@
 
 <div class="screen-simulation">
   <Board
-    data={boardData}
+    bind:data={boardData}
     --szot-board-title-color="white"
     --szot-list-title-color="#666"
     --szot-list-background-color="#f5f5f5"
@@ -25,11 +25,11 @@
 
 <style lang="scss">
   .screen-simulation {
+    height: 576px;
+    width: 1024px;
     height: 720px;
     width: 1280px;
     height: 100vh;
     width: 100%;
-    height: 576px;
-    width: 1024px;
   }
 </style>

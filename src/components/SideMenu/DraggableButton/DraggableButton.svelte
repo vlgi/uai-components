@@ -20,11 +20,12 @@
   /* global HammerInput */
   function onPanToggleBtn(ev: HammerInput) {
     if (
-      window.innerWidth < ev.center.x
-    || window.innerHeight < ev.center.y
-    || ev.center.x < 0
-    || ev.center.y < 0
-    ) return;
+      window.innerWidth < ev.center.x ||
+      window.innerHeight < ev.center.y ||
+      ev.center.x < 0 ||
+      ev.center.y < 0
+    )
+      return;
 
     elBtn.style.top = `${ev.center.y}px`;
     elBtn.style.left = `${ev.center.x}px`;
@@ -37,9 +38,11 @@
     hammertime.on("panstart", () => {
       panIsActive = true;
     });
-    hammertime.on("panend", () => setTimeout(() => {
-      panIsActive = false;
-    }, 250));
+    hammertime.on("panend", () =>
+      setTimeout(() => {
+        panIsActive = false;
+      }, 250)
+    );
   }
 
   onMount(() => {
@@ -50,15 +53,14 @@
 
 <button
   class="mobile-toggle-btn"
-  class:mobile-toggle-btn--dragging={ panIsActive }
-  bind:this={ elBtn }
+  class:mobile-toggle-btn--dragging={panIsActive}
+  bind:this={elBtn}
   on:click
 >
-  <slot/>
+  <slot />
 </button>
 
 <style lang="scss">
-
   @use 'src/styles/mixins' as m;
   .mobile-toggle-btn {
     background: var(--theme-dark-surface);

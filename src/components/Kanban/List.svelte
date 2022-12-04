@@ -3,13 +3,10 @@
   import type { TList } from "./board-data";
 
   export let data: TList;
-
-  function handleDragging(ev) {
-    console.log("Dragging...");
-  }
+  export let index: number;
 </script>
 
-<div class="container" draggable="true" on:drag={handleDragging}>
+<div class="container">
   <div class="header">
     <div class="title">{data.title}</div>
   </div>
@@ -25,13 +22,13 @@
   .container {
     background-color: var(--szot-list-background-color);
     display: grid;
-    width: 272px;
     height: fit-content;
     max-height: 100%;
     overflow-y: auto;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
       rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border-radius: 5px;
+    top: 0;
 
     .header,
     .footer {
@@ -39,7 +36,6 @@
     }
 
     .header {
-      top: 0;
       .title {
         font-size: 1.2rem;
         font-weight: bold;
@@ -57,7 +53,6 @@
       background: inherit;
       &:hover {
         cursor: pointer;
-        background: #d3d3d3;
       }
     }
 

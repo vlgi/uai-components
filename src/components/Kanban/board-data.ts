@@ -49,12 +49,12 @@ export type TBoard = {
 
 export const data: TBoard = {
     id: "bbad84e4-4dff-11ed-bdc3-0242ac120002",
-    title: "Morelet’s Crocodile",
-    backgroundImage: "https://wallpaperaccess.com/full/3492776.jpg",
+    title: "PLANEJADOR PESSOAL",
+    backgroundImage: "https://cdn.shopify.com/s/files/1/0070/7032/files/AMgoal-setting_HEADER.jpg",
     backgroundColor: "#fff",
     lists: [
         {
-            title: "INVESTMENT ACCOUNT",
+            title: "BACKLOG",
             cards: [
                 {
                     title: "BORER INC",
@@ -435,7 +435,7 @@ export const data: TBoard = {
             ],
         },
         {
-            title: "MONEY MARKET ACCOUNT",
+            title: "DOING",
             cards: [
                 {
                     title: "WITTING - RITCHIE",
@@ -684,7 +684,7 @@ export const data: TBoard = {
             ],
         },
         {
-            title: "SAVINGS ACCOUNT",
+            title: "DONE",
             cards: [
                 {
                     title: "KING - PFANNERSTILL",

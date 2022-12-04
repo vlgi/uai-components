@@ -33,12 +33,7 @@
 </script>
 
 <CardModal data={nCard} />
-<div
-  class="container"
-  draggable="true"
-  on:drag={handleDragging}
-  on:click={openModal}
->
+<div class="container" on:click={openModal}>
   <div class="color" style="background: {data.backgroundColor}" />
   <div class="header">
     <div class="title">{data.title}</div>
