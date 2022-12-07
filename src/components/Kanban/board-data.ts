@@ -50,7 +50,7 @@ export type TBoard = {
 export const data: TBoard = {
     id: "bbad84e4-4dff-11ed-bdc3-0242ac120002",
     title: "PLANEJADOR PESSOAL",
-    backgroundImage: "https://cdn.shopify.com/s/files/1/0070/7032/files/AMgoal-setting_HEADER.jpg",
+    backgroundImage: "https://i0.wp.com/montanafreepress.org/wp-content/uploads/2022/04/AdobeStock_256618260-scaled.jpeg",
     backgroundColor: "#fff",
     lists: [
         {

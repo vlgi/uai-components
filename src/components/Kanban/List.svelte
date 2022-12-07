@@ -1,6 +1,7 @@
 <script lang="ts">
   import Card from "./Card.svelte";
   import type { TList } from "./board-data";
+  import { setElementPan } from "./utils";
 
   export let data: TList;
   export let index: number;
@@ -11,8 +12,14 @@
     <div class="title">{data.title}</div>
   </div>
   <div class="kaban-cards">
-    {#each data.cards as card}
-      <Card data={card} />
+    {#each data.cards as card, index}
+      <div class="card-wrapper">
+        <!-- <div class="card card-placeholder" /> -->
+        <div class="card">
+          <span>{card.title}</span>
+          <!-- <Card data={card} /> -->
+        </div>
+      </div>
     {/each}
   </div>
   <div class="footer">Bottom</div>
@@ -40,6 +47,7 @@
         font-size: 1.2rem;
         font-weight: bold;
         color: var(--szot-list-title-color);
+        // background: blue;
       }
     }
 
@@ -62,6 +70,33 @@
       background: inherit;
       padding: 0 0.5rem 0.5rem 0.5rem;
       align-content: start;
+
+      .card-wrapper {
+        .card-placeholder {
+          height: 150px;
+        }
+
+        .card {
+          background: lightseagreen;
+          width: 100%;
+          height: 80px;
+          cursor: pointer;
+          padding: 5px 8px;
+
+          span {
+            color: white;
+            font-weight: bold;
+          }
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        .card-dragging {
+          position: absolute;
+        }
+      }
     }
   }
 </style>

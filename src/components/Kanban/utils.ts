@@ -1,5 +1,3 @@
-import Hammer from "hammerjs";
-
 export function switchElsPositionByIndex(
   arr: any[],
   first: number,
@@ -19,49 +17,48 @@ export function changeElPositionByIndex(
   const temp = [...arr]
   const element = temp.splice(first, 1)[0];
   temp.splice(second, 0, element);
-  return temp;
+  return arr;
 }
 
-export function getElementXAxisCenter(el: HTMLElement): number {
-  const offsetEl = el.getBoundingClientRect();
+export function getElementXAxisCenter(el: Element): number {
+  const offsetEl = el && el.getBoundingClientRect();
   const xAxisElCenter = offsetEl.left + offsetEl.width / 2;
   return xAxisElCenter;
 }
 
-export function checkElementsPosition(first: HTMLElement, second: HTMLElement): boolean {
+export function checkElementsPosition(first: Element, second: Element): boolean {
+  if (!(first && second)) return false;
   const firstXCenter = getElementXAxisCenter(first);
   const secondXCenter = getElementXAxisCenter(second);
   if (firstXCenter < secondXCenter || firstXCenter > secondXCenter) return true;
   return false;
 }
 
-export function getRelativePosition(mx: number, my: number, el: HTMLElement): number[] {
+export function getRelativePosition(mx: number, my: number, el: Element): { x: number; y: number } {
   const rect = el.getBoundingClientRect();
-  return [
-    mx - rect.left,
-    my - rect.top
-  ]
+  return { x: mx - rect.left, y: my - rect.top }
 }
 
-export function setElementPan(
-  node: HTMLDivElement,
-  diffX: number = 0,
-  diffY: number = 0
-): void {
-  let hammertime: HammerManager; // global HammerManager
-  hammertime = new Hammer(node);
-  hammertime.get("pan").set({ direction: Hammer.DIRECTION_ALL });
-  hammertime.on("pan", (ev: HammerInput) => {
-    if (
-      window.innerWidth < ev.center.x ||
-      window.innerHeight < ev.center.y ||
-      ev.center.x < 0 ||
-      ev.center.y < 0
-    )
-      return;
-    const x = diffX > 0 ? diffX : 0;
-    const y = diffY > 0 ? diffY : 0;
-    node.style.left = `${ev.center.x - x}px`;
-    node.style.top = `${ev.center.y + 5}px`;
-  });
+export function getMousePosition(ev): { x: number; y: number } {
+  let pos = { x: 0, y: 0 };
+  pos.x = ev.clientX;
+  pos.y = ev.clientY;
+  return pos;
+}
+
+export function changeElementPosition(pos, node, relative) {
+  node.style.left = `${pos.x - relative.x}px`;
+  node.style.top = `${pos.y + relative.y}px`;
+}
+
+let oldx = 0;
+let dir = "";
+export function getMouseDirection(ev) {
+  if (ev.pageX < oldx) {
+    dir = "left";
+  } else if (ev.pageX > oldx) {
+    dir = "right";
+  }
+  oldx = ev.pageX;
+  return dir;
 }
