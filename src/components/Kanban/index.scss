@@ -1,0 +1,60 @@
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    .editable {
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        width: 100%;
+        width: 100%;
+
+        &:focus,
+        &:hover {
+            border-radius: var(--border-radius);
+        }
+
+        &:focus {
+            color: darkblue !important;
+            background: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.3) !important;
+        }
+    }
+
+    .to-right,
+    .to-left {
+        opacity: 0.8;
+        animation-fill-mode: forwards;
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+        position: absolute !important;
+        cursor: grabbing;
+        height: auto;
+    }
+
+    .to-right {
+        animation-name: toRight;
+
+        @keyframes toRight {
+            to {
+                transform: rotate(2deg);
+            }
+        }
+    }
+
+    .to-left {
+        animation-name: toLeft;
+
+        @keyframes toLeft {
+            to {
+                transform: rotate(-2deg);
+            }
+        }
+    }
+}

@@ -1,11 +1,14 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { data } from "./board-data";
-  import Board from "./Board.svelte";
   import type { TBoard } from "./board-data";
 
-  let boardData: TBoard;
+  import Board from "./Board.svelte";
 
+  // local variables
+  let boardData: TBoard; // board data
+
+  // simulate a api get request
   onMount(async () => {
     setTimeout(() => {
       boardData = data;

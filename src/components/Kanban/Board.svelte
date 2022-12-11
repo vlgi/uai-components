@@ -1,139 +1,118 @@
 <script lang="ts">
   import type { TBoard } from "./board-data";
 
+  // stores
+  import {
+    pos, // mouse position
+    dir, // mouse direction
+    dli, // dragging list index
+    tli, // target liste index
+    dlEl, // dragging list html element
+    tlEl, // target list html element
+    dci, // dragging card index
+    tci, // target card index
+    dcli, // dragging card index
+    tcli, // target card list index
+    dcEl, // dragging card html element
+    tcEl, // target card html element
+  } from "./stores";
+
+  // components
+  import List from "./List.svelte";
+
+  // props
+  export let data: TBoard; // board data
+
+  // funcs
   import {
     getMousePosition,
-    changeElementPosition,
     getMouseDirection,
     switchElsPositionByIndex,
-    checkElementsPosition,
-    getRelativePosition,
   } from "./utils";
 
-  export let data: TBoard;
-
-  let type = ""; // dragging element type
-  let pos = { x: 0, y: 0 }; // mouse position
-  let di = -1; // dragging element index
-  let pi = -1; // dragging element parent index
-  let ti = -1; // target element index
-  let pti = -1; // parent target index
-  let phh = 80; // dragging element placeholder height
-  let phw = "100%"; // dragging element placeholder width
-  let el: Element; // dragging html element
-  let tEl: Element; // target html element
-  let relPos = { x: 0, y: 0 }; // relative element mouse position
-  let dir: string; // dragging direction
-
-  // checks if target list is empty
-  $: isTargetListEmpty = data?.lists[pti]?.cards.length > 0 ? false : true;
-
-  // checks card changing position conditions in a empty list
-  $: checkEmptyList = isTargetListEmpty && ti == -1 && pti != -1;
-
-  // checks card changing position conditions in a populated list
-  $: checkPopulatedList = ti != -1 && checkElementsPosition(el, tEl);
-
-  // condition for card positions to be modified
-  $: canCardPosBeChanged =
-    type == "card" && pi != -1 && (checkEmptyList || checkPopulatedList);
-
-  // condition for lists positions to be modified
-  $: canListPosBeChanged =
-    type == "list" && ti != -1 && ti != di && checkElementsPosition(el, tEl);
-
-  $: console.log(data ? data : "nada");
-
-  function printStuff(nameFun) {
-    console.log("- - - - - - - - - - -");
-    console.log(nameFun);
-    console.log("- - - - - - - - - - -");
-    console.log(`type:`, type);
-    console.log(`di:`, di);
-    console.log(`ti:`, ti);
-    console.log(`pti:`, pti);
-    console.log(`pi:`, pi);
-    console.log(`phh:`, phh);
-    console.log(`phw:`, phw);
-    console.log(`el:`, el);
-    console.log(`tEl:`, tEl);
-  }
-
-  // set values on card over (card-space over)
-  function onCardOver(e, i: number, pIndex: number): void {
-    if (di != -1 && pi != pti) {
-      if (type == "card") ti = i;
-      if (type == "card") tEl = e.target;
-    }
-  }
-
-  // set values on list over (lane over)
-  function onListOver(e, i: number): void {
-    if (di != -1 && pi != i) {
-      if (type == "card" && pti != i) pti = i;
-      if (type == "list") ti = i;
-      if (type == "list") tEl = e.target;
-      if (isTargetListEmpty && type == "card") ti = -1;
-    }
+  // move mouse/element listener and change position
+  function moveEl(e): void {
+    pos.set(getMousePosition(e)); // set mouse position
+    dir.set(getMouseDirection(e)); // set mouse direction
   }
 
   // reset all variables to initial state
   function reset(): void {
-    [di, ti, pi, pti, phw, relPos] = [-1, -1, -1, -1, "100%", { x: 0, y: 0 }];
+    dli.set(-1); // reset dragging list index
+    dlEl.set(null); // reset dragging list html element
+    tli.set(-1); // reset target list index
+    tlEl.set(null); // reset target list html element
+    dci.set(-1); // reset dragging card index
+    tci.set(-1); // reset target card index
+    dcli.set(-1); // reset dragging card list index
+    tcli.set(-1); // reset target card list index
+    dcEl.set(-1); // reset dragging card html element
+    tcEl.set(-1); // reset target card html element
   }
 
-  // get drag element values
-  function getDragElement(e, i: number, pIndex: number, t: string): void {
-    [type, di, el, dir, phh] = [t, i, e.target, "right", e.target.clientHeight];
-    if (pIndex > -1) pi = pIndex;
-    relPos = getRelativePosition(e.clientX, e.clientY, el);
-    if (type == "card") phw = `${el.clientWidth}px`;
-    changeElementPosition(e, el, { x: relPos.x, y: 10 });
+  // ###################################################
+  // Conditional for changing lists positions  # start #
+  // ###################################################
+
+  // change data.lists when dragging and target list index are different from -1
+  $: if ($dli != -1 && $tli != -1) {
+    data.lists = switchElsPositionByIndex(data.lists, $dli, $tli); // switch the items and return the new list array
+    dli.set($tli); // dragging list index becomes target list index
+    tli.set(-1); // reset target list index
+    dlEl.set($tlEl); // dragging element becomes target element
+    tlEl.set(null); // target element becomes null
   }
 
-  // move mouse/element listener and change position
-  function moveEl(e): void {
-    pos = getMousePosition(e);
-    if (di != -1 && el) {
-      dir = getMouseDirection(e);
-      changeElementPosition(e, el, { x: relPos.x, y: 10 });
-      changeData();
-    }
+  // ############################################# end #
+
+  // ###################################################
+  // Conditionals for changing cards positions  # start #
+  // ###################################################
+
+  // change card position in the same list
+  $: if (
+    ($tli == -1 || $tli == $dcli) && // when target list is -1 (same list)
+    $dci != -1 && // when there is a dragging card
+    $dci != $tci && // when dragging card index is different from target card index
+    $tci != -1 // and when there is a target card index
+  ) {
+    dcEl.set($tcEl);
+    const list = data.lists[$dcli].cards; // list cards data
+    data.lists[$dcli].cards = switchElsPositionByIndex(list, $dci, $tci); // switch cards an return the new list cards array
+    dci.set($tci); // dragging card index becomes target card index
+    tci.set(-1); // reset target card index
+
+    // change card position in different lists and target list are not empty
+  } else if (
+    $tli != $dcli && // change card position in the same list
+    $dci != -1 && // when there is a dragging card
+    $tci != -1 && // and when there is a target card index
+    data.lists[$tcli].cards.length > 0 // and when target list is not empty
+  ) {
+    const card = data.lists[$dcli].cards[$dci]; // dragging card data
+    const targetList = data.lists[$tcli].cards; // target list copy
+    targetList.splice($tci, 0, card); // insert dragging card on targetList (copy)
+    data.lists[$dcli].cards.splice($dci, 1); // remove dragging card from the original list
+    data.lists[$tcli].cards = [...targetList]; // update target list with targetList (updated copy)
+    dcEl.set($tcEl); // dragging card element becomes target card element (.card div)
+    dci.set($tci); // dragging card index becomes target card index
+    dcli.set($tcli); // dragging card list index becomes target list index
+    tci.set(-1); // reset target card index
+    tcli.set(-1); // reset target card index
   }
 
-  // change cards data (order and list parent)
-  function changeCards(): void {
-    const card = data.lists[pi].cards[di];
-    const targetIndex = pti != -1 ? pti : pi;
-    const targetList = data.lists[targetIndex].cards;
-    if (pti != -1 && !isTargetListEmpty) {
-      // different lists already populated
-      targetList.splice(ti, 0, card);
-      data.lists[pi].cards.splice(di, 1);
-      data.lists[targetIndex].cards = [...targetList];
-    } else if (pti == -1 && ti != -1) {
-      // same list
-      data.lists[pi].cards = switchElsPositionByIndex(targetList, di, ti);
-    } else if (ti == -1) {
-      // empty list
-      data.lists[targetIndex].cards = [card];
-    }
-    el = document.getElementById(`${type}-${ti}-${targetIndex}`);
-    [di, ti, pi, pti] = [ti, -1, targetIndex, -1];
+  // change card position in different lists and target list are empty
+  else if (
+    $tli != -1 && // when there is a target list index
+    $tli != $dcli && // when dragging card list index is different target list index
+    $dci != -1 && // when there is a dragging card
+    data.lists[$tli].cards.length == 0 // and when target list is not empty
+  ) {
+    const card = data.lists[$dcli].cards[$dci]; // dragging card data
+    data.lists[$tli].cards = [card]; // empty target list receives dragging card
+    data.lists[$dcli].cards.splice($dci, 1); // remove dragging card from the original list
   }
-
-  // change lists data (order)
-  function changeLists(): void {
-    data.lists = switchElsPositionByIndex(data.lists, di, ti);
-    tEl.classList.add(`to-${dir}`);
-    el = document.getElementById(`${type}-${ti}`);
-    [di, ti] = [ti, -1];
-  }
-
-  function changeData(): void {
-    if (canListPosBeChanged) changeLists();
-    if (canCardPosBeChanged) changeCards();
-  }
+  // ############################################# end #
 </script>
 
 {#if !data}<div class="loading">loading...</div>
@@ -144,77 +123,27 @@
     on:mouseup={reset}
   >
     <div class="board-header">
-      <input class="board-title editable" bind:value={data.title} />
+      <div
+        class="board-title editable"
+        contenteditable="true"
+        bind:textContent={data.title}
+      />
     </div>
     <div class="board-lists" on:mousemove={moveEl} on:blur>
-      {#each data.lists as list, li (li)}
-        <div
-          class="lane lane-{li}"
-          on:focus
-          on:mouseover|self={(e) => onListOver(e, li)}
-          on:blur
-          on:mouseout={() => (ti = -1)}
-        >
-          <div class="list-wrapper">
-            {#if di == li && type == "list"}
-              <div style="height: {phh}px" class="list-placeholder">
-                <div />
-              </div>
-            {/if}
-            <div
-              class="list"
-              id="list-{li}"
-              on:mousedown|self={(e) => getDragElement(e, li, -1, "list")}
-              class:to-right={di == li && dir == "right" && type == "list"}
-              class:to-left={di == li && dir == "left" && type == "list"}
-            >
-              <div class="list-header">
-                <input class="list-title editable" bind:value={list.title} />
-              </div>
-              <div class="list-cards">
-                {#each list.cards as card, ci}
-                  <div
-                    class="card-space card-list-{li} card-space-{ci}"
-                    on:focus
-                    on:mouseover|self={(e) => onCardOver(e, ci, li)}
-                    on:blur
-                    on:mouseout={() => (ti = -1)}
-                  >
-                    <div class="card-wrapper">
-                      {#if di == ci && pi == li && type == "card"}
-                        <div class="card-placeholder" style="height: {phh}px" />
-                      {/if}
-                      <div
-                        class="card"
-                        id="card-{ci}-{li}"
-                        style="width: {phw}"
-                        class:to-right={di == ci &&
-                          dir == "right" &&
-                          type == "card" &&
-                          pi == li}
-                        class:to-left={di == ci &&
-                          dir == "left" &&
-                          type == "card" &&
-                          pi == li}
-                        on:mousedown|self={(e) =>
-                          getDragElement(e, ci, li, "card")}
-                      >
-                        {card.title}
-                      </div>
-                    </div>
-                  </div>
-                {/each}
-              </div>
-              <div class="list-footer">Bottom</div>
-            </div>
-          </div>
-        </div>
+      {#each data.lists as list, li}
+        <List data={list} {li} />
       {/each}
     </div>
   </div>
 {/if}
 
 <style lang="scss">
+  * {
+    --border-radius: 5px;
+    --target-padding: 0.75rem;
+    --color: #172b4d;
+  }
+
   .loading,
   .board-container {
     display: flex;
@@ -235,52 +164,10 @@
     flex-direction: column;
     background-repeat: no-repeat;
     background-size: cover;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-
-    .board-title,
-    .board-lists {
-      padding: 1rem;
-    }
-
-    .editable {
-      cursor: pointer;
-      outline: none;
-      padding: 0;
-      background: none;
-      border: none;
-      border-radius: 5px;
-      outline: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      width: 100%;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      width: 100%;
-
-      &:focus {
-        border-radius: 5px;
-        background: rgba(236, 235, 213, 0.8) !important;
-        color: darkblue !important;
-      }
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.3) !important;
-      }
-    }
 
     .board-header {
       .board-title {
         width: fit-content;
-        // background: red;
         font-weight: bold;
         font-size: 2rem;
         padding: 1rem;
@@ -290,167 +177,14 @@
 
     .board-lists {
       display: grid;
-      grid-template-rows: 100%; /* changed */
+      gap: 2rem; // remove
+      grid-template-rows: 100%;
       justify-content: start;
-      gap: 2rem;
       grid-auto-flow: column;
-      // background-color: pink;
       max-height: fit-content;
       overflow-x: auto;
-
-      .lane:first-child {
-        padding-left: 0;
-        border-left: 0;
-      }
-
-      .lane:last-child {
-        padding-right: 0;
-        border-right: 0;
-      }
-
-      .lane {
-        display: grid;
-        grid-template-rows: 100%; /* changed */
-        padding: 2rem 2rem 0 2rem;
-        background-color: lightcoral;
-        border-radius: 5px;
-
-        .list-wrapper {
-          display: grid;
-          grid-template-rows: 100%; /* changed */
-          background-color: red;
-          border-radius: 5px;
-
-          .list,
-          .list-placeholder {
-            align-self: stretch;
-            width: 272px;
-            padding-top: 0.5rem;
-            border-radius: 5px;
-            position: static;
-          }
-
-          .list-placeholder {
-            border-radius: 5px;
-            background: rgba(0, 0, 0, 0.4);
-          }
-
-          .list {
-            display: grid;
-            align-content: start;
-            background-color: rgba(20, 20, 20, 0.3);
-            cursor: grab;
-            bottom: 0;
-            background-color: var(--szot-list-background-color);
-            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-              rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-            border-radius: 5px;
-            background-color: blue;
-            border-radius: 5px;
-
-            .list-header,
-            .list-footer {
-              &:hover {
-                cursor: pointer;
-              }
-            }
-
-            .list-header {
-              top: 0;
-              padding: 2rem;
-              .list-title {
-                font-size: 1.2rem;
-                font-weight: bold;
-                color: var(--szot-list-title-color);
-                background-color: lightblue;
-              }
-            }
-
-            .list-footer {
-              height: fit-content;
-              background-color: purple;
-              color: white;
-              border-radius: 5px;
-              bottom: 0;
-            }
-
-            .list-cards {
-              display: grid;
-              gap: 0.5rem;
-              padding: 0 0.5rem 0.5rem 0.5rem;
-              align-content: start;
-              overflow-y: auto;
-
-              .card-space {
-                flex-direction: column;
-                padding: 2rem;
-                background-color: greenyellow;
-
-                .card-wrapper {
-                  background-color: red;
-                  .card,
-                  .card-placeholder {
-                    border-radius: 5px;
-                  }
-
-                  .card-placeholder {
-                    background-color: rgba(0, 0, 0, 0.4);
-                  }
-
-                  .card {
-                    padding: top;
-                    background-color: lightseagreen;
-                    height: 150px;
-                    cursor: pointer;
-                    padding: 5px 8px;
-                    width: 100%;
-
-                    span {
-                      color: white;
-                      font-weight: bold;
-                    }
-
-                    &:hover {
-                      opacity: 0.8;
-                    }
-                  }
-                }
-              }
-            }
-          }
-
-          .to-right,
-          .to-left {
-            opacity: 0.8;
-            animation-fill-mode: forwards;
-            animation-duration: 0.5s;
-            animation-timing-function: ease;
-            position: absolute;
-            cursor: grabbing;
-            height: auto;
-          }
-
-          .to-right {
-            animation-name: toRight;
-
-            @keyframes toRight {
-              to {
-                transform: rotate(2deg);
-              }
-            }
-          }
-
-          .to-left {
-            animation-name: toLeft;
-
-            @keyframes toLeft {
-              to {
-                transform: rotate(-2deg);
-              }
-            }
-          }
-        }
-      }
+      background-color: #ffd699; // remove
+      padding: 1rem; // remove
     }
   }
 </style>

@@ -1,12 +1,26 @@
 <script lang="ts">
-  import Badge from "../Badge/Badge.svelte";
-  import Icon from "../Icon/Icon.svelte";
-  import CardModal from "./CardModal.svelte";
   import type { TCard } from "./board-data";
 
-  export let data: TCard;
-  let convertedCardData: any = { ...data };
+  // stores
+  import { pos, dir, relPos, dci, tci, dcli, tcli, dcEl, tcEl } from "./stores";
 
+  // components
+  import CardModal from "./CardModal.svelte";
+
+  // functions
+  import { changeElementPosition, getRelativePosition } from "./utils";
+
+  // card props
+  export let data: TCard; // card data
+  export let ci: number; // card index
+  export let cli: number; // card list index
+
+  // local variables
+  let phw = "100%"; // dragging element placeholder width
+  let phh = "100%"; // dragging element placeholder height
+
+  // calculate how many dones items inside checklists
+  let convertedCardData: any = { ...data };
   let all = [];
   let dones = [];
   data.checklists.forEach((cList) => {
@@ -18,108 +32,94 @@
   convertedCardData.allChecklistsItems = [...all];
   convertedCardData.allDoneChecklistsItems = [...dones];
 
+  // card data plus calculated items done on checklists
   let nCard = {
     ...convertedCardData,
     opened: false,
   };
 
-  function openModal() {
+  function openModal(): void {
     nCard = { ...data, opened: true };
   }
 
-  function handleDragging(ev) {
-    console.log("Dragging...");
+  // set values on card over (.card-space over)
+  function onCardOver(): void {
+    const el = document.querySelector(`.card-${ci}-${cli}`); // get target card html element (.card div)
+    phw = `${el.clientWidth}px`; // set placeholder width
+    phh = `${el.clientHeight}px`; // set placeholder height
+    tci.set(ci); // set target card index
+    tcli.set(cli); // set target card list index
+    tcEl.set(el); // set target card html element
+  }
+
+  // set dragging card values
+  function setDragCard(e) {
+    if (e.button != 0) return; // if not left button, do nothing
+    dci.set(ci); // set dragging card index
+    dcli.set(cli); // set dragging card list index
+    dcEl.set(e.target); // dragging card html element (.card div)
+    phw = `${e.target.clientWidth}px`; // set placeholder width
+    phh = `${e.target.clientHeight}px`; // set placeholder height
+    relPos.set(getRelativePosition(e.clientX, e.clientY, e.target)); // relative mouse position in relation to the html element
+    changeElementPosition($pos, $dcEl, { x: $relPos.x, y: 10 }); // change dragging element position
+  }
+
+  // change dragging card position
+  $: $pos && $dci != -1 && moveDragList();
+  function moveDragList() {
+    // when there is a dragging element and pos change, change html element position
+    changeElementPosition($pos, $dcEl, { x: $relPos.x, y: 10 });
   }
 </script>
 
 <CardModal data={nCard} />
-<div class="container" on:click={openModal}>
-  <div class="color" style="background: {data.backgroundColor}" />
-  <div class="header">
-    <div class="title">{data.title}</div>
-    <div class="edit-wrapper">
-      <Icon
-        iconName={"square-edit-outline"}
-        on:click={openModal}
-        --szot-icon-font-size="1.2rem"
-      />
-    </div>
-  </div>
-  <div class="labels">
-    {#each data.labels as label}
-      <div style="font-weight: 600;">
-        <Badge
-          --szot-badge-color="white"
-          --szot-badge-font-size=".8rem"
-          --szot-badge-border-color={label.backgroundColor}
-          --szot-badge-background-color={label.backgroundColor}
-          >{label.title}</Badge
-        >
-      </div>
-    {/each}
-  </div>
-  <div class="footer">
-    <div class="checklist-summary">
-      <Icon iconName={"checkbox-marked-outline"} --szot-icon-font-size="1rem" />
-      {convertedCardData.allDoneChecklistsItems.length}/{convertedCardData
-        .allChecklistsItems.length}
+
+<div class="card-space" on:focus on:blur on:mouseover={onCardOver}>
+  <div class="card-wrapper" on:click={openModal}>
+    {#if $dci == ci && $dcli == cli}
+      <div class="card-placeholder" style="width: {phw}; height: {phh}" />
+    {/if}
+    <div
+      on:mousedown|self={setDragCard}
+      class="card card-{ci}-{cli}"
+      style="background-color: {data.backgroundColor}; width: {phw}"
+      class:to-right={$dci == ci && $dcli == cli && $dir == "right"}
+      class:to-left={$dci == ci && $dcli == cli && $dir == "left"}
+    >
+      <div class="card-container">{data.title}</div>
     </div>
   </div>
 </div>
 
 <style lang="scss">
-  .container {
-    height: fit-content;
-    display: grid;
-    grid-auto-flow: row;
-    background: white;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-    border-radius: 5px;
-    cursor: pointer;
+  @import "./index.scss";
 
-    .color {
-      height: 0.5rem;
-      border-radius: 5px 5px 0 0;
-    }
+  .card-space {
+    flex-direction: column;
+    padding: var(--target-padding);
+    cursor: default;
+    padding: 2rem; // remove
+    background: white; // remove
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+    .card-wrapper {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-      .title {
-        font-size: 1rem;
-        padding: 0.5rem;
+      .card-placeholder {
+        background: rgba(0, 0, 0, 0.4);
       }
 
-      .edit-wrapper {
-        padding: 0.5rem;
-        cursor: pointer;
-        &:hover {
-          opacity: 0.8;
+      .card {
+        height: fit-content;
+        cursor: grab;
+        width: 100%;
+        padding-top: 1rem;
+
+        // remove
+        .card-container {
+          padding: 1rem;
+          background: #eee; // remove
+          cursor: pointer;
         }
-      }
-    }
-
-    .labels {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 0.1rem;
-      padding: 0.25rem 0.5rem;
-    }
-
-    .footer {
-      border-radius: 0 0 5px 5px;
-      padding: 0.25rem 0.5rem;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      .checklist-summary {
-        display: flex;
-        align-items: center;
-        color: #333;
-        font-size: 0.8rem;
       }
     }
   }

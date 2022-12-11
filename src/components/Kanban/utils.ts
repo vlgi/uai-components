@@ -46,9 +46,11 @@ export function getMousePosition(ev): { x: number; y: number } {
   return pos;
 }
 
-export function changeElementPosition(pos, node, relative) {
-  node.style.left = `${pos.x - relative.x}px`;
-  node.style.top = `${pos.y + relative.y}px`;
+export function changeElementPosition(pos, node, relative): void {
+  if (pos && node && relative) {
+    node.style.left = `${pos.x - relative.x}px`;
+    node.style.top = `${pos.y + relative.y}px`;
+  }
 }
 
 let oldx = 0;
