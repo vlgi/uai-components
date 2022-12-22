@@ -8,15 +8,8 @@
   export let containerStyle = "width:300px; height:300px; margin: 100px 300px";
 </script>
 
-<div
-  class="container"
-  style={containerStyle}
-  >
-  <div
-    class="button-wrapper"
-    id={triggerId}
-    style={triggerStyle}
-  >
+<div class="container" style={containerStyle}>
+  <div class="button-wrapper" id={triggerId} style={triggerStyle}>
     <Button>Open</Button>
   </div>
 
@@ -28,10 +21,7 @@
     <span class="item">Item 5 Long Long Long text</span>
   </Dropdown>
 
-  <div
-    class="add-scroll"
-    style={scrollStyle}
-  ></div>
+  <div class="add-scroll" style={scrollStyle} />
 </div>
 
 <style lang="scss">

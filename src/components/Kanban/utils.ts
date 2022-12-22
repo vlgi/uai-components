@@ -53,14 +53,101 @@ export function changeElementPosition(pos, node, relative): void {
   }
 }
 
-let oldx = 0;
-let dir = "";
-export function getMouseDirection(ev) {
-  if (ev.pageX < oldx) {
-    dir = "left";
-  } else if (ev.pageX > oldx) {
-    dir = "right";
-  }
-  oldx = ev.pageX;
-  return dir;
+let [oldx, oldy] = [0, 0];
+let [xDir, yDir] = ["", ""];
+export function getMouseDirection(ev): { x: string, y: string } {
+  if (ev.pageX < oldx) xDir = "left";
+  if (ev.pageX > oldx) xDir = "right";
+  if (ev.pageY < oldy) yDir = "up";
+  if (ev.pageY > oldy) yDir = "down";
+  [oldx, oldy] = [ev.pageX, ev.pageY];
+  return { x: xDir, y: yDir };
 }
+
+export function returnInitialsNames(words: string): string {
+  const splitted = words.split(" ");
+  const first = splitted[0].charAt(0);
+  const last = splitted[splitted.length - 1].charAt(0);
+  return first + last;
+
+}
+
+
+export function checkIfItemIsInArray(item, arr, key): { isInIt: boolean; index: number } {
+  let isInIt = false;
+  let index = -1;
+  arr.forEach((each, i) => {
+    if (item[key] == each[key]) {
+      [isInIt, index] = [true, i];
+      return;
+    }
+  });
+  return { isInIt, index };
+}
+
+export function getCaretCharacterOffsetWithin(element) {
+  let caretOffset = 0;
+  const doc = element.ownerDocument || element.document;
+  const win = doc.defaultView || doc.parentWindow;
+  let sel;
+  if (typeof win.getSelection != "undefined") {
+    sel = win.getSelection();
+    if (sel.rangeCount > 0) {
+      const range = win.getSelection().getRangeAt(0);
+      const preCaretRange = range.cloneRange();
+      preCaretRange.selectNodeContents(element);
+      preCaretRange.setEnd(range.endContainer, range.endOffset);
+      caretOffset = preCaretRange.toString().length;
+    }
+  } else if ((sel = doc.selection) && sel.type != "Control") {
+    const textRange = sel.createRange();
+    const preCaretTextRange = doc.body.createTextRange();
+    preCaretTextRange.moveToElementText(element);
+    preCaretTextRange.setEndPoint("EndToEnd", textRange);
+    caretOffset = preCaretTextRange.text.length;
+  }
+  return caretOffset;
+}
+
+function createRange(node, chars, range?) {
+  if (!range) {
+    range = document.createRange()
+    range.selectNode(node);
+    range.setStart(node, 0);
+  }
+
+  if (chars.count === 0) {
+    range.setEnd(node, chars.count);
+  } else if (node && chars.count > 0) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      if (node.textContent.length < chars.count) {
+        chars.count -= node.textContent.length;
+      } else {
+        range.setEnd(node, chars.count);
+        chars.count = 0;
+      }
+    } else {
+      for (let lp = 0; lp < node.childNodes.length; lp++) {
+        range = createRange(node.childNodes[lp], chars, range);
+
+        if (chars.count === 0) {
+          break;
+        }
+      }
+    }
+  }
+
+  return range;
+};
+
+export function setCurrentCursorPosition(chars, node) {
+  if (chars >= 0) {
+    const selection = window.getSelection();
+    const range = createRange(node, { count: chars });
+    if (range) {
+      range.collapse(false);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  }
+};

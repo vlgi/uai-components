@@ -1,20 +1,24 @@
 <script lang="ts">
-  import type { TBoard } from "./board-data";
+  import type { TBoard, TCardUser, TCardLabel, TList } from "./data/types";
 
   // stores
   import {
+    dlEl, // dragging list html element
+    dli, // dragging list index
+    tlEl, // target list html element
+    tli, // target liste index
+    dcEl, // dragging card html element
+    dci, // dragging card index
+    dcli, // dragging card index
+    tcEl, // target card html element
+    tci, // target card index
+    tcli, // target card list index
     pos, // mouse position
     dir, // mouse direction
-    dli, // dragging list index
-    tli, // target liste index
-    dlEl, // dragging list html element
-    tlEl, // target list html element
-    dci, // dragging card index
-    tci, // target card index
-    dcli, // dragging card index
-    tcli, // target card list index
-    dcEl, // dragging card html element
-    tcEl, // target card html element
+    allUsers, // all existent users
+    allLabels, // all existent labels
+    board, // all board data
+    lang, // board language
   } from "./stores";
 
   // components
@@ -22,6 +26,16 @@
 
   // props
   export let data: TBoard; // board data
+  export let users: TCardUser[]; // board possible users
+  export let labels: TCardLabel[]; // board possible users
+  export let language: string; // components language
+
+  // setting kanban
+  $: if (users) allUsers.set(users); // set all board users when finished data fetching
+  $: if (labels) allLabels.set(labels); // set all board labels when finished data fetching
+  $: if (data?.lists) board.set(data); // set board store when data change
+  $: if ($board) data = { ...$board }; // update data board when board store change
+  $: lang.set(language); // set board language
 
   // funcs
   import {
@@ -38,21 +52,37 @@
 
   // reset all variables to initial state
   function reset(): void {
-    dli.set(-1); // reset dragging list index
-    dlEl.set(null); // reset dragging list html element
-    tli.set(-1); // reset target list index
-    tlEl.set(null); // reset target list html element
-    dci.set(-1); // reset dragging card index
-    tci.set(-1); // reset target card index
-    dcli.set(-1); // reset dragging card list index
-    tcli.set(-1); // reset target card list index
     dcEl.set(-1); // reset dragging card html element
+    dci.set(-1); // reset dragging card index
+    dcli.set(-1); // reset dragging card list index
+    dlEl.set(null); // reset dragging list html element
+    dli.set(-1); // reset dragging list index
     tcEl.set(-1); // reset target card html element
+    tci.set(-1); // reset target card index
+    tcli.set(-1); // reset target card list index
+    tlEl.set(null); // reset target list html element
+    tli.set(-1); // reset target list index
   }
 
-  // ###################################################
-  // Conditional for changing lists positions  # start #
-  // ###################################################
+  // reset necessary variables after card changing position
+  function resetVariablesAfterCardChangingPosition(empty: boolean): void {
+    if (!empty) {
+      dcEl.set($tcEl); // dragging card becomes target card html element
+      dci.set($tci); // dragging card becomes target card index
+      dcli.set($tcli); // dragging card list index becomes target card list index
+    } else if (empty) {
+      dcEl.set(null);
+      dci.set(0); // dragging card becomes target card index
+      dcli.set($tli); // dragging card list index becomes target card list index
+    }
+    tcEl.set(null); // reset target card html element
+    tci.set(-1); // reset target card index
+    tcli.set(-1); // reset target card list index
+  }
+
+  // ####################################################
+  // ## Conditional for changing lists positions     ####
+  // ####################################################
 
   // change data.lists when dragging and target list index are different from -1
   $: if ($dli != -1 && $tli != -1) {
@@ -63,27 +93,24 @@
     tlEl.set(null); // target element becomes null
   }
 
-  // ############################################# end #
-
-  // ###################################################
-  // Conditionals for changing cards positions  # start #
-  // ###################################################
+  // ####################################################
+  // ## Conditional for changing cards positions     ####
+  // ####################################################
 
   // change card position in the same list
   $: if (
-    ($tli == -1 || $tli == $dcli) && // when target list is -1 (same list)
+    $tcli == $dcli && // when dragging and target card list is the same
     $dci != -1 && // when there is a dragging card
     $dci != $tci && // when dragging card index is different from target card index
     $tci != -1 // and when there is a target card index
   ) {
-    dcEl.set($tcEl);
     const list = data.lists[$dcli].cards; // list cards data
     data.lists[$dcli].cards = switchElsPositionByIndex(list, $dci, $tci); // switch cards an return the new list cards array
-    dci.set($tci); // dragging card index becomes target card index
-    tci.set(-1); // reset target card index
+    resetVariablesAfterCardChangingPosition(false);
 
     // change card position in different lists and target list are not empty
   } else if (
+    $tcli != $dcli && // change card position in the same list
     $tli != $dcli && // change card position in the same list
     $dci != -1 && // when there is a dragging card
     $tci != -1 && // and when there is a target card index
@@ -94,11 +121,7 @@
     targetList.splice($tci, 0, card); // insert dragging card on targetList (copy)
     data.lists[$dcli].cards.splice($dci, 1); // remove dragging card from the original list
     data.lists[$tcli].cards = [...targetList]; // update target list with targetList (updated copy)
-    dcEl.set($tcEl); // dragging card element becomes target card element (.card div)
-    dci.set($tci); // dragging card index becomes target card index
-    dcli.set($tcli); // dragging card list index becomes target list index
-    tci.set(-1); // reset target card index
-    tcli.set(-1); // reset target card index
+    resetVariablesAfterCardChangingPosition(false);
   }
 
   // change card position in different lists and target list are empty
@@ -111,8 +134,8 @@
     const card = data.lists[$dcli].cards[$dci]; // dragging card data
     data.lists[$tli].cards = [card]; // empty target list receives dragging card
     data.lists[$dcli].cards.splice($dci, 1); // remove dragging card from the original list
+    resetVariablesAfterCardChangingPosition(true);
   }
-  // ############################################# end #
 </script>
 
 {#if !data}<div class="loading">loading...</div>
@@ -130,8 +153,9 @@
       />
     </div>
     <div class="board-lists" on:mousemove={moveEl} on:blur>
-      {#each data.lists as list, li}
-        <List data={list} {li} />
+      {#each data.lists.slice(0, 1) as list, li}
+        <!-- {#each data.lists as list, li} -->
+        <List bind:data={list} {li} />
       {/each}
     </div>
   </div>
@@ -177,14 +201,14 @@
 
     .board-lists {
       display: grid;
-      gap: 2rem; // remove
       grid-template-rows: 100%;
       justify-content: start;
       grid-auto-flow: column;
       max-height: fit-content;
       overflow-x: auto;
-      background-color: #ffd699; // remove
-      padding: 1rem; // remove
+      gap: 0.5rem; // change
+      // background-color: #ffd699; // remove
+      // padding: 1rem; // remove
     }
   }
 </style>

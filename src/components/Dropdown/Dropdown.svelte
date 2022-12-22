@@ -39,16 +39,19 @@
   function setDropdownPosition(_dropdownAlignment: TPosition, count = 0) {
     const triggerRect = triggerElement.getBoundingClientRect();
     const dropdownRect = dropdownElement.getBoundingClientRect();
-
     const validAlignments = getValidDropdownAlignments(
       triggerElement,
-      dropdownRect,
+      dropdownRect
     );
 
     if (count > 1) throw new Error("Infinit loop at setDropdownPosition");
 
     if (validAlignments.includes(_dropdownAlignment) || !enableAutAdjust) {
-      const { top, left } = getDropdownPosition(_dropdownAlignment, triggerRect, dropdownRect);
+      const { top, left } = getDropdownPosition(
+        _dropdownAlignment,
+        triggerRect,
+        dropdownRect
+      );
       selectedDropdownAlignment = _dropdownAlignment;
 
       // initialize not visible to not conflict with "getValidDropdownAlignments" function
@@ -56,7 +59,10 @@
       dropdownElement.style.top = `${top}px`;
       dropdownElement.style.left = `${left}px`;
     } else if (validAlignments.length > 0) {
-      const betterAlignment = getBestValidAlignment(_dropdownAlignment, validAlignments);
+      const betterAlignment = getBestValidAlignment(
+        _dropdownAlignment,
+        validAlignments
+      );
       setDropdownPosition(betterAlignment, count + 1);
     } else {
       // if there's no valid position, make the dropdown invisible
@@ -84,7 +90,7 @@
   /**
    * On open, and after dropdown element be mounted, set the initial position.
    * Every time that dropdownAlignment change set the position too
-  */
+   */
   $: if (dropdownElement) setDropdownPosition(dropdownAlignment);
 
   // Set this reactive to handle with opened being changed without click on the trigger
@@ -96,7 +102,8 @@
 
   onMount(() => {
     triggerElement = document.querySelector(`#${targetId}`);
-    if (!triggerElement) throw new Error(`Trigger element not found with id: ${targetId}`);
+    if (!triggerElement)
+      throw new Error(`Trigger element not found with id: ${targetId}`);
     triggerElement.addEventListener("click", open);
   });
 
@@ -113,7 +120,7 @@
     use:actionOutClick
     on:actionOutClick={close}
   >
-    <slot></slot>
+    <slot />
   </div>
 {/if}
 
@@ -122,7 +129,10 @@
     --bg-color: var(--szot-dropdown-bg-color, white);
     --padding: var(--szot-dropdown-padding, var(--theme-global-medium-padding));
     --shadow: var(--szot-dropdown-shadow, var(--theme-low-shadow));
-    --border-radius: var(--szot-dropdown-border-radius, var(--theme-medium-shape));
+    --border-radius: var(
+      --szot-dropdown-border-radius,
+      var(--theme-medium-shape)
+    );
 
     // internal variables
     --arrow-size: 0.625rem;
@@ -132,49 +142,49 @@
       --arrow-top: calc(var(--arrow-size) * -1);
       --arrow-right: calc(var(--arrow-size) * 2);
       --arrow-rotation: 0deg;
-      --margin: calc(var(--arrow-size) * .7);
+      --margin: calc(var(--arrow-size) * 0.7);
     }
     &-bottomLeft {
       --arrow-top: calc(var(--arrow-size) * -1);
       --arrow-left: calc(var(--arrow-size) * 2);
       --arrow-rotation: 0deg;
-      --margin: calc(var(--arrow-size) * .7) calc(var(--arrow-size) * -.7);
+      --margin: calc(var(--arrow-size) * 0.7) calc(var(--arrow-size) * -0.7);
     }
     &-topRight {
       --arrow-bottom: calc(var(--arrow-size) * -1);
       --arrow-right: calc(var(--arrow-size) * 2);
       --arrow-rotation: 180deg;
-      --margin: calc(var(--arrow-size) * -.7) calc(var(--arrow-size) * .7);
+      --margin: calc(var(--arrow-size) * -0.7) calc(var(--arrow-size) * 0.7);
     }
     &-topLeft {
       --arrow-bottom: calc(var(--arrow-size) * -1);
       --arrow-left: calc(var(--arrow-size) * 2);
       --arrow-rotation: 180deg;
-      --margin: calc(var(--arrow-size) * -.7);
+      --margin: calc(var(--arrow-size) * -0.7);
     }
     &-rightBottom {
       --arrow-left: calc(var(--arrow-size) * -1.4);
       --arrow-bottom: calc(var(--arrow-size) * 2);
       --arrow-rotation: -90deg;
-      --margin: calc(var(--arrow-size) * .7) calc(var(--arrow-size) * .4);
+      --margin: calc(var(--arrow-size) * 0.7) calc(var(--arrow-size) * 0.4);
     }
     &-rightTop {
       --arrow-left: calc(var(--arrow-size) * -1.4);
       --arrow-top: calc(var(--arrow-size) * 2);
       --arrow-rotation: -90deg;
-      --margin: calc(var(--arrow-size) * -.7) calc(var(--arrow-size) * .4);
+      --margin: calc(var(--arrow-size) * -0.7) calc(var(--arrow-size) * 0.4);
     }
     &-leftBottom {
       --arrow-right: calc(var(--arrow-size) * -1.4);
       --arrow-bottom: calc(var(--arrow-size) * 2);
       --arrow-rotation: 90deg;
-      --margin: calc(var(--arrow-size) * .7) calc(var(--arrow-size) * -.4);
+      --margin: calc(var(--arrow-size) * 0.7) calc(var(--arrow-size) * -0.4);
     }
     &-leftTop {
       --arrow-right: calc(var(--arrow-size) * -1.4);
       --arrow-top: calc(var(--arrow-size) * 2);
       --arrow-rotation: 90deg;
-      --margin: calc(var(--arrow-size) * -.7) calc(var(--arrow-size) * -.4);
+      --margin: calc(var(--arrow-size) * -0.7) calc(var(--arrow-size) * -0.4);
     }
 
     position: fixed;
@@ -199,7 +209,7 @@
 
       border-left: solid var(--arrow-size) transparent;
       border-right: solid var(--arrow-size) transparent;
-      border-top: solid 0 ;
+      border-top: solid 0;
       border-bottom: solid var(--arrow-size) var(--bg-color);
 
       top: var(--arrow-top, unset);

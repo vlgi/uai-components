@@ -4,10 +4,10 @@
     -ms-user-select: none;
     user-select: none;
 
+
     .editable {
         cursor: pointer;
         outline: none;
-        padding: 0;
         width: 100%;
         width: 100%;
 
@@ -17,8 +17,9 @@
         }
 
         &:focus {
-            color: darkblue !important;
-            background: rgba(255, 255, 255, 0.8) !important;
+            outline: none !important;
+            border: 1px solid #719ece;
+            box-shadow: 0 0 10px #719ece;
         }
 
         &:hover {
@@ -57,4 +58,32 @@
             }
         }
     }
+
+    button {
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: var(--target-padding);
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .btn-ok {
+        color: white;
+        background: #0079bf; // change
+    }
+
+    .btn-danger {
+        color: white;
+        background: #bf1d00; // change
+    }
+
+    .btn-neutral {
+        background: #ddd;
+        color: #444;
+    }
+
 }

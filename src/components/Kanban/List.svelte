@@ -1,11 +1,14 @@
 <script lang="ts">
-  import type { TList } from "./board-data";
+  import type { TList } from "./data/types";
+  import { card } from "./data/empty-data";
+  import { texts } from "./data/components-texts";
 
   // stores
-  import { dli, dlEl, tli, tlEl, pos, relPos, dir } from "./stores";
+  import { dli, dlEl, tli, tlEl, pos, relPos, dir, lang } from "./stores";
 
   // components
-  import Card from "./Card.svelte";
+  import Card from "./card/Card.svelte";
+  import Button from "../formFields/Button/Button.svelte";
 
   // funcs
   import { changeElementPosition, getRelativePosition } from "./utils";
@@ -16,6 +19,8 @@
 
   // local variables
   let phh = "0px"; // dragging element placeholder height
+  $: cardAdded = false;
+  let addedCardTitle = "";
 
   // set values on list over (.lane over)
   function onLaneOver(): void {
@@ -41,10 +46,19 @@
     changeElementPosition($pos, $dlEl, { x: $relPos.x, y: 10 });
   }
 
-  // on lane mouse out event reset target list index and element
+  // on lane mouse out event reset related data
   function onLaneOut(): void {
     tli.set(-1); // reset target list index
     tlEl.set(null); // reset target list html element (.list div)
+  }
+
+  function addANewCard(): void {
+    const newCard = { ...card, title: addedCardTitle };
+    data.cards = [...data.cards, newCard];
+    cardAdded = false;
+    addedCardTitle = "";
+    const list = document.querySelector(`.list-cards-${li}`);
+    list.scrollTop = list.scrollHeight;
   }
 </script>
 
@@ -64,8 +78,8 @@
     <div
       class="list list-{li}"
       on:mousedown|self={setDragList}
-      class:to-right={$dli == li && $dir == "right"}
-      class:to-left={$dli == li && $dir == "left"}
+      class:to-right={$dli == li && $dir.x == "right"}
+      class:to-left={$dli == li && $dir.x == "left"}
     >
       <div class="list-header">
         <div
@@ -74,14 +88,52 @@
           bind:textContent={data.title}
         />
       </div>
-      <div class="list-cards">
-        {#each data.cards as card, ci}
-          <div class="card-container">
-            <Card data={card} {ci} cli={li} />
-          </div>
+      <div class="list-cards list-cards-{li}">
+        {#each data.cards.slice(0, 1) as card, ci}
+          <!-- {#each data.cards as card, ci} -->
+          <Card bind:data={card} {ci} cli={li} />
         {/each}
+        {#if cardAdded}
+          <div class="adding-card-container">
+            <!-- svelte-ignore a11y-autofocus -->
+            <div
+              class="adding-text editable"
+              contenteditable="true"
+              autofocus
+              bind:textContent={addedCardTitle}
+              on:keypress={(e) => e.key == "Enter" && addANewCard()}
+            />
+            <div class="card-adding-btns">
+              <Button
+                on:click={() => (cardAdded = false)}
+                size="small"
+                buttonStyleType="outline"
+                buttonStyle="dark"
+              >
+                {texts.cancel[$lang]}
+              </Button>
+              <Button
+                on:click={addANewCard}
+                size="small"
+                buttonStyleType="filled"
+                buttonStyle="dark"
+              >
+                {texts.add[$lang]}
+              </Button>
+            </div>
+          </div>
+        {/if}
       </div>
-      <div class="list-footer">Bottom</div>
+      <div class="list-footer">
+        <Button
+          on:click={() => (cardAdded = true)}
+          size="large"
+          buttonStyleType="outline"
+          buttonStyle="dark"
+        >
+          {texts.createCard[$lang]}
+        </Button>
+      </div>
     </div>
   </div>
 </div>
@@ -89,33 +141,21 @@
 <style lang="scss">
   @import "./index.scss";
 
-  // .lane:first-child {
-  //   padding-left: 0;
-  //   border-left: 0;
-  // }
-
-  // .lane:last-child {
-  //   padding-right: 0;
-  //   border-right: 0;
-  // }
-
   .lane {
     display: grid;
     grid-template-rows: 100%;
-    padding: var(--target-padding);
-    background-color: #ff867d; // remove
-    padding: 2rem; // remove
+    padding: var(--target-padding); // remove
+    // background: lightcyan; // remove
 
     .list-wrapper {
       display: grid;
       grid-template-rows: 100%;
-      padding: 1rem; // remove
 
       .list,
       .list-placeholder {
         align-self: stretch;
         position: static;
-        width: 500px; // change
+        width: 330px; // change
       }
 
       .list-placeholder {
@@ -126,10 +166,10 @@
         display: flex;
         flex-direction: column;
         cursor: grab;
-
-        background-color: #7465a6; // remove
-        padding-top: 0.5rem;
-        padding: 2rem; // remove
+        background-color: rgba(0, 0, 0, 0.5); // remove
+        height: fit-content;
+        max-height: 87vh;
+        padding-top: 0.5rem; // change
 
         .list-header,
         .list-footer,
@@ -139,7 +179,7 @@
 
         .list-header,
         .list-footer {
-          padding: var(--target-padding);
+          padding: var(--target-padding); // change
           cursor: pointer;
         }
 
@@ -153,20 +193,34 @@
         }
 
         .list-footer {
-          height: fit-content;
-          color: var(--color);
-          bottom: 0;
-          padding: var(--);
+          display: flex;
+          justify-content: center;
         }
 
         .list-cards {
           display: grid;
           align-content: start;
           overflow-y: auto;
-          padding: 2rem; // remove
-          background-color: #64b3b3; // remove
-          gap: 2rem; // remove
           cursor: default;
+          gap: 0.5rem; // change
+
+          .adding-card-container {
+            padding: 1rem; // change
+
+            .adding-text {
+              padding: 1rem;
+              border-radius: 5px;
+              border: 1px solid #888;
+            }
+            .card-adding-btns {
+              display: flex;
+              justify-content: center;
+              padding: 1rem 0;
+              width: 100%;
+              gap: 5px;
+              grid-auto-flow: column;
+            }
+          }
         }
       }
     }
