@@ -73,15 +73,15 @@ export function returnInitialsNames(words: string): string {
 }
 
 
-export function checkIfItemIsInArray(item, arr, key): { isInIt: boolean; index: number } {
+export function checkIfItemIsInArray(item, arr): { isInIt: boolean; index: number } {
   let isInIt = false;
   let index = -1;
-  arr.forEach((each, i) => {
-    if (item[key] == each[key]) {
+  for (var i = 0; i < arr.length; i++) {
+    if (JSON.stringify(item) == JSON.stringify(arr[i])) {
       [isInIt, index] = [true, i];
-      return;
+      break;
     }
-  });
+  };
   return { isInIt, index };
 }
 

@@ -39,6 +39,10 @@ export const texts = {
         br: "+ Criar novo cartão",
         en: "+ Add a new card"
     },
+    createCheckListItem: {
+        br: "+ Criar novo item",
+        en: "+ Add a new item"
+    },
     createLabel: {
         br: "+ Criar nova etiqueta",
         en: "+ Add a new label"
@@ -66,6 +70,10 @@ export const texts = {
     searchUserPlaceholder: {
         br: "Procure ou selecione um usuário",
         en: "Search or select an user"
+    },
+    inList: {
+        br: "Na lista",
+        en: "In list"
     },
     removeLabelAlert: {
         br: [

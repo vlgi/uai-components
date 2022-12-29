@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { TCard } from "../data/types";
   import { tick } from "svelte";
   import { marked } from "marked";
   import { texts } from "../data/components-texts";
@@ -21,26 +22,28 @@
   });
 
   // stores
-  import { lang } from "../stores";
+  import { lang, allUsers, board } from "../stores";
 
-  // components
-  import Modal from "../../Modal/Modal.svelte";
-  import CardHandleUsersDropdown from "./CardHandleUsersDropdown.svelte";
+  // // components
+  import CardChecklists from "./CardChecklists.svelte";
   import CardHandleLabelsModal from "./CardHandleLabelsModal.svelte";
+  import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
   import CardLabel from "./CardLabel.svelte";
+  import CardUserAvatar from "./CardUserAvatar.svelte";
   import CodeEditor from "./CodeEditor.svelte";
   import Icon from "../../Icon/Icon.svelte";
+  import Modal from "../../Modal/Modal.svelte";
 
   // props
-  export let data; // card data
+  export let data: TCard; // card data
+  export let cli: number; // card list index
   export let opened = false; // card modal opened
 
   // local variables
   $: editDescription = false;
   $: handleLabelsModalOpened = false;
-
-  // functions
-  import { returnInitialsNames } from "../utils";
+  $: selectCardUserModalOpened = false;
+  $: resetDraggingChecklistsElements = false;
 
   async function enableEditing() {
     editDescription = true;
@@ -53,170 +56,121 @@
     await tick();
     hljs.highlightAll();
   }
-
-  function getDonesChecklistItems(checklist): number {
-    let dones = 0;
-    checklist.items.forEach((item) => {
-      if (item.done) dones++;
-    });
-    return dones / checklist.items.length;
-  }
 </script>
 
 <Modal bind:opened {...data} --szot-modal-width="700px">
   <div slot="modal-header" class="header" />
 
-  <div slot="modal-content" class="content">
+  <div
+    slot="modal-content"
+    class="content"
+    on:mouseup={() => (resetDraggingChecklistsElements = true)}
+  >
     {#if data.cover}
       <div class="cover" style="background-image: url({data.cover})" />
     {/if}
 
     <!-- Card general info | title | members | labels -->
-    <div class="section">
-      <div class="section-icon h1-icon">
-        <Icon iconName="card-text-outline" --szot-icon-font-size="25px" />
-      </div>
-      <div class="section-content">
+    <section>
+      <!-- Card header -->
+      <div class="section-title modal-title">
+        <Icon iconName="card-text-outline" --szot-icon-font-size="20px" />
         <h1
-          class="title"
+          class="title editable"
           contenteditable="true"
           bind:textContent={data.title}
         />
-
-        <!-- Members -->
-        <h3>{texts.members[$lang]}</h3>
-        <div class="section-items">
-          <div class="add-item" id="open-avaiable-users">
-            <Icon iconName="plus-box" --szot-icon-font-size="25px" />
-          </div>
-          <CardHandleUsersDropdown bind:data />
-          <div class="items-container">
-            {#each data.members as member}
-              <div
-                class="user-avatar"
-                style="background-image: url({member.photo});"
-                title={`${member.name} (${member.email})`}
-              >
-                {#if member.photo == ""}{returnInitialsNames(member.name)}{/if}
-              </div>
-            {/each}
-          </div>
-        </div>
-
-        <!-- Labels -->
-        <h3>{texts.labels[$lang]}</h3>
-        <div class="section-items">
-          <div
-            class="add-item"
-            on:click={() => (handleLabelsModalOpened = true)}
-          >
-            <Icon iconName="plus-box" --szot-icon-font-size="25px" />
-          </div>
-          <CardHandleLabelsModal
-            bind:data
-            bind:opened={handleLabelsModalOpened}
-          />
-          <div class="items-container">
-            {#each data.labels as label, index}
-              <div class="item-wrapper">
-                <CardLabel data={label} />
-              </div>
-            {/each}
-          </div>
-        </div>
       </div>
-    </div>
+      <div class="section-items">
+        <p>{texts.inList[$lang]} - <span>{$board.lists[cli].title}</span></p>
+      </div>
+
+      <!-- Members -->
+      <div class="section-title"><h3>{texts.members[$lang]}</h3></div>
+      <div class="section-items">
+        <div
+          class="add-btn"
+          on:click={() => (selectCardUserModalOpened = true)}
+        >
+          <Icon iconName="plus-box" --szot-icon-font-size="20px" />
+        </div>
+        {#each data.members as member}
+          <CardUserAvatar data={member} />
+        {/each}
+      </div>
+      <CardHandleUsersModal
+        bind:list={$allUsers}
+        bind:data
+        bind:opened={selectCardUserModalOpened}
+      />
+
+      <!-- Labels -->
+      <div class="section-title"><h3>{texts.labels[$lang]}</h3></div>
+      <div class="section-items">
+        <div class="add-btn" on:click={() => (handleLabelsModalOpened = true)}>
+          <Icon iconName="plus-box" --szot-icon-font-size="20px" />
+        </div>
+        {#each data.labels as label}
+          <div class="item-wrapper">
+            <CardLabel bind:data={label} bind:cardData={data} />
+          </div>
+        {/each}
+      </div>
+      <CardHandleLabelsModal bind:data bind:opened={handleLabelsModalOpened} />
+    </section>
 
     <!-- Card Description -->
-    <!-- <div class="section">
-      <div class="section-icon h2-icon">
-        <Icon iconName="text" --szot-icon-font-size="25px" />
-      </div>
-      <div class="section-content">
+    <section>
+      <div class="section-title">
+        <Icon iconName="text" --szot-icon-font-size="20px" />
         <h2>{texts.desc[$lang]}</h2>
-        {#if !editDescription}
-          <div class="description markdown-parse" on:click={enableEditing}>
-            {@html marked.parse(data.desc)}
-          </div>
-        {/if}
-        {#if editDescription}
-          <div
-            style="padding: 0 10px;"
-            on:keydown={(e) =>
-              e.key == "Enter" && !e.shiftKey && disableEditing()}
-          >
-            <CodeEditor
-              on:focusout={() => (editDescription = false)}
-              bind:data={data.desc}
-              lang={"Markdown"}
-            />
-          </div>
-        {/if}
       </div>
-    </div> -->
 
-    <!-- Card Attachments -->
-    <div class="section">
-      <div class="section-icon h2-icon">
-        <Icon iconName="attachment" --szot-icon-font-size="27px" />
-      </div>
-      <div class="section-content">
-        <h2>{texts.attachments[$lang]}</h2>
-      </div>
-    </div>
-
-    <!-- Card Checklists -->
-    {#each data.checklists as checklist}
-      <div class="section">
-        <div class="section-icon h2-icon">
-          <Icon
-            iconName="checkbox-marked-outline"
-            --szot-icon-font-size="25px"
+      {#if !editDescription}
+        <div class="description markdown-parse" on:click={enableEditing}>
+          {@html marked.parse(data.desc)}
+        </div>
+      {/if}
+      {#if editDescription}
+        <div
+          style="padding: 0 10px;"
+          on:keydown={(e) =>
+            e.key == "Enter" && !e.shiftKey && disableEditing()}
+        >
+          <CodeEditor
+            on:focusout={() => (editDescription = false)}
+            bind:data={data.desc}
+            lang={"Markdown"}
           />
         </div>
-        <div class="section-content">
-          <h2>{checklist.title}</h2>
-          <div class="checklist-progress-bar">
-            <span>{(getDonesChecklistItems(checklist) * 100).toFixed(1)}%</span>
-            <div class="bar-wrapper">
-              <div style="width: {getDonesChecklistItems(checklist) * 100}%;" />
-            </div>
-          </div>
-          {#each checklist.items as item}
-            <div class="checklist-item-container">
-              <div class="item-icon" on:click={() => (item.done = !item.done)}>
-                {#if !item.done}<Icon iconName="checkbox-blank-outline" />{/if}
-                {#if item.done}
-                  <Icon
-                    iconName="checkbox-marked-outline"
-                    --szot-icon-color="#5AAC44"
-                  />
-                {/if}
-              </div>
-              <span contenteditable="true" bind:textContent={item.title} />
+      {/if}
+    </section>
 
-              <div class="item-btn"><Icon iconName="account-plus" /></div>
-              <div class="item-btn">
-                <Icon iconName="clock-outline" />
-              </div>
-            </div>
-          {/each}
-        </div>
+    <!-- Card Attachments -->
+    <section>
+      <div class="section-title">
+        <Icon iconName="attachment" --szot-icon-font-size="20px" />
+        <h2>{texts.attachments[$lang]}</h2>
       </div>
-    {/each}
+    </section>
+
+    <!-- Card Checklists -->
+    <section>
+      <CardChecklists bind:data bind:reset={resetDraggingChecklistsElements} />
+    </section>
 
     <!-- end modal content -->
   </div>
 
   <!-- modal footer -->
-  <div slot="modal-footer" class="footer">
+  <!-- <div slot="modal-footer" class="footer">
     <span>My modal footer</span>
-  </div>
+  </div> -->
 </Modal>
 
 <style lang="scss">
-  @import "./card.scss";
   @import "../index.scss";
+  @import "./card-modal.scss";
 
   :global(.markdown-parse > h1) {
     font-size: 18px;
@@ -231,8 +185,8 @@
   }
 
   :global(.markdown-parse > h1, .markdown-parse > h2, .markdown-parse > h3) {
-    margin-top: 1rem;
-    margin-bottom: 0.2rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
     font-weight: 500;
   }
 
@@ -247,150 +201,38 @@
   }
 
   :global(.markdown-parse code) {
-    border-radius: 10px; // change
+    border-radius: var(--szot-radius);
     white-space: pre-wrap;
   }
 
-  .preview {
-    border-radius: 5px;
-    margin: 0 5px; // change
+  h1,
+  h2,
+  h3:focus {
+    padding: 0 10px;
   }
 
-  .content {
-    display: grid;
-    gap: 1rem;
+  .cover {
+    height: 130px;
+    min-height: 130px;
+    background-position: center center;
+    background-size: contain;
+    background-origin: content-box;
+    background-color: rgb(240, 242, 242); // change
+    // background-repeat: no-repeat;
+  }
 
-    h2 {
-      font-size: 18px;
-    }
+  .section-items {
+    p {
+      font-size: 15px;
 
-    h3 {
-      font-size: 16px;
-    }
-
-    .cover {
-      height: 130px;
-      min-height: 130px;
-      background-position: center center;
-      background-size: contain;
-      background-origin: content-box;
-      // background-repeat: no-repeat;
-      // background-color: rgb(240, 242, 242); // change
-    }
-
-    .title {
-      font-size: 22px; // change
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-
-    .section {
-      display: grid;
-      grid-auto-flow: column;
-      grid-template-columns: 50px calc(100% - 50px);
-
-      .section-icon {
-        display: flex;
-        width: 100%;
-      }
-
-      .section-icon.h2-icon {
-        margin-top: -3px;
-      }
-
-      .section-content {
-        display: flex;
-        flex-direction: column;
-        margin-right: 5px; // change
-
-        .add-item {
-          display: flex;
-          align-items: center;
-          &:hover {
-            cursor: pointer;
-            opacity: 0.8;
-          }
-        }
-
-        .section-items {
-          display: flex;
-          align-items: center;
-          gap: 0.3rem;
-          margin-bottom: 1rem;
-          margin-top: 0.2rem;
-
-          .items-container {
-            display: flex;
-            gap: 0.3rem;
-            flex-wrap: wrap;
-
-            .item-wrapper {
-              width: fit-content;
-            }
-          }
-        }
-
-        .checklist-progress-bar {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          height: 10px;
-          margin: 1rem 0;
-          width: 100%;
-
-          span {
-            font-size: 12px;
-          }
-
-          .bar-wrapper {
-            width: 100%;
-            border-radius: 5px;
-            background-color: #eee;
-
-            div {
-              height: 10px;
-              background-color: #026aa7;
-              border-radius: 5px;
-            }
-          }
-        }
-
-        .checklist-item-container {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 3px 0;
-
-          span {
-            font-size: 15xp;
-            width: 100%;
-            margin-left: 5px;
-          }
-
-          &:hover {
-            background: rgb(245, 245, 245);
-            border-radius: 5px;
-            cursor: pointer;
-          }
-
-          .item-btn {
-            // width: 15px;
-            // height: 15px;
-            padding: 0 5px;
-            border-radius: 5px;
-            width: fit-content;
-
-            &:hover {
-              background: #eee;
-            }
-          }
-        }
+      span {
+        text-decoration: underline;
       }
     }
+  }
 
-    .description {
-      cursor: pointer;
-    }
+  .description {
+    margin: 0 5px;
   }
 
   .footer {
@@ -398,6 +240,13 @@
     color: #333;
     padding: 2rem;
     text-align: center;
-    border-radius: 5px; // change
+    border-radius: var(--szot-radius);
+  }
+
+  .add-btn {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 </style>

@@ -1,13 +1,17 @@
 <script lang="ts">
+  import type { TCard } from "../data/types";
   import Icon from "../../Icon/Icon.svelte";
   import { texts } from "../data/components-texts";
-  export let data; // label data
-  export let cardData = null; // label card data
+
+  // props
+  export let data; // label data from card
+  export let cardData: TCard; // label card data
   export let showIcon = false; // show icon boolean
   export let canEditText = false;
   export let icon = ""; // label icon
   export let allowEdit = false; // allow edition boolean
   export let focus = false; // label span text focus to edit
+  export let canSelect = false; // can click and select label
 
   // stores
   import { lang, allLabels, board } from "../stores";
@@ -17,7 +21,7 @@
   import Modal from "../../Modal/Modal.svelte";
   import Button from "../../formFields/Button/Button.svelte";
 
-  // locarl variables
+  // local variables
   $: openModal = false;
   $: showRemoveLabelsAlert = false;
 
@@ -28,20 +32,22 @@
 
   // remove label from board props labels (board avaiable labels) and from all cads
   function removeLabel(): void {
+    // remove label from all labels stores
     const allTags = [...$allLabels];
     $allLabels.forEach((label, i) => {
-      if (label.hex == data.hex && label.title == data.title) {
+      if (JSON.stringify(label) === JSON.stringify(data)) {
         allTags.splice(i, 1);
         allLabels.set(allTags);
       }
     });
 
+    // remove label from all cards
     const boardData = { ...$board };
     boardData.lists.forEach((list) => {
       list.cards.forEach((card) => {
         card.labels.forEach((label, i) => {
           const labels = [...card.labels];
-          if (label.hex == data.hex && label.title == data.title) {
+          if (JSON.stringify(label) === JSON.stringify(data)) {
             labels.splice(i, 1);
             card.labels = [...labels];
           }
@@ -53,7 +59,7 @@
   }
 
   function handleCardLabel(): void {
-    const check = checkIfItemIsInArray(data, cardData.labels, "title");
+    const check = checkIfItemIsInArray(data, cardData.labels);
     const labels = [...cardData.labels];
     if (check.isInIt) {
       labels.splice(check.index, 1);
@@ -65,12 +71,16 @@
 
 <div class="card-label-container">
   {#if allowEdit}
-    <div class="card-edit-btn" on:click={() => (openModal = true)}>
+    <div
+      class="card-edit-btn"
+      on:click={() => (openModal = true)}
+      style="background-color: {data.hex}4e"
+    >
       <Icon iconName="square-edit-outline" --szot-icon-font-size="15px" />
     </div>
   {/if}
   <div
-    on:click={handleCardLabel}
+    on:click={() => canSelect && handleCardLabel()}
     class="card-label"
     class:card-label-edit-btn={allowEdit}
     style="background-color: {data.hex}4e"
@@ -85,26 +95,35 @@
         class="editable"
         contenteditable="true"
         bind:textContent={data.title}
+        style="padding: 10px"
       />
     {:else}
       <span>{data.title}</span>
     {/if}
-
     <div class="card-label-icon">
-      {#if showIcon}<Icon iconName={icon} --szot-icon-font-size="15px" />{/if}
+      {#if showIcon}<Icon
+          iconName={icon}
+          --szot-icon-font-size="20px"
+          --szot-icon-color="white"
+        />{/if}
     </div>
   </div>
   {#if allowEdit}
     <div
       class="card-remove-btn"
       on:click={() => (showRemoveLabelsAlert = true)}
+      style="background-color: {data.hex}4e"
     >
       <Icon iconName="trash-can-outline" --szot-icon-font-size="15px" />
     </div>
   {/if}
 </div>
 
-<CardHandleLabelsColorsModal bind:opened={openModal} bind:labelData={data} />
+<CardHandleLabelsColorsModal
+  bind:opened={openModal}
+  bind:labelData={data}
+  bind:cardData
+/>
 
 <Modal bind:opened={showRemoveLabelsAlert} --szot-modal-width="400px">
   <div slot="modal-header" class="header" />
@@ -141,7 +160,6 @@
 
 <style lang="scss">
   @import "../index.scss";
-
   .card-label-container {
     display: flex;
     align-items: center;
@@ -149,11 +167,11 @@
     height: 100%;
 
     .card-edit-btn {
-      border-radius: 5px 0 0 5px;
+      border-radius: var(--szot-radius) 0 0 var(--szot-radius);
     }
 
     .card-remove-btn {
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 var(--szot-radius) var(--szot-radius) 0;
     }
 
     .card-edit-btn,
@@ -163,7 +181,6 @@
       align-items: center;
       height: 100%;
       padding: 0 5px;
-      background: #eee;
 
       &:hover {
         cursor: pointer;
@@ -174,35 +191,36 @@
 
   .card-label {
     display: grid;
-    grid-template-columns: 20px calc(100% - 42px) auto;
+    gap: 5px;
+    grid-auto-flow: column;
+    grid-template-columns: 12px calc(100% - 40px) auto;
     align-items: center;
+    justify-items: start;
     min-height: 30px;
+    height: fit-content;
     width: 100%;
-    height: 100%;
     padding: 0.2rem 0.4rem;
-    border-radius: 5px; // change
+    border-radius: var(--szot-radius);
     font-weight: 500;
 
     .circle {
       height: 12px;
       width: 12px;
       border-radius: 50%;
-      margin-right: 5px;
     }
 
     span {
-      display: flex;
-      align-items: center;
-      padding: 3px 5px 0 5px;
       font-size: 15px;
-      line-height: 13px;
+      line-height: 15px;
+      white-space: normal;
       width: 100%;
-      height: 100%;
-    }
+      max-width: 300px;
 
-    .card-label-icon {
-      margin-left: 0.5rem;
-      width: 100%;
+      .card-label-icon {
+        margin-left: 0.5rem;
+        width: 100%;
+        background: red;
+      }
     }
 
     cursor: pointer;
@@ -212,10 +230,6 @@
     }
   }
 
-  .card-label-edit-btn {
-    border-radius: 0;
-  }
-
   .remove-label-alert {
     .modal-card-label {
       display: flex;
@@ -223,12 +237,16 @@
       width: 100%;
       background: #eee;
       padding: 1rem;
-      border-radius: 5px; // change
+      border-radius: var(--szot-radius);
       margin: 10px 0; // change
       .card-label {
         width: fit-content;
       }
     }
+  }
+
+  .card-label-edit-btn {
+    border-radius: 0;
   }
 
   .footer {

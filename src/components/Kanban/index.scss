@@ -4,86 +4,82 @@
     -ms-user-select: none;
     user-select: none;
 
+}
 
-    .editable {
-        cursor: pointer;
-        outline: none;
-        width: 100%;
-        width: 100%;
+.editable {
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    width: 100%;
 
-        &:focus,
-        &:hover {
-            border-radius: var(--border-radius);
-        }
 
-        &:focus {
-            outline: none !important;
-            border: 1px solid #719ece;
-            box-shadow: 0 0 10px #719ece;
-        }
-
-        &:hover {
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.3) !important;
-        }
+    &:focus {
+        outline: none !important;
+        background-color: rgba(113, 158, 206, 0.3);
+        border-radius: calc(var(--szot-radius) / 1);
+        border: 1px solid #719ece;
+        // box-shadow: 0 0 5px #719ece;
     }
 
-    .to-right,
-    .to-left {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.to-right,
+.to-left {
+    opacity: 0.8;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    position: absolute !important;
+    cursor: grabbing;
+    height: auto;
+}
+
+.to-right {
+    animation-name: toRight;
+
+    @keyframes toRight {
+        to {
+            transform: rotate(2deg);
+        }
+    }
+}
+
+.to-left {
+    animation-name: toLeft;
+
+    @keyframes toLeft {
+        to {
+            transform: rotate(-2deg);
+        }
+    }
+}
+
+button {
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: var(--szot-radius);
+    padding: var(--target-padding);
+
+    &:hover {
         opacity: 0.8;
-        animation-fill-mode: forwards;
-        animation-duration: 0.5s;
-        animation-timing-function: ease;
-        position: absolute !important;
-        cursor: grabbing;
-        height: auto;
     }
+}
 
-    .to-right {
-        animation-name: toRight;
+.btn-ok {
+    color: white;
+    background: #0079bf; // change
+}
 
-        @keyframes toRight {
-            to {
-                transform: rotate(2deg);
-            }
-        }
-    }
+.btn-danger {
+    color: white;
+    background: #bf1d00; // change
+}
 
-    .to-left {
-        animation-name: toLeft;
-
-        @keyframes toLeft {
-            to {
-                transform: rotate(-2deg);
-            }
-        }
-    }
-
-    button {
-        border: none;
-        font-weight: bold;
-        cursor: pointer;
-        border-radius: 5px;
-        padding: var(--target-padding);
-
-        &:hover {
-            opacity: 0.8;
-        }
-    }
-
-    .btn-ok {
-        color: white;
-        background: #0079bf; // change
-    }
-
-    .btn-danger {
-        color: white;
-        background: #bf1d00; // change
-    }
-
-    .btn-neutral {
-        background: #ddd;
-        color: #444;
-    }
-
+.btn-neutral {
+    background: #ddd;
+    color: #444;
 }

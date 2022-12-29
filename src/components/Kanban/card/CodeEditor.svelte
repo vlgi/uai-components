@@ -35,6 +35,6 @@
 
 <style lang="scss">
   .preview {
-    border-radius: 10px; // change
+    border-radius: var(--szot-radius);
   }
 </style>

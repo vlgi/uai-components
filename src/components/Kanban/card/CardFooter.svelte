@@ -5,6 +5,7 @@
   import { lang } from "../stores";
 
   // components
+  import CardUserAvatar from "./CardUserAvatar.svelte";
   import Icon from "../../Icon/Icon.svelte";
 
   // props
@@ -50,8 +51,8 @@
   <div class="card-footer-users">
     {#if data.members.length > 0}
       {#each data.members.slice(0, 5).reverse() as member}
-        <div class="user-avatar" style="background-image: url({member.photo})">
-          {#if member.photo == ""}{returnInitialsNames(member.name)}{/if}
+        <div class="user-avatar-container">
+          <CardUserAvatar data={member} />
         </div>
       {/each}
     {/if}
@@ -59,13 +60,12 @@
 </div>
 
 <style lang="scss">
-  @import "./card.scss";
-
   .card-footer {
     display: flex;
     justify-content: space-between;
     background-color: var(--szot-card-background-color); // change
     padding: 5px; // change
+    border-radius: 0 0 var(--szot-radius) var(--szot-radius);
 
     .card-footer-info {
       display: grid;
@@ -77,6 +77,7 @@
         grid-auto-flow: column;
         gap: 0.2rem; // change
         align-items: center;
+
         span {
           height: fit-content;
           font-size: 12px; // change
@@ -88,7 +89,7 @@
       display: grid;
       grid-auto-flow: column;
 
-      .user-avatar {
+      .user-avatar-container {
         margin-left: -15px;
       }
     }

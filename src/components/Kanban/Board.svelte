@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { TBoard, TCardUser, TCardLabel, TList } from "./data/types";
+  import { texts } from "./data/components-texts";
+  import { list } from "./data/empty-data";
 
   // stores
   import {
@@ -23,6 +25,8 @@
 
   // components
   import List from "./List.svelte";
+  import Button from "../formFields/Button/Button.svelte";
+  import Icon from "../Icon/Icon.svelte";
 
   // props
   export let data: TBoard; // board data
@@ -30,9 +34,10 @@
   export let labels: TCardLabel[]; // board possible users
   export let language: string; // components language
 
-  // setting kanban
+  // setting kanban data
   $: if (users) allUsers.set(users); // set all board users when finished data fetching
-  $: if (labels) allLabels.set(labels); // set all board labels when finished data fetching
+  $: if (labels) allLabels.set(labels); // set all board labels store when finished data fetching
+  $: if ($allLabels) labels = [...$allLabels]; // update data labels when allLabels store change
   $: if (data?.lists) board.set(data); // set board store when data change
   $: if ($board) data = { ...$board }; // update data board when board store change
   $: lang.set(language); // set board language
@@ -78,6 +83,11 @@
     tcEl.set(null); // reset target card html element
     tci.set(-1); // reset target card index
     tcli.set(-1); // reset target card list index
+  }
+
+  function addList(): void {
+    const emptyList = { ...list };
+    data.lists = [...data.lists, emptyList];
   }
 
   // ####################################################
@@ -142,7 +152,10 @@
 {:else}
   <div
     class="board-container"
-    style="background-image: url({data.backgroundImage})"
+    style="background-image: url({data.backgroundImage}); cursor: {$dli != -1 ||
+    $dci != -1
+      ? 'grabbing'
+      : 'default'}"
     on:mouseup={reset}
   >
     <div class="board-header">
@@ -153,17 +166,21 @@
       />
     </div>
     <div class="board-lists" on:mousemove={moveEl} on:blur>
-      {#each data.lists.slice(0, 1) as list, li}
-        <!-- {#each data.lists as list, li} -->
+      <!-- {#each data.lists.slice(0, 1) as list, li} -->
+      {#each data.lists as list, li}
         <List bind:data={list} {li} />
       {/each}
+      <div class="add-new-list" on:click={addList}>
+        <Icon iconName="plus-box" --szot-icon-font-size="40px" />
+      </div>
     </div>
   </div>
 {/if}
 
 <style lang="scss">
+  @import "./index.scss";
   * {
-    --border-radius: 5px;
+    --szot-button-border-radius: var(--szot-radius);
     --target-padding: 0.75rem;
     --color: #172b4d;
   }
@@ -172,8 +189,6 @@
   .board-container {
     display: flex;
     height: 100%;
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
   }
 
@@ -196,6 +211,10 @@
         font-size: 2rem;
         padding: 1rem;
         color: var(--szot-board-title-color);
+
+        &:focus {
+          margin-left: var(--target-padding);
+        }
       }
     }
 
@@ -204,11 +223,17 @@
       grid-template-rows: 100%;
       justify-content: start;
       grid-auto-flow: column;
-      max-height: fit-content;
+      height: 100%;
       overflow-x: auto;
-      gap: 0.5rem; // change
-      // background-color: #ffd699; // remove
-      // padding: 1rem; // remove
+
+      .add-new-list {
+        margin: calc(var(--target-padding) / 2); // change
+        height: fit-content;
+        padding: 0 3px;
+        border-radius: var(--szot-radius);
+        background-color: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+      }
     }
   }
 </style>

@@ -6,6 +6,7 @@ export const dlEl = writable(null); // dragging list html element (.list div)
 export const dli = writable(-1); // dragging list index
 export const tlEl = writable(null); // target list html element (.lane div)
 export const tli = writable(-1); // target list index
+export const dlh = writable("auto"); // dragging list height
 
 // cards
 export const dcEl = writable(null); // dragging card html element (.card div)

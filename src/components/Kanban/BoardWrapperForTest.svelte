@@ -33,6 +33,7 @@
     --szot-list-title-color="#666"
     --szot-list-background-color="#f5f5f5"
     --szot-card-background-color="#f9f9f9"
+    --szot-radius="15px"
   />
 </div>
 
@@ -40,13 +41,20 @@
   .screen-simulation {
     height: 576px;
     width: 1024px;
-    height: 720px;
-    width: 1280px;
-    height: 900px;
-    width: 1600px;
-    height: 100vh;
-    width: 100%;
+
     height: 1045px;
     width: 1885px;
+
+    height: 720px;
+    width: 1280px;
+
+    height: 900px;
+    width: 1600px;
+
+    height: 810px;
+    width: 1440px;
+
+    height: 96.5vh;
+    width: 100%;
   }
 </style>

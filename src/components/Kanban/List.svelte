@@ -4,7 +4,18 @@
   import { texts } from "./data/components-texts";
 
   // stores
-  import { dli, dlEl, tli, tlEl, pos, relPos, dir, lang } from "./stores";
+  import {
+    dli,
+    dlEl,
+    tli,
+    tlEl,
+    pos,
+    relPos,
+    dir,
+    lang,
+    dlh,
+    board,
+  } from "./stores";
 
   // components
   import Card from "./card/Card.svelte";
@@ -18,7 +29,6 @@
   export let li: number; // list index
 
   // local variables
-  let phh = "0px"; // dragging element placeholder height
   $: cardAdded = false;
   let addedCardTitle = "";
 
@@ -32,9 +42,15 @@
   // set dragging list values
   function setDragList(e): void {
     if (e.button != 0) return; // if not left button, do nothing
+    const list = document.querySelector(`.list-${li}`);
+    dlEl.set(list); // set dragging list html element (.list div)
+    const header = document.querySelector(`.list-header-${li}`);
+    const cards = document.querySelector(`.list-cards-${li}`);
+    const footer = document.querySelector(`.list-footer-${li}`);
+    dlh.set(
+      `${header.clientHeight + cards.clientHeight + footer.clientHeight}px`
+    ); // set dragging list placeholder height
     dli.set(li); // set dragging list index
-    dlEl.set(e.target); // set dragging list html element (.list div)
-    phh = `${e.target.clientHeight}px`; // set dragging list placeholder height
     relPos.set(getRelativePosition(e.clientX, e.clientY, e.target)); // relative mouse position in relation to the html element
     changeElementPosition($pos, $dlEl, { x: $relPos.x, y: 10 }); // change dragging element position
   }
@@ -60,6 +76,24 @@
     const list = document.querySelector(`.list-cards-${li}`);
     list.scrollTop = list.scrollHeight;
   }
+
+  function autoRemove(): void {
+    if (data.title == "" && data.cards.length == 0) {
+      const lists = [...$board.lists];
+      lists.splice(lists.length - 1, 1);
+      board.set({ ...$board, lists: [...lists] });
+    }
+  }
+
+  function handleCreatingCard(e): void {
+    if (e.key == "Enter") {
+      addANewCard();
+      cardAdded = true;
+    } else if (e.key == "Tab") {
+      addANewCard();
+      cardAdded = false;
+    }
+  }
 </script>
 
 <div
@@ -71,26 +105,33 @@
 >
   <div class="list-wrapper">
     {#if $dli == li}
-      <div style="height: {phh}px" class="list-placeholder">
+      <div style="height:  {$dlh}" class="list-placeholder">
         <div />
       </div>
     {/if}
     <div
       class="list list-{li}"
-      on:mousedown|self={setDragList}
+      style="height: {$dli == li ? $dlh : 'auto'}"
       class:to-right={$dli == li && $dir.x == "right"}
       class:to-left={$dli == li && $dir.x == "left"}
     >
-      <div class="list-header">
+      <div class="list-header list-header-{li}">
+        <div class="list-draggable-element" on:mousedown|self={setDragList} />
+        <!-- svelte-ignore a11y-autofocus -->
         <div
           class="list-title editable"
           contenteditable="true"
+          autofocus
+          on:focusout={autoRemove}
+          on:keypress={(e) => {
+            if (e.key == "Enter") cardAdded = true;
+          }}
           bind:textContent={data.title}
         />
       </div>
       <div class="list-cards list-cards-{li}">
-        {#each data.cards.slice(0, 1) as card, ci}
-          <!-- {#each data.cards as card, ci} -->
+        <!-- {#each data.cards.slice(0, 1) as card, ci} -->
+        {#each data.cards as card, ci}
           <Card bind:data={card} {ci} cli={li} />
         {/each}
         {#if cardAdded}
@@ -101,7 +142,7 @@
               contenteditable="true"
               autofocus
               bind:textContent={addedCardTitle}
-              on:keypress={(e) => e.key == "Enter" && addANewCard()}
+              on:keydown={handleCreatingCard}
             />
             <div class="card-adding-btns">
               <Button
@@ -124,7 +165,7 @@
           </div>
         {/if}
       </div>
-      <div class="list-footer">
+      <div class="list-footer list-footer-{li}">
         <Button
           on:click={() => (cardAdded = true)}
           size="large"
@@ -141,11 +182,14 @@
 <style lang="scss">
   @import "./index.scss";
 
+  .lane:first-child {
+    padding-left: var(--target-padding);
+  }
+
   .lane {
     display: grid;
     grid-template-rows: 100%;
-    padding: var(--target-padding); // remove
-    // background: lightcyan; // remove
+    padding: calc(var(--target-padding) / 2); // change
 
     .list-wrapper {
       display: grid;
@@ -153,8 +197,6 @@
 
       .list,
       .list-placeholder {
-        align-self: stretch;
-        position: static;
         width: 330px; // change
       }
 
@@ -165,11 +207,6 @@
       .list {
         display: flex;
         flex-direction: column;
-        cursor: grab;
-        background-color: rgba(0, 0, 0, 0.5); // remove
-        height: fit-content;
-        max-height: 87vh;
-        padding-top: 0.5rem; // change
 
         .list-header,
         .list-footer,
@@ -179,22 +216,38 @@
 
         .list-header,
         .list-footer {
-          padding: var(--target-padding); // change
           cursor: pointer;
         }
 
         .list-header {
-          top: 0;
+          display: flex;
+          justify-content: center;
+          border-radius: var(--szot-radius) var(--szot-radius) 0 0;
+          padding: 5px 0;
+
+          .list-draggable-element {
+            height: 3px;
+            background-color: rgba(0, 0, 0, 0.1);
+            cursor: grab;
+          }
+
           .list-title {
+            padding: var(--target-padding); // change
             font-size: 1.2rem;
             font-weight: bold;
             color: var(--color);
+
+            &:focus {
+              width: calc(100% - calc(var(--target-padding)) * 2);
+            }
           }
         }
 
         .list-footer {
           display: flex;
           justify-content: center;
+          padding: var(--target-padding); // change
+          border-radius: 0 0 var(--szot-radius) var(--szot-radius);
         }
 
         .list-cards {
@@ -202,14 +255,13 @@
           align-content: start;
           overflow-y: auto;
           cursor: default;
-          gap: 0.5rem; // change
 
           .adding-card-container {
             padding: 1rem; // change
 
             .adding-text {
               padding: 1rem;
-              border-radius: 5px;
+              border-radius: var(--szot-radius);
               border: 1px solid #888;
             }
             .card-adding-btns {

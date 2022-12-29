@@ -1,4 +1,4 @@
-import type { TCard, } from "./types"
+import type { TCard, TCardLabel, TCardChecklistItem, TCardCheckList, TDueDates, TList } from "./types"
 
 export const card: TCard = {
   title: "",
@@ -19,11 +19,32 @@ export const card: TCard = {
   desc: "",
 };
 
-export const list = {}
 
-export const label = {
+export const label: TCardLabel = {
   hex: "",
   color: "",
-  id: "",
   title: "",
+}
+
+export const checklist: TCardCheckList = {
+  title: "",
+  items: []
+}
+
+const date: TDueDates = {
+  startDate: null,
+  dueDate: null,
+  dueReminder: null
+}
+
+export const item: TCardChecklistItem = {
+  title: "",
+  members: [],
+  done: false,
+  dates: { ...date }
+}
+
+export const list: TList = {
+  title: "",
+  cards: [],
 }

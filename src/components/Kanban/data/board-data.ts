@@ -1,7 +1,6 @@
 import type { TBoard } from "./types"
 
 export const data: TBoard = {
-    id: "bbad84e4-4dff-11ed-bdc3-0242ac120002",
     title: "PLANEJADOR PESSOAL",
     backgroundImage: "https://i0.wp.com/montanafreepress.org/wp-content/uploads/2022/04/AdobeStock_256618260-scaled.jpeg",
     backgroundColor: "#fff",
@@ -21,7 +20,17 @@ export const data: TBoard = {
                             items: [
                                 {
                                     title: "Requirements/data meeting",
-                                    members: [],
+                                    members: [
+                                        {
+                                            name: "Rosina Rolfson Rice",
+                                            photo: "https://images.pexels.com/photos/2066039/pexels-photo-2066039.jpeg",
+                                            email: "rosina.rice@szot.com"
+                                        }, {
+                                            name: "Alberto Simonis Gerhold",
+                                            photo: "",
+                                            email: "alberto.gerhold@szot.com"
+                                        }
+                                    ],
                                     done: true,
                                     dates: {
                                         startDate: new Date(),
@@ -99,12 +108,10 @@ export const data: TBoard = {
                     ],
                     members: [{
                         name: "Rosina Rolfson Rice",
-                        id: "5af6e845-ed59-4ab8-9829-c62dad9b5fdf",
                         photo: "https://images.pexels.com/photos/2066039/pexels-photo-2066039.jpeg",
                         email: "rosina.rice@szot.com"
                     }, {
                         name: "Alberto Simonis Gerhold",
-                        id: "f6bb3fc2-6d46-4741-9f16-59bb4facdcca",
                         photo: "",
                         email: "alberto.gerhold@szot.com"
                     }],
@@ -113,7 +120,6 @@ export const data: TBoard = {
                             text: "My new comment",
                             user: {
                                 name: "Rosina Rolfson Rice",
-                                id: "5af6e845-ed59-4ab8-9829-c62dad9b5fdf",
                                 photo: "https://images.pexels.com/photos/2066039/pexels-photo-2066039.jpeg",
                                 email: "rosina.rice@szot.com"
                             },
@@ -122,7 +128,6 @@ export const data: TBoard = {
                             text: "Alberto did a comment",
                             user: {
                                 name: "Alberto Simonis Gerhold",
-                                id: "f6bb3fc2-6d46-4741-9f16-59bb4facdcca",
                                 photo: "",
                                 email: "alberto.gerhold@szot.com"
                             },
@@ -137,25 +142,21 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
                             hex: "#CD8DE5",
                             color: "#fff",
                         },
                         {
                             title: "Alert",
-                            id: "43b70c41-595e-4bab-a742-b1fe2c84c905",
                             hex: "#EF7564",
                             color: "#fff",
                         },
                         {
                             title: "Coding",
-                            id: "624f8885-0e97-49ae-a9e7-5cf31a544c0b",
                             hex: "#2a52be",
                             color: "#fff",
                         },
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },
@@ -206,13 +207,11 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Alert",
-                            id: "43b70c41-595e-4bab-a742-b1fe2c84c905",
                             hex: "#EF7564",
                             color: "#fff",
                         },
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },
@@ -263,7 +262,6 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
                             hex: "#CD8DE5",
                             color: "#fff",
                         },
@@ -323,25 +321,21 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
                             hex: "#CD8DE5",
                             color: "#fff",
                         },
                         {
                             title: "Alert",
-                            id: "43b70c41-595e-4bab-a742-b1fe2c84c905",
                             hex: "#EF7564",
                             color: "#fff",
                         },
                         {
                             title: "Coding",
-                            id: "624f8885-0e97-49ae-a9e7-5cf31a544c0b",
                             hex: "#2a52be",
                             color: "#fff",
                         },
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },
@@ -392,13 +386,11 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
                             hex: "#CD8DE5",
                             color: "#fff",
                         },
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },
@@ -449,7 +441,6 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },
@@ -505,13 +496,11 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
                             hex: "#CD8DE5",
                             color: "#fff",
                         },
                         {
                             title: "Alert",
-                            id: "43b70c41-595e-4bab-a742-b1fe2c84c905",
                             hex: "#EF7564",
                             color: "#fff",
                         },
@@ -558,7 +547,6 @@ export const data: TBoard = {
                             text: "This is a comment",
                             user: {
                                 name: "Rosina Rolfson Rice",
-                                id: "5af6e845-ed59-4ab8-9829-c62dad9b5fdf",
                                 photo: "https://pbs.twimg.com/profile_images/879533823763066883/_WjQz3Tm_400x400.jpg",
                                 email: "rosina.rice@szot.com"
                             },
@@ -570,32 +558,7 @@ export const data: TBoard = {
                         dueDate: new Date(),
                         dueReminder: new Date(),
                     },
-                    labels: [
-                        {
-                            title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
-                            hex: "#CD8DE5",
-                            color: "#fff",
-                        },
-                        {
-                            title: "Alert",
-                            id: "43b70c41-595e-4bab-a742-b1fe2c84c905",
-                            hex: "#EF7564",
-                            color: "#fff",
-                        },
-                        {
-                            title: "Coding",
-                            id: "624f8885-0e97-49ae-a9e7-5cf31a544c0b",
-                            hex: "#2a52be",
-                            color: "#fff",
-                        },
-                        {
-                            title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
-                            hex: "#E568AF",
-                            color: "#fff",
-                        },
-                    ],
+                    labels: [],
                     desc: "Placeat qui nisi corrupti ad et ut eum."
                 },
                 {
@@ -642,25 +605,21 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
                             hex: "#CD8DE5",
                             color: "#fff",
                         },
                         {
                             title: "Alert",
-                            id: "43b70c41-595e-4bab-a742-b1fe2c84c905",
                             hex: "#EF7564",
                             color: "#fff",
                         },
                         {
                             title: "Coding",
-                            id: "624f8885-0e97-49ae-a9e7-5cf31a544c0b",
                             hex: "#2a52be",
                             color: "#fff",
                         },
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },
@@ -711,13 +670,11 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Coding",
-                            id: "624f8885-0e97-49ae-a9e7-5cf31a544c0b",
                             hex: "#2a52be",
                             color: "#fff",
                         },
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },
@@ -735,33 +692,7 @@ export const data: TBoard = {
                     allChecklistsItems: [],
                     allDoneChecklistsItems: [],
                     cover: "",
-                    checklists: [
-                        {
-                            title: "Australian Cattle Dog",
-                            items: [
-                                {
-                                    title: "Fiat Aventador",
-                                    members: [],
-                                    done: true,
-                                    dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
-                                    }
-                                },
-                                {
-                                    title: "Ford Roadster",
-                                    members: [],
-                                    done: false,
-                                    dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
-                                    }
-                                }
-                            ],
-                        }
-                    ],
+                    checklists: [],
                     members: [],
                     comments: [],
                     attachments: [],
@@ -773,30 +704,26 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
                             hex: "#CD8DE5",
                             color: "#fff",
                         },
                         {
                             title: "Alert",
-                            id: "43b70c41-595e-4bab-a742-b1fe2c84c905",
                             hex: "#EF7564",
                             color: "#fff",
                         },
                         {
                             title: "Coding",
-                            id: "624f8885-0e97-49ae-a9e7-5cf31a544c0b",
                             hex: "#2a52be",
                             color: "#fff",
                         },
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },
                     ],
-                    desc: "Placeat qui nisi corrupti ad et ut eum."
+                    desc: ""
                 },
                 {
                     title: "DAVIS, KUHLMAN AND WILLIAMSON",
@@ -842,25 +769,21 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
                             hex: "#CD8DE5",
                             color: "#fff",
                         },
                         {
                             title: "Alert",
-                            id: "43b70c41-595e-4bab-a742-b1fe2c84c905",
                             hex: "#EF7564",
                             color: "#fff",
                         },
                         {
                             title: "Coding",
-                            id: "624f8885-0e97-49ae-a9e7-5cf31a544c0b",
                             hex: "#2a52be",
                             color: "#fff",
                         },
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },
@@ -911,25 +834,21 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
                             hex: "#CD8DE5",
                             color: "#fff",
                         },
                         {
                             title: "Alert",
-                            id: "43b70c41-595e-4bab-a742-b1fe2c84c905",
                             hex: "#EF7564",
                             color: "#fff",
                         },
                         {
                             title: "Coding",
-                            id: "624f8885-0e97-49ae-a9e7-5cf31a544c0b",
                             hex: "#2a52be",
                             color: "#fff",
                         },
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },
@@ -980,25 +899,21 @@ export const data: TBoard = {
                     labels: [
                         {
                             title: "Design",
-                            id: "ed8a448e-83b1-4707-8d0e-ebc3807b7749",
                             hex: "#CD8DE5",
                             color: "#fff",
                         },
                         {
                             title: "Alert",
-                            id: "43b70c41-595e-4bab-a742-b1fe2c84c905",
                             hex: "#EF7564",
                             color: "#fff",
                         },
                         {
                             title: "Coding",
-                            id: "624f8885-0e97-49ae-a9e7-5cf31a544c0b",
                             hex: "#2a52be",
                             color: "#fff",
                         },
                         {
                             title: "Deploy",
-                            id: "ff07da56-1dd2-4362-9ad2-396afe4a1c17",
                             hex: "#E568AF",
                             color: "#fff",
                         },

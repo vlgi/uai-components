@@ -1,0 +1,47 @@
+section {
+    display: flex;
+    flex-direction: column;
+    width: 99%;
+    gap: 5px;
+}
+
+.section-title {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 5px;
+
+    h1,
+    h2,
+    h3 {
+        width: 100%;
+        text-align: start;
+    }
+}
+
+.modal-title {
+    margin: 0;
+}
+
+.section-items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.add-btn {
+    display: flex;
+    width: fit-content;
+    height: 100%;
+    cursor: pointer;
+
+
+    &:hover {
+        opacity: .8;
+    }
+}

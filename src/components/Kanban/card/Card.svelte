@@ -30,7 +30,7 @@
   export let cli: number; // card list index
 
   // local variables
-  $: showModal = true; // if its true, show card modal
+  $: showModal = false; // if its true, show card modal
   let overed = false; // change target data only at the first overed
 
   // calculate how many dones items inside checklists
@@ -100,7 +100,7 @@
   }
 </script>
 
-<CardModal bind:data bind:opened={showModal} />
+<CardModal bind:data bind:opened={showModal} {cli} />
 
 <div
   class="card-space"
@@ -121,13 +121,15 @@
       class:to-left={$dci == ci && $dcli == cli && $dir.x == "left"}
     >
       <div class="card-header">
-        <div class="card-labels">
-          {#each data.labels as label}
-            <div class="label-wrapper">
-              <CardLabel data={label} />
-            </div>
-          {/each}
-        </div>
+        {#if data.labels.length > 0}
+          <div class="card-labels">
+            {#each data.labels as label}
+              <div class="label-wrapper">
+                <CardLabel bind:data={label} bind:cardData={data} />
+              </div>
+            {/each}
+          </div>
+        {/if}
       </div>
       <div
         class="card-title"
@@ -142,22 +144,22 @@
 </div>
 
 <style lang="scss">
-  @import "./card.scss";
   @import "../index.scss";
 
   .card-space {
     flex-direction: column;
-    padding: var(--target-padding); // change
+    padding: calc(var(--target-padding) / 2) var(--target-padding); // change
     cursor: default;
-    background: lightblue;
-    // padding: 2rem; // remove
 
     .card-wrapper {
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
       cursor: pointer;
+      border-radius: var(--szot-radius);
 
       .card-placeholder {
         background: rgba(0, 0, 0, 0.4);
+        border-radius: var(--szot-radius);
       }
 
       .card {
@@ -166,7 +168,8 @@
         cursor: grab;
         height: fit-content;
         width: 100%;
-        padding-top: 0.5rem; // change
+        padding-top: 3px; // change
+        border-radius: var(--szot-radius);
 
         .card-header,
         .card-title,
@@ -180,6 +183,7 @@
           align-items: flex-start;
           background-color: var(--szot-card-background-color); // change
           padding: 5px; // change
+          border-radius: var(--szot-radius) var(--szot-radius) 0 0;
 
           .card-labels {
             display: flex;

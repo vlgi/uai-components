@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { TCard } from "../data/types";
   import { texts } from "../data/components-texts";
-  import { label as emptyLabel } from "../data/empty-data";
 
   // stores
   import { lang } from "../stores";
@@ -40,13 +39,14 @@
       placeholder={texts.searchLabelPlaceholder[$lang]}
     />
     <div class="filtered-labels">
-      {#each filtered as label}
+      {#each filtered as label, index}
         <CardLabel
           bind:data={label}
           bind:cardData={data}
-          showIcon={checkIfItemIsInArray(label, data.labels, "title").isInIt}
+          showIcon={checkIfItemIsInArray(label, data.labels).isInIt}
           allowEdit={true}
           icon="check"
+          canSelect={true}
         />
       {/each}
     </div>
@@ -75,11 +75,9 @@
 <CardHandleLabelsColorsModal
   bind:opened={colorsModalOpened}
   bind:cardData={data}
-  labelData={emptyLabel}
 />
 
 <style lang="scss">
-  @import "./card.scss";
   @import "../index.scss";
 
   .filtered-labels,
@@ -101,9 +99,5 @@
     justify-content: center;
     gap: 5px;
     margin-top: 1rem;
-
-    button {
-      border-radius: 5px; // change
-    }
   }
 </style>

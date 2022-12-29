@@ -6,14 +6,20 @@ export type TDueDates = {
 
 export type TCardLabel = {
     title: string; // label title
-    id: string; // label id
     hex: string; // label hex code backgound color
     color: string // label font color
+
+}
+
+export type TCardUser = {
+    name: string;
+    photo: string;
+    email: string;
 }
 
 export type TCardChecklistItem = {
     title: string;
-    members: string[];
+    members: TCardUser[];
     done: boolean;
     dates: TDueDates;
 }
@@ -28,12 +34,7 @@ export type TCardAttachment = {
     url: string;
 }
 
-export type TCardUser = {
-    name: string;
-    id: string;
-    photo: string;
-    email: string;
-}
+
 
 export type TCardComment = {
     text: string;
@@ -62,7 +63,6 @@ export type TList = {
 }
 
 export type TBoard = {
-    id: string;
     title: string;
     backgroundImage: string;
     backgroundColor: string;
