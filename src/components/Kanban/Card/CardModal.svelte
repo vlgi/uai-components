@@ -45,13 +45,13 @@
   $: selectCardUserModalOpened = false;
   $: resetDraggingChecklistsElements = false;
 
-  async function enableEditing() {
+  async function enableEditing(): Promise<any> {
     editDescription = true;
     await tick();
     hljs.highlightAll();
   }
 
-  async function disableEditing() {
+  async function disableEditing(): Promise<any> {
     editDescription = false;
     await tick();
     hljs.highlightAll();
@@ -95,7 +95,10 @@
           <Icon iconName="plus-box" --szot-icon-font-size="20px" />
         </div>
         {#each data.members as member}
-          <CardUserAvatar data={member} />
+          <CardUserAvatar
+            data={member}
+            on:click={() => (selectCardUserModalOpened = true)}
+          />
         {/each}
       </div>
       <CardHandleUsersModal
@@ -111,7 +114,10 @@
           <Icon iconName="plus-box" --szot-icon-font-size="20px" />
         </div>
         {#each data.labels as label}
-          <div class="item-wrapper">
+          <div
+            class="item-wrapper"
+            on:click={() => (handleLabelsModalOpened = true)}
+          >
             <CardLabel bind:data={label} bind:cardData={data} />
           </div>
         {/each}
@@ -233,6 +239,7 @@
 
   .description {
     margin: 0 5px;
+    cursor: pointer;
   }
 
   .footer {

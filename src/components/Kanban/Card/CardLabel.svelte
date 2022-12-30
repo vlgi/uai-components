@@ -69,7 +69,7 @@
   }
 </script>
 
-<div class="card-label-container">
+<div class="card-label-container" on:click>
   {#if allowEdit}
     <div
       class="card-edit-btn"
@@ -127,7 +127,7 @@
 
 <Modal bind:opened={showRemoveLabelsAlert} --szot-modal-width="400px">
   <div slot="modal-header" class="header" />
-  <div slot="modal-content" class="content remove-label-alert">
+  <div slot="modal-content" class="content remove-alert">
     <h3>{texts.removeLabelAlert[$lang][0]}</h3>
     <div class="modal-card-label">
       <div class="card-label" style="background-color: {data.hex}4e">
@@ -137,7 +137,7 @@
     </div>
     <p>{texts.removeLabelAlert[$lang][1]}</p>
   </div>
-  <div slot="modal-footer" class="footer">
+  <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
       on:click={() => (showRemoveLabelsAlert = false)}
       size="medium"
@@ -230,7 +230,7 @@
     }
   }
 
-  .remove-label-alert {
+  .remove-alert {
     .modal-card-label {
       display: flex;
       justify-content: center;
@@ -247,11 +247,5 @@
 
   .card-label-edit-btn {
     border-radius: 0;
-  }
-
-  .footer {
-    display: flex;
-    gap: 10px; // change
-    justify-content: center;
   }
 </style>

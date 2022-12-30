@@ -12,6 +12,7 @@
   class="user-avatar"
   style="background-image: url({data.photo});"
   title={`${data.name} (${data.email})`}
+  on:click
 >
   {#if data.photo == ""}{returnInitialsNames(data.name)}{/if}
 </div>

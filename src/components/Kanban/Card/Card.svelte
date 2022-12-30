@@ -30,7 +30,7 @@
   export let cli: number; // card list index
 
   // local variables
-  $: showModal = false; // if its true, show card modal
+  $: showModal = true; // if its true, show card modal
   let overed = false; // change target data only at the first overed
 
   // calculate how many dones items inside checklists

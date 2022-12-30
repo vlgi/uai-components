@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { TCard } from "../data/types";
   import { texts } from "../data/components-texts";
-  import { item } from "../data/empty-data";
+  import { item, checklist } from "../data/empty-data";
+  import { tick } from "svelte";
 
   // stores
   import { pos, relPos, lang } from "../stores";
@@ -11,6 +12,7 @@
   import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
   import CardUserAvatar from "./CardUserAvatar.svelte";
   import Icon from "../../Icon/Icon.svelte";
+  import Modal from "../../Modal/Modal.svelte";
 
   // functions
   import {
@@ -29,6 +31,9 @@
   $: selectChecklistItemUserModalOpened = false;
   $: checklistIndex = -1;
   $: checklistItemIndex = -1;
+  let overed = false; // change target data only at the first overed
+  $: openAlertModal = false;
+  $: ciToDelete = -1;
 
   // drag checklist variables
   $: xpos = -1;
@@ -90,9 +95,18 @@
   }
 
   function onChecklistOver(ci: number): void {
-    if (dci != -1) {
+    if (dci != -1 && tci != dci && !overed) {
       tci = ci;
       tcEl = document.querySelector(`.checklist-${ci}`); // get target list html element
+      overed = true;
+    }
+  }
+
+  function onCheckListOut(): void {
+    overed = false;
+    if (dci != -1) {
+      tci = -1; // reset target card index
+      tcEl = null; // reset target card html element (.card div)
     }
   }
 
@@ -158,9 +172,24 @@
     tci = -1; // reset target card list index
   }
 
-  function addItem(ci: number): void {
+  function removeChecklist(ci: number): void {
+    const checklists = [...data.checklists];
+    checklists.splice(ci, 1);
+    data.checklists = [...checklists];
+  }
+
+  function addChecklist(): void {
+    const emptyCheckList = { ...checklist };
+    data.checklists = [...data.checklists, emptyCheckList];
+  }
+
+  async function addItem(ci: number): Promise<any> {
+    const ii = data.checklists[ci].items.length;
     const emptyItem = { ...item };
     data.checklists[ci].items = [...data.checklists[ci].items, emptyItem];
+    await tick();
+    const el: HTMLElement = document.querySelector(`.item-title-${ci}-${ii}`); // get drag item html element
+    el.focus();
   }
 
   function createNextItem(e, ci: number): void {
@@ -194,6 +223,7 @@
 
   // change data.checklists when dragging and target list index are different from -1
   $: if (dci != -1 && tci != -1 && dci != tci) {
+    console.log("TROCOU");
     data.checklists = switchElsPositionByIndex(data.checklists, dci, tci); // switch the items and return the new checklist array
     dci = tci; // dragging checklist index becomes target checklist index
     tci = -1; // reset target checklist index
@@ -246,103 +276,153 @@
   }
 </script>
 
+<Modal bind:opened={openAlertModal} --szot-modal-width="500px">
+  <div slot="modal-header" class="header" />
+  <div slot="modal-content" class="content remove-alert">
+    <h3>{texts.removeChecklistAlert[$lang]}</h3>
+  </div>
+  <div slot="modal-footer" class="footer modal-alert-footer">
+    <Button
+      on:click={() => (openAlertModal = false)}
+      size="medium"
+      buttonStyleType="outline"
+      buttonStyle="dark"
+    >
+      {texts.cancel[$lang]}
+    </Button>
+    <Button
+      --szot-button-background-color="#CF513D"
+      size="medium"
+      buttonStyleType="filled"
+      buttonStyle="dark"
+      on:click={() => {
+        removeChecklist(ciToDelete);
+        openAlertModal = false;
+      }}
+    >
+      {texts.removeChecklist[$lang]}
+    </Button>
+  </div>
+</Modal>
+
 {#each data.checklists as checklist, ci}
   {#if dci == ci}
     <div class="section placeholder" style="height: {dch}px;" />
   {/if}
+
   <div
-    class="section checklist-{ci}"
-    style="width: {dcw}px"
-    class:to-right={dci == ci}
+    class="checklist-space"
     on:focus
     on:mouseover|self={() => onChecklistOver(ci)}
     on:blur
-    on:mouseout|self={() => (tci = -1)}
+    on:mouseout|self={onCheckListOut}
   >
-    <div class="section-title">
-      <Icon iconName="checkbox-marked-outline" --szot-icon-font-size="20px" />
-      <h3>{checklist.title}</h3>
-      <div class="drag-el" on:mousedown={(e) => setDragChecklist(e, ci)}>
-        <Icon iconName="drag" --szot-icon-font-size="20px" />
-      </div>
-    </div>
-    <div class="checklist-progress-bar">
-      <span>{(getDonesChecklistItems(checklist) * 100).toFixed(1)}%</span>
-      <div class="bar-wrapper">
-        <div
-          style="width: {getDonesChecklistItems(checklist) * 100}%;"
-          class:full-bar={getDonesChecklistItems(checklist) == 1}
-        />
-      </div>
-    </div>
-    {#each checklist.items as item, ii}
-      {#if dici == ci && dii == ii}
-        <div
-          class="checklist-item-container placeholder"
-          style="height: {dih}px"
-        />
-      {/if}
-      <div
-        class="checklist-item-container item-{ci}-{ii}"
-        style="width: {diw}px"
-        class:to-right={dici == ci && dii == ii}
-        on:focus
-        on:mouseover|self={() => onChecklistItemOver(ci, ii)}
-        on:blur
-        on:mouseout|self={() => (tii = -1)}
-      >
-        <div class="item-icon" on:click={() => (item.done = !item.done)}>
-          {#if !item.done}<Icon iconName="checkbox-blank-outline" />{/if}
-          {#if item.done}
-            <Icon
-              iconName="checkbox-marked"
-              --szot-icon-color="#5AAC44"
-              --szot-icon-font-size="20px"
-            />
-          {/if}
-        </div>
-        <!-- svelte-ignore a11y-autofocus -->
-        <span
-          class="editable"
+    <div
+      class="section checklist-{ci}"
+      style="width: {dcw}px"
+      class:to-right={dci == ci}
+    >
+      <div class="section-title">
+        <Icon iconName="checkbox-marked-outline" --szot-icon-font-size="20px" />
+        <h3
           contenteditable="true"
-          bind:textContent={item.title}
-          autofocus
-          on:keydown={(e) => createNextItem(e, ci)}
-          on:focusout={() => deleteEmptyItems(ci)}
+          bind:textContent={checklist.title}
+          class="editable"
         />
-
-        <div class="item-users">
-          {#each item.members as member, mi (mi)}
-            <div class="item-user">
-              <CardUserAvatar bind:data={member} />
-            </div>
-          {/each}
-        </div>
-        <div class="item-btn trash" on:click={() => removeItem(ci, ii)}>
+        <div
+          class="item-btn remove-checklist-btn"
+          on:click={() => {
+            openAlertModal = true;
+            ciToDelete = ci;
+          }}
+        >
           <Icon iconName="trash-can-outline" />
         </div>
-        <div
-          class="item-btn add-user"
-          on:click={() => handleCheckListItemUser(ci, ii)}
-        >
-          <Icon iconName="account-plus" />
-        </div>
-        <div class="item-btn add-deadline">
-          <Icon iconName="clock-outline" />
-        </div>
-        <div class="drag-el" on:mousedown={(e) => setDragItem(e, ci, ii)}>
-          <Icon iconName="drag-vertical" --szot-icon-font-size="20px" />
+        <div class="drag-el" on:mousedown={(e) => setDragChecklist(e, ci)}>
+          <Icon iconName="drag" --szot-icon-font-size="20px" />
         </div>
       </div>
-    {/each}
-    <Button
-      on:click={() => addItem(ci)}
-      size="small"
-      buttonStyleType="outline"
-      buttonStyle="dark"
-    >
-      {texts.createCheckListItem[$lang]}
-    </Button>
+      <div class="checklist-progress-bar">
+        <span>{(getDonesChecklistItems(checklist) * 100).toFixed(1)}%</span>
+        <div class="bar-wrapper">
+          <div
+            style="width: {getDonesChecklistItems(checklist) * 100}%;"
+            class:full-bar={getDonesChecklistItems(checklist) == 1}
+          />
+        </div>
+      </div>
+      {#each checklist.items as item, ii}
+        {#if dici == ci && dii == ii}
+          <div
+            class="checklist-item-container placeholder"
+            style="height: {dih}px"
+          />
+        {/if}
+        <div
+          class="checklist-item-container item-{ci}-{ii}"
+          style="width: {diw}px"
+          class:to-right={dici == ci && dii == ii}
+          on:focus
+          on:mouseover|self={() => onChecklistItemOver(ci, ii)}
+          on:blur
+          on:mouseout|self={() => (tii = -1)}
+        >
+          <div class="item-icon" on:click={() => (item.done = !item.done)}>
+            {#if !item.done}<Icon iconName="checkbox-blank-outline" />{/if}
+            {#if item.done}
+              <Icon
+                iconName="checkbox-marked"
+                --szot-icon-color="#5AAC44"
+                --szot-icon-font-size="20px"
+              />
+            {/if}
+          </div>
+          <span
+            class="editable item-title-{ci}-{ii}"
+            contenteditable="true"
+            bind:textContent={item.title}
+            on:keydown={(e) => createNextItem(e, ci)}
+            on:focusout={() => deleteEmptyItems(ci)}
+          />
+
+          <div class="item-users">
+            {#each item.members as member, mi (mi)}
+              <div
+                class="item-user"
+                on:click={() => handleCheckListItemUser(ci, ii)}
+              >
+                <CardUserAvatar bind:data={member} />
+              </div>
+            {/each}
+          </div>
+          <div
+            class="item-btn add-user"
+            on:click={() => handleCheckListItemUser(ci, ii)}
+          >
+            <Icon iconName="account-plus" />
+          </div>
+          <div class="item-btn add-deadline">
+            <Icon iconName="clock-outline" />
+          </div>
+          <div class="item-btn trash" on:click={() => removeItem(ci, ii)}>
+            <Icon iconName="trash-can-outline" />
+          </div>
+          <div class="drag-el" on:mousedown={(e) => setDragItem(e, ci, ii)}>
+            <Icon iconName="drag-vertical" --szot-icon-font-size="20px" />
+          </div>
+        </div>
+      {/each}
+      <div class="add-new-item-btn">
+        <Button
+          on:click={() => addItem(ci)}
+          size="small"
+          buttonStyleType="outline"
+          buttonStyle="dark"
+        >
+          {texts.createCheckListItem[$lang]}
+        </Button>
+      </div>
+    </div>
   </div>
 {/each}
 
@@ -362,10 +442,33 @@
     cursor: grab;
   }
 
+  .item-btn,
+  .section-title {
+    cursor: pointer;
+  }
+
+  .item-btn {
+    padding: 0 5px;
+    border-radius: 5px;
+    width: fit-content;
+
+    &:hover {
+      background: #ddd;
+    }
+  }
+
+  .checklist-space {
+    padding: 10px 0;
+  }
+
   .section {
-    padding: 5px 0;
-    opacity: 1;
     background: rgba(255, 255, 255, 0.9);
+    opacity: 1;
+
+    .section-title {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
   }
 
   .checklist-progress-bar {
@@ -437,17 +540,6 @@
       grid-area: trash;
     }
 
-    .item-btn {
-      padding: 0 5px;
-      border-radius: var(--szot-radius);
-      width: fit-content;
-      cursor: pointer;
-
-      &:hover {
-        background: #eee;
-      }
-    }
-
     .item-users {
       display: flex;
       grid-area: user;
@@ -458,6 +550,28 @@
         margin-right: -10px;
       }
     }
+
+    .add-deadline,
+    .add-user,
+    .drag-el,
+    .trash {
+      display: none;
+    }
+
+    &:hover {
+      background-color: #eee;
+      .add-deadline,
+      .add-user,
+      .drag-el,
+      .trash,
+      .item-users {
+        display: flex;
+      }
+    }
+  }
+
+  .add-new-item-btn {
+    margin-top: 5px;
   }
 
   .placeholder {

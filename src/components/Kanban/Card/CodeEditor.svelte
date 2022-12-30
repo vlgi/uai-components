@@ -13,7 +13,7 @@
     setCurrentCursorPosition,
   } from "../utils";
 
-  async function highlightOnEditing(e) {
+  async function highlightOnEditing(e): Promise<any> {
     await tick();
     let pos = getCaretCharacterOffsetWithin(e.target);
     hljs.highlightElement(e.target);

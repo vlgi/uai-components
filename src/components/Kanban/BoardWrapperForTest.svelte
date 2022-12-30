@@ -28,7 +28,7 @@
     bind:data={boardData}
     bind:users={allUsers}
     bind:labels={allLabels}
-    language="en"
+    language="br"
     --szot-board-title-color="white"
     --szot-list-title-color="#666"
     --szot-list-background-color="#f5f5f5"

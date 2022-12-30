@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { TList } from "./data/types";
-  import { card } from "./data/empty-data";
-  import { texts } from "./data/components-texts";
+  import type { TList } from "../data/types";
+  import { card } from "../data/empty-data";
+  import { texts } from "../data/components-texts";
 
   // stores
   import {
@@ -15,21 +15,23 @@
     lang,
     dlh,
     board,
-  } from "./stores";
+  } from "../stores";
 
   // components
-  import Card from "./card/Card.svelte";
-  import Button from "../formFields/Button/Button.svelte";
+  import Card from "../Card/Card.svelte";
+  import Button from "../../formFields/Button/Button.svelte";
+  import Icon from "../../Icon/Icon.svelte";
+  import ListMenu from "./ListMenu.svelte";
 
   // funcs
-  import { changeElementPosition, getRelativePosition } from "./utils";
+  import { changeElementPosition, getRelativePosition } from "../utils";
 
   // list props
   export let data: TList; // list data
   export let li: number; // list index
 
   // local variables
-  $: cardAdded = false;
+  $: addingCard = false;
   let addedCardTitle = "";
 
   // set values on list over (.lane over)
@@ -69,9 +71,10 @@
   }
 
   function addANewCard(): void {
+    if (addedCardTitle == "") return;
     const newCard = { ...card, title: addedCardTitle };
     data.cards = [...data.cards, newCard];
-    cardAdded = false;
+    addingCard = false;
     addedCardTitle = "";
     const list = document.querySelector(`.list-cards-${li}`);
     list.scrollTop = list.scrollHeight;
@@ -87,11 +90,13 @@
 
   function handleCreatingCard(e): void {
     if (e.key == "Enter") {
-      addANewCard();
-      cardAdded = true;
+      addedCardTitle != "" && addANewCard();
+      addingCard = true;
     } else if (e.key == "Tab") {
-      addANewCard();
-      cardAdded = false;
+      addedCardTitle != "" && addANewCard();
+      addingCard = false;
+    } else if (e.type == "focusout") {
+      if (addedCardTitle == "") addingCard = false;
     }
   }
 </script>
@@ -118,23 +123,27 @@
       <div class="list-header list-header-{li}">
         <div class="list-draggable-element" on:mousedown|self={setDragList} />
         <!-- svelte-ignore a11y-autofocus -->
-        <div
-          class="list-title editable"
-          contenteditable="true"
-          autofocus
-          on:focusout={autoRemove}
-          on:keypress={(e) => {
-            if (e.key == "Enter") cardAdded = true;
-          }}
-          bind:textContent={data.title}
-        />
+        <div class="list-header-content">
+          <div
+            class="list-title list-title-{li} editable"
+            contenteditable="true"
+            on:focusout={autoRemove}
+            on:keypress={(e) => {
+              if (e.key == "Enter") addingCard = true;
+            }}
+            bind:textContent={data.title}
+          />
+          <div class="list-menu-btn" id="open-list-menu-{li}">
+            <Icon iconName="dots-horizontal" --szot-icon-font-size="20px" />
+          </div>
+        </div>
       </div>
       <div class="list-cards list-cards-{li}">
-        <!-- {#each data.cards.slice(0, 1) as card, ci} -->
-        {#each data.cards as card, ci}
+        {#each data.cards.slice(0, 1) as card, ci}
+          <!-- {#each data.cards as card, ci} -->
           <Card bind:data={card} {ci} cli={li} />
         {/each}
-        {#if cardAdded}
+        {#if addingCard}
           <div class="adding-card-container">
             <!-- svelte-ignore a11y-autofocus -->
             <div
@@ -143,10 +152,11 @@
               autofocus
               bind:textContent={addedCardTitle}
               on:keydown={handleCreatingCard}
+              on:focusout={handleCreatingCard}
             />
             <div class="card-adding-btns">
               <Button
-                on:click={() => (cardAdded = false)}
+                on:click={() => (addingCard = false)}
                 size="small"
                 buttonStyleType="outline"
                 buttonStyle="dark"
@@ -167,7 +177,7 @@
       </div>
       <div class="list-footer list-footer-{li}">
         <Button
-          on:click={() => (cardAdded = true)}
+          on:click={() => (addingCard = true)}
           size="large"
           buttonStyleType="outline"
           buttonStyle="dark"
@@ -179,8 +189,10 @@
   </div>
 </div>
 
+<ListMenu bind:li bind:data bind:addingCard />
+
 <style lang="scss">
-  @import "./index.scss";
+  @import "../index.scss";
 
   .lane:first-child {
     padding-left: var(--target-padding);
@@ -202,6 +214,7 @@
 
       .list-placeholder {
         background: rgba(0, 0, 0, 0.4);
+        border-radius: var(--szot-radius);
       }
 
       .list {
@@ -221,24 +234,38 @@
 
         .list-header {
           display: flex;
-          justify-content: center;
+          flex-direction: column;
           border-radius: var(--szot-radius) var(--szot-radius) 0 0;
-          padding: 5px 0;
 
           .list-draggable-element {
-            height: 3px;
-            background-color: rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: calc(var(--target-padding));
             cursor: grab;
+            background: transparent;
           }
 
-          .list-title {
-            padding: var(--target-padding); // change
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--color);
+          .list-header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--target-padding);
+            padding-bottom: calc(var(--target-padding) / 2);
+            .list-title {
+              font-size: 1.2rem;
+              font-weight: bold;
+              color: var(--color);
 
-            &:focus {
-              width: calc(100% - calc(var(--target-padding)) * 2);
+              &:focus {
+                width: calc(100% - calc(var(--target-padding)) * 2);
+                padding: 2px 5px;
+              }
+            }
+
+            .list-menu-btn {
+              &:hover {
+                opacity: 0.8;
+                cursor: pointer;
+              }
             }
           }
         }

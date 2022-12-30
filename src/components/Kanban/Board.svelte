@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { TBoard, TCardUser, TCardLabel, TList } from "./data/types";
-  import { texts } from "./data/components-texts";
+  import { tick } from "svelte";
   import { list } from "./data/empty-data";
 
   // stores
@@ -24,8 +24,7 @@
   } from "./stores";
 
   // components
-  import List from "./List.svelte";
-  import Button from "../formFields/Button/Button.svelte";
+  import List from "./List/List.svelte";
   import Icon from "../Icon/Icon.svelte";
 
   // props
@@ -85,9 +84,15 @@
     tcli.set(-1); // reset target card list index
   }
 
-  function addList(): void {
+  // add a new empty list
+  async function addList(): Promise<any> {
     const emptyList = { ...list };
     data.lists = [...data.lists, emptyList];
+    const listIndex = data.lists.length - 1;
+    await tick();
+    const el: HTMLElement = document.querySelector(`.list-title-${listIndex}`);
+    console.log(el);
+    el.focus();
   }
 
   // ####################################################
@@ -166,8 +171,8 @@
       />
     </div>
     <div class="board-lists" on:mousemove={moveEl} on:blur>
-      <!-- {#each data.lists.slice(0, 1) as list, li} -->
-      {#each data.lists as list, li}
+      {#each data.lists.slice(0, 1) as list, li}
+        <!-- {#each data.lists as list, li} -->
         <List bind:data={list} {li} />
       {/each}
       <div class="add-new-list" on:click={addList}>
@@ -181,6 +186,7 @@
   @import "./index.scss";
   * {
     --szot-button-border-radius: var(--szot-radius);
+    --szot-dropdown-border-radius: var(--szot-radius);
     --target-padding: 0.75rem;
     --color: #172b4d;
   }
@@ -209,7 +215,7 @@
         width: fit-content;
         font-weight: bold;
         font-size: 2rem;
-        padding: 1rem;
+        padding: 0.5rem 1rem;
         color: var(--szot-board-title-color);
 
         &:focus {
