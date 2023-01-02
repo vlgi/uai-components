@@ -1,19 +1,48 @@
 import type { ArgType } from "@storybook/addons";
-import BoardWrapper from "./BoardWrapperForTest.svelte";
+import Board from "./Board.svelte"
+import BoardWrapperDefaultCard from "./BoardWrapperDefaultCard.svelte";
+import BoardWrapperCustomCard from "./BoardWrapperCustomCard.svelte";
 
 export default {
   title: "Components/Kanban",
-  component: BoardWrapper,
+  component: Board,
+  argTypes: {
+    language: {
+      control: {
+        type: "select",
+        options: ["br", "en"],
+      },
+    }
+  },
 };
 
-const Template = (_args: ArgType) => {
+const Default = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
-    Component: BoardWrapper,
+    Component: BoardWrapperDefaultCard,
     props,
   });
   ret.args = _args;
+  ret.storyName = "";
   return ret;
 };
 
-export const Default = Template({});
+export const DefaultCard = Default({
+  language: "br",
+});
+DefaultCard.storyName = "Default Card";
+
+const Custom = (_args: ArgType) => {
+  const ret = ({ ...props }) => ({
+    Component: BoardWrapperCustomCard,
+    props,
+  });
+  ret.args = _args;
+  ret.storyName = "";
+  return ret;
+};
+
+export const CustomCard = Custom({
+  language: "en",
+});
+CustomCard.storyName = "Custom Card";
 

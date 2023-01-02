@@ -27,8 +27,11 @@
   import { changeElementPosition, getRelativePosition } from "../utils";
 
   // list props
-  export let data: TList; // list data
+  export let data; // list data
   export let li: number; // list index
+  export let customCard = null;
+  export let canMoveList = true;
+  export let canMoveCard = true;
 
   // local variables
   $: addingCard = false;
@@ -72,7 +75,8 @@
 
   function addANewCard(): void {
     if (addedCardTitle == "") return;
-    const newCard = { ...card, title: addedCardTitle };
+    const empty = customCard ? { title: "" } : { ...card };
+    const newCard = { ...empty, title: addedCardTitle };
     data.cards = [...data.cards, newCard];
     addingCard = false;
     addedCardTitle = "";
@@ -121,7 +125,11 @@
       class:to-left={$dli == li && $dir.x == "left"}
     >
       <div class="list-header list-header-{li}">
-        <div class="list-draggable-element" on:mousedown|self={setDragList} />
+        <div
+          class="list-draggable-element"
+          class:draggable-cursor={canMoveList}
+          on:mousedown|self={(e) => canMoveList && setDragList(e)}
+        />
         <!-- svelte-ignore a11y-autofocus -->
         <div class="list-header-content">
           <div
@@ -139,9 +147,9 @@
         </div>
       </div>
       <div class="list-cards list-cards-{li}">
-        {#each data.cards.slice(0, 1) as card, ci}
-          <!-- {#each data.cards as card, ci} -->
-          <Card bind:data={card} {ci} cli={li} />
+        <!-- {#each data.cards.slice(0, 1) as card, ci} -->
+        {#each data.cards as card, ci}
+          <Card bind:data={card} {ci} cli={li} {customCard} {canMoveCard} />
         {/each}
         {#if addingCard}
           <div class="adding-card-container">
@@ -214,7 +222,7 @@
 
       .list-placeholder {
         background: rgba(0, 0, 0, 0.4);
-        border-radius: var(--szot-radius);
+        border-radius: var(--radius-pattern);
       }
 
       .list {
@@ -224,7 +232,7 @@
         .list-header,
         .list-footer,
         .list-cards {
-          background-color: var(--szot-list-background-color);
+          background-color: var(--list-background-color);
         }
 
         .list-header,
@@ -235,13 +243,16 @@
         .list-header {
           display: flex;
           flex-direction: column;
-          border-radius: var(--szot-radius) var(--szot-radius) 0 0;
+          border-radius: var(--radius-pattern) var(--radius-pattern) 0 0;
 
           .list-draggable-element {
             width: 100%;
             height: calc(var(--target-padding));
-            cursor: grab;
             background: transparent;
+          }
+
+          .draggable-cursor {
+            cursor: grab;
           }
 
           .list-header-content {
@@ -250,10 +261,11 @@
             justify-content: space-between;
             padding: 0 var(--target-padding);
             padding-bottom: calc(var(--target-padding) / 2);
+
             .list-title {
               font-size: 1.2rem;
               font-weight: bold;
-              color: var(--color);
+              color: var(--list-font-color);
 
               &:focus {
                 width: calc(100% - calc(var(--target-padding)) * 2);
@@ -274,7 +286,7 @@
           display: flex;
           justify-content: center;
           padding: var(--target-padding); // change
-          border-radius: 0 0 var(--szot-radius) var(--szot-radius);
+          border-radius: 0 0 var(--radius-pattern) var(--radius-pattern);
         }
 
         .list-cards {
@@ -288,7 +300,7 @@
 
             .adding-text {
               padding: 1rem;
-              border-radius: var(--szot-radius);
+              border-radius: var(--radius-pattern);
               border: 1px solid #888;
             }
             .card-adding-btns {

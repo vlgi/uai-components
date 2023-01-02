@@ -29,9 +29,12 @@
 
   // props
   export let data: TBoard; // board data
-  export let users: TCardUser[]; // board possible users
-  export let labels: TCardLabel[]; // board possible users
-  export let language: string; // components language
+  export let users: TCardUser[] = []; // board possible users
+  export let labels: TCardLabel[] = []; // board possible users
+  export let language: string = "en"; // components language
+  export let customCard = null;
+  export let canMoveList = true;
+  export let canMoveCard = true;
 
   // setting kanban data
   $: if (users) allUsers.set(users); // set all board users when finished data fetching
@@ -157,10 +160,8 @@
 {:else}
   <div
     class="board-container"
-    style="background-image: url({data.backgroundImage}); cursor: {$dli != -1 ||
-    $dci != -1
-      ? 'grabbing'
-      : 'default'}"
+    style="background-image: url({data.backgroundImage}); 
+      cursor: {$dli != -1 || $dci != -1 ? 'grabbing' : 'default'}"
     on:mouseup={reset}
   >
     <div class="board-header">
@@ -171,9 +172,9 @@
       />
     </div>
     <div class="board-lists" on:mousemove={moveEl} on:blur>
-      {#each data.lists.slice(0, 1) as list, li}
-        <!-- {#each data.lists as list, li} -->
-        <List bind:data={list} {li} />
+      <!-- {#each data.lists.slice(0, 1) as list, li} -->
+      {#each data.lists as list, li}
+        <List bind:data={list} {li} {customCard} {canMoveList} {canMoveCard} />
       {/each}
       <div class="add-new-list" on:click={addList}>
         <Icon iconName="plus-box" --szot-icon-font-size="40px" />
@@ -185,10 +186,17 @@
 <style lang="scss">
   @import "./index.scss";
   * {
-    --szot-button-border-radius: var(--szot-radius);
-    --szot-dropdown-border-radius: var(--szot-radius);
+    --board-title-color: var(--szot-kanban-board-title-color, white);
+    --board-background-color: var(--szot-kanban-board-background-color, pink);
+    --card-background-color: var(--szot-kanban-card-background-color, #f9f9f9);
+    --list-background-color: var(--szot-kanban-list-background-color, #f5f5f5);
+    --list-font-color: var(--szot-kanban-list-font-color, #172b4d);
+    --radius-pattern: var(--szot-kanban-radius-pattern, 15px);
+
+    --szot-button-border-radius: var(--szot-kanban-radius-pattern);
+    --szot-dropdown-border-radius: var(--szot-kanban-radius-pattern);
+
     --target-padding: 0.75rem;
-    --color: #172b4d;
   }
 
   .loading,
@@ -196,6 +204,7 @@
     display: flex;
     height: 100%;
     box-sizing: border-box;
+    background-color: var(--board-background-color);
   }
 
   .loading {
@@ -216,7 +225,7 @@
         font-weight: bold;
         font-size: 2rem;
         padding: 0.5rem 1rem;
-        color: var(--szot-board-title-color);
+        color: var(--board-title-color);
 
         &:focus {
           margin-left: var(--target-padding);
@@ -235,8 +244,8 @@
       .add-new-list {
         margin: calc(var(--target-padding) / 2); // change
         height: fit-content;
-        padding: 0 3px;
-        border-radius: var(--szot-radius);
+        padding: 0 5px;
+        border-radius: var(--radius-pattern);
         background-color: rgba(255, 255, 255, 0.8);
         cursor: pointer;
       }

@@ -48,3 +48,8 @@ export const list: TList = {
   title: "",
   cards: [],
 }
+
+export const customCard = {
+  title: "",
+  desc: "",
+}

@@ -134,7 +134,7 @@
     }}
   >
     <div slot="modal-header" class="header" />
-    <div slot="modal-content" class="content remove-alert">
+    <div slot="modal-content" class="content">
       <h3>{alertText}</h3>
       {#if alertText == texts.moveAllCardsAlert[$lang]}
         <div class="all-lists-options list-menu-container">
@@ -203,46 +203,8 @@
     pointer-events: none;
   }
 
-  .selected,
-  .item:hover {
+  .selected {
     background: #eee;
-  }
-
-  .list-menu-container {
-    min-width: 200px;
-    max-width: 300px;
-    padding: 5px;
-    font-size: 13px;
-
-    .divider,
-    .list-menu-section {
-      margin: 5px 0;
-      opacity: 0.6;
-    }
-
-    .divider {
-      width: 100%;
-      height: 100%;
-      border-bottom: 1px solid #aaa;
-    }
-
-    .item,
-    .list-menu-section {
-      padding: 5px 10px;
-      width: 100%;
-    }
-
-    .item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      border-radius: var(--szot-radius);
-    }
-
-    .list-menu-section {
-      text-align: center;
-    }
   }
 
   .all-lists-options {

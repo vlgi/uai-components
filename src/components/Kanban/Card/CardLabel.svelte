@@ -167,11 +167,11 @@
     height: 100%;
 
     .card-edit-btn {
-      border-radius: var(--szot-radius) 0 0 var(--szot-radius);
+      border-radius: var(--radius-pattern) 0 0 var(--radius-pattern);
     }
 
     .card-remove-btn {
-      border-radius: 0 var(--szot-radius) var(--szot-radius) 0;
+      border-radius: 0 var(--radius-pattern) var(--radius-pattern) 0;
     }
 
     .card-edit-btn,
@@ -200,7 +200,7 @@
     height: fit-content;
     width: 100%;
     padding: 0.2rem 0.4rem;
-    border-radius: var(--szot-radius);
+    border-radius: var(--radius-pattern);
     font-weight: 500;
 
     .circle {
@@ -237,8 +237,9 @@
       width: 100%;
       background: #eee;
       padding: 1rem;
-      border-radius: var(--szot-radius);
+      border-radius: var(--radius-pattern);
       margin: 10px 0; // change
+
       .card-label {
         width: fit-content;
       }

@@ -223,7 +223,6 @@
 
   // change data.checklists when dragging and target list index are different from -1
   $: if (dci != -1 && tci != -1 && dci != tci) {
-    console.log("TROCOU");
     data.checklists = switchElsPositionByIndex(data.checklists, dci, tci); // switch the items and return the new checklist array
     dci = tci; // dragging checklist index becomes target checklist index
     tci = -1; // reset target checklist index
@@ -327,7 +326,7 @@
         <h3
           contenteditable="true"
           bind:textContent={checklist.title}
-          class="editable"
+          class="editable checklist-title-{ci}"
         />
         <div
           class="item-btn remove-checklist-btn"
@@ -468,6 +467,10 @@
     .section-title {
       margin-top: 0px;
       margin-bottom: 0px;
+
+      .editable:focus {
+        padding: 0 5px;
+      }
     }
   }
 
@@ -485,13 +488,13 @@
 
     .bar-wrapper {
       width: 100%;
-      border-radius: var(--szot-radius);
+      border-radius: var(--radius-pattern);
       background-color: #eee;
 
       div {
         height: 10px;
         background-color: #026aa7;
-        border-radius: var(--szot-radius);
+        border-radius: var(--radius-pattern);
       }
 
       .full-bar {
@@ -513,6 +516,7 @@
 
     .item-icon {
       grid-area: check;
+      cursor: pointer;
     }
 
     span {
@@ -520,7 +524,7 @@
       display: flex;
       align-items: center;
       font-size: 15xp;
-      padding-left: 5px;
+      padding: 0 5px;
       height: 100%;
     }
 

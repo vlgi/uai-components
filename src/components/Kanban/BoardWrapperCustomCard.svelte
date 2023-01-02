@@ -1,12 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { data } from "./data/board-data";
+  import { data } from "./data/board-data-custom-card";
   import { users } from "./data/users-data";
   import { labels } from "./data/labels-data";
   import type { TBoard, TCardUser, TCardLabel } from "./data/types";
 
   // components
   import Board from "./Board.svelte";
+  import CustomCardForTest from "./CustomCardForTest.svelte";
 
   // local variables
   let boardData: TBoard; // board data
@@ -26,14 +27,15 @@
 <div class="screen-simulation">
   <Board
     bind:data={boardData}
-    bind:users={allUsers}
-    bind:labels={allLabels}
-    language="br"
-    --szot-board-title-color="white"
-    --szot-list-title-color="#666"
-    --szot-list-background-color="#f5f5f5"
-    --szot-card-background-color="#f9f9f9"
-    --szot-radius="15px"
+    customCard={CustomCardForTest}
+    canMoveList={true}
+    canMoveCard={true}
+    language="en"
+    --szot-kanban-board-background-color="pink"
+    --szot-kanban-board-title-color="#2F3675"
+    --szot-kanban-list-background-color="#F0F1F2"
+    --szot-kanban-list-font-color="#2F3675"
+    --szot-kanban-radius-pattern="0"
   />
 </div>
 

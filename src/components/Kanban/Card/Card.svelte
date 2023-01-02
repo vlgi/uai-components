@@ -1,6 +1,4 @@
 <script lang="ts">
-  import type { TCard } from "../data/types";
-
   // stores
   import {
     pos,
@@ -25,16 +23,18 @@
   import { changeElementPosition, getRelativePosition } from "../utils";
 
   // card props
-  export let data: TCard; // card data
+  export let data: any; // card data
   export let ci: number; // card index
   export let cli: number; // card list index
+  export let customCard = null;
+  export let canMoveCard = null;
 
   // local variables
-  $: showModal = true; // if its true, show card modal
+  $: showModal = false; // if its true, show card modal
   let overed = false; // change target data only at the first overed
 
   // calculate how many dones items inside checklists
-  $: transformCardData(data);
+  $: if (!customCard) transformCardData(data);
   function transformCardData(data): void {
     let all = [];
     let dones = [];
@@ -109,36 +109,43 @@
   on:blur
   on:mouseout|self={onCardSpaceOut}
 >
-  <div class="card-wrapper" on:click={openModal}>
+  <div class="card-wrapper" on:click={() => !customCard && openModal()}>
     {#if $dci == ci && $dcli == cli}
       <div class="card-placeholder" style="width: {$dcw}; height: {$dch}" />
     {/if}
     <div
-      on:mousedown|self={setDragCard}
+      on:mousedown|self={(e) => canMoveCard && setDragCard(e)}
       class="card card-{ci}-{cli}"
-      style="background-color: {data.backgroundColor}; width: {$dcw}"
+      style="width: {$dcw}"
       class:to-right={$dci == ci && $dcli == cli && $dir.x == "right"}
       class:to-left={$dci == ci && $dcli == cli && $dir.x == "left"}
+      class:draggable-card-cursor={canMoveCard}
     >
-      <div class="card-header">
-        {#if data.labels.length > 0}
-          <div class="card-labels">
-            {#each data.labels as label}
-              <div class="label-wrapper">
-                <CardLabel bind:data={label} bind:cardData={data} />
-              </div>
-            {/each}
-          </div>
-        {/if}
-      </div>
-      <div
-        class="card-title"
-        style="background-image: url({data.cover})"
-        class:card-cover={data.cover != ""}
-      >
-        <div>{data.title}</div>
-      </div>
-      <CardFooter bind:data />
+      {#if !customCard}
+        <div class="card-header">
+          {#if data.labels.length > 0}
+            <div class="card-labels">
+              {#each data.labels as label}
+                <div class="label-wrapper">
+                  <CardLabel bind:data={label} bind:cardData={data} />
+                </div>
+              {/each}
+            </div>
+          {/if}
+        </div>
+        <div
+          class="card-title"
+          style="background-image: url({data.cover})"
+          class:card-cover={data.cover != ""}
+        >
+          <div>{data.title}</div>
+        </div>
+        <CardFooter bind:data />
+      {:else if customCard}
+        <div class="custom-card" style="cursor: default">
+          <svelte:component this={customCard} {data} />
+        </div>
+      {/if}
     </div>
   </div>
 </div>
@@ -148,28 +155,32 @@
 
   .card-space {
     flex-direction: column;
-    padding: calc(var(--target-padding) / 2) var(--target-padding); // change
+    padding: calc(var(--target-padding) / 1.5) var(--target-padding); // change
     cursor: default;
 
     .card-wrapper {
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
       cursor: pointer;
-      border-radius: var(--szot-radius);
+      border-radius: var(--radius-pattern);
 
       .card-placeholder {
         background: rgba(0, 0, 0, 0.4);
-        border-radius: var(--szot-radius);
+        border-radius: var(--radius-pattern);
+      }
+
+      .draggable-card-cursor {
+        cursor: grab;
       }
 
       .card {
         display: grid;
         grid-auto-flow: row;
-        cursor: grab;
         height: fit-content;
         width: 100%;
         padding-top: 3px; // change
-        border-radius: var(--szot-radius);
+        border-radius: var(--radius-pattern);
+        z-index: 400;
 
         .card-header,
         .card-title,
@@ -181,9 +192,9 @@
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          background-color: var(--szot-card-background-color); // change
+          background-color: var(--card-background-color); // change
           padding: 5px; // change
-          border-radius: var(--szot-radius) var(--szot-radius) 0 0;
+          border-radius: var(--radius-pattern) var(--radius-pattern) 0 0;
 
           .card-labels {
             display: flex;
@@ -203,7 +214,7 @@
 
         .card-title {
           font-weight: bold; // remove
-          background-color: var(--szot-card-background-color); // change
+          background-color: var(--card-background-color); // change
 
           div {
             padding: calc(var(--target-padding) / 2);

@@ -62,14 +62,23 @@ export type TList = {
     cards: TCard[];
 }
 
-export type TBoard = {
-    title: string;
-    backgroundImage: string;
-    backgroundColor: string;
-    lists: TList[];
-}
 
 export type TColor = {
     name: string;
     hex: string;
+}
+
+export type TBoard = {
+    title: string;
+    backgroundImage: string;
+    lists: TList[];
+}
+
+export type TCustomBoard = {
+    title: string;
+    backgroundImage: string;
+    lists: {
+        title: string;
+        cards: any[];
+    }[];
 }

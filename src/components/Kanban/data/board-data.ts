@@ -1,9 +1,8 @@
 import type { TBoard } from "./types"
 
 export const data: TBoard = {
-    title: "PLANEJADOR PESSOAL",
-    backgroundImage: "https://i0.wp.com/montanafreepress.org/wp-content/uploads/2022/04/AdobeStock_256618260-scaled.jpeg",
-    backgroundColor: "#fff",
+    title: "DEFAULT CARD EXAMPLE",
+    backgroundImage: "https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1055680/retina_1708x683_Redesign-EssentialCleanHtmlCss-Luke_Newsletter-623eeeb89c50ec545990667e9cbebb41.png",
     lists: [
         {
             title: "BACKLOG",

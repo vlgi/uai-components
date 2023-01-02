@@ -3,6 +3,7 @@
   import { tick } from "svelte";
   import { marked } from "marked";
   import { texts } from "../data/components-texts";
+  import { checklist } from "../data/empty-data";
   import hljs from "highlight.js";
   import "highlight.js/styles/base16/solarized-dark.css";
 
@@ -25,12 +26,14 @@
   import { lang, allUsers, board } from "../stores";
 
   // // components
+  import Button from "../../formFields/Button/Button.svelte";
   import CardChecklists from "./CardChecklists.svelte";
   import CardHandleLabelsModal from "./CardHandleLabelsModal.svelte";
   import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
   import CardLabel from "./CardLabel.svelte";
   import CardUserAvatar from "./CardUserAvatar.svelte";
   import CodeEditor from "./CodeEditor.svelte";
+  import Dropdown from "../../Dropdown/Dropdown.svelte";
   import Icon from "../../Icon/Icon.svelte";
   import Modal from "../../Modal/Modal.svelte";
 
@@ -56,10 +59,45 @@
     await tick();
     hljs.highlightAll();
   }
+
+  async function addChecklist(): Promise<any> {
+    const emptyChecklist = { ...checklist };
+    data.checklists = [...data.checklists, emptyChecklist];
+    await tick();
+    const i = data.checklists.length - 1;
+    const el: HTMLElement = document.querySelector(`.checklist-title-${i}`);
+    el.focus();
+  }
 </script>
 
 <Modal bind:opened {...data} --szot-modal-width="700px">
-  <div slot="modal-header" class="header" />
+  <div class="card-modal-header" slot="modal-header">
+    <div class="modal-menu-btn" id="modal-menu">
+      <Button icon="dots-horizontal" size="round" buttonStyle="light" />
+      <Dropdown
+        targetId="modal-menu"
+        enableAutAdjust={false}
+        dropdownAlignment="bottomRight"
+        --szot-dropdown-padding="0"
+      >
+        <div class="list-menu-container">
+          <div class="list-menu-section">
+            {texts.cardAction[$lang]}
+          </div>
+          <div class="divider" />
+          <div class="item" on:click={() => (selectCardUserModalOpened = true)}>
+            {texts.addMember[$lang]}
+          </div>
+          <div class="item" on:click={() => (handleLabelsModalOpened = true)}>
+            {texts.addLabel[$lang]}
+          </div>
+          <div class="item" on:click={addChecklist}>
+            {texts.addChecklist[$lang]}
+          </div>
+        </div>
+      </Dropdown>
+    </div>
+  </div>
 
   <div
     slot="modal-content"
@@ -86,21 +124,23 @@
       </div>
 
       <!-- Members -->
-      <div class="section-title"><h3>{texts.members[$lang]}</h3></div>
-      <div class="section-items">
-        <div
-          class="add-btn"
-          on:click={() => (selectCardUserModalOpened = true)}
-        >
-          <Icon iconName="plus-box" --szot-icon-font-size="20px" />
-        </div>
-        {#each data.members as member}
-          <CardUserAvatar
-            data={member}
+      {#if data.members.length > 0}
+        <div class="section-title"><h3>{texts.members[$lang]}</h3></div>
+        <div class="section-items">
+          <div
+            class="add-btn"
             on:click={() => (selectCardUserModalOpened = true)}
-          />
-        {/each}
-      </div>
+          >
+            <Icon iconName="plus-box" --szot-icon-font-size="20px" />
+          </div>
+          {#each data.members as member}
+            <CardUserAvatar
+              data={member}
+              on:click={() => (selectCardUserModalOpened = true)}
+            />
+          {/each}
+        </div>
+      {/if}
       <CardHandleUsersModal
         bind:list={$allUsers}
         bind:data
@@ -108,20 +148,25 @@
       />
 
       <!-- Labels -->
-      <div class="section-title"><h3>{texts.labels[$lang]}</h3></div>
-      <div class="section-items">
-        <div class="add-btn" on:click={() => (handleLabelsModalOpened = true)}>
-          <Icon iconName="plus-box" --szot-icon-font-size="20px" />
-        </div>
-        {#each data.labels as label}
+      {#if data.labels.length > 0}
+        <div class="section-title"><h3>{texts.labels[$lang]}</h3></div>
+        <div class="section-items">
           <div
-            class="item-wrapper"
+            class="add-btn"
             on:click={() => (handleLabelsModalOpened = true)}
           >
-            <CardLabel bind:data={label} bind:cardData={data} />
+            <Icon iconName="plus-box" --szot-icon-font-size="20px" />
           </div>
-        {/each}
-      </div>
+          {#each data.labels as label}
+            <div
+              class="item-wrapper"
+              on:click={() => (handleLabelsModalOpened = true)}
+            >
+              <CardLabel bind:data={label} bind:cardData={data} />
+            </div>
+          {/each}
+        </div>
+      {/if}
       <CardHandleLabelsModal bind:data bind:opened={handleLabelsModalOpened} />
     </section>
 
@@ -132,12 +177,15 @@
         <h2>{texts.desc[$lang]}</h2>
       </div>
 
-      {#if !editDescription}
+      {#if !editDescription && data.desc != ""}
         <div class="description markdown-parse" on:click={enableEditing}>
           {@html marked.parse(data.desc)}
         </div>
-      {/if}
-      {#if editDescription}
+      {:else if !editDescription && data.desc == ""}
+        <div class="no-desc" on:click={enableEditing}>
+          {texts.addDescription[$lang]}...
+        </div>
+      {:else if editDescription}
         <div
           style="padding: 0 10px;"
           on:keydown={(e) =>
@@ -153,17 +201,24 @@
     </section>
 
     <!-- Card Attachments -->
-    <section>
-      <div class="section-title">
-        <Icon iconName="attachment" --szot-icon-font-size="20px" />
-        <h2>{texts.attachments[$lang]}</h2>
-      </div>
-    </section>
+    {#if data.attachments.length > 0}
+      <section>
+        <div class="section-title">
+          <Icon iconName="attachment" --szot-icon-font-size="20px" />
+          <h2>{texts.attachments[$lang]}</h2>
+        </div>
+      </section>
+    {/if}
 
     <!-- Card Checklists -->
-    <section>
-      <CardChecklists bind:data bind:reset={resetDraggingChecklistsElements} />
-    </section>
+    {#if data.checklists.length > 0}
+      <section>
+        <CardChecklists
+          bind:data
+          bind:reset={resetDraggingChecklistsElements}
+        />
+      </section>
+    {/if}
 
     <!-- end modal content -->
   </div>
@@ -190,7 +245,12 @@
     font-size: 14px;
   }
 
-  :global(.markdown-parse > h1, .markdown-parse > h2, .markdown-parse > h3) {
+  :global(.markdown-parse > h4) {
+    font-size: 12px;
+  }
+
+  :global(.markdown-parse > h1, .markdown-parse > h2, .markdown-parse
+      > h3, .markdown-parse > h4) {
     margin-top: 10px;
     margin-bottom: 5px;
     font-weight: 500;
@@ -207,7 +267,7 @@
   }
 
   :global(.markdown-parse code) {
-    border-radius: var(--szot-radius);
+    border-radius: var(--radius-pattern);
     white-space: pre-wrap;
   }
 
@@ -215,6 +275,12 @@
   h2,
   h3:focus {
     padding: 0 10px;
+  }
+
+  .card-modal-header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
   }
 
   .cover {
@@ -237,9 +303,21 @@
     }
   }
 
+  .no-desc,
+  .description {
+    cursor: pointer;
+  }
+
   .description {
     margin: 0 5px;
-    cursor: pointer;
+  }
+
+  .no-desc {
+    background: #eee;
+    padding: 5px 10px;
+    min-height: 70px;
+    border-radius: var(--radius-pattern);
+    font-size: 15px;
   }
 
   .footer {
@@ -247,7 +325,7 @@
     color: #333;
     padding: 2rem;
     text-align: center;
-    border-radius: var(--szot-radius);
+    border-radius: var(--radius-pattern);
   }
 
   .add-btn {

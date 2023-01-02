@@ -59,6 +59,22 @@ export const texts = {
         br: "+ Criar nova etiqueta",
         en: "+ Add a new label"
     },
+    addMember: {
+        br: "Adicionar um membro",
+        en: "Add a member"
+    },
+    addLabel: {
+        br: "Adicionar uma etiqueta",
+        en: "Add a label"
+    },
+    addChecklist: {
+        br: "Adicionar um checklist",
+        en: "Add a checklist"
+    },
+    addDescription: {
+        br: "Adicionar uma descrição mais detalhada",
+        en: "Add a more detailed description"
+    },
     hasDesc: {
         br: "Esse cartão tem uma descrição",
         en: "This card has a description"
@@ -96,6 +112,10 @@ export const texts = {
             "Are you sure you want to delete this label?",
             "This will remove this label from all cards. Unable to undo!"
         ]
+    },
+    cardAction: {
+        br: "Ações do cartão",
+        en: "Card actions"
     },
     listAction: {
         br: "Ações da lista",

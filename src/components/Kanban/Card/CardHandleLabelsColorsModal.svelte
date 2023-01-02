@@ -161,7 +161,7 @@
       align-items: center;
       width: 60px;
       height: 50px;
-      border-radius: var(--szot-radius);
+      border-radius: var(--radius-pattern);
 
       cursor: pointer;
 
@@ -174,7 +174,7 @@
   .card-label-container {
     padding: 1rem;
     background: #eee;
-    border-radius: var(--szot-radius);
+    border-radius: var(--radius-pattern);
     margin-bottom: 10px;
     width: 100%;
   }
@@ -187,7 +187,7 @@
     button {
       width: 100%;
       height: 100%;
-      border-radius: var(--szot-radius);
+      border-radius: var(--radius-pattern);
     }
   }
 </style>
