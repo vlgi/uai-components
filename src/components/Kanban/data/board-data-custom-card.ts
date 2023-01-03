@@ -64,9 +64,25 @@ export const data: TCustomBoard = {
             title: "THIRD LANE",
             cards: [
                 {
+                    title: "Dietrich LLC",
+                    description: "Laboriosam voluptatibus est.",
+                    text: "Quo aut nam illum sit. Odit adipisci quasi omnis voluptas sit commodi dolore numquam est.",
+                },
+                {
+                    title: "Tremblay Inc",
+                    description: "Velit pariatur voluptatem incidunt culpa.",
+                    text: "Aliquam est quas. Et eligendi voluptatibus dolorem. Molestiae unde quam ut quos ex. ",
+                },
+
+            ],
+        },
+        {
+            title: "FOURTH LANE",
+            cards: [
+                {
                     title: "Moore Group",
                     description: "Consequatur rerum quo repellat explicabo voluptatum adipisci.",
-                    text: "Commodi necessitatibus error culpa ullam. Est praesentium odio asperiores. Soluta sunt inventore tempore assumenda.",
+                    text: "",
                 },
                 {
                     title: "Emmerich and Sons",

@@ -38,7 +38,7 @@
   function transformCardData(data): void {
     let all = [];
     let dones = [];
-    data.checklists.forEach((cList) => {
+    data?.checklists?.forEach((cList) => {
       all = [...all, ...cList.items];
       cList.items.forEach((item) => {
         if (item.done) dones.push(item);

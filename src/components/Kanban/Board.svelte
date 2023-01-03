@@ -192,6 +192,9 @@
     --list-background-color: var(--szot-kanban-list-background-color, #f5f5f5);
     --list-font-color: var(--szot-kanban-list-font-color, #172b4d);
     --radius-pattern: var(--szot-kanban-radius-pattern, 15px);
+    --list-width: var(--szot-kanban-list-width, 330px);
+    --list-title-font-size: var(--szot-kanban-list-title-font-size, 1.2rem);
+    --board-title-font-size: var(--szot-kanban-board-title-font-size, 2rem);
 
     --szot-button-border-radius: var(--szot-kanban-radius-pattern);
     --szot-dropdown-border-radius: var(--szot-kanban-radius-pattern);
@@ -223,7 +226,7 @@
       .board-title {
         width: fit-content;
         font-weight: bold;
-        font-size: 2rem;
+        font-size: var(--board-title-font-size);
         padding: 0.5rem 1rem;
         color: var(--board-title-color);
 

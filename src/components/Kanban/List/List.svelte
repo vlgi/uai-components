@@ -217,7 +217,7 @@
 
       .list,
       .list-placeholder {
-        width: 330px; // change
+        width: var(--list-width); // change
       }
 
       .list-placeholder {
@@ -263,7 +263,7 @@
             padding-bottom: calc(var(--target-padding) / 2);
 
             .list-title {
-              font-size: 1.2rem;
+              font-size: var(--list-title-font-size);
               font-weight: bold;
               color: var(--list-font-color);
 

@@ -18,23 +18,24 @@
       padding: 5px 10px;
     }
 
-    h2 {
-      background: #2f3675;
-    }
-
     .desc,
     .text {
       text-align: justify;
     }
 
+    h2 {
+      background: #2f3675;
+      font-size: 15px;
+    }
+
     .desc {
       background: #315594;
-      font-size: 16px;
+      font-size: 12px;
     }
 
     .text {
       background: #70a6c1;
-      font-size: 13px;
+      font-size: 10px;
     }
   }
 </style>

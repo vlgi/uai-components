@@ -37,8 +37,8 @@ export const Default = Template({
 export const Custom: any = Template({
   iconName: "apple",
   style:
-      "--szot-icon-font-size: 80px;"
-      + "--szot-icon-color: red;",
+    "--szot-icon-font-size: 80px;"
+    + "--szot-icon-color: red;",
 });
 
 export const List = (): unknown => ({
