@@ -51,7 +51,6 @@ export const CustomCard = Template({
     + "\n" + "--szot-kanban-board-title-font-size: 1.5rem;"
 });
 
-
 export const DefaultCard = Template({
   language: "br",
   data: dData,
@@ -70,4 +69,3 @@ export const DefaultCard = Template({
     + "\n" + "--szot-kanban-list-title-font-size: 1.2rem;"
     + "\n" + "--szot-kanban-board-title-font-size: 2rem;"
 });
-

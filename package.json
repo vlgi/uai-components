@@ -92,6 +92,7 @@
     "cleave.js": "^1.6.0",
     "hammerjs": "^2.0.8",
     "highlight.js": "^11.7.0",
+    "i18next": "^22.4.8",
     "marked": "^4.2.4",
     "resolve-url-loader": "^5.0.0",
     "svelte": "^3.24.0"

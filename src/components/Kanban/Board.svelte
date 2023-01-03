@@ -94,7 +94,6 @@
     const listIndex = data.lists.length - 1;
     await tick();
     const el: HTMLElement = document.querySelector(`.list-title-${listIndex}`);
-    console.log(el);
     el.focus();
   }
 
@@ -184,7 +183,6 @@
 {/if}
 
 <style lang="scss">
-  @import "./index.scss";
   * {
     --board-title-color: var(--szot-kanban-board-title-color, white);
     --board-background-color: var(--szot-kanban-board-background-color, pink);

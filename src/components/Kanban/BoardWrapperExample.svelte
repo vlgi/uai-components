@@ -23,12 +23,6 @@
   export let users: TCardUser[] = [];
   export let labels: TCardLabel[] = [];
 
-  $: console.log(data);
-
-  onMount(() => {
-    console.log("piroca");
-  });
-
   const props = {
     language,
     canMoveList,
