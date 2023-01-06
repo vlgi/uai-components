@@ -15,6 +15,10 @@ export const texts = {
         br: "Anexos",
         en: "Attachments"
     },
+    comments: {
+        br: "Comentários",
+        en: "Coments"
+    },
     close: {
         br: "Fechar",
         en: "Close"
@@ -47,6 +51,14 @@ export const texts = {
         br: "Atual",
         en: "Current"
     },
+    message: {
+        br: "Mensagem",
+        en: "Message"
+    },
+    cover: {
+        br: "Capa",
+        en: "Cover"
+    },
     createCard: {
         br: "+ Criar novo cartão",
         en: "+ Add a new card"
@@ -74,6 +86,18 @@ export const texts = {
     addDescription: {
         br: "Adicionar uma descrição mais detalhada",
         en: "Add a more detailed description"
+    },
+    addAttachment: {
+        br: "Adicionar um anexo",
+        en: "Add an attachment"
+    },
+    addComment: {
+        br: "Adicionar um comentário",
+        en: "Add a comment"
+    },
+    addedBy: {
+        br: "Adicionado por",
+        en: "Added by"
     },
     hasDesc: {
         br: "Esse cartão tem uma descrição",
@@ -160,6 +184,22 @@ export const texts = {
     removeChecklistAlert: {
         br: "Tem certeza que deseja remover todo o checklist? Você perderá todas os items dentro dele!",
         en: "Are you sure you want to remove the entire checklist? You will lose all items inside it!"
+    },
+    removeAttachment: {
+        br: "Remover anexo",
+        en: "Delete attachment"
+    },
+    removeAttachmentAlert: {
+        br: "Tem certeza que deseja remover este anexo?",
+        en: "Are you sure you want to remove this attatchement"
+    },
+    removeComment: {
+        br: "Remover comentário",
+        en: "Delete coment"
+    },
+    removeCommentAlert: {
+        br: "Tem certeza que deseja remover este comentário?",
+        en: "Are you sure you want to remove this commento"
     }
 }
 

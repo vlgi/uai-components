@@ -1,7 +1,7 @@
 import type { TCustomBoard } from "./types"
 
 export const data: TCustomBoard = {
-    title: "CUSTOM CARD EXAMPLE",
+    title: "CUSTOM CARD BOARD EXAMPLE",
     backgroundImage: "https://truffle-assets.imgix.net/fc9a7c0b-1515_bluepancakes_land1.jpg",
     lists: [
         {

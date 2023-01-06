@@ -1,10 +1,21 @@
 <script lang="ts">
-  import type { TCard } from "../data/types";
-  import Icon from "../../Icon/Icon.svelte";
+  import type { TCard, TBoard, TCustomBoard, TCardLabel } from "../data/types";
   import { texts } from "../data/components-texts";
+  import { checkIfItemIsInArray } from "../utils";
+
+  // stores
+  import { lang } from "../stores";
+
+  // components
+  import CardHandleLabelsColorsModal from "./CardHandleLabelsColorsModal.svelte";
+  import Modal from "../../Modal/Modal.svelte";
+  import Button from "../../formFields/Button/Button.svelte";
+  import Icon from "../../Icon/Icon.svelte";
 
   // props
   export let data; // label data from card
+  export let boardData: TBoard | TCustomBoard = null;
+  export let labelsData: TCardLabel[] = [];
   export let cardData: TCard; // label card data
   export let showIcon = false; // show icon boolean
   export let canEditText = false;
@@ -13,37 +24,20 @@
   export let focus = false; // label span text focus to edit
   export let canSelect = false; // can click and select label
 
-  // stores
-  import { lang, allLabels, board } from "../stores";
-
-  // components
-  import CardHandleLabelsColorsModal from "./CardHandleLabelsColorsModal.svelte";
-  import Modal from "../../Modal/Modal.svelte";
-  import Button from "../../formFields/Button/Button.svelte";
-
-  // local variables
-  $: openModal = false;
-  $: showRemoveLabelsAlert = false;
-
-  // functions
-  import { checkIfItemIsInArray } from "../utils";
-
-  $: if (focus) document.getElementById("label-editable").focus();
-
   // remove label from board props labels (board avaiable labels) and from all cads
   function removeLabel(): void {
     // remove label from all labels stores
-    const allTags = [...$allLabels];
-    $allLabels.forEach((label, i) => {
+    const allTags = [...labelsData];
+    labelsData.forEach((label, i) => {
       if (JSON.stringify(label) === JSON.stringify(data)) {
         allTags.splice(i, 1);
-        allLabels.set(allTags);
+        labelsData = allTags;
       }
     });
 
     // remove label from all cards
-    const boardData = { ...$board };
-    boardData.lists.forEach((list) => {
+    const boardDataCopy = { ...boardData };
+    boardDataCopy.lists.forEach((list) => {
       list.cards.forEach((card) => {
         card.labels.forEach((label, i) => {
           const labels = [...card.labels];
@@ -54,7 +48,7 @@
         });
       });
     });
-    board.set(boardData);
+    boardData = { ...boardDataCopy };
     showRemoveLabelsAlert = false;
   }
 
@@ -67,6 +61,10 @@
     }
     if (!check.isInIt) cardData.labels = [...cardData.labels, data];
   }
+
+  $: openModal = false;
+  $: showRemoveLabelsAlert = false;
+  $: if (focus) document.getElementById("label-editable").focus();
 </script>
 
 <div class="card-label-container" on:click>
@@ -123,6 +121,8 @@
   bind:opened={openModal}
   bind:labelData={data}
   bind:cardData
+  bind:labelsData
+  bind:boardData
 />
 
 <Modal bind:opened={showRemoveLabelsAlert} --szot-modal-width="400px">
@@ -159,7 +159,6 @@
 </Modal>
 
 <style lang="scss">
-  @import "../index.scss";
   .card-label-container {
     display: flex;
     align-items: center;

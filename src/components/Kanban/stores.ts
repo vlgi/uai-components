@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
-import type { TCardUser, TCardLabel, TBoard } from "./data/types"
+import type { TCardUser } from "./data/types"
+import { logged as log } from "./data/empty-data"
 
 // lists
 export const dlEl = writable(null); // dragging list html element (.list div)
@@ -20,12 +21,9 @@ export const tcli = writable(-1) // target card list index
 
 // global 
 let users: TCardUser[] = [];
+let lu = { ...log }
 export const allUsers = writable(users) // all posible users
-let labels: TCardLabel[] = [];
-export const allLabels = writable(labels) // all posible labels
-
-let boardData: TBoard = null;
-export const board = writable(boardData) // all posible labels
+export const logged = writable(lu) // logged user
 
 // mouse
 export const dir = writable({ x: "right", y: "up" }); // mouse direction
@@ -34,6 +32,7 @@ export const relPos = writable({ x: 0, y: 0 }); // relative element mouse positi
 
 // board
 export const lang = writable("en"); // kanban language
+
 
 
 

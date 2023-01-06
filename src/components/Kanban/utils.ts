@@ -64,8 +64,8 @@ export function getMouseDirection(ev): { x: string, y: string } {
   return { x: xDir, y: yDir };
 }
 
-export function returnInitialsNames(words: string): string {
-  const splitted = words.split(" ");
+export function returnInitialsNames(name: string): string {
+  const splitted = name.split(" ");
   const first = splitted[0].charAt(0);
   const last = splitted[splitted.length - 1].charAt(0);
   return first + last;
@@ -77,7 +77,7 @@ export function checkIfItemIsInArray(item, arr): { isInIt: boolean; index: numbe
   let isInIt = false;
   let index = -1;
   for (var i = 0; i < arr.length; i++) {
-    if (JSON.stringify(item) == JSON.stringify(arr[i])) {
+    if (JSON.stringify(item) === JSON.stringify(arr[i])) {
       [isInIt, index] = [true, i];
       break;
     }
@@ -136,7 +136,6 @@ function createRange(node, chars, range?) {
       }
     }
   }
-
   return range;
 };
 
@@ -151,3 +150,18 @@ export function setCurrentCursorPosition(chars, node) {
     }
   }
 };
+
+export function getFilenameFromUrl(url: string): string {
+  return url.substring(url.lastIndexOf('/') + 1);
+}
+
+export function getCover(atts): string {
+  for (let index = 0; index < atts.length; index++) {
+    if (atts[index].isCover) return atts[index].url
+  };
+  return "";
+}
+
+export function isImage(url: string): boolean {
+  return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+}

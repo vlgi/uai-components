@@ -9,10 +9,10 @@
 
   // components
   import Button from "../../formFields/Button/Button.svelte";
-  import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
-  import CardUserAvatar from "./CardUserAvatar.svelte";
   import Icon from "../../Icon/Icon.svelte";
   import Modal from "../../Modal/Modal.svelte";
+  import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
+  import CardUserAvatar from "./CardUserAvatar.svelte";
 
   // functions
   import {
@@ -25,34 +25,7 @@
   export let data: TCard; // user data
   export let reset: boolean = false;
 
-  $: if (reset) resetDragElements();
-
-  // local variables
-  $: selectChecklistItemUserModalOpened = false;
-  $: checklistIndex = -1;
-  $: checklistItemIndex = -1;
   let overed = false; // change target data only at the first overed
-  $: openAlertModal = false;
-  $: ciToDelete = -1;
-
-  // drag checklist variables
-  $: xpos = -1;
-  // dragging checklists
-  $: dcw = "100%"; // place holder checklist width
-  $: dch = "100%"; // place holder checklist height
-  $: dci = -1; // dragging checklist index
-  $: dcEl = null;
-  $: tci = -1; // target checklist index
-  $: tcEl = null;
-  // dragging checklists items
-  $: diw = "100%"; // place holder checklist width
-  $: dih = "100%"; // place holder checklist height
-  $: dii = -1; // dragging item index
-  $: diEl = null; // dragging item html element
-  $: dici = -1; // dragging item checklist index
-  $: tii = -1; // target item index
-  $: tiEl = null; // target item html element
-  $: canRemoveEmptyItems = true;
 
   function getDonesChecklistItems(checklist): number {
     if (checklist.items.length == 0) return 0;
@@ -137,6 +110,31 @@
     tiEl = null; // target item html element
     reset = false;
   }
+
+  $: if (reset) resetDragElements();
+  $: selectChecklistItemUserModalOpened = false;
+  $: checklistIndex = -1;
+  $: checklistItemIndex = -1;
+  $: openAlertModal = false;
+  $: ciToDelete = -1;
+  // drag checklist variables
+  $: xpos = -1;
+  // dragging checklists
+  $: dcw = "100%"; // place holder checklist width
+  $: dch = "100%"; // place holder checklist height
+  $: dci = -1; // dragging checklist index
+  $: dcEl = null;
+  $: tci = -1; // target checklist index
+  $: tcEl = null;
+  // dragging checklists items
+  $: diw = "100%"; // place holder checklist width
+  $: dih = "100%"; // place holder checklist height
+  $: dii = -1; // dragging item index
+  $: diEl = null; // dragging item html element
+  $: dici = -1; // dragging item checklist index
+  $: tii = -1; // target item index
+  $: tiEl = null; // target item html element
+  $: canRemoveEmptyItems = true;
 
   // change dragging checklist position
   $: $pos && dci != -1 && moveDragCheckList();
@@ -434,26 +432,14 @@
 {/if}
 
 <style lang="scss">
-  @import "../index.scss";
   @import "./card-modal.scss";
 
   .drag-el {
     cursor: grab;
   }
 
-  .item-btn,
   .section-title {
     cursor: pointer;
-  }
-
-  .item-btn {
-    padding: 0 5px;
-    border-radius: 5px;
-    width: fit-content;
-
-    &:hover {
-      background: #ddd;
-    }
   }
 
   .checklist-space {

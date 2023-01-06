@@ -5,14 +5,11 @@
   import { lang } from "../stores";
 
   // components
-  import CardUserAvatar from "./CardUserAvatar.svelte";
   import Icon from "../../Icon/Icon.svelte";
+  import CardUserAvatar from "./CardUserAvatar.svelte";
 
   // props
   export let data;
-
-  // functions
-  import { returnInitialsNames } from "../utils";
 </script>
 
 <div class="card-footer">
@@ -63,7 +60,7 @@
   .card-footer {
     display: flex;
     justify-content: space-between;
-    background-color: var(--card-background-color); // change
+    background-color: var(--card-background-color);
     padding: 5px; // change
     border-radius: 0 0 var(--radius-pattern) var(--radius-pattern);
 

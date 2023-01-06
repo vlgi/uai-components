@@ -1,16 +1,45 @@
 <script lang="ts">
-  import type { TCard } from "../data/types";
-  import { tick } from "svelte";
+  import "highlight.js/styles/base16/solarized-dark.css";
+  import hljs from "highlight.js";
   import { marked } from "marked";
+  import { tick } from "svelte";
+
+  import type { TCard, TBoard, TCustomBoard, TCardLabel } from "../data/types";
   import { texts } from "../data/components-texts";
   import { checklist } from "../data/empty-data";
-  import hljs from "highlight.js";
-  import "highlight.js/styles/base16/solarized-dark.css";
+
+  // stores
+  import { lang, allUsers } from "../stores";
+
+  // components
+  import Dropdown from "../../Dropdown/Dropdown.svelte";
+  import Icon from "../../Icon/Icon.svelte";
+  import Modal from "../../Modal/Modal.svelte";
+  import Button from "../../formFields/Button/Button.svelte";
+  import CardChecklists from "./CardChecklists.svelte";
+  import CardHandleLabelsModal from "./CardHandleLabelsModal.svelte";
+  import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
+  import CardLabel from "./CardLabel.svelte";
+  import CardUserAvatar from "./CardUserAvatar.svelte";
+  import CodeEditor from "./CodeEditor.svelte";
+  import ThumbPreview from "./ThumbPreview.svelte";
+  import CardAttachments from "./CardAttachments.svelte";
+  import CardComments from "./CardComments.svelte";
+
+  // functions
+  import { getCover } from "../utils";
+
+  // props
+  export let data: TCard; // card data
+  export let boardData: TBoard | TCustomBoard;
+  export let labelsData: TCardLabel[] = [];
+  export let cli: number; // card list index
+  export let opened = false; // card modal opened
 
   marked.setOptions({
     renderer: new marked.Renderer(),
-    highlight: function (code, lang) {
-      const language = hljs.getLanguage(lang) ? lang : "plaintext";
+    highlight: function (code, lan) {
+      const language = hljs.getLanguage(lan) ? lan : "plaintext";
       return hljs.highlight(code, { language }).value;
     },
     langPrefix: "hljs language-", // highlight.js css expects a top-level 'hljs' class.
@@ -21,32 +50,6 @@
     smartypants: false,
     xhtml: false,
   });
-
-  // stores
-  import { lang, allUsers, board } from "../stores";
-
-  // // components
-  import Button from "../../formFields/Button/Button.svelte";
-  import CardChecklists from "./CardChecklists.svelte";
-  import CardHandleLabelsModal from "./CardHandleLabelsModal.svelte";
-  import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
-  import CardLabel from "./CardLabel.svelte";
-  import CardUserAvatar from "./CardUserAvatar.svelte";
-  import CodeEditor from "./CodeEditor.svelte";
-  import Dropdown from "../../Dropdown/Dropdown.svelte";
-  import Icon from "../../Icon/Icon.svelte";
-  import Modal from "../../Modal/Modal.svelte";
-
-  // props
-  export let data: TCard; // card data
-  export let cli: number; // card list index
-  export let opened = false; // card modal opened
-
-  // local variables
-  $: editDescription = false;
-  $: handleLabelsModalOpened = false;
-  $: selectCardUserModalOpened = false;
-  $: resetDraggingChecklistsElements = false;
 
   async function enableEditing(): Promise<any> {
     editDescription = true;
@@ -68,6 +71,14 @@
     const el: HTMLElement = document.querySelector(`.checklist-title-${i}`);
     el.focus();
   }
+
+  $: editDescription = false;
+  $: handleLabelsModalOpened = false;
+  $: selectCardUserModalOpened = false;
+  $: resetDraggingChecklistsElements = false;
+  $: showAdd = false;
+  $: attCover = false;
+  $: cover = getCover(data.attachments);
 </script>
 
 <Modal bind:opened {...data} --szot-modal-width="700px">
@@ -80,8 +91,8 @@
         dropdownAlignment="bottomRight"
         --szot-dropdown-padding="0"
       >
-        <div class="list-menu-container">
-          <div class="list-menu-section">
+        <div class="drop-menu-container">
+          <div class="drop-menu-section">
             {texts.cardAction[$lang]}
           </div>
           <div class="divider" />
@@ -94,6 +105,9 @@
           <div class="item" on:click={addChecklist}>
             {texts.addChecklist[$lang]}
           </div>
+          <div class="item" on:click={() => (showAdd = !showAdd)}>
+            {texts.addAttachment[$lang]}
+          </div>
         </div>
       </Dropdown>
     </div>
@@ -104,8 +118,18 @@
     class="content"
     on:mouseup={() => (resetDraggingChecklistsElements = true)}
   >
-    {#if data.cover}
-      <div class="cover" style="background-image: url({data.cover})" />
+    {#if cover != ""}
+      <div class="cover" style="background-image: url({cover})">
+        <div
+          class="item-btn"
+          on:click={() => {
+            showAdd = true;
+            attCover = true;
+          }}
+        >
+          <Icon iconName="image" --szot-icon-color="white" />
+        </div>
+      </div>
     {/if}
 
     <!-- Card general info | title | members | labels -->
@@ -120,7 +144,7 @@
         />
       </div>
       <div class="section-items">
-        <p>{texts.inList[$lang]} - <span>{$board.lists[cli].title}</span></p>
+        <p>{texts.inList[$lang]} - <span>{boardData.lists[cli].title}</span></p>
       </div>
 
       <!-- Members -->
@@ -162,12 +186,21 @@
               class="item-wrapper"
               on:click={() => (handleLabelsModalOpened = true)}
             >
-              <CardLabel bind:data={label} bind:cardData={data} />
+              <CardLabel
+                bind:boardData
+                bind:data={label}
+                bind:cardData={data}
+              />
             </div>
           {/each}
         </div>
       {/if}
-      <CardHandleLabelsModal bind:data bind:opened={handleLabelsModalOpened} />
+      <CardHandleLabelsModal
+        bind:boardData
+        bind:labelsData
+        bind:data
+        bind:opened={handleLabelsModalOpened}
+      />
     </section>
 
     <!-- Card Description -->
@@ -201,14 +234,13 @@
     </section>
 
     <!-- Card Attachments -->
-    {#if data.attachments.length > 0}
-      <section>
-        <div class="section-title">
-          <Icon iconName="attachment" --szot-icon-font-size="20px" />
-          <h2>{texts.attachments[$lang]}</h2>
-        </div>
-      </section>
-    {/if}
+    <section>
+      <CardAttachments
+        bind:data={data.attachments}
+        bind:showAdd
+        bind:isCover={attCover}
+      />
+    </section>
 
     <!-- Card Checklists -->
     {#if data.checklists.length > 0}
@@ -220,6 +252,11 @@
       </section>
     {/if}
 
+    <!-- Card Comments -->
+    <section>
+      <CardComments bind:data={data.comments} />
+    </section>
+
     <!-- end modal content -->
   </div>
 
@@ -230,7 +267,6 @@
 </Modal>
 
 <style lang="scss">
-  @import "../index.scss";
   @import "./card-modal.scss";
 
   :global(.markdown-parse > h1) {
@@ -284,6 +320,9 @@
   }
 
   .cover {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
     height: 130px;
     min-height: 130px;
     background-position: center center;
@@ -291,6 +330,16 @@
     background-origin: content-box;
     background-color: rgb(240, 242, 242); // change
     // background-repeat: no-repeat;
+
+    .item-btn {
+      margin: 5px;
+      z-index: 0;
+      background: rgba(0, 0, 0, 0.5);
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
   }
 
   .section-items {

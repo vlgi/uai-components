@@ -1,33 +1,30 @@
 <script lang="ts">
-  import type { TCardLabel, TCard } from "../data/types";
+  import { onMount } from "svelte";
+  import type { TCardLabel, TCard, TBoard, TCustomBoard } from "../data/types";
   import { label as emptyLabel } from "../data/empty-data";
   import { colors } from "../data/colors-data";
   import { texts } from "../data/components-texts";
+  import { checkIfItemIsInArray } from "../utils";
 
   // store
   import { lang } from "../stores";
-  import { onMount } from "svelte";
 
   // props
-  export let labelData: TCardLabel = { ...emptyLabel }; // label data from allLabels store
+  export let labelData: TCardLabel = { ...emptyLabel }; // label data
+  export let boardData: TBoard | TCustomBoard;
+  export let labelsData: TCardLabel[] = [];
   export let cardData: TCard; // card data
   export let opened = false; // card handle colors modal opened boolean
 
   // components
   import Modal from "../../Modal/Modal.svelte";
   import Icon from "../../Icon/Icon.svelte";
-  import CardLabel from "./CardLabel.svelte";
   import Button from "../../formFields/Button/Button.svelte";
+  import CardLabel from "./CardLabel.svelte";
 
-  // stores
-  import { allLabels, board } from "../stores";
-
-  // local variables
-  $: focusLabel = false;
   let old: TCardLabel = { ...emptyLabel };
 
-  // functions
-  import { checkIfItemIsInArray } from "../utils";
+  $: focusLabel = false;
 
   onMount(async () => {
     old = { ...labelData };
@@ -42,30 +39,30 @@
     if (JSON.stringify(old) === JSON.stringify(labelData)) return; // return if there isnt any change
 
     if (JSON.stringify(old) === JSON.stringify(emptyLabel)) {
-      // if is a new label, add in the end of allLabels store and card labels
+      // if is a new label, add in the end of labelsData prop and card labels
       if (labelData.hex == "") setColor("#dddddd"); // set a standard color if the user did not select one
       cardData.labels = [...cardData.labels, labelData];
-      allLabels.set([...$allLabels, labelData]);
+      labelsData = [...labelsData, labelData];
     } else {
-      // if is an existing label to be edited, edit label in all cards and allLabels store
+      // if is an existing label to be edited, edit label in all cards and labelsData prop
+      const allTags = [...labelsData];
 
-      // edit label from allLabels store
-      const checkBoardAllLabels = checkIfItemIsInArray(old, $allLabels);
-      const allTags = [...$allLabels];
+      // edit label from labelsData prop
+      const checkBoardAllLabels = checkIfItemIsInArray(labelData, allTags);
       if (checkBoardAllLabels.isInIt) {
         allTags[checkBoardAllLabels.index] = { ...labelData };
-        allLabels.set(allTags);
+        labelsData = allTags;
       }
 
       // edit label from all cards
-      const boardData = { ...$board };
-      boardData.lists.forEach((list) => {
+      const boardDataCopy = { ...boardData };
+      boardDataCopy.lists.forEach((list) => {
         list.cards.forEach((card) => {
           const check = checkIfItemIsInArray(old, card.labels);
           if (check.isInIt) card.labels[check.index] = { ...labelData };
         });
       });
-      board.set(boardData);
+      boardData = boardDataCopy;
     }
     old = { ...emptyLabel };
     labelData = { ...emptyLabel };
@@ -130,8 +127,6 @@
 </Modal>
 
 <style lang="scss">
-  @import "../index.scss";
-
   .label-title {
     display: flex;
     align-items: center;

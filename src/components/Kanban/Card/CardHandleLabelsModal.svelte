@@ -1,37 +1,33 @@
 <script lang="ts">
-  import type { TCard } from "../data/types";
+  import type { TCard, TBoard, TCustomBoard, TCardLabel } from "../data/types";
   import { texts } from "../data/components-texts";
+  import { checkIfItemIsInArray } from "../utils";
 
   // stores
   import { lang } from "../stores";
 
   // components
-  import CardHandleLabelsColorsModal from "./CardHandleLabelsColorsModal.svelte";
   import SearchInput from "../../formFields/SearchInput/SearchInput.svelte";
-  import CardLabel from "./CardLabel.svelte";
   import Modal from "../../Modal/Modal.svelte";
   import Button from "../../formFields/Button/Button.svelte";
+  import CardHandleLabelsColorsModal from "./CardHandleLabelsColorsModal.svelte";
+  import CardLabel from "./CardLabel.svelte";
 
   // props
   export let data: TCard; // card data
+  export let boardData: TBoard | TCustomBoard;
+  export let labelsData: TCardLabel[] = [];
   export let opened = false;
 
-  // stores
-  import { allLabels } from "../stores";
-
-  // local variables
-  $: filtered = [];
+  $: filtered = [...labelsData];
   $: colorsModalOpened = false;
-
-  // functions
-  import { checkIfItemIsInArray } from "../utils";
 </script>
 
 <Modal bind:opened --szot-modal-width="500px">
   <div slot="modal-header" class="header" />
   <div slot="modal-content" class="content">
     <SearchInput
-      bind:items={$allLabels}
+      bind:items={labelsData}
       bind:filtered
       searchQuery=""
       searchable={["title"]}
@@ -43,6 +39,8 @@
         <CardLabel
           bind:data={label}
           bind:cardData={data}
+          bind:boardData
+          bind:labelsData
           showIcon={checkIfItemIsInArray(label, data.labels).isInIt}
           allowEdit={true}
           icon="check"
@@ -73,13 +71,13 @@
 </Modal>
 
 <CardHandleLabelsColorsModal
+  bind:boardData
+  bind:labelsData
   bind:opened={colorsModalOpened}
   bind:cardData={data}
 />
 
 <style lang="scss">
-  @import "../index.scss";
-
   .filtered-labels,
   .existing-labels {
     display: grid;

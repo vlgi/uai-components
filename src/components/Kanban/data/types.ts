@@ -5,10 +5,9 @@ export type TDueDates = {
 }
 
 export type TCardLabel = {
-    title: string; // label title
-    hex: string; // label hex code backgound color
-    color: string // label font color
-
+    title: string;
+    hex: string;
+    color: string
 }
 
 export type TCardUser = {
@@ -30,11 +29,11 @@ export type TCardCheckList = {
 }
 
 export type TCardAttachment = {
-    title: string;
     url: string;
+    user: TCardUser;
+    date: Date;
+    isCover: boolean;
 }
-
-
 
 export type TCardComment = {
     text: string;
@@ -44,10 +43,8 @@ export type TCardComment = {
 
 export type TCard = {
     title: string;
-    backgroundColor: string;
     allChecklistsItems: TCardCheckList[];
     allDoneChecklistsItems: TCardCheckList[];
-    cover: string;
     checklists: TCardCheckList[];
     members: TCardUser[];
     comments: TCardComment[];
@@ -62,6 +59,10 @@ export type TList = {
     cards: TCard[];
 }
 
+export type TCustomList = {
+    title: string;
+    cards: any[];
+}
 
 export type TColor = {
     name: string;
@@ -71,14 +72,15 @@ export type TColor = {
 export type TBoard = {
     title: string;
     backgroundImage: string;
+    logged: {
+        user: TCardUser,
+        permissions: any[]
+    }
     lists: TList[];
 }
 
 export type TCustomBoard = {
     title: string;
     backgroundImage: string;
-    lists: {
-        title: string;
-        cards: any[];
-    }[];
+    lists: TCustomList[];
 }

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { TList } from "../data/types";
+  import type { TBoard, TCustomBoard, TList } from "../data/types";
   import { texts } from "../data/components-texts";
   import { tick } from "svelte";
 
   // stores
-  import { lang, board } from "../stores";
+  import { lang } from "../stores";
 
   // components
   import Button from "../../formFields/Button/Button.svelte";
@@ -12,35 +12,26 @@
   import Modal from "../../Modal/Modal.svelte";
   import Icon from "../../Icon/Icon.svelte";
 
-  // funcs
-
   // list props
   export let data: TList; // list data
+  export let boardData: TBoard | TCustomBoard;
   export let li: number; // list index
   export let addingCard: boolean; //
 
-  // local variables
-  $: funcAction = null;
-  $: openAlertModal = false;
-  $: alertText = "";
-  $: actionAlertBtnText = "";
-  $: targetListIndex = -1;
-  $: isBtnEnable = false;
-
   async function copyList(): Promise<any> {
-    const lists = [...$board.lists];
+    const lists = [...boardData.lists];
     const list = { ...data };
     lists.splice(li, 0, list);
-    $board.lists = [...lists];
+    boardData.lists = [...lists];
     await tick();
     const el: HTMLElement = document.querySelector(`.list-title-${li + 1}`);
     el.focus();
   }
 
   function moveAllCards(): void {
-    const targetListCards = $board.lists[targetListIndex].cards;
+    const targetListCards = boardData.lists[targetListIndex].cards;
     const provideListCards = data.cards;
-    $board.lists[targetListIndex].cards = [
+    boardData.lists[targetListIndex].cards = [
       ...targetListCards,
       ...provideListCards,
     ];
@@ -52,21 +43,28 @@
   }
 
   function deleteList(): void {
-    const lists = [...$board.lists];
+    const lists = [...boardData.lists];
     lists.splice(li, 1);
-    $board.lists = [...lists];
+    boardData.lists = [...lists];
   }
+
+  $: funcAction = null;
+  $: openAlertModal = false;
+  $: alertText = "";
+  $: actionAlertBtnText = "";
+  $: targetListIndex = -1;
+  $: isBtnEnable = false;
 </script>
 
 <div style="z-index: 1;">
   <Dropdown
     targetId="open-list-menu-{li}"
     enableAutAdjust={false}
-    dropdownAlignment="bottomRight"
+    dropdownAlignment="bottomLeft"
     --szot-dropdown-padding="0"
   >
-    <div class="list-menu-container">
-      <div class="list-menu-section">
+    <div class="drop-menu-container">
+      <div class="drop-menu-section">
         {texts.listAction[$lang]}
       </div>
       <div class="divider" />
@@ -137,8 +135,8 @@
     <div slot="modal-content" class="content">
       <h3>{alertText}</h3>
       {#if alertText == texts.moveAllCardsAlert[$lang]}
-        <div class="all-lists-options list-menu-container">
-          {#each $board.lists as list, index}
+        <div class="all-lists-options drop-menu-container">
+          {#each boardData.lists as list, index}
             <div
               class="item"
               class:disabled={li == index}
@@ -192,8 +190,6 @@
 </div>
 
 <style lang="scss">
-  @import "../index.scss";
-
   .lane:first-child {
     padding-left: var(--target-padding);
   }

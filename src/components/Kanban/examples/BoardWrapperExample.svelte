@@ -1,15 +1,13 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-
   import type {
     TBoard,
     TCustomBoard,
     TCardUser,
     TCardLabel,
-  } from "./data/types";
+  } from "../data/types";
 
   // components
-  import Board from "./Board.svelte";
+  import Board from "../Board.svelte";
 
   // props
   export let style = "";
@@ -17,8 +15,6 @@
   export let canMoveList: boolean;
   export let canMoveCard: boolean;
   export let customCard;
-
-  // props data
   export let data: TBoard | TCustomBoard = {} as any;
   export let users: TCardUser[] = [];
   export let labels: TCardLabel[] = [];
@@ -32,12 +28,12 @@
 </script>
 
 <div class="screen-simulation" {style}>
-  <Board {data} bind:users bind:labels {...props} />
+  <Board bind:data bind:users bind:labels {...props} />
 </div>
 
 <style lang="scss">
   .screen-simulation {
-    height: 96.5vh;
+    height: 96vh;
     width: 100%;
   }
 </style>

@@ -1,6 +1,7 @@
 <script lang="ts">
+  import type { TCardUser } from "../data/types";
   import { texts } from "../data/components-texts";
-  import { TCardUser } from "../data/types";
+  import { checkIfItemIsInArray } from "../utils";
 
   // stores
   import { lang } from "../stores";
@@ -16,12 +17,6 @@
   export let opened = false;
   export let list: TCardUser[];
 
-  // local variables
-  $: filtered = [];
-
-  // functions
-  import { checkIfItemIsInArray } from "../utils";
-
   function handleCardUser(user): void {
     const check = checkIfItemIsInArray(user, data.members);
     const members = data.members;
@@ -32,6 +27,8 @@
     if (!check.isInIt) data.members = [...data.members, user];
     filtered = [...filtered];
   }
+
+  $: filtered = [];
 </script>
 
 <Modal bind:opened --szot-modal-width="400px">

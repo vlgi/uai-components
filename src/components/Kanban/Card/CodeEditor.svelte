@@ -1,17 +1,16 @@
 <script lang="ts">
-  import { tick } from "svelte";
   import hljs from "highlight.js";
   import "highlight.js/styles/base16/solarized-dark.css";
+  import { tick } from "svelte";
 
-  // props
-  export let data: string;
-  export let lang: string;
-
-  // functions
   import {
     getCaretCharacterOffsetWithin,
     setCurrentCursorPosition,
   } from "../utils";
+
+  // props
+  export let data: string;
+  export let lang: string;
 
   async function highlightOnEditing(e): Promise<any> {
     await tick();

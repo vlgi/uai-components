@@ -45,3 +45,14 @@ section {
         opacity: .8;
     }
 }
+
+.item-btn {
+    padding: 0 5px;
+    border-radius: 5px;
+    width: fit-content;
+    cursor: pointer;
+
+    &:hover {
+        background: #ddd;
+    }
+}

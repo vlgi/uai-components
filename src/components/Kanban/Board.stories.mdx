@@ -2,16 +2,354 @@
 
 import { Meta } from "@storybook/addon-docs";
 
-import BoardWrapperExample from "./BoardWrapperExample.svelte";
+import BoardWrapperExample from "./examples/BoardWrapperExample.svelte";
 
 <Meta title="Components/Kanban/Custom" />
 
-# Kanban custom
+# Szot kanban docs
 
-| CSS Property                        | Descripiton                                      | Default   |
-|-------------------------------------|--------------------------------------------------|-----------|
-| --szot-kanban-board-title-color     | Board title font color                           | "white"   |
-| --szot-kanban-card-background-color | Cards background color                           | "#f9f9f9" |
-| --szot-kanban-list-background-color | Lists background color                           | "#f5f5f5" |
-| --szot-kanban-radius-pattern        | Components border radius (Lists, cards, buttons) | "15px"    |
+## CSS properties customization
+
+| CSS Property                         | Descripiton                      | Default |
+|--------------------------------------|----------------------------------|---------|
+| --szot-kanban-board-background-color | Board background color           | black   |
+| --szot-kanban-board-title-color      | Board title font color           | white   |
+| --szot-kanban-board-title-font-size  | Board title font size            | 2rem    |
+| --szot-kanban-card-background-color  | Card background color            | #f9f9f9 |
+| --szot-kanban-list-background-color  | List backgroound color           | #f5f5f5 |
+| --szot-kanban-list-font-color        | List font color                  | #172b4d |
+| --szot-kanban-list-title-font-size   | List title font size             | 1.2rem  |
+| --szot-kanban-list-width             | List width                       | 330px   |
+| --szot-kanban-radius-pattern         | Components border radius pattern | 15px    |
+
+## Usage example
+
+```html
+<script lang="ts">
+  import { Board } from "szot-ui-experimental";
+  import { onMount } from "svelte";
+
+  import Card from "./my-components-folder/CustomCard.svelte"
+
+  const props = {
+    language: "en",
+    canMoveList: false,
+    canMoveCard: false,
+    customCard: Card,
+  };
+
+  $: data;
+  $: labels;
+  $: users;
+
+  onMount(async () => {
+    const data = await fetch(`https://my-api/board/1/data`);
+    const labels = await fetch(`https://my-api/board/1/labels`);
+    const users = await fetch(`https://my-api/board/1/users`);
+  });
+</script>
+
+<div class="screen-simulation">
+  <Board 
+    bind:data 
+    bind:users 
+    bind:labels 
+    --szot-kanban-board-background-color="pink"
+    {...props}
+  />
+</div>
+
+<style lang="scss">
+  .screen-simulation {
+    height: 100%;
+    width: 100%;
+  }
+</style>
+````
+
+## Custom card board
+- Card `title` is the only **card** data object required property
+- All the others **board** data object properties are required
+
+### Custom card data structure example
+```javascript
+{
+    title: "Ernser, Bednar and Lakin",
+    description: "Non deleniti est quia.",
+    text: "Nesciunt ad accusamus ex quia hic et. Id doloribus facilis deserunt ut repellendus consectetur. Dolorem nesciunt architecto illum repellat est aut cum et.",
+}
+```
+
+### Custom card board data structure example
+
+```typescript
+{
+    title: "CUSTOM CARD BOARD EXAMPLE",
+    backgroundImage: "https://truffle-assets.imgix.net/fc9a7c0b-1515_bluepancakes_land1.jpg",
+    lists: [
+        {
+            title: "FIRST LANE",
+            cards: [
+                {
+                    title: "Ernser, Bednar and Lakin",
+                    description: "Non deleniti est quia.",
+                    text: "Nesciunt ad accusamus ex quia hic et. Id doloribus facilis deserunt ut repellendus consectetur. Dolorem nesciunt architecto illum repellat est aut cum et.",
+                },
+                {
+                    title: "Bartoletti - Hirthe",
+                    description: "Quae ullam necessitatibus dolorem assumenda delectus eveniet corrupti dolorem aliquid.",
+                    text: "Nobis omnis soluta harum earum et accusamus quia. Id ipsa consequatur dolores velit labore id occaecati sed illo. Excepturi nulla magni ea. Saepe eaque doloribus illum dolores eligendi laborum itaque ea cupiditate. Enim in minus et odit ducimus totam nihil libero.",
+                },
+            ],
+        },
+        {
+            title: "SECOND LANE",
+            cards: [
+                {
+                    title: "Purdy - Brown",
+                    description: "Minima qui qui eligendi.",
+                    text: "Repudiandae blanditiis accusantium. Harum voluptate facere. Ea qui excepturi ea qui sint maiores. Molestias et aut ab cumque consequuntur impedit amet. Unde et est ut velit molestiae repellat. Voluptatem ipsum sunt quia cumque repellat.",
+                }
+            ],
+        }
+    ]
+};
+```
+
+## Default card board
+
+- All the **board** data object properties are required
+
+### Default card data structure example
+
+```typescript
+{
+    title: "BORER INC",
+    cover: "https://viagemeturismo.abril.com.br/wp-content/uploads/2016/12/thinkstockphotos-464833177.jpeg",
+    checklists: [
+        {
+            title: "Prototype",
+            items: [
+                {
+                    title: "Requirements/data meeting",
+                    members: [
+                        {
+                            name: "Rosina Rolfson Rice",
+                            photo: "https://images.pexels.com/photos/2066039/pexels-photo-2066039.jpeg",
+                            email: "rosina.rice@szot.com"
+                        }, {
+                            name: "Alberto Simonis Gerhold",
+                            photo: "",
+                            email: "alberto.gerhold@szot.com"
+                        }
+                    ],
+                    done: true,
+                    dates: {
+                        startDate: new Date(),
+                        dueDate: new Date(),
+                        dueReminder: new Date(),
+                    }
+                },
+                {
+                    title: "Documentation",
+                    members: [],
+                    done: true,
+                    dates: {
+                        startDate: new Date(),
+                        dueDate: new Date(),
+                        dueReminder: new Date(),
+                    }
+                },
+                {
+                    title: "Wireframes",
+                    members: [],
+                    done: false,
+                    dates: {
+                        startDate: new Date(),
+                        dueDate: new Date(),
+                        dueReminder: new Date(),
+                    }
+                }
+            ],
+        },
+        {
+            title: "Validate prototype",
+            items: [
+                {
+                    title: "Send validation email",
+                    members: [],
+                    done: true,
+                    dates: {
+                        startDate: new Date(),
+                        dueDate: new Date(),
+                        dueReminder: new Date(),
+                    }
+                },
+                {
+                    title: "Max West validation",
+                    members: [],
+                    done: false,
+                    dates: {
+                        startDate: new Date(),
+                        dueDate: new Date(),
+                        dueReminder: new Date(),
+                    }
+                },
+            ],
+        }
+    ],
+    members: [
+        {
+            name: "Rosina Rolfson Rice",
+            photo: "https://images.pexels.com/photos/2066039/pexels-photo-2066039.jpeg",
+            email: "rosina.rice@szot.com"
+        }, {
+            name: "Alberto Simonis Gerhold",
+            photo: "",
+            email: "alberto.gerhold@szot.com"
+        }
+    ],
+    comments: [
+        {
+            text: "My new comment",
+            user: {
+                name: "Rosina Rolfson Rice",
+                photo: "https://images.pexels.com/photos/2066039/pexels-photo-2066039.jpeg",
+                email: "rosina.rice@szot.com"
+            },
+            date: new Date(),
+        }, {
+            text: "Alberto did a comment",
+            user: {
+                name: "Alberto Simonis Gerhold",
+                photo: "",
+                email: "alberto.gerhold@szot.com"
+            },
+            date: new Date(),
+        }
+    ],
+    attachments: [
+        { 
+            title: "Redbone Coonhound", 
+            url: "https://i.pinimg.com/originals/fa/cd/67/facd67dcb113958be0e867e6fd089714.jpg" 
+        }
+    ],
+    dates: {
+        startDate: new Date(),
+        dueDate: new Date(),
+        dueReminder: new Date(),
+    },
+    labels: [
+        {
+            title: "Design",
+            hex: "#CD8DE5",
+            color: "#fff",
+        },
+        {
+            title: "Alert",
+            hex: "#EF7564",
+            color: "#fff",
+        },
+        {
+            title: "Coding",
+            hex: "#2a52be",
+            color: "#fff",
+        },
+        {
+            title: "Deploy",
+            hex: "#E568AF",
+            color: "#fff",
+        },
+    ],
+    desc: '# Placeat qui nisi corrupti ad et ut eum. \n\n1. Item A \n1. Item B \n\n## Another title \n\n- Bullet 1 \n- Bullet 2 \n\n## Code section \n\n```Typescript\nlet num: number; \nnum = 2;\n\nfunction double(x): number {\n    return x * 2;\n};\n\ndouble(num);\n```'
+}
+
+```
+
+## Data types
+
+```typescript
+export type TDueDates = {
+    startDate: Date;
+    dueDate: Date;
+    dueReminder: Date;
+}
+
+export type TCardLabel = {
+    title: string;
+    hex: string;
+    color: string
+}
+
+export type TCardUser = {
+    name: string;
+    photo: string;
+    email: string;
+}
+
+export type TCardChecklistItem = {
+    title: string;
+    members: TCardUser[];
+    done: boolean;
+    dates: TDueDates;
+}
+
+export type TCardCheckList = {
+    title: string;
+    items: TCardChecklistItem[]
+}
+
+export type TCardAttachment = {
+    title: string;
+    url: string;
+}
+
+export type TCardComment = {
+    text: string;
+    user: TCardUser;
+    date: Date;
+}
+
+export type TCard = {
+    title: string;
+    backgroundColor: string;
+    allChecklistsItems: TCardCheckList[];
+    allDoneChecklistsItems: TCardCheckList[];
+    cover: string;
+    checklists: TCardCheckList[];
+    members: TCardUser[];
+    comments: TCardComment[];
+    attachments: TCardAttachment[];
+    dates: TDueDates;
+    labels: TCardLabel[];
+    desc: string;
+}
+
+export type TList = {
+    title: string;
+    cards: TCard[];
+}
+
+export type TCustomList = {
+    title: string;
+    cards: any[];
+}
+
+export type TColor = {
+    name: string;
+    hex: string;
+}
+
+export type TBoard = {
+    title: string;
+    backgroundImage: string;
+    lists: TList[];
+}
+
+export type TCustomBoard = {
+    title: string;
+    backgroundImage: string;
+    lists: TCustomList[];
+}
+```
 

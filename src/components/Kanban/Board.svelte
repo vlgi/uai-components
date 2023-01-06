@@ -1,6 +1,12 @@
 <script lang="ts">
-  import type { TBoard, TCardUser, TCardLabel, TList } from "./data/types";
-  import { tick } from "svelte";
+  import { tick, onMount } from "svelte";
+
+  import type {
+    TBoard,
+    TCustomBoard,
+    TCardUser,
+    TCardLabel,
+  } from "./data/types";
   import { list } from "./data/empty-data";
 
   // stores
@@ -18,31 +24,9 @@
     pos, // mouse position
     dir, // mouse direction
     allUsers, // all existent users
-    allLabels, // all existent labels
-    board, // all board data
     lang, // board language
+    logged,
   } from "./stores";
-
-  // components
-  import List from "./List/List.svelte";
-  import Icon from "../Icon/Icon.svelte";
-
-  // props
-  export let data: TBoard; // board data
-  export let users: TCardUser[] = []; // board possible users
-  export let labels: TCardLabel[] = []; // board possible users
-  export let language: string = "en"; // components language
-  export let customCard = null;
-  export let canMoveList = true;
-  export let canMoveCard = true;
-
-  // setting kanban data
-  $: if (users) allUsers.set(users); // set all board users when finished data fetching
-  $: if (labels) allLabels.set(labels); // set all board labels store when finished data fetching
-  $: if ($allLabels) labels = [...$allLabels]; // update data labels when allLabels store change
-  $: if (data?.lists) board.set(data); // set board store when data change
-  $: if ($board) data = { ...$board }; // update data board when board store change
-  $: lang.set(language); // set board language
 
   // funcs
   import {
@@ -50,6 +34,19 @@
     getMouseDirection,
     switchElsPositionByIndex,
   } from "./utils";
+
+  // components
+  import List from "./List/List.svelte";
+  import Icon from "../Icon/Icon.svelte";
+
+  // props
+  export let data: TBoard | TCustomBoard; // board data
+  export let users: TCardUser[] = []; // board possible users
+  export let labels: TCardLabel[] = []; // board possible users
+  export let language: string = "en"; // components language
+  export let customCard = null; // custom card svelte component
+  export let canMoveList = true; // move list boolean
+  export let canMoveCard = true; // move card boolean
 
   // move mouse/element listener and change position
   function moveEl(e): void {
@@ -94,19 +91,26 @@
     const listIndex = data.lists.length - 1;
     await tick();
     const el: HTMLElement = document.querySelector(`.list-title-${listIndex}`);
-    el.focus();
+    el?.focus();
   }
+
+  onMount(async () => {
+    tick();
+    if (users.length > 0) allUsers.set(users); // set all board users when finished data fetching
+    if (language) lang.set(language); // set board language
+    if (!customCard && data.logged) logged.set(data.logged);
+  });
 
   // ####################################################
   // ## Conditional for changing lists positions     ####
   // ####################################################
 
   // change data.lists when dragging and target list index are different from -1
-  $: if ($dli != -1 && $tli != -1) {
+  $: if ($dli != -1 && $tli != -1 && $dli != $tli) {
     data.lists = switchElsPositionByIndex(data.lists, $dli, $tli); // switch the items and return the new list array
     dli.set($tli); // dragging list index becomes target list index
-    tli.set(-1); // reset target list index
     dlEl.set($tlEl); // dragging element becomes target element
+    tli.set(-1); // reset target list index
     tlEl.set(null); // target element becomes null
   }
 
@@ -173,7 +177,15 @@
     <div class="board-lists" on:mousemove={moveEl} on:blur>
       <!-- {#each data.lists.slice(0, 1) as list, li} -->
       {#each data.lists as list, li}
-        <List bind:data={list} {li} {customCard} {canMoveList} {canMoveCard} />
+        <List
+          bind:data={list}
+          bind:boardData={data}
+          bind:labelsData={labels}
+          {li}
+          {customCard}
+          {canMoveList}
+          {canMoveCard}
+        />
       {/each}
       <div class="add-new-list" on:click={addList}>
         <Icon iconName="plus-box" --szot-icon-font-size="40px" />
@@ -184,20 +196,120 @@
 
 <style lang="scss">
   * {
+    --board-background-color: var(--szot-kanban-board-background-color, black);
     --board-title-color: var(--szot-kanban-board-title-color, white);
-    --board-background-color: var(--szot-kanban-board-background-color, pink);
+    --board-title-font-size: var(--szot-kanban-board-title-font-size, 2rem);
     --card-background-color: var(--szot-kanban-card-background-color, #f9f9f9);
     --list-background-color: var(--szot-kanban-list-background-color, #f5f5f5);
     --list-font-color: var(--szot-kanban-list-font-color, #172b4d);
-    --radius-pattern: var(--szot-kanban-radius-pattern, 15px);
-    --list-width: var(--szot-kanban-list-width, 330px);
     --list-title-font-size: var(--szot-kanban-list-title-font-size, 1.2rem);
-    --board-title-font-size: var(--szot-kanban-board-title-font-size, 2rem);
+    --list-width: var(--szot-kanban-list-width, 330px);
+    --radius-pattern: var(--szot-kanban-radius-pattern, 15px);
 
     --szot-button-border-radius: var(--szot-kanban-radius-pattern);
     --szot-dropdown-border-radius: var(--szot-kanban-radius-pattern);
-
     --target-padding: 0.75rem;
+  }
+
+  :global(.editable) {
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    width: 100%;
+
+    &:focus {
+      outline: none !important;
+      background-color: rgba(113, 158, 206, 0.3);
+      border-radius: calc(var(--radius-pattern) / 1);
+      border: 1px solid #719ece;
+      // box-shadow: 0 0 5px #719ece;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  :global(*) {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  :global(.to-right, .to-left) {
+    opacity: 0.8;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    position: absolute !important;
+    cursor: grabbing;
+    height: auto;
+  }
+
+  :global(.to-right) {
+    animation-name: toRight;
+
+    @keyframes toRight {
+      to {
+        transform: rotate(2deg);
+      }
+    }
+  }
+
+  :global(.to-left) {
+    animation-name: toLeft;
+
+    @keyframes toLeft {
+      to {
+        transform: rotate(-2deg);
+      }
+    }
+  }
+
+  :global(.modal-alert-footer) {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  :global(.drop-menu-container) {
+    min-width: 200px;
+    max-width: 300px;
+    padding: 5px;
+    font-size: 13px;
+  }
+
+  :global(.divider, .drop-menu-section) {
+    margin: 5px 0;
+    opacity: 0.6;
+  }
+
+  :global(.divider) {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #aaa;
+  }
+
+  :global(.item, .drop-menu-section) {
+    padding: 5px 10px;
+    width: 100%;
+  }
+
+  :global(.item) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: var(--radius-pattern);
+
+    &:hover {
+      background: #eee;
+    }
+  }
+
+  :global(.drop-menu-section) {
+    text-align: center;
   }
 
   .loading,
@@ -219,17 +331,19 @@
     flex-direction: column;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: calc(var(--target-padding));
 
     .board-header {
+      margin-bottom: calc(var(--target-padding));
       .board-title {
         width: fit-content;
         font-weight: bold;
         font-size: var(--board-title-font-size);
-        padding: 0.5rem 1rem;
         color: var(--board-title-color);
+        padding: calc(var(--target-padding) / 1.5) 0;
 
         &:focus {
-          margin-left: var(--target-padding);
+          padding: calc(var(--target-padding) / 1.5) var(--target-padding);
         }
       }
     }
@@ -241,9 +355,9 @@
       grid-auto-flow: column;
       height: 100%;
       overflow-x: auto;
+      gap: calc(var(--target-padding) / 2);
 
       .add-new-list {
-        margin: calc(var(--target-padding) / 2); // change
         height: fit-content;
         padding: 0 5px;
         border-radius: var(--radius-pattern);

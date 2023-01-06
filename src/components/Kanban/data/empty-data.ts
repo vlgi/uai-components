@@ -1,11 +1,18 @@
 import type { TCard, TCardLabel, TCardChecklistItem, TCardCheckList, TDueDates, TList } from "./types"
 
+export const logged = {
+  user: {
+    name: "",
+    photo: "",
+    email: "",
+  },
+  permissions: []
+}
+
 export const card: TCard = {
   title: "",
-  backgroundColor: "#ccc",
   allChecklistsItems: [],
   allDoneChecklistsItems: [],
-  cover: "",
   checklists: [],
   members: [],
   comments: [],
