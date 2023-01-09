@@ -43,6 +43,13 @@ export default {
     value: { table: { category: "other properties" } },
     label: { table: { category: "other properties" } },
     type: { table: { category: "other properties" } },
+    inputmode: {
+      table: { category: "other properties" },
+      control: {
+        type: "select",
+        options: ["text", "search", "none", "tel", "url", "email", "numeric", "decimal"],
+      },
+    },
     name: { table: { category: "other properties" } },
     disabled: { table: { category: "other properties" } },
     readonly: { table: { category: "other properties" } },
