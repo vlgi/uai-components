@@ -99,6 +99,14 @@ export const texts = {
         br: "Adicionado por",
         en: "Added by"
     },
+    changeListPosition: {
+        br: "Mudar posição da lista",
+        ber: "Change list position",
+    },
+    changeCardPosition: {
+        br: "Mudar posição do cartão",
+        ber: "Change card position",
+    },
     hasDesc: {
         br: "Esse cartão tem uma descrição",
         en: "This card has a description"
@@ -123,6 +131,18 @@ export const texts = {
         br: "Procure ou selecione um usuário",
         en: "Search or select an user"
     },
+    searchCardPlaceholder: {
+        br: "Pesquise por um cartão...",
+        en: "Search for a card..."
+    },
+    changeBoardColor: {
+        br: "Mudar a cor do título do quadro",
+        en: "Change board title color"
+    },
+    boardTitleColor: {
+        br: "Cor do título do quadro",
+        en: "Board title color"
+    },
     inList: {
         br: "Na lista",
         en: "In list"
@@ -141,6 +161,22 @@ export const texts = {
         br: "Ações do cartão",
         en: "Card actions"
     },
+    boardAction: {
+        br: "Ações do quadro",
+        en: "Board actions"
+    },
+    changeBoardBackgroundImage: {
+        br: "Mudar imagem de fundo do quadro",
+        en: "Change board background image"
+    },
+    cardDates: {
+        br: "Datas do cartão",
+        en: "Card dates"
+    },
+    checklistItemDates: {
+        br: "Datas do item do checklist",
+        en: "Checklist item dates"
+    },
     listAction: {
         br: "Ações da lista",
         en: "List actions"
@@ -148,6 +184,14 @@ export const texts = {
     copyList: {
         br: "Copiar lista",
         en: "Copy list"
+    },
+    cardPosition: {
+        br: "Posição do cartão",
+        en: "Card position"
+    },
+    listPosition: {
+        br: "Posição da lista",
+        en: "List position"
     },
     copyListAlert: {
         br: "Tem certeza que deseja copiar a lista inteira?",
@@ -165,9 +209,45 @@ export const texts = {
         br: "Mover todos os cartões para outra lista",
         en: "Move all cards to another list"
     },
+    removeCard: {
+        br: "Deletar cartão",
+        en: "Remove list"
+    },
+    addDueDates: {
+        br: "Adicionar datas",
+        en: "Add dates"
+    },
+    editDueDates: {
+        br: "Editar datas",
+        en: "Edit dates"
+    },
+    dueDate: {
+        br: "Prazo final",
+        en: "Due date"
+    },
+    reminderDate: {
+        br: "Data de lembrete",
+        en: "Reminder date"
+    },
+    startDate: {
+        br: "Data de início",
+        en: "Start date"
+    },
+    removeCardAlert: {
+        br: "Tem certeza que deseja deletar o cartão?",
+        en: "Are you sure you want to delete this card?"
+    },
     moveAllCardsAlert: {
         br: "Tem certeza que deseja mover todos os cartões dessa lista?",
         en: "Are you sure you want to move all cards in the list?"
+    },
+    changeListPositionAlert: {
+        br: "Tem certeza que deseja mudar a posição da lista?",
+        en: "Are you sure you want to change list position?"
+    },
+    changeCardPositionAlert: {
+        br: "Tem certeza que deseja mudar a posição deste cartão?",
+        en: "Are you sure you want to change this card position?"
     },
     deleteAllCardsFromList: {
         br: "Remover todos os cartões desta lista",

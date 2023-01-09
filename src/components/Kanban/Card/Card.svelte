@@ -35,7 +35,8 @@
   export let ci: number; // card index
   export let cli: number; // card list index
   export let customCard = null;
-  export let canMoveCard = null;
+  export let canMoveCard = true;
+  export let canDeleteCard = true;
 
   let overed = false; // change target data only at the first overed
 
@@ -110,6 +111,9 @@
   bind:labelsData
   bind:opened={showModal}
   {cli}
+  {ci}
+  {canMoveCard}
+  {canDeleteCard}
 />
 
 <div

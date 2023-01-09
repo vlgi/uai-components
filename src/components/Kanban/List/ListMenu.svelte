@@ -2,12 +2,14 @@
   import type { TBoard, TCustomBoard, TList } from "../data/types";
   import { texts } from "../data/components-texts";
   import { tick } from "svelte";
+  import { changeElPositionByIndex } from "../utils";
 
   // stores
   import { lang } from "../stores";
 
   // components
   import Button from "../../formFields/Button/Button.svelte";
+  import Select from "../../formFields/Select/Select.svelte";
   import Dropdown from "../../Dropdown/Dropdown.svelte";
   import Modal from "../../Modal/Modal.svelte";
   import Icon from "../../Icon/Icon.svelte";
@@ -17,6 +19,12 @@
   export let boardData: TBoard | TCustomBoard;
   export let li: number; // list index
   export let addingCard: boolean; //
+  export let canMoveCard = true; // move card boolean
+  export let canCreateCard = true; // create card boolean
+  export let canDeleteCard = true; // create card boolean
+  export let canMoveList = true; // move list boolean
+  export let canCreateList = true; // create list boolean
+  export let canDeleteList = true; // create list boolean
 
   async function copyList(): Promise<any> {
     const lists = [...boardData.lists];
@@ -26,6 +34,15 @@
     await tick();
     const el: HTMLElement = document.querySelector(`.list-title-${li + 1}`);
     el.focus();
+  }
+
+  function moveListPosition(): void {
+    if (indexListToChange == -1) return;
+    boardData.lists = changeElPositionByIndex(
+      boardData.lists,
+      li,
+      indexListToChange
+    );
   }
 
   function moveAllCards(): void {
@@ -54,9 +71,13 @@
   $: actionAlertBtnText = "";
   $: targetListIndex = -1;
   $: isBtnEnable = false;
+  $: indexListToChange = -1;
+  $: listPositions = boardData.lists.map((list, index) => {
+    return { text: `${index}` };
+  });
 </script>
 
-<div style="z-index: 1;">
+<div style="z-index: 2;">
   <Dropdown
     targetId="open-list-menu-{li}"
     enableAutAdjust={false}
@@ -68,58 +89,91 @@
         {texts.listAction[$lang]}
       </div>
       <div class="divider" />
-      <div class="item" on:click={() => (addingCard = true)}>
-        {texts.createCard[$lang]}
-      </div>
-      <div
-        class="item"
-        on:click={() => {
-          funcAction = copyList;
-          openAlertModal = true;
-          alertText = texts.copyListAlert[$lang];
-          actionAlertBtnText = texts.copy[$lang];
-          isBtnEnable = true;
-        }}
-      >
-        {texts.copyList[$lang]}
-      </div>
-      <div class="divider" />
-      <div
-        class="item"
-        on:click={() => {
-          funcAction = moveAllCards;
-          openAlertModal = true;
-          alertText = texts.moveAllCardsAlert[$lang];
-          actionAlertBtnText = texts.move[$lang];
-        }}
-      >
-        {texts.moveAllCards[$lang]}
-      </div>
-      <div
-        class="item"
-        on:click={() => {
-          funcAction = deleteAllCards;
-          openAlertModal = true;
-          alertText = texts.deleteAllCardsFromListAlert[$lang];
-          actionAlertBtnText = texts.remove[$lang];
-          isBtnEnable = true;
-        }}
-      >
-        {texts.deleteAllCardsFromList[$lang]}
-      </div>
-      <div class="divider" />
-      <div
-        class="item"
-        on:click={() => {
-          funcAction = deleteList;
-          openAlertModal = true;
-          alertText = texts.removeListAlert[$lang];
-          actionAlertBtnText = texts.remove[$lang];
-          isBtnEnable = true;
-        }}
-      >
-        {texts.removeList[$lang]}
-      </div>
+
+      {#if canCreateCard}
+        <div class="item" on:click={() => (addingCard = true)}>
+          {texts.createCard[$lang]}
+        </div>
+        <div class="divider" />
+      {/if}
+
+      {#if canMoveCard}
+        <div
+          class="item"
+          on:click={() => {
+            funcAction = moveAllCards;
+            openAlertModal = true;
+            alertText = texts.moveAllCardsAlert[$lang];
+            actionAlertBtnText = texts.move[$lang];
+          }}
+        >
+          {texts.moveAllCards[$lang]}
+        </div>
+      {/if}
+      {#if canDeleteCard}
+        <div
+          class="item"
+          on:click={() => {
+            funcAction = deleteAllCards;
+            openAlertModal = true;
+            alertText = texts.deleteAllCardsFromListAlert[$lang];
+            actionAlertBtnText = texts.remove[$lang];
+            isBtnEnable = true;
+          }}
+        >
+          {texts.deleteAllCardsFromList[$lang]}
+        </div>
+      {/if}
+      {#if canMoveCard || canDeleteCard}
+        <div class="divider" />
+      {/if}
+      {#if canCreateList}
+        <div
+          class="item"
+          on:click={() => {
+            funcAction = copyList;
+            openAlertModal = true;
+            alertText = texts.copyListAlert[$lang];
+            actionAlertBtnText = texts.copy[$lang];
+            isBtnEnable = true;
+          }}
+        >
+          {texts.copyList[$lang]}
+        </div>
+      {/if}
+
+      {#if canMoveList}
+        <div
+          class="item"
+          on:click={() => {
+            funcAction = moveListPosition;
+            openAlertModal = true;
+            alertText = texts.changeListPositionAlert[$lang];
+            actionAlertBtnText = texts.move[$lang];
+            isBtnEnable = true;
+          }}
+        >
+          {texts.changeListPosition[$lang]}
+        </div>
+      {/if}
+      {#if canMoveList || canCreateList}
+        <div class="divider" />
+      {/if}
+
+      {#if canDeleteList}
+        <div
+          class="item item-alert"
+          on:click={() => {
+            funcAction = deleteList;
+            openAlertModal = true;
+            alertText = texts.removeListAlert[$lang];
+            actionAlertBtnText = texts.remove[$lang];
+            isBtnEnable = true;
+          }}
+        >
+          {texts.removeList[$lang]}
+        </div>
+      {/if}
     </div>
   </Dropdown>
 
@@ -161,6 +215,17 @@
             </div>
           {/each}
         </div>
+      {/if}
+      {#if alertText == texts.changeListPositionAlert[$lang]}
+        <Select
+          id="list-position"
+          name="list-position"
+          required={true}
+          options={listPositions}
+          label={texts.listPosition[$lang]}
+          selected={listPositions[li]}
+          on:changeSelected={(e) => (indexListToChange = e.detail.text)}
+        />
       {/if}
     </div>
     <div slot="modal-footer" class="footer modal-alert-footer">

@@ -38,9 +38,9 @@ export const data: TBoard = {
                                     ],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 12:43:20 GMT-0300"),
+                                        dueDate: new Date("Tue Jan 10 2023 17:00:00 GMT-0300"),
+                                        dueReminder: new Date("Mon Jan 09 2023 12:00:56 GMT-0300"),
                                     }
                                 },
                                 {
@@ -48,9 +48,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 00:54:08 GMT-0300"),
+                                        dueDate: new Date("Thu Nov 16 2023 08:06:46 GMT-0300"),
+                                        dueReminder: new Date("Mon Jan 09 2023 23:12:55 GMT-0300"),
                                     }
                                 },
                                 {
@@ -58,9 +58,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 09:00:00 GMT-0300"),
+                                        dueDate: new Date("Tue Jan 10 2023 12:00:00 GMT-0300"),
+                                        dueReminder: new Date("Mon Jan 09 2023 18:00:56 GMT-0300"),
                                     }
                                 }
                             ],
@@ -73,9 +73,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 19:24:49 GMT-0300"),
+                                        dueDate: new Date("Fri Feb 24 2023 19:01:59 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 02:40:52 GMT-0300"),
                                     }
                                 },
                                 {
@@ -83,9 +83,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 02:25:15 GMT-0300"),
+                                        dueDate: new Date("Fri Dec 29 2023 09:52:57 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 07:28:49 GMT-0300"),
                                     }
                                 },
                                 {
@@ -93,9 +93,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 07:47:20 GMT-0300"),
+                                        dueDate: new Date("Thu Jan 19 2023 11:25:17 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 00:36:19 GMT-0300"),
                                     }
                                 },
                                 {
@@ -103,9 +103,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 13:08:15 GMT-0300"),
+                                        dueDate: new Date("Tue Aug 08 2023 09:48:19 GMT-0300"),
+                                        dueReminder: new Date("Mon Jan 09 2023 22:17:18 GMT-0300"),
                                     }
                                 }
                             ],
@@ -196,9 +196,9 @@ export const data: TBoard = {
                         }
                     ],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Mon Jan 02 2023 09:00:00 GMT-0300"),
+                        dueDate: new Date("Tue Jan 10 2023 18:00:00 GMT-0300"),
+                        dueReminder: new Date("Tue Jan 10 2023 08:00:00 GMT-0300"),
                     },
                     labels: [
                         {
@@ -222,7 +222,7 @@ export const data: TBoard = {
                             color: "#fff",
                         },
                     ],
-                    desc: '# Placeat qui nisi corrupti ad et ut eum. \n\n1. Item A \n1. Item B \n\n## Another title \n\n- Bullet 1 \n- Bullet 2 \n\n## Code section \n\n```Typescript\nlet num: number; \nnum = 2;\n\nfunction double(x): number {\n    return x * 2;\n};\n\ndouble(num);\n```',
+                    desc: '# Et dicta reiciendis aperiam architecto est reiciendis. \n\n1. Item A \n1. Item B \n\n## Another title \n\n- Bullet 1 \n- Bullet 2 \n\n## Code section \n\n```Typescript\nlet num: number; \nnum = 2;\n\nfunction double(x): number {\n    return x * 2;\n};\n\ndouble(num);\n```',
                 },
                 {
                     title: "KUNDE, MAYER AND O'CONNELL",
@@ -237,9 +237,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 19:36:37 GMT-0300"),
+                                        dueDate: new Date("Fri Mar 17 2023 11:30:43 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 08:29:55 GMT-0300"),
                                     }
                                 }
                             ],
@@ -252,9 +252,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 20:16:50 GMT-0300"),
+                                        dueDate: new Date("Mon Jul 24 2023 17:40:41 GMT-0300"),
+                                        dueReminder: new Date("Mon Jan 09 2023 16:17:25 GMT-0300"),
                                     }
                                 }
                             ],
@@ -267,9 +267,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 07:53:13 GMT-0300"),
+                                        dueDate: new Date("Tue Apr 25 2023 22:26:55 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 09:44:29 GMT-0300"),
                                     }
                                 }
                             ],
@@ -282,9 +282,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 03:28:23 GMT-0300"),
+                                        dueDate: new Date("Sun Oct 08 2023 09:59:46 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 03:54:15 GMT-0300"),
                                     }
                                 }
                             ],
@@ -294,9 +294,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Sun Jan 08 2023 14:32:31 GMT-0300"),
+                        dueDate: new Date("Fri Apr 21 2023 03:15:27 GMT-0300"),
+                        dueReminder: new Date("Mon Jan 09 2023 16:37:21 GMT-0300"),
                     },
                     labels: [
                         {
@@ -325,9 +325,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 19:55:11 GMT-0300"),
+                                        dueDate: new Date("Fri Dec 08 2023 10:50:18 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 01:50:20 GMT-0300"),
                                     }
                                 },
                                 {
@@ -335,9 +335,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 10:36:40 GMT-0300"),
+                                        dueDate: new Date("Fri Oct 06 2023 13:18:53 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 04:37:26 GMT-0300"),
                                     }
                                 }
                             ],
@@ -347,9 +347,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Mon Jan 09 2023 06:40:16 GMT-0300"),
+                        dueDate: new Date("Thu May 25 2023 10:40:38 GMT-0300"),
+                        dueReminder: new Date("Tue Jan 10 2023 08:19:57 GMT-0300"),
                     },
                     labels: [
                         {
@@ -373,9 +373,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 04:23:42 GMT-0300"),
+                                        dueDate: new Date("Sat Oct 28 2023 21:50:32 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 05:07:06 GMT-0300"),
                                     }
                                 },
                                 {
@@ -383,9 +383,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 22:04:05 GMT-0300"),
+                                        dueDate: new Date("Thu Jan 19 2023 23:44:19 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 08:19:26 GMT-0300"),
                                     }
                                 }
                             ],
@@ -422,9 +422,9 @@ export const data: TBoard = {
                         },
                     ],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Sun Jan 08 2023 22:32:26 GMT-0300"),
+                        dueDate: new Date("Sun Apr 16 2023 05:50:45 GMT-0300"),
+                        dueReminder: new Date("Mon Jan 09 2023 21:10:15 GMT-0300"),
                     },
                     labels: [
                         {
@@ -463,9 +463,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 01:50:04 GMT-0300"),
+                                        dueDate: new Date("Tue Feb 14 2023 00:18:41 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 03:27:42 GMT-0300"),
                                     }
                                 },
                                 {
@@ -473,9 +473,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 14:03:43 GMT-0300"),
+                                        dueDate: new Date("Sun Feb 26 2023 05:17:53 GMT-0300"),
+                                        dueReminder: new Date("Mon Jan 09 2023 21:06:49 GMT-0300"),
                                     }
                                 }
                             ],
@@ -485,9 +485,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Sun Jan 08 2023 13:09:39 GMT-0300"),
+                        dueDate: new Date("Mon Jan 16 2023 19:43:14 GMT-0300"),
+                        dueReminder: new Date("Mon Jan 09 2023 21:21:34 GMT-0300"),
                     },
                     labels: [
                         {
@@ -516,9 +516,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 00:58:19 GMT-0300"),
+                                        dueDate: new Date("Thu Feb 02 2023 23:48:31 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 09:18:50 GMT-0300"),
                                     }
                                 },
                                 {
@@ -526,9 +526,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 17:24:51 GMT-0300"),
+                                        dueDate: new Date("Mon Aug 21 2023 02:12:42 GMT-0300"),
+                                        dueReminder: new Date("Mon Jan 09 2023 22:05:01 GMT-0300"),
                                     }
                                 }
                             ],
@@ -538,9 +538,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Sun Jan 08 2023 21:42:48 GMT-0300"),
+                        dueDate: new Date("Thu May 25 2023 09:53:50 GMT-0300"),
+                        dueReminder: new Date("Tue Jan 10 2023 03:59:33 GMT-0300"),
                     },
                     labels: [
                         {
@@ -569,9 +569,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 11:54:10 GMT-0300"),
+                                        dueDate: new Date("Thu Jun 22 2023 01:07:22 GMT-0300"),
+                                        dueReminder: new Date("Mon Jan 09 2023 15:27:40 GMT-0300"),
                                     }
                                 },
                                 {
@@ -579,9 +579,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 01:23:25 GMT-0300"),
+                                        dueDate: new Date("Wed Nov 15 2023 03:21:31 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 03:46:56 GMT-0300"),
                                     }
                                 }
                             ],
@@ -591,9 +591,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Sun Jan 08 2023 23:31:37 GMT-0300"),
+                        dueDate: new Date("Mon Oct 02 2023 22:45:27 GMT-0300"),
+                        dueReminder: new Date("Tue Jan 10 2023 09:31:49 GMT-0300"),
                     },
                     labels: [
                         {
@@ -623,9 +623,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 01:48:59 GMT-0300"),
+                                        dueDate: new Date("Tue Aug 01 2023 03:35:50 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 07:33:03 GMT-0300"),
                                     }
                                 },
                                 {
@@ -633,9 +633,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 18:18:21 GMT-0300"),
+                                        dueDate: new Date("Sat Aug 05 2023 22:59:29 GMT-0300"),
+                                        dueReminder: new Date("Mon Jan 09 2023 21:37:44 GMT-0300"),
                                     }
                                 }
                             ],
@@ -667,9 +667,9 @@ export const data: TBoard = {
 
                     ],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Mon Jan 09 2023 06:20:43 GMT-0300"),
+                        dueDate: new Date("Sun Dec 17 2023 21:41:02 GMT-0300"),
+                        dueReminder: new Date("Tue Jan 10 2023 00:18:59 GMT-0300"),
                     },
                     labels: [],
                     desc: "Placeat qui nisi corrupti ad et ut eum."
@@ -687,9 +687,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 03:38:13 GMT-0300"),
+                                        dueDate: new Date("Fri Feb 17 2023 20:42:41 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 00:07:58 GMT-0300"),
                                     }
                                 },
                                 {
@@ -697,9 +697,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 09:50:38 GMT-0300"),
+                                        dueDate: new Date("Fri Jun 16 2023 23:13:44 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 06:04:48 GMT-0300"),
                                     }
                                 }
                             ],
@@ -709,9 +709,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Mon Jan 09 2023 04:22:43 GMT-0300"),
+                        dueDate: new Date("Wed Aug 30 2023 06:20:34 GMT-0300"),
+                        dueReminder: new Date("Mon Jan 09 2023 18:19:44 GMT-0300"),
                     },
                     labels: [
                         {
@@ -750,9 +750,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 17:54:31 GMT-0300"),
+                                        dueDate: new Date("Thu Mar 16 2023 02:01:01 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 09:50:20 GMT-0300"),
                                     }
                                 },
                                 {
@@ -760,9 +760,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 14:47:23 GMT-0300"),
+                                        dueDate: new Date("Mon Jul 24 2023 00:42:20 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 03:48:21 GMT-0300"),
                                     }
                                 }
                             ],
@@ -772,9 +772,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Sun Jan 08 2023 20:12:23 GMT-0300"),
+                        dueDate: new Date("Tue Oct 10 2023 16:49:52 GMT-0300"),
+                        dueReminder: new Date("Tue Jan 10 2023 08:53:50 GMT-0300"),
                     },
                     labels: [
                         {
@@ -804,9 +804,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Mon Jan 09 2023 06:51:13 GMT-0300"),
+                        dueDate: new Date("Fri Nov 24 2023 19:04:12 GMT-0300"),
+                        dueReminder: new Date("Tue Jan 10 2023 01:45:49 GMT-0300"),
                     },
                     labels: [
                         {
@@ -845,9 +845,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 02:56:06 GMT-0300"),
+                                        dueDate: new Date("Sat Mar 25 2023 12:34:08 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 10:31:27 GMT-0300"),
                                     }
                                 },
                                 {
@@ -855,9 +855,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 00:13:56 GMT-0300"),
+                                        dueDate: new Date("Fri Dec 22 2023 15:33:46 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 04:33:34 GMT-0300"),
                                     }
                                 }
                             ],
@@ -867,9 +867,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Mon Jan 09 2023 09:01:06 GMT-0300"),
+                        dueDate: new Date("Sat Apr 15 2023 05:41:50 GMT-0300"),
+                        dueReminder: new Date("Tue Jan 10 2023 02:54:26 GMT-0300"),
                     },
                     labels: [
                         {
@@ -908,9 +908,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Mon Jan 09 2023 01:16:11 GMT-0300"),
+                                        dueDate: new Date("Fri Jan 20 2023 09:53:48 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 04:46:15 GMT-0300"),
                                     }
                                 },
                                 {
@@ -918,9 +918,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 15:49:33 GMT-0300"),
+                                        dueDate: new Date("Mon Jul 17 2023 19:46:59 GMT-0300"),
+                                        dueReminder: new Date("Mon Jan 09 2023 19:21:41 GMT-0300"),
                                     }
                                 }
                             ],
@@ -930,9 +930,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Mon Jan 09 2023 11:27:18 GMT-0300"),
+                        dueDate: new Date("Fri Jan 13 2023 20:07:39 GMT-0300"),
+                        dueReminder: new Date("Mon Jan 09 2023 19:43:10 GMT-0300"),
                     },
                     labels: [
                         {
@@ -971,9 +971,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: true,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 17:05:51 GMT-0300"),
+                                        dueDate: new Date("Tue Jul 25 2023 20:52:57 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 02:16:04 GMT-0300"),
                                     }
                                 },
                                 {
@@ -981,9 +981,9 @@ export const data: TBoard = {
                                     members: [],
                                     done: false,
                                     dates: {
-                                        startDate: new Date(),
-                                        dueDate: new Date(),
-                                        dueReminder: new Date(),
+                                        startDate: new Date("Sun Jan 08 2023 14:17:47 GMT-0300"),
+                                        dueDate: new Date("Fri Jun 30 2023 19:07:43 GMT-0300"),
+                                        dueReminder: new Date("Tue Jan 10 2023 06:30:06 GMT-0300"),
                                     }
                                 }
                             ],
@@ -993,9 +993,9 @@ export const data: TBoard = {
                     comments: [],
                     attachments: [],
                     dates: {
-                        startDate: new Date(),
-                        dueDate: new Date(),
-                        dueReminder: new Date(),
+                        startDate: new Date("Sun Jan 08 2023 12:59:23 GMT-0300"),
+                        dueDate: new Date("Sun May 28 2023 13:34:23 GMT-0300"),
+                        dueReminder: new Date("Tue Jan 10 2023 06:15:23 GMT-0300"),
                     },
                     labels: [
                         {

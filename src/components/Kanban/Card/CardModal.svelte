@@ -1,78 +1,38 @@
 <script lang="ts">
-  import "highlight.js/styles/base16/solarized-dark.css";
-  import hljs from "highlight.js";
-  import { marked } from "marked";
-  import { tick } from "svelte";
-
   import type { TCard, TBoard, TCustomBoard, TCardLabel } from "../data/types";
   import { texts } from "../data/components-texts";
-  import { checklist } from "../data/empty-data";
 
   // stores
   import { lang, allUsers } from "../stores";
 
   // components
-  import Dropdown from "../../Dropdown/Dropdown.svelte";
-  import Icon from "../../Icon/Icon.svelte";
-  import Modal from "../../Modal/Modal.svelte";
   import Button from "../../formFields/Button/Button.svelte";
-  import CardChecklists from "./CardChecklists.svelte";
   import CardHandleLabelsModal from "./CardHandleLabelsModal.svelte";
+  import CardHandleDueDates from "./CardHandleDueDates.svelte";
   import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
   import CardLabel from "./CardLabel.svelte";
+  import CardModalAttachments from "./CardModalAttachments.svelte";
+  import CardModalChecklists from "./CardModalChecklists.svelte";
+  import CardModalComments from "./CardModalComments.svelte";
+  import CardModalMenu from "./CardModalMenu.svelte";
   import CardUserAvatar from "./CardUserAvatar.svelte";
-  import CodeEditor from "./CodeEditor.svelte";
-  import ThumbPreview from "./ThumbPreview.svelte";
-  import CardAttachments from "./CardAttachments.svelte";
-  import CardComments from "./CardComments.svelte";
+  import Icon from "../../Icon/Icon.svelte";
+  import Modal from "../../Modal/Modal.svelte";
 
   // functions
   import { getCover } from "../utils";
+  import CardModalDescription from "./CardModalDescription.svelte";
 
   // props
   export let data: TCard; // card data
   export let boardData: TBoard | TCustomBoard;
   export let labelsData: TCardLabel[] = [];
+  export let ci: number; // card index
   export let cli: number; // card list index
   export let opened = false; // card modal opened
+  export let canMoveCard = true;
+  export let canDeleteCard = true;
 
-  marked.setOptions({
-    renderer: new marked.Renderer(),
-    highlight: function (code, lan) {
-      const language = hljs.getLanguage(lan) ? lan : "plaintext";
-      return hljs.highlight(code, { language }).value;
-    },
-    langPrefix: "hljs language-", // highlight.js css expects a top-level 'hljs' class.
-    pedantic: false,
-    gfm: true,
-    breaks: false,
-    sanitize: false,
-    smartypants: false,
-    xhtml: false,
-  });
-
-  async function enableEditing(): Promise<any> {
-    editDescription = true;
-    await tick();
-    hljs.highlightAll();
-  }
-
-  async function disableEditing(): Promise<any> {
-    editDescription = false;
-    await tick();
-    hljs.highlightAll();
-  }
-
-  async function addChecklist(): Promise<any> {
-    const emptyChecklist = { ...checklist };
-    data.checklists = [...data.checklists, emptyChecklist];
-    await tick();
-    const i = data.checklists.length - 1;
-    const el: HTMLElement = document.querySelector(`.checklist-title-${i}`);
-    el.focus();
-  }
-
-  $: editDescription = false;
   $: handleLabelsModalOpened = false;
   $: selectCardUserModalOpened = false;
   $: resetDraggingChecklistsElements = false;
@@ -85,31 +45,18 @@
   <div class="card-modal-header" slot="modal-header">
     <div class="modal-menu-btn" id="modal-menu">
       <Button icon="dots-horizontal" size="round" buttonStyle="light" />
-      <Dropdown
-        targetId="modal-menu"
-        enableAutAdjust={false}
-        dropdownAlignment="bottomRight"
-        --szot-dropdown-padding="0"
-      >
-        <div class="drop-menu-container">
-          <div class="drop-menu-section">
-            {texts.cardAction[$lang]}
-          </div>
-          <div class="divider" />
-          <div class="item" on:click={() => (selectCardUserModalOpened = true)}>
-            {texts.addMember[$lang]}
-          </div>
-          <div class="item" on:click={() => (handleLabelsModalOpened = true)}>
-            {texts.addLabel[$lang]}
-          </div>
-          <div class="item" on:click={addChecklist}>
-            {texts.addChecklist[$lang]}
-          </div>
-          <div class="item" on:click={() => (showAdd = !showAdd)}>
-            {texts.addAttachment[$lang]}
-          </div>
-        </div>
-      </Dropdown>
+      <CardModalMenu
+        bind:handleLabelsModalOpened
+        bind:selectCardUserModalOpened
+        bind:showAdd
+        bind:data
+        bind:boardData
+        bind:opened
+        {cli}
+        {ci}
+        {canMoveCard}
+        {canDeleteCard}
+      />
     </div>
   </div>
 
@@ -205,37 +152,12 @@
 
     <!-- Card Description -->
     <section>
-      <div class="section-title">
-        <Icon iconName="text" --szot-icon-font-size="20px" />
-        <h2>{texts.desc[$lang]}</h2>
-      </div>
-
-      {#if !editDescription && data.desc != ""}
-        <div class="description markdown-parse" on:click={enableEditing}>
-          {@html marked.parse(data.desc)}
-        </div>
-      {:else if !editDescription && data.desc == ""}
-        <div class="no-desc" on:click={enableEditing}>
-          {texts.addDescription[$lang]}...
-        </div>
-      {:else if editDescription}
-        <div
-          style="padding: 0 10px;"
-          on:keydown={(e) =>
-            e.key == "Enter" && !e.shiftKey && disableEditing()}
-        >
-          <CodeEditor
-            on:focusout={() => (editDescription = false)}
-            bind:data={data.desc}
-            lang={"Markdown"}
-          />
-        </div>
-      {/if}
+      <CardModalDescription bind:data={data.desc} />
     </section>
 
     <!-- Card Attachments -->
     <section>
-      <CardAttachments
+      <CardModalAttachments
         bind:data={data.attachments}
         bind:showAdd
         bind:isCover={attCover}
@@ -245,7 +167,7 @@
     <!-- Card Checklists -->
     {#if data.checklists.length > 0}
       <section>
-        <CardChecklists
+        <CardModalChecklists
           bind:data
           bind:reset={resetDraggingChecklistsElements}
         />
@@ -254,7 +176,7 @@
 
     <!-- Card Comments -->
     <section>
-      <CardComments bind:data={data.comments} />
+      <CardModalComments bind:data={data.comments} />
     </section>
 
     <!-- end modal content -->
@@ -307,6 +229,10 @@
     white-space: pre-wrap;
   }
 
+  .modal-menu-btn {
+    z-index: 2;
+  }
+
   h1,
   h2,
   h3:focus {
@@ -350,31 +276,6 @@
         text-decoration: underline;
       }
     }
-  }
-
-  .no-desc,
-  .description {
-    cursor: pointer;
-  }
-
-  .description {
-    margin: 0 5px;
-  }
-
-  .no-desc {
-    background: #eee;
-    padding: 5px 10px;
-    min-height: 70px;
-    border-radius: var(--radius-pattern);
-    font-size: 15px;
-  }
-
-  .footer {
-    background: #eee;
-    color: #333;
-    padding: 2rem;
-    text-align: center;
-    border-radius: var(--radius-pattern);
   }
 
   .add-btn {

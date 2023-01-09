@@ -1,4 +1,4 @@
-import type { TCard, TCardLabel, TCardChecklistItem, TCardCheckList, TDueDates, TList } from "./types"
+import type { TBoard, TCard, TCardLabel, TCardChecklistItem, TCardCheckList, TDueDates, TList } from "./types"
 
 export const logged = {
   user: {
@@ -59,4 +59,32 @@ export const list: TList = {
 export const customCard = {
   title: "",
   desc: "",
+}
+
+export const boardDefault: TBoard = {
+  title: "EMPTY BOARD DEFAULT CARD EXAMPLE",
+  backgroundImage: "https://cdn.lifehack.org/wp-content/uploads/2017/05/feeling-empty.jpeg",
+  logged: {
+    user: {
+      name: "Christ Ryan",
+      photo: "https://images.pexels.com/photos/2020992/pexels-photo-2020992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      email: "christ.ryan@szot.com"
+    },
+    permissions: []
+  },
+  lists: [],
+}
+
+export const boardCustom: TBoard = {
+  title: "EMPTY BOARD CUSTOM CARD EXAMPLE",
+  backgroundImage: "https://wallpaper.dog/large/20361086.jpg",
+  logged: {
+    user: {
+      name: "Christ Ryan",
+      photo: "https://images.pexels.com/photos/2020992/pexels-photo-2020992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      email: "christ.ryan@szot.com"
+    },
+    permissions: []
+  },
+  lists: [],
 }

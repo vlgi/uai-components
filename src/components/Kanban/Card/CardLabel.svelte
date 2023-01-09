@@ -64,7 +64,7 @@
 
   $: openModal = false;
   $: showRemoveLabelsAlert = false;
-  $: if (focus) document.getElementById("label-editable").focus();
+  $: if (focus) document.getElementById("label-editable")?.focus();
 </script>
 
 <div class="card-label-container" on:click>

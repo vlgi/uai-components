@@ -39,8 +39,12 @@
   export let labelsData: TCardLabel[] = [];
   export let li: number; // list index
   export let customCard = null;
-  export let canMoveList = true;
-  export let canMoveCard = true;
+  export let canMoveCard = true; // move card boolean
+  export let canCreateCard = true; // create card boolean
+  export let canDeleteCard = true; // create card boolean
+  export let canMoveList = true; // move list boolean
+  export let canCreateList = true; // create list boolean
+  export let canDeleteList = true; // create list boolean
 
   let addedCardTitle = "";
   let overed = false;
@@ -121,6 +125,13 @@
   }
 
   $: addingCard = false;
+  $: menuCondition =
+    canMoveCard ||
+    canCreateCard ||
+    canDeleteCard ||
+    canMoveList ||
+    canCreateList ||
+    canDeleteList;
 </script>
 
 <div class="lane">
@@ -161,9 +172,11 @@
           }}
           bind:textContent={data.title}
         />
-        <div class="list-menu-btn" id="open-list-menu-{li}">
-          <Icon iconName="dots-horizontal" --szot-icon-font-size="20px" />
-        </div>
+        {#if menuCondition}
+          <div class="list-menu-btn" id="open-list-menu-{li}">
+            <Icon iconName="dots-horizontal" --szot-icon-font-size="20px" />
+          </div>
+        {/if}
       </div>
     </div>
     <div class="list-cards list-cards-{li}">
@@ -177,6 +190,7 @@
           cli={li}
           {customCard}
           {canMoveCard}
+          {canDeleteCard}
         />
       {/each}
       {#if addingCard}
@@ -211,20 +225,35 @@
         </div>
       {/if}
     </div>
-    <div class="list-footer list-footer-{li}">
-      <Button
-        on:click={() => (addingCard = true)}
-        size="small"
-        buttonStyleType="outline"
-        buttonStyle="dark"
-      >
-        {texts.createCard[$lang]}
-      </Button>
-    </div>
+    {#if canCreateCard}
+      <div class="list-footer list-footer-{li}">
+        <Button
+          on:click={() => (addingCard = true)}
+          size="small"
+          buttonStyleType="outline"
+          buttonStyle="dark"
+        >
+          {texts.createCard[$lang]}
+        </Button>
+      </div>
+    {/if}
   </div>
 </div>
 
-<ListMenu bind:boardData bind:data bind:addingCard {li} />
+{#if menuCondition}
+  <ListMenu
+    bind:boardData
+    bind:data
+    bind:addingCard
+    {li}
+    {canMoveCard}
+    {canCreateCard}
+    {canDeleteCard}
+    {canMoveList}
+    {canCreateList}
+    {canDeleteList}
+  />
+{/if}
 
 <style lang="scss">
   .lane {

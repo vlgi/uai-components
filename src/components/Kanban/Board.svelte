@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { tick, onMount } from "svelte";
+  import { tick, onMount, onDestroy } from "svelte";
 
   import type {
     TBoard,
@@ -8,6 +8,7 @@
     TCardLabel,
   } from "./data/types";
   import { list } from "./data/empty-data";
+  import { texts } from "./data/components-texts";
 
   // stores
   import {
@@ -38,15 +39,26 @@
   // components
   import List from "./List/List.svelte";
   import Icon from "../Icon/Icon.svelte";
+  import SearchInput from "../formFields/SearchInput/SearchInput.svelte";
+  import Input from "../formFields/Input/Input.svelte";
+  import Dropdown from "../Dropdown/Dropdown.svelte";
 
   // props
   export let data: TBoard | TCustomBoard; // board data
   export let users: TCardUser[] = []; // board possible users
   export let labels: TCardLabel[] = []; // board possible users
   export let language: string = "en"; // components language
+  export let searchableCardKeys: string[] = ["title"];
   export let customCard = null; // custom card svelte component
-  export let canMoveList = true; // move list boolean
   export let canMoveCard = true; // move card boolean
+  export let canCreateCard = true; // create card boolean
+  export let canDeleteCard = true; // create card boolean
+  export let canMoveList = true; // move list boolean
+  export let canCreateList = true; // create list boolean
+  export let canDeleteList = true; // create list boolean
+
+  let allCards = [];
+  let inpt;
 
   // move mouse/element listener and change position
   function moveEl(e): void {
@@ -94,12 +106,51 @@
     el?.focus();
   }
 
+  function filterCards(): void {
+    data.lists.forEach((list) => {
+      list.cards = [];
+    });
+    filtered.forEach((card) => {
+      data.lists[card.list].cards = [...data.lists[card.list].cards, card];
+    });
+  }
+
+  function initializeInput() {
+    document.body.onfocus = handleInputEl;
+  }
+
+  function getFile(e): void {
+    const files = Array.from(e.target.files).map((f) => URL.createObjectURL(f));
+    data.backgroundImage = files[0];
+    showDropdown = false;
+  }
+
+  function handleInputEl(e): void {
+    showAdd = false;
+  }
+
   onMount(async () => {
     tick();
     if (users.length > 0) allUsers.set(users); // set all board users when finished data fetching
     if (language) lang.set(language); // set board language
     if (!customCard && data.logged) logged.set(data.logged);
+    data.lists.forEach((list, index) => {
+      list.cards.forEach((card) => {
+        allCards = [...allCards, { ...card, list: index }];
+      });
+    });
+    inpt = document.getElementById(`input-image`);
   });
+
+  onDestroy(() => {
+    document.body.removeEventListener("onfocus", handleInputEl);
+  });
+
+  $: filtered = [];
+  $: titleColor = "var(--board-title-color)";
+  $: showAdd = false;
+  $: showDropdown = false;
+  $: if (showAdd) inpt.click();
 
   // ####################################################
   // ## Conditional for changing lists positions     ####
@@ -159,6 +210,13 @@
   }
 </script>
 
+<input
+  type="file"
+  id="input-image"
+  on:change={getFile}
+  on:click={initializeInput}
+/>
+
 {#if !data}<div class="loading">loading...</div>
 {:else}
   <div
@@ -172,7 +230,61 @@
         class="board-title editable"
         contenteditable="true"
         bind:textContent={data.title}
+        style="color: {titleColor}"
       />
+      <div class="search-menu-container">
+        <SearchInput
+          items={allCards}
+          searchable={searchableCardKeys}
+          placeholder={texts.searchCardPlaceholder[$lang]}
+          on:input={filterCards}
+          bind:filtered
+          inputStyle="dark"
+          name="cards-search"
+          --szot-input-text-color={titleColor}
+          --szot-input-border-color={titleColor}
+          --szot-input-placeholder-color={titleColor}
+          --szot-input-margin-bottom="0"
+          --szot-input-margin-top="0"
+        />
+        <div class="board-menu-btn" id="open-board-menu">
+          <Icon
+            iconName="dots-horizontal"
+            --szot-icon-font-size="20px"
+            --szot-icon-color={titleColor}
+          />
+          <Dropdown
+            targetId="open-board-menu"
+            enableAutAdjust={false}
+            dropdownAlignment="bottomRight"
+            --szot-dropdown-padding="0"
+            bind:opened={showDropdown}
+          >
+            <div class="drop-menu-container">
+              <div class="drop-menu-section">{texts.boardAction[$lang]}</div>
+              <div class="divider" />
+
+              <div class="item" on:click={() => (showAdd = true)}>
+                {texts.changeBoardBackgroundImage[$lang]}
+              </div>
+              <div class="divider" />
+
+              <div class="item">
+                <!-- {texts.changeBoardColor[$lang]} -->
+                <Input
+                  name="board-color"
+                  label={texts.boardTitleColor[$lang]}
+                  type="color"
+                  --szot-input-margin-top="0"
+                  --szot-input-margin-bottom="0"
+                  on:change={(e) => (titleColor = e.target.value)}
+                  bind:value={titleColor}
+                />
+              </div>
+            </div>
+          </Dropdown>
+        </div>
+      </div>
     </div>
     <div class="board-lists" on:mousemove={moveEl} on:blur>
       <!-- {#each data.lists.slice(0, 1) as list, li} -->
@@ -183,13 +295,23 @@
           bind:labelsData={labels}
           {li}
           {customCard}
-          {canMoveList}
           {canMoveCard}
+          {canCreateCard}
+          {canDeleteCard}
+          {canMoveList}
+          {canCreateList}
+          {canDeleteList}
         />
       {/each}
-      <div class="add-new-list" on:click={addList}>
-        <Icon iconName="plus-box" --szot-icon-font-size="40px" />
-      </div>
+      {#if canCreateList}
+        <div class="add-new-list" on:click={addList}>
+          <Icon
+            iconName="plus-box"
+            --szot-icon-font-size="40px"
+            --szot-icon-color={titleColor}
+          />
+        </div>
+      {/if}
     </div>
   </div>
 {/if}
@@ -312,6 +434,14 @@
     text-align: center;
   }
 
+  :global(.item-alert) {
+    color: #cf513d;
+  }
+
+  #input-image {
+    display: none;
+  }
+
   .loading,
   .board-container {
     display: flex;
@@ -331,19 +461,46 @@
     flex-direction: column;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: left top;
     padding: calc(var(--target-padding));
 
     .board-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: calc(var(--target-padding));
+
       .board-title {
         width: fit-content;
-        font-weight: bold;
+        font-weight: 400;
         font-size: var(--board-title-font-size);
-        color: var(--board-title-color);
         padding: calc(var(--target-padding) / 1.5) 0;
 
         &:focus {
           padding: calc(var(--target-padding) / 1.5) var(--target-padding);
+        }
+      }
+
+      .search-menu-container {
+        display: grid;
+        grid-template-columns: calc(100% - 30px) 20px;
+        gap: 10px;
+        align-items: center;
+        max-width: 100%;
+        width: 500px;
+
+        .item {
+          display: grid;
+          grid-template-columns: 100%;
+        }
+      }
+
+      .board-menu-btn {
+        z-index: 2;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.8;
         }
       }
     }
@@ -356,14 +513,14 @@
       height: 100%;
       overflow-x: auto;
       gap: calc(var(--target-padding) / 2);
-
-      .add-new-list {
-        height: fit-content;
-        padding: 0 5px;
-        border-radius: var(--radius-pattern);
-        background-color: rgba(255, 255, 255, 0.8);
-        cursor: pointer;
-      }
     }
+  }
+
+  .add-new-list {
+    height: fit-content;
+    padding: 0 5px;
+    border-radius: var(--radius-pattern);
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
   }
 </style>

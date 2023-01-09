@@ -11,13 +11,13 @@ export function switchElsPositionByIndex(
 
 export function changeElPositionByIndex(
   arr: any[],
-  first: number,
-  second: number
+  currPos: number,
+  targetPos: number
 ): any[] {
   const temp = [...arr]
-  const element = temp.splice(first, 1)[0];
-  temp.splice(second, 0, element);
-  return arr;
+  const element = temp.splice(currPos, 1)[0];
+  temp.splice(targetPos, 0, element);
+  return temp;
 }
 
 export function getElementXAxisCenter(el: Element): number {
@@ -156,6 +156,7 @@ export function getFilenameFromUrl(url: string): string {
 }
 
 export function getCover(atts): string {
+  if (!atts) return ""
   for (let index = 0; index < atts.length; index++) {
     if (atts[index].isCover) return atts[index].url
   };
@@ -164,4 +165,11 @@ export function getCover(atts): string {
 
 export function isImage(url: string): boolean {
   return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+}
+
+export function dateObjToHtmlString(date: Date, locale: "pt-BR"): string {
+  if (!date) return "";
+  var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+  const nDate = new Date(date.getTime() - tzoffset).toISOString();
+  return nDate.slice(0, 16);
 }

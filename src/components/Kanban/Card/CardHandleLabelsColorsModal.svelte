@@ -26,7 +26,7 @@
 
   $: focusLabel = false;
 
-  onMount(async () => {
+  onMount(() => {
     old = { ...labelData };
   });
 

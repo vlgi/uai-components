@@ -12,6 +12,7 @@
   import Icon from "../../Icon/Icon.svelte";
   import Modal from "../../Modal/Modal.svelte";
   import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
+  import CardHandleDueDates from "./CardHandleDueDates.svelte";
   import CardUserAvatar from "./CardUserAvatar.svelte";
 
   // functions
@@ -135,6 +136,7 @@
   $: tii = -1; // target item index
   $: tiEl = null; // target item html element
   $: canRemoveEmptyItems = true;
+  $: showDueDatesModal = false;
 
   // change dragging checklist position
   $: $pos && dci != -1 && moveDragCheckList();
@@ -398,7 +400,14 @@
           >
             <Icon iconName="account-plus" />
           </div>
-          <div class="item-btn add-deadline">
+          <div
+            class="item-btn add-deadline"
+            on:click={() => {
+              showDueDatesModal = true;
+              checklistIndex = ci;
+              checklistItemIndex = ii;
+            }}
+          >
             <Icon iconName="clock-outline" />
           </div>
           <div class="item-btn trash" on:click={() => removeItem(ci, ii)}>
@@ -428,6 +437,11 @@
     bind:list={data.members}
     bind:data={data.checklists[checklistIndex].items[checklistItemIndex]}
     bind:opened={selectChecklistItemUserModalOpened}
+  />
+  <CardHandleDueDates
+    bind:data={data.checklists[checklistIndex].items[checklistItemIndex]}
+    bind:opened={showDueDatesModal}
+    title={texts.checklistItemDates[$lang]}
   />
 {/if}
 
