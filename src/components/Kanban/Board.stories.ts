@@ -35,6 +35,10 @@ const Template = (_args: ArgType) => {
   return ret;
 };
 
+function customFunction(): void {
+  alert("result clicked")
+}
+
 export const CustomCard = Template({
   language: "en",
   searchableCardKeys: ["title", "description", "text"],
@@ -81,7 +85,7 @@ export const CustomEmptyBoard = Template({
 
 export const DefaultCard = Template({
   language: "br",
-  searchableCardKeys: ["title", "desc"],
+  searchableCardKeys: ["title", "desc", "checklists", "comments", "attachments"],
   data: dData,
   users,
   labels,
@@ -103,35 +107,35 @@ export const DefaultCard = Template({
     + "\n" + "--szot-kanban-radius-pattern: 15px;"
 });
 
-// const hData = { ...dData }
-// hData.lists = [hData.lists[0]]
-// hData.lists[0].cards = [hData.lists[0].cards[0]];
-// export const DefaultOneListOneCard = Template({
-//   language: "br",
-//   data: hData,
-//   users,
-//   labels,
-//   canMoveCard: true,
-//   canCreateCard: true,
-//   canDeleteCard: true,
-//   canMoveList: true,
-//   canCreateList: true,
-//   canDeleteList: true,
-//   style:
-//     "--szot-kanban-board-background-color: #000;"
-//     + "\n" + "--szot-kanban-board-title-color: white;"
-//     + "\n" + "--szot-kanban-board-title-font-size: 1.8rem;"
-//     + "\n" + "--szot-kanban-card-background-color: #f9f9f9;"
-//     + "\n" + "--szot-kanban-list-background-color: #f5f5f5;"
-//     + "\n" + "--szot-kanban-list-font-color: #172b4d;"
-//     + "\n" + "--szot-kanban-list-title-font-size: 1.2rem;"
-//     + "\n" + "--szot-kanban-list-width: 300px;"
-//     + "\n" + "--szot-kanban-radius-pattern: 15px;"
-// });
+const hData = JSON.parse(JSON.stringify(dData));
+hData.lists = [hData.lists[0]]
+hData.lists[0].cards = [hData.lists[0].cards[0]];
+export const DefaultOneListOneCard = Template({
+  language: "br",
+  data: hData,
+  users,
+  labels,
+  canMoveCard: true,
+  canCreateCard: true,
+  canDeleteCard: true,
+  canMoveList: true,
+  canCreateList: true,
+  canDeleteList: true,
+  style:
+    "--szot-kanban-board-background-color: #000;"
+    + "\n" + "--szot-kanban-board-title-color: white;"
+    + "\n" + "--szot-kanban-board-title-font-size: 1.8rem;"
+    + "\n" + "--szot-kanban-card-background-color: #f9f9f9;"
+    + "\n" + "--szot-kanban-list-background-color: #f5f5f5;"
+    + "\n" + "--szot-kanban-list-font-color: #172b4d;"
+    + "\n" + "--szot-kanban-list-title-font-size: 1.2rem;"
+    + "\n" + "--szot-kanban-list-width: 300px;"
+    + "\n" + "--szot-kanban-radius-pattern: 15px;"
+});
 
 export const DefaultEmptyBoard = Template({
   language: "br",
-  searchableCardKeys: ["title", "desc"],
+  searchableCardKeys: ["title", "desc", "checklists", "comments", "attachments"],
   data: boardDefault,
   users,
   labels: [],
@@ -143,7 +147,7 @@ export const DefaultEmptyBoard = Template({
   canDeleteList: true,
   style:
     "--szot-kanban-board-background-color: #000;"
-    + "\n" + "--szot-kanban-board-title-color: white;"
+    + "\n" + "--szot-kanban-board-title-color: #444;"
     + "\n" + "--szot-kanban-board-title-font-size: 1.8rem;"
     + "\n" + "--szot-kanban-card-background-color: #f9f9f9;"
     + "\n" + "--szot-kanban-list-background-color: #f5f5f5;"

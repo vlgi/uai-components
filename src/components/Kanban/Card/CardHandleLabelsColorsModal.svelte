@@ -76,7 +76,12 @@
   }
 </script>
 
-<Modal bind:opened --szot-modal-width="auto" disableHeader={true}>
+<Modal
+  bind:opened
+  disableHeader={true}
+  --szot-modal-width="500px"
+  --szot-modal-max-width="90vw"
+>
   <div slot="modal-header" class="header" />
   <div slot="modal-content" class="content">
     <div class="card-label-container">
@@ -106,10 +111,10 @@
       {/each}
     </div>
   </div>
-  <div slot="modal-footer" class="footer">
+  <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
       on:click={cancelEdit}
-      size="medium"
+      size="small"
       buttonStyleType="outline"
       buttonStyle="dark"
     >
@@ -117,7 +122,7 @@
     </Button>
     <Button
       on:click={handleLabel}
-      size="medium"
+      size="small"
       buttonStyleType="filled"
       buttonStyle="dark"
     >
@@ -172,17 +177,5 @@
     border-radius: var(--radius-pattern);
     margin-bottom: 10px;
     width: 100%;
-  }
-
-  .footer {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    width: 100%;
-    button {
-      width: 100%;
-      height: 100%;
-      border-radius: var(--radius-pattern);
-    }
   }
 </style>

@@ -231,7 +231,7 @@
     <div slot="modal-footer" class="footer modal-alert-footer">
       <Button
         on:click={() => (openAlertModal = false)}
-        size="medium"
+        size="small"
         buttonStyleType="outline"
         buttonStyle="dark"
       >
@@ -243,7 +243,7 @@
           funcAction();
           openAlertModal = false;
         }}
-        size="medium"
+        size="small"
         buttonStyleType="filled"
         buttonStyle="dark"
         disabled={!isBtnEnable}

@@ -8,7 +8,6 @@
   // components
   import Button from "../../formFields/Button/Button.svelte";
   import CardHandleLabelsModal from "./CardHandleLabelsModal.svelte";
-  import CardHandleDueDates from "./CardHandleDueDates.svelte";
   import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
   import CardLabel from "./CardLabel.svelte";
   import CardModalAttachments from "./CardModalAttachments.svelte";

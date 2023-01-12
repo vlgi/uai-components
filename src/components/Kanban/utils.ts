@@ -1,3 +1,5 @@
+import Fuse from 'fuse.js'
+
 export function switchElsPositionByIndex(
   arr: any[],
   first: number,
@@ -173,3 +175,70 @@ export function dateObjToHtmlString(date: Date, locale: "pt-BR"): string {
   const nDate = new Date(date.getTime() - tzoffset).toISOString();
   return nDate.slice(0, 16);
 }
+
+export function removeDuplicates(arr: any[]): any[] {
+  const uniqueArray = arr.filter((value, index) => {
+    const _value = JSON.stringify(value);
+    return index === arr.findIndex(obj => {
+      return JSON.stringify(obj) === _value;
+    });
+  });
+  return uniqueArray;
+}
+
+export function filterHTMLElements(
+  htmlEls: NodeList,
+  searchable: any[],
+  searchQuery: string,
+  collection: any[]
+): void {
+  for (let i = 0; i < htmlEls.length; i++) {
+    const el = htmlEls[i];
+    // @ts-ignore
+    el.style.display = "none";
+    let matched = false;
+    let term = "";
+    searchable.forEach((key) => {
+      if (!collection[i][key]) return;
+      const str = JSON.stringify(collection[i][key]);
+      const text = str.replace(/["']([^"']+)["']:|[#]|null/g, "");
+      term = `${term}${text.toLowerCase()}`;
+    })
+    if (term.match(searchQuery.toLowerCase())) matched = true;
+    // @ts-ignore
+    if (matched || !searchQuery) el.style.display = "";
+  }
+}
+
+export function isSameDay(date1: Date, date2: Date): boolean {
+  if (!date1 || !date2) return;
+  return date1.getDate() === date2.getDate() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getFullYear() === date2.getFullYear();
+}
+
+export function isToday(date: Date): boolean {
+  let today = new Date();
+  return date.getDate() === today.getDate() &&
+    date.getMonth() === today.getMonth() &&
+    date.getFullYear() === today.getFullYear();
+}
+
+export function fuzzySearch(list: any[], pattern: string): any[] {
+  const all = JSON.parse(JSON.stringify(list));
+  const options = {
+    includeScore: true,
+    includeMatches: true,
+    threshold: 0.1,
+    useExtendedSearch: true,
+    keys: [
+      "title",
+      "desc",
+      "checklists.title",
+      "checklists.items.title",
+    ]
+  };
+  const fuse = new Fuse(all, options);
+  return fuse.search(pattern);
+}
+

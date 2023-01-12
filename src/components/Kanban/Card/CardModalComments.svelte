@@ -1,5 +1,6 @@
 <script lang="ts">
   import { texts } from "../data/components-texts";
+  import { isSameDay, isToday } from "../utils";
 
   // stores
   import { lang, logged } from "../stores";
@@ -11,7 +12,7 @@
   import CardUserAvatar from "./CardUserAvatar.svelte";
   import Input from "../../formFields/Input/Input.svelte";
 
-  export let data;
+  export let data; // comments array
 
   let msg = "";
 
@@ -55,7 +56,7 @@
   <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
       on:click={() => (openAlertModal = false)}
-      size="medium"
+      size="small"
       buttonStyleType="outline"
       buttonStyle="dark"
     >
@@ -63,7 +64,7 @@
     </Button>
     <Button
       --szot-button-background-color="#CF513D"
-      size="medium"
+      size="small"
       buttonStyleType="filled"
       buttonStyle="dark"
       on:click={removeMsg}
@@ -75,13 +76,33 @@
 
 {#if data.length > 0}
   <div class="section-title">
-    <Icon iconName="chat-plus-outiline" --szot-icon-font-size="20px" />
+    <Icon
+      iconName="comment-text-multiple-outline"
+      --szot-icon-font-size="20px"
+    />
     <h2>{texts.comments[$lang]}</h2>
   </div>
 {/if}
 
 <div class="comments">
   {#each data as comment, index}
+    {#if index == 0}
+      {#if isToday(new Date(comment.date))}
+        <span class="msg-date">Today</span>
+      {:else}
+        <span class="msg-date">
+          {new Date(comment.date).toLocaleDateString("pt-BR")}
+        </span>
+      {/if}
+    {:else if index > 0 && !isSameDay(new Date(comment.date), new Date(data[index - 1].date))}
+      {#if isToday(new Date(comment.date))}
+        <span class="msg-date">Today</span>
+      {:else}
+        <span class="msg-date">
+          {new Date(comment.date).toLocaleDateString("pt-BR")}
+        </span>
+      {/if}
+    {/if}
     <div
       class="comment-container"
       class:right={checkIfIsTheLoggedUser(comment.user)}
@@ -121,7 +142,6 @@
             {comment.text}
           </div>
         {/if}
-        <div class="comment-date">{comment.date}</div>
       </div>
 
       {#if checkIfIsTheLoggedUser(comment.user)}
@@ -155,6 +175,14 @@
 <style lang="scss">
   @import "./card-modal.scss";
 
+  .msg-date {
+    align-self: center;
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
   .item-btn {
     margin: 0 2px;
   }
@@ -176,7 +204,7 @@
       .msg-container {
         background: #eee;
         border-radius: var(--radius-pattern);
-        max-width: 80%;
+        max-width: 70%;
         font-size: 13px;
         z-index: 1;
 

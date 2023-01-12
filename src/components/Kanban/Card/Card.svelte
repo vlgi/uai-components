@@ -153,7 +153,7 @@
           {/if}
         </div>
         <div class="card-title" class:card-cover={cover != ""}>
-          <img src={cover} alt="" />
+          {#if cover != ""}<img src={cover} alt="" />{/if}
           <div>{data.title}</div>
         </div>
         <CardFooter bind:data />

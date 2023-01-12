@@ -141,7 +141,8 @@
     on:mouseover|self={onLaneOver}
     on:blur
     on:mouseout={onLaneOut}
-    class:lane-listener-active={$dli != -1}
+    class:lane-listener-active={$dli != -1 ||
+      ($dci != -1 && data.cards.length == 0)}
     style="height: {$dlh}"
   />
   {#if $dli == li}
@@ -211,7 +212,7 @@
               buttonStyleType="outline"
               buttonStyle="dark"
             >
-              {texts.cancel[$lang]}
+              <span>{texts.cancel[$lang]}</span>
             </Button>
             <Button
               on:click={addANewCard}
@@ -275,6 +276,7 @@
     .list,
     .list-placeholder {
       width: var(--list-width);
+      max-width: calc(100vw - var(--target-padding) * 6);
     }
 
     .list-placeholder {

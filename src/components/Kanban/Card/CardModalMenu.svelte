@@ -22,8 +22,8 @@
   export let boardData: TBoard | TCustomBoard;
   export let selectCardUserModalOpened = false;
   export let handleLabelsModalOpened = false;
-  export let showAdd = false;
-  export let opened = false;
+  export let showAdd = false; // show addind atts boolean
+  export let opened = false; // card modal open
   export let ci: number; // card index
   export let cli: number; // card list index
   export let canMoveCard = true;
@@ -36,6 +36,13 @@
     const i = data.checklists.length - 1;
     const el: HTMLElement = document.querySelector(`.checklist-title-${i}`);
     el.focus();
+  }
+
+  function deleteCard(): void {
+    const copy = { ...boardData };
+    copy.lists[cli].cards.splice(ci, 1);
+    boardData = { ...copy };
+    opened = false;
   }
 
   function changeCardPosition(): void {
@@ -56,6 +63,7 @@
   }
 
   $: actionAlertBtnText = "";
+  $: textAlert = "";
   $: openAlertModal = false;
   $: funcAction = null;
   $: targetListIndex = cli;
@@ -66,7 +74,7 @@
     boardData.lists[targetListIndex].cards.map((card, index) => {
       return { text: index };
     });
-  $: isBtnEnable = !(cli == targetListIndex && ci == targetCardIndex);
+  $: isBtnEnable = false;
 </script>
 
 <Dropdown
@@ -103,6 +111,8 @@
           openAlertModal = true;
           actionAlertBtnText = texts.move[$lang];
           funcAction = changeCardPosition;
+          textAlert = texts.changeCardPositionAlert[$lang];
+          isBtnEnable = !(cli == targetListIndex && ci == targetCardIndex);
         }}
       >
         {texts.changeCardPosition[$lang]}
@@ -110,47 +120,62 @@
     {/if}
     {#if canDeleteCard}
       <div class="divider" />
-      <div class="item item-alert" on:click={() => console.log("deletar")}>
+      <div
+        class="item item-alert"
+        on:click={() => {
+          openAlertModal = true;
+          actionAlertBtnText = texts.remove[$lang];
+          funcAction = deleteCard;
+          textAlert = texts.removeCardAlert[$lang];
+          isBtnEnable = true;
+        }}
+      >
         {texts.removeCard[$lang]}
       </div>
     {/if}
   </div>
 </Dropdown>
 
-<Modal bind:opened={openAlertModal} --szot-modal-width="400px">
+<Modal
+  bind:opened={openAlertModal}
+  --szot-modal-width="500px"
+  --szot-modal-max-width="90vw"
+>
   <div slot="modal-header" class="header" />
   <div slot="modal-content" class="content">
-    <h3>{texts.changeCardPositionAlert[$lang]}</h3>
-    <div class="lists">
-      {#each boardData.lists as list, index}
-        <div
-          class="item"
-          class:selected={targetListIndex == index}
-          on:click={() => {
-            targetListIndex = index;
-          }}
-        >
-          <span>{list.title}</span>
-          {#if targetListIndex == index}
-            <Icon iconName="check" --szot-icon-font-size="15px" />
-          {/if}
-        </div>
-      {/each}
-    </div>
-    <Select
-      id="card-position"
-      name="card-position"
-      required={true}
-      options={listCardsPositions}
-      label={texts.cardPosition[$lang]}
-      selected={listCardsPositions[targetCardIndex]}
-      on:changeSelected={(e) => (targetCardIndex = e.detail.text)}
-    />
+    <h3>{textAlert}</h3>
+    {#if textAlert == texts.changeCardPositionAlert[$lang]}
+      <div class="lists">
+        {#each boardData.lists as list, index}
+          <div
+            class="item"
+            class:selected={targetListIndex == index}
+            on:click={() => {
+              targetListIndex = index;
+            }}
+          >
+            <span>{list.title}</span>
+            {#if targetListIndex == index}
+              <Icon iconName="check" --szot-icon-font-size="15px" />
+            {/if}
+          </div>
+        {/each}
+      </div>
+      <Select
+        id="card-position"
+        name="card-position"
+        required={true}
+        options={listCardsPositions}
+        label={texts.cardPosition[$lang]}
+        selected={listCardsPositions[targetCardIndex]}
+        on:changeSelected={(e) => (targetCardIndex = e.detail.text)}
+      />
+    {/if}
   </div>
   <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
       on:click={() => (openAlertModal = false)}
-      size="medium"
+      size="small"
       buttonStyleType="outline"
       buttonStyle="dark"
     >
@@ -162,7 +187,7 @@
         funcAction();
         openAlertModal = false;
       }}
-      size="medium"
+      size="small"
       buttonStyleType="filled"
       buttonStyle="dark"
       disabled={!isBtnEnable}

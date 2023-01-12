@@ -75,7 +75,7 @@ export type TBoard = {
     logged: {
         user: TCardUser,
         permissions: any[]
-    }
+    },
     lists: TList[];
 }
 

@@ -3,6 +3,7 @@
 
   import type {
     TBoard,
+    TCard,
     TCustomBoard,
     TCardUser,
     TCardLabel,
@@ -34,21 +35,24 @@
     getMousePosition,
     getMouseDirection,
     switchElsPositionByIndex,
+    filterHTMLElements,
+    fuzzySearch,
   } from "./utils";
 
   // components
   import List from "./List/List.svelte";
   import Icon from "../Icon/Icon.svelte";
-  import SearchInput from "../formFields/SearchInput/SearchInput.svelte";
   import Input from "../formFields/Input/Input.svelte";
   import Dropdown from "../Dropdown/Dropdown.svelte";
+  import CardModal from "./Card/CardModal.svelte";
 
   // props
   export let data: TBoard | TCustomBoard; // board data
   export let users: TCardUser[] = []; // board possible users
   export let labels: TCardLabel[] = []; // board possible users
   export let language: string = "en"; // components language
-  export let searchableCardKeys: string[] = ["title"];
+  export let searchableCardKeys: any[];
+  export let clickSearchResultFunction: Function = openSelectedCardModal;
   export let customCard = null; // custom card svelte component
   export let canMoveCard = true; // move card boolean
   export let canCreateCard = true; // create card boolean
@@ -57,8 +61,9 @@
   export let canCreateList = true; // create list boolean
   export let canDeleteList = true; // create list boolean
 
-  let allCards = [];
   let inpt;
+  let allCards: TCard[] = [];
+  let results: any[] = [];
 
   // move mouse/element listener and change position
   function moveEl(e): void {
@@ -105,16 +110,6 @@
     const el: HTMLElement = document.querySelector(`.list-title-${listIndex}`);
     el?.focus();
   }
-
-  function filterCards(): void {
-    data.lists.forEach((list) => {
-      list.cards = [];
-    });
-    filtered.forEach((card) => {
-      data.lists[card.list].cards = [...data.lists[card.list].cards, card];
-    });
-  }
-
   function initializeInput() {
     document.body.onfocus = handleInputEl;
   }
@@ -129,16 +124,41 @@
     showAdd = false;
   }
 
+  // function searchForCards(e): void {
+  //   const cardsEls = document.querySelectorAll(".card-space");
+  //   fuzzySearch(data.lists, e.target.value);
+  //   filterHTMLElements(cardsEls, searchableCardKeys, e.target.value, allCards);
+  // }
+
+  function searchForCards(e): void {
+    results = fuzzySearch(allCards, e.target.value);
+    showResults = true;
+  }
+
+  function getAllCards(): void {
+    allCards = [];
+    data.lists.forEach((list, li) => {
+      const cards = list.cards.map((c, ci) => {
+        return { ...c, li, ci };
+      });
+      allCards = [...allCards, ...cards];
+    });
+  }
+
+  function openSelectedCardModal(card): void {
+    const selected = { ...card.item };
+    selectedCardListIndex = selected.li;
+    selectedCardIndex = selected.ci;
+    showResults = false;
+    showCardModal = true;
+  }
+
   onMount(async () => {
     tick();
     if (users.length > 0) allUsers.set(users); // set all board users when finished data fetching
     if (language) lang.set(language); // set board language
+    // @ts-ignore
     if (!customCard && data.logged) logged.set(data.logged);
-    data.lists.forEach((list, index) => {
-      list.cards.forEach((card) => {
-        allCards = [...allCards, { ...card, list: index }];
-      });
-    });
     inpt = document.getElementById(`input-image`);
   });
 
@@ -146,10 +166,14 @@
     document.body.removeEventListener("onfocus", handleInputEl);
   });
 
-  $: filtered = [];
   $: titleColor = "var(--board-title-color)";
   $: showAdd = false;
   $: showDropdown = false;
+  $: data && getAllCards();
+  $: selectedCardListIndex = -1;
+  $: selectedCardIndex = -1;
+  $: showCardModal = false;
+  $: showResults = false;
   $: if (showAdd) inpt.click();
 
   // ####################################################
@@ -232,58 +256,74 @@
         bind:textContent={data.title}
         style="color: {titleColor}"
       />
-      <div class="search-menu-container">
-        <SearchInput
-          items={allCards}
-          searchable={searchableCardKeys}
-          placeholder={texts.searchCardPlaceholder[$lang]}
-          on:input={filterCards}
-          bind:filtered
+      <div class="search-input-container">
+        <Input
+          on:input={searchForCards}
+          label={texts.searchCardPlaceholder[$lang]}
           inputStyle="dark"
           name="cards-search"
+          inputAttributes={{ autocomplete: "off" }}
           --szot-input-text-color={titleColor}
           --szot-input-border-color={titleColor}
-          --szot-input-placeholder-color={titleColor}
+          --szot-input-label-color={titleColor}
           --szot-input-margin-bottom="0"
           --szot-input-margin-top="0"
+          --szot-input-border-color-focus={titleColor}
         />
-        <div class="board-menu-btn" id="open-board-menu">
-          <Icon
-            iconName="dots-horizontal"
-            --szot-icon-font-size="20px"
-            --szot-icon-color={titleColor}
-          />
-          <Dropdown
-            targetId="open-board-menu"
-            enableAutAdjust={false}
-            dropdownAlignment="bottomRight"
-            --szot-dropdown-padding="0"
-            bind:opened={showDropdown}
-          >
-            <div class="drop-menu-container">
-              <div class="drop-menu-section">{texts.boardAction[$lang]}</div>
-              <div class="divider" />
+        {#if showResults && results.length > 0}
+          <div class="search-results">
+            {#each results as result}
+              <button on:click={() => clickSearchResultFunction(result)}>
+                <div class="result-icon"><Icon iconName="card" /></div>
+                <span class="result-card">{result.item.title}</span>
+                <span class="result-card-list">
+                  {texts.inList[$lang]}
+                  "{data.lists[result.item.li].title}"
+                </span>
+              </button>
+            {/each}
+          </div>
+        {/if}
+      </div>
+      <div class="board-menu-btn" id="open-board-menu">
+        <Icon
+          iconName="dots-horizontal"
+          --szot-icon-font-size="20px"
+          --szot-icon-color={titleColor}
+        />
+        <Dropdown
+          targetId="open-board-menu"
+          enableAutAdjust={false}
+          dropdownAlignment="bottomRight"
+          --szot-dropdown-padding="0"
+          bind:opened={showDropdown}
+        >
+          <div class="drop-menu-container">
+            <div class="drop-menu-section">{texts.boardAction[$lang]}</div>
+            <div class="divider" />
 
-              <div class="item" on:click={() => (showAdd = true)}>
-                {texts.changeBoardBackgroundImage[$lang]}
-              </div>
-              <div class="divider" />
-
-              <div class="item">
-                <!-- {texts.changeBoardColor[$lang]} -->
-                <Input
-                  name="board-color"
-                  label={texts.boardTitleColor[$lang]}
-                  type="color"
-                  --szot-input-margin-top="0"
-                  --szot-input-margin-bottom="0"
-                  on:change={(e) => (titleColor = e.target.value)}
-                  bind:value={titleColor}
-                />
-              </div>
+            <div class="item" on:click={() => (showAdd = true)}>
+              {texts.changeBoardBackgroundImage[$lang]}
             </div>
-          </Dropdown>
-        </div>
+            <div class="divider" />
+
+            <div class="item">
+              <!-- {texts.changeBoardColor[$lang]} -->
+              <Input
+                name="board-color"
+                label={texts.boardTitleColor[$lang]}
+                type="color"
+                --szot-input-margin-top="0"
+                --szot-input-margin-bottom="0"
+                on:change={(e) => {
+                  // @ts-ignore
+                  titleColor = e.target.value;
+                }}
+                bind:value={titleColor}
+              />
+            </div>
+          </div>
+        </Dropdown>
       </div>
     </div>
     <div class="board-lists" on:mousemove={moveEl} on:blur>
@@ -307,13 +347,23 @@
         <div class="add-new-list" on:click={addList}>
           <Icon
             iconName="plus-box"
-            --szot-icon-font-size="40px"
-            --szot-icon-color={titleColor}
+            --szot-icon-font-size="35px"
+            --szot-icon-color="var(--list-font-color)"
           />
+          {texts.addNewList[$lang]}
         </div>
       {/if}
     </div>
   </div>
+{/if}
+{#if selectedCardListIndex != -1 && selectedCardIndex != -1}
+  <CardModal
+    bind:data={data.lists[selectedCardListIndex].cards[selectedCardIndex]}
+    bind:boardData={data}
+    ci={selectedCardIndex}
+    cli={selectedCardListIndex}
+    bind:opened={showCardModal}
+  />
 {/if}
 
 <style lang="scss">
@@ -327,8 +377,10 @@
     --list-title-font-size: var(--szot-kanban-list-title-font-size, 1.2rem);
     --list-width: var(--szot-kanban-list-width, 330px);
     --radius-pattern: var(--szot-kanban-radius-pattern, 15px);
-
+    --box-shadow-pattern: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+      rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     --szot-button-border-radius: var(--szot-kanban-radius-pattern);
+    --szot-input-border-radius: var(--szot-kanban-radius-pattern);
     --szot-dropdown-border-radius: var(--szot-kanban-radius-pattern);
     --target-padding: 0.75rem;
   }
@@ -344,7 +396,6 @@
       background-color: rgba(113, 158, 206, 0.3);
       border-radius: calc(var(--radius-pattern) / 1);
       border: 1px solid #719ece;
-      // box-shadow: 0 0 5px #719ece;
     }
 
     &:hover {
@@ -391,8 +442,9 @@
 
   :global(.modal-alert-footer) {
     display: flex;
-    gap: 5px;
     justify-content: center;
+    gap: 5px;
+    width: 100%;
   }
 
   :global(.drop-menu-container) {
@@ -458,46 +510,123 @@
   }
 
   .board-container {
+    @media only screen and (min-width: 0px) {
+      --board-header-grid-template-areas: "title btn" "inpt inpt";
+      --board-header-grid-template-columns: calc(100% - 30px) 20px;
+      --board-header-align-items: start;
+      --board-padding: var(--target-padding) 0 0 var(--target-padding);
+      --board-header-padding: 0 var(--target-padding) 0 0;
+    }
+    @media only screen and (min-width: 1024px) {
+      --board-header-grid-template-areas: "title inpt btn";
+      --board-header-grid-template-columns: calc(100% - 540px) 500px 20px;
+      --board-header-align-items: center;
+      --board-padding: var(--target-padding) var(--target-padding) 0
+        var(--target-padding);
+      --board-header-padding: 0;
+    }
+
     flex-direction: column;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left top;
-    padding: calc(var(--target-padding));
+    padding: var(--board-padding);
 
     .board-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: calc(var(--target-padding));
+      display: grid;
+      grid-template-areas: var(--board-header-grid-template-areas);
+      grid-template-columns: var(--board-header-grid-template-columns);
+      gap: 10px;
+      align-items: var(--board-header-align-items);
+      margin-bottom: var(--target-padding);
+      padding: var(--board-header-padding);
 
       .board-title {
+        grid-area: title;
         width: fit-content;
         font-weight: 400;
         font-size: var(--board-title-font-size);
-        padding: calc(var(--target-padding) / 1.5) 0;
 
         &:focus {
           padding: calc(var(--target-padding) / 1.5) var(--target-padding);
         }
       }
 
-      .search-menu-container {
-        display: grid;
-        grid-template-columns: calc(100% - 30px) 20px;
-        gap: 10px;
-        align-items: center;
-        max-width: 100%;
-        width: 500px;
+      .search-input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        grid-area: inpt;
+
+        .input-container {
+          z-index: 3;
+        }
+
+        .search-results {
+          display: flex;
+          flex-direction: column;
+          background: rgba(255, 255, 255, 0.97);
+          border-radius: var(--target-padding);
+          box-shadow: var(--box-shadow-pattern);
+          height: fit-content;
+          max-height: 60vh;
+          margin-top: 45px;
+          max-width: calc(100% - 30px - calc(var(--target-padding) * 2));
+          position: absolute;
+          width: 500px;
+          z-index: 2;
+          overflow-y: auto;
+          padding: var(--target-padding) 0;
+
+          button {
+            display: grid;
+            grid-template-areas:
+              "icon card"
+              "icon list";
+            justify-items: start;
+            grid-template-columns: 23px calc(100% - 25px);
+            padding: calc(var(--target-padding) / 2);
+            border: 1px solid transparent;
+            background: transparent;
+            outline: none;
+
+            .result-icon {
+              grid-area: icon;
+              margin-top: -3px;
+            }
+
+            .result-card {
+              grid-area: card;
+            }
+
+            .result-card-list {
+              grid-area: list;
+              font-size: 11px;
+              color: #555;
+            }
+
+            &:hover {
+              cursor: pointer;
+              background: rgba(230, 230, 230, 1);
+            }
+
+            &:focus {
+              box-shadow: var(--box-shadow-pattern);
+              background: white;
+            }
+          }
+        }
+      }
+
+      .board-menu-btn {
+        grid-area: btn;
+        z-index: 2;
+        cursor: pointer;
 
         .item {
           display: grid;
           grid-template-columns: 100%;
         }
-      }
-
-      .board-menu-btn {
-        z-index: 2;
-        cursor: pointer;
 
         &:hover {
           opacity: 0.8;
@@ -513,14 +642,27 @@
       height: 100%;
       overflow-x: auto;
       gap: calc(var(--target-padding) / 2);
+      padding-bottom: var(--target-padding);
     }
   }
 
   .add-new-list {
-    height: fit-content;
-    padding: 0 5px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    width: var(--list-width);
+    max-width: calc(100vw - var(--target-padding) * 6);
+    background-color: var(--list-background-color);
     border-radius: var(--radius-pattern);
-    background-color: rgba(0, 0, 0, 0.5);
+    padding: calc(var(--target-padding) / 2);
+    height: fit-content;
+    color: var(--list-font-color);
     cursor: pointer;
+    margin-right: var(--target-padding);
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 </style>

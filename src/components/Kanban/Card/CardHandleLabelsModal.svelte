@@ -23,7 +23,7 @@
   $: colorsModalOpened = false;
 </script>
 
-<Modal bind:opened --szot-modal-width="500px">
+<Modal bind:opened --szot-modal-width="500px" --szot-modal-max-width="90vw">
   <div slot="modal-header" class="header" />
   <div slot="modal-content" class="content">
     <SearchInput
@@ -48,10 +48,10 @@
         />
       {/each}
     </div>
-    <div class="label-btns">
+    <div class="modal-alert-footer">
       <Button
         on:click={() => (opened = false)}
-        size="medium"
+        size="small"
         buttonStyleType="outline"
         buttonStyle="dark"
       >
@@ -59,8 +59,7 @@
       </Button>
       <Button
         on:click={() => (colorsModalOpened = true)}
-        --szot-button-width="fit-content"
-        size="medium"
+        size="small"
         buttonStyleType="filled"
         buttonStyle="dark"
       >
@@ -90,12 +89,5 @@
     max-height: 300px;
     overflow-y: auto;
     padding: 0.5rem;
-  }
-
-  .label-btns {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 1rem;
   }
 </style>

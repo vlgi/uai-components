@@ -93,15 +93,15 @@
   <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
       on:click={() => (openAlertModal = false)}
-      size="medium"
+      size="small"
       buttonStyleType="outline"
       buttonStyle="dark"
     >
-      {texts.cancel[$lang]}
+      <span>{texts.cancel[$lang]}</span>
     </Button>
     <Button
       --szot-button-background-color="#CF513D"
-      size="medium"
+      size="small"
       buttonStyleType="filled"
       buttonStyle="dark"
       on:click={() => {
@@ -109,7 +109,7 @@
         openAlertModal = false;
       }}
     >
-      {texts.removeAttachment[$lang]}
+      <span>{texts.removeAttachment[$lang]}</span>
     </Button>
   </div>
 </Modal>
@@ -265,22 +265,44 @@
   }
 
   .attachment-container {
-    display: flex;
+    @media only screen and (min-width: 0px) {
+      --attachment-container-grid-template-areas: "thumb info" "btns btns";
+      --attachment-container-grid-template-columns: 125px calc(100% - 135px);
+      --att-btns-container-display: flex;
+    }
+    @media only screen and (min-width: 1024px) {
+      --attachment-container-grid-template-areas: "thumb info btns";
+      --attachment-container-grid-template-columns: 125px calc(100% - 185px)
+        50px;
+      --att-btns-container-display: none;
+    }
+
+    display: grid;
+    grid-template-areas: var(--attachment-container-grid-template-areas);
+    grid-template-columns: var(--attachment-container-grid-template-columns);
     align-items: center;
+    justify-items: center;
     gap: 10px;
-    margin-bottom: var(--target-padding);
-    border-radius: var(--radius-pattern);
+    margin-bottom: 5px;
+    box-shadow: var(--box-shadow-pattern);
+    padding: calc(var(--target-padding) / 2) 0;
 
     &:hover {
       background-color: #eee;
       cursor: pointer;
       .att-btns-container {
-        display: block;
+        display: flex;
       }
     }
 
     .att-btns-container {
-      display: none;
+      grid-area: btns;
+      display: var(--att-btns-container-display);
+      justify-content: flex-end;
+      align-items: flex-end;
+      height: 100%;
+      width: 100%;
+      margin-right: 20px;
       .item-btn {
         height: fit-content;
       }
@@ -288,21 +310,23 @@
 
     .attachment-thumbnail {
       text-decoration: none;
+      grid-area: thumb;
     }
 
     .attachment-info {
+      grid-area: info;
       display: flex;
       flex-direction: column;
       width: 100%;
 
       span {
         font-size: 13px;
+        word-wrap: break-word;
       }
 
       span:first-child {
         font-size: 15px;
         font-weight: 800;
-        overflow-wrap: break-word;
       }
     }
   }

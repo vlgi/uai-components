@@ -15,6 +15,10 @@ export const texts = {
         br: "Anexos",
         en: "Attachments"
     },
+    checklists: {
+        br: "Checklists",
+        en: "Checklists"
+    },
     comments: {
         br: "Comentários",
         en: "Coments"
@@ -280,7 +284,23 @@ export const texts = {
     removeCommentAlert: {
         br: "Tem certeza que deseja remover este comentário?",
         en: "Are you sure you want to remove this commento"
-    }
+    },
+    invalidStartDate: {
+        br: "Data de início inválida",
+        en: "Invalid start date"
+    },
+    invalidDueDate: {
+        br: "Prazo final inválido",
+        en: "Invalid due date"
+    },
+    invalidReminderDate: {
+        br: "Data de lembrete inválida",
+        en: "Invalid reminder date"
+    },
+    addNewList: {
+        br: "Adicionar nova lista",
+        en: "+ Add new list"
+    },
 }
 
 

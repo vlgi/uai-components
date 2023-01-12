@@ -178,9 +178,13 @@
     data.checklists = [...checklists];
   }
 
-  function addChecklist(): void {
-    const emptyCheckList = { ...checklist };
-    data.checklists = [...data.checklists, emptyCheckList];
+  async function addChecklist(): Promise<any> {
+    const emptyChecklist = { ...checklist };
+    data.checklists = [...data.checklists, emptyChecklist];
+    await tick();
+    const i = data.checklists.length - 1;
+    const el: HTMLElement = document.querySelector(`.checklist-title-${i}`);
+    el.focus();
   }
 
   async function addItem(ci: number): Promise<any> {
@@ -283,7 +287,7 @@
   <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
       on:click={() => (openAlertModal = false)}
-      size="medium"
+      size="small"
       buttonStyleType="outline"
       buttonStyle="dark"
     >
@@ -291,7 +295,7 @@
     </Button>
     <Button
       --szot-button-background-color="#CF513D"
-      size="medium"
+      size="small"
       buttonStyleType="filled"
       buttonStyle="dark"
       on:click={() => {
@@ -303,6 +307,16 @@
     </Button>
   </div>
 </Modal>
+
+{#if data.checklists.length > 0}
+  <div class="section-title">
+    <Icon iconName="check" --szot-icon-font-size="20px" />
+    <h2>{texts.checklists[$lang]}</h2>
+    <div class="item-btn" on:click={addChecklist}>
+      <Icon iconName="plus" />
+    </div>
+  </div>
+{/if}
 
 {#each data.checklists as checklist, ci}
   {#if dci == ci}
@@ -440,6 +454,7 @@
   />
   <CardHandleDueDates
     bind:data={data.checklists[checklistIndex].items[checklistItemIndex]}
+    bind:limits={data.dates}
     bind:opened={showDueDatesModal}
     title={texts.checklistItemDates[$lang]}
   />
@@ -458,6 +473,21 @@
 
   .checklist-space {
     padding: 10px 0;
+
+    @media only screen and (min-width: 0px) {
+      --checklist-item-container-grid-template-areas: "check text text text text"
+        "check user add-user add-deadline trash";
+      --checklist-item-grid-template-columns: 20px auto 25px 25px 30px;
+      --drag-el-display: none;
+      --btns-display: flex;
+    }
+    @media only screen and (min-width: 1024px) {
+      --checklist-item-container-grid-template-areas: "check text add-user add-deadline trash drag"
+        "check user user user user user";
+      --checklist-item-grid-template-columns: 20px auto 25px 25px 25px 20px;
+      --drag-el-display: flex;
+      --btns-display: none;
+    }
   }
 
   .section {
@@ -471,6 +501,10 @@
       .editable:focus {
         padding: 0 5px;
       }
+    }
+
+    .drag-el {
+      display: var(--drag-el-display);
     }
   }
 
@@ -505,14 +539,14 @@
 
   .checklist-item-container {
     display: grid;
-    grid-template-areas:
-      "check    text   add-user add-deadline    trash   drag"
-      "check    user   user     user            user    user";
-    grid-template-columns: 20px auto 20px 20px 20px 20px;
+    grid-template-areas: var(--checklist-item-container-grid-template-areas);
+    grid-template-columns: var(--checklist-item-grid-template-columns);
     opacity: 1;
     gap: 5px;
     padding: 10px 0;
     background: rgba(255, 255, 255, 0.9);
+    margin-bottom: 10px;
+    box-shadow: var(--box-shadow-pattern);
 
     .item-icon {
       grid-area: check;
@@ -536,10 +570,6 @@
       grid-area: add-user;
     }
 
-    .drag-btn {
-      grid-area: drag;
-    }
-
     .trash {
       grid-area: trash;
     }
@@ -557,20 +587,27 @@
 
     .add-deadline,
     .add-user,
-    .drag-el,
     .trash {
-      display: none;
+      display: var(--btns-display);
     }
 
     &:hover {
       background-color: #eee;
       .add-deadline,
       .add-user,
-      .drag-el,
       .trash,
       .item-users {
         display: flex;
       }
+
+      .drag-el {
+        display: var(--drag-el-display);
+      }
+    }
+
+    .drag-el {
+      grid-area: drag;
+      display: var(--drag-el-display);
     }
   }
 

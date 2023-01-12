@@ -140,7 +140,7 @@
   <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
       on:click={() => (showRemoveLabelsAlert = false)}
-      size="medium"
+      size="small"
       buttonStyleType="outline"
       buttonStyle="dark"
     >
@@ -149,7 +149,7 @@
     <Button
       --szot-button-background-color="#CF513D"
       on:click={removeLabel}
-      size="medium"
+      size="small"
       buttonStyleType="filled"
       buttonStyle="dark"
     >

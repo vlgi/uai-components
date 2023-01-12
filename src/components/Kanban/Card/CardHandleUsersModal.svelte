@@ -31,7 +31,7 @@
   $: filtered = [];
 </script>
 
-<Modal bind:opened --szot-modal-width="400px">
+<Modal bind:opened --szot-modal-width="500px" --szot-modal-max-width="90vw">
   <div slot="modal-header" class="header" />
   <div slot="modal-content" class="content">
     <SearchInput
