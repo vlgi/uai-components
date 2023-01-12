@@ -45,13 +45,14 @@
   import Input from "../formFields/Input/Input.svelte";
   import Dropdown from "../Dropdown/Dropdown.svelte";
   import CardModal from "./Card/CardModal.svelte";
+  import EmojisSelector from "./Card/EmojiSelector/EmojiSelector.svelte";
 
   // props
   export let data: TBoard | TCustomBoard; // board data
   export let users: TCardUser[] = []; // board possible users
   export let labels: TCardLabel[] = []; // board possible users
   export let language: string = "en"; // components language
-  export let searchableCardKeys: any[];
+  export let searchableCardKeys: string[];
   export let clickSearchResultFunction: Function = openSelectedCardModal;
   export let customCard = null; // custom card svelte component
   export let canMoveCard = true; // move card boolean
@@ -131,7 +132,7 @@
   // }
 
   function searchForCards(e): void {
-    results = fuzzySearch(allCards, e.target.value);
+    results = fuzzySearch(allCards, e.target.value, searchableCardKeys);
     showResults = true;
   }
 
@@ -151,6 +152,22 @@
     selectedCardIndex = selected.ci;
     showResults = false;
     showCardModal = true;
+  }
+
+  function clickOutside(node) {
+    const handleClick = (event) => {
+      if (!node.contains(event.target)) {
+        node.dispatchEvent(new CustomEvent("outclick"));
+      }
+    };
+
+    document.addEventListener("click", handleClick, true);
+
+    return {
+      destroy() {
+        document.removeEventListener("click", handleClick, true);
+      },
+    };
   }
 
   onMount(async () => {
@@ -256,9 +273,15 @@
         bind:textContent={data.title}
         style="color: {titleColor}"
       />
-      <div class="search-input-container">
+      <div
+        class="search-input-container"
+        use:clickOutside
+        on:outclick={() => (showResults = false)}
+      >
         <Input
           on:input={searchForCards}
+          on:focus={() => (showResults = true)}
+          icon="magnify"
           label={texts.searchCardPlaceholder[$lang]}
           inputStyle="dark"
           name="cards-search"
@@ -269,6 +292,7 @@
           --szot-input-margin-bottom="0"
           --szot-input-margin-top="0"
           --szot-input-border-color-focus={titleColor}
+          --szot-input-icon-color={titleColor}
         />
         {#if showResults && results.length > 0}
           <div class="search-results">
@@ -327,8 +351,8 @@
       </div>
     </div>
     <div class="board-lists" on:mousemove={moveEl} on:blur>
-      <!-- {#each data.lists.slice(0, 1) as list, li} -->
-      {#each data.lists as list, li}
+      <EmojisSelector />
+      <!-- {#each data.lists as list, li}
         <List
           bind:data={list}
           bind:boardData={data}
@@ -342,8 +366,8 @@
           {canCreateList}
           {canDeleteList}
         />
-      {/each}
-      {#if canCreateList}
+      {/each} -->
+      <!-- {#if canCreateList}
         <div class="add-new-list" on:click={addList}>
           <Icon
             iconName="plus-box"
@@ -352,7 +376,7 @@
           />
           {texts.addNewList[$lang]}
         </div>
-      {/if}
+      {/if} -->
     </div>
   </div>
 {/if}
@@ -363,6 +387,10 @@
     ci={selectedCardIndex}
     cli={selectedCardListIndex}
     bind:opened={showCardModal}
+    on:closeModal={() => {
+      selectedCardListIndex = -1;
+      selectedCardIndex = -1;
+    }}
   />
 {/if}
 

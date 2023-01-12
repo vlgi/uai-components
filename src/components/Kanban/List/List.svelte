@@ -162,7 +162,6 @@
         class:draggable-cursor={canMoveList}
         on:mousedown|self={(e) => canMoveList && setDragList(e)}
       />
-      <!-- svelte-ignore a11y-autofocus -->
       <div class="list-header-content">
         <div
           class="list-title list-title-{li} editable"

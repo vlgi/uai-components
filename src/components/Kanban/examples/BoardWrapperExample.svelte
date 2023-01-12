@@ -20,7 +20,7 @@
   export let data: TBoard | TCustomBoard = {} as any;
   export let labels: TCardLabel[] = [];
   export let language = "";
-  export let searchableCardKeys: any[];
+  export let searchableCardKeys: string[];
   export let style = "";
   export let users: TCardUser[] = [];
 

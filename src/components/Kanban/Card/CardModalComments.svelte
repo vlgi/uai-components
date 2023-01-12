@@ -173,8 +173,6 @@
 </div>
 
 <style lang="scss">
-  @import "./card-modal.scss";
-
   .msg-date {
     align-self: center;
     font-size: 12px;

@@ -1,13 +1,13 @@
 <script lang="ts">
   import {
     onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
+} from "svelte";
   import { actionWatchSize } from "../../../actions/watchSize/watchSize";
   import type { TFormContext } from "../../Form/types";
   import Icon from "../../Icon/Icon.svelte";
 
   /** choose an icon from the list */
-  export let icon: string|null = null;
+  export let icon: string | null = null;
 
   type TpositionIcon = "left" | "right";
   /** if there is an icon define if it goes to the left or to the right */
@@ -35,8 +35,10 @@
    * Pass the function to validation.
    * Return true/undefined if valid,
    * or a string to show the error, or false to show the "errorMsg" props.
-  */
-  export let validationFn: (value:string)=> undefined|string|boolean = () => true; //eslint-disable-line
+   */
+  export let validationFn: (
+    value: string
+  ) => undefined | string | boolean = () => true; //eslint-disable-line
 
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
@@ -51,7 +53,7 @@
    * The input element (readonly)
    * @type {HTMLInputElement}
    * */
-  export let inputElement: HTMLInputElement|null = null;
+  export let inputElement: HTMLInputElement | null = null;
 
   /**
    * required
@@ -97,14 +99,14 @@
     } else {
       helper = !helper;
     }
-}
+  }
 
   function changed() {
     visuallyInvalid = false;
     helper = true;
   }
 
-  function checkStatus(answer: undefined|string|boolean) {
+  function checkStatus(answer: undefined | string | boolean) {
     if (answer === true || answer === undefined) {
       isValid = true;
       visuallyInvalid = !isValid;
@@ -169,15 +171,26 @@
     clipPathVariables = {
       ...clipPathVariables,
       borderWidth: getComputedStyle(wrapperElement).borderWidth,
-      iconWidth: icon && iconPosition === "left" ? getComputedStyle(labelComponent)?.marginLeft : "0px",
+      iconWidth:
+        icon && iconPosition === "left"
+          ? getComputedStyle(labelComponent)?.marginLeft
+          : "0px",
     };
   }
 
-  $: applyClipPath = (inFocus || value?.length > 0);
+  $: applyClipPath = inFocus || value?.length > 0;
 
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(name, value, isValid, required, wrapperElement, validation, forceValue);
+      addFieldToContext(
+        name,
+        value,
+        isValid,
+        required,
+        wrapperElement,
+        validation,
+        forceValue,
+      );
     }
   });
 
@@ -187,6 +200,7 @@
     }
   });
 </script>
+
 <div
   class="content-container"
   class:apply-clip-path={applyClipPath}
@@ -216,6 +230,8 @@
       on:blur={validation}
       on:input
       on:change
+      on:focus
+      on:focusout
       bind:this={inputElement}
       class="form-input"
       placeholder=" "
@@ -229,7 +245,7 @@
       aria-required={required}
     />
     <label
-      for="{id}"
+      for={id}
       class="form-label"
       class:required
       bind:this={labelComponent}
@@ -243,11 +259,11 @@
     {#if icon}
       {#if iconClick}
         <button class="icon icon-cursor" on:click>
-          <Icon iconName={icon}/>
+          <Icon iconName={icon} />
         </button>
       {:else}
         <label for={id} class="icon">
-          <Icon iconName={icon}/>
+          <Icon iconName={icon} />
         </label>
       {/if}
     {/if}
@@ -272,7 +288,10 @@
 
     --message-top: var(--szot-input-message-top, calc(37.19px + var(--border)));
     --message-left: var(--szot-input-message-left, 1rem);
-    --message-error-bottom-focus: var(--szot-input-message-error-bottom-focus, -2rem);
+    --message-error-bottom-focus: var(
+      --szot-input-message-error-bottom-focus,
+      -2rem
+    );
 
     --label-left: var(--szot-input-label-left, 1.2rem);
 
@@ -284,7 +303,7 @@
           var(--label-height),
           0px,
           var(--label-focus-left),
-          var(--icon-width, 0px),
+          var(--icon-width, 0px)
         );
       }
     }
@@ -297,7 +316,10 @@
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
     --input-padding: var(--szot-input-padding, var(--theme-fields-padding));
-    --input-text-color: var(--szot-input-text-color, var(--default-input-color));
+    --input-text-color: var(
+      --szot-input-text-color,
+      var(--default-input-color)
+    );
     --border: var(--szot-input-border, var(--theme-small-border));
     --border-color: var(--szot-input-border-color, var(--default-border-color));
     --border-radius: var(--szot-input-border-radius, var(--theme-small-shape));
@@ -312,9 +334,18 @@
     );
 
     --label-focus-left: var(--szot-input-label-focus-left, 0.8rem);
-    --label-focus-color: var(--szot-input-label-focus-color, var(--label-color));
-    --label-not-focus-color: var(--szot-input-label-not-focus-color, var(--label-color));
-    --border-color-focus: var(--szot-input-border-color-focus, var(--default-border-color));
+    --label-focus-color: var(
+      --szot-input-label-focus-color,
+      var(--label-color)
+    );
+    --label-not-focus-color: var(
+      --szot-input-label-not-focus-color,
+      var(--label-color)
+    );
+    --border-color-focus: var(
+      --szot-input-border-color-focus,
+      var(--default-border-color)
+    );
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
 
@@ -423,10 +454,11 @@
     background: none;
     color: var(--input-text-color);
     font-size: var(--theme-fields-font-size);
-    border:none;
+    border: none;
     border-radius: var(--border-radius);
 
-    &:focus, &:not(:placeholder-shown) {
+    &:focus,
+    &:not(:placeholder-shown) {
       & + .form-label {
         z-index: 10;
         top: 0;
@@ -466,7 +498,7 @@
     }
 
     &.required {
-      .label-text::after{
+      .label-text::after {
         content: "*";
         display: inline;
       }
@@ -474,7 +506,8 @@
   }
   .icons-left {
     .form-input {
-      padding: var(--input-padding) var(--input-padding) var(--input-padding) 2rem;
+      padding: var(--input-padding) var(--input-padding) var(--input-padding)
+        2rem;
     }
 
     .form-label {
@@ -487,7 +520,7 @@
       left: 0;
       background-color: transparent;
       border: 0;
-      margin: calc(var(--input-padding)*1.2) 0 var(--input-padding) .5rem;
+      margin: calc(var(--input-padding) * 1.2) 0 var(--input-padding) 0.5rem;
       --szot-icon-color: var(--icon-color);
       --szot-icon-line-height: 1rem;
     }
@@ -495,7 +528,8 @@
 
   .icons-right {
     .form-input {
-      padding: var(--input-padding) 2rem var(--input-padding) var(--input-padding);
+      padding: var(--input-padding) 2rem var(--input-padding)
+        var(--input-padding);
     }
 
     .icon {
@@ -504,7 +538,7 @@
       right: 0;
       background-color: transparent;
       border: 0;
-      margin: calc(var(--input-padding)*1.2) .5rem var(--input-padding) 0;
+      margin: calc(var(--input-padding) * 1.2) 0.5rem var(--input-padding) 0;
       --szot-icon-color: var(--icon-color);
       --szot-icon-line-height: 1rem;
     }

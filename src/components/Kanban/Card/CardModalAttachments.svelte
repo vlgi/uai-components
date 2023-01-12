@@ -210,8 +210,6 @@
 {/each}
 
 <style lang="scss">
-  @import "./card-modal.scss";
-
   #input-files-id {
     display: none;
   }

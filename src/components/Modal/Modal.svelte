@@ -127,12 +127,8 @@
                 icon="close"
                 buttonStyle="light"
                 size="round"
-                buttonAttributes={{
-                  autofocus: true,
-                }}
-                on:click={() => {
-                  opened = false;
-                }}
+                buttonAttributes={{ autofocus: true }}
+                on:click={() => (opened = false)}
               />
             </div>
           {/if}

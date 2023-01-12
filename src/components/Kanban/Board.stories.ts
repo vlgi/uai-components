@@ -85,7 +85,12 @@ export const CustomEmptyBoard = Template({
 
 export const DefaultCard = Template({
   language: "br",
-  searchableCardKeys: ["title", "desc", "checklists", "comments", "attachments"],
+  searchableCardKeys: [
+    "title",
+    "desc",
+    "checklists.title",
+    "checklists.items.title",
+  ],
   data: dData,
   users,
   labels,
@@ -112,6 +117,12 @@ hData.lists = [hData.lists[0]]
 hData.lists[0].cards = [hData.lists[0].cards[0]];
 export const DefaultOneListOneCard = Template({
   language: "br",
+  searchableCardKeys: [
+    "title",
+    "desc",
+    "checklists.title",
+    "checklists.items.title",
+  ],
   data: hData,
   users,
   labels,
@@ -135,7 +146,12 @@ export const DefaultOneListOneCard = Template({
 
 export const DefaultEmptyBoard = Template({
   language: "br",
-  searchableCardKeys: ["title", "desc", "checklists", "comments", "attachments"],
+  searchableCardKeys: [
+    "title",
+    "desc",
+    "checklists.title",
+    "checklists.items.title",
+  ],
   data: boardDefault,
   users,
   labels: [],

@@ -461,8 +461,6 @@
 {/if}
 
 <style lang="scss">
-  @import "./card-modal.scss";
-
   .drag-el {
     cursor: grab;
   }

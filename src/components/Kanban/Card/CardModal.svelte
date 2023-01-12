@@ -40,7 +40,7 @@
   $: cover = getCover(data.attachments);
 </script>
 
-<Modal bind:opened {...data} --szot-modal-width="700px">
+<Modal bind:opened {...data} --szot-modal-width="700px" on:closeModal>
   <div class="card-modal-header" slot="modal-header">
     <div class="modal-menu-btn" id="modal-menu">
       <Button icon="dots-horizontal" size="round" buttonStyle="light" />
@@ -188,8 +188,6 @@
 </Modal>
 
 <style lang="scss">
-  @import "./card-modal.scss";
-
   :global(.markdown-parse > h1) {
     font-size: 18px;
   }
@@ -226,6 +224,62 @@
   :global(.markdown-parse code) {
     border-radius: var(--radius-pattern);
     white-space: pre-wrap;
+  }
+
+  :global(section) {
+    display: flex;
+    flex-direction: column;
+    width: 99%;
+    gap: 5px;
+  }
+
+  :global(.section-title) {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+  :global(.section-title > h1, .section-title > h2, .section-title > h3) {
+    width: 100%;
+    text-align: start;
+  }
+
+  :global(.modal-title) {
+    margin: 0;
+  }
+
+  :global(.section-items) {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  :global(.add-btn) {
+    display: flex;
+    width: fit-content;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  :global(.add-btn:hover) {
+    opacity: 0.8;
+  }
+
+  :global(.item-btn) {
+    padding: 0 5px;
+    border-radius: 5px;
+    width: fit-content;
+    cursor: pointer;
+  }
+
+  :global(.item-btn:hover) {
+    background: #ddd;
   }
 
   .modal-menu-btn {

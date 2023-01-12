@@ -224,19 +224,14 @@ export function isToday(date: Date): boolean {
     date.getFullYear() === today.getFullYear();
 }
 
-export function fuzzySearch(list: any[], pattern: string): any[] {
+export function fuzzySearch(list: any[], pattern: string, keys: string[]): any[] {
   const all = JSON.parse(JSON.stringify(list));
   const options = {
     includeScore: true,
     includeMatches: true,
-    threshold: 0.1,
+    threshold: 0.3,
     useExtendedSearch: true,
-    keys: [
-      "title",
-      "desc",
-      "checklists.title",
-      "checklists.items.title",
-    ]
+    keys: [...keys],
   };
   const fuse = new Fuse(all, options);
   return fuse.search(pattern);

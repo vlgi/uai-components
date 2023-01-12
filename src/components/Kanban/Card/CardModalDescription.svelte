@@ -72,8 +72,6 @@
 {/if}
 
 <style lang="scss">
-  @import "./card-modal.scss";
-
   .no-desc,
   .description {
     cursor: pointer;
