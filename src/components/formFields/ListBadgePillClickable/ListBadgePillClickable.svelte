@@ -201,6 +201,7 @@
         {iconPosition}
         {badgeStyle}
         on:checkItem={setChecked}
+        on:checkItem
       />
     </div>
   {/each}
