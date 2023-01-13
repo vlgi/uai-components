@@ -1,4 +1,5 @@
 import type { ArgType } from "@storybook/addons";
+import { action } from "@storybook/addon-actions";
 import ListBadgePillClickable from "./ListBadgePillClickable.svelte";
 import Wrapper from "./ListBadgePillClickableWrapper.svelte";
 
@@ -34,6 +35,9 @@ const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
     Component: Wrapper,
     props,
+    on: {
+      checkItem: action("on:checkItem"),
+    },
   });
   ret.args = _args;
   return ret;
