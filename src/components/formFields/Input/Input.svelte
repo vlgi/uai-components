@@ -19,6 +19,8 @@
 
   type TborderStyle = "primary" | "secondary" | "dark" | "light";
 
+  type TInputMode = "text" | "search" | "none" | "tel" | "url" | "email" | "numeric" | "decimal";
+
   /** choose default theme colors */
   export let inputStyle: TborderStyle = "dark";
 
@@ -60,6 +62,13 @@
    * @type {string}
    */
   export let name: string;
+
+  /**
+   * The type of input keyboard when focus component in a device with onscreen keyboard
+   * @type {string}
+   */
+  export let inputmode: TInputMode = "text";
+
   export let type = "text";
   export let value = "";
   export let disabled = false;
@@ -241,6 +250,7 @@
       {value}
       {disabled}
       {readonly}
+      {inputmode}
       {...inputAttributes}
       aria-required={required}
     />
