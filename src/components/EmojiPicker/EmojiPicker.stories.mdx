@@ -1,0 +1,108 @@
+<!-- Badge.stories.mdx -->
+
+import { Meta } from "@storybook/addon-docs";
+
+import EmojiPickerWrapperExample from "./EmojiPickerWrapperExample.svelte";
+
+<Meta title="Components/EmojiPicker/Custom" />
+
+# Emoji Picker
+
+## CSS customization
+
+| CSS Property                                     | Default                                                                                                            | Descripiton                      |
+|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------|
+| --szot-emojis-picker-background-color            | white                                                                                                              | Container background color       |
+| --szot-emojis-picker-border-radius               | 15px                                                                                                               | Container border radius          |
+| --szot-emojis-picker-box-shadow                  | rgba ( 0 ,  0 ,  0 ,  0.1 )  0px   1px   3px   0px ,    <br /> rgba ( 0 ,  0 ,  0 ,  0.06 )  0px   1px   2px   0px | Container box shadow             |
+| --szot-emojis-picker-height                      | 320px                                                                                                              | Container height                 |
+| --szot-emojis-picker-width                       | 320px                                                                                                              | Container width                  |
+| --szot-emojis-picker-position                    | auto                                                                                                               | Container position               |
+| --szot-emojis-picker-category-title-border-color | #eee                                                                                                               | Category title border color      |
+| --szot-emojis-picker-category-title-font-color   | #333                                                                                                               | Category title font color        |
+| --szot-emojis-picker-emoji-background-color      | transparent                                                                                                        | Emoji button background color    |
+| --szot-emojis-picker-tabs-border-color           | #eee                                                                                                               | Category tab button border color |
+| --szot-emojis-picker-tabs-icon-color             | #777   
+
+## Usage example
+
+```html
+<script lang="ts">
+  import { onMount } from "svelte";
+  import EmojiPicker from "szot-ui-experimental";
+  import Input from "szot-ui-experimental";
+
+  let targetEl = null;
+  let msg = "";
+
+  onMount(() => {
+    targetEl = document.getElementById("input-msg");
+  });
+
+  function onTypeMsg(e): void {
+    msg = e.target.value;
+  }
+
+  function openEmojisPicker(): void {
+    opened = true;
+  }
+
+  $: selectedEmoji = "";
+  $: msg = `${msg}${selectedEmoji}`;
+</script>
+
+<div class="container">
+  <div class="input-target-container">
+    <Input
+      on:input={onTypeMsg}
+      on:click={openEmojisPicker}
+      icon="emoticon-happy"
+      iconClick={true}
+      id="input-msg"
+      inputAttributes={{ autocomplete: "off" }}
+      label="Message"
+      name="message"
+      type="text"
+      value={msg}
+      --szot-input-margin-bottom="0"
+      --szot-input-margin-top="0"
+    />
+  </div>
+  
+  <EmojiPicker
+    bind:opened
+    bind:selected={selectedEmoji}
+    localStorageId="szot-ui-emoji-picker-example"
+    {targetEl}
+    --szot-emojis-picker-background-color="white"
+    --szot-emojis-picker-border-radius="25px"
+    --szot-emojis-picker-height="350px"
+    --szot-emojis-picker-width="320px"
+    --szot-emojis-picker-position="block"
+    --szot-emojis-picker-category-title-border-color="#ddd"
+    --szot-emojis-picker-category-title-font-color="#444"
+    --szot-emojis-picker-emoji-background-color="white"
+    --szot-emojis-picker-tabs-border-color="#eee"
+    --szot-emojis-picker-tabs-icon-color="#777"
+  />
+</div>
+
+<style lang="scss">
+  .container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background: #eee;
+    width: 100%;
+    height: 600px;
+    max-height: 90vh;
+
+    .input-target-container {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  }
+</style>
+```
+
