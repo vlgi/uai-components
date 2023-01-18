@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    // spells
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-portuguese-brazilian",
+
+    // git extensions
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+
+    // code format
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+
+    // other tools
+    "wmaurer.change-case", // use to easily change the case [camel-case, pascal-case, ...]
+    "gitlab.gitlab-workflow", // use to do stuff on gitlab from vscode
+    "yzhang.markdown-all-in-one", // use to open markdown preview and other things
+    "christian-kohler.path-intellisense" // help you to find some path like '../my-stuff.js'
+  ]
+}

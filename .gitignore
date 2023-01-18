@@ -7,7 +7,6 @@
 dist/
 
 # IDEs
-.vscode
 .idea
 /coverage/
 .creevey/report/

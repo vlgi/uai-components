@@ -1,0 +1,22 @@
+{
+  "files.autoSave": "off",
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "cSpell.language": "en,pt-BR",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.rulers": [
+    {
+      "color": "#ce0000",
+      "column": 100
+    }
+  ],
+  "eslint.probe": ["javascript", "typescript", "html", "markdown", "svelte"],
+  "eslint.validate": ["javascript", "typescript", "html", "markdown", "svelte"],
+  "svelte.enable-ts-plugin": true,
+}
