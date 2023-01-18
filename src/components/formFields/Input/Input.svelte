@@ -268,7 +268,7 @@
     </label>
     {#if icon}
       {#if iconClick}
-        <button class="icon icon-cursor" on:click>
+        <button class="icon icon-cursor" aria-label={icon} on:click>
           <Icon iconName={icon} />
         </button>
       {:else}
