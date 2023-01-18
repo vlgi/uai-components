@@ -15,7 +15,7 @@
   });
 
 
-  function onTypeMsg(e: InputEvent): void {
+  function onTypeMsg(e: InputEvent) {
     msg = (e.target as HTMLInputElement).value;
   }
 

@@ -25,9 +25,8 @@ export const Default = Template({
   style:
     "--szot-emojis-picker-background-color: white;"
     + "\n--szot-emojis-picker-border-radius: 25px;"
-    + "\n--szot-emojis-picker-height: 350px;"
-    + "\n--szot-emojis-picker-width: 320px;"
-    + "\n--szot-emojis-picker-position: block;"
+    + "\n--szot-emojis-picker-height: 315px;"
+    + "\n--szot-emojis-picker-width: 315px;"
     + "\n--szot-emojis-picker-category-title-border-color: #ddd;"
     + "\n--szot-emojis-picker-category-title-font-color: #444;"
     + "\n--szot-emojis-picker-tabs-border-color: #eee;"
@@ -52,7 +51,6 @@ export const WithModal = TemplateWithModal({
     + "\n--szot-emojis-picker-box-shadow: auto;"
     + "\n--szot-emojis-picker-height: 400px;"
     + "\n--szot-emojis-picker-width: 320px;"
-    + "\n--szot-emojis-picker-position: block;"
     + "\n--szot-emojis-picker-category-title-border-color: #ddd;"
     + "\n--szot-emojis-picker-category-title-font-color: #444;"
     + "\n--szot-emojis-picker-tabs-border-color: #eee;"
@@ -72,12 +70,11 @@ export const WithDropdown = TemplateWithDropdown({
   opened: true,
   maxRecently: 45,
   style:
-    "--szot-emojis-picker-background-color: red;"
+    "--szot-emojis-picker-background-color: #FFFCF5;"
     + "\n--szot-emojis-picker-border-radius: 0;"
     + "\n--szot-emojis-picker-box-shadow: auto;"
     + "\n--szot-emojis-picker-height: 400px;"
     + "\n--szot-emojis-picker-width: 320px;"
-    + "\n--szot-emojis-picker-position: block;"
     + "\n--szot-emojis-picker-category-title-border-color: #ddd;"
     + "\n--szot-emojis-picker-category-title-font-color: #444;"
     + "\n--szot-emojis-picker-tabs-border-color: #eee;"

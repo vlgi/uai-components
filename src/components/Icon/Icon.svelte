@@ -2,7 +2,7 @@
   export let iconName: string;
 </script>
 
-<span class="icon-{iconName}" on:click/>
+<span class="icon-{iconName}"  on:click/>
 
 <style lang="scss">
 

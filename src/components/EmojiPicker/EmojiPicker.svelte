@@ -1,28 +1,28 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  // data
   import martData from "@emoji-mart/data";
   import i18n from "@emoji-mart/data/i18n/en.json";
 
-  import {
-    fuzzySearch,
-    clickOutside,
-    throttle,
-  } from "../../helpers/utils";
-
+  // helpers
+  import { actionOutClick } from "../../actions/clickOutside/clickOutside";
+  import { throttle } from "../../helpers/perfomance";
+  import { fuzzySearch } from "../../helpers/searching";
   import { checkIfItemIsInArray } from "../../helpers/array-handling";
 
   // components
   import Input from "../formFields/Input/Input.svelte";
   import Icon from "../Icon/Icon.svelte";
 
+  // props
   export let selected: string; // selected emoji skin unicode
-
   export let targetEl: HTMLElement = null; // html element to receive emoji text
   export let opened = false; // when its true, show emoji picker
   export let localStorageId: string; // browser local storage identification
   export let maxRecently = 45; // max recently emojis to show
 
+  // types
   type SkinData = {
     unified: string;
     native: string;
@@ -76,9 +76,6 @@
   }
 
   const d: TEmojiMartData = martData as TEmojiMartData; // Imported Emoji Mart Data
-
-  console.log(d);
-
   let results: TEmojiCategoriesData[] = []; // fuzzy search items data result
   let searched = false; // turns true when user searched for some emoji
   let hoveredEmoji = ""; // set emojis name on footer when mouseover
@@ -102,7 +99,7 @@
 
   // set recently used emojis from local storage
   const local: TEmojiData[] = JSON.parse(localStorage.getItem(localStorageId)) as TEmojiData[];
-  let recentlyUsedStorage = local.slice(0, maxRecently) || [];
+  let recentlyUsedStorage = local?.slice(0, maxRecently) || [];
 
   // if there are emojis in local storage set tab 0 `recently` else set tab 1 `people`
   let selectedCategory = recentlyUsedStorage.length > 0 ? 0 : 1;
@@ -110,16 +107,16 @@
   // set `recently`category that is the first element of full data emojis
   let fullData: TEmojiCategoriesData[] = [
     {
-      id: "recently",
-      name: "Recently Used",
-      icon: categoryIcons.recently,
       emojis: recentlyUsedStorage.map((emoji: TEmojiData) => emoji.id),
       emojisFullData: recentlyUsedStorage.map((emoji: TEmojiData) => d.emojis[emoji.id]),
+      icon: categoryIcons.recently,
+      id: "recently",
+      name: "Recently Used",
     },
   ];
 
   // reset fuzzy search results
-  function resetSearch(): void {
+  function resetSearch() {
     results = [...fullData];
     results[selectedCategory].emojis = [...fullData[selectedCategory].emojis];
     searched = false;
@@ -128,7 +125,7 @@
   // fuzzy search with throtle in each cate gory emojis from keys above
   function searchIcons(e: InputEvent) {
     const val = (e.target as HTMLInputElement).value;
-    return throttle((): void => {
+    return throttle(() => {
       if (val !== "") {
         // if there is any string on input search
         const keys = ["name", "keywords"]; // keys to search for on fuzzy search algo
@@ -185,7 +182,7 @@
   }
 
   // handle local storage (recently emojis)
-  function handleLocalStorage(emoji: TEmojiData): void {
+  function handleLocalStorage(emoji: TEmojiData) {
     const check = checkIfItemIsInArray(emoji, recentlyUsedStorage);
     if (check.isInIt) {
       const copy: TEmojiData[] = JSON.parse(JSON.stringify(recentlyUsedStorage)) as TEmojiData[];
@@ -202,10 +199,10 @@
   }
 
   // set emoji skins container position relative to the clicked button
-  function setEmojiSkinPosition(element: HTMLButtonElement): void {
+  function setEmojiSkinPosition(element: HTMLButtonElement) {
     const rect = element.getBoundingClientRect();
     const rectContainer = document
-      .querySelector(".emoji-selector-container")
+      .querySelector(".container")
       .getBoundingClientRect();
     skinsContainerTop = `${rect.top - 35}px`;
     if (rectContainer.right - rect.right > 40) {
@@ -216,7 +213,7 @@
   }
 
   // on:mousedown event set user selected emoji
-  function setEmoji(e: MouseEvent, emoji: TEmojiData): void {
+  function setEmoji(e: MouseEvent, emoji: TEmojiData) {
     if (emoji.skins.length > 1) {
       // when there is more than 1 skin set selectedEmojisSkins value
       selectedEmojiSkins = {
@@ -235,7 +232,7 @@
   // reset `selectedEmojiSkins` and `selectSkin`
   // when skis was selected and
   // when user clicked outside skins container
-  function resetSelectedEmojiSkins(): void {
+  function resetSelectedEmojiSkins() {
     selectedEmojiSkins = {
       skins: [],
       id: "",
@@ -244,7 +241,7 @@
   }
 
   // on:mouseup event in some skin button, set selected skin
-  function setEmojiSkin(skin: SkinData, emoji: TEmojiData): void {
+  function setEmojiSkin(skin: SkinData, emoji: TEmojiData) {
     selected = skin.native;
     resetSelectedEmojiSkins();
     handleLocalStorage(emoji);
@@ -254,7 +251,6 @@
   onMount(() => {
     for (let i = 0; i < d.categories.length; i++) {
       const c: TCategory = d.categories[i];
-      const name = i18n.categories[c.id] as string;
       fullData = [
         ...fullData,
         {
@@ -262,7 +258,8 @@
           emojisFullData: c.emojis.map((emoji: string) => d.emojis[emoji]),
           icon: categoryIcons[c.id] as string,
           id: c.id,
-          name,
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          name: i18n.categories[c.id] as string,
         },
       ];
     }
@@ -272,9 +269,9 @@
 
 {#if opened}
   <div
-    class="emoji-selector-container"
-    use:clickOutside
-    on:outclick={() => {
+    class="container"
+    use:actionOutClick
+    on:actionOutClick={() => {
       opened = false;
     }}
   >
@@ -314,7 +311,7 @@
       <!-- emojis container -->
       <div class="emojis-categories">
         {#each results as c, ci}
-          {#if c.emojis.length > 0 && selectedCategory === ci}
+          {#if selectedCategory === ci}
             {#if !searched}<h4>{c.name}</h4>{/if}
           {/if}
           {#if selectedCategory === ci || searched}
@@ -344,8 +341,8 @@
                   {#if selectedEmojiSkins?.skins?.length > 1 && selectSkin === emoji}
                     <div
                       class="skins-container"
-                      use:clickOutside
-                      on:outclick={resetSelectedEmojiSkins}
+                      use:actionOutClick
+                      on:actionOutClick={resetSelectedEmojiSkins}
                       style="top: {skinsContainerTop}; left: {skinsContainerLeft};"
                     >
                       {#each selectedEmojiSkins?.skins as skin}
@@ -375,58 +372,24 @@
 {/if}
 
 <style lang="scss">
-  .emoji-selector-container {
-    // component customization variables
+  .container {
+    --background-color: var(--szot-emojis-picker-background-color, white);
+    --height: var(--szot-emojis-picker-height, 320px);
+    --tabs-icon-color: var(--szot-emojis-picker-tabs-icon-color, var(--theme-dark));
 
-    // categories
-    --category-title-border-color: var(
-      --szot-emojis-picker-category-title-border-color,
-      #eee
-    );
-    --category-title-font-color: var(
-      --szot-emojis-picker-category-title-font-color,
-      #333
-    );
+    background-color: var(--background-color);
+    border-radius: var(--szot-emojis-picker-border-radius, var(--theme-small-shape));
+    box-shadow: var( --szot-emojis-picker-box-shadow, var(--theme-medium-shadow));
 
-    // container
-    --container-background-color: var(
-      --szot-emojis-picker-background-color,
-      white
-    );
-    --container-border-radius: var(--szot-emojis-picker-border-radius, 15px);
-    --container-box-shadow: var(
-      --szot-emojis-picker-box-shadow,
-      rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-      rgba(0, 0, 0, 0.06) 0px 1px 2px 0px
-    );
-    --container-position: var(--szot-emojis-picker-position, auto);
-    --container-width: var(--szot-emojis-picker-width, 320px);
-    --container-height: var(--szot-emojis-picker-height, 320px);
-
-    // emoji button
-    --emoji-background-color: var(
-      --szot-emojis-picker-emoji-background-color,
-      transparent
-    );
-
-    // category tabs
-    --tabs-border-color: var(--szot-emojis-picker-tabs-border-color, #eee);
-    --tabs-icon-color: var(--szot-emojis-picker-tabs-icon-color, #777);
-
-    background-color: var(--container-background-color);
-    border-radius: var(--container-border-radius);
-    box-shadow: var(--container-box-shadow);
-    position: var(--container-position);
-
-    height: var(--container-height);
-    // max-height: 60vh;
-
-    width: var(--container-width);
+    height: var(--height);
+    width: var(--szot-emojis-picker-width, 315px);
     max-width: 100%;
     min-width: 150px;
 
     button {
-      align-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: transparent;
       border: none;
       outline: none;
@@ -460,9 +423,8 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          border: 1px solid var(--tabs-border-color);
+          border: 1px solid var(--szot-emojis-picker-tabs-border-color, var(--theme-light));
           border-radius: 0;
-          // border-top: none;
         }
 
         button:first-child {
@@ -483,7 +445,7 @@
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      height: calc(var(--container-height) - 125px);
+      height: calc(var(--height) - 125px);
 
       h4 {
         position: sticky;
@@ -491,10 +453,10 @@
         text-align: center;
         width: 100%;
         padding: 10px;
-        background-color: var(--container-background-color);
+        background-color: var(--background-color);
         height: fit-content;
-        border-bottom: 1px solid var(--category-title-border-color);
-        color: var(--category-title-font-color);
+        border-bottom: 1px solid var(--szot-emojis-picker-category-title-border-color, var(--theme-light));
+        color: var(--szot-emojis-picker-category-title-font-color, var(--theme-dark));
       }
 
       .emojis-container {
@@ -506,7 +468,7 @@
           display: flex;
 
           button {
-            background-color: var(--emoji-background-color);
+            background-color: var(--szot-emojis-picker-emoji-background-color, transparent);
           }
 
           .skins-container {
