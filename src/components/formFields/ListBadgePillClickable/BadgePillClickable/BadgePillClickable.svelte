@@ -166,9 +166,6 @@
     --badge-pill-height: var(--szot-badge-pill-height, auto);
     --border-size: var(--szot-badge-pill-border-size, 0.15rem);
     --border-radius: var(--szot-badge-pill-border-radius, 1rem);
-    --badge-pill-border-color: var(--szot-badge-pill-border-color, var(--default-border-color));
-    --badge-pill-label-color: var(--szot-badge-pill-label-color, var(--default-label-color));
-    --badge-pill-icon-color: var(--szot-badge-pill-icon-color, var(--default-icon-color));
     --badge-pill-background-color: var(--szot-badge-pill-background-color, green);
     --badge-pill-max-width: var(--szot-badge-pill-max-width, auto);
     --badge-pill-font-size: var(--szot-badge-pill-font-size, var(--theme-fields-font-size));
@@ -195,6 +192,22 @@
       --default-border-color: var(--theme-secondary-txt);
       --default-label-color: var(--theme-secondary-txt);
       --default-icon-color: var(--theme-secondary-txt);
+    }
+
+    &.on {
+      --badge-pill-border-color: var(--szot-badge-pill-selected-border-color, var(--szot-badge-pill-border-color, var(--default-border-color)));
+      --badge-pill-label-color: var(--szot-badge-pill-selected-label-color, var(--szot-badge-pill-label-color, var(--default-label-color)));
+      --badge-pill-icon-color: var(--szot-badge-pill-selected-icon-color, var(--szot-badge-pill-icon-color, var(--default-icon-color)));
+
+      background: var(--badge-pill-background-color);
+    }
+
+    &.off {
+      --badge-pill-border-color: var(--szot-badge-pill-border-color, var(--default-border-color));
+      --badge-pill-label-color: var(--szot-badge-pill-label-color, var(--default-label-color));
+      --badge-pill-icon-color: var(--szot-badge-pill-icon-color, var(--default-icon-color));
+
+      background: none;
     }
 
     --szot-icon-color: var(--badge-pill-icon-color);
@@ -226,14 +239,6 @@
     --szot-badge-pill-label-color: var(--theme-error);
     --szot-badge-pill-border-color: var(--theme-error);
     @include m.text-color(var(--theme-error));
-  }
-
-  .on {
-    background: var(--badge-pill-background-color);
-  }
-
-  .off {
-    background: none;
   }
 
   .error {
