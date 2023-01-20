@@ -80,7 +80,9 @@ export const Custom: any = Template({
     + "90deg, "
     + "#f0ad42 1.3%, "
     + "#fe5da3 46.64%, "
-    + "#a00bea 100%);",
+    + "#a00bea 100%);"
+    + "--szot-badge-pill-selected-border-color: red;"
+    + "--szot-badge-pill-selected-label-color: blue;",
 });
 
 Custom.parameters = {
