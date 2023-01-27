@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
 
   // data
   import martData from "@emoji-mart/data";
@@ -241,8 +241,9 @@
   }
 
   // on:mouseup event in some skin button, set selected skin
-  function setEmojiSkin(skin: SkinData, emoji: TEmojiData) {
+  async function setEmojiSkin(skin: SkinData, emoji: TEmojiData) {
     selected = skin.native;
+    await tick();
     resetSelectedEmojiSkins();
     handleLocalStorage(emoji);
   }
@@ -347,9 +348,10 @@
                     >
                       {#each selectedEmojiSkins?.skins as skin}
                         <button
-                          on:mouseup={() => {
-                            setEmojiSkin(skin, emojisData.emojis[emoji]);
+                          on:mouseup={async () => {
+                            await setEmojiSkin(skin, emojisData.emojis[emoji]);
                             if (targetEl) targetEl.focus();
+                            selected = "";
                           }}
                         >
                           {skin.native}
