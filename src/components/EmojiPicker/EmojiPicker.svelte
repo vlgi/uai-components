@@ -349,7 +349,6 @@
                         <button
                           on:mouseup={() => {
                             setEmojiSkin(skin, emojisData.emojis[emoji]);
-                            selected = "";
                             if (targetEl) targetEl.focus();
                           }}
                         >
