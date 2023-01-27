@@ -75,7 +75,7 @@
     }
   }
 
-  const d: TEmojiMartData = martData as TEmojiMartData; // Imported Emoji Mart Data
+  const emojisData: TEmojiMartData = martData as TEmojiMartData; // Imported Emoji Mart Data
   let results: TEmojiCategoriesData[] = []; // fuzzy search items data result
   let searched = false; // turns true when user searched for some emoji
   let hoveredEmoji = ""; // set emojis name on footer when mouseover
@@ -108,7 +108,7 @@
   let fullData: TEmojiCategoriesData[] = [
     {
       emojis: recentlyUsedStorage.map((emoji: TEmojiData) => emoji.id),
-      emojisFullData: recentlyUsedStorage.map((emoji: TEmojiData) => d.emojis[emoji.id]),
+      emojisFullData: recentlyUsedStorage.map((emoji: TEmojiData) => emojisData.emojis[emoji.id]),
       icon: categoryIcons.recently,
       id: "recently",
       name: "Recently Used",
@@ -249,17 +249,17 @@
 
   // set initial data on mount
   onMount(() => {
-    for (let i = 0; i < d.categories.length; i++) {
-      const c: TCategory = d.categories[i];
+    for (let i = 0; i < emojisData.categories.length; i++) {
+      const category: TCategory = emojisData.categories[i];
       fullData = [
         ...fullData,
         {
-          emojis: [...c.emojis],
-          emojisFullData: c.emojis.map((emoji: string) => d.emojis[emoji]),
-          icon: categoryIcons[c.id] as string,
-          id: c.id,
+          emojis: [...category.emojis],
+          emojisFullData: category.emojis.map((emoji: string) => emojisData.emojis[emoji]),
+          icon: categoryIcons[category.id] as string,
+          id: category.id,
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          name: i18n.categories[c.id] as string,
+          name: i18n.categories[category.id] as string,
         },
       ];
     }
@@ -320,21 +320,21 @@
                 <div class="emoji-container">
                   <!-- Emoji picker button -->
                   <button
-                    on:mousedown|self={(e) => setEmoji(e, d.emojis[emoji])}
+                    on:mousedown|self={(e) => setEmoji(e, emojisData.emojis[emoji])}
                     on:mouseup={() => {
                       selected = "";
                       if (targetEl) targetEl.focus();
                     }}
                     on:focus
                     on:mouseover={() => {
-                      hoveredEmoji = d.emojis[emoji].name;
+                      hoveredEmoji = emojisData.emojis[emoji].name;
                     }}
                     on:blur
                     on:mouseout={() => {
                       hoveredEmoji = "";
                     }}
                   >
-                    {d.emojis[emoji].skins[0].native}
+                    {emojisData.emojis[emoji].skins[0].native}
                   </button>
 
                   <!-- Emojis skins picker -->
@@ -347,8 +347,8 @@
                     >
                       {#each selectedEmojiSkins?.skins as skin}
                         <button
-                          on:mouseup={() => setEmojiSkin(skin, d.emojis[emoji])}
                           on:mouseup={() => {
+                            setEmojiSkin(skin, emojisData.emojis[emoji]);
                             selected = "";
                             if (targetEl) targetEl.focus();
                           }}
