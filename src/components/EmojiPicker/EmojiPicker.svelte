@@ -9,7 +9,7 @@
   import { actionOutClick } from "../../actions/clickOutside/clickOutside";
   import { throttle } from "../../helpers/perfomance";
   import { fuzzySearch } from "../../helpers/searching";
-  import { checkIfItemIsInArray } from "../../helpers/array-handling";
+  import { checkIfItemIsInArray } from "../../helpers/arrays-handling";
 
   // components
   import Input from "../formFields/Input/Input.svelte";
