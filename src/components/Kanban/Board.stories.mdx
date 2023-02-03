@@ -24,7 +24,7 @@ import BoardWrapperExample from "./examples/BoardWrapperExample.svelte";
 
 ## Usage example
 
-```html
+```svelte
 <script lang="ts">
   import { Board } from "szot-ui-experimental";
   import { onMount } from "svelte";
@@ -32,7 +32,6 @@ import BoardWrapperExample from "./examples/BoardWrapperExample.svelte";
   import Card from "./my-components-folder/CustomCard.svelte"
 
   const props = {
-    language: "en",
     canMoveList: false,
     canMoveCard: false,
     customCard: Card,
@@ -50,10 +49,10 @@ import BoardWrapperExample from "./examples/BoardWrapperExample.svelte";
 </script>
 
 <div class="screen-simulation">
-  <Board 
-    bind:data 
-    bind:users 
-    bind:labels 
+  <Board
+    bind:data
+    bind:users
+    bind:labels
     --szot-kanban-board-background-color="pink"
     {...props}
   />
@@ -229,9 +228,9 @@ import BoardWrapperExample from "./examples/BoardWrapperExample.svelte";
         }
     ],
     attachments: [
-        { 
-            title: "Redbone Coonhound", 
-            url: "https://i.pinimg.com/originals/fa/cd/67/facd67dcb113958be0e867e6fd089714.jpg" 
+        {
+            title: "Redbone Coonhound",
+            url: "https://i.pinimg.com/originals/fa/cd/67/facd67dcb113958be0e867e6fd089714.jpg"
         }
     ],
     dates: {
@@ -310,7 +309,7 @@ export type TCardComment = {
     date: Date;
 }
 
-export type TCard = {
+export type TDefautCard = {
     title: string;
     backgroundColor: string;
     allChecklistsItems: TCardCheckList[];
@@ -327,7 +326,7 @@ export type TCard = {
 
 export type TList = {
     title: string;
-    cards: TCard[];
+    cards: TDefautCard[];
 }
 
 export type TCustomList = {

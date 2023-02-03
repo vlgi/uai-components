@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+  import type { TCardUser, TCardComment, TLoggedUser } from "../data/types";
   import { texts } from "../data/components-texts";
-  import { isSameDay, isToday } from "../utils";
+  import { isSameDay, isToday, compareObjects } from "../utils";
 
   // stores
-  import { lang, logged } from "../stores";
+  import { logged } from "../stores";
 
   // components
   import Icon from "../../Icon/Icon.svelte";
@@ -11,56 +13,72 @@
   import Button from "../../formFields/Button/Button.svelte";
   import CardUserAvatar from "./CardUserAvatar.svelte";
   import Input from "../../formFields/Input/Input.svelte";
+  // import EmojiPicker from "../../EmojiPicker/EmojiPicker.svelte";
 
-  export let data; // comments array
+  export let data: TCardComment[]; // comments array
 
   let msg = "";
+  let targetEl = null;
+  const loggedUser = $logged as TLoggedUser;
+  const selectedEmoji = "";
 
-  function checkIfIsTheLoggedUser(user): boolean {
-    if (JSON.stringify($logged.user) === JSON.stringify(user)) return true;
+  function checkIfIsTheLoggedUser(user: TCardUser): boolean {
+    if (compareObjects(loggedUser.user, user)) return true;
     return false;
   }
 
-  function onTypeMsg(e): void {
-    msg = e.target.value;
+  function onTypeMsg(e: InputEvent): void {
+    msg = (e.target as HTMLInputElement).value;
   }
 
-  function sendMsg(): void {
-    if (msg == "") return;
-    const comment = {
+  function sendMsg(e: KeyboardEvent | MouseEvent): void {
+    if (e.type === "keypress" && (e as KeyboardEvent).key !== "Enter") return;
+    if (msg === "") return;
+    const comment: TCardComment = {
       text: msg,
-      user: $logged.user,
+      user: loggedUser.user,
       date: new Date(),
     };
     data = [...data, comment];
     msg = "";
+    showEmoji = false;
   }
 
   function removeMsg(): void {
-    if (indexToDelete == -1) return;
+    if (indexToDelete === -1) return;
     const msgs = [...data];
     msgs.splice(indexToDelete, 1);
     data = [...msgs];
     openAlertModal = false;
   }
 
+  onMount(() => {
+    targetEl = document.getElementById("input-msg");
+  });
+
   $: openAlertModal = false;
   $: indexToDelete = -1;
+
+
+  $: msg = `${msg}${selectedEmoji}`;
+  $: showEmoji = false;
 </script>
 
 <Modal bind:opened={openAlertModal} --szot-modal-width="500px">
   <div slot="modal-header" class="header" />
   <div slot="modal-content" class="content remove-alert">
-    <h3>{texts.removeCommentAlert[$lang]}</h3>
+    <h3>{texts.removeCommentAlert}</h3>
   </div>
   <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
-      on:click={() => (openAlertModal = false)}
+      on:click={() => {
+        openAlertModal = false;
+      }}
       size="small"
       buttonStyleType="outline"
       buttonStyle="dark"
     >
-      {texts.cancel[$lang]}
+      {texts.cancel}
     </Button>
     <Button
       --szot-button-background-color="#CF513D"
@@ -69,7 +87,7 @@
       buttonStyle="dark"
       on:click={removeMsg}
     >
-      {texts.removeComment[$lang]}
+      {texts.removeComment}
     </Button>
   </div>
 </Modal>
@@ -80,13 +98,13 @@
       iconName="comment-text-multiple-outline"
       --szot-icon-font-size="20px"
     />
-    <h2>{texts.comments[$lang]}</h2>
+    <h2>{texts.comments}</h2>
   </div>
 {/if}
 
 <div class="comments">
   {#each data as comment, index}
-    {#if index == 0}
+    {#if index === 0}
       {#if isToday(new Date(comment.date))}
         <span class="msg-date">Today</span>
       {:else}
@@ -133,7 +151,7 @@
       <div class="msg-container">
         {#if checkIfIsTheLoggedUser(comment.user)}
           <div
-            class="comment-text comment-editable"
+            class="comment-text comment-editable editable"
             contenteditable="true"
             bind:textContent={comment.text}
           />
@@ -156,23 +174,42 @@
   {/each}
 </div>
 <div class="msg-input">
-  <CardUserAvatar data={$logged.user} info={true} />
-  <Input
-    name="comment"
-    label={texts.addComment[$lang]}
-    type="text"
-    value={msg}
-    on:input={(e) => onTypeMsg(e)}
-    on:change={sendMsg}
-    --szot-input-margin-top="0"
-    --szot-input-margin-bottom="0"
-  />
-  <div class="send-msg" on:click={sendMsg}>
+  <CardUserAvatar data={loggedUser.user} info={true} />
+  <div class="input-container" on:keypress={sendMsg}>
+    <Input
+      on:click={() => {
+        showEmoji = true;
+      }}
+      on:input={onTypeMsg}
+      id="input-msg"
+      icon="emoticon-happy"
+      iconClick={true}
+      inputAttributes={{ autocomplete: "off" }}
+      label={texts.addComment}
+      name="comment"
+      type="text"
+      value={msg}
+      --szot-input-margin-bottom="0"
+      --szot-input-margin-top="0"
+    />
+  </div>
+  <div class="emojis-selector-container">
+    <!-- <EmojiPicker
+      bind:selected={selectedEmoji}
+      bind:opened={showEmoji}
+      localStorageId="szot-ui-kanban-default-card-coments-emoji-picker"
+      {targetEl}
+      --szot-emojis-picker-position="absolute"
+    /> -->
+  </div>
+  <div class="send-msg-btn" on:click={sendMsg}>
     <Icon iconName="send-outline" />
   </div>
 </div>
 
 <style lang="scss">
+  @use "src/components/Kanban/styles.scss";
+  @use "src/components/Kanban//Card/card-modal-styles.scss";
   .msg-date {
     align-self: center;
     font-size: 12px;
@@ -221,9 +258,10 @@
 
         .comment-editable {
           cursor: pointer;
+          border-radius: var(--radius-pattern);
+          background: #c4f2c3;
           &:hover {
             background: #addfac;
-            border-radius: var(--radius-pattern) var(--radius-pattern) 0 0;
           }
         }
       }
@@ -236,16 +274,12 @@
         margin-left: -10px;
         margin-right: 0;
       }
-
-      .msg-container {
-        background: #c4f2c3;
-      }
     }
   }
 
   .msg-input {
     display: grid;
-    grid-template-columns: 30px calc(100% - 80px) 20px;
+    grid-template-columns: 30px calc(100% - 80px) 1px 20px;
     gap: 10px;
     justify-content: center;
     align-items: center;
@@ -253,7 +287,17 @@
     margin-top: 20px;
     margin-bottom: 10px;
 
-    .send-msg {
+    .emojis-selector-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      z-index: 2;
+      margin-bottom: 50px;
+      margin-left: -50px;
+      padding: 10px;
+    }
+
+    .send-msg-btn {
       cursor: pointer;
 
       &:hover {

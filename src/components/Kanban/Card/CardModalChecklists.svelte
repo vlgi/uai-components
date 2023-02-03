@@ -1,11 +1,13 @@
 <script lang="ts">
-  import type { TCard } from "../data/types";
+  import { tick } from "svelte";
+  import type {
+    TDefautCard, TCardCheckList, TCardChecklistItem, TPosition,
+} from "../data/types";
   import { texts } from "../data/components-texts";
   import { item, checklist } from "../data/empty-data";
-  import { tick } from "svelte";
 
   // stores
-  import { pos, relPos, lang } from "../stores";
+  import { pos, relPos } from "../stores";
 
   // components
   import Button from "../../formFields/Button/Button.svelte";
@@ -23,18 +25,47 @@
   } from "../utils";
 
   // props
-  export let data: TCard; // user data
-  export let reset: boolean = false;
+  export let data: TDefautCard; // user data
+  export let reset = false;
 
-  let overed = false; // change target data only at the first overed
+  const dragInitialState = {
+    overed: false, // change target data only at the first time overed
 
-  function getDonesChecklistItems(checklist): number {
-    if (checklist.items.length == 0) return 0;
+    // dragging checklists
+    dcw: "100%", // place holder dragging checklist width
+    dch: "100%", // place holder dragging checklist height
+    dci: -1, // dragging checklist index
+    dcEl: null as HTMLElement, // dragging checklist html element
+    tci: -1, // target checklist index
+    tcEl: null as HTMLElement, // target checklist html element
+
+    // dragging checklists items
+    diw: "100%", // place holder dragging item width
+    dih: "100%", // place holder dragging item height
+    dii: -1, // dragging item index
+    diEl: null as HTMLElement, // dragging item html element
+    dici: -1, // dragging item checklist index
+    tii: -1, // target item index
+    tiEl: null as HTMLElement, // target item html element
+  };
+  let dragCurrState = { ...dragInitialState };
+
+  let canRemoveEmptyItems = true;
+  let checklistIndex = -1;
+  let checklistItemIndex = -1;
+  let ciToDelete = -1;
+  let openAlertModal = false;
+  let selectChecklistItemUserModalOpened = false;
+  let showDueDatesModal = false;
+  let xpos = -1;
+
+  function getDonesChecklistItems(_checklist: TCardCheckList): number {
+    if (_checklist.items.length === 0) return 0;
     let dones = 0;
-    checklist.items.forEach((item) => {
-      if (item.done) dones++;
+    _checklist.items.forEach((_item: TCardChecklistItem) => {
+      if (_item.done) dones++;
     });
-    return dones / checklist.items.length;
+    return dones / _checklist.items.length;
   }
 
   function handleCheckListItemUser(ci: number, ii: number) {
@@ -43,133 +74,107 @@
     checklistItemIndex = ii;
   }
 
-  function setDragItem(e, ci: number, ii: number): void {
-    if (e.button != 0) return; // if not left button, do nothing
-    diEl = document.querySelector(`.item-${ci}-${ii}`); // get drag item html element
-    diw = diEl.clientWidth;
-    dih = diEl.clientHeight;
-    const rect = diEl.getBoundingClientRect();
+  function setDragItem(e: MouseEvent, ci: number, ii: number) {
+    if (e.button !== 0) return; // if not left button, do nothing
+    dragCurrState.diEl = document.getElementById(`item-${ci}-${ii}`); // get drag item html element
+    dragCurrState.diw = dragCurrState.diEl.clientWidth.toString();
+    dragCurrState.dih = dragCurrState.diEl.clientHeight.toString();
+    const rect = dragCurrState.diEl.getBoundingClientRect();
     xpos = rect.left;
-    dii = ii;
-    dici = ci;
-    relPos.set(getRelativePosition(e.clientX, e.clientY, diEl)); // relative mouse position in relation to the html element
-    changeElementPosition($pos, diEl, { x: $relPos.x, y: 10 }); // change dragging element position
+    dragCurrState.dii = ii;
+    dragCurrState.dici = ci;
+    relPos.set(getRelativePosition(
+      e.clientX,
+      e.clientY,
+      dragCurrState.diEl,
+    )); // relative mouse position in relation to the html element
+    changeElementPosition(
+      $pos,
+      dragCurrState.diEl,
+      { x: ($relPos as TPosition).x, y: 10 },
+    ); // change dragging element position
   }
 
-  function setDragChecklist(e, ci: number): void {
-    if (e.button != 0) return; // if not left button, do nothing
-    dcEl = document.querySelector(`.checklist-${ci}`); // get drag list html element
-    dcw = dcEl.clientWidth;
-    dch = dcEl.clientHeight;
-    const rect = dcEl.getBoundingClientRect();
+  function setDragChecklist(e: MouseEvent, ci: number) {
+    if (e.button !== 0) return; // if not left button, do nothing
+    dragCurrState.dcEl = document.getElementById(`checklist-${ci}`); // get drag list html element
+    dragCurrState.dcw = dragCurrState.dcEl.clientWidth.toString();
+    dragCurrState.dch = dragCurrState.dcEl.clientHeight.toString();
+    const rect = dragCurrState.dcEl.getBoundingClientRect();
     xpos = rect.left;
-    dci = ci;
-    relPos.set(getRelativePosition(e.clientX, e.clientY, dcEl)); // relative mouse position in relation to the html element
-    changeElementPosition($pos, dcEl, { x: $relPos.x, y: 10 }); // change dragging element position
+    dragCurrState.dci = ci;
+    relPos.set(getRelativePosition(
+      e.clientX,
+      e.clientY,
+      dragCurrState.dcEl,
+    )); // relative mouse position in relation to the html element
+    changeElementPosition(
+      $pos,
+      dragCurrState.dcEl,
+      { x: ($relPos as TPosition).x, y: 10 },
+    ); // change dragging element position
   }
 
-  function onChecklistOver(ci: number): void {
-    if (dci != -1 && tci != dci && !overed) {
-      tci = ci;
-      tcEl = document.querySelector(`.checklist-${ci}`); // get target list html element
-      overed = true;
+  function onChecklistOver(ci: number) {
+    if (
+      dragCurrState.dci !== -1
+      && dragCurrState.tci !== dragCurrState.dci
+      && !dragCurrState.overed) {
+      dragCurrState.tci = ci;
+      dragCurrState.tcEl = document.getElementById(`checklist-${ci}`); // get target list html element
+      dragCurrState.overed = true;
     }
   }
 
-  function onCheckListOut(): void {
-    overed = false;
-    if (dci != -1) {
-      tci = -1; // reset target card index
-      tcEl = null; // reset target card html element (.card div)
+  function onCheckListOut() {
+    dragCurrState.overed = false;
+    if (dragCurrState.dci !== -1) {
+      dragCurrState.tci = -1; // reset target card index
+      dragCurrState.tcEl = null; // reset target card html element (.card div)
     }
   }
 
-  function onChecklistItemOver(ci: number, ii: number): void {
-    if (dii != -1) {
-      tiEl = document.querySelector(`.item-${ci}-${ii}`); // get drag item html element
-      tii = ii;
-      tci = ci;
+  function onChecklistItemOver(ci: number, ii: number) {
+    if (dragCurrState.dii !== -1) {
+      dragCurrState.tiEl = document.getElementById(`item-${ci}-${ii}`); // get drag item html element
+      dragCurrState.tii = ii;
+      dragCurrState.tci = ci;
     }
   }
 
-  function resetDragElements(): void {
-    xpos = -1;
-    // dragging checklists
-    dcw = "100%"; // place holder checklist width
-    dch = "100%"; // place holder checklist height
-    dci = -1; // dragging checklist index
-    dcEl = null;
-    tci = -1; // target checklist index
-    tcEl = null;
-    // dragging checklists items
-    diw = "100%"; // place holder checklist width
-    dih = "100%"; // place holder checklist height
-    dii = -1; // dragging item index
-    diEl = null; // dragging item html element
-    dici = -1; // dragging item checklist index
-    tii = -1; // target item index
-    tiEl = null; // target item html element
+  function resetDragElements() {
+    dragCurrState = { ...dragInitialState };
     reset = false;
   }
 
-  $: if (reset) resetDragElements();
-  $: selectChecklistItemUserModalOpened = false;
-  $: checklistIndex = -1;
-  $: checklistItemIndex = -1;
-  $: openAlertModal = false;
-  $: ciToDelete = -1;
-  // drag checklist variables
-  $: xpos = -1;
-  // dragging checklists
-  $: dcw = "100%"; // place holder checklist width
-  $: dch = "100%"; // place holder checklist height
-  $: dci = -1; // dragging checklist index
-  $: dcEl = null;
-  $: tci = -1; // target checklist index
-  $: tcEl = null;
-  // dragging checklists items
-  $: diw = "100%"; // place holder checklist width
-  $: dih = "100%"; // place holder checklist height
-  $: dii = -1; // dragging item index
-  $: diEl = null; // dragging item html element
-  $: dici = -1; // dragging item checklist index
-  $: tii = -1; // target item index
-  $: tiEl = null; // target item html element
-  $: canRemoveEmptyItems = true;
-  $: showDueDatesModal = false;
-
-  // change dragging checklist position
-  $: $pos && dci != -1 && moveDragCheckList();
   // when there is a dragging element and pos change, change html element position
   function moveDragCheckList() {
-    changeElementPosition({ x: xpos, y: $pos.y }, dcEl, {
+    changeElementPosition({ x: xpos, y: ($pos as TPosition).y }, dragCurrState.dcEl, {
       x: 0,
       y: 10,
     });
   }
 
-  // change dragging checklist item position
-  $: $pos && dii != -1 && dici != -1 && moveDragCheckListItem();
   // when there is a dragging element and pos change, change html element position
   function moveDragCheckListItem() {
-    changeElementPosition({ x: xpos, y: $pos.y }, diEl, {
+    changeElementPosition({ x: xpos, y: ($pos as TPosition).y }, dragCurrState.diEl, {
       x: 0,
       y: 10,
     });
   }
 
-  function resetVariablesAfterItemsChangingPosition(empty: boolean): void {
+  function resetVariablesAfterItemsChangingPosition(empty: boolean) {
     if (!empty) {
-      diEl = tiEl; // dragging card becomes target card html element
-      dii = tii; // dragging card becomes target card index
+      dragCurrState.diEl = dragCurrState.tiEl; // dragging card becomes target card html element
+      dragCurrState.dii = dragCurrState.tii; // dragging card becomes target card index
     } else if (empty) {
-      diEl = null;
-      dii = 0; // dragging card becomes target card index
+      dragCurrState.diEl = null;
+      dragCurrState.dii = 0; // dragging card becomes target card index
     }
-    dici = tci; // dragging card list index becomes target card list index
-    tiEl = null; // reset target card html element
-    tii = -1; // reset target card index
-    tci = -1; // reset target card list index
+    dragCurrState.dici = dragCurrState.tci; // dragging card list index becomes target card list index
+    dragCurrState.tiEl = null; // reset target card html element
+    dragCurrState.tii = -1; // reset target card index
+    dragCurrState.tci = -1; // reset target card list index
   }
 
   function removeChecklist(ci: number): void {
@@ -178,7 +183,7 @@
     data.checklists = [...checklists];
   }
 
-  async function addChecklist(): Promise<any> {
+  async function addChecklist() {
     const emptyChecklist = { ...checklist };
     data.checklists = [...data.checklists, emptyChecklist];
     await tick();
@@ -187,7 +192,7 @@
     el.focus();
   }
 
-  async function addItem(ci: number): Promise<any> {
+  async function addItem(ci: number) {
     const ii = data.checklists[ci].items.length;
     const emptyItem = { ...item };
     data.checklists[ci].items = [...data.checklists[ci].items, emptyItem];
@@ -196,10 +201,10 @@
     el.focus();
   }
 
-  function createNextItem(e, ci: number): void {
+  async function createNextItem(e: KeyboardEvent, ci: number) {
     const lastItem = data.checklists[ci].items.at(-1);
-    if (e.key == "Enter" && lastItem.title != "") {
-      addItem(ci);
+    if (e.key === "Enter" && lastItem.title !== "") {
+      await addItem(ci);
       canRemoveEmptyItems = false;
     }
   }
@@ -213,25 +218,40 @@
   function deleteEmptyItems(ci: number): void {
     if (canRemoveEmptyItems) {
       const items = [...data.checklists[ci].items];
-      items.forEach((item, i) => {
-        if (item.title == "") items.splice(i, 1);
+      items.forEach((_item, i) => {
+        if (_item.title === "") items.splice(i, 1);
       });
       data.checklists[ci].items = [...items];
     }
     canRemoveEmptyItems = true;
   }
 
+  $: if (reset) resetDragElements();
+  // change dragging checklist item position
+  $: if ($pos && dragCurrState.dii !== -1 && dragCurrState.dici !== -1) moveDragCheckListItem();
+  // change dragging checklist position
+  $: if ($pos && dragCurrState.dci !== -1) moveDragCheckList();
+
+
   // ###############################################################
   // ## Conditional for changing checklists positions           ####
   // ###############################################################
 
-  // change data.checklists when dragging and target list index are different from -1
-  $: if (dci != -1 && tci != -1 && dci != tci) {
-    data.checklists = switchElsPositionByIndex(data.checklists, dci, tci); // switch the items and return the new checklist array
-    dci = tci; // dragging checklist index becomes target checklist index
-    tci = -1; // reset target checklist index
-    dcEl = tcEl; // dragging element becomes target element
-    tcEl = null; // target element becomes null
+  // change data.checklists when dragging and target list index are diff from -1
+  $: if (
+    dragCurrState.dci !== -1
+    && dragCurrState.tci !== -1
+    && dragCurrState.dci !== dragCurrState.tci
+  ) {
+    data.checklists = switchElsPositionByIndex(
+      data.checklists,
+      dragCurrState.dci,
+      dragCurrState.tci,
+    ); // switch the items and return the new checklist array
+    dragCurrState.dci = dragCurrState.tci; // dragging checklist index becomes target checklist index
+    dragCurrState.tci = -1; // reset target checklist index
+    dragCurrState.dcEl = dragCurrState.tcEl; // dragging element becomes target element
+    dragCurrState.tcEl = null; // target element becomes null
   }
 
   // ###############################################################
@@ -240,41 +260,46 @@
 
   // change card position in the same list
   $: if (
-    tci == dici && // when  target and dragging item checklist is the same
-    dii != -1 && // when there is a dragging item
-    dii != tii && // when dragging item index is different from target item index
-    tii != -1 // and when there is a target item index
+    dragCurrState.tci === dragCurrState.dici // when  target and dragging item checklist is the same
+    && dragCurrState.dii !== -1 // when there is a dragging item
+    && dragCurrState.dii !== dragCurrState.tii // when drag index is diff from target index
+    && dragCurrState.tii !== -1 // and when there is a target item index
   ) {
-    const list = data.checklists[dici].items; // list cards data
-    data.checklists[dici].items = switchElsPositionByIndex(list, dii, tii); // switch cards an return the new list cards array
+    const list = data.checklists[dragCurrState.dici].items; // list cards data
+    data.checklists[dragCurrState.dici].items = switchElsPositionByIndex(
+      list, dragCurrState.dii,
+      dragCurrState.tii,
+    ); // switch cards an return the new list cards array
     resetVariablesAfterItemsChangingPosition(false);
 
-    // change item position in different checklists and target checklist are not empty
+  // change item position in diff checklists and target checklist are not empty
   } else if (
-    tci != dici && // when target checklist is different from dragging item checklist
-    tci != -1 && // when there is a target checklist
-    dii != -1 && // when there is a dragging item
-    tii != -1 && // and when there is a target item index
-    data.checklists[tci].items.length > 0 // and when target list is not empty
+    dragCurrState.tci !== dragCurrState.dici // when target checklist is diff from drag item checklist
+    && dragCurrState.tci !== -1 // when there is a target checklist
+    && dragCurrState.dii !== -1 // when there is a dragging item
+    && dragCurrState.tii !== -1 // and when there is a target item index
+    && data.checklists[dragCurrState.tci].items.length > 0 // and when target list is not empty
   ) {
-    const item = data.checklists[dici].items[dii]; // dragging item data
-    const targetChecklist = data.checklists[tci].items; // target checklist copy
-    targetChecklist.splice(tii, 0, item); // insert dragging item on targetChecklist (copy)
-    data.checklists[dici].items.splice(dii, 1); // remove dragging item from the original checklist
-    data.checklists[tci].items = [...targetChecklist]; // update target checkist with targetChecklist (updated copy)
+    const cItem = data.checklists[dragCurrState.dici].items[dragCurrState.dii]; // dragging item data
+    const targetChecklist = data.checklists[dragCurrState.tci].items; // target checklist copy
+    targetChecklist.splice(dragCurrState.tii, 0, cItem); // insert drag item on targetChecklist (copy)
+    data.checklists[dragCurrState.dici].items
+      .splice(dragCurrState.dii, 1); // remove dragging item from the original checklist
+    // update target checkist with targetChecklist (updated copy)
+    data.checklists[dragCurrState.tci].items = [...targetChecklist];
     resetVariablesAfterItemsChangingPosition(false);
-  }
 
-  // change card position in different lists and target list are empty
-  else if (
-    tci != -1 && // when there is a target list index
-    tci != dici && // when dragging card list index is different target list index
-    dii != -1 && // when there is a dragging card
-    data.checklists[tci].items.length == 0 // and when target list is not empty
+  // change card position in diff lists and target list are empty
+  } else if (
+    dragCurrState.tci !== -1 // when there is a target list index
+    && dragCurrState.tci !== dragCurrState.dici // when drag card list index is diff target list index
+    && dragCurrState.dii !== -1 // when there is a dragging card
+    && data.checklists[dragCurrState.tci].items.length === 0 // and when target list is not empty
   ) {
-    const card = data.checklists[dici].items[dii]; // dragging card data
-    data.checklists[tci].items = [card]; // empty target list receives dragging card
-    data.checklists[dici].items.splice(dii, 1); // remove dragging card from the original list
+    const card = data.checklists[dragCurrState.dici].items[dragCurrState.dii]; // dragging card data
+    data.checklists[dragCurrState.tci].items = [card]; // empty target list receives dragging card
+    data.checklists[dragCurrState.dici].items
+      .splice(dragCurrState.dii, 1); // remove dragging card from the original list
     resetVariablesAfterItemsChangingPosition(true);
   }
 </script>
@@ -282,16 +307,18 @@
 <Modal bind:opened={openAlertModal} --szot-modal-width="500px">
   <div slot="modal-header" class="header" />
   <div slot="modal-content" class="content remove-alert">
-    <h3>{texts.removeChecklistAlert[$lang]}</h3>
+    <h3>{texts.removeChecklistAlert}</h3>
   </div>
   <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
-      on:click={() => (openAlertModal = false)}
+      on:click={() => {
+        openAlertModal = false;
+      }}
       size="small"
       buttonStyleType="outline"
       buttonStyle="dark"
     >
-      {texts.cancel[$lang]}
+      {texts.cancel}
     </Button>
     <Button
       --szot-button-background-color="#CF513D"
@@ -303,7 +330,7 @@
         openAlertModal = false;
       }}
     >
-      {texts.removeChecklist[$lang]}
+      {texts.removeChecklist}
     </Button>
   </div>
 </Modal>
@@ -311,7 +338,7 @@
 {#if data.checklists.length > 0}
   <div class="section-title">
     <Icon iconName="check" --szot-icon-font-size="20px" />
-    <h2>{texts.checklists[$lang]}</h2>
+    <h2>{texts.checklists}</h2>
     <div class="item-btn" on:click={addChecklist}>
       <Icon iconName="plus" />
     </div>
@@ -319,8 +346,8 @@
 {/if}
 
 {#each data.checklists as checklist, ci}
-  {#if dci == ci}
-    <div class="section placeholder" style="height: {dch}px;" />
+  {#if dragCurrState.dci === ci}
+    <div class="section placeholder" style="height: {dragCurrState.dch}px;" />
   {/if}
 
   <div
@@ -331,9 +358,10 @@
     on:mouseout|self={onCheckListOut}
   >
     <div
-      class="section checklist-{ci}"
-      style="width: {dcw}px"
-      class:to-right={dci == ci}
+      id="checklist-{ci}"
+      class="section"
+      style="width: {dragCurrState.dcw}px"
+      class:to-right={dragCurrState.dci === ci}
     >
       <div class="section-title">
         <Icon iconName="checkbox-marked-outline" --szot-icon-font-size="20px" />
@@ -360,27 +388,32 @@
         <div class="bar-wrapper">
           <div
             style="width: {getDonesChecklistItems(checklist) * 100}%;"
-            class:full-bar={getDonesChecklistItems(checklist) == 1}
+            class:full-bar={getDonesChecklistItems(checklist) === 1}
           />
         </div>
       </div>
       {#each checklist.items as item, ii}
-        {#if dici == ci && dii == ii}
+        {#if dragCurrState.dici === ci && dragCurrState.dii === ii}
           <div
             class="checklist-item-container placeholder"
-            style="height: {dih}px"
+            style="height: {dragCurrState.dih}px"
           />
         {/if}
         <div
-          class="checklist-item-container item-{ci}-{ii}"
-          style="width: {diw}px"
-          class:to-right={dici == ci && dii == ii}
+          id="item-{ci}-{ii}"
+          class="checklist-item-container"
+          style="width: {dragCurrState.diw}px"
+          class:to-right={dragCurrState.dici === ci && dragCurrState.dii === ii}
           on:focus
           on:mouseover|self={() => onChecklistItemOver(ci, ii)}
           on:blur
-          on:mouseout|self={() => (tii = -1)}
+          on:mouseout|self={() => {
+            dragCurrState.tii = -1;
+          }}
         >
-          <div class="item-icon" on:click={() => (item.done = !item.done)}>
+          <div class="item-icon" on:click={() => {
+            item.done = !item.done;
+          }}>
             {#if !item.done}<Icon iconName="checkbox-blank-outline" />{/if}
             {#if item.done}
               <Icon
@@ -439,28 +472,30 @@
           buttonStyleType="outline"
           buttonStyle="dark"
         >
-          {texts.createCheckListItem[$lang]}
+          {texts.createCheckListItem}
         </Button>
       </div>
     </div>
   </div>
 {/each}
 
-{#if checklistIndex != -1 && checklistItemIndex != -1}
+{#if checklistIndex !== -1 && checklistItemIndex !== -1}
   <CardHandleUsersModal
     bind:list={data.members}
-    bind:data={data.checklists[checklistIndex].items[checklistItemIndex]}
+    bind:data={data.checklists[checklistIndex].items[checklistItemIndex].members}
     bind:opened={selectChecklistItemUserModalOpened}
   />
   <CardHandleDueDates
     bind:data={data.checklists[checklistIndex].items[checklistItemIndex]}
     bind:limits={data.dates}
     bind:opened={showDueDatesModal}
-    title={texts.checklistItemDates[$lang]}
+    title={texts.checklistItemDates}
   />
 {/if}
 
 <style lang="scss">
+  @use "src/components/Kanban/styles.scss";
+  @use "src/components/Kanban//Card/card-modal-styles.scss";
   .drag-el {
     cursor: grab;
   }

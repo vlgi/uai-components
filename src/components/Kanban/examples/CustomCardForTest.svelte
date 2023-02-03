@@ -1,10 +1,16 @@
 <script lang="ts">
-  export let data;
+  import type { TCustomCard } from "../data/board-data-custom-card";
+
+  export let data: TCustomCard;
+
   $: showTags = false;
-  $: showTags &&
+
+  $: if (showTags) {
     setTimeout(() => {
       showTags = false;
     }, 5000);
+  }
+
 </script>
 
 <div class="custom-card-container">
@@ -13,24 +19,37 @@
       class="editable"
       contenteditable="true"
       bind:textContent={data.title}
-      on:focus={() => (showTags = true)}
+      on:focus={() => {
+        showTags = true;
+      }}
     />
-    <span on:click|self={() => alert("clicked")}>...</span>
+    <span
+      on:click|self={() => {
+        // eslint-disable-next-line no-alert
+        alert("clicked");
+      }}
+    >
+      ...
+    </span>
   </div>
-  {#if showTags || data.desc != ""}
+  {#if showTags || data.description !== ""}
     <div
       class="desc editable"
       contenteditable="true"
       bind:textContent={data.description}
-      on:focus={() => (showTags = true)}
+      on:focus={() => {
+        showTags = true;
+      }}
     />
   {/if}
-  {#if showTags || data.text != ""}
+  {#if showTags || data.text !== ""}
     <div
       class="text editable"
       contenteditable="true"
       bind:textContent={data.text}
-      on:focus={() => (showTags = true)}
+      on:focus={() => {
+        showTags = true;
+      }}
     />
   {/if}
 </div>

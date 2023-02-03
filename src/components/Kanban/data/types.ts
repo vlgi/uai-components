@@ -16,6 +16,11 @@ export type TCardUser = {
     email: string;
 }
 
+export type TLoggedUser = {
+  user: TCardUser;
+  permissions: unknown[];
+}
+
 export type TCardChecklistItem = {
     title: string;
     members: TCardUser[];
@@ -41,10 +46,10 @@ export type TCardComment = {
     date: Date;
 }
 
-export type TCard = {
+export type TDefautCard = {
     title: string;
-    allChecklistsItems: TCardCheckList[];
-    allDoneChecklistsItems: TCardCheckList[];
+    allChecklistsItems: TCardChecklistItem[];
+    allDoneChecklistsItems: TCardChecklistItem[];
     checklists: TCardCheckList[];
     members: TCardUser[];
     comments: TCardComment[];
@@ -56,12 +61,17 @@ export type TCard = {
 
 export type TList = {
     title: string;
-    cards: TCard[];
+    cards: TDefautCard[];
+}
+
+export type TCustomCard = {
+  title: string;
+  [key: string]: unknown;
 }
 
 export type TCustomList = {
     title: string;
-    cards: any[];
+    cards: TCustomCard[];
 }
 
 export type TColor = {
@@ -74,7 +84,7 @@ export type TBoard = {
     backgroundImage: string;
     logged: {
         user: TCardUser,
-        permissions: any[]
+        permissions: unknown[]
     },
     lists: TList[];
 }
@@ -83,4 +93,14 @@ export type TCustomBoard = {
     title: string;
     backgroundImage: string;
     lists: TCustomList[];
+}
+
+export type TPosition = {
+  x: number;
+  y: number;
+}
+
+export type TMouseDirection = {
+  x: "left" | "right";
+  y: "up" | "down";
 }

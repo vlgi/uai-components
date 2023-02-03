@@ -1,0 +1,60 @@
+section {
+  display: flex;
+  flex-direction: column;
+  width: 99%;
+  gap: 5px;
+}
+
+.section-title {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.section-title {
+
+  h1,
+  h2,
+  h3 {
+    width: 100%;
+    text-align: start;
+  }
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.section-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.add-btn {
+  display: flex;
+  width: fit-content;
+  height: 100%;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  opacity: 0.8;
+}
+
+.item-btn {
+  padding: 0 5px;
+  border-radius: 5px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.item-btn:hover {
+  background: #ddd;
+}

@@ -1,20 +1,17 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import type { TCard, TDueDates, TCardChecklistItem } from "../data/types";
+  import type { TDefautCard, TDueDates, TCardChecklistItem } from "../data/types";
   import { texts } from "../data/components-texts";
   import { dateObjToHtmlString } from "../utils";
 
-  let empty: TDueDates = {
+  const empty: TDueDates = {
     startDate: null,
     dueDate: null,
     dueReminder: null,
   };
-  // store
-
-  import { lang } from "../stores";
 
   // props
-  export let data: TCard | TCardChecklistItem;
+  export let data: TDefautCard | TCardChecklistItem;
   export let opened = false; // card handle colors modal opened boolean
   export let title: string;
   export let limits: TDueDates = { ...empty };
@@ -25,10 +22,10 @@
   import Input from "../../formFields/Input/Input.svelte";
 
   let oldData: TDueDates = { ...empty };
-  $: newData = { ...empty };
+  let newData: TDueDates = { ...empty };
 
-  function handleDates(e): void {
-    newData[e.target.name] = new Date(e.target.value);
+  function handleDates(e: InputEvent) {
+    newData[(e.target as HTMLInputElement).name] = new Date((e.target as HTMLInputElement).value);
   }
 
   function cancelAdding() {
@@ -41,20 +38,16 @@
     newData = { ...data.dates };
   });
 
-  $: boolText =
-    data.dates.startDate || data.dates.dueReminder || data.dates.dueDate;
+  $: boolText = data.dates.startDate || data.dates.dueReminder || data.dates.dueDate;
 
-  $: isStartDateInvalid =
-    newData.startDate > newData.dueDate ||
-    (limits.dueDate != null && newData.startDate < limits.startDate);
+  $: isStartDateInvalid = newData.startDate > newData.dueDate
+  || (limits.dueDate != null && newData.startDate < limits.startDate);
 
-  $: isDueDateInvalid =
-    newData.dueDate < newData.startDate ||
-    (limits.dueDate != null && newData.dueDate > limits.dueDate);
+  $: isDueDateInvalid = newData.dueDate < newData.startDate
+  || (limits.dueDate != null && newData.dueDate > limits.dueDate);
 
-  $: isReminderDateInvalid =
-    newData.dueReminder > newData.dueDate ||
-    newData.dueReminder < newData.startDate;
+  $: isReminderDateInvalid = newData.dueReminder > newData.dueDate
+  || newData.dueReminder < newData.startDate;
 </script>
 
 <Modal bind:opened --szot-modal-width="500px" --szot-modal-max-width="90vw">
@@ -64,39 +57,39 @@
     <div>{data.title}</div>
     <Input
       name="startDate"
-      errorMsg={texts.invalidStartDate[$lang]}
+      errorMsg={texts.invalidStartDate}
       forceInvalid={isStartDateInvalid}
       inputAttributes={{
         max: dateObjToHtmlString(new Date(newData.dueDate), "pt-BR"),
         min: dateObjToHtmlString(new Date(limits.startDate), "pt-BR"),
       }}
-      label={texts.startDate[$lang]}
+      label={texts.startDate}
       type="datetime-local"
       value={dateObjToHtmlString(new Date(newData.startDate), "pt-BR")}
       on:change={handleDates}
     />
     <Input
       name="dueDate"
-      errorMsg={texts.invalidDueDate[$lang]}
+      errorMsg={texts.invalidDueDate}
       forceInvalid={isDueDateInvalid}
       inputAttributes={{
         max: dateObjToHtmlString(new Date(limits.dueDate), "pt-BR"),
         min: dateObjToHtmlString(new Date(limits.startDate), "pt-BR"),
       }}
-      label={texts.dueDate[$lang]}
+      label={texts.dueDate}
       type="datetime-local"
       value={dateObjToHtmlString(new Date(newData.dueDate), "pt-BR")}
       on:change={handleDates}
     />
     <Input
       name="dueReminder"
-      errorMsg={texts.invalidReminderDate[$lang]}
+      errorMsg={texts.invalidReminderDate}
       forceInvalid={isReminderDateInvalid}
       inputAttributes={{
         max: dateObjToHtmlString(new Date(newData.dueDate), "pt-BR"),
         min: dateObjToHtmlString(new Date(limits.startDate), "pt-BR"),
       }}
-      label={texts.reminderDate[$lang]}
+      label={texts.reminderDate}
       type="datetime-local"
       value={dateObjToHtmlString(new Date(newData.dueReminder), "pt-BR")}
       on:change={handleDates}
@@ -109,7 +102,7 @@
       buttonStyleType="outline"
       buttonStyle="dark"
     >
-      <span>{texts.cancel[$lang]}</span>
+      <span>{texts.cancel}</span>
     </Button>
     <Button
       on:click={() => {
@@ -122,9 +115,9 @@
       buttonStyle="dark"
     >
       {#if boolText}
-        {texts.edit[$lang]}
+        {texts.edit}
       {:else}
-        {texts.add[$lang]}
+        {texts.add}
       {/if}
     </Button>
   </div>

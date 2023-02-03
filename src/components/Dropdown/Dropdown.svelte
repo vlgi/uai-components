@@ -41,7 +41,7 @@
     const dropdownRect = dropdownElement.getBoundingClientRect();
     const validAlignments = getValidDropdownAlignments(
       triggerElement,
-      dropdownRect
+      dropdownRect,
     );
 
     if (count > 1) throw new Error("Infinit loop at setDropdownPosition");
@@ -50,7 +50,7 @@
       const { top, left } = getDropdownPosition(
         _dropdownAlignment,
         triggerRect,
-        dropdownRect
+        dropdownRect,
       );
       selectedDropdownAlignment = _dropdownAlignment;
 
@@ -61,7 +61,7 @@
     } else if (validAlignments.length > 0) {
       const betterAlignment = getBestValidAlignment(
         _dropdownAlignment,
-        validAlignments
+        validAlignments,
       );
       setDropdownPosition(betterAlignment, count + 1);
     } else {
@@ -102,8 +102,9 @@
 
   onMount(() => {
     triggerElement = document.querySelector(`#${targetId}`);
-    if (!triggerElement)
+    if (!triggerElement) {
       throw new Error(`Trigger element not found with id: ${targetId}`);
+    }
     triggerElement.addEventListener("click", open);
   });
 

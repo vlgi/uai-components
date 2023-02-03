@@ -5,8 +5,13 @@
   // components
   import Modal from "../../Modal/Modal.svelte";
 
-  export let data: TCardUser; // user data
+  export let data: TCardUser = {
+    name: "",
+    photo: "",
+    email: "",
+  }; // user data
   export let info = false;
+  export let number = -1;
 
   $: openModal = false;
 </script>
@@ -19,7 +24,7 @@
       style="background-image: url({data.photo}); height: 100px; width: 100px;"
       title={`${data.name} (${data.email})`}
     >
-      {#if data.photo == ""}{returnInitialsNames(data.name)}{/if}
+      {#if data.photo === ""}{returnInitialsNames(data.name)}{/if}
     </div>
     <div class="user-info">
       <h3>{data.name}</h3>
@@ -37,7 +42,8 @@
     if (info) openModal = true;
   }}
 >
-  {#if data.photo == ""}{returnInitialsNames(data.name)}{/if}
+  {#if data.photo === ""}{returnInitialsNames(data.name)}{/if}
+  {#if number !== -1}+{number}{/if}
 </div>
 
 <style lang="scss">

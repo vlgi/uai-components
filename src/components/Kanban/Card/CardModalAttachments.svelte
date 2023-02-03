@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { texts } from "../data/components-texts";
-  import { getCover, getFilenameFromUrl } from "../utils";
   import { onDestroy, onMount } from "svelte";
+  import type { TCardAttachment, TLoggedUser, TCardUser } from "../data/types";
+  import { texts } from "../data/components-texts";
+  import { getFilenameFromUrl } from "../utils";
 
   // stores
-  import { lang, logged } from "../stores";
-
-  import { isImage } from "../utils";
+  import { logged } from "../stores";
 
   // components
   import Icon from "../../Icon/Icon.svelte";
@@ -14,32 +13,36 @@
   import Button from "../../formFields/Button/Button.svelte";
   import ThumbPreview from "./ThumbPreview.svelte";
 
-  export let data;
+  export let data: TCardAttachment[];
   export let showAdd = false;
   export let isCover = false;
 
-  let inpt;
+  let inpt: HTMLInputElement;
+  let openAlertModal = false;
+  let indexToDelete = -1;
+  let filesPath: string[] = [];
+  const loggedUser = $logged as TLoggedUser;
 
-  function removeAtt(i: number, arr) {
-    const atts = [...arr];
+  function removeAtt<T>(i: number, arr: T[]) {
+    const atts: T[] = [...arr];
     atts.splice(i, 1);
     return atts;
   }
 
-  function getFile(e): void {
-    const files = Array.from(e.target.files).map((f) => URL.createObjectURL(f));
+  function getFile(e: Event): void {
+    const files = Array.from((e.target as HTMLInputElement).files)
+      .map((f) => URL.createObjectURL(f));
     filesPath = [...filesPath, ...files];
   }
 
   function addFiles(): void {
-    const files = filesPath.map((f) => {
-      return {
-        url: f,
-        date: new Date(),
-        user: { ...$logged.user },
-        isCover,
-      };
-    });
+    const files = filesPath.map((f) => ({
+      url: f,
+      date: new Date(),
+      user: { ...loggedUser.user },
+      isCover,
+    }));
+
     for (let index = 0; index < data.length; index++) {
       if (data[index].isCover) data[index].isCover = false;
       break;
@@ -63,17 +66,18 @@
     data[i].isCover = true;
   }
 
+  function getAttUser(att: TCardAttachment): TCardUser {
+    return att.user;
+  }
+
   onDestroy(() => {
     document.body.removeEventListener("onfocus", handleInputEl);
   });
 
   onMount(() => {
-    inpt = document.getElementById(`input-files-id`);
+    inpt = document.getElementById("input-files-id") as HTMLInputElement;
   });
 
-  $: openAlertModal = false;
-  $: indexToDelete = -1;
-  $: filesPath = [];
   $: if (showAdd) inpt.click();
 </script>
 
@@ -88,16 +92,18 @@
 <Modal bind:opened={openAlertModal} --szot-modal-width="500px">
   <div slot="modal-header" class="header" />
   <div slot="modal-content" class="content remove-alert">
-    <h3>{texts.removeAttachmentAlert[$lang]}</h3>
+    <h3>{texts.removeAttachmentAlert}</h3>
   </div>
   <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
-      on:click={() => (openAlertModal = false)}
+      on:click={() => {
+        openAlertModal = false;
+      }}
       size="small"
       buttonStyleType="outline"
       buttonStyle="dark"
     >
-      <span>{texts.cancel[$lang]}</span>
+      <span>{texts.cancel}</span>
     </Button>
     <Button
       --szot-button-background-color="#CF513D"
@@ -109,7 +115,7 @@
         openAlertModal = false;
       }}
     >
-      <span>{texts.removeAttachment[$lang]}</span>
+      <span>{texts.removeAttachment}</span>
     </Button>
   </div>
 </Modal>
@@ -117,7 +123,7 @@
 {#if data.length > 0}
   <div class="section-title">
     <Icon iconName="attachment" --szot-icon-font-size="20px" />
-    <h2>{texts.attachments[$lang]}</h2>
+    <h2>{texts.attachments}</h2>
     <div class="item-btn" on:click={() => inpt.click()}>
       <Icon iconName="plus" />
     </div>
@@ -132,7 +138,9 @@
           <div class="thumb-preview">
             <div
               class="item-btn"
-              on:click={() => (filesPath = removeAtt(fi, filesPath))}
+              on:click={() => {
+                filesPath = removeAtt(fi, filesPath);
+              }}
             >
               <Icon iconName="trash-can-outline" />
             </div>
@@ -151,18 +159,20 @@
         size="small"
         buttonStyleType="outline"
         buttonStyle="dark"
-        on:click={() => (filesPath = [])}
+        on:click={() => {
+          filesPath = [];
+        }}
       >
-        {texts.cancel[$lang]}
+        {texts.cancel}
       </Button>
       <Button
         size="small"
         buttonStyleType="filled"
         buttonStyle="dark"
-        disabled={filesPath.length == 0}
+        disabled={filesPath.length === 0}
         on:click={addFiles}
       >
-        {texts.add[$lang]}
+        {texts.add}
       </Button>
     </div>
   </div>
@@ -180,15 +190,15 @@
     </a>
     <div class="attachment-info">
       <span>{getFilenameFromUrl(att.url)}</span>
-      {#if att.user.name != ""}
-        <span>{texts.addedBy[$lang]}: {att.user.name}</span>
+      {#if getAttUser(att).name !== ""}
+        <span>{texts.addedBy}: {getAttUser(att).name}</span>
       {/if}
       <span>{att.date}</span>
     </div>
     <div class="att-btns-container">
       <div
         class="item-btn"
-        title={texts.remove[$lang]}
+        title={texts.remove}
         on:click={() => {
           openAlertModal = true;
           indexToDelete = index;
@@ -199,7 +209,7 @@
       {#if !att.isCover}
         <div
           class="item-btn"
-          title={texts.cover[$lang]}
+          title={texts.cover}
           on:click={() => makeCover(index)}
         >
           <Icon iconName="image" />
@@ -210,6 +220,7 @@
 {/each}
 
 <style lang="scss">
+  @use "src/components/Kanban//Card/card-modal-styles.scss";
   #input-files-id {
     display: none;
   }

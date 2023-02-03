@@ -3,9 +3,6 @@
   import { texts } from "../data/components-texts";
   import { checkIfItemIsInArray } from "../utils";
 
-  // stores
-  import { lang } from "../stores";
-
   // components
   import SearchInput from "../../formFields/SearchInput/SearchInput.svelte";
   import Modal from "../../Modal/Modal.svelte";
@@ -13,18 +10,20 @@
   import CardUserAvatar from "./CardUserAvatar.svelte";
 
   // props
-  export let data;
+  export let data: TCardUser[];
   export let opened = false;
   export let list: TCardUser[];
 
-  function handleCardUser(user): void {
-    const check = checkIfItemIsInArray(user, data.members);
-    const members = data.members;
+  let filtered: TCardUser[];
+
+  function handleCardUser(user: TCardUser): void {
+    const check = checkIfItemIsInArray(user, data);
+    const members = [...data];
     if (check.isInIt) {
       members.splice(check.index, 1);
-      data.members = [...members];
+      data = [...members];
     }
-    if (!check.isInIt) data.members = [...data.members, user];
+    if (!check.isInIt) data = [...data, user];
     filtered = [...filtered];
   }
 
@@ -40,7 +39,7 @@
       searchQuery=""
       searchable={["name"]}
       name="search"
-      placeholder={texts.searchUserPlaceholder[$lang]}
+      placeholder={texts.searchUserPlaceholder}
     />
     <div class="filtered-users">
       {#each filtered as user}
@@ -50,7 +49,7 @@
             <span>{user.name}</span>
             <span>{user.email}</span>
           </div>
-          {#if checkIfItemIsInArray(user, data.members).isInIt}
+          {#if checkIfItemIsInArray(user, data).isInIt}
             <Icon iconName="check" />
           {/if}
         </div>

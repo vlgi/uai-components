@@ -1,15 +1,24 @@
-import type { TBoard, TCard, TCardLabel, TCardChecklistItem, TCardCheckList, TDueDates, TList } from "./types"
+import type {
+  TLoggedUser,
+  TBoard,
+  TDefautCard,
+  TCardLabel,
+  TCardChecklistItem,
+  TCardCheckList,
+  TDueDates,
+  TList,
+} from "./types";
 
-export const logged = {
+export const logged: TLoggedUser = {
   user: {
     name: "",
     photo: "",
     email: "",
   },
-  permissions: []
-}
+  permissions: [],
+};
 
-export const card: TCard = {
+export const card: TDefautCard = {
   title: "",
   allChecklistsItems: [],
   allDoneChecklistsItems: [],
@@ -26,40 +35,39 @@ export const card: TCard = {
   desc: "",
 };
 
-
 export const label: TCardLabel = {
   hex: "",
   color: "",
   title: "",
-}
+};
 
 export const checklist: TCardCheckList = {
   title: "",
-  items: []
-}
+  items: [],
+};
 
 const date: TDueDates = {
   startDate: null,
   dueDate: null,
-  dueReminder: null
-}
+  dueReminder: null,
+};
 
 export const item: TCardChecklistItem = {
   title: "",
   members: [],
   done: false,
-  dates: { ...date }
-}
+  dates: { ...date },
+};
 
 export const list: TList = {
   title: "",
   cards: [],
-}
+};
 
 export const customCard = {
   title: "",
   desc: "",
-}
+};
 
 export const boardDefault: TBoard = {
   title: "EMPTY BOARD DEFAULT CARD EXAMPLE",
@@ -68,12 +76,12 @@ export const boardDefault: TBoard = {
     user: {
       name: "Christ Ryan",
       photo: "https://images.pexels.com/photos/2020992/pexels-photo-2020992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      email: "christ.ryan@szot.com"
+      email: "christ.ryan@szot.com",
     },
-    permissions: []
+    permissions: [],
   },
   lists: [],
-}
+};
 
 export const boardCustom: TBoard = {
   title: "EMPTY BOARD CUSTOM CARD EXAMPLE",
@@ -82,9 +90,9 @@ export const boardCustom: TBoard = {
     user: {
       name: "Christ Ryan",
       photo: "https://images.pexels.com/photos/2020992/pexels-photo-2020992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      email: "christ.ryan@szot.com"
+      email: "christ.ryan@szot.com",
     },
-    permissions: []
+    permissions: [],
   },
   lists: [],
-}
+};

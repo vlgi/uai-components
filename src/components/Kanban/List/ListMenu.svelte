@@ -1,11 +1,15 @@
 <script lang="ts">
-  import type { TBoard, TCustomBoard, TList } from "../data/types";
-  import { texts } from "../data/components-texts";
   import { tick } from "svelte";
-  import { changeElPositionByIndex } from "../utils";
 
-  // stores
-  import { lang } from "../stores";
+  import type {
+    TBoard,
+    TCustomBoard,
+    TList,
+    TCustomList,
+  } from "../data/types";
+
+  import { texts } from "../data/components-texts";
+  import { changeElPositionByIndex } from "../utils";
 
   // components
   import Button from "../../formFields/Button/Button.svelte";
@@ -15,7 +19,7 @@
   import Icon from "../../Icon/Icon.svelte";
 
   // list props
-  export let data: TList; // list data
+  export let data: TList | TCustomList; // list data
   export let boardData: TBoard | TCustomBoard;
   export let li: number; // list index
   export let addingCard: boolean; //
@@ -26,7 +30,16 @@
   export let canCreateList = true; // create list boolean
   export let canDeleteList = true; // create list boolean
 
-  async function copyList(): Promise<any> {
+  let funcAction: ()=> void;
+  let actionAlertBtnText = "";
+  let alertText = "";
+  const indexListToChange = -1;
+  let isBtnEnable = false;
+  let openAlertModal = false;
+  let targetListIndex = -1;
+  const listPositions: { text: string }[] = boardData.lists.map((list, index: number) => ({ text: `${index}` }));
+
+  async function copyList() {
     const lists = [...boardData.lists];
     const list = { ...data };
     lists.splice(li, 0, list);
@@ -36,16 +49,17 @@
     el.focus();
   }
 
-  function moveListPosition(): void {
-    if (indexListToChange == -1) return;
+  function moveListPosition() {
+    if (indexListToChange === -1) return;
     boardData.lists = changeElPositionByIndex(
       boardData.lists,
       li,
-      indexListToChange
+      indexListToChange,
     );
   }
 
-  function moveAllCards(): void {
+  function moveAllCards() {
+    if (targetListIndex === -1) return;
     const targetListCards = boardData.lists[targetListIndex].cards;
     const provideListCards = data.cards;
     boardData.lists[targetListIndex].cards = [
@@ -55,44 +69,38 @@
     data.cards = [];
   }
 
-  function deleteAllCards(): void {
+  function deleteAllCards() {
     data.cards = [];
   }
 
-  function deleteList(): void {
+  function deleteList() {
     const lists = [...boardData.lists];
     lists.splice(li, 1);
     boardData.lists = [...lists];
   }
 
-  $: funcAction = null;
-  $: openAlertModal = false;
-  $: alertText = "";
-  $: actionAlertBtnText = "";
-  $: targetListIndex = -1;
-  $: isBtnEnable = false;
-  $: indexListToChange = -1;
-  $: listPositions = boardData.lists.map((list, index) => {
-    return { text: `${index}` };
-  });
 </script>
 
 <div style="z-index: 2;">
   <Dropdown
     targetId="open-list-menu-{li}"
     enableAutAdjust={false}
-    dropdownAlignment="bottomLeft"
+    dropdownAlignment="bottomRight"
     --szot-dropdown-padding="0"
   >
     <div class="drop-menu-container">
       <div class="drop-menu-section">
-        {texts.listAction[$lang]}
+        {texts.listAction}
       </div>
       <div class="divider" />
 
       {#if canCreateCard}
-        <div class="item" on:click={() => (addingCard = true)}>
-          {texts.createCard[$lang]}
+        <div class="item"
+          on:click={() => {
+            addingCard = true;
+          }}
+          >
+          {texts.createCard}
         </div>
         <div class="divider" />
       {/if}
@@ -103,11 +111,11 @@
           on:click={() => {
             funcAction = moveAllCards;
             openAlertModal = true;
-            alertText = texts.moveAllCardsAlert[$lang];
-            actionAlertBtnText = texts.move[$lang];
+            alertText = texts.moveAllCardsAlert;
+            actionAlertBtnText = texts.move;
           }}
         >
-          {texts.moveAllCards[$lang]}
+          {texts.moveAllCards}
         </div>
       {/if}
       {#if canDeleteCard}
@@ -116,12 +124,12 @@
           on:click={() => {
             funcAction = deleteAllCards;
             openAlertModal = true;
-            alertText = texts.deleteAllCardsFromListAlert[$lang];
-            actionAlertBtnText = texts.remove[$lang];
+            alertText = texts.deleteAllCardsFromListAlert;
+            actionAlertBtnText = texts.remove;
             isBtnEnable = true;
           }}
         >
-          {texts.deleteAllCardsFromList[$lang]}
+          {texts.deleteAllCardsFromList}
         </div>
       {/if}
       {#if canMoveCard || canDeleteCard}
@@ -133,12 +141,12 @@
           on:click={() => {
             funcAction = copyList;
             openAlertModal = true;
-            alertText = texts.copyListAlert[$lang];
-            actionAlertBtnText = texts.copy[$lang];
+            alertText = texts.copyListAlert;
+            actionAlertBtnText = texts.copy;
             isBtnEnable = true;
           }}
         >
-          {texts.copyList[$lang]}
+          {texts.copyList}
         </div>
       {/if}
 
@@ -148,12 +156,12 @@
           on:click={() => {
             funcAction = moveListPosition;
             openAlertModal = true;
-            alertText = texts.changeListPositionAlert[$lang];
-            actionAlertBtnText = texts.move[$lang];
+            alertText = texts.changeListPositionAlert;
+            actionAlertBtnText = texts.move;
             isBtnEnable = true;
           }}
         >
-          {texts.changeListPosition[$lang]}
+          {texts.changeListPosition}
         </div>
       {/if}
       {#if canMoveList || canCreateList}
@@ -166,12 +174,12 @@
           on:click={() => {
             funcAction = deleteList;
             openAlertModal = true;
-            alertText = texts.removeListAlert[$lang];
-            actionAlertBtnText = texts.remove[$lang];
+            alertText = texts.removeListAlert;
+            actionAlertBtnText = texts.remove;
             isBtnEnable = true;
           }}
         >
-          {texts.removeList[$lang]}
+          {texts.removeList}
         </div>
       {/if}
     </div>
@@ -188,54 +196,52 @@
     <div slot="modal-header" class="header" />
     <div slot="modal-content" class="content">
       <h3>{alertText}</h3>
-      {#if alertText == texts.moveAllCardsAlert[$lang]}
+      {#if alertText === texts.moveAllCardsAlert}
         <div class="all-lists-options drop-menu-container">
           {#each boardData.lists as list, index}
             <div
               class="item"
-              class:disabled={li == index}
-              class:selected={targetListIndex == index}
+              class:disabled={li === index}
+              class:selected={targetListIndex === index}
               on:click={() => {
                 targetListIndex = index;
-                isBtnEnable =
-                  targetListIndex != -1 &&
-                  targetListIndex != li &&
-                  data.cards.length > 0
-                    ? true
-                    : false;
+                isBtnEnable = !!(targetListIndex !== -1
+                  && targetListIndex !== li
+                  && data.cards.length > 0);
               }}
             >
               <span
                 >{list.title}
-                {#if li == index} ({texts.curr[$lang]}){/if}</span
+                {#if li === index} ({texts.curr}){/if}</span
               >
-              {#if targetListIndex == index}
+              {#if targetListIndex === index}
                 <Icon iconName="check" --szot-icon-font-size="15px" />
               {/if}
             </div>
           {/each}
         </div>
       {/if}
-      {#if alertText == texts.changeListPositionAlert[$lang]}
+      {#if alertText === texts.changeListPositionAlert}
         <Select
           id="list-position"
           name="list-position"
           required={true}
           options={listPositions}
-          label={texts.listPosition[$lang]}
-          selected={listPositions[li]}
-          on:changeSelected={(e) => (indexListToChange = e.detail.text)}
+          label={texts.listPosition}
+          bind:selected={listPositions[li]}
         />
       {/if}
     </div>
     <div slot="modal-footer" class="footer modal-alert-footer">
       <Button
-        on:click={() => (openAlertModal = false)}
+        on:click={() => {
+          openAlertModal = false;
+        }}
         size="small"
         buttonStyleType="outline"
         buttonStyle="dark"
       >
-        {texts.cancel[$lang]}
+        {texts.cancel}
       </Button>
       <Button
         --szot-button-background-color="#CF513D"
@@ -255,6 +261,8 @@
 </div>
 
 <style lang="scss">
+  @use "src/components/Kanban/menu.scss";
+  @use "src/components/Kanban/styles.scss";
   .lane:first-child {
     padding-left: var(--target-padding);
   }
@@ -269,6 +277,8 @@
   }
 
   .all-lists-options {
-    max-width: 500px;
+    width: 500px;
+    max-width: 80vw;
   }
 </style>
+

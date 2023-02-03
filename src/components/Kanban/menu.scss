@@ -1,0 +1,44 @@
+.drop-menu-container {
+  min-width: 200px;
+  max-width: 300px;
+  padding: 5px;
+  font-size: 13px;
+}
+
+.divider,
+.drop-menu-section {
+  margin: 5px 0;
+  opacity: 0.6;
+}
+
+.divider {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid #aaa;
+}
+
+.item,
+.drop-menu-section {
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: var(--radius-pattern);
+
+  &:hover {
+    background: #eee;
+  }
+}
+
+.drop-menu-section {
+  text-align: center;
+}
+
+.item-alert {
+  color: #cf513d;
+}

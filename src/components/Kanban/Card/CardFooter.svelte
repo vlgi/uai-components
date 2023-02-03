@@ -1,35 +1,33 @@
 <script lang="ts">
   import { texts } from "../data/components-texts";
-
-  // stores
-  import { lang } from "../stores";
+  import type { TDefautCard } from "../data/types";
 
   // components
   import Icon from "../../Icon/Icon.svelte";
   import CardUserAvatar from "./CardUserAvatar.svelte";
 
   // props
-  export let data;
+  export let data: TDefautCard;
 </script>
 
 <div class="card-footer">
   <div class="card-footer-info">
-    {#if data.desc != ""}
-      <div class="card-footer-item" title={texts.hasDesc[$lang]}>
-        <Icon iconName="text" />
+    {#if data.desc !== ""}
+      <div class="card-footer-item" title={texts.hasDesc}>
+        <Icon iconName="text" --szot-icon-font-size="15px"/>
       </div>
     {/if}
     {#if data.comments.length > 0}
-      <div class="card-footer-item" title={texts.hasComments[$lang]}>
-        <Icon iconName="chat-outline" />
+      <div class="card-footer-item" title={texts.hasComments}>
+        <Icon iconName="chat-outline" --szot-icon-font-size="15px"/>
         <span>
           {data.comments.length}
         </span>
       </div>
     {/if}
     {#if data.allChecklistsItems.length > 0}
-      <div class="card-footer-item" title={texts.hasChecklists[$lang]}>
-        <Icon iconName="checkbox-marked-outline" />
+      <div class="card-footer-item" title={texts.hasChecklists}>
+        <Icon iconName="checkbox-marked-outline" --szot-icon-font-size="15px"/>
         <span>
           {data.allDoneChecklistsItems.length} /
           {data.allChecklistsItems.length}
@@ -37,8 +35,8 @@
       </div>
     {/if}
     {#if data.attachments.length > 0}
-      <div class="card-footer-item" title={texts.hasAttachments[$lang]}>
-        <Icon iconName="attachment" />
+      <div class="card-footer-item" title={texts.hasAttachments}>
+        <Icon iconName="attachment" --szot-icon-font-size="15px"/>
         <span>
           {data.attachments.length}
         </span>
@@ -47,11 +45,16 @@
   </div>
   <div class="card-footer-users">
     {#if data.members.length > 0}
-      {#each data.members.slice(0, 5).reverse() as member}
+      {#each data.members.slice(0, 3).reverse() as member}
         <div class="user-avatar-container">
           <CardUserAvatar data={member} />
         </div>
       {/each}
+      {#if data.members.length > 3 }
+        <div class="user-avatar-container">
+          <CardUserAvatar number={data.members.length - 3} />
+        </div>
+      {/if}
     {/if}
   </div>
 </div>
@@ -67,7 +70,7 @@
     .card-footer-info {
       display: grid;
       grid-auto-flow: column;
-      gap: 1rem; // change
+      gap: .6rem; // change
 
       .card-footer-item {
         display: grid;
@@ -87,7 +90,7 @@
       grid-auto-flow: column;
 
       .user-avatar-container {
-        margin-left: -15px;
+        margin-left: -17px;
       }
     }
   }

@@ -1,10 +1,9 @@
 <script lang="ts">
-  import type { TCard, TBoard, TCustomBoard, TCardLabel } from "../data/types";
+  import type {
+    TDefautCard, TBoard, TCustomBoard, TCardLabel,
+  } from "../data/types";
   import { texts } from "../data/components-texts";
-  import { checkIfItemIsInArray } from "../utils";
-
-  // stores
-  import { lang } from "../stores";
+  import { checkIfItemIsInArray, compareObjects } from "../utils";
 
   // components
   import CardHandleLabelsColorsModal from "./CardHandleLabelsColorsModal.svelte";
@@ -13,10 +12,10 @@
   import Icon from "../../Icon/Icon.svelte";
 
   // props
-  export let data; // label data from card
+  export let data: TCardLabel; // label data from card
   export let boardData: TBoard | TCustomBoard = null;
   export let labelsData: TCardLabel[] = [];
-  export let cardData: TCard; // label card data
+  export let cardData: TDefautCard; // label card data
   export let showIcon = false; // show icon boolean
   export let canEditText = false;
   export let icon = ""; // label icon
@@ -24,12 +23,15 @@
   export let focus = false; // label span text focus to edit
   export let canSelect = false; // can click and select label
 
+  let openModal = false;
+  let showRemoveLabelsAlert = false;
+
   // remove label from board props labels (board avaiable labels) and from all cads
   function removeLabel(): void {
     // remove label from all labels stores
     const allTags = [...labelsData];
     labelsData.forEach((label, i) => {
-      if (JSON.stringify(label) === JSON.stringify(data)) {
+      if (compareObjects(label, data)) {
         allTags.splice(i, 1);
         labelsData = allTags;
       }
@@ -41,7 +43,7 @@
       list.cards.forEach((card) => {
         card.labels.forEach((label, i) => {
           const labels = [...card.labels];
-          if (JSON.stringify(label) === JSON.stringify(data)) {
+          if (compareObjects(label, data)) {
             labels.splice(i, 1);
             card.labels = [...labels];
           }
@@ -62,8 +64,6 @@
     if (!check.isInIt) cardData.labels = [...cardData.labels, data];
   }
 
-  $: openModal = false;
-  $: showRemoveLabelsAlert = false;
   $: if (focus) document.getElementById("label-editable")?.focus();
 </script>
 
@@ -71,7 +71,9 @@
   {#if allowEdit}
     <div
       class="card-edit-btn"
-      on:click={() => (openModal = true)}
+      on:click={() => {
+        openModal = true;
+      }}
       style="background-color: {data.hex}4e"
     >
       <Icon iconName="square-edit-outline" --szot-icon-font-size="15px" />
@@ -88,7 +90,9 @@
       <!-- svelte-ignore a11y-autofocus -->
       <span
         autofocus
-        on:focusout={() => (focus = false)}
+        on:focusout={() => {
+          focus = false;
+        }}
         id="label-editable"
         class="editable"
         contenteditable="true"
@@ -109,7 +113,9 @@
   {#if allowEdit}
     <div
       class="card-remove-btn"
-      on:click={() => (showRemoveLabelsAlert = true)}
+      on:click={() => {
+        showRemoveLabelsAlert = true;
+      }}
       style="background-color: {data.hex}4e"
     >
       <Icon iconName="trash-can-outline" --szot-icon-font-size="15px" />
@@ -128,23 +134,25 @@
 <Modal bind:opened={showRemoveLabelsAlert} --szot-modal-width="400px">
   <div slot="modal-header" class="header" />
   <div slot="modal-content" class="content remove-alert">
-    <h3>{texts.removeLabelAlert[$lang][0]}</h3>
+    <h3>{texts.removeLabelAlert[0]}</h3>
     <div class="modal-card-label">
       <div class="card-label" style="background-color: {data.hex}4e">
         <div class="circle" style="background-color: {data.hex}" />
         <span>{data.title}</span>
       </div>
     </div>
-    <p>{texts.removeLabelAlert[$lang][1]}</p>
+    <p>{texts.removeLabelAlert[1]}</p>
   </div>
   <div slot="modal-footer" class="footer modal-alert-footer">
     <Button
-      on:click={() => (showRemoveLabelsAlert = false)}
+      on:click={() => {
+        showRemoveLabelsAlert = false;
+      }}
       size="small"
       buttonStyleType="outline"
       buttonStyle="dark"
     >
-      {texts.cancel[$lang]}
+      {texts.cancel}
     </Button>
     <Button
       --szot-button-background-color="#CF513D"
@@ -153,12 +161,13 @@
       buttonStyleType="filled"
       buttonStyle="dark"
     >
-      {texts.remove[$lang]}
+      {texts.remove}
     </Button>
   </div>
 </Modal>
 
 <style lang="scss">
+  @use "src/components/Kanban/styles.scss";
   .card-label-container {
     display: flex;
     align-items: center;

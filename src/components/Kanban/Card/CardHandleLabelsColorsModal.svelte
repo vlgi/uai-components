@@ -1,19 +1,18 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import type { TCardLabel, TCard, TBoard, TCustomBoard } from "../data/types";
+  import type {
+    TCardLabel, TDefautCard, TBoard, TCustomBoard,
+  } from "../data/types";
   import { label as emptyLabel } from "../data/empty-data";
   import { colors } from "../data/colors-data";
   import { texts } from "../data/components-texts";
-  import { checkIfItemIsInArray } from "../utils";
-
-  // store
-  import { lang } from "../stores";
+  import { checkIfItemIsInArray, compareObjects } from "../utils";
 
   // props
   export let labelData: TCardLabel = { ...emptyLabel }; // label data
   export let boardData: TBoard | TCustomBoard;
   export let labelsData: TCardLabel[] = [];
-  export let cardData: TCard; // card data
+  export let cardData: TDefautCard; // card data
   export let opened = false; // card handle colors modal opened boolean
 
   // components
@@ -23,12 +22,7 @@
   import CardLabel from "./CardLabel.svelte";
 
   let old: TCardLabel = { ...emptyLabel };
-
-  $: focusLabel = false;
-
-  onMount(() => {
-    old = { ...labelData };
-  });
+  let focusLabel = false;
 
   function setColor(hex: string): void {
     labelData.hex = hex;
@@ -36,11 +30,11 @@
   }
 
   function handleLabel(): void {
-    if (JSON.stringify(old) === JSON.stringify(labelData)) return; // return if there isnt any change
+    if (compareObjects(old, labelData)) return; // return if there isnt any change
 
-    if (JSON.stringify(old) === JSON.stringify(emptyLabel)) {
+    if (compareObjects(old, emptyLabel)) {
       // if is a new label, add in the end of labelsData prop and card labels
-      if (labelData.hex == "") setColor("#dddddd"); // set a standard color if the user did not select one
+      if (labelData.hex === "") setColor("#dddddd"); // set a standard color if the user did not select one
       cardData.labels = [...cardData.labels, labelData];
       labelsData = [...labelsData, labelData];
     } else {
@@ -74,12 +68,16 @@
     labelData = { ...old };
     opened = false;
   }
+
+  onMount(() => {
+    old = { ...labelData };
+  });
 </script>
 
 <Modal
   bind:opened
   disableHeader={true}
-  --szot-modal-width="500px"
+  --szot-modal-width="340px"
   --szot-modal-max-width="90vw"
 >
   <div slot="modal-header" class="header" />
@@ -100,7 +98,7 @@
           style="background-color: {color.hex}"
           on:click={() => setColor(color.hex)}
         >
-          {#if color.hex == labelData.hex}
+          {#if color.hex === labelData.hex}
             <Icon
               iconName="check"
               --szot-icon-color="white"
@@ -118,7 +116,7 @@
       buttonStyleType="outline"
       buttonStyle="dark"
     >
-      {texts.cancel[$lang]}
+      {texts.cancel}
     </Button>
     <Button
       on:click={handleLabel}
@@ -126,12 +124,13 @@
       buttonStyleType="filled"
       buttonStyle="dark"
     >
-      {old.title == "" ? texts.add[$lang] : texts.edit[$lang]}
+      {old.title === "" ? texts.add : texts.edit}
     </Button>
   </div>
 </Modal>
 
 <style lang="scss">
+  @use "src/components/Kanban/styles.scss";
   .label-title {
     display: flex;
     align-items: center;

@@ -33,8 +33,7 @@
   function scrolltoggle(disable: boolean) {
     // Get the current page scroll position
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft =
-      window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
     if (disable) {
       // if any scroll is attempted,
@@ -80,8 +79,7 @@
   }
 
   function handleClickOut(ev: Event) {
-    if (closeOnClickOut && ev.target === modalOverlayElement)
-      closeIfIsLastModal();
+    if (closeOnClickOut && ev.target === modalOverlayElement) closeIfIsLastModal();
   }
 
   $: if (opened) {
@@ -98,37 +96,37 @@
   });
 </script>
 
-<svelte:window on:keydown={handleKey} />
+<svelte:window on:keydown={handleKey}/>
 
-{#if opened}
+{#if opened }
   <div
-    transition:fade={{ delay: 25, duration: 250 }}
+    transition:fade="{{ delay: 25, duration: 250 }}"
     class="modal-overlay"
     bind:this={modalOverlayElement}
     on:click={handleClickOut}
   >
     <div
       class="modal-container"
-      transition:scale={{
-        duration: 250,
-        delay: 50,
-        opacity: 0.5,
-        start: 0.5,
-        easing: quintOut,
-      }}
+      transition:scale="{{
+        duration: 250, delay: 50, opacity: 0.5, start: 0.5, easing: quintOut,
+      }}"
     >
       {#if !disableHeader}
         <header class="modal-header">
           <!-- Set the modal header. e.g.: you can add a title, some buttons -->
-          <slot name="modal-header" />
+          <slot name="modal-header"></slot>
           {#if !hideCloseButton}
             <div class="close-button-container">
               <Button
                 icon="close"
                 buttonStyle="light"
                 size="round"
-                buttonAttributes={{ autofocus: true }}
-                on:click={() => (opened = false)}
+                buttonAttributes={{
+                  autofocus: true,
+                }}
+                on:click={() => {
+                  opened = false;
+                }}
               />
             </div>
           {/if}
@@ -136,11 +134,11 @@
       {/if}
       <div class="modal-content">
         <!-- Set the modal content. e.g.: you can add a a text, a form, ... -->
-        <slot name="modal-content" />
+        <slot name="modal-content"></slot>
       </div>
       <div class="modal-footer">
-        <!-- Set the modal footer. e.g.: you can add a diclaimer, some buttons -->
-        <slot name="modal-footer" />
+          <!-- Set the modal footer. e.g.: you can add a diclaimer, some buttons -->
+        <slot name="modal-footer"></slot>
       </div>
     </div>
   </div>
@@ -156,16 +154,10 @@
     --overlay-color: var(--szot-modal-overlay-color, #ccc);
     --overlay-blur: var(--szot-modal-overlay-blur, 2px);
     --z-index: var(--szot-modal-z-index, 9999);
-    --close-bg-color: var(
-      --szot-modal-close-bg-color,
-      var(--theme-light-surface)
-    );
-    --close-txt-color: var(
-      --szot-modal-close-txt-color,
-      var(--theme-txt-on-light-surface)
-    );
+    --close-bg-color: var(--szot-modal-close-bg-color, var(--theme-light-surface));
+    --close-txt-color: var(--szot-modal-close-txt-color, var(--theme-txt-on-light-surface));
     --padding: var(--szot-modal-padding, 0.6rem);
-    --margin-content: var(--szot-modal-margin-content, 0.6rem 0);
+    --margin-content: var(--szot-modal-margin-content, .6rem 0);
 
     position: fixed;
     top: 0;
@@ -180,7 +172,7 @@
     backdrop-filter: blur(var(--overlay-blur));
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       inset: 0;
@@ -199,10 +191,12 @@
       max-height: var(--max-height);
       max-width: var(--max-width);
       padding: var(--padding);
+
       border-radius: var(--theme-large-shape);
       box-shadow: var(--theme-high-shadow);
 
       z-index: 2;
+
     }
 
     .modal-header {

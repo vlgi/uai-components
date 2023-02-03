@@ -87,6 +87,7 @@
     "typescript": "~4.4.3"
   },
   "dependencies": {
+    "@emoji-mart/data": "^1.1.1",
     "@ionic/core": "^6.0.2",
     "@types/cleave.js": "^1.4.6",
     "cleave.js": "^1.6.0",

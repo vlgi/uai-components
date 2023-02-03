@@ -1,10 +1,9 @@
 <script lang="ts">
-  import type { TCard, TBoard, TCustomBoard, TCardLabel } from "../data/types";
+  import type {
+    TDefautCard, TBoard, TCustomBoard, TCardLabel,
+} from "../data/types";
   import { texts } from "../data/components-texts";
   import { checkIfItemIsInArray } from "../utils";
-
-  // stores
-  import { lang } from "../stores";
 
   // components
   import SearchInput from "../../formFields/SearchInput/SearchInput.svelte";
@@ -14,7 +13,7 @@
   import CardLabel from "./CardLabel.svelte";
 
   // props
-  export let data: TCard; // card data
+  export let data: TDefautCard; // card data
   export let boardData: TBoard | TCustomBoard;
   export let labelsData: TCardLabel[] = [];
   export let opened = false;
@@ -32,7 +31,7 @@
       searchQuery=""
       searchable={["title"]}
       name="search"
-      placeholder={texts.searchLabelPlaceholder[$lang]}
+      placeholder={texts.searchLabelPlaceholder}
     />
     <div class="filtered-labels">
       {#each filtered as label, index}
@@ -50,20 +49,24 @@
     </div>
     <div class="modal-alert-footer">
       <Button
-        on:click={() => (opened = false)}
+        on:click={() => {
+          opened = false;
+        }}
         size="small"
         buttonStyleType="outline"
         buttonStyle="dark"
       >
-        {texts.close[$lang]}
+        {texts.close}
       </Button>
       <Button
-        on:click={() => (colorsModalOpened = true)}
+        on:click={() => {
+          colorsModalOpened = true;
+        }}
         size="small"
         buttonStyleType="filled"
         buttonStyle="dark"
       >
-        {texts.createLabel[$lang]}
+        {texts.createLabel}
       </Button>
     </div>
   </div>
@@ -77,6 +80,7 @@
 />
 
 <style lang="scss">
+  @use "src/components/Kanban/styles.scss";
   .filtered-labels,
   .existing-labels {
     display: grid;

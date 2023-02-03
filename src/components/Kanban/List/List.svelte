@@ -5,6 +5,8 @@
     TBoard,
     TCustomBoard,
     TCardLabel,
+    TPosition,
+    TMouseDirection,
   } from "../data/types";
   import { card } from "../data/empty-data";
   import { texts } from "../data/components-texts";
@@ -12,7 +14,6 @@
   // stores
   import {
     dci,
-    tcli,
     dli,
     dlEl,
     tli,
@@ -20,12 +21,12 @@
     pos,
     relPos,
     dir,
-    lang,
     dlh,
   } from "../stores";
 
   // components
-  import Card from "../Card/Card.svelte";
+  import CardDefault from "../Card/CardDefault.svelte";
+  import CardWrapper from "../Card/CardWrapper.svelte";
   import Button from "../../formFields/Button/Button.svelte";
   import Icon from "../../Icon/Icon.svelte";
   import ListMenu from "./ListMenu.svelte";
@@ -49,35 +50,44 @@
   let addedCardTitle = "";
   let overed = false;
   let listenerH = 0;
+  let boardDefaultData: TBoard;
+  let listDefaultData: TList;
+  let listCustomData: TCustomList;
 
   // set dragging list values
-  function setDragList(e): void {
-    if (e.button != 0) return; // if not left button, do nothing
+  function setDragList(e: MouseEvent): void {
+    if (e.button !== 0) return; // if not left button, do nothing
     const list = document.querySelector(`.list-${li}`);
-    const listener: HTMLElement = document.querySelector(`.lane`);
+    const listener: HTMLElement = document.querySelector(".lane");
     listenerH = listener.offsetHeight;
     dlEl.set(list); // set dragging list html element (.list div)
     const header = document.querySelector(`.list-header-${li}`);
     const cards = document.querySelector(`.list-cards-${li}`);
     const footer = document.querySelector(`.list-footer-${li}`);
-    dlh.set(
-      `${header.clientHeight + cards.clientHeight + footer.clientHeight}px`
-    ); // set dragging list placeholder height
     dli.set(li); // set dragging list index
-    relPos.set(getRelativePosition(e.clientX, e.clientY, e.target)); // relative mouse position in relation to the html element
-    changeElementPosition($pos, $dlEl, { x: $relPos.x, y: -20 }); // change dragging element position
-  }
 
-  // change dragging list position
-  $: $pos && $dli != -1 && moveDragList();
-  function moveDragList(): void {
-    // when there is a dragging element and pos change, change html element position
-    changeElementPosition($pos, $dlEl, { x: $relPos.x, y: -20 });
+    // set dragging list placeholder height
+    dlh.set(
+      `${header.clientHeight
+      + cards.clientHeight
+      + footer.clientHeight}px`,
+    );
+
+    // relative mouse position in relation to the html element
+    relPos.set(
+      getRelativePosition(e.clientX, e.clientY, e.target as Element),
+    );
+
+    changeElementPosition(
+      $pos,
+      $dlEl,
+      { x: ($relPos as TPosition).x, y: -20 },
+    ); // change dragging element position
   }
 
   // set values on list over (.lane over)
   function onLaneOver(): void {
-    if (($dli != -1 || $dci != -1) && $dli != li && !overed) {
+    if (($dli !== -1 || $dci !== -1) && $dli !== li && !overed) {
       tli.set(li); // set target list index
       tlEl.set(document.querySelector(`.list-${li}`)); // set target list html element (.list div)
       overed = true;
@@ -87,14 +97,14 @@
   // on lane mouse out event reset related data
   function onLaneOut(): void {
     overed = false;
-    if ($dli != -1 || $dci != -1) {
+    if ($dli !== -1 || $dci !== -1) {
       tli.set(-1); // reset target list index
       tlEl.set(null); // reset target list html element (.list div)
     }
   }
 
   function addANewCard(): void {
-    if (addedCardTitle == "") return;
+    if (addedCardTitle === "") return;
     const empty = customCard ? { title: "" } : { ...card };
     const newCard = { ...empty, title: addedCardTitle };
     data.cards = [...data.cards, newCard];
@@ -105,33 +115,53 @@
   }
 
   function autoRemove(): void {
-    if (data.title == "" && data.cards.length == 0) {
+    if (data.title === "" && data.cards.length === 0) {
       const lists = [...boardData.lists];
       lists.splice(lists.length - 1, 1);
       boardData = { ...boardData, lists: [...lists] };
     }
   }
 
-  function handleCreatingCard(e): void {
-    if (e.key == "Enter") {
-      addedCardTitle != "" && addANewCard();
+  function handleCreatingCard(e: Event): void {
+    if ((e as KeyboardEvent).key === "Enter") {
+      if (addedCardTitle !== "") addANewCard();
       addingCard = true;
-    } else if (e.key == "Tab") {
-      addedCardTitle != "" && addANewCard();
+    } else if ((e as KeyboardEvent).key === "Tab") {
+      if (addedCardTitle !== "") addANewCard();
       addingCard = false;
-    } else if (e.type == "focusout") {
-      if (addedCardTitle == "") addingCard = false;
+    } else if (e.type === "focusout") {
+      if (addedCardTitle === "") addingCard = false;
     }
   }
 
+  function moveDragList(): void {
+    // when there is a dragging element and pos change, change html element position
+    changeElementPosition(
+      $pos,
+      $dlEl,
+      { x: ($relPos as TPosition).x, y: -20 },
+    );
+  }
+
+  function handleAddingListTitle(e: KeyboardEvent) {
+    if ((e).key === "Enter") addingCard = true;
+  }
+  // change dragging list position
+  $: if ($pos && $dli !== -1) moveDragList();
+  $: if (boardData) boardDefaultData = boardData as TBoard;
+  $: if (data) listDefaultData = data as TList;
+  $: if (data) listCustomData = data as TCustomList;
+
   $: addingCard = false;
-  $: menuCondition =
-    canMoveCard ||
-    canCreateCard ||
-    canDeleteCard ||
-    canMoveList ||
-    canCreateList ||
-    canDeleteList;
+
+  $: dirX = ($dir as TMouseDirection).x;
+
+  $: menuCondition = canMoveCard
+  || canCreateCard
+  || canDeleteCard
+  || canMoveList
+  || canCreateList
+  || canDeleteList;
 </script>
 
 <div class="lane">
@@ -141,20 +171,20 @@
     on:mouseover|self={onLaneOver}
     on:blur
     on:mouseout={onLaneOut}
-    class:lane-listener-active={$dli != -1 ||
-      ($dci != -1 && data.cards.length == 0)}
+    class:lane-listener-active={$dli !== -1
+      || ($dci !== -1 && data.cards.length === 0)}
     style="height: {$dlh}"
   />
-  {#if $dli == li}
+  {#if $dli === li}
     <div style="height:  {$dlh}" class="list-placeholder">
       <div />
     </div>
   {/if}
   <div
     class="list list-{li}"
-    style="height: {$dli == li ? $dlh : 'auto'}"
-    class:to-right={$dli == li && $dir.x == "right"}
-    class:to-left={$dli == li && $dir.x == "left"}
+    style="height: {$dli === li ? $dlh : 'auto'}"
+    class:to-right={$dli === li && dirX === "right"}
+    class:to-left={$dli === li && dirX === "left"}
   >
     <div class="list-header list-header-{li}">
       <div
@@ -167,32 +197,54 @@
           class="list-title list-title-{li} editable"
           contenteditable="true"
           on:focusout={autoRemove}
-          on:keypress={(e) => {
-            if (e.key == "Enter") addingCard = true;
-          }}
+          on:keypress={handleAddingListTitle}
           bind:textContent={data.title}
         />
         {#if menuCondition}
           <div class="list-menu-btn" id="open-list-menu-{li}">
             <Icon iconName="dots-horizontal" --szot-icon-font-size="20px" />
           </div>
+          <ListMenu
+            bind:boardData
+            bind:data
+            bind:addingCard
+            {li}
+            {canMoveCard}
+            {canCreateCard}
+            {canDeleteCard}
+            {canMoveList}
+            {canCreateList}
+            {canDeleteList}
+          />
         {/if}
       </div>
     </div>
     <div class="list-cards list-cards-{li}">
-      <!-- {#each data.cards.slice(0, 1) as card, ci} -->
-      {#each data.cards as card, ci}
-        <Card
-          bind:boardData
-          bind:data={card}
-          bind:labelsData
-          {ci}
-          cli={li}
-          {customCard}
-          {canMoveCard}
-          {canDeleteCard}
-        />
-      {/each}
+      {#if !customCard}
+        {#each listDefaultData.cards as dCard, ci}
+          <CardWrapper {ci} cli={li} {canMoveCard}>
+            <div slot="card-content">
+              <CardDefault
+                bind:boardData={boardDefaultData}
+                bind:data={dCard}
+                bind:labelsData
+                {canMoveCard}
+                {canDeleteCard}
+                {ci}
+                cli={li}
+              />
+            </div>
+          </CardWrapper>
+        {/each}
+      {:else if customCard}
+        {#each listCustomData.cards as cCard, ci}
+          <CardWrapper {ci} cli={li}>
+            <div slot="card-content">
+              <svelte:component this={customCard} bind:data={cCard} />
+            </div>
+          </CardWrapper>
+        {/each}
+      {/if}
       {#if addingCard}
         <div class="adding-card-container">
           <!-- svelte-ignore a11y-autofocus -->
@@ -206,12 +258,14 @@
           />
           <div class="card-adding-btns">
             <Button
-              on:click={() => (addingCard = false)}
+              on:click={() => {
+                addingCard = false;
+              }}
               size="small"
               buttonStyleType="outline"
               buttonStyle="dark"
             >
-              <span>{texts.cancel[$lang]}</span>
+              <span>{texts.cancel}</span>
             </Button>
             <Button
               on:click={addANewCard}
@@ -219,7 +273,7 @@
               buttonStyleType="filled"
               buttonStyle="dark"
             >
-              {texts.add[$lang]}
+              {texts.add}
             </Button>
           </div>
         </div>
@@ -228,34 +282,22 @@
     {#if canCreateCard}
       <div class="list-footer list-footer-{li}">
         <Button
-          on:click={() => (addingCard = true)}
+          on:click={() => {
+            addingCard = true;
+          }}
           size="small"
           buttonStyleType="outline"
           buttonStyle="dark"
         >
-          {texts.createCard[$lang]}
+          {texts.createCard}
         </Button>
       </div>
     {/if}
   </div>
 </div>
 
-{#if menuCondition}
-  <ListMenu
-    bind:boardData
-    bind:data
-    bind:addingCard
-    {li}
-    {canMoveCard}
-    {canCreateCard}
-    {canDeleteCard}
-    {canMoveList}
-    {canCreateList}
-    {canDeleteList}
-  />
-{/if}
-
 <style lang="scss">
+  @use "src/components/Kanban/styles.scss";
   .lane {
     display: grid;
     grid-template-rows: 100%;

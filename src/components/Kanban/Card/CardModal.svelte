@@ -1,9 +1,11 @@
 <script lang="ts">
-  import type { TCard, TBoard, TCustomBoard, TCardLabel } from "../data/types";
+  import type {
+    TDefautCard, TBoard, TCustomBoard, TCardLabel,
+} from "../data/types";
   import { texts } from "../data/components-texts";
 
   // stores
-  import { lang, allUsers } from "../stores";
+  import { allUsers } from "../stores";
 
   // components
   import Button from "../../formFields/Button/Button.svelte";
@@ -20,10 +22,9 @@
 
   // functions
   import { getCover } from "../utils";
-  import CardModalDescription from "./CardModalDescription.svelte";
 
   // props
-  export let data: TCard; // card data
+  export let data: TDefautCard; // card data
   export let boardData: TBoard | TCustomBoard;
   export let labelsData: TCardLabel[] = [];
   export let ci: number; // card index
@@ -32,11 +33,13 @@
   export let canMoveCard = true;
   export let canDeleteCard = true;
 
-  $: handleLabelsModalOpened = false;
-  $: selectCardUserModalOpened = false;
-  $: resetDraggingChecklistsElements = false;
-  $: showAdd = false;
-  $: attCover = false;
+  let handleLabelsModalOpened = false;
+  let selectCardUserModalOpened = false;
+  let resetDraggingChecklistsElements = false;
+  let showAdd = false;
+  let attCover = false;
+  let edittingDesc = false;
+
   $: cover = getCover(data.attachments);
 </script>
 
@@ -62,9 +65,11 @@
   <div
     slot="modal-content"
     class="content"
-    on:mouseup={() => (resetDraggingChecklistsElements = true)}
+    on:mouseup={() => {
+      resetDraggingChecklistsElements = true;
+    }}
   >
-    {#if cover != ""}
+    {#if cover !== ""}
       <div class="cover" style="background-image: url({cover})">
         <div
           class="item-btn"
@@ -78,7 +83,7 @@
       </div>
     {/if}
 
-    <!-- Card general info | title | members | labels -->
+    <!-- Card general info: title | members | labels -->
     <section>
       <!-- Card header -->
       <div class="section-title modal-title">
@@ -90,47 +95,55 @@
         />
       </div>
       <div class="section-items">
-        <p>{texts.inList[$lang]} - <span>{boardData.lists[cli].title}</span></p>
+        <p>{texts.inList} - <span>{boardData.lists[cli].title}</span></p>
       </div>
 
       <!-- Members -->
       {#if data.members.length > 0}
-        <div class="section-title"><h3>{texts.members[$lang]}</h3></div>
+        <div class="section-title"><h3>{texts.members}</h3></div>
         <div class="section-items">
           <div
             class="add-btn"
-            on:click={() => (selectCardUserModalOpened = true)}
+            on:click={() => {
+              selectCardUserModalOpened = true;
+            }}
           >
             <Icon iconName="plus-box" --szot-icon-font-size="20px" />
           </div>
           {#each data.members as member}
             <CardUserAvatar
               data={member}
-              on:click={() => (selectCardUserModalOpened = true)}
+              on:click={() => {
+                selectCardUserModalOpened = true;
+              }}
             />
           {/each}
         </div>
       {/if}
       <CardHandleUsersModal
         bind:list={$allUsers}
-        bind:data
+        bind:data={data.members}
         bind:opened={selectCardUserModalOpened}
       />
 
       <!-- Labels -->
       {#if data.labels.length > 0}
-        <div class="section-title"><h3>{texts.labels[$lang]}</h3></div>
+        <div class="section-title"><h3>{texts.labels}</h3></div>
         <div class="section-items">
           <div
             class="add-btn"
-            on:click={() => (handleLabelsModalOpened = true)}
+            on:click={() => {
+              handleLabelsModalOpened = true;
+            }}
           >
             <Icon iconName="plus-box" --szot-icon-font-size="20px" />
           </div>
           {#each data.labels as label}
             <div
               class="item-wrapper"
-              on:click={() => (handleLabelsModalOpened = true)}
+              on:click={() => {
+                handleLabelsModalOpened = true;
+              }}
             >
               <CardLabel
                 bind:boardData
@@ -150,8 +163,23 @@
     </section>
 
     <!-- Card Description -->
-    <section>
-      <CardModalDescription bind:data={data.desc} />
+    <section style="margin-top: 10px;" >
+      <div class="section-title"><h3>{texts.desc}</h3></div>
+      {#if data.desc !== "" || edittingDesc}
+        <div
+          contenteditable="true"
+          bind:textContent={data.desc}
+          class="card-description editable"
+        />
+      {:else if data.desc === ""}
+        <div class="card-description"
+          on:click={() => {
+            edittingDesc = true;
+          }}
+        >
+          {texts.addDescription}
+        </div>
+      {/if}
     </section>
 
     <!-- Card Attachments -->
@@ -188,99 +216,8 @@
 </Modal>
 
 <style lang="scss">
-  :global(.markdown-parse > h1) {
-    font-size: 18px;
-  }
-
-  :global(.markdown-parse > h2) {
-    font-size: 16px;
-  }
-
-  :global(.markdown-parse > h3) {
-    font-size: 14px;
-  }
-
-  :global(.markdown-parse > h4) {
-    font-size: 12px;
-  }
-
-  :global(.markdown-parse > h1, .markdown-parse > h2, .markdown-parse
-      > h3, .markdown-parse > h4) {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-weight: 500;
-  }
-
-  :global(.markdown-parse > ol > li) {
-    margin-left: 1.8rem; // change
-    font-size: 14px;
-  }
-
-  :global(.markdown-parse > ul > li) {
-    margin-left: 2rem; // change
-    font-size: 14px;
-  }
-
-  :global(.markdown-parse code) {
-    border-radius: var(--radius-pattern);
-    white-space: pre-wrap;
-  }
-
-  :global(section) {
-    display: flex;
-    flex-direction: column;
-    width: 99%;
-    gap: 5px;
-  }
-
-  :global(.section-title) {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 15px;
-    margin-bottom: 5px;
-  }
-
-  :global(.section-title > h1, .section-title > h2, .section-title > h3) {
-    width: 100%;
-    text-align: start;
-  }
-
-  :global(.modal-title) {
-    margin: 0;
-  }
-
-  :global(.section-items) {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    flex-direction: row;
-    gap: 5px;
-  }
-
-  :global(.add-btn) {
-    display: flex;
-    width: fit-content;
-    height: 100%;
-    cursor: pointer;
-  }
-
-  :global(.add-btn:hover) {
-    opacity: 0.8;
-  }
-
-  :global(.item-btn) {
-    padding: 0 5px;
-    border-radius: 5px;
-    width: fit-content;
-    cursor: pointer;
-  }
-
-  :global(.item-btn:hover) {
-    background: #ddd;
-  }
+  @use "src/components/Kanban/styles.scss";
+  @use "src/components/Kanban//Card/card-modal-styles.scss";
 
   .modal-menu-btn {
     z-index: 2;
@@ -319,6 +256,13 @@
         opacity: 0.8;
       }
     }
+  }
+
+  .card-description {
+    white-space: pre-line;
+    padding: 10px;
+    background: #eee;
+    border-radius: var(--radius-pattern);
   }
 
   .section-items {

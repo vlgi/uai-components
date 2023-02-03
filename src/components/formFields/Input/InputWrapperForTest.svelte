@@ -5,11 +5,5 @@
 </script>
 
 <div {style}>
-  <Input
-    {...$$restProps}
-    on:input
-    on:change
-    on:click
-    name="nad"
-  />
+  <Input {...$$restProps} on:input on:change on:click name="nad" />
 </div>

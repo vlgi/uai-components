@@ -35,5 +35,6 @@
     font-size: 20px;
     font-weight: 800;
     justify-content: center;
+    outline: 0;
   }
 </style>
