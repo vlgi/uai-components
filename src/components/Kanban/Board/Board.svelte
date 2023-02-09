@@ -1,5 +1,11 @@
 <script lang="ts">
   import { tick, onMount, onDestroy } from "svelte";
+  import {
+    getMousePosition,
+    getMouseDirection,
+  } from "../../../helpers/mouse-cursor-handling";
+
+  import { switchElsPositionByIndex } from "../../../helpers/arrays-handling";
 
   import type {
     TBoard,
@@ -27,14 +33,8 @@
     dir,
     allUsers,
     logged,
+    selectedCards,
   } from "../stores";
-
-  // funcs
-  import {
-    getMousePosition,
-    getMouseDirection,
-    switchElsPositionByIndex,
-  } from "../utils";
 
   // components
   import List from "../List/List.svelte";
@@ -55,7 +55,6 @@
   export let users: TCardUser[] = []; // board possible users
   export let clickSearchResultFunction;
 
-  let showAdd = false;
   let titleColor = "var(--board-title-color)";
 
   // move mouse/element listener and change position
@@ -104,18 +103,19 @@
     el.focus();
   }
 
-  function handleInputEl() {
-    showAdd = false;
+  function resetSelecteds(e: KeyboardEvent) {
+    if (e.key === "Escape") selectedCards.set([[-1, -1]]);
   }
 
   onMount(async () => {
     await tick();
     if (users.length > 0) allUsers.set(users); // set all board users when finished data fetching
     if (!customCard) logged.set((data as TBoard).logged);
+    document.body.onkeyup = resetSelecteds;
   });
 
   onDestroy(() => {
-    document.body.removeEventListener("onfocus", handleInputEl);
+    document.body.removeEventListener("onkeyup", resetSelecteds);
   });
 
   // #####################################################
@@ -124,9 +124,8 @@
 
   // change data.lists when dragging and target list index are different from -1
   $: if ($dli !== -1 && $tli !== -1 && $dli !== $tli) {
-    data.lists = switchElsPositionByIndex(
-      data.lists, $dli, $tli,
-    ); // switch the items and return the new list array
+    // switch the items and return the new list array
+    data.lists = switchElsPositionByIndex(data.lists, $dli, $tli);
 
     dli.set($tli); // dragging list index becomes target list index
     dlEl.set($tlEl); // dragging element becomes target element
@@ -147,11 +146,13 @@
   ) {
     const listCards = data.lists[$dcli as number].cards; // list cards data
     data.lists[$dcli as number].cards = switchElsPositionByIndex(
-      listCards, $dci, $tci,
+      listCards,
+      $dci,
+      $tci,
     ); // switch cards an return the new list cards array
     resetVariablesAfterCardChangingPosition(false);
 
-  // change card position in different lists and target list are not empty
+    // change card position in different lists and target list are not empty
   } else if (
     $tcli !== $dcli // change card position in the same list
     && $tli !== $dcli // change card position in the same list
@@ -167,7 +168,7 @@
     data.lists[$tcli as number].cards = [...targetList];
     resetVariablesAfterCardChangingPosition(false);
 
-  // change card position in different lists and target list are empty
+    // change card position in different lists and target list are empty
   } else if (
     $tli !== -1 // when there is a target list index
     && $tli !== $dcli // when dragging card list index is different target list index
@@ -179,6 +180,7 @@
     data.lists[$dcli as number].cards.splice($dci, 1); // remove dragging card from the original list
     resetVariablesAfterCardChangingPosition(true);
   }
+
 </script>
 
 {#if !data}<div class="loading">loading...</div>
@@ -196,16 +198,26 @@
         bind:textContent={data.title}
         style="color: {titleColor}"
       />
-        <BoardSearchInput bind:data {searchableCardKeys} {titleColor} {clickSearchResultFunction}/>
+      <BoardSearchInput
+        bind:data
+        {searchableCardKeys}
+        {titleColor}
+        {clickSearchResultFunction}
+      />
       <div class="board-menu-btn" id="open-board-menu">
         <Icon
           iconName="dots-horizontal"
           --szot-icon-font-size="20px"
           --szot-icon-color={titleColor}
         />
-        <BoardMenu dropDownTarget="open-board-menu" bind:data bind:titleColor/>
+        <BoardMenu
+          dropDownTarget="open-board-menu"
+          bind:data
+          bind:titleColor
+          bind:labels
+          {customCard}
+        />
       </div>
-
     </div>
     <div class="board-lists" on:mousemove={moveEl} on:blur>
       {#each data.lists as list, li}
@@ -306,18 +318,20 @@
 
       .board-title {
         grid-area: title;
-        width: fit-content;
         font-weight: 600;
         font-size: var(--board-title-font-size);
-        text-shadow: 3px 4px 7px rgba(81,67,21,0.8);
+        text-shadow: 3px 4px 7px rgba(81, 67, 21, 0.8);
         padding: calc((var(--target-padding) / 1.5) + 1px) 0;
+        width: fit-content;
+        min-width: 300px;
+        max-width: 100%;
 
         &:focus {
           padding: calc(var(--target-padding) / 1.5) var(--target-padding);
         }
 
         &:hover {
-          opacity: .8;
+          opacity: 0.8;
         }
       }
 
@@ -325,7 +339,6 @@
         grid-area: btn;
         z-index: 2;
         cursor: pointer;
-
       }
     }
 

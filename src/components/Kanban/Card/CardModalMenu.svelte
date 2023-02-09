@@ -1,9 +1,9 @@
 <script lang="ts">
   import { tick } from "svelte";
+  import { changeElPositionByIndex } from "../../../helpers/arrays-handling";
 
   import { texts } from "../data/components-texts";
   import { checklist } from "../data/empty-data";
-  import { changeElPositionByIndex } from "../utils";
 
   // stores
   import type { TDefautCard, TBoard, TCustomBoard } from "../data/types";

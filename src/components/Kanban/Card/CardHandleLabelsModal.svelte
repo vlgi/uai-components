@@ -1,9 +1,9 @@
 <script lang="ts">
+  import { checkIfItemIsInArray } from "../../../helpers/arrays-handling";
   import type {
-    TDefautCard, TBoard, TCustomBoard, TCardLabel,
+    TDefautCard, TBoard, TCardLabel,
 } from "../data/types";
   import { texts } from "../data/components-texts";
-  import { checkIfItemIsInArray } from "../utils";
 
   // components
   import SearchInput from "../../formFields/SearchInput/SearchInput.svelte";
@@ -13,16 +13,21 @@
   import CardLabel from "./CardLabel.svelte";
 
   // props
-  export let data: TDefautCard; // card data
-  export let boardData: TBoard | TCustomBoard;
+  export let data: TDefautCard = null; // card data
+  export let boardData: TBoard;
   export let labelsData: TCardLabel[] = [];
   export let opened = false;
+
 
   $: filtered = [...labelsData];
   $: colorsModalOpened = false;
 </script>
 
-<Modal bind:opened --szot-modal-width="500px" --szot-modal-max-width="90vw">
+<Modal
+  bind:opened
+  --szot-modal-width="500px"
+  --szot-modal-max-width="90vw"
+>
   <div slot="modal-header" class="header" />
   <div slot="modal-content" class="content">
     <SearchInput
@@ -40,7 +45,7 @@
           bind:cardData={data}
           bind:boardData
           bind:labelsData
-          showIcon={checkIfItemIsInArray(label, data.labels).isInIt}
+          showIcon={data ? checkIfItemIsInArray(label, data.labels).isInIt : false}
           allowEdit={true}
           icon="check"
           canSelect={true}

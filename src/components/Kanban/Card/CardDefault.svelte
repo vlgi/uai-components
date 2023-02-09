@@ -7,7 +7,7 @@
   } from "../data/types";
 
 // stores
-import { dci } from "../stores";
+import { dci, selectedCards } from "../stores";
 
   // components
   import CardModal from "./CardModal.svelte";
@@ -30,7 +30,6 @@ import { dci } from "../stores";
   let showModal = false; // if its true, show card modal
 
   // calculate how many dones items inside checklists
-
   function transformCardData(_data: TDefautCard) {
     let all: TCardChecklistItem[] = [];
     const dones: TCardChecklistItem[] = [];
@@ -44,7 +43,16 @@ import { dci } from "../stores";
     data.allDoneChecklistsItems = [...dones];
   }
 
-  $: transformCardData(data);
+  function handleShowModal(e: MouseEvent) {
+    if (!e.shiftKey && !customCard && $dci === -1) {
+      showModal = true;
+      selectedCards.set([[-1, -1]]);
+    }
+  }
+
+
+
+  $: if (data) transformCardData(data);
   $: cover = getCover(data.attachments);
 
 </script>
@@ -61,10 +69,8 @@ import { dci } from "../stores";
 />
 
 <div class="card-container"
-    on:mouseup={() => {
-      if (!customCard && $dci === -1) showModal = true;
-    }}
-  >
+  on:mouseup={handleShowModal}
+>
   <div class="card-header">
     {#if data.labels.length > 0}
       <div class="card-labels">
@@ -95,6 +101,7 @@ import { dci } from "../stores";
     padding-top: 3px; // change
     border-radius: var(--radius-pattern);
     z-index: 400;
+    background-color: var(--card-background-color);
 
     .card-header,
     .card-title,
@@ -106,8 +113,6 @@ import { dci } from "../stores";
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      background-color: var(--card-background-color);
-      border-radius: var(--radius-pattern) var(--radius-pattern) 0 0;
       padding: var(--card-padding);
 
       .card-labels {
@@ -126,7 +131,6 @@ import { dci } from "../stores";
 
     .card-title {
       font-weight: bold;
-      background-color: var(--card-background-color);
 
       div {
         padding: var(--card-padding);

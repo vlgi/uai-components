@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { changeElementPosition } from "../../../helpers/html-element-handling";
+  import { getRelativePosition } from "../../../helpers/mouse-cursor-handling";
   import type {
     TList,
     TCustomList,
@@ -30,9 +32,6 @@
   import Button from "../../formFields/Button/Button.svelte";
   import Icon from "../../Icon/Icon.svelte";
   import ListMenu from "./ListMenu.svelte";
-
-  // funcs
-  import { changeElementPosition, getRelativePosition } from "../utils";
 
   // list props
   export let data: TList | TCustomList; // list data
@@ -173,7 +172,6 @@
     on:mouseout={onLaneOut}
     class:lane-listener-active={$dli !== -1
       || ($dci !== -1 && data.cards.length === 0)}
-    style="height: {$dlh}"
   />
   {#if $dli === li}
     <div style="height:  {$dlh}" class="list-placeholder">
@@ -308,6 +306,7 @@
       position: absolute;
       width: var(--list-width);
       z-index: 2000;
+      height: 100%;
     }
 
     .lane-listener-active {

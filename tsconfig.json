@@ -4,13 +4,13 @@
     "baseUrl": "./src",
     "allowJs": true,
     "sourceMap": true,
+    "resolveJsonModule": true,
   },
   "include": [
-    "src/**/*",
-    "Kanban-0-all"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules/*",
     "public/*"
-  ]
+  ],
 }

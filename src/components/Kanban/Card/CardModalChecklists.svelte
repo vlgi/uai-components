@@ -1,8 +1,11 @@
 <script lang="ts">
   import { tick } from "svelte";
+  import { getRelativePosition } from "../../../helpers/mouse-cursor-handling";
+  import { changeElementPosition } from "../../../helpers/html-element-handling";
+  import { switchElsPositionByIndex } from "../../../helpers/arrays-handling";
   import type {
     TDefautCard, TCardCheckList, TCardChecklistItem, TPosition,
-} from "../data/types";
+  } from "../data/types";
   import { texts } from "../data/components-texts";
   import { item, checklist } from "../data/empty-data";
 
@@ -16,13 +19,6 @@
   import CardHandleUsersModal from "./CardHandleUsersModal.svelte";
   import CardHandleDueDates from "./CardHandleDueDates.svelte";
   import CardUserAvatar from "./CardUserAvatar.svelte";
-
-  // functions
-  import {
-    changeElementPosition,
-    getRelativePosition,
-    switchElsPositionByIndex,
-  } from "../utils";
 
   // props
   export let data: TDefautCard; // user data
@@ -576,7 +572,7 @@
     grid-template-columns: var(--checklist-item-grid-template-columns);
     opacity: 1;
     gap: 5px;
-    padding: 10px 0;
+    padding: 2px 0;
     background: rgba(255, 255, 255, 0.9);
     margin-bottom: 10px;
     box-shadow: var(--box-shadow-pattern);

@@ -63,9 +63,7 @@
   .card-footer {
     display: flex;
     justify-content: space-between;
-    background-color: var(--card-background-color);
     padding: 5px; // change
-    border-radius: 0 0 var(--radius-pattern) var(--radius-pattern);
 
     .card-footer-info {
       display: grid;

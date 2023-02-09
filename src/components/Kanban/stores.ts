@@ -19,6 +19,10 @@ export const tcEl = writable(null); // dragging card html element (.card-space d
 export const tci = writable(-1); // target card index
 export const tcli = writable(-1); // target card list index
 
+// multiple cards select
+const selecteds: [number, number][] = [[-1, -1]];
+export const selectedCards = writable(selecteds); // target card list index
+
 // global
 const users: TCardUser[] = [];
 const emptyLoggedUserCopy = { ...log };

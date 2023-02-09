@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { dateObjToHtmlString } from "../../../helpers/date-handling";
   import type { TDefautCard, TDueDates, TCardChecklistItem } from "../data/types";
   import { texts } from "../data/components-texts";
-  import { dateObjToHtmlString } from "../utils";
 
   const empty: TDueDates = {
     startDate: null,

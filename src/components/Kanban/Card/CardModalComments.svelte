@@ -1,8 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { isSameDay, isToday } from "../../../helpers/date-handling";
+  import { compareObjects } from "../../../helpers/objects-handling";
   import type { TCardUser, TCardComment, TLoggedUser } from "../data/types";
   import { texts } from "../data/components-texts";
-  import { isSameDay, isToday, compareObjects } from "../utils";
 
   // stores
   import { logged } from "../stores";
@@ -13,14 +14,14 @@
   import Button from "../../formFields/Button/Button.svelte";
   import CardUserAvatar from "./CardUserAvatar.svelte";
   import Input from "../../formFields/Input/Input.svelte";
-  // import EmojiPicker from "../../EmojiPicker/EmojiPicker.svelte";
+  import EmojiPicker from "../../EmojiPicker/EmojiPicker.svelte";
 
   export let data: TCardComment[]; // comments array
 
   let msg = "";
   let targetEl = null;
   const loggedUser = $logged as TLoggedUser;
-  const selectedEmoji = "";
+  let selectedEmoji = "";
 
   function checkIfIsTheLoggedUser(user: TCardUser): boolean {
     if (compareObjects(loggedUser.user, user)) return true;
@@ -173,35 +174,32 @@
     </div>
   {/each}
 </div>
+<div class="emojis-selector-container">
+  <EmojiPicker
+    bind:selected={selectedEmoji}
+    bind:opened={showEmoji}
+    localStorageId="szot-ui-kanban-default-card-comments-emoji-picker"
+    {targetEl}
+  />
+</div>
 <div class="msg-input">
   <CardUserAvatar data={loggedUser.user} info={true} />
-  <div class="input-container" on:keypress={sendMsg}>
-    <Input
-      on:click={() => {
-        showEmoji = true;
-      }}
-      on:input={onTypeMsg}
-      id="input-msg"
-      icon="emoticon-happy"
-      iconClick={true}
-      inputAttributes={{ autocomplete: "off" }}
-      label={texts.addComment}
-      name="comment"
-      type="text"
-      value={msg}
-      --szot-input-margin-bottom="0"
-      --szot-input-margin-top="0"
-    />
-  </div>
-  <div class="emojis-selector-container">
-    <!-- <EmojiPicker
-      bind:selected={selectedEmoji}
-      bind:opened={showEmoji}
-      localStorageId="szot-ui-kanban-default-card-coments-emoji-picker"
-      {targetEl}
-      --szot-emojis-picker-position="absolute"
-    /> -->
-  </div>
+  <Input
+    on:click={() => {
+      showEmoji = true;
+    }}
+    on:input={onTypeMsg}
+    id="input-msg"
+    icon="emoticon-happy"
+    iconClick={true}
+    inputAttributes={{ autocomplete: "off" }}
+    label={texts.addComment}
+    name="comment"
+    type="text"
+    value={msg}
+    --szot-input-margin-bottom="0"
+    --szot-input-margin-top="0"
+  />
   <div class="send-msg-btn" on:click={sendMsg}>
     <Icon iconName="send-outline" />
   </div>
@@ -277,6 +275,20 @@
     }
   }
 
+.emojis-selector-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index: 2;
+    height: 1px;
+    width: calc(100% - 20px - 10px - 10px);
+    // margin-bottom: -20px;
+
+    .emoji-picker-container {
+      position: absolute;
+    }
+  }
+
   .msg-input {
     display: grid;
     grid-template-columns: 30px calc(100% - 80px) 1px 20px;
@@ -286,16 +298,6 @@
     width: 100%;
     margin-top: 20px;
     margin-bottom: 10px;
-
-    .emojis-selector-container {
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-      z-index: 2;
-      margin-bottom: 50px;
-      margin-left: -50px;
-      padding: 10px;
-    }
 
     .send-msg-btn {
       cursor: pointer;

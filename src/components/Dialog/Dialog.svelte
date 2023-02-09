@@ -5,7 +5,6 @@
   import Icon from "../Icon/Icon.svelte";
 
   type TDialogTypes = "confirm"|"confirmCancel"|"info"|"error"|"warning"|"success";
-  type TSignalsIconAndPrefix = { icon: string, prefix: string } | null;
 
   // open the dialog
   export let opened = false;
@@ -44,7 +43,7 @@
   const dispatch = createEventDispatcher();
 
   let typeIsOthers = false;
-  let signalsIconAndPrefix: TSignalsIconAndPrefix = null;
+  let signalsIcon: string = null;
 
   // used to prevent events be fired twice, because on:closeModal fire close event
   let blockSendEvent = false;
@@ -75,12 +74,12 @@
     return ($$slots as Record<string, boolean>)[key];
   }
 
-  function getSignalsIconAndPrefix(key: string): TSignalsIconAndPrefix {
-    const signalsMap: Record<string, TSignalsIconAndPrefix> = {
-      info: { icon: "information", prefix: "Info: " },
-      warning: { icon: "alert", prefix: "Aviso: " },
-      error: { icon: "close-circle", prefix: "Erro: " },
-      success: { icon: "check-circle", prefix: "Sucesso: " },
+  function getSignalsIcon(key: string): string {
+    const signalsMap: Record<string, string> = {
+      info: "information",
+      warning: "alert",
+      error: "close-circle",
+      success: "check-circle",
     };
 
     if (signalsMap[key]) return signalsMap[key];
@@ -90,7 +89,7 @@
   $: typeIsOthers = ["warning", "info", "error", "success"].includes(type);
   $: if (typeIsOthers) {
     showHeader = true;
-    signalsIconAndPrefix = getSignalsIconAndPrefix(type);
+    signalsIcon = getSignalsIcon(type);
   }
 
   // reset the block send event mechanism when dialog open
@@ -114,9 +113,8 @@
         <slot name="dialog-header"></slot>
       {:else}
         <span class="title">
-          {#if signalsIconAndPrefix}
-            <Icon iconName={signalsIconAndPrefix.icon}/>
-            {signalsIconAndPrefix.prefix}
+          {#if signalsIcon}
+            <Icon iconName={signalsIcon}/>
           {/if}
           {title}
         </span>

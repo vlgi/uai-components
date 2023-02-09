@@ -47,6 +47,13 @@ export default {
     value: { table: { category: "Inherited from Input" } },
     label: { table: { category: "Inherited from Input" } },
     type: { table: { category: "Inherited from Input" } },
+    inputmode: {
+      table: { category: "Inherited from Input" },
+      control: {
+        type: "select",
+        options: ["text", "search", "none", "tel", "url", "email", "numeric", "decimal"],
+      },
+    },
     name: { table: { category: "Inherited from Input" } },
     disabled: { table: { category: "Inherited from Input" } },
     readonly: { table: { category: "Inherited from Input" } },

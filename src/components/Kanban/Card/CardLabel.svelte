@@ -1,9 +1,12 @@
 <script lang="ts">
+  import { checkIfItemIsInArray } from "../../../helpers/arrays-handling";
+  import { compareObjects } from "../../../helpers/objects-handling";
   import type {
     TDefautCard, TBoard, TCustomBoard, TCardLabel,
   } from "../data/types";
   import { texts } from "../data/components-texts";
-  import { checkIfItemIsInArray, compareObjects } from "../utils";
+
+  import { selectedCards } from "../stores";
 
   // components
   import CardHandleLabelsColorsModal from "./CardHandleLabelsColorsModal.svelte";
@@ -25,10 +28,10 @@
 
   let openModal = false;
   let showRemoveLabelsAlert = false;
+  let selecteds = $selectedCards as [number, number][];
 
   // remove label from board props labels (board avaiable labels) and from all cads
   function removeLabel(): void {
-    // remove label from all labels stores
     const allTags = [...labelsData];
     labelsData.forEach((label, i) => {
       if (compareObjects(label, data)) {
@@ -54,17 +57,55 @@
     showRemoveLabelsAlert = false;
   }
 
-  function handleCardLabel(): void {
-    const check = checkIfItemIsInArray(data, cardData.labels);
-    const labels = [...cardData.labels];
-    if (check.isInIt) {
+  function checkIfAllSelectedsHasLabel(): boolean {
+    let allHasLabel = true;
+    selecteds.forEach((selected) => {
+      const card = boardData.lists[selected[0]].cards[selected[1]] as TDefautCard;
+      const check = checkIfItemIsInArray(data, card.labels);
+      if (!check.isInIt) allHasLabel = false;
+    });
+    return allHasLabel;
+  }
+
+  function removeLabelFromSelectedCards() {
+    selecteds.forEach((selected) => {
+      const card = boardData.lists[selected[0]].cards[selected[1]] as TDefautCard;
+      const check = checkIfItemIsInArray(data, card.labels);
+      const { labels } = card;
       labels.splice(check.index, 1);
-      cardData.labels = [...labels];
+      boardData.lists[selected[0]].cards[selected[1]].labels = [...labels];
+    });
+  }
+
+  function addLabelToSelectedCards() {
+    selecteds.forEach((selected) => {
+      const card = boardData.lists[selected[0]].cards[selected[1]] as TDefautCard;
+      const check = checkIfItemIsInArray(data, card.labels);
+      if (!check.isInIt) {
+        boardData.lists[selected[0]].cards[selected[1]].labels = [...card.labels, data];
+      }
+    });
+  }
+
+  function handleCardLabel(): void {
+    if (selecteds[0][0] === -1) {
+      const check = checkIfItemIsInArray(data, cardData.labels);
+      const labels = [...cardData.labels];
+      if (check.isInIt) {
+        labels.splice(check.index, 1);
+        cardData.labels = [...labels];
+      }
+      if (!check.isInIt) cardData.labels = [...cardData.labels, data];
+    } else if (checkIfAllSelectedsHasLabel()) {
+      removeLabelFromSelectedCards();
+    } else {
+      addLabelToSelectedCards();
     }
-    if (!check.isInIt) cardData.labels = [...cardData.labels, data];
   }
 
   $: if (focus) document.getElementById("label-editable")?.focus();
+  $: selecteds = $selectedCards as [number, number][];
+
 </script>
 
 <div class="card-label-container" on:click>
@@ -103,11 +144,13 @@
       <span>{data.title}</span>
     {/if}
     <div class="card-label-icon">
-      {#if showIcon}<Icon
+      {#if selecteds[0][0] !== -1 && boardData ? checkIfAllSelectedsHasLabel() : showIcon}
+        <Icon
           iconName={icon}
           --szot-icon-font-size="20px"
           --szot-icon-color="white"
-        />{/if}
+        />
+      {/if}
     </div>
   </div>
   {#if allowEdit}

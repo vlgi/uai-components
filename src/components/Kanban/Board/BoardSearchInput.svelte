@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fuzzySearch } from "../../../helpers/searching";
+  import { throttle } from "../../../helpers/perfomance";
   import { actionOutClick } from "../../../actions/clickOutside/clickOutside";
 
   import type {
@@ -11,12 +13,6 @@
   } from "../data/types";
 
   import { texts } from "../data/components-texts";
-
-  // funcs
-  import {
-    fuzzySearch,
-    throttle,
-  } from "../utils";
 
   // components
   import Icon from "../../Icon/Icon.svelte";

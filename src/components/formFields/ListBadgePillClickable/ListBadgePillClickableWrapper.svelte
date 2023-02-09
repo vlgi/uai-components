@@ -36,6 +36,7 @@
     {badgeStyle}
     {direction}
     {...$$restProps}
+    on:checkItem
   />
 </div>
 

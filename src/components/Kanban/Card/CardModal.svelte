@@ -1,6 +1,6 @@
 <script lang="ts">
   import type {
-    TDefautCard, TBoard, TCustomBoard, TCardLabel,
+    TDefautCard, TBoard, TCardLabel,
 } from "../data/types";
   import { texts } from "../data/components-texts";
 
@@ -25,7 +25,7 @@
 
   // props
   export let data: TDefautCard; // card data
-  export let boardData: TBoard | TCustomBoard;
+  export let boardData: TBoard;
   export let labelsData: TCardLabel[] = [];
   export let ci: number; // card index
   export let cli: number; // card list index
@@ -39,6 +39,7 @@
   let showAdd = false;
   let attCover = false;
   let edittingDesc = false;
+  let cover = "";
 
   $: cover = getCover(data.attachments);
 </script>
@@ -127,7 +128,7 @@
       />
 
       <!-- Labels -->
-      {#if data.labels.length > 0}
+      {#if data && data.labels.length > 0}
         <div class="section-title"><h3>{texts.labels}</h3></div>
         <div class="section-items">
           <div
@@ -192,14 +193,12 @@
     </section>
 
     <!-- Card Checklists -->
-    {#if data.checklists.length > 0}
-      <section>
-        <CardModalChecklists
-          bind:data
-          bind:reset={resetDraggingChecklistsElements}
-        />
-      </section>
-    {/if}
+    <section>
+      <CardModalChecklists
+        bind:data
+        bind:reset={resetDraggingChecklistsElements}
+      />
+    </section>
 
     <!-- Card Comments -->
     <section>

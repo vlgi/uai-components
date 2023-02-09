@@ -1,5 +1,6 @@
 <script lang="ts">
   import { tick } from "svelte";
+  import { changeElPositionByIndex } from "../../../helpers/arrays-handling";
 
   import type {
     TBoard,
@@ -9,7 +10,6 @@
   } from "../data/types";
 
   import { texts } from "../data/components-texts";
-  import { changeElPositionByIndex } from "../utils";
 
   // components
   import Button from "../../formFields/Button/Button.svelte";
@@ -272,9 +272,9 @@
     pointer-events: none;
   }
 
-  .selected {
-    background: #eee;
-  }
+    .selected {
+      background: #eee;
+    }
 
   .all-lists-options {
     width: 500px;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isImage } from "../utils";
+  import { checkIfIsAnImageExt } from "../../../helpers/utils";
 
   // props
   export let file = "";
@@ -20,7 +20,7 @@
   class="thumb-container"
   style="background-image: url({file}); border-radius: {radius}; width: {w}; height: {h}"
 >
-  {#if !isImage(file)}<span>{type}</span>{/if}
+  {#if !checkIfIsAnImageExt(file)}<span>{type}</span>{/if}
 </div>
 
 <style lang="scss">

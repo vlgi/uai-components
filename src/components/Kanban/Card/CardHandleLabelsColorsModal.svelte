@@ -1,12 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { checkIfItemIsInArray } from "../../../helpers/arrays-handling";
+  import { compareObjects } from "../../../helpers/objects-handling";
   import type {
     TCardLabel, TDefautCard, TBoard, TCustomBoard,
   } from "../data/types";
   import { label as emptyLabel } from "../data/empty-data";
   import { colors } from "../data/colors-data";
   import { texts } from "../data/components-texts";
-  import { checkIfItemIsInArray, compareObjects } from "../utils";
 
   // props
   export let labelData: TCardLabel = { ...emptyLabel }; // label data
@@ -35,7 +36,6 @@
     if (compareObjects(old, emptyLabel)) {
       // if is a new label, add in the end of labelsData prop and card labels
       if (labelData.hex === "") setColor("#dddddd"); // set a standard color if the user did not select one
-      cardData.labels = [...cardData.labels, labelData];
       labelsData = [...labelsData, labelData];
     } else {
       // if is an existing label to be edited, edit label in all cards and labelsData prop
