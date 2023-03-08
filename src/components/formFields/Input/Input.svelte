@@ -517,7 +517,7 @@
   .icons-left {
     .form-input {
       padding: var(--input-padding) var(--input-padding) var(--input-padding)
-        2rem;
+        calc(1.5rem + var(--szot-input-icon-margin-left, 0.5rem));
     }
 
     .form-label {
@@ -530,7 +530,7 @@
       left: 0;
       background-color: transparent;
       border: 0;
-      margin: calc(var(--input-padding) * 1.2) 0 var(--input-padding) 0.5rem;
+      margin: calc(var(--input-padding) * 1.2) var(--szot-input-icon-margin-right, 0) var(--input-padding) var(--szot-input-icon-margin-left, 0.5rem);
       --szot-icon-color: var(--icon-color);
       --szot-icon-line-height: 1rem;
     }
@@ -538,7 +538,7 @@
 
   .icons-right {
     .form-input {
-      padding: var(--input-padding) 2rem var(--input-padding)
+      padding: var(--input-padding)  calc(1.5rem + var(--szot-input-icon-margin-right, 0.5rem)) var(--input-padding)
         var(--input-padding);
     }
 
@@ -548,7 +548,7 @@
       right: 0;
       background-color: transparent;
       border: 0;
-      margin: calc(var(--input-padding) * 1.2) 0.5rem var(--input-padding) 0;
+      margin: calc(var(--input-padding) * 1.2) var(--szot-input-icon-margin-right, 0.5rem) var(--input-padding) var(--szot-input-icon-margin-left, 0);
       --szot-icon-color: var(--icon-color);
       --szot-icon-line-height: 1rem;
     }
