@@ -170,6 +170,8 @@
     --content-border-width: var(--szot-collapsable-content-border-width, var(--style-type-content-border-width));
     --content-border-radius: var(--szot-collapsable-content-border-radius, var(--theme-medium-shape));
     --title-font-size: var(--szot-collapsable-title-font-size, 1rem);
+    --box-shadow: var(--szot-collapsable-box-shadow, none);
+    --backdrop-filter: var(--szot-collapsable-backdrop-filter, none);
 
     // Style and style type settings
     &.style {
@@ -245,6 +247,8 @@
     // border-width: var(--border-width);
     // border-color: var(--border-color);
     border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    backdrop-filter: var(--backdrop-filter);
     @include m.border(var(--border-width), var(--border-color));
     margin: var(--margin);
 
