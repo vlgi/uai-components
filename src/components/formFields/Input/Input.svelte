@@ -224,6 +224,7 @@
     class="form-div input-style-{inputStyle} border-{border}"
     class:icons-left={iconPosition === "left" && icon}
     class:icons-right={iconPosition === "right" && icon}
+    class:input-filled={value?.length > 0}
     class:visuallyInvalid
     class:inFocus
     class:input-disabled={disabled}
@@ -332,6 +333,7 @@
     );
     --border: var(--szot-input-border, var(--theme-small-border));
     --border-color: var(--szot-input-border-color, var(--default-border-color));
+    --border-color-not-filled: var(--szot-input-border-color, var(--default-border-color));
     --border-radius: var(--szot-input-border-radius, var(--theme-small-shape));
 
     --label-padding: var(--szot-input-label-padding, 0rem);
@@ -351,10 +353,6 @@
     --label-not-focus-color: var(
       --szot-input-label-not-focus-color,
       var(--label-color)
-    );
-    --border-color-focus: var(
-      --szot-input-border-color-focus,
-      var(--default-border-color)
     );
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
@@ -389,7 +387,12 @@
       --default-border-color: var(--theme-ligth-txt);
       --default-placeholder-color: var(--theme-ligth-txt);
     }
+    &.input-filled {
+      --border-color-filled: var(--szot-input-border-color-filled, var(--border-color-not-filled));
+      --border-color: var(--border-color-filled);
+    }
     &.inFocus {
+      --border-color-focus: var(--szot-input-border-color-focus, var(--border-color-filled, var(--border-color-not-filled)));
       --border-color: var(--border-color-focus);
     }
 
@@ -432,6 +435,7 @@
         }
       }
     }
+
     &.border-outline {
       @include m.border(var(--border), var(--border-color));
       border-radius: var(--border-radius);
