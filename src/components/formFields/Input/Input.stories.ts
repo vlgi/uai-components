@@ -171,11 +171,12 @@ export const CustomExample: any = Template({
           + "--szot-input-background-color: #ffffff;"
           + "--szot-input-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
           + "--szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-input-border-color-focus: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
           + "--szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
           + "--szot-input-border-radius: 1.5rem;"
           + "--szot-input-border: 10px;"
-          + "--szot-input-icon-margin-right: 3rem;",
+          + "--szot-input-icon-margin-right: 3rem;"
+          + "--szot-input-border-color-focus: purple;"
+          + "--szot-input-border-color-filled: yellow;",
 });
 
 CustomExample.parameters = {
