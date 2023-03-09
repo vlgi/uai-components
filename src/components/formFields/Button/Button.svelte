@@ -87,6 +87,7 @@
     --width: var(--szot-button-width, auto);
     --white-space-text: var(--szot-button-white-space, nowrap);
     --box-shadow: var(--szot-button-box-shadow, none);
+    --backdrop-filter: var(--szot-button-backdrop-filter, none);
 
     &.style-primary {
       --default-background-color: var(--theme-primary-surface);
@@ -136,6 +137,7 @@
     width: var(--width);
     max-width: var(--max-width);
     box-shadow: var(--box-shadow);
+    backdrop-filter: var(--backdrop-filter);
     @include m.border(var(--border), var(--border-color));
 
     .button {
