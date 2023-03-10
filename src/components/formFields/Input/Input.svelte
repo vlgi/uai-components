@@ -69,6 +69,12 @@
    */
   export let inputmode: TInputMode = "text";
 
+  /**
+   * Display asterisk next to label when input is required
+   * @type {boolean}
+   */
+  export let displayRequired = false;
+
   export let type = "text";
   export let value = "";
   export let disabled = false;
@@ -258,7 +264,7 @@
     <label
       for={id}
       class="form-label"
-      class:required
+      class:required={required && displayRequired}
       bind:this={labelComponent}
       use:actionWatchSize
       on:actionResize={handleLabelResize}
