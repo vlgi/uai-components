@@ -240,9 +240,15 @@
 
   .title {
     --szot-icon-color: var(--txt-header-color);
+    --szot-icon-font-size: 1.625rem;
+
+
     @include m.text-color(var(--txt-header-color));
     font-size: var(--txt-header-size);
     font-weight: var(--txt-header-weight);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .content {
