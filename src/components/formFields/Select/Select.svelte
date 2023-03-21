@@ -108,7 +108,6 @@ let filteredOptions: TOption[];
 
 let wrapperElement: HTMLElement;
 let clipPathVariables = {
-  borderWidth: "0px",
   labelWidth: "0px",
   labelHeight: "0px",
 };
@@ -241,7 +240,6 @@ $: if (wrapperElement && isInsideContext) {
 $: if (wrapperElement && labelComponent) {
   clipPathVariables = {
     ...clipPathVariables,
-    borderWidth: getComputedStyle(wrapperElement).borderWidth,
   };
 }
 
@@ -266,7 +264,6 @@ onDestroy(() => {
   bind:this={wrapperElement}
   class:select-disabled={disabled}
   style="
-    --border-width: {clipPathVariables.borderWidth};
     --label-height: {clipPathVariables.labelHeight};
     --label-width: {clipPathVariables.labelWidth};
   "
@@ -410,7 +407,7 @@ onDestroy(() => {
     --component-border-radius: var(--szot-select-border-radius, var(--theme-small-shape));
     --component-padding-vertical: var(--szot-select-padding-vertical, var(--theme-fields-padding));
     --component-padding-horizontal: var(--szot-select-padding-horizontal, var(--theme-fields-padding));
-    --component-border: var(--theme-small-border);
+    --component-border: var(--szot-select-border, var(--theme-small-border));
     --label-margin-right: var(--select-label-margin-right, 1.3rem);
     --message-left-spacing: var(--szot-select-message-left-spacing, 1rem);
     --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
@@ -420,6 +417,7 @@ onDestroy(() => {
     --select-badge-border-color: var(--szot-select-badge-border-color, var(--component-border-color));
     --search-input-border-color: var(--szot-select-search-input-border-color, var(--component-border-color));
     --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--component-color));
+    --border-width: var(--component-border);
   }
 
   .select-wrapper {
