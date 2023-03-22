@@ -58,6 +58,7 @@
     labelHeight: "0px",
   };
   let labelComponent: HTMLElement;
+  let inFocus = false;
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -67,6 +68,7 @@
   } = isInsideContext && getContext<TFormContext>("FormContext");
 
   const focused = () => {
+    inFocus = !inFocus;
     if (invalid) {
       helper = false;
     } else {
@@ -165,6 +167,8 @@
 >
   <div
     class="textarea-container textarea-style-{textareaStyle}"
+    class:filled={value?.length > 0}
+    class:inFocus
     class:invalid
     bind:this={wrapperElement}
   >
@@ -290,7 +294,15 @@
       --default-placeholder-color: var(--theme-light-txt);
     }
 
-    @include m.border(var(--border), var(--border-color));
+    &.filled {
+      --border-color-filled: var(--szot-textarea-border-color-filled, var(--border-color));
+    }
+
+    &.inFocus {
+      --border-color-focus: var(--szot-textarea-border-color-focus, var(--border-color-filled, var(--border-color)));
+    }
+
+    @include m.border(var(--border), var(--border-color-focus, var(--border-color-filled, var(--border-color))));
     border-radius:var(--border-radius);
     position: relative;
     margin-top: var(--margin-top);
