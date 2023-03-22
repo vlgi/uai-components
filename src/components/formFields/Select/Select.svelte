@@ -417,9 +417,9 @@ onDestroy(() => {
     --component-border-color: var(--szot-select-border-color, var(--component-color));
     --select-badge-color: var(--szot-select-badge-color, var(--szot-select-label-color));
     --search-input-border-color: var(--szot-select-search-input-border-color, var(--component-border-color));
-    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--component-color));
-    --border-width: var(--component-border);
     --text-color: var(--szot-select-text-color, var(--theme-dark-txt));
+    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--text-color));
+    --border-width: var(--component-border);
   }
 
   .select-wrapper {
@@ -555,12 +555,10 @@ onDestroy(() => {
 
       .search-input {
         --szot-input-background-color: var(--component-background-color);
-        --szot-input-border-color: var(--select-focus-color, var(--search-input-border-color));
-        --szot-input-border-color-focus: var(--select-focus-color, var(--search-input-border-color));
+        --szot-input-border-color: var(--text-color);
         --szot-input-placeholder-color: var(--input-placeholder-color);
         --szot-input-margin-bottom: 0;
         --szot-input-text-color: var(--text-color);
-        --szot-input-placeholder-color: var(--text-color);
       }
 
       &.with-borders {
