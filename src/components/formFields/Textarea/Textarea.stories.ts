@@ -95,7 +95,9 @@ export const CustomExample: any = Template({
   style: "--szot-textarea-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
           + "--szot-textarea-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
           + "--szot-textarea-placeholder-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-textarea-border: 10px;",
+          + "--szot-textarea-border: 10px;"
+          + "--szot-textarea-border-color-filled: red;"
+          + "--szot-textarea-border-color-focus: green;",
 });
 
 CustomExample.parameters = {
