@@ -363,6 +363,11 @@
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
 
+    --icon-left-margin-right: var(--szot-input-icon-margin-right, 0);
+    --icon-left-margin-left: var(--szot-input-icon-margin-left, 0.5rem);
+    --icon-right-margin-right: var(--szot-input-icon-margin-right, 0.5rem);
+    --icon-right-margin-left: var(--szot-input-icon-margin-left, 0);
+
     &.input-style-primary {
       --default-label-color: var(--theme-primary-txt);
       --default-input-color: var(--theme-primary-inserted-text);
@@ -527,7 +532,7 @@
   .icons-left {
     .form-input {
       padding: var(--input-padding) var(--input-padding) var(--input-padding)
-        calc(1.5rem + var(--szot-input-icon-margin-left, 0.5rem));
+        calc(1.5rem + var(--icon-left-margin-left));
     }
 
     .form-label {
@@ -540,7 +545,7 @@
       left: 0;
       background-color: transparent;
       border: 0;
-      margin: calc(var(--input-padding) * 1.2) var(--szot-input-icon-margin-right, 0) var(--input-padding) var(--szot-input-icon-margin-left, 0.5rem);
+      margin: calc(var(--input-padding) * 1.2) var(--icon-left-margin-right) var(--input-padding) var(--icon-left-margin-left);
       --szot-icon-color: var(--icon-color);
       --szot-icon-line-height: 1rem;
     }
@@ -548,7 +553,7 @@
 
   .icons-right {
     .form-input {
-      padding: var(--input-padding)  calc(1.5rem + var(--szot-input-icon-margin-right, 0.5rem)) var(--input-padding)
+      padding: var(--input-padding)  calc(1.5rem + var(--icon-right-margin-right)) var(--input-padding)
         var(--input-padding);
     }
 
@@ -558,7 +563,7 @@
       right: 0;
       background-color: transparent;
       border: 0;
-      margin: calc(var(--input-padding) * 1.2) var(--szot-input-icon-margin-right, 0.5rem) var(--input-padding) var(--szot-input-icon-margin-left, 0);
+      margin: calc(var(--input-padding) * 1.2) var(--icon-right-margin-right) var(--input-padding) var(--icon-right-margin-left);
       --szot-icon-color: var(--icon-color);
       --szot-icon-line-height: 1rem;
     }
