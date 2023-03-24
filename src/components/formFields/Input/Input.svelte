@@ -69,6 +69,12 @@
    */
   export let inputmode: TInputMode = "text";
 
+  /**
+   * Display asterisk next to label when input is required
+   * @type {boolean}
+   */
+  export let displayRequired = false;
+
   export let type = "text";
   export let value = "";
   export let disabled = false;
@@ -224,6 +230,7 @@
     class="form-div input-style-{inputStyle} border-{border}"
     class:icons-left={iconPosition === "left" && icon}
     class:icons-right={iconPosition === "right" && icon}
+    class:input-filled={value?.length > 0}
     class:visuallyInvalid
     class:inFocus
     class:input-disabled={disabled}
@@ -257,7 +264,7 @@
     <label
       for={id}
       class="form-label"
-      class:required
+      class:required={required && displayRequired}
       bind:this={labelComponent}
       use:actionWatchSize
       on:actionResize={handleLabelResize}
@@ -332,6 +339,7 @@
     );
     --border: var(--szot-input-border, var(--theme-small-border));
     --border-color: var(--szot-input-border-color, var(--default-border-color));
+    --border-color-not-filled: var(--szot-input-border-color, var(--default-border-color));
     --border-radius: var(--szot-input-border-radius, var(--theme-small-shape));
 
     --label-padding: var(--szot-input-label-padding, 0rem);
@@ -352,12 +360,13 @@
       --szot-input-label-not-focus-color,
       var(--label-color)
     );
-    --border-color-focus: var(
-      --szot-input-border-color-focus,
-      var(--default-border-color)
-    );
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
+
+    --icon-left-margin-right: var(--szot-input-icon-margin-right, 0);
+    --icon-left-margin-left: var(--szot-input-icon-margin-left, 0.5rem);
+    --icon-right-margin-right: var(--szot-input-icon-margin-right, 0.5rem);
+    --icon-right-margin-left: var(--szot-input-icon-margin-left, 0);
 
     &.input-style-primary {
       --default-label-color: var(--theme-primary-txt);
@@ -389,7 +398,12 @@
       --default-border-color: var(--theme-ligth-txt);
       --default-placeholder-color: var(--theme-ligth-txt);
     }
+    &.input-filled {
+      --border-color-filled: var(--szot-input-border-color-filled, var(--border-color-not-filled));
+      --border-color: var(--border-color-filled);
+    }
     &.inFocus {
+      --border-color-focus: var(--szot-input-border-color-focus, var(--border-color-filled, var(--border-color-not-filled)));
       --border-color: var(--border-color-focus);
     }
 
@@ -432,6 +446,7 @@
         }
       }
     }
+
     &.border-outline {
       @include m.border(var(--border), var(--border-color));
       border-radius: var(--border-radius);
@@ -517,7 +532,7 @@
   .icons-left {
     .form-input {
       padding: var(--input-padding) var(--input-padding) var(--input-padding)
-        2rem;
+        calc(1.5rem + var(--icon-left-margin-left));
     }
 
     .form-label {
@@ -530,7 +545,7 @@
       left: 0;
       background-color: transparent;
       border: 0;
-      margin: calc(var(--input-padding) * 1.2) 0 var(--input-padding) 0.5rem;
+      margin: calc(var(--input-padding) * 1.2) var(--icon-left-margin-right) var(--input-padding) var(--icon-left-margin-left);
       --szot-icon-color: var(--icon-color);
       --szot-icon-line-height: 1rem;
     }
@@ -538,7 +553,7 @@
 
   .icons-right {
     .form-input {
-      padding: var(--input-padding) 2rem var(--input-padding)
+      padding: var(--input-padding)  calc(1.5rem + var(--icon-right-margin-right)) var(--input-padding)
         var(--input-padding);
     }
 
@@ -548,7 +563,7 @@
       right: 0;
       background-color: transparent;
       border: 0;
-      margin: calc(var(--input-padding) * 1.2) 0.5rem var(--input-padding) 0;
+      margin: calc(var(--input-padding) * 1.2) var(--icon-right-margin-right) var(--input-padding) var(--icon-right-margin-left);
       --szot-icon-color: var(--icon-color);
       --szot-icon-line-height: 1rem;
     }

@@ -11,6 +11,7 @@ import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
 import type { TOption, TOptionsListBinds } from "./types";
 import type { TbadgeStyle, TbadgeStyleType } from "../../Badge/types";
 import { actionWatchSize } from "../../../actions/watchSize/watchSize";
+import { isTruthy } from "../../../helpers/truthy";
 
 // True if the select should select multiple values
 export let multiple = false;
@@ -108,7 +109,6 @@ let filteredOptions: TOption[];
 
 let wrapperElement: HTMLElement;
 let clipPathVariables = {
-  borderWidth: "0px",
   labelWidth: "0px",
   labelHeight: "0px",
 };
@@ -241,7 +241,6 @@ $: if (wrapperElement && isInsideContext) {
 $: if (wrapperElement && labelComponent) {
   clipPathVariables = {
     ...clipPathVariables,
-    borderWidth: getComputedStyle(wrapperElement).borderWidth,
   };
 }
 
@@ -266,11 +265,11 @@ onDestroy(() => {
   bind:this={wrapperElement}
   class:select-disabled={disabled}
   style="
-    --border-width: {clipPathVariables.borderWidth};
     --label-height: {clipPathVariables.labelHeight};
     --label-width: {clipPathVariables.labelWidth};
   "
   class:apply-clip-path={applyClipPath}
+  class:filled={isTruthy(selected)}
 >
   <div
     tabindex="0"
@@ -404,22 +403,23 @@ onDestroy(() => {
 <style lang="scss">
   @use "src/styles/mixins" as m;
   * {
-    --component-color: var(--select-focus-color, var(--theme-color));
+    --component-color: var(--theme-color);
     --margin-top: var(--szot-select-margin-top, 0.5rem);
     --component-background-color: var(--szot-select-background-color, transparent);
     --component-border-radius: var(--szot-select-border-radius, var(--theme-small-shape));
     --component-padding-vertical: var(--szot-select-padding-vertical, var(--theme-fields-padding));
     --component-padding-horizontal: var(--szot-select-padding-horizontal, var(--theme-fields-padding));
-    --component-border: var(--theme-small-border);
+    --component-border: var(--szot-select-border, var(--theme-small-border));
     --label-margin-right: var(--select-label-margin-right, 1.3rem);
     --message-left-spacing: var(--szot-select-message-left-spacing, 1rem);
     --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
     --component-label-color: var(--szot-select-label-color, var(--component-color));
     --component-border-color: var(--szot-select-border-color, var(--component-color));
     --select-badge-color: var(--szot-select-badge-color, var(--szot-select-label-color));
-    --select-badge-border-color: var(--szot-select-badge-border-color, var(--component-border-color));
     --search-input-border-color: var(--szot-select-search-input-border-color, var(--component-border-color));
-    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--component-color));
+    --text-color: var(--szot-select-text-color, var(--theme-dark-txt));
+    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--text-color));
+    --border-width: var(--component-border);
   }
 
   .select-wrapper {
@@ -433,6 +433,10 @@ onDestroy(() => {
           var(--component-padding-horizontal)
         );
       }
+    }
+
+    &.filled {
+      --component-border-color-filled: var(--szot-select-border-color-filled, var(--component-border-color));
     }
   }
 
@@ -464,12 +468,13 @@ onDestroy(() => {
     max-width: var(--szot-select-max-width, 100%);
     // hack the specificity
     &.select.select {
-      @include m.border(var(--component-border), var(--select-focus-color, var(--component-border-color)));
+      --default-border-color-focus: var(--component-border-color-filled, var(--component-border-color));
+      @include m.border(var(--component-border), var(--select-focus-color, var(--default-border-color-focus)));
     }
 
     &.border {
       &-outline {
-        @include m.border(var(--component-border), var(--component-border-color));
+        @include m.border(var(--component-border), var(--component-border-color-filled, var(--component-border-color)));
         border-radius: var(--component-border-radius);
       }
       &-bottom {
@@ -492,7 +497,7 @@ onDestroy(() => {
       }
     }
     &-inFocus {
-      --select-focus-color: var(--szot-select-focus-color);
+      --select-focus-color: var(--szot-select-border-color-focus);
     }
 
     &-label {
@@ -513,7 +518,7 @@ onDestroy(() => {
         @include m.form-field-label-floated-size;
       }
       .label-text {
-        @include m.text-color(var(--select-focus-color, var(--component-label-color)));
+        @include m.text-color(var(--component-label-color));
       }
       &.required {
         .label-text::after{
@@ -526,7 +531,7 @@ onDestroy(() => {
     &-box {
       border-radius: var(--component-border-radius);
       padding: var(--component-padding-vertical) var(--component-padding-horizontal);
-      @include m.text-color(var(--select-focus-color, var(--component-label-color)));
+      @include m.text-color(var(--text-color));
       cursor: pointer;
     }
 
@@ -550,15 +555,15 @@ onDestroy(() => {
 
       .search-input {
         --szot-input-background-color: var(--component-background-color);
-        --szot-input-border-color: var(--select-focus-color, var(--search-input-border-color));
-        --szot-input-border-color-focus: var(--select-focus-color, var(--search-input-border-color));
+        --szot-input-border-color: var(--text-color);
         --szot-input-placeholder-color: var(--input-placeholder-color);
         --szot-input-margin-bottom: 0;
+        --szot-input-text-color: var(--text-color);
       }
 
       &.with-borders {
         padding-top: var(--component-padding-vertical);
-        @include m.border(var(--component-border), var(--component-border-color));
+        @include m.border(var(--component-border), var(--component-border-color-filled, var(--component-border-color)));
         border-bottom: none;
         border-radius: 0;
 
@@ -604,7 +609,7 @@ onDestroy(() => {
           content: '';
           display: block;
           position: absolute;
-          background: var(--component-border-color);
+          background: var(--select-focus-color, var(--component-border-color-filled, var(--component-border-color)));
         }
 
         &::before {
@@ -623,8 +628,8 @@ onDestroy(() => {
   }
 
   .badge {
-    --szot-badge-color: var(--select-focus-color, var(--select-badge-color));
-    --szot-badge-border-color: var(--select-focus-color, var(--select-badge-border-color));
+    --szot-badge-color: var(--select-badge-color);
+    --szot-badge-border-color: var(--szot-select-badge-border-color, var(--select-focus-color, var(--default-border-color-focus)));
   }
 
   .error-text{
