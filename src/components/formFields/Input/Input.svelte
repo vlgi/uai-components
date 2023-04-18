@@ -155,6 +155,7 @@
   }
 
   function submitOnEnter(ev: KeyboardEvent) {
+    if (!isInsideContext) return;
     if (ev.key === "Enter") {
       // eslint-disable-next-line no-void
       void fireSubmit();
