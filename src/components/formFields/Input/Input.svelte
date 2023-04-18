@@ -1,7 +1,5 @@
 <script lang="ts">
-  import {
-    onMount, getContext, hasContext, onDestroy,
-} from "svelte";
+  import { onMount, getContext, hasContext, onDestroy } from "svelte";
   import { actionWatchSize } from "../../../actions/watchSize/watchSize";
   import type { TFormContext } from "../../Form/types";
   import Icon from "../../Icon/Icon.svelte";
@@ -204,7 +202,7 @@
         required,
         wrapperElement,
         validation,
-        forceValue,
+        forceValue
       );
     }
   });
@@ -248,6 +246,9 @@
       on:change
       on:focus
       on:focusout
+      on:keydown
+      on:keyup
+      on:keypress
       bind:this={inputElement}
       class="form-input"
       placeholder=" "
