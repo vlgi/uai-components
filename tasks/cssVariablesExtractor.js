@@ -82,7 +82,7 @@ function extractCssVarImplicitDefs(stringCssUsage) {
  * @param {string} fileData
  */
 function extractCssVarExplicitDefs(fileData) {
-  const regExpExtractVariables = new RegExp(/\s--([^:]|\n)*:([^;]|\n)*;/, "igm");
+  const regExpExtractVariables = new RegExp(/\s--(?!szot)([^:]|\n)*:([^;]|\n)*;/, "igm");
   const matchs = fileData.match(regExpExtractVariables);
   const matchsCleaned = matchs.map((x) => (
     x
