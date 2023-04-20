@@ -6,5 +6,5 @@
 </script>
 
 <div {style}>
-  <Icon {iconName}/>
+  <Icon {iconName} on:click/>
 </div>

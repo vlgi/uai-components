@@ -1,7 +1,6 @@
 import type { ArgType } from "@storybook/addons";
 import { action } from "@storybook/addon-actions";
 import Icon from "./Icon.svelte";
-import IconList from "./IconList.svelte";
 import Wrapper from "./IconWrapper.svelte";
 
 export default {
@@ -31,26 +30,15 @@ const Template = (_args: ArgType) => {
 };
 
 export const Default = Template({
-  iconName: "phone",
+  iconName: "mdi:cellphone",
 });
 
 export const Custom: any = Template({
-  iconName: "apple",
+  iconName: "ic:baseline-apple",
   style:
       "--szot-icon-font-size: 80px;"
       + "--szot-icon-color: red;",
 });
-
-export const List = (): unknown => ({
-  Component: IconList,
-});
-
-// disabled storyshots for the list
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-List.parameters = {
-  ...List.parameters,
-  storyshots: false,
-};
 
 Custom.parameters = {
   docs: {
@@ -63,7 +51,7 @@ Custom.parameters = {
 
   <div style="--szot-icon-font-size: 80px;
     --szot-icon-color: red;" >
-    <Icon iconName={"apple"} />
+    <Icon iconName={"ic:baseline-apple"} />
   </div>
   `,
     },

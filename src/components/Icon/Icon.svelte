@@ -1,16 +1,21 @@
 <script lang="ts">
+  import Icon from "@iconify/svelte";
+
   export let iconName: string;
 </script>
 
-<span class="icon-{iconName}" on:click/>
+<div class="icon-container" on:click>
+  <Icon
+    icon={iconName}
+  />
+</div>
 
 <style lang="scss">
-
-  @use 'src/styles/mixins' as m;
-  span::before {
-    @include m.text-color(var(--szot-icon-color, var(--theme-dark-txt)));
+  .icon-container {
+    width: fit-content;
+    height: fit-content;
+    color: var(--szot-icon-color, var(--theme-dark-txt));
     font-size: var(--szot-icon-font-size, 1.25rem);
-    line-height: var(--szot-icon-line-height, 1.25em);
+    line-height: 0;
   }
-
 </style>

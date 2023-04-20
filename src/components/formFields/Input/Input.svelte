@@ -551,7 +551,6 @@
       border: 0;
       margin: calc(var(--input-padding) * 1.2) var(--icon-left-margin-right) var(--input-padding) var(--icon-left-margin-left);
       --szot-icon-color: var(--icon-color);
-      --szot-icon-line-height: 1rem;
     }
   }
 
@@ -569,7 +568,6 @@
       border: 0;
       margin: calc(var(--input-padding) * 1.2) var(--icon-right-margin-right) var(--input-padding) var(--icon-right-margin-left);
       --szot-icon-color: var(--icon-color);
-      --szot-icon-line-height: 1rem;
     }
   }
 

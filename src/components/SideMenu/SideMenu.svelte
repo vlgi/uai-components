@@ -70,7 +70,9 @@
       bind:elBtn
       on:click={ toggleMobileMenu }
     >
-      <Icon iconName={ navExpanded ? "close" : "menu" } />
+      <div class="icon-container">
+        <Icon iconName={ navExpanded ? "mi:close" : "mdi:menu" } />
+      </div>
     </DraggableButton>
   </div>
 
@@ -103,7 +105,9 @@
             href={ n1.path }
             on:click={ closeMenu }
           >
-            <i class="active-{ n1.isActive } { n1.icon }"/>
+            <div class="icon-container">
+              <Icon iconName={n1.icon}/>
+            </div>
             <span class="n1-item-text active-{ n1.isActive }">{ n1.text }</span>
           </a>
         {/if}
@@ -111,9 +115,14 @@
         <!-- n1 group -->
         {#if n1.type === "group"}
           <div
-            class="n1-group n1-group--active-{ isGroupActive(n1.items) }"
+            class="
+              n1-group
+              n1-group--active-{ isGroupActive(n1.items) }
+            "
           >
-            <i class="active-{ isGroupActive(n1.items) } { n1.icon }"/>
+            <div class="icon-container">
+              <Icon iconName={n1.icon}/>
+            </div>
             <span class="n1-group-text active-{ isGroupActive(n1.items) }">{ n1.text }</span>
 
             <!-- n2 item -->
@@ -136,11 +145,16 @@
       <div class="nav-bottom-items-container">
         {#each bottomItems as item}
           <a
-            class="nav-bottom-items nav-bottom-items--active-{ item.isActive }"
+            class="
+              nav-bottom-items
+              nav-bottom-items--active-{ item.isActive }
+            "
             href={ item.path }
             on:click={ closeMenu }
           >
-            <i class="active-{ item.isActive } { item.icon }"/>
+            <div class="icon-container">
+              <Icon iconName={item.icon}/>
+            </div>
             <span class="nav-bottom-items-text active-{ item.isActive }">{ item.text }</span>
           </a>
         {/each}
@@ -336,6 +350,16 @@
       }
 
       @mixin n1-container {
+        &--active-true {
+          --color-active: var(--nav-items-active-txt-color);
+
+          border: var(--nav-items-active-border);
+          background: var(--nav-items-active-background);
+        }
+
+        --szot-icon-color: var(--color-active, var(--nav-txt-color));
+        --szot-icon-font-size: var(--nav-icon-size);
+
         display: grid;
         align-items: center;
         border-radius: var(--nav-items-border-radius);
@@ -357,24 +381,6 @@
 
         &:not([class*="active-true"]):hover {
           background: var(--nav-items-hover-color);
-        }
-
-        &--active-true {
-          border: var(--nav-items-active-border);
-          background: var(--nav-items-active-background);
-        }
-      }
-
-      @mixin n1-icon {
-        justify-self: center;
-
-        &::before {
-          font-size: var(--nav-icon-size);
-          @include m.text-color(var(--nav-txt-color));
-        }
-
-        &.active-true::before {
-          @include m.text-color(var(--nav-items-active-txt-color));
         }
       }
 
@@ -406,9 +412,6 @@
         .n1-item {
           @include n1-container();
 
-          i {
-            @include n1-icon();
-          }
           .n1-item-text {
             @include n1-text();
           }
@@ -429,10 +432,6 @@
 
           &--active-true .n2-item-text {
             @include m.text-color(var(--nav-items-active-txt-color));
-          }
-
-          i {
-            @include n1-icon();
           }
 
           .n1-group-text {
@@ -470,16 +469,18 @@
         .nav-bottom-items {
           @include n1-container();
 
-          i {
-            @include n1-icon();
-          }
-
           .nav-bottom-items-text {
             @include n1-text();
             text-align: start;
           }
         }
       }
+    }
+
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 </style>
