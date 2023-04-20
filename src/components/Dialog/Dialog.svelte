@@ -76,10 +76,10 @@
 
   function getSignalsIcon(key: string): string {
     const signalsMap: Record<string, string> = {
-      info: "information",
-      warning: "alert",
-      error: "close-circle",
-      success: "check-circle",
+      info: "ph:info-fill",
+      warning: "mingcute:warning-fill",
+      error: "mingcute:close-circle-fill",
+      success: "material-symbols:check-circle-rounded",
     };
 
     if (signalsMap[key]) return signalsMap[key];
@@ -112,12 +112,14 @@
         <!-- you can change the default title, and add anything like in the modal -->
         <slot name="dialog-header"></slot>
       {:else}
-        <span class="title">
+        <div class="title-container">
           {#if signalsIcon}
             <Icon iconName={signalsIcon}/>
           {/if}
-          {title}
-        </span>
+          <span class="title">
+            {title}
+          </span>
+        </div>
       {/if}
     </div>
 
@@ -238,17 +240,19 @@
     display: contents;
   }
 
-  .title {
+  .title-container {
     --szot-icon-color: var(--txt-header-color);
     --szot-icon-font-size: 1.625rem;
 
-
-    @include m.text-color(var(--txt-header-color));
-    font-size: var(--txt-header-size);
-    font-weight: var(--txt-header-weight);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
+    .title {
+      @include m.text-color(var(--txt-header-color));
+      font-size: var(--txt-header-size);
+      font-weight: var(--txt-header-weight);
+    }
   }
 
   .content {

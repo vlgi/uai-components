@@ -57,7 +57,7 @@ export const Scroll = Template({
 const itemActiveItems: TMenuItem[] = [
   {
     type: "item",
-    icon: "icon-account",
+    icon: "material-symbols:person",
     text: "My active item",
     isActive: true,
     path: "./",
@@ -74,7 +74,7 @@ export const ItemActive = Template({
 const groupActiveItems: TMenuItem[] = [
   {
     type: "group",
-    icon: "icon-account",
+    icon: "material-symbols:person",
     text: "My Group Active",
     items: [
       {

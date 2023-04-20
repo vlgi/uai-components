@@ -22,3 +22,5 @@ export { default as Collapsable } from "./components/Collapsable/Collapsable.sve
 
 export { default as Modal } from "./components/Modal/Modal.svelte";
 export { default as Dialog } from "./components/Dialog/DialogShorthand";
+
+export { addIcons } from "./helpers/iconify";

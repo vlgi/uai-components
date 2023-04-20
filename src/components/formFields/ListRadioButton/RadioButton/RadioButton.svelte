@@ -81,7 +81,7 @@
   {#if radioStyleType === "badge-pill"}
     {#if iconPosition === "left" || iconPosition === "both"}
       {#if value === group}
-        <Icon iconName="close-circle"/>
+        <Icon iconName="ion:close-circle"/>
       {/if}
     {/if}
     <label for={id} bind:this={labelElement} class="badge-label">
@@ -89,7 +89,7 @@
     </label>
     {#if iconPosition === "right" || iconPosition === "both"}
       {#if value === group}
-      <Icon iconName="close-circle"/>
+      <Icon iconName="ion:close-circle"/>
       {/if}
     {/if}
   {:else}

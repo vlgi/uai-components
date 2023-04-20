@@ -3,13 +3,13 @@ import type { TMenuItem, TBottomMenuItem } from "./types";
 export const items: TMenuItem[] = [
   {
     type: "item",
-    icon: "icon-account",
+    icon: "material-symbols:person",
     text: "Home",
     path: "./",
   },
   {
     type: "group",
-    icon: "icon-account",
+    icon: "material-symbols:person",
     text: "Dashboard",
     items: [
       {
@@ -28,7 +28,7 @@ export const items: TMenuItem[] = [
   },
   {
     type: "group",
-    icon: "icon-account",
+    icon: "material-symbols:person",
     text: "Assessores",
     items: [
       {
@@ -39,19 +39,19 @@ export const items: TMenuItem[] = [
   },
   {
     type: "item",
-    icon: "icon-account",
+    icon: "material-symbols:person",
     text: "Expansão",
     path: "./",
   },
   {
     type: "item",
-    icon: "icon-account",
+    icon: "material-symbols:person",
     text: "Financeiro",
     path: "./",
   },
   {
     type: "item",
-    icon: "icon-account",
+    icon: "material-symbols:person",
     text: "Nome que cabe aqui de boa",
     path: "./",
   },
@@ -59,7 +59,7 @@ export const items: TMenuItem[] = [
 
 export const bottomItems: TBottomMenuItem[] = [
   {
-    icon: "icon-cog",
+    icon: "mdi:gear",
     text: "Configurações",
     path: "./",
   },

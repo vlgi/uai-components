@@ -67,7 +67,7 @@ export const LargeSimple = Template({
 
 export const LargeIcon = Template({
   size: "large",
-  icon: "upload",
+  icon: "mdi:upload",
   labelSlot: "Enviar documentos",
   positionIcon: "right",
   style: "--szot-button-max-width: 20rem",
@@ -80,7 +80,7 @@ export const mediumSimple = Template({
 
 export const mediumIcon = Template({
   size: "medium",
-  icon: "file",
+  icon: "mdi:file",
   labelSlot: "Documento",
   positionIcon: "right",
 });
@@ -92,7 +92,7 @@ export const smallSimple = Template({
 
 export const smallIcon = Template({
   size: "small",
-  icon: "magnify",
+  icon: "mdi:magnify",
   labelSlot: "Buscar",
 });
 
@@ -131,24 +131,24 @@ export const withBordersDisabled = Template({
 export const Round = Template({
   style: "",
   size: "round",
-  icon: "dots-horizontal",
+  icon: "mdi:dots-horizontal",
 });
 
 export const RoundNotBackground = Template({
   size: "round",
-  icon: "dots-horizontal",
+  icon: "mdi:dots-horizontal",
   buttonStyleType: "not-filled",
 });
 
 export const RoundDisabled = Template({
   size: "round",
-  icon: "dots-horizontal",
+  icon: "mdi:dots-horizontal",
   disabled: "true",
 });
 
 export const CustomExample: any = Template({
   labelSlot: "orange",
-  icon: "eye",
+  icon: "ic:outline-remove-red-eye",
   style:
       "--szot-button-color: #333;"
       + "--szot-button-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
@@ -175,7 +175,7 @@ CustomExample.parameters = {
       --szot-button-icon-color: red;
       --szot-button-border-radius: 1.5rem" >
     <Button
-      icon="eye"
+      icon="ic:outline-remove-red-eye"
     >
       orange
     </Button>

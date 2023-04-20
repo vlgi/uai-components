@@ -163,7 +163,7 @@
     {#if styleType === "badge-pill"}
       {#if iconPosition === "left" || iconPosition === "both"}
         {#if checked}
-          <Icon iconName="close-circle" />
+          <Icon iconName="ion:close-circle" />
         {/if}
       {/if}
       <label for={id} class="badge-label">
@@ -171,7 +171,7 @@
       </label>
       {#if iconPosition === "right" || iconPosition === "both"}
         {#if checked}
-          <Icon iconName="close-circle" />
+          <Icon iconName="ion:close-circle" />
         {/if}
       {/if}
     {:else}

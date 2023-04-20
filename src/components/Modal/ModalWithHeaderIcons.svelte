@@ -18,19 +18,19 @@
     <span class="title">My modal header title</span>
     <div class="buttons">
       <Button
-        icon="plus"
+        icon="ic:round-plus"
         size="round"
         buttonStyle="light"
       >
       </Button>
       <Button
-        icon="pencil"
+        icon="mdi:pencil"
         size="round"
         buttonStyle="light"
       >
       </Button>
       <Button
-        icon="delete"
+        icon="material-symbols:delete-outline"
         size="round"
         buttonStyle="light"
       >
