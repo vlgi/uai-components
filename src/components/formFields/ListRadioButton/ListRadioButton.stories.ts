@@ -6,6 +6,33 @@ import ListRadioButtonWrapper from "./ListRadioButtonWrapper.svelte";
 export default {
   title: "Components/FormFields/ListRadioButton",
   component: ListRadioButton,
+  argTypes: {
+    onClick: { action: "on:click" },
+    radioStyleType: {
+      control: {
+        type: "select",
+        options: ["filled", "notFilled", "badge-pill"],
+      },
+    },
+    iconPosition: {
+      control: {
+        type: "select",
+        options: ["left", "right", "both", "none"],
+      },
+    },
+    badgeStyle: {
+      control: {
+        type: "select",
+        options: ["dark", "light", "primary", "secondary"],
+      },
+    },
+    direction: {
+      control: {
+        type: "select",
+        options: ["column", "row"],
+      },
+    },
+  },
 };
 
 const Template = (_args: ArgType) => {
@@ -35,6 +62,33 @@ const radioOptions = [
   },
 ];
 
+const radioOptions2 = [
+  {
+    value: "firstItem",
+    label: "Item",
+  },
+  {
+    value: "secondItem",
+    label: "Item dois",
+  },
+  {
+    value: "thirdItem",
+    label: "O terceiro item",
+  },
+  {
+    value: "fourthItem",
+    label: "Item 4",
+  },
+  {
+    value: "fifthItem",
+    label: "Item -------------5-------------",
+  },
+  {
+    value: "sixthItem",
+    label: "6",
+  },
+];
+
 export const Default = Template({
   name: "defaultOptionList",
   listName: "Escolha uma opção",
@@ -53,6 +107,23 @@ export const FilledRadios = Template({
   listName: "Escolha uma opção",
   radioOptions,
   radioStyleType: "filled",
+});
+
+export const Badge = Template({
+  name: "badgeOptionList",
+  listName: "Escolha uma opção",
+  radioOptions: radioOptions2,
+  radioStyleType: "badge-pill",
+  direction: "row",
+  iconPosition: "left",
+  badgeStyle: "primary",
+});
+
+export const EnableUncheck = Template({
+  name: "defaultOptionList",
+  listName: "Escolha uma opção",
+  radioOptions,
+  enableUncheck: true,
 });
 
 export const forceInvalid = Template({

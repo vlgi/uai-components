@@ -5,6 +5,32 @@ import ListCheckbox from "./ListCheckbox.svelte";
 export default {
   title: "Components/FormFields/ListCheckbox",
   component: ListCheckbox,
+  argTypes: {
+    styleType: {
+      control: {
+        type: "select",
+        options: ["checkbox-input", "switch", "badge-pill"],
+      },
+    },
+    iconPosition: {
+      control: {
+        type: "select",
+        options: ["left", "right", "both", "none"],
+      },
+    },
+    badgeStyle: {
+      control: {
+        type: "select",
+        options: ["light", "dark", "primary", "secondary"],
+      },
+    },
+    direction: {
+      control: {
+        type: "select",
+        options: ["column", "row"],
+      },
+    },
+  },
 };
 
 const Template = (_args: ArgType) => {
@@ -31,6 +57,33 @@ const checkboxItems = [
   },
 ];
 
+const checkboxItemsBadgePill = [
+  {
+    value: "firstItem",
+    label: "Item",
+  },
+  {
+    value: "secondItem",
+    label: "Item dois",
+  },
+  {
+    value: "thirdItem",
+    label: "O terceiro item",
+  },
+  {
+    value: "fourthItem",
+    label: "Item 4",
+  },
+  {
+    value: "fifthItem",
+    label: "Item -------------5-------------",
+  },
+  {
+    value: "sixthItem",
+    label: "6",
+  },
+];
+
 export const Default = Template({
   name: "checklist",
   title: "Lista de Afazeres",
@@ -50,6 +103,13 @@ export const forceInvalid = Template({
   checkboxItems,
   forceInvalid: true,
   errorMsg: "Mensagem de erro",
+});
+
+export const Badge = Template({
+  name: "checklist",
+  title: "Lista de Afazeres",
+  styleType: "badge-pill",
+  checkboxItems: checkboxItemsBadgePill,
 });
 
 export const CustomExample: any = Template({

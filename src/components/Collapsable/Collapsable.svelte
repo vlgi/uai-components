@@ -164,6 +164,7 @@
     --icon-font-size: var(--szot-collapsable-icon-font-size, 1.5rem);
     --margin: var(--szot-collapsable-margin, var(--theme-global-medium-padding) 0);
     --padding: var(--szot-collapsable-padding, var(--theme-global-medium-padding));
+    --padding-header: var(--szot-collapsable-padding-header, var(--padding);)
     --border-width: var(--szot-collapsable-border-width, var(--style-type-border-width));
     --border-radius: var(--szot-collapsable-border-radius, calc( calc( max(var(--icon-font-size), 1.1875rem) + calc(2 * var(--theme-global-medium-padding)) ) / 2 ));
     --content-padding: var(--szot-collapsable-content-padding, var(--padding));
@@ -253,7 +254,7 @@
     margin: var(--margin);
 
     header {
-      padding: var(--padding);
+      padding: var(--padding-header);
       .title{
         @include m.text-color(var(--color));
         font-size: var(--title-font-size);

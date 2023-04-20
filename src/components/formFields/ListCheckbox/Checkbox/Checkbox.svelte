@@ -3,9 +3,12 @@
   import {
     onMount, getContext, hasContext, onDestroy,
   } from "svelte";
+  import Icon from "../../../Icon/Icon.svelte";
   import type { TFormContext } from "../../../Form/types";
 
-  type TCheckboxStyleType = "checkbox-input" | "switch" | "text-switch";
+  type TCheckboxStyleType = "checkbox-input" | "switch" | "text-switch" | "badge-pill";
+  type TIconPosition = "left" | "right" | "both" | "none";
+  type TBadgeStyle = "light" | "dark" | "primary" | "secondary";
 
   const dispatch = createEventDispatcher<{
     checkItem: { value: string|boolean, checked: boolean }
@@ -55,6 +58,16 @@
    * @type {string}
    */
   export let styleType: TCheckboxStyleType = "checkbox-input";
+
+  /**
+   * Set the position of the X icon in the styled badge pill
+   */
+  export let iconPosition: TIconPosition = "none";
+
+  /**
+   * Set the style of the label, border and icon in the badge pill
+   */
+  export let badgeStyle: TBadgeStyle = "dark";
 
   export let required = false;
 
@@ -115,10 +128,21 @@
   });
 </script>
 
-<div class="checkbox style-type-{styleType}" class:invalid={!isValid}>
-  <div class="border-{styleType}" class:checked class:text-switch={styleType === "text-switch"}>
+<div
+  class="checkbox style-type-{styleType} badge-style-{badgeStyle}"
+  class:invalid={!isValid}
+  class:checked
+  on:click={() => {
+    if (styleType === "badge-pill") handleCheck();
+  }}
+>
+  <div
+    class="border-{styleType}"
+    class:checked
+    class:text-switch={styleType === "text-switch"}
+  >
     <input
-      type="checkbox"
+      type={styleType === "badge-pill" ? "hidden" : "checkbox"}
       {name}
       {id}
       class={styleType}
@@ -135,16 +159,33 @@
         <span class="slider-checked" />
       </span>
     {/if}
-    <label for={id} >
-      <div
-        class="text-switch__button"
-        data-checked={checkedText}
-        data-unchecked={uncheckedText}
-        class:checked
-      />
-    </label>
+
+    {#if styleType === "badge-pill"}
+      {#if iconPosition === "left" || iconPosition === "both"}
+        {#if checked}
+          <Icon iconName="close-circle" />
+        {/if}
+      {/if}
+      <label for={id} class="badge-label">
+        {label !== undefined ? label : ""}
+      </label>
+      {#if iconPosition === "right" || iconPosition === "both"}
+        {#if checked}
+          <Icon iconName="close-circle" />
+        {/if}
+      {/if}
+    {:else}
+      <label for={id} >
+        <div
+          class="text-switch__button"
+          data-checked={checkedText}
+          data-unchecked={uncheckedText}
+          class:checked
+        />
+      </label>
+    {/if}
   </div>
-  {#if label !== undefined && label !== "" && label !== null}
+  {#if label !== undefined && label !== "" && label !== null && styleType !== "badge-pill"}
     <label for={id} class="checkbox-label">
       {label}
     </label>
@@ -161,7 +202,7 @@
 
   .checkbox {
     &.style-type {
-      $styles: ("checkbox-input" , "switch" , "text-switch");
+      $styles: ("checkbox-input" , "switch" , "text-switch", "badge-pill");
 
       @each $style in $styles {
         &-#{$style} {
@@ -205,6 +246,54 @@
         --text-switch-border-radius: var(--szot-checkbox-border-radius, 6.25rem);
         --text-switch-gap: var(--szot-checkbox-text-switch-gap, 0rem);
         --text-switch-switch-font-size: var(--szot-checkbox-text-switch-font-size, 0.8rem);
+      }
+
+      &-badge-pill {
+        --badge-pill-min-height: var(--szot-checkbox-badge-pill-min-height, 1.875rem);
+        --badge-pill-height: var(--szot-checkbox-badge-pill-height, auto);
+        --badge-pill-background-color: var(--szot-checkbox-badge-pill-background, #aaa);
+        --badge-pill-max-width: var(--szot-checkbox-badge-pill-max-width, auto);
+        --szot-icon-color: var(--badge-pill-icon-color);
+        --badge-pill-font-size: var(--szot-checkbox-badge-pill-font-size, var(--theme-fields-font-size));
+        --badge-pill-font-weight: var(--szot-checkbox-badge-pill-font-weight, normal);
+        --border-radius: var(--szot-checkbox-border-radius, 1rem);
+
+        &.badge-style-dark {
+          --default-border-color: var(--theme-dark-txt);
+          --default-label-color: var(--theme-dark-txt);
+          --default-icon-color: var(--theme-dark-txt);
+        }
+
+        &.badge-style-light {
+          --default-border-color: var(--theme-light-txt);
+          --default-label-color: var(--theme-light-txt);
+          --default-icon-color: var(--theme-light-txt);
+        }
+
+        &.badge-style-primary {
+          --default-border-color: var(--theme-primary-txt);
+          --default-label-color: var(--theme-primary-txt);
+          --default-icon-color: var(--theme-primary-txt);
+        }
+
+        &.badge-style-secondary {
+          --default-border-color: var(--theme-secondary-txt);
+          --default-label-color: var(--theme-secondary-txt);
+          --default-icon-color: var(--theme-secondary-txt);
+        }
+
+        &.checked {
+          --border-color-selected: var(--szot-checkbox-badge-pill-selected-border-color);
+          --label-color-selected: var(--szot-checkbox-badge-pill-selected-label-color);
+          --icon-color-selected: var(--szot-checkbox-badge-pill-selected-icon-color);
+          --background-selected: var(--badge-pill-background-color);
+        }
+
+        --badge-pill-border-color: var(--border-color-selected, var(--szot-checkbox-badge-pill-border-color, var(--default-border-color)));
+        --badge-pill-label-color: var(--label-color-selected, var(--szot-checkbox-badge-pill-label-color, var(--default-label-color)));
+        --badge-pill-icon-color: var(--icon-color-selected, var(--szot-checkbox-badge-pill-icon-color, var(--default-icon-color)));
+        --background: var(--background-selected, none);
+
       }
     }
 
@@ -270,6 +359,28 @@
         opacity: 0;
         width: 0;
         height: 0;
+      }
+    }
+
+    .border-badge-pill {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      max-width: var(--badge-pill-max-width);
+      height: var(--badge-pill-height);
+      min-height: var(--badge-pill-min-height);
+      border-radius: var(--border-radius);
+      padding: var(--checkbox-padding);
+      background: var(--background);
+      @include m.border(var(--border-size), var(--badge-pill-border-color));
+
+      .badge-label {
+
+        @include m.text-color(var(--badge-pill-label-color));
+        font-size: var(--badge-pill-font-size);
+        font-weight: var(--badge-pill-font-weight);
+        margin-inline: 0.5rem;
       }
     }
 
