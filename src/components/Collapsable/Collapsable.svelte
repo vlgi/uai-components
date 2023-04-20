@@ -69,14 +69,14 @@
    * (`expanded == false`)
    * @type {string}
    */
-  export let iconNameNotExpanded = "chevron-down";
+  export let iconNameNotExpanded = "ci:chevron-down";
 
   /**
    * The name of the icon that will be shown when the collapsable is expanded
    * (`expanded == true`)
    * @type {string}
    */
-  export let iconNameExpanded = "chevron-up";
+  export let iconNameExpanded = "ci:chevron-up";
 
   const id = Symbol("my-id");
 
@@ -164,6 +164,7 @@
     --icon-font-size: var(--szot-collapsable-icon-font-size, 1.5rem);
     --margin: var(--szot-collapsable-margin, var(--theme-global-medium-padding) 0);
     --padding: var(--szot-collapsable-padding, var(--theme-global-medium-padding));
+    --padding-header: var(--szot-collapsable-padding-header, var(--padding));
     --border-width: var(--szot-collapsable-border-width, var(--style-type-border-width));
     --border-radius: var(--szot-collapsable-border-radius, calc( calc( max(var(--icon-font-size), 1.1875rem) + calc(2 * var(--theme-global-medium-padding)) ) / 2 ));
     --content-padding: var(--szot-collapsable-content-padding, var(--padding));
@@ -253,7 +254,7 @@
     margin: var(--margin);
 
     header {
-      padding: var(--padding);
+      padding: var(--padding-header);
       .title{
         @include m.text-color(var(--color));
         font-size: var(--title-font-size);
@@ -268,7 +269,6 @@
     .icon {
       --szot-icon-color: var(--icon-color);
       --szot-icon-font-size: var(--icon-font-size);
-      --szot-icon-line-height: 1;
     }
 
     .content {

@@ -1,6 +1,6 @@
 {
   "name": "szot-ui-experimental",
-  "version": "1.21.0",
+  "version": "2.0.0",
   "svelte": "dist/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.umd.js",
@@ -38,8 +38,9 @@
   "homepage": "https://gitlab.com/team-tecnologia/public-pkgs/szot-ui#readme",
   "devDependencies": {
     "@babel/core": "^7.16.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@iconify/svelte": "^3.1.0",
     "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@storybook/addon-a11y": "~6.3.12",
     "@storybook/addon-actions": "~6.3.12",
@@ -87,6 +88,7 @@
     "typescript": "~4.4.3"
   },
   "dependencies": {
+    "@iconify/types": "^2.0.0",
     "@ionic/core": "^6.0.2",
     "@types/cleave.js": "^1.4.6",
     "cleave.js": "^1.6.0",

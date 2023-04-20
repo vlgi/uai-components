@@ -118,7 +118,7 @@
           {#if !hideCloseButton}
             <div class="close-button-container">
               <Button
-                icon="close"
+                icon="mdi:close"
                 buttonStyle="light"
                 size="round"
                 buttonAttributes={{

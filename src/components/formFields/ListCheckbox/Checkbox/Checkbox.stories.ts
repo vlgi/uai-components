@@ -10,7 +10,19 @@ export default {
     styleType: {
       control: {
         type: "select",
-        options: ["checkbox-input", "switch", "text-switch"],
+        options: ["checkbox-input", "switch", "text-switch", "badge-pill"],
+      },
+    },
+    iconPosition: {
+      control: {
+        type: "select",
+        options: ["left", "right", "both", "none"],
+      },
+    },
+    badgeStyle: {
+      control: {
+        type: "select",
+        options: ["light", "dark", "primary", "secondary"],
       },
     },
   },
@@ -66,6 +78,29 @@ export const TextSwitchChecked = Template({
 export const Labeled = Template({
   name: "labeled",
   label: "Item",
+});
+
+export const BadgePill = Template({
+  name: "badge-pill",
+  styleType: "badge-pill",
+  label: "label",
+  iconPosition: "both",
+});
+
+export const CustomBadgePillExample: any = Template({
+  name: "badge-pill",
+  styleType: "badge-pill",
+  badgeStyle: "primary",
+  label: "label",
+  iconPosition: "both",
+  style: "--szot-checkbox-badge-pill-background: #678;"
+    + "--szot-checkbox-badge-pill-icon-color: purple;"
+    + "--szot-checkbox-badge-pill-label-color: purple;"
+    + "--szot-checkbox-badge-pill-border-color: purple;"
+    + "--szot-checkbox-badge-pill-selected-icon-color: purple;"
+    + "--szot-checkbox-badge-pill-selected-label-color: white;"
+    + "--szot-checkbox-badge-pill-selected-border-color: purple;"
+    + "--szot-checkbox-badge-pill-height: 3rem;",
 });
 
 export const CustomSwitchExample: any = Template({

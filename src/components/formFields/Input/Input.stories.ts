@@ -130,13 +130,13 @@ export const WithIcon = Template({
   label: "Celular 1",
   type: "tel",
   border: "bottom",
-  icon: "phone",
+  icon: "material-symbols:phone-enabled",
   name: "phone",
 });
 
 export const WithIconLeft = Template({
   label: "Celular 2",
-  icon: "phone",
+  icon: "material-symbols:phone-enabled",
   iconPosition: "left",
   type: "tel",
   name: "phone",
@@ -144,7 +144,7 @@ export const WithIconLeft = Template({
 
 export const enableIconClick = Template({
   label: "Celular 2",
-  icon: "phone",
+  icon: "material-symbols:phone-enabled",
   iconPosition: "left",
   type: "tel",
   name: "phone",
@@ -154,7 +154,7 @@ export const enableIconClick = Template({
 export const Readonly = Template({
   label: "Aviso",
   type: "text",
-  icon: "info",
+  icon: "material-symbols:info-outline-rounded",
   value: "Não escreva aqui",
   readonly: true,
   helperText: "Apenas um exemplo",

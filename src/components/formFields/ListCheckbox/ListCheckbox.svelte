@@ -13,6 +13,10 @@
     value: string;
     label?: string;
   };
+  type TCheckboxStyleType = "checkbox-input" | "switch" | "badge-pill";
+  type TIconPosition = "left" | "right" | "both" | "none";
+  type TBadgeStyle = "light" | "dark" | "primary" | "secondary";
+  type TDirection = "column" | "row";
 
   export let name;
   /**
@@ -64,6 +68,27 @@
    * @type {number}
    */
   export let max: number = null;
+
+  /**
+   * Set the position of the X icon in the styled badge pill
+   */
+  export let iconPosition: TIconPosition = "none";
+
+  /**
+   * Set the style of the label, border and icon in the badge pill
+   */
+  export let badgeStyle: TBadgeStyle = "dark";
+
+  /**
+   * The styletype text for this element
+   * @type {string}
+   */
+  export let styleType: TCheckboxStyleType = "checkbox-input";
+
+  /**
+   * Set if the badges will be displayed in a row or a column
+   */
+  export let direction: TDirection = "column";
 
   let eMsg = "";
   let wrapperElement: HTMLElement;
@@ -163,7 +188,7 @@
 
 <div class="list-checkbox-wrapper" bind:this={wrapperElement}>
   <span class="checkbox-title" class:invalid={!isValid}>{title}</span>
-  <ul class="list-checkbox" class:invalid={!isValid}>
+  <ul class="list-checkbox {direction}" class:invalid={!isValid}>
     {#each checkboxItems as checkbox, i}
       <li>
         <Checkbox
@@ -172,22 +197,25 @@
           label={checkbox.label}
           value={checkbox.value}
           checked={values.includes(checkbox.value)}
+          {iconPosition}
+          {badgeStyle}
+          {styleType}
           on:checkItem={setChecked}
         />
       </li>
     {/each}
-    <p class="error" class:error-show={!isValid}>
-      {#if required}
-        {#if max !== null && values.length >= max}
-          Você deve selecionar no máximo {max} {max <= 1 ? "opção" : "opções"}.
-        {:else}
-          É necessário selecionar {min} {min <= 1 ? "opção" : "opções"}.
-        {/if}
-      {:else}
-        {eMsg}
-      {/if}
-    </p>
   </ul>
+  <p class="error" class:error-show={!isValid}>
+    {#if required}
+      {#if max !== null && values.length >= max}
+        Você deve selecionar no máximo {max} {max <= 1 ? "opção" : "opções"}.
+      {:else}
+        É necessário selecionar {min} {min <= 1 ? "opção" : "opções"}.
+      {/if}
+    {:else}
+      {eMsg}
+    {/if}
+  </p>
 </div>
 
 <style lang="scss">
@@ -202,6 +230,13 @@
     .invalid {
       --szot-checkbox-color: var(--theme-error);
       --szot-checkbox-label-color: var(--theme-error);
+      --szot-checkbox-badge-pill-icon-color: var(--theme-error);
+      --szot-checkbox-badge-pill-label-color: var(--theme-error);
+      --szot-checkbox-badge-pill-border-color: var(--theme-error);
+      --szot-checkbox-badge-pill-selected-icon-color: var(--theme-error);
+      --szot-checkbox-badge-pill-selected-label-color: var(--theme-error);
+      --szot-checkbox-badge-pill-selected-border-color: var(--theme-error);
+
 
       &.checkbox-title {
         @include m.text-color(var(--theme-error));
@@ -213,7 +248,17 @@
     }
 
     .list-checkbox {
+      display: flex;
+      flex-wrap: wrap;
       list-style: none;
+
+      &.row {
+        flex-direction: row;
+      }
+
+      &.column {
+        flex-direction: column;
+      }
     }
 
     .error {
