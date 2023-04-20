@@ -17,8 +17,6 @@ export { default as ListCheckbox } from "./components/formFields/ListCheckbox/Li
 export { default as Checkbox } from "./components/formFields/ListCheckbox/Checkbox/Checkbox.svelte";
 export { default as ListRadioButton } from "./components/formFields/ListRadioButton/ListRadioButton.svelte";
 export { default as RadioButton } from "./components/formFields/ListRadioButton/RadioButton/RadioButton.svelte";
-export { default as ListBadgePillClickable } from "./components/formFields/ListBadgePillClickable/ListBadgePillClickable.svelte";
-export { default as BadgePillClickable } from "./components/formFields/ListBadgePillClickable/BadgePillClickable/BadgePillClickable.svelte";
 
 export { default as Collapsable } from "./components/Collapsable/Collapsable.svelte";
 

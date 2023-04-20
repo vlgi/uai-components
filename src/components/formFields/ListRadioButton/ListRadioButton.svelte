@@ -10,7 +10,10 @@
     label?: string;
   };
 
-  type TRadioStyleType = "filled" | "notFilled";
+  type TRadioStyleType = "filled" | "notFilled" | "badge-pill";
+  type TIconPosition = "left" | "right" | "both" | "none";
+  type TBadgeStyle = "light" | "dark" | "primary" | "secondary";
+  type TDirection = "column" | "row";
 
   export let name = "radio-list";
   /**
@@ -54,6 +57,27 @@
    */
   export let value = "";
   export let required = false;
+
+  /**
+   * Set the position of the X icon in the styled badge
+   */
+  export let iconPosition: TIconPosition = "none";
+
+  /**
+   * Set the style of the label, border and icon in the badge
+   */
+  export let badgeStyle: TBadgeStyle = "dark";
+
+  /**
+   * Set if the badges will be displayed in a row or a column
+   */
+  export let direction: TDirection = "column";
+
+  /**
+   * Variable that set if the uncheck of radio button checked is enabled
+   * @type {boolean}
+   */
+  export let enableUncheck = false;
 
   let eMsg = "";
   let wrapperElement: HTMLElement;
@@ -129,12 +153,15 @@
 
 <div class="list-radio-box" bind:this={wrapperElement}>
   <span class="radio-title" class:invalid={!isValid}>{listName}</span>
-  <ul class="list-radio" class:invalid={!isValid}>
+  <ul class="list-radio {direction}" class:invalid={!isValid}>
     {#each radioOptions as radio, i}
       <li>
         <RadioButton
           {name}
           {radioStyleType}
+          {iconPosition}
+          {badgeStyle}
+          {enableUncheck}
           id="{name}-{i}"
           bind:group={value}
           value={radio.value}
@@ -143,10 +170,10 @@
         />
       </li>
     {/each}
-    <p class="error" class:error-show={!isValid}>
-      {eMsg}
-    </p>
   </ul>
+  <p class="error" class:error-show={!isValid}>
+    {eMsg}
+  </p>
 </div>
 
 <style lang="scss">
@@ -159,11 +186,27 @@
       @include m.text-color(var(--radio-label-color));
     }
     .list-radio {
+      display: flex;
+      flex-wrap: wrap;
       list-style: none;
+
+      &.row {
+        flex-direction: row;
+      }
+
+      &.column {
+        flex-direction: column;
+      }
     }
     .invalid {
       --szot-radio-color: var(--theme-error);
       --szot-radio-label-color: var(--theme-error);
+      --szot-radio-badge-pill-icon-color: var(--theme-error);
+      --szot-radio-badge-pill-label-color: var(--theme-error);
+      --szot-radio-badge-pill-border-color: var(--theme-error);
+      --szot-radio-badge-pill-selected-icon-color: var(--theme-error);
+      --szot-radio-badge-pill-selected-label-color: var(--theme-error);
+      --szot-radio-badge-pill-selected-border-color: var(--theme-error);
       @include m.text-color(var(--theme-error));
     }
 
