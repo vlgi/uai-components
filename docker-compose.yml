@@ -1,8 +1,6 @@
 version: '3'
 services:
   app:
-    env_file:
-      - .env
     container_name: planfy-front
     image: node:14.18.1
     working_dir: /app
