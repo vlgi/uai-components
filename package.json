@@ -16,7 +16,9 @@
     "test": "jest",
     "test:ui": "npm run test:ui-cli -- --ui --port=6005",
     "test:ui-cli": "creevey --reportDir='.creevey/report' --screenDir='.creevey/images'",
-    "check-all": "npm install; npm run test; npm run check; npm run lint"
+    "check-all": "npm install; npm run test; npm run check; npm run lint",
+    "docker:up": "docker compose run --service-ports app bash",
+    "docker:down": "docker compose down"
   },
   "keywords": [
     "svelte"

@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    env_file:
+      - .env
+    container_name: planfy-front
+    image: node:14.18.1
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - '5000:5000'
+    user: 1000:1000
+    tty: true
