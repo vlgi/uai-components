@@ -1,6 +1,6 @@
 {
   "name": "szot-ui-experimental",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "svelte": "dist/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.umd.js",
