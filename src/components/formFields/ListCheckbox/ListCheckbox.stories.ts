@@ -1,4 +1,5 @@
 import type { ArgType } from "@storybook/addons";
+import { action } from "@storybook/addon-actions";
 import ListCheckboxWrapper from "./ListCheckboxWrapper.svelte";
 import ListCheckbox from "./ListCheckbox.svelte";
 
@@ -37,6 +38,9 @@ const Template = (_args: ArgType) => {
   const ret = ({ ...props }) => ({
     Component: ListCheckboxWrapper,
     props,
+    on: {
+      checkItem: action("on:checkItem"),
+    },
   });
   ret.args = _args;
   return ret;

@@ -9,6 +9,7 @@
   <ListCheckbox
     {...$$restProps}
     bind:values
+    on:checkItem
   />
 </div>
 

@@ -201,6 +201,7 @@
           {badgeStyle}
           {styleType}
           on:checkItem={setChecked}
+          on:checkItem
         />
       </li>
     {/each}
