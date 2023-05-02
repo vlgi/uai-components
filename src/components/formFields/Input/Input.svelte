@@ -69,17 +69,18 @@
    */
   export let inputmode: TInputMode = "text";
 
+  export let required = false;
+
   /**
    * Display asterisk next to label when input is required
    * @type {boolean}
    */
-  export let displayRequired = false;
+  export let displayRequired = required;
 
   export let type = "text";
   export let value = "";
   export let disabled = false;
   export let readonly = false;
-  export let required = false;
   export let id = name;
 
   // Other attributes for the HTML input element
