@@ -2,11 +2,11 @@ version: '3'
 services:
   app:
     container_name: planfy-front
-    image: node:14.18.1
+    image: node:14.18.3
     working_dir: /app
     volumes:
       - ./:/app
     ports:
-      - '5000:5000'
+      - '6006:6006'
     user: 1000:1000
     tty: true
