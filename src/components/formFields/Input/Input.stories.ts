@@ -142,6 +142,14 @@ export const WithIconLeft = Template({
   name: "phone",
 });
 
+export const WithPlaceholder = Template({
+  label: "Endereço",
+  type: "text",
+  name: "address",
+  placeholder: "Rua 300 Lote 900 AP 46 Algum Lugar Por Ai / DF",
+
+});
+
 export const enableIconClick = Template({
   label: "Celular 2",
   icon: "material-symbols:phone-enabled",

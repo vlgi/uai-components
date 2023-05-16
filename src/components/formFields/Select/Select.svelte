@@ -76,8 +76,12 @@ export let inputStyle: TSelectStyle = selectStyle;
 
 export let inputBorder: TSelectBorders = "outline";
 
-// Other attributes for the HTML input element
+/**
+ * Other attributes for the HTML input element of the SearchInput
+*/
 export let inputAttributes: Record<string, string> = {};
+
+export let showSearchInput = true;
 
 // ====== Internal control ====== //
 
@@ -188,7 +192,7 @@ function handleTyping(ev: CustomEvent<string>) {
   const key = ev.detail;
 
   // If not on the search input focus
-  if (document.activeElement !== searchBind) {
+  if ((document.activeElement !== searchBind) && showSearchInput) {
     // Opens the dropdown and focus on the search input
     toggleOpen(true);
     setTimeout(() => {
@@ -335,30 +339,33 @@ onDestroy(() => {
     <!-- Floating box with extra related data -->
     <div
       class="select-dropdown-menu"
+      class:with-search-input={showSearchInput}
       class:closed={!dropdownOpen}
       class:with-borders={selectBorder === "bottom"}
     >
+      {#if showSearchInput}
+        <div class="search-input">
+          <SearchInput
+            searchable={["text"]}
+            items={options}
+            name=""
+            {disabled}
+            {inputStyle}
+            border={inputBorder}
+            bind:searchQuery
+            bind:filtered={filteredOptions}
+            bind:focus={focusSearch}
+            bind:inputElement={searchBind}
+            {inputAttributes}
+          />
+        </div>
+      {/if}
 
-      <div class="search-input">
-        <SearchInput
-          searchable={["text"]}
-          items={options}
-          name=""
-          {disabled}
-          {inputStyle}
-          border={inputBorder}
-          bind:searchQuery
-          bind:filtered={filteredOptions}
-          bind:focus={focusSearch}
-          bind:inputElement={searchBind}
-          {inputAttributes}
-        />
-      </div>
       <!-- List of all selectable options -->
       <OptionsList
         id="{id}-listbox"
         labelledBy="{id}-label"
-        options={filteredOptions}
+        options={filteredOptions || options}
         on:changeSelected={handleSelectedChange}
         on:changeSelected
         bind:selected
@@ -367,7 +374,7 @@ onDestroy(() => {
         bind:focusNext={optionsListBinds.focusNext}
         bind:focusPrevious={optionsListBinds.focusPrevious}
         bind:toggleSelectedOfFocused={optionsListBinds.toggleSelectedOfFocused}
-        />
+      />
 
     </div>
 
@@ -458,6 +465,7 @@ onDestroy(() => {
     flex-flow: row wrap;
     gap: 0.2rem;
     max-width: 90%;
+    outline: none;
   }
 
   .select {
@@ -542,8 +550,12 @@ onDestroy(() => {
     }
     &-dropdown-menu {
       display: grid;
-      grid-template-rows: auto 1fr;
+      grid-template-rows: 1fr;
       gap: var(--component-padding-vertical);
+
+      &.with-search-input {
+        grid-template-rows: auto 1fr;
+      }
 
       overflow: hidden;
       max-height: 10rem;
@@ -583,6 +595,7 @@ onDestroy(() => {
         padding-bottom: 0;
       }
     }
+
 
     &-arrow {
       --component-arrow-size: 0.5rem;

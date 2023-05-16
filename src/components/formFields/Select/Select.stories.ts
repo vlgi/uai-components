@@ -131,6 +131,14 @@ export const MultipleForceInvalid = Template({
   forceInvalid: true,
 });
 
+export const HideSearchInput = Template({
+  id: "doce",
+  name: "doce",
+  label: "Sobremesas",
+  options,
+  showSearchInput: false,
+});
+
 export const CustomExample: any = Template({
   multiple: false,
   id: "doce",
