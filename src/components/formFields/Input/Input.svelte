@@ -24,7 +24,7 @@
   /** choose default theme colors */
   export let inputStyle: TborderStyle = "dark";
 
-  /** write a helpertext if needed */
+  /** write a helper text if needed */
   export let helperText = "";
 
   /** Enter a message in case it is invalid */
@@ -48,7 +48,6 @@
   /** shows if the component is valid (readonly) */
   export let isValid = true;
 
-  /** Enter label text */
   export let label = "";
 
   /**
@@ -79,6 +78,7 @@
 
   export let type = "text";
   export let value = "";
+  export let placeholder = " ";
   export let disabled = false;
   export let readonly = false;
   export let id = name;
@@ -99,6 +99,7 @@
   };
   let labelComponent: HTMLElement;
   let applyClipPath = false;
+  let lockLabelTop = false;
 
   const isInsideContext = hasContext("FormContext");
   const {
@@ -195,7 +196,7 @@
     };
   }
 
-  $: applyClipPath = inFocus || value?.length > 0;
+  $: applyClipPath = inFocus || value?.length > 0 || lockLabelTop;
 
   onMount(() => {
     if (isInsideContext) {
@@ -216,6 +217,10 @@
       removeFieldFromContext(name);
     }
   });
+
+  $: if (placeholder !== " ") {
+    lockLabelTop = true;
+  }
 </script>
 
 <div
@@ -255,7 +260,8 @@
       on:keypress
       bind:this={inputElement}
       class="form-input"
-      placeholder=" "
+      class:lockLabelTop
+      {placeholder}
       {name}
       {type}
       {id}
@@ -487,6 +493,7 @@
     border: none;
     border-radius: var(--border-radius);
 
+    &.lockLabelTop,
     &:focus,
     &:not(:placeholder-shown) {
       & + .form-label {
