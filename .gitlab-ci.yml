@@ -27,6 +27,8 @@ remove-internal-stories:
   artifacts:
     paths:
       - .storybook
+  only:
+    - master # or dev, the branch you want to publish
 
 build-storybook:
   stage: build-storybook
