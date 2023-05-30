@@ -6,7 +6,7 @@
     TRemoveFieldFromContext,
     TFireSubmit,
   } from "./types";
-  import { tick } from "../../helpers/utils";
+  import { tick } from "$helpers/utils";
   import fireFunctionStore from "./fireFunctionStore";
 
   type TFieldData = {

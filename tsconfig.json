@@ -21,7 +21,8 @@
       "$static/*": ["static/*"],
       "$components/*": ["src/lib/components/*"],
       "$assets/*": ["src/lib/assets/*"],
-      "$types/*": ["src/lib/types/*"],
+      "$actions/*": ["src/lib/actions/*"],
+      "$helpers/*": ["src/lib/helpers/*"],
       "$styles/*": ["src/lib/styles/*"]
     }
   },

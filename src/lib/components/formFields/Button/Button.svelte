@@ -38,7 +38,7 @@
    *  choose an icon from the list
    *  @type {string}
    */
-  export let icon: string|null = null;
+  export let icon: string | null = null;
 
   /**
    * Set the form ID, to enable this button trigger the form submission flow
@@ -69,8 +69,9 @@
     }
   }
 
-  $: round = (size === "round");
+  $: round = size === "round";
 </script>
+
 <div
   class="container {size} style-{buttonStyle} style-type-{buttonStyleType}"
   class:disabled
@@ -100,7 +101,7 @@
 </div>
 
 <style lang="scss">
-  @use 'src/styles/mixins' as m;
+  @use "$styles/mixins" as m;
 
   .container {
     --background-color: var(--szot-button-background-color, var(--default-background-color));

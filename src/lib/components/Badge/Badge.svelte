@@ -12,13 +12,13 @@
 </span>
 
 <style lang="scss">
-  @use 'src/styles/mixins' as m;
+  @use "$styles/mixins" as m;
   .badge {
     --color: var(--szot-badge-color, var(--default-color));
     --background-color: var(--szot-badge-background-color, var(--default-background-color));
     --border: var(--szot-badge-border, var(--default-border));
     --border-color: var(--szot-badge-border-color, var(--default-border-color));
-    --font-size: var(--szot-badge-font-size, .9rem);
+    --font-size: var(--szot-badge-font-size, 0.9rem);
 
     &.primary {
       --default-background-color: var(--theme-primary-surface);
@@ -62,7 +62,7 @@
     font-size: var(--font-size);
     padding-left: var(--theme-fields-padding);
     padding-right: var(--theme-fields-padding);
-    text-align: center; 
+    text-align: center;
     @include m.border(var(--border), var(--border-color));
     border-radius: var(--theme-small-shape);
     background: var(--background-color);
@@ -73,5 +73,4 @@
       @include m.text-color(var(--color));
     }
   }
-
 </style>

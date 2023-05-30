@@ -1,11 +1,13 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
 
 <Meta title="Introduction" />
 
 # Szot UI
 
 ## Introduction
-This package use css variables to set theme, you can see how set them [here](?path=/story/theme-introduction--page).
+
+This package use css variables to set theme, you can see how set them
+[here](?path=/story/theme-introduction--page).
 
 The components docs is inside the `Components` section.
 
@@ -13,9 +15,11 @@ You can see the component example inside the `Canvas`, swithing in the tab menu 
 
 You can see the props and all examples inside the `Docs`, swithing in the tab menu at the top.
 
-Every component that can be customized with custom css variables have a section `Custom`, inside the component folder.
+Every component that can be customized with custom css variables have a section `Custom`, inside the
+component folder.
 
-**Note: This lib is made to be used only with `svelte`, is `experimental`, and may NOT follow the `semver`.**
+**Note: This lib is made to be used only with `svelte`, is `experimental`, and may NOT follow the
+`semver`.**
 
 ## How to install
 
@@ -28,40 +32,43 @@ npm install szot-ui
 Import the global style and icons, in your entry point or global css:
 
 ```scss
-import "szot-ui/src/styles/global.scss";
+import "szot-ui/$styles/global.scss";
 ```
 
-**NOTE: make sure that you bundler can handle with scss, images and fonts, to import the styles and icons**
+**NOTE: make sure that you bundler can handle with scss, images and fonts, to import the styles and
+icons**
 
 Use the components =)
 
 ```html
 <script lang="ts">
-  import {
-    Input,
-    Form,
-  } from "szot-ui";
+  import { Input, Form } from "szot-ui";
 
   export let values: Record<string, unknown>;
   export let isAllValid: boolean;
 
-  function validateEmail(value: string): string|boolean {
+  function validateEmail(value: string): string | boolean {
     if (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(value)) return true;
     return "Type a valid e-mail.";
   }
 </script>
 
 <div class="my-form">
-  <Form bind:values bind:isAllValid on:submit>
-    <Input
+  <form
+    bind:values
+    bind:isAllValid
+    on:submit
+  >
+    <input
       label="email"
       name="email"
       type="email"
       iconPosition="left"
       icon="mail"
-      validationFn={validateEmail}
-      required={true}
+      validationFn="{validateEmail}"
+      required="{true}"
     />
-    <Button type="submit">Submit</Button>
-  </Form>
+    <button type="submit">Submit</button>
+  </form>
+</div>
 ```

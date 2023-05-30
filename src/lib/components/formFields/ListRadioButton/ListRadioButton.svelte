@@ -177,7 +177,7 @@
 </div>
 
 <style lang="scss">
-  @use "src/styles/mixins" as m;
+  @use "$styles/mixins" as m;
   .list-radio-box {
     --radio-label-color: var(--szot-radio-label-color, var(--theme-dark-txt));
     box-sizing: border-box;

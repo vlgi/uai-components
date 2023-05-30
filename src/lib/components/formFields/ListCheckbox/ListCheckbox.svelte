@@ -220,8 +220,8 @@
 </div>
 
 <style lang="scss">
-  @use "src/styles/mixins" as m;
-  @use "src/styles/variables" as v;
+  @use "$styles/mixins" as m;
+  @use "$styles/variables" as v;
   .list-checkbox-wrapper {
     --checkbox-label-color: var(
       --szot-checkbox-label-color,

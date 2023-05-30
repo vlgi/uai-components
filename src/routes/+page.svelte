@@ -1,6 +1,6 @@
 <script lang="ts">
   import "$styles/index.scss";
-  import Button from "$components/Button/Button.svelte";
+  import Button from "$components/formFields/Button/Button.svelte";
 </script>
 
 <h1>Welcome to your library project</h1>

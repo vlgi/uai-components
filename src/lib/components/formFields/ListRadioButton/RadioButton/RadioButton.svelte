@@ -81,21 +81,32 @@
   {#if radioStyleType === "badge-pill"}
     {#if iconPosition === "left" || iconPosition === "both"}
       {#if value === group}
-        <Icon iconName="ion:close-circle"/>
+        <Icon iconName="ion:close-circle" />
       {/if}
     {/if}
-    <label for={id} bind:this={labelElement} class="badge-label">
+    <label
+      for={id}
+      bind:this={labelElement}
+      class="badge-label"
+    >
       {label !== undefined ? label : ""}
     </label>
     {#if iconPosition === "right" || iconPosition === "both"}
       {#if value === group}
-      <Icon iconName="ion:close-circle"/>
+        <Icon iconName="ion:close-circle" />
       {/if}
     {/if}
   {:else}
-    <label for={id} bind:this={labelElement} class="radio-label">
-      <div class="radio-button" class:checked={group === value}>
-        <div class="radio-button-inner"></div>
+    <label
+      for={id}
+      bind:this={labelElement}
+      class="radio-label"
+    >
+      <div
+        class="radio-button"
+        class:checked={group === value}
+      >
+        <div class="radio-button-inner" />
       </div>
 
       <span>
@@ -106,12 +117,11 @@
 </div>
 
 <style lang="scss">
-
-  @use 'src/styles/mixins' as m;
+  @use "$styles/mixins" as m;
   .radio-item {
     --radio-margin: var(--szot-radio-margin, 0);
     --radio-size: var(--szot-radio-size, 1rem);
-    --radio-filled-gap: var(--szot-radio-filled-gap, .5rem);
+    --radio-filled-gap: var(--szot-radio-filled-gap, 0.5rem);
     --radio-gap-label: var(--szot-radio-gap-label, 0);
     --radio-color: var(--szot-radio-color, var(--theme-dark-txt));
     --radio-border: var(--szot-radio-border, 0.125em);
@@ -159,9 +169,18 @@
       --background-selected: var(--badge-pill-background-color);
     }
 
-    --badge-pill-border-color: var(--border-color-selected, var(--szot-radio-badge-pill-border-color, var(--default-border-color)));
-    --badge-pill-label-color: var(--label-color-selected, var(--szot-radio-badge-pill-label-color, var(--default-label-color)));
-    --badge-pill-icon-color: var(--icon-color-selected, var(--szot-radio-badge-pill-icon-color, var(--default-icon-color)));
+    --badge-pill-border-color: var(
+      --border-color-selected,
+      var(--szot-radio-badge-pill-border-color, var(--default-border-color))
+    );
+    --badge-pill-label-color: var(
+      --label-color-selected,
+      var(--szot-radio-badge-pill-label-color, var(--default-label-color))
+    );
+    --badge-pill-icon-color: var(
+      --icon-color-selected,
+      var(--szot-radio-badge-pill-icon-color, var(--default-icon-color))
+    );
     --background: var(--background-selected, none);
 
     display: flex;
@@ -229,7 +248,7 @@
       height: 0;
       background: var(--radio-checked-color);
       border-radius: calc(var(--radio-size) / 2);
-      transition: width ease-in-out 200ms, height ease-in-out 200ms,;
+      transition: width ease-in-out 200ms, height ease-in-out 200ms;
     }
 
     .radio-input:checked + .radio-label .radio-button-inner {

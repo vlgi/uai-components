@@ -2,7 +2,7 @@
   import {
     onMount, getContext, hasContext, onDestroy,
   } from "svelte";
-  import { isEmpty } from "../../../helpers/truthy";
+  import { isEmpty } from "$helpers/truthy";
   import type { TFormContext } from "../../Form/types";
 
   /** write a helpertext if needed */
@@ -254,7 +254,7 @@
 </div>
 
 <style lang="scss">
-  @use "src/styles/mixins" as m;
+  @use "$styles/mixins" as m;
 
   .content-container {
     --range-slider-width: var(--szot-range-slider-width, 100%);

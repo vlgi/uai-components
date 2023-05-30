@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
   import type { TPosition } from "./types";
-  import { actionOutClick } from "../../actions/clickOutside/clickOutside";
+  import { actionOutClick } from "$actions/clickOutside/clickOutside";
   import {
     getDropdownPosition,
     getValidDropdownAlignments,

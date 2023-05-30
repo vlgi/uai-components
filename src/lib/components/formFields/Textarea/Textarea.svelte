@@ -2,7 +2,7 @@
   import {
     onMount, getContext, hasContext, onDestroy,
   } from "svelte";
-  import { actionWatchSize } from "../../../actions/watchSize/watchSize";
+  import { actionWatchSize } from "$actions/watchSize/watchSize";
   import type { TFormContext } from "../../Form/types";
 
   type TtextareaStyle = "primary" | "secondary" | "dark" | "light";
@@ -227,7 +227,7 @@
 </div>
 
 <style lang="scss">
-  @use "src/styles/mixins" as m;
+  @use "$styles/mixins" as m;
 
   .content-container {
     --margin-bottom: var(--szot-textarea-margin-bottom, 1.5rem);

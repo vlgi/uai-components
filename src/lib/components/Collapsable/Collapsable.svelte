@@ -130,7 +130,7 @@
 </div>
 
 <style lang="scss">
-  @use "src/styles/mixins" as m;
+  @use "$styles/mixins" as m;
 
   .wrapper {
     @include m.border(10px, red);

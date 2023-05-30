@@ -62,25 +62,35 @@
   }
 </script>
 
-<div class="nav-menu-container" class:is-mobile={ mobileMode }>
-  <div class="mobile-toggle-btn-container" bind:this={ elBtnContainer }>
-    <div class="mobile-toggle-overlay" bind:this={ elBtnOverlay }></div>
+<div
+  class="nav-menu-container"
+  class:is-mobile={mobileMode}
+>
+  <div
+    class="mobile-toggle-btn-container"
+    bind:this={elBtnContainer}
+  >
+    <div
+      class="mobile-toggle-overlay"
+      bind:this={elBtnOverlay}
+    />
     <DraggableButton
       bind:panIsActive
       bind:elBtn
-      on:click={ toggleMobileMenu }
+      on:click={toggleMobileMenu}
     >
       <div class="icon-container">
-        <Icon iconName={ navExpanded ? "mi:close" : "mdi:menu" } />
+        <Icon iconName={navExpanded ? "mi:close" : "mdi:menu"} />
       </div>
     </DraggableButton>
   </div>
 
-  <nav class:nav--expanded={ navExpanded }
-    on:mouseover={ () => !mobileMode && openMenu() }
-    on:focus={ () => !mobileMode && openMenu() }
-    on:mouseout={ () => !mobileMode && closeMenu() }
-    on:blur={ () => !mobileMode && closeMenu() }
+  <nav
+    class:nav--expanded={navExpanded}
+    on:mouseover={() => !mobileMode && openMenu()}
+    on:focus={() => !mobileMode && openMenu()}
+    on:mouseout={() => !mobileMode && closeMenu()}
+    on:blur={() => !mobileMode && closeMenu()}
     tabindex="0"
   >
     <div class="nav-logo">
@@ -95,20 +105,20 @@
         alt="Logo"
       />
     </div>
-    <hr>
+    <hr />
     <div class="nav-items">
       {#each items as n1}
         <!-- n1 item -->
         {#if n1.type === "item"}
           <a
-            class="n1-item n1-item--active-{ n1.isActive }"
-            href={ n1.path }
-            on:click={ closeMenu }
+            class="n1-item n1-item--active-{n1.isActive}"
+            href={n1.path}
+            on:click={closeMenu}
           >
             <div class="icon-container">
-              <Icon iconName={n1.icon}/>
+              <Icon iconName={n1.icon} />
             </div>
-            <span class="n1-item-text active-{ n1.isActive }">{ n1.text }</span>
+            <span class="n1-item-text active-{n1.isActive}">{n1.text}</span>
           </a>
         {/if}
 
@@ -117,22 +127,22 @@
           <div
             class="
               n1-group
-              n1-group--active-{ isGroupActive(n1.items) }
+              n1-group--active-{isGroupActive(n1.items)}
             "
           >
             <div class="icon-container">
-              <Icon iconName={n1.icon}/>
+              <Icon iconName={n1.icon} />
             </div>
-            <span class="n1-group-text active-{ isGroupActive(n1.items) }">{ n1.text }</span>
+            <span class="n1-group-text active-{isGroupActive(n1.items)}">{n1.text}</span>
 
             <!-- n2 item -->
             {#each n1.items as n2}
               <a
-                class="n2-item n2-item--active-{ n2.isActive }"
-                href={ n2.path }
-                on:click={ closeMenu }
+                class="n2-item n2-item--active-{n2.isActive}"
+                href={n2.path}
+                on:click={closeMenu}
               >
-                <span class="n2-item-text active-{ n2.isActive }">{ n2.text }</span>
+                <span class="n2-item-text active-{n2.isActive}">{n2.text}</span>
               </a>
             {/each}
           </div>
@@ -141,21 +151,21 @@
     </div>
 
     {#if bottomItems.length > 0}
-      <hr>
+      <hr />
       <div class="nav-bottom-items-container">
         {#each bottomItems as item}
           <a
             class="
               nav-bottom-items
-              nav-bottom-items--active-{ item.isActive }
+              nav-bottom-items--active-{item.isActive}
             "
-            href={ item.path }
-            on:click={ closeMenu }
+            href={item.path}
+            on:click={closeMenu}
           >
             <div class="icon-container">
-              <Icon iconName={item.icon}/>
+              <Icon iconName={item.icon} />
             </div>
-            <span class="nav-bottom-items-text active-{ item.isActive }">{ item.text }</span>
+            <span class="nav-bottom-items-text active-{item.isActive}">{item.text}</span>
           </a>
         {/each}
       </div>
@@ -164,8 +174,7 @@
 </div>
 
 <style lang="scss">
-
-  @use 'src/styles/mixins' as m;
+  @use "$styles/mixins" as m;
   .nav-menu-container {
     // nav sizes
     --nav-width: var(--szot-nav-width, 4.5rem);
@@ -177,29 +186,41 @@
 
     // nav paddings
     --nav-padding: var(--szot-nav-padding, 0.4rem);
-    --nav-logo-padding: var(--szot-nav-logo-padding, .6rem .3rem);
+    --nav-logo-padding: var(--szot-nav-logo-padding, 0.6rem 0.3rem);
     --nav-external-padding: var(--szot-nav-external-padding, 0);
 
     // nav colors
     --nav-background-color: var(--szot-nav-background-color, #f0f0f0);
     --nav-txt-color: var(--szot-nav-txt-color, var(--theme-dark-txt));
     --nav-items-hover-color: var(--szot-nav-items-hover-color, var(--theme-light-surface));
-    --nav-items-active-background: var(--szot-nav-items-active-background, var(--theme-dark-surface));
-    --nav-items-active-txt-color: var(--szot-nav-items-active-txt-color, var(--theme-txt-on-dark-surface));
-    --nav-sub-items-active-highlight: var(--szot-nav-sub-items-active-highlight, var(--nav-items-active-txt-color));
+    --nav-items-active-background: var(
+      --szot-nav-items-active-background,
+      var(--theme-dark-surface)
+    );
+    --nav-items-active-txt-color: var(
+      --szot-nav-items-active-txt-color,
+      var(--theme-txt-on-dark-surface)
+    );
+    --nav-sub-items-active-highlight: var(
+      --szot-nav-sub-items-active-highlight,
+      var(--nav-items-active-txt-color)
+    );
 
     // other variables
     --nav-items-active-border: var(--szot-nav-items-active-border, none);
     --nav-animation-speed: var(--szot-nav-animation-speed, 350ms);
     --nav-z-index: var(--szot-nav-z-index, 9999);
     --nav-shadow: var(--szot-nav-shadow, var(--theme-high-shadow));
-    --nav-border-radius: var(--szot-nav-border-radius,
+    --nav-border-radius: var(
+      --szot-nav-border-radius,
       0 var(--theme-medium-shape) var(--theme-medium-shape) 0
     );
-    --nav-items-border-radius: var(--szot-nav-items-border-radius,
+    --nav-items-border-radius: var(
+      --szot-nav-items-border-radius,
       0px var(--theme-small-shape) var(--theme-small-shape) 0px
     );
-    --nav-group-hover-border-radius: var(--szot-nav-group-hover-border-radius,
+    --nav-group-hover-border-radius: var(
+      --szot-nav-group-hover-border-radius,
       0px var(--theme-medium-shape) var(--theme-medium-shape) 0px
     );
 
@@ -208,7 +229,7 @@
     */
     --internal-nav-width: var(--nav-width);
     --internal-nav-transition-delay: 0;
-    --internal-nav-expanded-transition-delay:0;
+    --internal-nav-expanded-transition-delay: 0;
     --internal-mobile-toggle-overlay-delay: 0;
     --internal-mobile-toggle-btn-delay: 0;
     --internal-mobile-toggle-overlay-expanded-delay: 0;
@@ -252,14 +273,14 @@
         z-index: 1;
         width: 0;
         height: 0;
-        transition: width ease-in-out var(--nav-animation-speed), height ease-in-out var(--nav-animation-speed);
+        transition: width ease-in-out var(--nav-animation-speed),
+          height ease-in-out var(--nav-animation-speed);
         transition-delay: var(--internal-mobile-toggle-overlay-delay);
       }
 
       :global(.mobile-toggle-btn) {
         &:not(.mobile-toggle-btn--dragging) {
-          transition:
-            top ease-in-out var(--nav-animation-speed),
+          transition: top ease-in-out var(--nav-animation-speed),
             left ease-in-out var(--nav-animation-speed),
             transform ease-in-out var(--nav-animation-speed);
           transition-delay: var(--internal-mobile-toggle-btn-delay);
@@ -275,12 +296,11 @@
       }
     }
 
-
     nav {
       display: grid;
       grid-template-rows: auto auto 1fr auto auto;
       background: var(--nav-background-color);
-      height: calc(100% - 2*var(--nav-external-padding));
+      height: calc(100% - 2 * var(--nav-external-padding));
       top: var(--nav-external-padding);
       left: 0;
       border-radius: var(--nav-border-radius);
@@ -297,13 +317,14 @@
         transition: width ease-in-out 450ms;
         transition-delay: var(--internal-nav-expanded-transition-delay);
         %on-nav-hover-animate-n1-container {
-          width: calc(var(--nav-expanded-width) - 2*var(--nav-padding));
-          transition: width ease 1ms 0ms, max-height ease 400ms 0ms, background-color ease-in-out 150ms, border-radius ease-in-out 150ms;
+          width: calc(var(--nav-expanded-width) - 2 * var(--nav-padding));
+          transition: width ease 1ms 0ms, max-height ease 400ms 0ms,
+            background-color ease-in-out 150ms, border-radius ease-in-out 150ms;
         }
 
         %on-nav-hover-animate-n1-text {
           opacity: 1;
-          transition: opacity 250ms ease-out 100ms ;
+          transition: opacity 250ms ease-out 100ms;
         }
 
         %on-nav-hover-enable-scroll {
@@ -363,11 +384,13 @@
         display: grid;
         align-items: center;
         border-radius: var(--nav-items-border-radius);
-        grid: calc(var(--nav-item-max-height) - 2*var(--nav-padding)) auto/ calc(var(--nav-width) - 1*var(--nav-padding)) 1fr;
-        width: calc(var(--nav-width) - 2*var(--nav-padding));
+        grid: calc(var(--nav-item-max-height) - 2 * var(--nav-padding)) auto/ calc(
+            var(--nav-width) - 1 * var(--nav-padding)
+          ) 1fr;
+        width: calc(var(--nav-width) - 2 * var(--nav-padding));
         max-height: var(--nav-item-max-height);
         flex-shrink: 0;
-        margin: .3rem var(--nav-padding);
+        margin: 0.3rem var(--nav-padding);
         margin-left: 0;
         padding: var(--nav-padding);
         padding-left: 0;
@@ -402,7 +425,7 @@
       .nav-items {
         display: flex;
         flex-flow: column;
-        padding: .3rem 0;
+        padding: 0.3rem 0;
         height: 100%;
         overflow-x: hidden;
         overflow-y: hidden;
@@ -440,22 +463,22 @@
 
           .n2-item {
             @include n1-text();
-            margin-top: .7rem;
+            margin-top: 0.7rem;
             font-weight: 400;
             position: relative;
             &:hover:not(&--active-true) {
-              opacity: .7;
+              opacity: 0.7;
             }
 
             &--active-true {
               &::after {
-                content: '';
+                content: "";
                 width: 4rem;
-                height: .18rem;
-                border-radius: .3rem;
+                height: 0.18rem;
+                border-radius: 0.3rem;
                 background: var(--nav-sub-items-active-highlight);
                 position: absolute;
-                bottom: -.2rem;
+                bottom: -0.2rem;
                 left: 0;
               }
             }
@@ -464,7 +487,7 @@
       }
 
       .nav-bottom-items-container {
-        padding: .3rem 0;
+        padding: 0.3rem 0;
 
         .nav-bottom-items {
           @include n1-container();

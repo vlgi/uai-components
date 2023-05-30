@@ -10,8 +10,8 @@ import Badge from "../../Badge/Badge.svelte";
 import { keyboardControls } from "./keyboardControls/actionKeyboardControls";
 import type { TOption, TOptionsListBinds } from "./types";
 import type { TbadgeStyle, TbadgeStyleType } from "../../Badge/types";
-import { actionWatchSize } from "../../../actions/watchSize/watchSize";
-import { isTruthy } from "../../../helpers/truthy";
+import { actionWatchSize } from "$actions/watchSize/watchSize";
+import { isTruthy } from "$helpers/truthy";
 
 // True if the select should select multiple values
 export let multiple = false;
@@ -408,7 +408,7 @@ onDestroy(() => {
 </div>
 
 <style lang="scss">
-  @use "src/styles/mixins" as m;
+  @use "$styles/mixins" as m;
   * {
     --component-color: var(--theme-color);
     --margin-top: var(--szot-select-margin-top, 0.5rem);

@@ -3,10 +3,10 @@
   import martData from "@emoji-mart/data";
   import i18n from "@emoji-mart/data/i18n/en.json";
 
-  import { actionOutClick } from "../../actions/clickOutside/clickOutside";
-  import { throttle } from "../../helpers/perfomance";
-  import { fuzzySearch } from "../../helpers/searching";
-  import { checkIfItemIsInArray } from "../../helpers/arrays-handling";
+  import { actionOutClick } from "$actions/clickOutside/clickOutside";
+  import { throttle } from "$helpers/perfomance";
+  import { fuzzySearch } from "$helpers/searching";
+  import { checkIfItemIsInArray } from "$helpers/arrays-handling";
 
   import Input from "../formFields/Input/Input.svelte";
   import Icon from "../Icon/Icon.svelte";

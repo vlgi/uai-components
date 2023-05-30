@@ -1,8 +1,8 @@
 import type { ArgType } from "@storybook/addons";
 import SideMenu from "./SideMenu.svelte";
 import { items, bottomItems } from "./fixtures";
-import collapsedLogoImg from "../../assets/img/logo.png";
-import expandedLogoImg from "../../assets/img/logo-marca.png";
+import collapsedLogoImg from "$assets/img/logo.png";
+import expandedLogoImg from "$assets/img/logo-marca.png";
 import type { TBottomMenuItem, TMenuItem } from "./types";
 
 export default {
@@ -47,11 +47,7 @@ export const Scroll = Template({
   mobileMode: false,
   collapsedLogoImg,
   expandedLogoImg,
-  items: [
-    ...items,
-    ...items,
-    ...items,
-  ],
+  items: [...items, ...items, ...items],
 });
 
 const itemActiveItems: TMenuItem[] = [
@@ -114,21 +110,14 @@ export const BottomItemsScroll = Template({
   collapsedLogoImg,
   expandedLogoImg,
   bottomItems,
-  items: [
-    ...items,
-    ...items,
-    ...items,
-  ],
+  items: [...items, ...items, ...items],
 });
 
 export const MultipleBottomItems = Template({
   mobileMode: false,
   collapsedLogoImg,
   expandedLogoImg,
-  bottomItems: [
-    ...bottomItems,
-    ...bottomItems,
-  ],
+  bottomItems: [...bottomItems, ...bottomItems],
   items,
 });
 

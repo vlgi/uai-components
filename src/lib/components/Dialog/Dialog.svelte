@@ -4,7 +4,7 @@
   import Button from "../formFields/Button/Button.svelte";
   import Icon from "../Icon/Icon.svelte";
 
-  type TDialogTypes = "confirm"|"confirmCancel"|"info"|"error"|"warning"|"success";
+  type TDialogTypes = "confirm" | "confirmCancel" | "info" | "error" | "warning" | "success";
 
   // open the dialog
   export let opened = false;
@@ -66,7 +66,7 @@
     /**
      * fired when click on `cancel` button or `x` or pressed `Esc`/`clickOut`
      * if `disableCloseOnEvents` is false
-    */
+     */
     dispatch("cancel");
   }
 
@@ -98,7 +98,11 @@
   }
 </script>
 
-<div class="d-content dialog-wrapper dialog-wrapper-container dialog-type-{type}" role="dialog" aria-hidden={!opened}>
+<div
+  class="d-content dialog-wrapper dialog-wrapper-container dialog-type-{type}"
+  role="dialog"
+  aria-hidden={!opened}
+>
   <Modal
     bind:opened
     closeOnClickOut={!disableCloseOnEvents}
@@ -107,14 +111,17 @@
     disableHeader={!showHeader}
     {hideCloseButton}
   >
-    <div class="d-content" slot="modal-header">
+    <div
+      class="d-content"
+      slot="modal-header"
+    >
       {#if haveSlot("dialog-header")}
         <!-- you can change the default title, and add anything like in the modal -->
-        <slot name="dialog-header"></slot>
+        <slot name="dialog-header" />
       {:else}
         <div class="title-container">
           {#if signalsIcon}
-            <Icon iconName={signalsIcon}/>
+            <Icon iconName={signalsIcon} />
           {/if}
           <span class="title">
             {title}
@@ -123,21 +130,26 @@
       {/if}
     </div>
 
-    <div class="d-content" slot="modal-content">
+    <div
+      class="d-content"
+      slot="modal-content"
+    >
       {#if haveSlot("dialog-content")}
         <!-- you can change the default content -->
-        <slot name="dialog-content"></slot>
+        <slot name="dialog-content" />
       {:else}
         <p class="content">{content}</p>
       {/if}
     </div>
 
-    <div class="d-content" slot="modal-footer">
+    <div
+      class="d-content"
+      slot="modal-footer"
+    >
       {#if haveSlot("dialog-footer")}
         <!-- you can change the default buttons -->
-        <slot name="dialog-footer"></slot>
+        <slot name="dialog-footer" />
       {:else}
-
         <!-- Buttons -->
         <!--
           NOTE: the last rendered button will have the autofocus enabled
@@ -193,15 +205,13 @@
           {/if}
         </div>
         <!-- /Buttons -->
-
       {/if}
     </div>
   </Modal>
 </div>
 
 <style lang="scss">
-
-  @use 'src/styles/mixins' as m;
+  @use "$styles/mixins" as m;
   .dialog-wrapper {
     --txt-color: var(--szot-dialog-text-color, var(--theme-txt-on-signal-color));
     --txt-header-color: var(--szot-dialog-text-color-header, var(--theme-txt-on-signal-color));
