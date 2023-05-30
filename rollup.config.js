@@ -4,6 +4,7 @@ import sveltePreprocess from "svelte-preprocess";
 import typescript from "@rollup/plugin-typescript";
 import execute from "rollup-plugin-execute";
 import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
 import pkg from "./package.json";
 
 const name = pkg.name
@@ -49,6 +50,7 @@ export default [
       }),
       commonjs(),
       typescript(),
+      json(),
     ],
   },
 ];
