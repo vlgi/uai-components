@@ -8,6 +8,7 @@
   import ListCheckbox from "../formFields/ListCheckbox/ListCheckbox.svelte";
   import Checkbox from "../formFields/ListCheckbox/Checkbox/Checkbox.svelte";
   import Form from "./Form.svelte";
+  import RangeSlider from "../formFields/RangeSlider/RangeSlider.svelte";
 
   export let values: Record<string, unknown>;
   export let valuesFromCookies: string;
@@ -216,6 +217,21 @@
       direction="row"
       required={true}
       --szot-radio-badge-pill-background-color="#87cefa"
+    />
+
+    <p>O quanto você gosta de café</p>
+
+    <RangeSlider
+      name="coffe-like"
+      min={0}
+      max={100}
+      validationFn={(value) => {
+        if (value > 70) {
+          return true;
+        }
+
+        return "Você precisa gostar mais de café";
+      }}
     />
     <Button type="submit">Submit</Button>
   </Form>

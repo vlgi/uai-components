@@ -12,6 +12,7 @@ export { default as Input } from "./components/formFields/Input/Input.svelte";
 export { default as CleaveInput } from "./components/formFields/CleaveInput/CleaveInput.svelte";
 export { default as Button } from "./components/formFields/Button/Button.svelte";
 export { default as Textarea } from "./components/formFields/Textarea/Textarea.svelte";
+export { default as RangeSlider } from "./components/formFields/RangeSlider/RangeSlider.svelte";
 
 export { default as ListCheckbox } from "./components/formFields/ListCheckbox/ListCheckbox.svelte";
 export { default as Checkbox } from "./components/formFields/ListCheckbox/Checkbox/Checkbox.svelte";
