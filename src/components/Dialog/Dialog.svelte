@@ -242,7 +242,7 @@
 
   .title-container {
     --szot-icon-color: var(--txt-header-color);
-    --szot-icon-font-size: 1.625rem;
+    --szot-icon-font-size: 2.25rem;
 
     display: flex;
     align-items: center;
