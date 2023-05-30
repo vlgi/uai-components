@@ -1,9 +1,13 @@
 import { action } from "@storybook/addon-actions";
 import Form from "./Form.svelte";
-import UsageExampleComponent from "./UsageExample.svelte";
-import InputExampleComponent from "./InputExample.svelte";
-import ButtonExampleComponent from "./ButtonExample.svelte";
-import RealExampleComponent from "./RealExample.svelte";
+import CustomUsageExampleComponent from "./examples/CustomUsageExample.svelte";
+import CustomInputExampleComponent from "./examples/CustomInputExample.svelte";
+import CustomButtonExampleComponent from "./examples/CustomButtonExample.svelte";
+import FormFieldsComponent from "./examples/FormFieldsExample.svelte";
+import FormFieldsFilledComponent from "./examples/FormFieldsExampleFilled.svelte";
+import CookieFormExampleComponent from "./examples/CookieFormExample.svelte";
+import FormSubmitFunctionExampleComponent from "./examples/FormSubmitFunctionExample.svelte";
+import FormSubmitOutsideExampleComponent from "./examples/FormSubmitOutsideExample.svelte";
 
 export default {
   title: "Components/Form",
@@ -17,15 +21,15 @@ export default {
   },
 };
 
-export const InputExample = () => ({
-  Component: InputExampleComponent,
+export const CustomInputExample = () => ({
+  Component: CustomInputExampleComponent,
   on: {
     input: action("on:input"),
     change: action("on:change"),
   },
 });
 
-InputExample.parameters = {
+CustomInputExample.parameters = {
   docs: {
     source: {
       language: "html",
@@ -91,14 +95,14 @@ InputExample.parameters = {
   },
 };
 
-export const ButtonExample = () => ({
-  Component: ButtonExampleComponent,
+export const CustomButtonExample = () => ({
+  Component: CustomButtonExampleComponent,
   on: {
     click: action("on:click"),
   },
 });
 
-ButtonExample.parameters = {
+CustomButtonExample.parameters = {
   docs: {
     source: {
       language: "html",
@@ -121,21 +125,21 @@ ButtonExample.parameters = {
   },
 };
 
-export const UsageExample = () => ({
-  Component: UsageExampleComponent,
+export const CustomUsageExample = () => ({
+  Component: CustomUsageExampleComponent,
   on: {
     submit: action("on:submit"),
   },
 });
 
-UsageExample.parameters = {
+CustomUsageExample.parameters = {
   docs: {
     source: {
       language: "html",
       code: `
 <script lang="ts">
-  import Input from "./InputExample.svelte";
-  import Button from "./ButtonExample.svelte";
+  import Input from "./CustomInputExample.svelte";
+  import Button from "./CustomButtonExample.svelte";
   import Form from "./Form.svelte";
 
   export let values: Record<string, unknown>;
@@ -155,8 +159,36 @@ UsageExample.parameters = {
   },
 };
 
-export const RealExample = () => ({
-  Component: RealExampleComponent,
+export const FormFields = () => ({
+  Component: FormFieldsComponent,
+  on: {
+    submit: action("on:submit"),
+  },
+});
+
+export const FormFieldsFilled = () => ({
+  Component: FormFieldsFilledComponent,
+  on: {
+    submit: action("on:submit"),
+  },
+});
+
+export const CookieFormExample = () => ({
+  Component: CookieFormExampleComponent,
+  on: {
+    submit: action("on:submit"),
+  },
+});
+
+export const FormSubmitFunctionExample = () => ({
+  Component: FormSubmitFunctionExampleComponent,
+  on: {
+    submit: action("on:submit"),
+  },
+});
+
+export const FormSubmitOutsideExample = () => ({
+  Component: FormSubmitOutsideExampleComponent,
   on: {
     submit: action("on:submit"),
   },

@@ -2,7 +2,7 @@
   import {
     onMount, getContext, hasContext, onDestroy,
   } from "svelte";
-  import type { TFormContext } from "./types";
+  import type { TFormContext } from "../types";
 
   export let name: string;
   export let value = "";

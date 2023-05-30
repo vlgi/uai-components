@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getContext, hasContext } from "svelte";
+  import fireFunctionStore from "../../Form/fireFunctionStore";
   import type { TFormContext } from "../../Form/types";
   import Icon from "../../Icon/Icon.svelte";
 
@@ -28,10 +29,25 @@
   export let buttonAttributes: Record<string, unknown> = {};
 
   /**
+   * The button element (readonly)
+   * @type {HTMLButtonElement}
+   * */
+  export let buttonElement: HTMLButtonElement | null = null;
+
+  /**
    *  choose an icon from the list
    *  @type {string}
    */
   export let icon: string|null = null;
+
+  /**
+   * Set the form ID, to enable this button trigger the form submission flow
+   * without the button be inside the Form, and without the button be of submit type.
+   * If this is defined and is inside the Form, we will use this instead of triggering
+   * the form that this Button is inside. So be careful.
+   * See the Form docs for more.
+   */
+  export let form = "";
 
   // set as round button (size doesn't work with this)
   let round: boolean;
@@ -40,7 +56,14 @@
   const { fireSubmit } = isInsideContext && getContext<TFormContext>("FormContext");
 
   function submitForm() {
-    if (isInsideContext && type === "submit") {
+    // disable lint because they doesn't work with store accessed with $
+    if (form !== "") {
+      // eslint-disable-next-line max-len
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+      const fireFunction = $fireFunctionStore[form];
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      if (fireFunction) fireFunction();
+    } else if (isInsideContext && type === "submit") {
       // eslint-disable-next-line no-void
       void fireSubmit();
     }
@@ -59,6 +82,7 @@
     class:disabled
     {disabled}
     {...buttonAttributes}
+    bind:this={buttonElement}
     on:click={submitForm}
     on:click
   >

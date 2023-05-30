@@ -123,33 +123,47 @@
     helper = true;
   }
 
-  function checkStatus(answer: undefined | string | boolean) {
+  function checkStatus(answer: undefined | string | boolean, showError: boolean) {
     if (answer === true || answer === undefined) {
       isValid = true;
-      visuallyInvalid = !isValid;
+      if (showError) {
+        visuallyInvalid = !isValid;
+      }
     } else if (answer === false) {
       isValid = false;
-      visuallyInvalid = !isValid;
-      eMsg = errorMsg;
+      if (showError) {
+        visuallyInvalid = !isValid;
+        eMsg = errorMsg;
+      }
     } else if (typeof answer === "string") {
       isValid = false;
-      visuallyInvalid = !isValid;
-      eMsg = answer;
+      if (showError) {
+        visuallyInvalid = !isValid;
+        eMsg = answer;
+      }
     }
   }
 
-  function validation() {
+  function validation(showError = true) {
     if (forceInvalid) {
       isValid = false;
-      visuallyInvalid = !isValid;
-      eMsg = errorMsg;
+      if (showError) {
+        visuallyInvalid = !isValid;
+        eMsg = errorMsg;
+      }
     } else if (required && !value) {
       isValid = false;
-      visuallyInvalid = !isValid;
-      eMsg = "Este campo é obrigatorio";
+      if (showError) {
+        visuallyInvalid = !isValid;
+        eMsg = "Este campo é obrigatorio";
+      }
     } else {
-      checkStatus(validationFn(value));
+      checkStatus(validationFn(value), showError);
     }
+  }
+
+  function handleOnblur() {
+    validation();
   }
 
   function setValue(ev: InputEvent) {
@@ -221,6 +235,9 @@
   $: if (placeholder !== " " || type === "date") {
     lockLabelTop = true;
   }
+
+  // make the first validation to see if is valid or not.
+  validation(false);
 </script>
 
 <div
@@ -250,7 +267,7 @@
       on:input={changed}
       on:input={setValue}
       on:blur={focused}
-      on:blur={validation}
+      on:blur={handleOnblur}
       on:input
       on:change
       on:focus
