@@ -218,7 +218,7 @@
     }
   });
 
-  $: if (placeholder !== " ") {
+  $: if (placeholder !== " " || type === "date") {
     lockLabelTop = true;
   }
 </script>
