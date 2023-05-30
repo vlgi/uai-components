@@ -1,11 +1,18 @@
 <script lang="ts">
-  import Input from "./InputExample.svelte";
-  import Button from "./ButtonExample.svelte";
-  import Form from "./Form.svelte";
+  import Input from "./CustomInputExample.svelte";
+  import Button from "./CustomButtonExample.svelte";
+  import Form from "../Form.svelte";
 
   export let values: Record<string, unknown>;
   export let isAllValid: boolean;
 </script>
+
+<p>
+  This form is an example using the create InputExample and ButtonExample.
+</p>
+<br>
+<hr>
+<br>
 
 <Form bind:values bind:isAllValid on:submit>
   <Input name="input-name"/>

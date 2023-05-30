@@ -5,9 +5,9 @@
     TSetFieldValue,
     TRemoveFieldFromContext,
     TFireSubmit,
-    TFormContext,
   } from "./types";
   import { tick } from "../../helpers/utils";
+  import fireFunctionStore from "./fireFunctionStore";
 
   type TFieldData = {
     isValid: boolean;
@@ -33,6 +33,13 @@
   // key that storage will have. Required if saveOnStorage is enabled
   export let storageKey = "";
 
+  /**
+   * Set an unique id to be able to trigger the form submission flow
+   * using the Button component outside the Form context.
+   * See the Form docs for more.
+   */
+  export let id = "";
+
   let fieldsData: Record<string, TFieldData> = {};
   const dispatcher = createEventDispatcher();
 
@@ -41,6 +48,27 @@
   /**
    * Context functions
    */
+  export const fireSubmit: TFireSubmit = async () => {
+    // force all fields validate
+    Object.values(fieldsData).forEach((fData) => fData.forceValidation());
+
+    await tick();
+
+    // if some is invalid don't dispatch the event, and scroll to first invalid field
+    if (!Object.values(fieldsData).every((fData) => fData.isValid)) {
+      const firstInvalidEl = Object.values(fieldsData).find(
+        (fData) => !fData.isValid,
+      ).htmlElement;
+      firstInvalidEl.scrollIntoView();
+      return;
+    }
+
+    /**
+     * fired when submit button is clicked and all fields is valid.
+     * At detail we pass the variable "values".
+     */
+    dispatcher("submit", values);
+  };
 
   const setFieldValue: TSetFieldValue = (fieldName, value, isvalid) => {
     if (fieldsData[fieldName] === undefined) {
@@ -86,28 +114,6 @@
     fieldsData = fieldsData;
   };
 
-  const fireSubmit: TFireSubmit = async () => {
-    // force all fields validate
-    Object.values(fieldsData).forEach((fData) => fData.forceValidation());
-
-    await tick();
-
-    // if some is invalid don't dispatch the event, and scroll to first invalid field
-    if (!Object.values(fieldsData).every((fData) => fData.isValid)) {
-      const firstInvalidEl = Object.values(fieldsData).find(
-        (fData) => !fData.isValid,
-      ).htmlElement;
-      firstInvalidEl.scrollIntoView();
-      return;
-    }
-
-    /**
-     * fired when submit button is clicked and all fields is valid.
-     * At detail we pass the variable "values".
-     */
-    dispatcher("submit", values);
-  };
-
   $: values = Object.fromEntries(
     Object.entries(fieldsData).map(([k, v]) => [k, v.value]),
   );
@@ -118,13 +124,18 @@
 
   $: isAllValid = Object.values(fieldsData).every((v: TFieldData) => v.isValid);
 
-  const formContextObj: TFormContext = {
+  setContext("FormContext", {
     setFieldValue,
     addFieldToContext,
     removeFieldFromContext,
     fireSubmit,
-  };
-  setContext("FormContext", formContextObj);
+  });
+
+  if (id !== "") {
+    // disable lint because they doesn't work with store accessed with $
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    $fireFunctionStore[id] = fireSubmit;
+  }
 </script>
 
 <div role="form">

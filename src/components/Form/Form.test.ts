@@ -1,6 +1,6 @@
 import { render } from "@testing-library/svelte";
 import userEvent from "@testing-library/user-event";
-import UsageExample from "./UsageExample.svelte";
+import UsageExample from "./examples/CustomUsageExample.svelte";
 import { sleep } from "../../helpers/utils";
 
 beforeEach(() => {

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContext, hasContext } from "svelte";
 
-  import type { TFormContext } from "./types";
+  import type { TFormContext } from "../types";
 
   const isInsideContext = hasContext("FormContext");
   const { fireSubmit } = isInsideContext && getContext<TFormContext>("FormContext");
