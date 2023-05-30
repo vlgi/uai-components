@@ -1,22 +1,52 @@
 {
-  "files.autoSave": "off",
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "cSpell.language": "en,pt-BR",
-  "diffEditor.ignoreTrimWhitespace": false,
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
+  // Formatting
+  "editor.tabSize": 2,
+
+  // Linter
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "typescript", "svelte"],
+  "eslint.lintTask.enable": true,
+
+  // Svelte
+  "svelte.enable-ts-plugin": true,
+
+  // Spelling
+  "cSpell.language": "pt,en",
+  "cSpell.words": ["autodocs", "storysource", "ultrawide", "viewports"],
+
+  // Utilities
+  "auto-rename-tag.activationOnLanguage": ["markdown", "html", "svelte", "mdx"],
+  "auto-close-tag.activationOnLanguage": ["markdown", "html", "svelte", "mdx"],
   "editor.rulers": [
+    {
+      "color": "#009e00",
+      "column": 80
+    },
     {
       "color": "#ce0000",
       "column": 100
     }
   ],
-  "eslint.probe": ["javascript", "typescript", "html", "markdown", "svelte"],
-  "eslint.validate": ["javascript", "typescript", "html", "markdown", "svelte"],
-  "svelte.enable-ts-plugin": true,
+  "[svelte][mdx][markdown][html]": {
+    "editor.linkedEditing": true
+  },
+  "todohighlight.keywords": [
+    {
+      "text": "NOTE:",
+      "color": "#5f5f5f",
+      "backgroundColor": "#ffd900",
+      "overviewRulerColor": "grey"
+    }
+  ],
+
+  "[javascript][typescript][svelte][html][css][scss][markdown][mdx][json][jsonc]": {
+    // Formatter
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+
+    // Linter
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  }
 }

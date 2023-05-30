@@ -1,12 +1,14 @@
-node_modules/*
-public/*
-android/*
-ios/*
-jest.config.ts
-dist/
-.vscode
-.idea
-/coverage/
-.creevey/report/
-storybook-static/
-/scripts/
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+/dist
+.env
+.env.*
+!.env.example
+
+# Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
