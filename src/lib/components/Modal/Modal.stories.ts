@@ -1,5 +1,5 @@
-import type { ArgType } from "@storybook/addons";
-import { action } from "@storybook/addon-actions";
+import type { Meta } from "@storybook/svelte";
+import type { StoryObj, TemplateObj } from "$types/storybook";
 import Modal from "./Modal.svelte";
 import ModalForTest from "./ModalForTest.svelte";
 import ModalForInceptionTest from "./ModalForInceptionTest.svelte";
@@ -7,37 +7,55 @@ import ModalForCustomScrollTest from "./ModalForCustomScrollTest.svelte";
 import ModalWithHeaderIconsWrapper from "./ModalWithHeaderIcons.svelte";
 import ModalForOpenOtherInsideWapper from "./ModalForOpenOtherInside.svelte";
 
-export default {
+const meta = {
   title: "Components/Modal",
   component: Modal,
-};
+  tags: ["autodocs"], // enable auto docs
+} satisfies Meta<Modal>;
 
-const Template = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
+export default meta;
+
+type Template = TemplateObj<typeof meta, ModalForTest>;
+type Story = StoryObj<typeof meta, ModalForTest>;
+
+const template = {
+  render: (props) => ({
     Component: ModalForTest,
     props,
-    on: {
-      closeModal: action("on:closeModal"),
-    },
-  });
-  ret.args = _args;
-  return ret;
+  }),
+  args: {
+    // common stuff for template stories here
+  },
+} satisfies Template;
+
+export const Default: Story = {
+  ...template,
+  args: {
+    opened: false,
+    ...template.args,
+  },
 };
 
-export const Default = Template({
-  opened: false,
-});
-
-const content = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil velit distinctio incidunt? Maiores ratione libero dolorum recusandae cum inventore officia ipsam, sunt cupiditate doloribus, reiciendis architecto praesentium ullam impedit necessitatibus?";
+const content =
+  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil velit distinctio incidunt? Maiores ratione libero dolorum recusandae cum inventore officia ipsam, sunt cupiditate doloribus, reiciendis architecto praesentium ullam impedit necessitatibus?";
 const largeContent = Array(40).fill(content).join("\n");
-export const LongContent = Template({
-  opened: false,
-  content: largeContent,
-});
 
-export const Closed = Template({
-  opened: false,
-});
+export const LongContent: Story = {
+  ...template,
+  args: {
+    opened: false,
+    content: largeContent,
+    ...template.args,
+  },
+};
+
+export const Closed: Story = {
+  ...template,
+  args: {
+    opened: false,
+    ...template.args,
+  },
+};
 
 export const ModalInsideModal = () => ({
   Component: ModalForInceptionTest,

@@ -1,19 +1,17 @@
-import { ArgsTable, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Meta } from "@storybook/blocks";
 
 import Modal from "./Modal.svelte";
 
 <Meta title="Components/Modal/CustomDocs" />
 
-
 # Modal
 
-This docs is different because modal have fixed position,
-and apears above all elements.
+This docs is different because modal have fixed position, and apears above all elements.
 
 <ArgsTable of={Modal} />
 
-
 ## Usage Example
+
 ```html
 <script lang="ts">
   import { Modal } from "szto-ui";
@@ -25,16 +23,14 @@ and apears above all elements.
   }
 </script>
 
-<button on:click={openModal}>Open</button>
+<button on:click="{openModal}">Open</button>
 
 <Modal bind:opened>
   <div slot="modal-header">
     <span>My modal header</span>
   </div>
   <div slot="modal-content">
-    <p>
-      Lorem ipsum dolor sit.
-    </p>
+    <p>Lorem ipsum dolor sit.</p>
   </div>
   <div slot="modal-footer">
     <span>My modal footer</span>
