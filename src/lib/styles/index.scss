@@ -1,9 +1,8 @@
-@use './variables';
-@use './fonts';
-@use './defaults';
-@use './mixins' as m;
-@use './ionic';
+@use "./variables";
+@use "./fonts";
+@use "./defaults";
+@use "./mixins" as m;
 
 * {
-    @include m.custom-scrollbar();
+  @include m.custom-scrollbar();
 }

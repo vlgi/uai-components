@@ -1,5 +1,3 @@
-import "./ionic-components";
-
 export { default as Badge } from "$components/Badge/Badge.svelte";
 export { default as Icon } from "$components/Icon/Icon.svelte";
 export { default as Form } from "$components/Form/Form.svelte";
