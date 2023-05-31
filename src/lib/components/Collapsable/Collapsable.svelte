@@ -1,10 +1,13 @@
-<script context="module" lang="ts">
+<script
+  context="module"
+  lang="ts"
+>
   import { writable } from "svelte/store";
 
   type TGroupsData = {
-    lastActive: symbol,
-    currActive: symbol
-  }
+    lastActive: symbol;
+    currActive: symbol;
+  };
 
   type TGroups = Record<string, TGroupsData>;
 
@@ -13,7 +16,8 @@
 </script>
 
 <script lang="ts">
-  import { slide, SlideParams } from "svelte/transition";
+  import type { SlideParams } from "svelte/transition";
+  import { slide } from "svelte/transition";
   import Icon from "../Icon/Icon.svelte";
 
   type TCollapsableStyle = "primary" | "secondary" | "dark" | "light";
@@ -23,7 +27,7 @@
    * Set the collapsable as opened (use bind to not force be always opened).
    * Set only one per group as expanded.
    * @type {boolean}
-  */
+   */
   export let expanded = false;
 
   /**
@@ -31,7 +35,7 @@
    * Set to null or leave empty to not allow syncing the items
    * @type {string}
    */
-  export let group: string|null = null;
+  export let group: string | null = null;
 
   /**
    * A title that won't be hidden when the collapsable is not expanded.
@@ -85,12 +89,12 @@
 
     // if oppening, close all the rest
     if (expanded && group) {
-      ($groups as TGroups)[group] = {
-        lastActive: ($groups as TGroups)[group]?.currActive,
+      $groups[group] = {
+        lastActive: $groups[group]?.currActive,
         currActive: id,
       };
     } else {
-      ($groups as TGroups)[group] = {
+      $groups[group] = {
         lastActive: id,
         currActive: null,
       };
@@ -98,30 +102,35 @@
   }
 
   // if the last active is me, close me
-  $: if (group && ($groups as TGroups)[group]?.lastActive === id) {
+  $: if (group && $groups[group]?.lastActive === id) {
     expanded = false;
   }
 </script>
 
 <div class="collapsable style-{collapsableStyle} style-type-{collapsableStyleType}">
   <div class="overflow-hidden">
-    <header on:click={ toggleCollapse }>
+    <header
+      on:click={toggleCollapse}
+      on:keypress={(e) => e.key === "Enter" && toggleCollapse()}
+    >
       <!-- The non-collapsable content that will be next to the chevron icon -->
       <slot name="header">
-        <span class="title">{ title }</span>
+        <span class="title">{title}</span>
       </slot>
       <span class="icon">
-        <Icon
-          iconName={expanded ? iconNameExpanded : iconNameNotExpanded}
-        />
+        <Icon iconName={expanded ? iconNameExpanded : iconNameNotExpanded} />
       </span>
     </header>
     {#if expanded}
-      <div class="content" class:content-background={contentBackground} transition:slide={expansionTransitionParams}>
+      <div
+        class="content"
+        class:content-background={contentBackground}
+        transition:slide={expansionTransitionParams}
+      >
         <div class="content-content">
           <!-- the collapsable content -->
           <div class="color">
-            <slot></slot>
+            <slot />
           </div>
         </div>
       </div>
@@ -154,9 +163,15 @@
     --background: var(--szot-collapsable-background, var(--style-type-background));
     --color: var(--szot-collapsable-color, var(--style-type-color));
     --border-color: var(--szot-collapsable-border-color, var(--style-type-border-color));
-    --content-background: var(--szot-collapsable-content-background, var(--style-type-content-background));
+    --content-background: var(
+      --szot-collapsable-content-background,
+      var(--style-type-content-background)
+    );
     --content-color: var(--szot-collapsable-content-color, var(--style-type-content-color));
-    --content-border-color: var(--szot-collapsable-content-border-color, var(--style-type-content-border-color));
+    --content-border-color: var(
+      --szot-collapsable-content-border-color,
+      var(--style-type-content-border-color)
+    );
     --icon-color: var(--szot-collapsable-icon-color, var(--style-type-icon-color));
 
     // measurements and spacing
@@ -166,10 +181,22 @@
     --padding: var(--szot-collapsable-padding, var(--theme-global-medium-padding));
     --padding-header: var(--szot-collapsable-padding-header, var(--padding));
     --border-width: var(--szot-collapsable-border-width, var(--style-type-border-width));
-    --border-radius: var(--szot-collapsable-border-radius, calc( calc( max(var(--icon-font-size), 1.1875rem) + calc(2 * var(--theme-global-medium-padding)) ) / 2 ));
+    --border-radius: var(
+      --szot-collapsable-border-radius,
+      calc(
+        calc(max(var(--icon-font-size), 1.1875rem) + calc(2 * var(--theme-global-medium-padding))) /
+          2
+      )
+    );
     --content-padding: var(--szot-collapsable-content-padding, var(--padding));
-    --content-border-width: var(--szot-collapsable-content-border-width, var(--style-type-content-border-width));
-    --content-border-radius: var(--szot-collapsable-content-border-radius, var(--theme-medium-shape));
+    --content-border-width: var(
+      --szot-collapsable-content-border-width,
+      var(--style-type-content-border-width)
+    );
+    --content-border-radius: var(
+      --szot-collapsable-content-border-radius,
+      var(--theme-medium-shape)
+    );
     --title-font-size: var(--szot-collapsable-title-font-size, 1rem);
     --box-shadow: var(--szot-collapsable-box-shadow, none);
     --backdrop-filter: var(--szot-collapsable-backdrop-filter, none);
@@ -255,7 +282,7 @@
 
     header {
       padding: var(--padding-header);
-      .title{
+      .title {
         @include m.text-color(var(--color));
         font-size: var(--title-font-size);
       }
