@@ -165,6 +165,7 @@
       <div
         class="select-option"
         role="option"
+        aria-selected={isOptionSelected(option, selected) ? "true" : "false"}
         tabindex="-1"
         bind:this={optionsBinds[i]}
         class:focused={i === focused}
@@ -172,6 +173,12 @@
         on:click={() => {
           toggleSelected(option);
           focused = -1;
+        }}
+        on:keypress={(e) => {
+          if (e.key === "Enter") {
+            toggleSelected(option);
+            focused = -1;
+          }
         }}
       >
         <div class="text">
