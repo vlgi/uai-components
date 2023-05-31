@@ -1,54 +1,44 @@
-import type { ArgType } from "@storybook/addons";
-import SideMenu from "./SideMenu.svelte";
+import type { Meta, StoryObj } from "@storybook/svelte";
 import { items, bottomItems } from "./fixtures";
 import collapsedLogoImg from "$assets/img/logo.png";
 import expandedLogoImg from "$assets/img/logo-marca.png";
+import SideMenu from "./SideMenu.svelte";
 import type { TBottomMenuItem, TMenuItem } from "./types";
 
-export default {
+const meta = {
   title: "Components/SideMenu",
   component: SideMenu,
-  parameters: {
-    // skip all screen test for button stories
-    creevey: {
-      skip: true,
-    },
-    storyshots: false,
-    docs: {
-      page: null,
-    },
+} satisfies Meta<SideMenu>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    mobileMode: false,
+    collapsedLogoImg,
+    expandedLogoImg,
+    items,
   },
 };
 
-const Template = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
-    Component: SideMenu,
-    props,
-  });
-  ret.args = _args;
-  return ret;
+export const MobileMode: Story = {
+  args: {
+    mobileMode: true,
+    collapsedLogoImg,
+    expandedLogoImg,
+    items,
+  },
 };
 
-export const Default = Template({
-  mobileMode: false,
-  collapsedLogoImg,
-  expandedLogoImg,
-  items,
-});
-
-export const mobileMode = Template({
-  mobileMode: true,
-  collapsedLogoImg,
-  expandedLogoImg,
-  items,
-});
-
-export const Scroll = Template({
-  mobileMode: false,
-  collapsedLogoImg,
-  expandedLogoImg,
-  items: [...items, ...items, ...items],
-});
+export const Scroll: Story = {
+  args: {
+    mobileMode: false,
+    collapsedLogoImg,
+    expandedLogoImg,
+    items: [...items, ...items, ...items],
+  },
+};
 
 const itemActiveItems: TMenuItem[] = [
   {
@@ -60,12 +50,15 @@ const itemActiveItems: TMenuItem[] = [
   },
   ...items.slice(1, items.length),
 ];
-export const ItemActive = Template({
-  mobileMode: false,
-  collapsedLogoImg,
-  expandedLogoImg,
-  items: itemActiveItems,
-});
+
+export const ItemActive: Story = {
+  args: {
+    mobileMode: false,
+    collapsedLogoImg,
+    expandedLogoImg,
+    items: itemActiveItems,
+  },
+};
 
 const groupActiveItems: TMenuItem[] = [
   {
@@ -90,36 +83,45 @@ const groupActiveItems: TMenuItem[] = [
   },
   ...items.slice(1, items.length),
 ];
-export const GroupActive = Template({
-  mobileMode: false,
-  collapsedLogoImg,
-  expandedLogoImg,
-  items: groupActiveItems,
-});
 
-export const BottomItems = Template({
-  mobileMode: false,
-  collapsedLogoImg,
-  expandedLogoImg,
-  items,
-  bottomItems,
-});
+export const GroupActive: Story = {
+  args: {
+    mobileMode: false,
+    collapsedLogoImg,
+    expandedLogoImg,
+    items: groupActiveItems,
+  },
+};
 
-export const BottomItemsScroll = Template({
-  mobileMode: false,
-  collapsedLogoImg,
-  expandedLogoImg,
-  bottomItems,
-  items: [...items, ...items, ...items],
-});
+export const BottomItems: Story = {
+  args: {
+    mobileMode: false,
+    collapsedLogoImg,
+    expandedLogoImg,
+    items,
+    bottomItems,
+  },
+};
 
-export const MultipleBottomItems = Template({
-  mobileMode: false,
-  collapsedLogoImg,
-  expandedLogoImg,
-  bottomItems: [...bottomItems, ...bottomItems],
-  items,
-});
+export const BottomItemsScroll: Story = {
+  args: {
+    mobileMode: false,
+    collapsedLogoImg,
+    expandedLogoImg,
+    bottomItems,
+    items: [...items, ...items, ...items],
+  },
+};
+
+export const MultipleBottomItems: Story = {
+  args: {
+    mobileMode: false,
+    collapsedLogoImg,
+    expandedLogoImg,
+    items,
+    bottomItems: [...bottomItems, ...bottomItems],
+  },
+};
 
 const bottomItemsActiveItems: TBottomMenuItem[] = [
   {
@@ -127,10 +129,13 @@ const bottomItemsActiveItems: TBottomMenuItem[] = [
     isActive: true,
   },
 ];
-export const BottomItemsActive = Template({
-  mobileMode: false,
-  collapsedLogoImg,
-  expandedLogoImg,
-  items,
-  bottomItems: bottomItemsActiveItems,
-});
+
+export const BottomItemsActive: Story = {
+  args: {
+    mobileMode: false,
+    collapsedLogoImg,
+    expandedLogoImg,
+    items,
+    bottomItems: bottomItemsActiveItems,
+  },
+};
