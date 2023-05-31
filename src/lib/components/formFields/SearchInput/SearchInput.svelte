@@ -3,9 +3,9 @@
 
   // Field concatenation
   type TConcat = {
-    index: number,
-    concatenated: string,
-  }
+    index: number;
+    concatenated: string;
+  };
 
   type TborderStyle = "primary" | "secondary" | "dark" | "light";
 
@@ -53,7 +53,7 @@
   export let placeholder = "Pesquise ou Selecione...";
 
   // input icon
-  export let icon: string|null = null;
+  export let icon: string | null = null;
 
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};
@@ -91,13 +91,12 @@
   $: regex = calculateRegex(searchQuery);
 
   // Searches in the concatenated fields and then find each corresponding item
-  $: filtered = (searchConcat as TConcat[])
+  $: filtered = searchConcat
     .filter(({ concatenated }) => concatenated.match(regex) !== null)
     .map(({ index }) => items[index]);
 
   $: inputAttributes.tabindex = tabindex;
   $: inputAttributes.placeholder = placeholder;
-
 </script>
 
 <Input
