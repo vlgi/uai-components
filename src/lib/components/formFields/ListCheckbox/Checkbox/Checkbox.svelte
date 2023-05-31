@@ -1,8 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import {
-    onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
+  import { onMount, getContext, hasContext, onDestroy } from "svelte";
   import Icon from "../../../Icon/Icon.svelte";
   import type { TFormContext } from "../../../Form/types";
 
@@ -11,7 +9,7 @@
   type TBadgeStyle = "light" | "dark" | "primary" | "secondary";
 
   const dispatch = createEventDispatcher<{
-    checkItem: { value: string|boolean, checked: boolean }
+    checkItem: { value: string | boolean; checked: boolean };
   }>();
 
   /**
@@ -76,9 +74,8 @@
   export let uncheckedText = "";
 
   const isInsideContext = hasContext("FormContext");
-  const {
-    setFieldValue, addFieldToContext, removeFieldFromContext,
-  } = isInsideContext && getContext<TFormContext>("FormContext");
+  const { setFieldValue, addFieldToContext, removeFieldFromContext } =
+    isInsideContext && getContext<TFormContext>("FormContext");
 
   function validation() {
     isValid = true;
@@ -116,7 +113,7 @@
         required,
         inputElement,
         validation,
-        forceValue,
+        forceValue
       );
     }
   });
@@ -134,6 +131,9 @@
   class:checked
   on:click={() => {
     if (styleType === "badge-pill") handleCheck();
+  }}
+  on:keypress={(e) => {
+    if (e.key === "Enter" && styleType === "badge-pill") handleCheck();
   }}
 >
   <div
@@ -155,6 +155,7 @@
         class="slider"
         class:checked
         on:click={handleCheck}
+        on:keypress={(e) => e.key === "Enter" && handleCheck()}
       >
         <span class="slider-checked" />
       </span>
@@ -166,7 +167,10 @@
           <Icon iconName="ion:close-circle" />
         {/if}
       {/if}
-      <label for={id} class="badge-label">
+      <label
+        for={id}
+        class="badge-label"
+      >
         {label !== undefined ? label : ""}
       </label>
       {#if iconPosition === "right" || iconPosition === "both"}
@@ -175,7 +179,7 @@
         {/if}
       {/if}
     {:else}
-      <label for={id} >
+      <label for={id}>
         <div
           class="text-switch__button"
           data-checked={checkedText}
@@ -186,12 +190,18 @@
     {/if}
   </div>
   {#if label !== undefined && label !== "" && label !== null && styleType !== "badge-pill"}
-    <label for={id} class="checkbox-label">
+    <label
+      for={id}
+      class="checkbox-label"
+    >
       {label}
     </label>
   {/if}
 </div>
-<p class="error" class:error-show={!isValid}>
+<p
+  class="error"
+  class:error-show={!isValid}
+>
   {#if required}
     Este campo é obrigatório
   {/if}
@@ -202,7 +212,7 @@
 
   .checkbox {
     &.style-type {
-      $styles: ("checkbox-input" , "switch" , "text-switch", "badge-pill");
+      $styles: ("checkbox-input", "switch", "text-switch", "badge-pill");
 
       @each $style in $styles {
         &-#{$style} {
@@ -213,10 +223,7 @@
           --border-radius: var(--szot-checkbox-border-radius, var(--border-size));
           --checkbox-color: var(--szot-checkbox-color, var(--theme-dark-txt));
           --checkbox-checked-color: var(--szot-checkbox-checked-color, var(--checkbox-color));
-          --checkbox-label-color: var(
-            --szot-checkbox-label-color,
-            var(--theme-dark-txt)
-          );
+          --checkbox-label-color: var(--szot-checkbox-label-color, var(--theme-dark-txt));
           --checkbox-label-margin-left: var(--szot-checkbox-label-margin-left, 1.25rem);
         }
       }
@@ -224,10 +231,7 @@
       &-switch {
         --switch-background: var(--szot-checkbox-switch-background, #cecece);
         --switch-color: var(--szot-checkbox-switch-color, var(--theme-dark-txt));
-        --switch-checked-color: var(
-          --szot-checkbox-switch-checked-color,
-          var(--switch-color)
-        );
+        --switch-checked-color: var(--szot-checkbox-switch-checked-color, var(--switch-color));
         --switch-width: var(--szot-checkbox-switch-width, 3.25rem);
         --switch-height: var(--szot-checkbox-switch-height, 1.5rem);
         --border-radius: 2.125rem;
@@ -240,7 +244,7 @@
           --szot-checkbox-switch-checked-color,
           var(--text-switch-color)
         );
-        --text-switch-text-color: var(--szot-checkbox-switch-text-color, #FFFFFF);
+        --text-switch-text-color: var(--szot-checkbox-switch-text-color, #ffffff);
         --text-switch-width: var(--szot-checkbox-switch-width, 4.275rem);
         --text-switch-height: var(--szot-checkbox-switch-height, 2.25rem);
         --text-switch-border-radius: var(--szot-checkbox-border-radius, 6.25rem);
@@ -254,7 +258,10 @@
         --badge-pill-background-color: var(--szot-checkbox-badge-pill-background, #aaa);
         --badge-pill-max-width: var(--szot-checkbox-badge-pill-max-width, auto);
         --szot-icon-color: var(--badge-pill-icon-color);
-        --badge-pill-font-size: var(--szot-checkbox-badge-pill-font-size, var(--theme-fields-font-size));
+        --badge-pill-font-size: var(
+          --szot-checkbox-badge-pill-font-size,
+          var(--theme-fields-font-size)
+        );
         --badge-pill-font-weight: var(--szot-checkbox-badge-pill-font-weight, normal);
         --border-radius: var(--szot-checkbox-border-radius, 1rem);
 
@@ -289,11 +296,19 @@
           --background-selected: var(--badge-pill-background-color);
         }
 
-        --badge-pill-border-color: var(--border-color-selected, var(--szot-checkbox-badge-pill-border-color, var(--default-border-color)));
-        --badge-pill-label-color: var(--label-color-selected, var(--szot-checkbox-badge-pill-label-color, var(--default-label-color)));
-        --badge-pill-icon-color: var(--icon-color-selected, var(--szot-checkbox-badge-pill-icon-color, var(--default-icon-color)));
+        --badge-pill-border-color: var(
+          --border-color-selected,
+          var(--szot-checkbox-badge-pill-border-color, var(--default-border-color))
+        );
+        --badge-pill-label-color: var(
+          --label-color-selected,
+          var(--szot-checkbox-badge-pill-label-color, var(--default-label-color))
+        );
+        --badge-pill-icon-color: var(
+          --icon-color-selected,
+          var(--szot-checkbox-badge-pill-icon-color, var(--default-icon-color))
+        );
         --background: var(--background-selected, none);
-
       }
     }
 
@@ -376,7 +391,6 @@
       @include m.border(var(--border-size), var(--badge-pill-border-color));
 
       .badge-label {
-
         @include m.text-color(var(--badge-pill-label-color));
         font-size: var(--badge-pill-font-size);
         font-weight: var(--badge-pill-font-weight);
@@ -413,9 +427,7 @@
     }
 
     .slider.checked:before {
-      transform: translateX(
-        calc(var(--switch-width) - 1.1 * var(--switch-height))
-      );
+      transform: translateX(calc(var(--switch-width) - 1.1 * var(--switch-height)));
     }
 
     .slider .slider-checked:before {
@@ -434,13 +446,13 @@
       background: var(--switch-checked-color);
       opacity: 1;
 
-      transform: translateX(
-        calc(var(--switch-width) - 1.1 * var(--switch-height))
-      );
+      transform: translateX(calc(var(--switch-width) - 1.1 * var(--switch-height)));
     }
     .text-switch {
       position: relative;
-      *, *:before, *:after {
+      *,
+      *:before,
+      *:after {
         box-sizing: border-box;
       }
       //overflow: hidden;
@@ -459,9 +471,9 @@
               &:after {
                 content: attr(data-checked);
                 transform: translate3d(
-                  calc((var(--text-switch-width) * 2)
-                    - (var(--text-switch-width)
-                    + var(--text-switch-gap))
+                  calc(
+                    (var(--text-switch-width) * 2) -
+                      (var(--text-switch-width) + var(--text-switch-gap))
                   ),
                   0,
                   0
@@ -485,7 +497,7 @@
 
         .text-switch__button {
           position: relative;
-          transition: background-color 0.4s cubic-bezier(0,1,0.5,1);
+          transition: background-color 0.4s cubic-bezier(0, 1, 0.5, 1);
           background: var(--text-switch-background);
           height: var(--text-switch-height);
           flex: 0 0 calc(var(--text-switch-width) * 2);
@@ -523,9 +535,9 @@
             text-overflow: ellipsis;
             background: var(--text-switch-color);
             color: var(--text-switch-text-color);
-            -webkit-transition: -webkit-transform 0.4s cubic-bezier(0,1,0.5,1);
-            transition: transform 0.4s cubic-bezier(0,1,0.5,1);
-            transform: translate3d(0,0,0);
+            -webkit-transition: -webkit-transform 0.4s cubic-bezier(0, 1, 0.5, 1);
+            transition: transform 0.4s cubic-bezier(0, 1, 0.5, 1);
+            transform: translate3d(0, 0, 0);
           }
           &.checked:after {
             background: var(--text-switch-checked-color);
@@ -553,6 +565,4 @@
     @include m.form-field-error-text();
     @include m.text-color(var(--theme-error));
   }
-
-
 </style>
