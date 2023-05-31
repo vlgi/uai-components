@@ -15,16 +15,14 @@ const falsy = [
 
 export function isFalsy(value: any): boolean {
   if (Array.isArray(value)) return !value.length;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   return falsy.includes(value);
 }
 export function isTruthy(value: any): boolean {
   return !isFalsy(value);
 }
 
-const empty = [
-  null,
-  undefined,
-];
+const empty = [null, undefined];
 
 export function isEmpty(value: any): boolean {
   return empty.includes(value);

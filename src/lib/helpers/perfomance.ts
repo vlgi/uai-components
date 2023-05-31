@@ -12,9 +12,8 @@
  * Returns the function that we want to execute
  */
 
-export function throttle
-  <T extends(...args: unknown[])=> unknown>(fn: T, waitTime: number): T {
-  let timer = null;
+export function throttle<T extends (...args: unknown[]) => unknown>(fn: T, waitTime: number): T {
+  let timer: NodeJS.Timeout | string | number | undefined = null;
   let lastExec = null;
 
   function returnFn(...args): void {
@@ -24,7 +23,7 @@ export function throttle
     } else {
       clearTimeout(timer);
       timer = setTimeout(() => {
-        if ((Date.now() - lastExec) >= waitTime) {
+        if (Date.now() - lastExec >= waitTime) {
           fn.apply(args);
           lastExec = Date.now();
         }
