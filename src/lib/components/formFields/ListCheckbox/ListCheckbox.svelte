@@ -1,11 +1,5 @@
 <script lang="ts">
-  import {
-    getContext,
-    hasContext,
-    setContext,
-    onMount,
-    onDestroy,
-  } from "svelte";
+  import { getContext, hasContext, setContext, onMount, onDestroy } from "svelte";
   import Checkbox from "./Checkbox/Checkbox.svelte";
   import type { TFormContext } from "../../Form/types";
 
@@ -18,10 +12,9 @@
   type TBadgeStyle = "light" | "dark" | "primary" | "secondary";
   type TDirection = "column" | "row";
 
-  export let name;
+  export let name: string;
   /**
    * The title property for this element
-   * @type {string}
    */
   export let title = "";
 
@@ -39,9 +32,7 @@
    * Return true/undefined if valid,
    * or a string to show the error, or false to show the "errorMsg" props.
    */
-  export let validationFn: (
-    value: Array<string>
-  )=> undefined | string | boolean = () => true;
+  export let validationFn: (value: Array<string>) => undefined | string | boolean = () => true;
 
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
@@ -95,12 +86,8 @@
 
   const isInsideContext = hasContext("FormContext");
   let addedToContext = false;
-  const {
-    setFieldValue,
-    addFieldToContext,
-    removeFieldFromContext,
-    fireSubmit,
-  } = isInsideContext && getContext<TFormContext>("FormContext");
+  const { setFieldValue, addFieldToContext, removeFieldFromContext, fireSubmit } =
+    isInsideContext && getContext<TFormContext>("FormContext");
 
   function checkStatus(answer: undefined | string | boolean) {
     if (answer === true || answer === undefined) {
@@ -120,9 +107,10 @@
       isValid = false;
       eMsg = errorMsg;
     } else if (required) {
-      isValid = Array.isArray(values)
-      && values.length >= min
-      && (max !== null ? values.length <= max : true);
+      isValid =
+        Array.isArray(values) &&
+        values.length >= min &&
+        (max !== null ? values.length <= max : true);
     } else {
       checkStatus(validationFn(values));
     }
@@ -146,15 +134,7 @@
 
   onMount(() => {
     if (addedToContext) {
-      addFieldToContext(
-        name,
-        values,
-        isValid,
-        required,
-        wrapperElement,
-        validation,
-        forceValue,
-      );
+      addFieldToContext(name, values, isValid, required, wrapperElement, validation, forceValue);
     }
   });
 
@@ -164,7 +144,7 @@
     }
   });
 
-  function setChecked(ev: CustomEvent<{ value: string|boolean, checked: boolean } >) {
+  function setChecked(ev: CustomEvent<{ value: string | boolean; checked: boolean }>) {
     eMsg = ""; // reset the error message
 
     const { checked, value } = ev.detail;
@@ -186,9 +166,18 @@
   }
 </script>
 
-<div class="list-checkbox-wrapper" bind:this={wrapperElement}>
-  <span class="checkbox-title" class:invalid={!isValid}>{title}</span>
-  <ul class="list-checkbox {direction}" class:invalid={!isValid}>
+<div
+  class="list-checkbox-wrapper"
+  bind:this={wrapperElement}
+>
+  <span
+    class="checkbox-title"
+    class:invalid={!isValid}>{title}</span
+  >
+  <ul
+    class="list-checkbox {direction}"
+    class:invalid={!isValid}
+  >
     {#each checkboxItems as checkbox, i}
       <li>
         <Checkbox
@@ -206,7 +195,10 @@
       </li>
     {/each}
   </ul>
-  <p class="error" class:error-show={!isValid}>
+  <p
+    class="error"
+    class:error-show={!isValid}
+  >
     {#if required}
       {#if max !== null && values.length >= max}
         Você deve selecionar no máximo {max} {max <= 1 ? "opção" : "opções"}.
@@ -223,10 +215,7 @@
   @use "$styles/mixins" as m;
   @use "$styles/variables" as v;
   .list-checkbox-wrapper {
-    --checkbox-label-color: var(
-      --szot-checkbox-label-color,
-      var(--theme-dark-txt)
-    );
+    --checkbox-label-color: var(--szot-checkbox-label-color, var(--theme-dark-txt));
 
     .invalid {
       --szot-checkbox-color: var(--theme-error);
@@ -237,7 +226,6 @@
       --szot-checkbox-badge-pill-selected-icon-color: var(--theme-error);
       --szot-checkbox-badge-pill-selected-label-color: var(--theme-error);
       --szot-checkbox-badge-pill-selected-border-color: var(--theme-error);
-
 
       &.checkbox-title {
         @include m.text-color(var(--theme-error));
