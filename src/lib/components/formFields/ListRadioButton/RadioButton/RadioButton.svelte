@@ -7,7 +7,6 @@
 
   /**
    * The label text for this element
-   * @type {string}
    */
   export let label = "";
 
@@ -19,7 +18,6 @@
 
   /**
    * The name for the radio element, default is equal to name
-   * @type {string}
    */
   export let id = name;
 
@@ -66,6 +64,7 @@
     // I don't know why, but this function inside on:click trigger three times
     labelElement.click();
   }}
+  on:keypress={(e) => e.key === "Enter" && labelElement.click()}
 >
   <input
     type="radio"
