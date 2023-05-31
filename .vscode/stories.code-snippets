@@ -12,6 +12,7 @@
       "const meta = {",
       "  title: \"${2:Components}/$1\",",
       "  component: $1,",
+      "  tags: [\"autodocs\"], // enable auto docs",
       "  ${3:// common stuff for all stories here}",
       "} satisfies Meta<$1>;",
       "",
@@ -50,7 +51,8 @@
       "const meta = {",
       "  title: \"${2:Components}/$1\",",
       "  component: $1,",
-      "  $3",
+      "  tags: [\"autodocs\"], // enable auto docs",
+      "  ${3:// common stuff for all stories here}",
       "} satisfies Meta<$1>;",
       "",
       "export default meta;",
@@ -64,5 +66,19 @@
 
 		],
 		"description": "Create a story for a component"
+	},
+	"MDX Story": {
+		"scope": "mdx",
+		"prefix": "story",
+		"body": [
+      "import { Markdown, Meta } from \"@storybook/blocks\";",
+      "",
+      "<Meta title=\"$1\" />",
+      "",
+      "# $2",
+      "",
+      "$0",
+    ],
+		"description": "Create a story in MDX"
 	}
 }

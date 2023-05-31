@@ -1,0 +1,16 @@
+import { Markdown, Meta } from "@storybook/blocks";
+
+<Meta title="Internal Documentation/Actions/Introduction" />
+
+# Introduction
+
+Actions is an feature from svelte: https://svelte.dev/tutorial/actions.
+
+Actions feature isn't well typed, so we create a global type as workaround on
+`src/actionsCustomEvents.d.ts`. For this workaround works your actions must trigger events that name
+starts with `action` prefix.
+
+You can create actions for your components inside their folder, but here on `src/lib/actions` we
+salve common actions, that can be used for all components.
+
+If you create an action, generic or specific to your component, please document it.

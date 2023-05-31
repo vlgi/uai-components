@@ -1,40 +1,44 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
+import type { Meta, StoryObj } from "@storybook/svelte";
 import ThemeColors from "./components/Colors/Colors.svelte";
 import ThemeFonts from "./components/Fonts/Fonts.svelte";
 import ThemeSpacings from "./components/Spacings/Spacings.svelte";
 import ThemeSurfaces from "./components/Surfaces/Surfaces.svelte";
 import ThemeScroll from "./components/Scroll/Scroll.svelte";
 
-export default {
+const meta = {
   title: "Theme",
   component: ThemeColors,
-  parameters: {
-    // skip all screen test for button stories
-    creevey: {
-      skip: true,
-    },
-    // disabled
-    storyshots: false,
-  },
+} satisfies Meta<ThemeColors>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Colors: Story = {
+  render: () => ({
+    Component: ThemeColors,
+  }),
 };
 
-export const Colors = () => ({
-  Component: ThemeColors,
-});
+export const Fonts: Story = {
+  render: () => ({
+    Component: ThemeFonts,
+  }),
+};
 
-export const Fonts = () => ({
-  Component: ThemeFonts,
-});
+export const Spacings: Story = {
+  render: () => ({
+    Component: ThemeSpacings,
+  }),
+};
 
-export const Spacings = () => ({
-  Component: ThemeSpacings,
-});
+export const Surfaces: Story = {
+  render: () => ({
+    Component: ThemeSurfaces,
+  }),
+};
 
-export const Surfaces = () => ({
-  Component: ThemeSurfaces,
-});
-
-export const Scroll = () => ({
-  Component: ThemeScroll,
-});
+export const Scroll: Story = {
+  render: () => ({
+    Component: ThemeScroll,
+  }),
+};
