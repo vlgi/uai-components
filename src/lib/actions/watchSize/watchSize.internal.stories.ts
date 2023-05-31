@@ -4,6 +4,7 @@ import WatchSize from "./WatchSize.svelte";
 const meta = {
   title: "Internal Documentation/Actions/WatchSize",
   component: WatchSize,
+  tags: ["autodocs"],
   parameters: {
     docs: {
       description: {

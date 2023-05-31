@@ -1,5 +1,3 @@
-<!-- Badge.stories.mdx -->
-
 import { Meta } from "@storybook/addon-docs";
 
 import EmojiPickerWrapperExample from "./EmojiPickerWrapperExample.svelte";
@@ -10,18 +8,18 @@ import EmojiPickerWrapperExample from "./EmojiPickerWrapperExample.svelte";
 
 ## CSS customization
 
-| CSS Property                                     | Default                 | Descripiton                      |
-|--------------------------------------------------|-------------------------|----------------------------------|
-| --szot-emojis-picker-background-color            | white                   | Container background color       |
-| --szot-emojis-picker-border-radius               | --theme-small-shape     | Container border radius          |
-| --szot-emojis-picker-box-shadow                  | --theme-medium-shadow   | Container box shadow             |
-| --szot-emojis-picker-height                      | 315px                   | Container height                 |
-| --szot-emojis-picker-width                       | 315px                   | Container width                  |
-| --szot-emojis-picker-category-title-border-color | --theme-light           | Category title border color      |
-| --szot-emojis-picker-category-title-font-color   | --theme-dark            | Category title font color        |
-| --szot-emojis-picker-emoji-background-color      | transparent             | Emoji button background color    |
-| --szot-emojis-picker-tabs-border-color           | --theme-light           | Category tab button border color |
-| --szot-emojis-picker-tabs-icon-color             | --theme-dark            | Category tab icon color          |
+| CSS Property                                     | Default               | Descripiton                      |
+| ------------------------------------------------ | --------------------- | -------------------------------- |
+| --szot-emojis-picker-background-color            | white                 | Container background color       |
+| --szot-emojis-picker-border-radius               | --theme-small-shape   | Container border radius          |
+| --szot-emojis-picker-box-shadow                  | --theme-medium-shadow | Container box shadow             |
+| --szot-emojis-picker-height                      | 315px                 | Container height                 |
+| --szot-emojis-picker-width                       | 315px                 | Container width                  |
+| --szot-emojis-picker-category-title-border-color | --theme-light         | Category title border color      |
+| --szot-emojis-picker-category-title-font-color   | --theme-dark          | Category title font color        |
+| --szot-emojis-picker-emoji-background-color      | transparent           | Emoji button background color    |
+| --szot-emojis-picker-tabs-border-color           | --theme-light         | Category tab button border color |
+| --szot-emojis-picker-tabs-icon-color             | --theme-dark          | Category tab icon color          |
 
 ## Usage example
 
@@ -53,25 +51,14 @@ import EmojiPickerWrapperExample from "./EmojiPickerWrapperExample.svelte";
 
 <div class="container">
   <div class="input-target-container">
-    <Input
-      on:input={onTypeMsg}
-      on:click={openEmojisPicker}
-      icon="emoticon-happy"
-      iconClick={true}
-      id="input-msg"
-      inputAttributes={{ autocomplete: "off" }}
-      label="Message"
-      name="message"
-      type="text"
-      value={msg}
-      --szot-input-margin-bottom="0"
-      --szot-input-margin-top="0"
-    />
+    <Input on:input={onTypeMsg} on:click={openEmojisPicker} icon="emoticon-happy" iconClick={true}
+    id="input-msg" inputAttributes={{ autocomplete: "off" }} label="Message" name="message"
+    type="text" value={msg} --szot-input-margin-bottom="0" --szot-input-margin-top="0" />
   </div>
 
   <EmojiPicker
     bind:opened
-    bind:selected={selectedEmoji}
+    bind:selected="{selectedEmoji}"
     localStorageId="szot-ui-emoji-picker-example"
     {targetEl}
     --szot-emojis-picker-background-color="white"
@@ -104,4 +91,3 @@ import EmojiPickerWrapperExample from "./EmojiPickerWrapperExample.svelte";
   }
 </style>
 ```
-

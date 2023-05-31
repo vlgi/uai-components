@@ -5,6 +5,7 @@ import ClickOutsideExampleCode from "./ClickOutside.svelte?raw";
 const meta = {
   title: "Internal Documentation/Actions/ClickOutside",
   component: ClickOutside,
+  tags: ["autodocs"],
   parameters: {
     docs: {
       description: {
