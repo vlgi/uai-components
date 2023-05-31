@@ -4,10 +4,12 @@
   export let iconName: string;
 </script>
 
-<div class="icon-container" on:click>
-  <Icon
-    icon={iconName}
-  />
+<div
+  class="icon-container"
+  on:click
+  on:keypress
+>
+  <Icon icon={iconName} />
 </div>
 
 <style lang="scss">
