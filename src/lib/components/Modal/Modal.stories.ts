@@ -1,9 +1,9 @@
 import type { Meta } from "@storybook/svelte";
 import type { StoryObj, TemplateObj } from "$types/storybook";
 import Modal from "./Modal.svelte";
-import ModalForTest from "./ModalForTest.svelte";
-import ModalForInceptionTest from "./ModalForInceptionTest.svelte";
-import ModalForCustomScrollTest from "./ModalForCustomScrollTest.svelte";
+import ModalExample from "./ModalForExample.svelte";
+import ModalForInceptionExample from "./ModalForInceptionExample.svelte";
+import ModalForCustomScrollExample from "./ModalForCustomScrollExample.svelte";
 import ModalWithHeaderIconsWrapper from "./ModalWithHeaderIcons.svelte";
 import ModalForOpenOtherInsideWapper from "./ModalForOpenOtherInside.svelte";
 
@@ -15,12 +15,12 @@ const meta = {
 
 export default meta;
 
-type Template = TemplateObj<typeof meta, ModalForTest>;
-type Story = StoryObj<typeof meta, ModalForTest>;
+type Template = TemplateObj<typeof meta, ModalExample>;
+type Story = StoryObj<typeof meta, ModalExample>;
 
 const template = {
   render: (props) => ({
-    Component: ModalForTest,
+    Component: ModalExample,
     props,
   }),
   args: {
@@ -58,11 +58,11 @@ export const Closed: Story = {
 };
 
 export const ModalInsideModal = () => ({
-  Component: ModalForInceptionTest,
+  Component: ModalForInceptionExample,
 });
 
 export const ModalInsideDivScroll = () => ({
-  Component: ModalForCustomScrollTest,
+  Component: ModalForCustomScrollExample,
 });
 
 export const ModalWithHeaderIcons = () => ({
