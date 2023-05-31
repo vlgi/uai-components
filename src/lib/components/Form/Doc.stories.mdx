@@ -1,24 +1,34 @@
-import { Canvas, Meta, Story, Source } from '@storybook/addon-docs';
+import { Canvas, Meta, Story, Source } from "@storybook/blocks";
 
-<Meta title="Components/Form/Docs"/>
+<Meta title="Components/Form/Docs" />
 
 # Form Docs
 
 This component is a wrapper to use like html form:
+
 ```jsx
 <Form>
-  <Input type="text" name="my-imput"/>
+  <Input
+    type="text"
+    name="my-imput"
+  />
 </Form>
 ```
 
-Within it some form fields can be used, but to have full integration they must be our custom form fields, not html tags. That's because this wrapper sets up a context to communicate with child components and automate validation and fetching values for you.
+Within it some form fields can be used, but to have full integration they must be our custom form
+fields, not html tags. That's because this wrapper sets up a context to communicate with child
+components and automate validation and fetching values for you.
 
-You can find the full list of the components that can be used inside this wrapper on `Components/FormFields`.
+You can find the full list of the components that can be used inside this wrapper on
+`Components/FormFields`.
 
-**NOTE: Inside a Form component, every formfield MUST have the name attribute defined, and MUST be unique, inside this Form component.**
+**NOTE: Inside a Form component, every formfield MUST have the name attribute defined, and MUST be
+unique, inside this Form component.**
 
 ## Submit the form
+
 When submit is triggered 3 things happens:
+
 - Validate all fields, and if someone is invalid we show the error on the field.
 - If some field is invalid we will scroll, to show the invalid field.
 - If all fields are valid, the `Form` fire the on:submit event.
@@ -26,14 +36,19 @@ When submit is triggered 3 things happens:
 You can submit the form in 3 ways, described bellow.
 
 ### With our `<Button type="submit">` inside the `Form` component.
+
 ```jsx
 <Form>
-  <Input type="text" name="my-input"/>
+  <Input
+    type="text"
+    name="my-input"
+  />
   <Button type="submit">Submit</Button>
 </Form>
 ```
 
 ### With a the fireSubmit function
+
 ```jsx
 <script>
   let fireSubmit: () => Promise<void>;
@@ -47,6 +62,7 @@ You can submit the form in 3 ways, described bellow.
 ```
 
 ### With `Form` `id` props and `Button` `form`
+
 ```jsx
 <Form id="my-exclusive-form">
   <Input type="text" name="my-input"/>
@@ -56,28 +72,39 @@ You can submit the form in 3 ways, described bellow.
 ```
 
 ## Using formfields without Form component
-Some times you just what to use some form field alone and not create a full form with validations and etc. You can do that, the formfields components can handle with context defined by this Form component, but can work too if the context is not set. However you must handle with validations and fetch values by your self.
+
+Some times you just what to use some form field alone and not create a full form with validations
+and etc. You can do that, the formfields components can handle with context defined by this Form
+component, but can work too if the context is not set. However you must handle with validations and
+fetch values by your self.
 
 ## Creating a custom formfield to use with Form component
-Some times you want to extend a formfield component, or create an other completly new. You can do both.
 
-If you just want create a component to style a formfield, you don't have to handle with this Form context, just create the component and style it normally. Our formfield will still work normally.
+Some times you want to extend a formfield component, or create an other completly new. You can do
+both.
 
-If you want to modify the component behavior, like adding an mask that will change the value you must handle with the Form context.
+If you just want create a component to style a formfield, you don't have to handle with this Form
+context, just create the component and style it normally. Our formfield will still work normally.
+
+If you want to modify the component behavior, like adding an mask that will change the value you
+must handle with the Form context.
 
 If you want to create new formfield component, you must handle with the Form context too.
 
 The documentation can be find at the section bellow.
 
 ### Example
+
 We have 3 stories that create:
-  - [An input example that works with the `Form` component.](?path=/story/components-form--custom-input-example)
-  - [An submit example that works with the `Form` component.](?path=/story/components-form--custom-button-example)
-  - [And an usage example.](?path=/story/components-form--custom-usage-example)
+
+- [An input example that works with the `Form` component.](?path=/story/components-form--custom-input-example)
+- [An submit example that works with the `Form` component.](?path=/story/components-form--custom-button-example)
+- [And an usage example.](?path=/story/components-form--custom-usage-example)
 
 Click on `docs` top tab, and `Show code` on the story to see how is the code.
 
 ## Form context documentation
+
 The form context have the key `"FormContext"`. They define the following functions:
 
 ```typescript
@@ -87,7 +114,7 @@ The form context have the key `"FormContext"`. They define the following functio
  * @param value the value of the field, can be anything, an array, a string
  * @param isvalid true if the value is valid. e.g.: required field + value="", isvalid is false
  */
-type setFieldValue = (fieldName: string, value: unknown, isvalid: boolean) => void
+type setFieldValue = (fieldName: string, value: unknown, isvalid: boolean) => void;
 ```
 
 ```typescript
@@ -109,9 +136,9 @@ export type TAddFieldToContext = (
   isValid: boolean,
   isRequired: boolean,
   htmlElement: HTMLElement,
-  forceValidation: ()=> void,
-  setValue: (value: unknown)=> void,
-)=> void;
+  forceValidation: () => void,
+  setValue: (value: unknown) => void
+) => void;
 ```
 
 ```typescript
@@ -120,7 +147,7 @@ export type TAddFieldToContext = (
  * Use when your formfield component be destroyed
  * @param fieldName the name of the field
  */
-type removeFieldFromContext = (fieldName: string) => void
+type removeFieldFromContext = (fieldName: string) => void;
 ```
 
 ```typescript
@@ -134,17 +161,19 @@ type fireSubmit() => void
 ### Dos and Don'ts
 
 ✅ Dos
+
 ```markdown
 - At mounted add the field to the context, with the default props values.
 - At destroy, remove component from the context.
-- At formfield name change, remove the formfield from the context and add another with the new field name.
+- At formfield name change, remove the formfield from the context and add another with the new field
+  name.
 ```
 
 ❌ Don'ts
+
 ```markdown
 - Forget to add the field to the context.
 - Set the field value, but not set the isValid.
 - Add field to the context on before mount.
 - Get the context on mounted.
 ```
-

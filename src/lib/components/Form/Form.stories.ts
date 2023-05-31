@@ -1,4 +1,5 @@
 import { action } from "@storybook/addon-actions";
+import type { Meta, StoryObj } from "@storybook/svelte";
 import Form from "./Form.svelte";
 import CustomUsageExampleComponent from "./examples/CustomUsageExample.svelte";
 import CustomInputExampleComponent from "./examples/CustomInputExample.svelte";
@@ -9,16 +10,18 @@ import CookieFormExampleComponent from "./examples/CookieFormExample.svelte";
 import FormSubmitFunctionExampleComponent from "./examples/FormSubmitFunctionExample.svelte";
 import FormSubmitOutsideExampleComponent from "./examples/FormSubmitOutsideExample.svelte";
 
-export default {
+const meta = {
   title: "Components/Form",
   component: Form,
-  parameters: {
-    // skip all screen test for button stories
-    creevey: {
-      skip: true,
-    },
-    storyshots: false,
-  },
+  tags: ["autodocs"], // enable auto docs
+  // common stuff for all stories here
+} satisfies Meta<Form>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {},
 };
 
 export const CustomInputExample = () => ({
