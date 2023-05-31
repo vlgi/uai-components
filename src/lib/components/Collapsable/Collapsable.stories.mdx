@@ -1,37 +1,35 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta } from "@storybook/blocks";
 
-import CollapsableWrapper from "./CollapsableWrapper.svelte";
+<Meta title="Components/Collapsable/Css Variables" />
 
-<Meta title="Components/Collapsable/Custom" />
-
-# Collapsable Custom
+# Collapsable Css Variables
 
 ###### These are the component's CSS variables.
 
-| CSS Property                             | Descripiton                                                                                         | Default                                                                                                                                 |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| --szot-collapsable-background            | set a custom background color for the whole collapsable                                             | --szot-primary-surface                                                                                                                  |
-| --szot-collapsable-color                 | set a custom text color for the whole collapsable (or only title when contentBackground is enabled) | --szot-txt-on-primary-surface                                                                                                           |
-| --szot-collapsable-border-color          | set a custom border color around the collapsable                                                    | none                                                                                                                                    |
-| --szot-collapsable-icon-color            | set a custom icon color                                                                             | --szot-txt-on-primary-surface                                                                                                           |
-| --szot-collapsable-max-height            | set a max height for the content. The content will scroll if it is taller than what you set         | 40rem                                                                                                                                   |
-| --szot-collapsable-icon-font-size        | set a size for the chevron icon                                                                     | 1.5rem                                                                                                                                  |
-| --szot-collapsable-margin                | set a margin around the collapsable                                                                 | --szot-global-medium-padding                                                                                                            |
-| --szot-collapsable-title-font-size       | set the size of the collapsable title                                                               | 1rem                                                                                                                                    |
-| --szot-collapsable-padding               | set a padding for the collapsable                                                                   | --szot-global-medium-padding                                                                                                            |
-| --szot-collapsable-padding-header        | set a padding for the collapsable header                                                            | --szot-global-medium-padding                                                                                                            |
-| --szot-collapsable-border-width          | set a width for the border around the collapsable                                                   | --szot-medium-border                                                                                                                    |
-| --szot-collapsable-border-radius         | set a radius for the collapsable                                                                    | calc( calc( max(var(--icon-font-size), 1.1875rem) + calc(2 * var(--theme-global-medium-padding)) ) / 2 )) // this is half of the height |
-| --szot-collapsable-box-shadow            | set box shadow for the collapsable                                                                  | none                                                                                                                                    |
-| --szot-collapsable-backdrop-filter       | set backdrop filter for the collapsable                                                             | none                                                                                                                                    |
+| CSS Property                       | Descripiton                                                                                         | Default                                                                                                                                  |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| --szot-collapsable-background      | set a custom background color for the whole collapsable                                             | --szot-primary-surface                                                                                                                   |
+| --szot-collapsable-color           | set a custom text color for the whole collapsable (or only title when contentBackground is enabled) | --szot-txt-on-primary-surface                                                                                                            |
+| --szot-collapsable-border-color    | set a custom border color around the collapsable                                                    | none                                                                                                                                     |
+| --szot-collapsable-icon-color      | set a custom icon color                                                                             | --szot-txt-on-primary-surface                                                                                                            |
+| --szot-collapsable-max-height      | set a max height for the content. The content will scroll if it is taller than what you set         | 40rem                                                                                                                                    |
+| --szot-collapsable-icon-font-size  | set a size for the chevron icon                                                                     | 1.5rem                                                                                                                                   |
+| --szot-collapsable-margin          | set a margin around the collapsable                                                                 | --szot-global-medium-padding                                                                                                             |
+| --szot-collapsable-title-font-size | set the size of the collapsable title                                                               | 1rem                                                                                                                                     |
+| --szot-collapsable-padding         | set a padding for the collapsable                                                                   | --szot-global-medium-padding                                                                                                             |
+| --szot-collapsable-padding-header  | set a padding for the collapsable header                                                            | --szot-global-medium-padding                                                                                                             |
+| --szot-collapsable-border-width    | set a width for the border around the collapsable                                                   | --szot-medium-border                                                                                                                     |
+| --szot-collapsable-border-radius   | set a radius for the collapsable                                                                    | calc( calc( max(var(--icon-font-size), 1.1875rem) + calc(2 \* var(--theme-global-medium-padding)) ) / 2 )) // this is half of the height |
+| --szot-collapsable-box-shadow      | set box shadow for the collapsable                                                                  | none                                                                                                                                     |
+| --szot-collapsable-backdrop-filter | set backdrop filter for the collapsable                                                             | none                                                                                                                                     |
 
 ###### These only work when contentBackground is enabled
 
-| CSS Property                             | Descripiton                                                            | Default                       |
-| ---------------------------------------- | ---------------------------------------------------------------------- | ----------------------------- |
-| --szot-collapsable-content-background    | set a custom content background color when contentBackground is enabled| --szot-light-surface          |
-| --szot-collapsable-content-color         | set a custom content color when contentBackground is enabled           | --szot-txt-on-light-surface   |
-| --szot-collapsable-content-border-color  | set a custom border color around the content when contentBackground is enabled | none                  |
-| --szot-collapsable-content-padding       | set a padding for the content when the contentBackground is enabled    | --szot-global-medium-padding  |
-| --szot-collapsable-content-border-width  | set a width for the border around the content when contentBackground is enabled | --szot-medium-border |
-| --szot-collapsable-content-border-radius | set a radius for the content when the contentBackground is enabled     | --szot-medium-shape           |
+| CSS Property                             | Descripiton                                                                     | Default                      |
+| ---------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------- |
+| --szot-collapsable-content-background    | set a custom content background color when contentBackground is enabled         | --szot-light-surface         |
+| --szot-collapsable-content-color         | set a custom content color when contentBackground is enabled                    | --szot-txt-on-light-surface  |
+| --szot-collapsable-content-border-color  | set a custom border color around the content when contentBackground is enabled  | none                         |
+| --szot-collapsable-content-padding       | set a padding for the content when the contentBackground is enabled             | --szot-global-medium-padding |
+| --szot-collapsable-content-border-width  | set a width for the border around the content when contentBackground is enabled | --szot-medium-border         |
+| --szot-collapsable-content-border-radius | set a radius for the content when the contentBackground is enabled              | --szot-medium-shape          |
