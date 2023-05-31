@@ -2,6 +2,7 @@ import type { StorybookConfig } from "@storybook/sveltekit";
 import remarkGfm from "remark-gfm";
 
 const config: StorybookConfig = {
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx|svelte)"],
   addons: [
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
