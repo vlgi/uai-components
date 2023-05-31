@@ -14,7 +14,7 @@
   type SkinData = {
     unified: string;
     native: string;
-  }
+  };
 
   type TEmojiSkin = {
     skins: SkinData[];
@@ -22,12 +22,12 @@
   };
 
   type TEmojiData = {
-    id: string
+    id: string;
     keywords: string[];
     name: string;
-    skins: SkinData[]
+    skins: SkinData[];
     version: number;
-  }
+  };
 
   type TEmojiCategoriesData = {
     id: string;
@@ -40,21 +40,20 @@
   type TCategory = {
     emojis: string[];
     id: string;
-  }
+  };
 
   type TEmojiMartData = {
     categories: TCategory[];
-    emojis: { [key: string]: TEmojiData }
-    aliases: { [key: string]: string }
+    emojis: { [key: string]: TEmojiData };
+    aliases: { [key: string]: string };
     sheet: {
       cols: number;
       rows: number;
-    }
-  }
+    };
+  };
 
   // selected emoji skin unicode
   export let selected: string;
-
 
   // id of this emoji picker to control the recently used emojis
   export let localStorageId: string;
@@ -125,12 +124,9 @@
 
         // search for each category emojis
         fullData.forEach((c) => {
-          const result: TEmojiData[] = fuzzySearch(
-            c.emojisFullData,
-            val,
-            keys,
-            0.2,
-          ).map((r) => r.item);
+          const result: TEmojiData[] = fuzzySearch(c.emojisFullData, val, keys, 0.2).map(
+            (r) => r.item
+          );
 
           // set fuzzyResults with the same fullData object type format
           fuzzyResults = [
@@ -149,10 +145,7 @@
 
         fuzzyResults.forEach((r: TEmojiCategoriesData) => {
           searchedEmojis = [...searchedEmojis, ...r.emojis];
-          searchedEmojisFullData = [
-            ...searchedEmojisFullData,
-            ...r.emojisFullData,
-          ];
+          searchedEmojisFullData = [...searchedEmojisFullData, ...r.emojisFullData];
         });
 
         // set all searched emojis in a single category
@@ -354,7 +347,7 @@
 
     background-color: var(--background-color);
     border-radius: var(--szot-emojis-picker-border-radius, var(--theme-small-shape));
-    box-shadow: var( --szot-emojis-picker-box-shadow, var(--theme-medium-shadow));
+    box-shadow: var(--szot-emojis-picker-box-shadow, var(--theme-medium-shadow));
 
     height: var(--height);
     width: var(--szot-emojis-picker-width, 315px);
@@ -431,7 +424,8 @@
         padding: 10px;
         background-color: var(--background-color);
         height: fit-content;
-        border-bottom: 1px solid var(--szot-emojis-picker-category-title-border-color, var(--theme-light));
+        border-bottom: 1px solid
+          var(--szot-emojis-picker-category-title-border-color, var(--theme-light));
         color: var(--szot-emojis-picker-category-title-font-color, var(--theme-dark));
         z-index: 2;
       }
@@ -462,8 +456,7 @@
             border-radius: 5px;
             bottom: 0;
             background-color: white;
-            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px,
-              rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
             z-index: 2;
           }
