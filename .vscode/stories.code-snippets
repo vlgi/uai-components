@@ -4,7 +4,7 @@
 		"prefix": "story-template",
 		"body": [
       "import type { Meta } from \"@storybook/svelte\";",
-      "import type { TemplatedStoryObj, TemplateObj } from \"\\$types/storybook\";",
+      "import type { StoryObj, TemplateObj } from \"\\$types/storybook\";",
       "",
       "import $1 from \"./$1.svelte\";",
       "import $1Example from \"./$1Example.svelte\";",
@@ -19,7 +19,7 @@
       "export default meta;",
       "",
       "type Template = TemplateObj<typeof meta, $1Example>;",
-      "type Story = TemplatedStoryObj<typeof meta, $1Example>;",
+      "type Story = StoryObj<typeof meta, $1Example>;",
       "",
       "const template = {",
       "  render: (args) => ({",

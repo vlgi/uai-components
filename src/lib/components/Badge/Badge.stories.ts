@@ -1,5 +1,5 @@
 import type { Meta } from "@storybook/svelte";
-import type { TemplatedStoryObj, TemplateObj } from "$types/storybook";
+import type { StoryObj, TemplateObj } from "$types/storybook";
 
 import Badge from "./Badge.svelte";
 import BadgeExample from "./BadgeExample.svelte";
@@ -23,7 +23,7 @@ const meta = {
 export default meta;
 
 type Template = TemplateObj<typeof meta, BadgeExample>;
-type Story = TemplatedStoryObj<typeof meta, BadgeExample>;
+type Story = StoryObj<typeof meta, BadgeExample>;
 
 const template = {
   render: (args) => ({

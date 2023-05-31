@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/svelte";
-import type { TemplatedStoryObj } from "$types/storybook";
+import type { Meta } from "@storybook/svelte";
+import type { StoryObj } from "$types/storybook";
 
 import Dialog from "./Dialog.svelte";
 import DialogShorthandExample from "./DialogShorthandExample.svelte";
@@ -25,7 +25,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta, Dialog>;
 
 export const LongContent: Story = {
   args: {
@@ -62,7 +62,7 @@ export const Success: Story = {
   },
 };
 
-export const DialogShorthand: TemplatedStoryObj<typeof meta, DialogShorthandExample> = {
+export const DialogShorthand: StoryObj<typeof meta, DialogShorthandExample> = {
   render: (props) => ({
     Component: DialogShorthandExample,
     props,
@@ -80,7 +80,7 @@ export const DialogShorthand: TemplatedStoryObj<typeof meta, DialogShorthandExam
   },
 };
 
-export const DialogOpenClose: TemplatedStoryObj<typeof meta, DialogOpenCloseExample> = {
+export const DialogOpenClose: StoryObj<typeof meta, DialogOpenCloseExample> = {
   render: (props) => ({
     Component: DialogOpenCloseExample,
     props,
@@ -91,7 +91,7 @@ export const DialogOpenClose: TemplatedStoryObj<typeof meta, DialogOpenCloseExam
   },
 };
 
-export const DialogCustom: TemplatedStoryObj<typeof meta, DialogCustomExample> = {
+export const DialogCustom: StoryObj<typeof meta, DialogCustomExample> = {
   render: (props) => ({
     Component: DialogCustomExample,
     props,
