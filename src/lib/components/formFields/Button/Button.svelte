@@ -55,14 +55,13 @@
   const isInsideContext = hasContext("FormContext");
   const { fireSubmit } = isInsideContext && getContext<TFormContext>("FormContext");
 
-  function submitForm() {
+  async function submitForm() {
     // disable lint because they doesn't work with store accessed with $
     if (form !== "") {
       // eslint-disable-next-line max-len
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
       const fireFunction = $fireFunctionStore[form];
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      if (fireFunction) fireFunction();
+      if (fireFunction) await fireFunction();
     } else if (isInsideContext && type === "submit") {
       // eslint-disable-next-line no-void
       void fireSubmit();
@@ -84,7 +83,7 @@
     {disabled}
     {...buttonAttributes}
     bind:this={buttonElement}
-    on:click={submitForm}
+    on:click={async () => await submitForm()}
     on:click
   >
     {#if round}
