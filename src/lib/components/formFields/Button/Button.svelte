@@ -83,7 +83,7 @@
     {disabled}
     {...buttonAttributes}
     bind:this={buttonElement}
-    on:click={async () => await submitForm()}
+    on:click={submitForm}
     on:click
   >
     {#if round}
