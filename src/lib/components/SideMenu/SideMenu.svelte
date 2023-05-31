@@ -85,6 +85,7 @@
     </DraggableButton>
   </div>
 
+  <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
   <nav
     class:nav--expanded={navExpanded}
     on:mouseover={() => !mobileMode && openMenu()}
@@ -384,9 +385,11 @@
         display: grid;
         align-items: center;
         border-radius: var(--nav-items-border-radius);
-        grid: calc(var(--nav-item-max-height) - 2 * var(--nav-padding)) auto/ calc(
+        grid:
+          calc(var(--nav-item-max-height) - 2 * var(--nav-padding)) auto/ calc(
             var(--nav-width) - 1 * var(--nav-padding)
-          ) 1fr;
+          )
+          1fr;
         width: calc(var(--nav-width) - 2 * var(--nav-padding));
         max-height: var(--nav-item-max-height);
         flex-shrink: 0;
