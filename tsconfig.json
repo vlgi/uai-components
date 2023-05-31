@@ -20,6 +20,7 @@
       "$lib/*": ["src/lib/*"],
       "$static/*": ["static/*"],
       "$components/*": ["src/lib/components/*"],
+      "$types/*": ["src/lib/types/*"],
       "$assets/*": ["src/lib/assets/*"],
       "$actions/*": ["src/lib/actions/*"],
       "$helpers/*": ["src/lib/helpers/*"],
