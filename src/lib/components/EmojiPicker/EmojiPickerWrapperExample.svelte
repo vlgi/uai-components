@@ -19,10 +19,13 @@
   }
 
   $: selectedEmoji = "";
-  $: msg = `${msg}${selectedEmoji as string}`;
+  $: msg = `${msg}${selectedEmoji}`;
 </script>
 
-<div class="container" {style}>
+<div
+  class="container"
+  {style}
+>
   <div class="input-target-container">
     <Input
       on:click={() => {

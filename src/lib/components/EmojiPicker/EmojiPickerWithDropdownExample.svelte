@@ -14,14 +14,12 @@
     targetEl = document.getElementById("emojis-picker-dropdown-example");
   });
 
-
   function onTypeMsg(e: InputEvent) {
     msg = (e.target as HTMLInputElement).value;
   }
 
   $: selectedEmoji = "";
-  $: msg = `${msg}${selectedEmoji as string}`;
-  $: openModal = true;
+  $: msg = `${msg}${selectedEmoji}`;
 </script>
 
 <div class="container">
@@ -46,7 +44,10 @@
       --szot-dropdown-padding="0"
       opened={true}
     >
-      <div class="emoji-picker-container" {style}>
+      <div
+        class="emoji-picker-container"
+        {style}
+      >
         <EmojiPicker
           bind:selected={selectedEmoji}
           {maxRecently}

@@ -19,7 +19,7 @@
   }
 
   $: selectedEmoji = "";
-  $: msg = `${msg}${selectedEmoji as string}`;
+  $: msg = `${msg}${selectedEmoji}`;
   $: openModal = true;
 </script>
 
@@ -44,9 +44,16 @@
   </div>
 </div>
 
-<Modal bind:opened={openModal} --szot-modal-max-width="90vw">
+<Modal
+  bind:opened={openModal}
+  --szot-modal-max-width="90vw"
+>
   <div slot="modal-header" />
-  <div slot="modal-content" class="content" {style}>
+  <div
+    slot="modal-content"
+    class="content"
+    {style}
+  >
     <EmojiPicker
       bind:selected={selectedEmoji}
       opened={true}
@@ -55,7 +62,10 @@
       localStorageId="szot-ui-emoji-picker-modal-example"
     />
   </div>
-  <div slot="modal-footer" class="footer modal-alert-footer" />
+  <div
+    slot="modal-footer"
+    class="footer modal-alert-footer"
+  />
 </Modal>
 
 <style lang="scss">
