@@ -1,0 +1,97 @@
+import { Meta, Controls } from "@storybook/blocks";
+import * as DialogStories from "./Dialog.stories.ts";
+
+<Meta of={DialogStories} />
+
+# Dialog
+
+This docs is different because Dialog have fixed position, and apears above all elements.
+
+This dialog is made using our `Modal` component.
+
+<Controls of={DialogStories.Confirm} />
+
+## Usage Example
+
+```html
+<script lang="ts">
+  import { Dialog } from "szot-ui";
+
+  export let opened = false;
+
+  function openDialog() {
+    opened = true;
+  }
+</script>
+
+<button on:click="{openDialog}">Open</button>
+<dialog
+  bind:opened
+  title="my dialog title"
+  content="hi! please confirme to go on."
+/>
+```
+
+## Shorthand Usage Example
+
+Some times we just want to show a dialog programmatically, without having to mount the component,
+and setting the logic if is opened or not. We want something like the `window.alert`, or the
+`window.confirm`. But this native elements are synchronous, an vary for the browser.
+
+For this reason we create a shorthand for the Dialog, you can use like the example bellow.
+
+```html
+<script lang="ts">
+  import { Dialog } from "szot-ui";
+
+  function onConfirm() {
+    console.log("confirm");
+  }
+
+  function onCancel() {
+    console.log("cancel");
+  }
+
+  function openDialog() {
+    Dialog.error(
+      {
+        title: "Request fail",
+        content: "Something goes wrong",
+      },
+      onConfirm,
+      onCancel
+    );
+  }
+</script>
+
+<button on:click="{openDialog}">Open Dialog</button>
+```
+
+## Shorthand Docs
+
+You can use the same types that Dialog component have, but as static method format:
+
+- Dialog.confirm
+- Dialog.confirmCancel
+- Dialog.error
+- Dialog.warning
+- Dialog.success
+- Dialog.info
+
+All this methods, have the same interface:
+
+```typescript
+(options: TOptions, onConfirm: ()=> void, onCancel: ()=> void): void
+```
+
+The `TOptions` is:
+
+```typescript
+type TOptions = {
+  title: string;
+  content: string;
+};
+```
+
+**NOTE: For now, is not possible to customize the style for an specifically dialog. But you can
+still change the theme colors, and the variables for all the dialogs globally.**

@@ -1,19 +1,18 @@
-import { action } from "@storybook/addon-actions";
-import type { ArgType } from "@storybook/addons";
-import Dialog from "./Dialog.svelte";
-import DialogOpenCloseExampleComponent from "./DialogOpenCloseExample.svelte";
-import DialogShorthandComponent from "./DialogShorthand.svelte";
-import DialogCustomExampleComponent from "./DialogCustomExample.svelte";
+import type { Meta, StoryObj } from "@storybook/svelte";
+import type { TemplatedStoryObj } from "$types/storybook";
 
-export default {
+import Dialog from "./Dialog.svelte";
+import DialogShorthandExample from "./DialogShorthandExample.svelte";
+import DialogOpenCloseExample from "./DialogOpenCloseExample.svelte";
+import DialogCustomExample from "./DialogCustomExample.svelte";
+
+const meta = {
   title: "Components/Dialog",
   component: Dialog,
   argTypes: {
     type: {
-      control: {
-        type: "select",
-        options: ["confirm", "confirmCancel", "info", "error", "warning", "success"],
-      },
+      control: "select",
+      options: ["confirm", "confirmCancel", "info", "error", "warning", "success"],
     },
   },
   args: {
@@ -21,87 +20,96 @@ export default {
     title: "my dialog title",
     content: "hi! please confirme to go on.",
   },
+  // common stuff for all stories here
+} satisfies Meta<Dialog>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const LongContent: Story = {
+  args: {
+    // args for this specific story here
+    content:
+      "Um monete de coisa aleatoria Um monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoria",
+  },
 };
 
-const Template = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
-    Component: Dialog,
+export const WithCloseOnEscOrClickOut: Story = {
+  args: {
+    // args for this specific story here
+    disableCloseOnEvents: false,
+  },
+};
+
+export const Confirm: Story = {
+  args: {
+    type: "confirm",
+  },
+};
+
+export const Error: Story = {
+  args: {
+    type: "error",
+    content: "Sorry, something goes wrong.",
+  },
+};
+
+export const Success: Story = {
+  args: {
+    type: "success",
+    content: "Great, everything worked out.",
+  },
+};
+
+export const DialogShorthand: TemplatedStoryObj<typeof meta, DialogShorthandExample> = {
+  render: (props) => ({
+    Component: DialogShorthandExample,
     props,
-    on: {
-      confirm: action("on:confirm"),
-      cancel: action("on:cancel"),
+  }),
+  parameters: {
+    controls: {
+      // remove all controls and keep just the events,
+      // once this example component doesn't export any props
+      include: ["confirm", "cancel", "type"],
+      hideNoControlsWarning: true,
     },
-  });
-  ret.args = _args;
-  return ret;
+  },
+  args: {
+    type: "confirmCancel",
+  },
 };
 
-export const Default = Template({
-  content: "Um monete de coisa aleatoria Um monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoriaUm monete de coisa aleatoria",
-});
-
-export const WithCloseOnEscOrClickOut = Template({
-  disableCloseOnEvents: false,
-});
-
-export const Confirm = Template({
-  type: "confirm",
-});
-
-export const Error = Template({
-  type: "error",
-  content: "Sorry, something goes wrong.",
-});
-
-export const Success = Template({
-  type: "success",
-  content: "Great, everything worked out.",
-});
-
-export const DialogOpenCloseExample = () => ({
-  Component: DialogOpenCloseExampleComponent,
-});
-
-const DialogShorthandTemplate = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
-    Component: DialogShorthandComponent,
+export const DialogOpenClose: TemplatedStoryObj<typeof meta, DialogOpenCloseExample> = {
+  render: (props) => ({
+    Component: DialogOpenCloseExample,
     props,
-    on: {
-      confirm: action("on:confirm"),
-      cancel: action("on:cancel"),
-    },
-  });
-  ret.args = _args;
-  return ret;
+  }),
+  args: {
+    type: "confirmCancel",
+    content: "hi! please confirme to go on.",
+  },
 };
 
-export const DialogShorthandExample = DialogShorthandTemplate({});
-
-const CustomTemplate = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
-    Component: DialogCustomExampleComponent,
+export const DialogCustom: TemplatedStoryObj<typeof meta, DialogCustomExample> = {
+  render: (props) => ({
+    Component: DialogCustomExample,
     props,
-    on: {
-      confirm: action("on:confirm"),
-      cancel: action("on:cancel"),
-    },
-  });
-  ret.args = _args;
-  return ret;
+  }),
+  args: {
+    style:
+      "--szot-dialog-text-color: green;" +
+      "--szot-modal-bg-color: red;" +
+      "--szot-modal-padding: 3rem;" +
+      "--szot-modal-close-txt-color: yellow;" +
+      "--szot-modal-close-bg-color: purple;" +
+      "--szot-dialog-text-weight-header: 100;" +
+      "--szot-dialog-text-weight: 700;" +
+      "--szot-dialog-text-size: 1.5rem;" +
+      "--szot-dialog-text-size-header: 0.625rem;" +
+      "--szot-modal-margin-content: 2.5rem 0;",
+    title: "Test",
+    content: "testing component style",
+    showHeader: true,
+  },
 };
-
-export const CustomExample = CustomTemplate({
-  style: "--szot-dialog-text-color: green;"
-        + "--szot-modal-bg-color: red;"
-        + "--szot-modal-padding: 3rem;"
-        + "--szot-modal-close-txt-color: yellow;"
-        + "--szot-modal-close-bg-color: purple;"
-        + "--szot-dialog-text-weight-header: 100;"
-        + "--szot-dialog-text-weight: 700;"
-        + "--szot-dialog-text-size: 1.5rem;"
-        + "--szot-dialog-text-size-header: 0.625rem;"
-        + "--szot-modal-margin-content: 2.5rem 0;",
-  title: "Test",
-  content: "testing component style",
-  showHeader: true,
-});

@@ -116,5 +116,6 @@ export const RealExample: TemplatedStoryObj<typeof meta, CollapsableRealExample>
         code: CollapsableRealExampleString,
       },
     },
+    controls: { hideNoControlsWarning: true },
   },
 };

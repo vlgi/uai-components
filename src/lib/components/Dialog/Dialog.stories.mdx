@@ -1,8 +1,8 @@
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from "@storybook/blocks";
 
-<Meta title="Components/Dialog/Custom" />
+<Meta title="Components/Dialog/Css Variables" />
 
-# Dialog
+# Dialog Css Variables
 
 This component is just a wrapper to add some preset with buttons and dialog logic to the modal.
 
@@ -20,15 +20,17 @@ For the content, header, and footer, you can change every thing using the slots.
 | --szot-dialog-text-size          | change size of text inside dialog             | 0.8125rem                  |
 | --szot-dialog-text-size-header   | change size of text inside dialog header      | 0.875rem                   |
 
-You can also use custom variables from [Modal](?path=/story/components-modal-custom--page) component to change Dialog, once the Dialog is a Modal.
+You can also use custom variables from [Modal](?path=/story/components-modal-custom--page) component
+to change Dialog, once the Dialog is a Modal.
 
-If you want to change only the dialog properties, you need to reference globally the `dialog-wrapper-container`
-class and change css properties of modal inside this class.
+If you want to change only the dialog properties, you need to reference globally the
+`dialog-wrapper-container` class and change css properties of modal inside this class.
 
 # Buttons Style
 
-For change style of buttons of dialog separately, you need to reference globally the classes of every button
-container and change the css custom properties of [Buttons](?path=/story/components-formfields-button-custom--page) inside every container.
+For change style of buttons of dialog separately, you need to reference globally the classes of
+every button container and change the css custom properties of
+[Buttons](?path=/story/components-formfields-button-custom--page) inside every container.
 
 | Button         | Container Class          |
 | -------------- | ------------------------ |
