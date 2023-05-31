@@ -1,4 +1,7 @@
-<script context="module" lang="ts">
+<script
+  context="module"
+  lang="ts"
+>
   let modalContexts: symbol[] = [];
 </script>
 
@@ -96,25 +99,30 @@
   });
 </script>
 
-<svelte:window on:keydown={handleKey}/>
+<svelte:window on:keydown={handleKey} />
 
-{#if opened }
+{#if opened}
   <div
-    transition:fade="{{ delay: 25, duration: 250 }}"
+    transition:fade={{ delay: 25, duration: 250 }}
     class="modal-overlay"
     bind:this={modalOverlayElement}
     on:click={handleClickOut}
+    on:keypress={(e) => e.key === "Enter" && handleClickOut(e)}
   >
     <div
       class="modal-container"
-      transition:scale="{{
-        duration: 250, delay: 50, opacity: 0.5, start: 0.5, easing: quintOut,
-      }}"
+      transition:scale={{
+        duration: 250,
+        delay: 50,
+        opacity: 0.5,
+        start: 0.5,
+        easing: quintOut,
+      }}
     >
       {#if !disableHeader}
         <header class="modal-header">
           <!-- Set the modal header. e.g.: you can add a title, some buttons -->
-          <slot name="modal-header"></slot>
+          <slot name="modal-header" />
           {#if !hideCloseButton}
             <div class="close-button-container">
               <Button
@@ -134,11 +142,11 @@
       {/if}
       <div class="modal-content">
         <!-- Set the modal content. e.g.: you can add a a text, a form, ... -->
-        <slot name="modal-content"></slot>
+        <slot name="modal-content" />
       </div>
       <div class="modal-footer">
-          <!-- Set the modal footer. e.g.: you can add a diclaimer, some buttons -->
-        <slot name="modal-footer"></slot>
+        <!-- Set the modal footer. e.g.: you can add a diclaimer, some buttons -->
+        <slot name="modal-footer" />
       </div>
     </div>
   </div>
@@ -157,7 +165,7 @@
     --close-bg-color: var(--szot-modal-close-bg-color, var(--theme-light-surface));
     --close-txt-color: var(--szot-modal-close-txt-color, var(--theme-txt-on-light-surface));
     --padding: var(--szot-modal-padding, 0.6rem);
-    --margin-content: var(--szot-modal-margin-content, .6rem 0);
+    --margin-content: var(--szot-modal-margin-content, 0.6rem 0);
 
     position: fixed;
     top: 0;
@@ -172,7 +180,7 @@
     backdrop-filter: blur(var(--overlay-blur));
 
     &::before {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       inset: 0;
@@ -196,7 +204,6 @@
       box-shadow: var(--theme-high-shadow);
 
       z-index: 2;
-
     }
 
     .modal-header {
