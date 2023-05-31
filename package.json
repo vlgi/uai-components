@@ -71,6 +71,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/svelte": "^3.2.2",
     "@tsconfig/svelte": "^4.0.1",
+    "@types/hammerjs": "^2.0.41",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "eslint": "^8.28.0",
