@@ -1,5 +1,6 @@
-import { Meta, Controls } from "@storybook/blocks";
+import { Meta, ArgTypes } from "@storybook/blocks";
 import * as DialogStories from "./Dialog.stories.ts";
+import Dialog from "./Dialog.svelte";
 
 <Meta of={DialogStories} />
 
@@ -9,7 +10,7 @@ This docs is different because Dialog have fixed position, and apears above all 
 
 This dialog is made using our `Modal` component.
 
-<Controls of={DialogStories.Confirm} />
+<ArgTypes of={Dialog} />
 
 ## Usage Example
 
