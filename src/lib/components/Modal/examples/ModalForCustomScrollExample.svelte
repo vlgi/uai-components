@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Modal from "./Modal.svelte";
+  import Modal from "../Modal.svelte";
 
   export let opened = false;
 
@@ -11,24 +11,28 @@
 <div class="scroll-container">
   <button on:click={openModal}>Open</button>
 
-  <Modal bind:opened {...$$restProps}>
+  <Modal
+    bind:opened
+    {...$$restProps}
+  >
     <div slot="modal-header">
       <span>My modal header</span>
     </div>
     <div slot="modal-content">
-      <p>
-        Lorem ipsum dolor sit amet.
-      </p>
+      <p>Lorem ipsum dolor sit amet.</p>
     </div>
     <div slot="modal-footer">
       <span>My modal footer</span>
     </div>
   </Modal>
 
-  <div class="inner-scroll"></div>
+  <div class="inner-scroll" />
 </div>
 
-<style global lang="scss">
+<style
+  global
+  lang="scss"
+>
   .scroll-container {
     height: 50vh;
     width: 50vw;

@@ -1,16 +1,15 @@
 import type { Meta } from "@storybook/svelte";
 import type { StoryObj, TemplateObj } from "$types/storybook";
 import Modal from "./Modal.svelte";
-import ModalExample from "./ModalForExample.svelte";
-import ModalForInceptionExample from "./ModalForInceptionExample.svelte";
-import ModalForCustomScrollExample from "./ModalForCustomScrollExample.svelte";
-import ModalWithHeaderIconsWrapper from "./ModalWithHeaderIcons.svelte";
-import ModalForOpenOtherInsideWapper from "./ModalForOpenOtherInside.svelte";
+import ModalExample from "./examples/ModalForExample.svelte";
+import ModalForInceptionExample from "./examples/ModalForInceptionExample.svelte";
+import ModalForCustomScrollExample from "./examples/ModalForCustomScrollExample.svelte";
+import ModalWithHeaderIconsWrapper from "./examples/ModalWithHeaderIcons.svelte";
+import ModalForOpenOtherInsideWapper from "./examples/ModalForOpenOtherInside.svelte";
 
 const meta = {
   title: "Components/Modal",
   component: Modal,
-  tags: ["autodocs"], // enable auto docs
 } satisfies Meta<Modal>;
 
 export default meta;
@@ -18,13 +17,19 @@ export default meta;
 type Template = TemplateObj<typeof meta, ModalExample>;
 type Story = StoryObj<typeof meta, ModalExample>;
 
+const content =
+  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil velit distinctio incidunt? Maiores ratione libero dolorum recusandae cum inventore officia ipsam, sunt cupiditate doloribus, reiciendis architecto praesentium ullam impedit necessitatibus?";
+const largeContent = Array(40).fill(content).join("\n");
+
 const template = {
   render: (props) => ({
     Component: ModalExample,
     props,
   }),
   args: {
-    // common stuff for template stories here
+    disableHeader: false,
+    opened: false,
+    content,
   },
 } satisfies Template;
 
@@ -35,10 +40,6 @@ export const Default: Story = {
     ...template.args,
   },
 };
-
-const content =
-  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil velit distinctio incidunt? Maiores ratione libero dolorum recusandae cum inventore officia ipsam, sunt cupiditate doloribus, reiciendis architecto praesentium ullam impedit necessitatibus?";
-const largeContent = Array(40).fill(content).join("\n");
 
 export const LongContent: Story = {
   ...template,
@@ -57,21 +58,33 @@ export const Closed: Story = {
   },
 };
 
-export const ModalInsideModal = () => ({
-  Component: ModalForInceptionExample,
-});
+export const ModalInsideModal: Story = {
+  render: (props) => ({
+    Component: ModalForInceptionExample,
+    props,
+  }),
+};
 
-export const ModalInsideDivScroll = () => ({
-  Component: ModalForCustomScrollExample,
-});
+export const ModalInsideDivScroll: Story = {
+  render: (props) => ({
+    Component: ModalForCustomScrollExample,
+    props,
+  }),
+};
 
-export const ModalWithHeaderIcons = () => ({
-  Component: ModalWithHeaderIconsWrapper,
-  props: {
+export const ModalWithHeaderIcons: Story = {
+  render: (props) => ({
+    Component: ModalWithHeaderIconsWrapper,
+    props,
+  }),
+  args: {
     opened: false,
   },
-});
+};
 
-export const ModalForOpenOtherInside = () => ({
-  Component: ModalForOpenOtherInsideWapper,
-});
+export const ModalForOpenOtherInside: Story = {
+  render: (props) => ({
+    Component: ModalForOpenOtherInsideWapper,
+    props,
+  }),
+};
