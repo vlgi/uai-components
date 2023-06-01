@@ -41,22 +41,21 @@ export const Custom: Story = {
     style: "--szot-icon-font-size: 80px;" + "--szot-icon-color: red;",
     ...template.args,
   },
-};
+  parameters: {
+    docs: {
+      source: {
+        language: "html",
+        code: `
+    <script lang="ts">
+      import Icon from "./Icon.svelte";
+    </script>
 
-Custom.parameters = {
-  docs: {
-    source: {
-      language: "html",
-      code: `
-  <script lang="ts">
-    import Icon from "./Icon.svelte";
-  </script>
-
-  <div style="--szot-icon-font-size: 80px;
-    --szot-icon-color: red;" >
-    <Icon iconName={"ic:baseline-apple"} />
-  </div>
-  `,
+    <div style="--szot-icon-font-size: 80px;
+      --szot-icon-color: red;" >
+      <Icon iconName={"ic:baseline-apple"} />
+    </div>
+    `,
+      },
     },
   },
 };
