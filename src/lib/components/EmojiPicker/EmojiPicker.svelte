@@ -89,7 +89,9 @@
 
   // set recently used emojis from local storage
   const local: TEmojiData[] = JSON.parse(localStorage.getItem(localStorageId)) as TEmojiData[];
-  let recentlyUsedStorage = local?.slice(0, maxRecently) || [];
+
+  // using ternary instead of .? because storybook is not rendering controls correctly with .?
+  let recentlyUsedStorage = local ? local.slice(0, maxRecently) : [];
 
   // if there are emojis in local storage set tab 0 `recently` else set tab 1 `people`
   let selectedCategory = recentlyUsedStorage.length > 0 ? 0 : 1;
@@ -295,11 +297,15 @@
                     selected = "";
                     if (targetEl) targetEl.focus();
                   }}
-                  on:focus
+                  on:focus={() => {
+                    hoveredEmoji = emojisData.emojis[emoji].name;
+                  }}
                   on:mouseover={() => {
                     hoveredEmoji = emojisData.emojis[emoji].name;
                   }}
-                  on:blur
+                  on:blur={() => {
+                    hoveredEmoji = "";
+                  }}
                   on:mouseout={() => {
                     hoveredEmoji = "";
                   }}

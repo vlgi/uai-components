@@ -1,35 +1,24 @@
 import type { Meta } from "@storybook/svelte";
-import type { StoryObj, TemplateObj } from "$types/storybook";
+import type { StoryObj } from "$types/storybook";
 
 import EmojiPicker from "./EmojiPicker.svelte";
-import EmojiPickerWrapper from "./EmojiPickerWrapperExample.svelte";
+import EmojiPickerDefaultExample from "./EmojiPickerDefaultExample.svelte";
 import EmojiPickerWithModalExample from "./EmojiPickerWithModalExample.svelte";
 import EmojiPickerWithDropdownExample from "./EmojiPickerWithDropdownExample.svelte";
 
 const meta = {
   title: "Components/EmojiPicker",
   component: EmojiPicker,
-  tags: ["autodocs"], // enable auto docs
   // common stuff for all stories here
 } satisfies Meta<EmojiPicker>;
 
 export default meta;
 
-type Template = TemplateObj<typeof meta, EmojiPickerWrapper>;
-type Story = StoryObj<typeof meta, EmojiPickerWrapper>;
-
-const template = {
+export const Default: StoryObj<typeof meta, EmojiPickerDefaultExample> = {
   render: (args) => ({
-    Component: EmojiPickerWrapper,
+    Component: EmojiPickerDefaultExample,
     props: args,
   }),
-  args: {
-    // common stuff for template stories here
-  },
-} satisfies Template;
-
-export const Default: Story = {
-  ...template,
   args: {
     opened: true,
     maxRecently: 45,
@@ -42,24 +31,21 @@ export const Default: Story = {
       "\n--szot-emojis-picker-category-title-font-color: #444;" +
       "\n--szot-emojis-picker-tabs-border-color: #eee;" +
       "\n--szot-emojis-picker-tabs-icon-color: #777;",
-    ...template.args,
+  },
+  parameters: {
+    controls: {
+      // This example only export this controls
+      include: ["style", "opened", "maxRecently"],
+    },
   },
 };
 
-const templateWithModal = {
+export const WithModal: StoryObj<typeof meta, EmojiPickerWithModalExample> = {
   render: (args) => ({
     Component: EmojiPickerWithModalExample,
     props: args,
   }),
   args: {
-    // common stuff for template stories here
-  },
-} satisfies Template;
-
-export const WithModal: Story = {
-  ...templateWithModal,
-  args: {
-    opened: true,
     maxRecently: 45,
     style:
       "--szot-emojis-picker-background-color: white;" +
@@ -71,24 +57,21 @@ export const WithModal: Story = {
       "\n--szot-emojis-picker-category-title-font-color: #444;" +
       "\n--szot-emojis-picker-tabs-border-color: #eee;" +
       "\n--szot-emojis-picker-tabs-icon-color: #777;",
-    ...templateWithModal.args,
+  },
+  parameters: {
+    controls: {
+      // This example only export this controls
+      include: ["style", "maxRecently"],
+    },
   },
 };
 
-const templateWithDropdown = {
+export const WithDropdown: StoryObj<typeof meta, EmojiPickerWithModalExample> = {
   render: (args) => ({
     Component: EmojiPickerWithDropdownExample,
     props: args,
   }),
   args: {
-    // common stuff for template stories here
-  },
-} satisfies Template;
-
-export const WithDropdown: Story = {
-  ...templateWithDropdown,
-  args: {
-    opened: true,
     maxRecently: 45,
     style:
       "--szot-emojis-picker-background-color: #FFFCF5;" +
@@ -100,5 +83,11 @@ export const WithDropdown: Story = {
       "\n--szot-emojis-picker-category-title-font-color: #444;" +
       "\n--szot-emojis-picker-tabs-border-color: #eee;" +
       "\n--szot-emojis-picker-tabs-icon-color: #777;",
+  },
+  parameters: {
+    controls: {
+      // This example only export this controls
+      include: ["style", "maxRecently"],
+    },
   },
 };

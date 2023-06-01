@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import EmojiPicker from "./EmojiPicker.svelte";
   import Input from "../formFields/Input/Input.svelte";
 
@@ -9,10 +8,6 @@
 
   let targetEl = null;
   let msg = "";
-
-  onMount(() => {
-    targetEl = document.getElementById("input-msg");
-  });
 
   function onTypeMsg(e: InputEvent) {
     msg = (e.target as HTMLInputElement).value;
@@ -32,8 +27,8 @@
         opened = true;
       }}
       on:input={onTypeMsg}
-      id="input-msg"
-      icon="emoticon-happy"
+      bind:inputElement={targetEl}
+      icon="mdi:emoticon-happy"
       iconClick={true}
       inputAttributes={{ autocomplete: "off" }}
       label="Message"
