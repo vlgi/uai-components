@@ -4,7 +4,6 @@ import DraggableButton from "./DraggableButton.svelte";
 const meta = {
   title: "Components/SideMenu/Components/DraggableButton",
   component: DraggableButton,
-  tags: ["autodocs"], // enable auto docs
   // common stuff for all stories here
 } satisfies Meta<DraggableButton>;
 
