@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Button from "../formFields/Button/Button.svelte";
-  import Modal from "./Modal.svelte";
+  import Button from "../../formFields/Button/Button.svelte";
+  import Modal from "../Modal.svelte";
 
   export let disableHeader = false;
   export let opened = false;
@@ -13,28 +13,33 @@
 
 <button on:click={openModal}>Open</button>
 
-<Modal bind:opened {disableHeader} on:closeModal {...$$restProps}>
-  <div class="horizontal" slot="modal-header">
+<Modal
+  bind:opened
+  {disableHeader}
+  on:closeModal
+  {...$$restProps}
+>
+  <div
+    class="horizontal"
+    slot="modal-header"
+  >
     <span class="title">My modal header title</span>
     <div class="buttons">
       <Button
         icon="ic:round-plus"
         size="round"
         buttonStyle="light"
-      >
-      </Button>
+      />
       <Button
         icon="mdi:pencil"
         size="round"
         buttonStyle="light"
-      >
-      </Button>
+      />
       <Button
         icon="material-symbols:delete-outline"
         size="round"
         buttonStyle="light"
-      >
-      </Button>
+      />
     </div>
   </div>
   <div slot="modal-content">

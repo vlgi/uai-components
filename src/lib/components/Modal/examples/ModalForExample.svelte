@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Modal from "./Modal.svelte";
+  import Modal from "../Modal.svelte";
 
   export let disableHeader = false;
   export let opened = false;
@@ -12,7 +12,12 @@
 
 <button on:click={openModal}>Open</button>
 
-<Modal bind:opened {disableHeader} on:closeModal {...$$restProps}>
+<Modal
+  bind:opened
+  {disableHeader}
+  on:closeModal
+  {...$$restProps}
+>
   <div slot="modal-header">
     <span>My modal header</span>
   </div>
@@ -26,9 +31,12 @@
   </div>
 </Modal>
 
-<div class="scroll-maker"></div>
+<div class="scroll-maker" />
 
-<style global lang="scss">
+<style
+  global
+  lang="scss"
+>
   .scroll-maker {
     height: 150vh;
     width: 150vw;
