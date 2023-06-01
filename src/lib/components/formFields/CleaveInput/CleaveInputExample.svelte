@@ -1,6 +1,5 @@
 <script lang="ts">
 import type { ComponentProps } from "svelte";
-import Form from "../../Form/Form.svelte";
 import CleaveInput from "./CleaveInput.svelte";
 
 // Force this example extend the base component interface, so we can use the

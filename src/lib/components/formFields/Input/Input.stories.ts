@@ -1,35 +1,27 @@
-import type { ArgType } from "@storybook/addons";
-import { action } from "@storybook/addon-actions";
+import type { Meta } from "@storybook/svelte";
+import type { StoryObj, TemplateObj } from "$types/storybook";
 import Input from "./Input.svelte";
-import InputWrapper from "./InputWrapperForTest.svelte";
+import InputExample from "./InputExample.svelte";
 
-export default {
+const meta = {
   title: "Components/FormFields/Input",
   component: Input,
+  tags: ["autodocs"], // enable auto docs
   argTypes: {
-    onInput: { action: "on:input" },
-    onChange: { action: "on:change" },
-    onClick: { action: "on:click" },
     inputStyle: {
       table: { category: "visual properties" },
-      control: {
-        type: "select",
-        options: ["primary", "secondary", "dark", "light"],
-      },
+      control: "select",
+      options: ["primary", "secondary", "dark", "light"],
     },
     border: {
       table: { category: "visual properties" },
-      control: {
-        type: "select",
-        options: ["bottom", "outline"],
-      },
+      control: "select",
+      options: ["bottom", "outline"],
     },
     iconPosition: {
       table: { category: "visual properties" },
-      control: {
-        type: "select",
-        options: ["left", "right"],
-      },
+      control: "select",
+      options: ["left", "right"],
     },
     icon: { table: { category: "visual properties" } },
 
@@ -45,10 +37,8 @@ export default {
     type: { table: { category: "other properties" } },
     inputmode: {
       table: { category: "other properties" },
-      control: {
-        type: "select",
-        options: ["text", "search", "none", "tel", "url", "email", "numeric", "decimal"],
-      },
+      control: "select",
+      options: ["text", "search", "none", "tel", "url", "email", "numeric", "decimal"],
     },
     name: { table: { category: "other properties" } },
     disabled: { table: { category: "other properties" } },
@@ -56,21 +46,20 @@ export default {
     inputElement: { table: { category: "other properties" } },
     inputAttributes: { table: { category: "other properties" } },
   },
-};
+} satisfies Meta<Input>;
 
-const Template = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
-    Component: InputWrapper,
-    props,
-    on: {
-      input: action("on:input"),
-      change: action("on:change"),
-      click: action("on:click"),
-    },
-  });
-  ret.args = _args;
-  return ret;
-};
+export default meta;
+
+type Template = TemplateObj<typeof meta, InputExample>;
+type Story = StoryObj<typeof meta, InputExample>;
+
+const template = {
+  render: (args) => ({
+    Component: InputExample,
+    props: args,
+  }),
+  args: {},
+} satisfies Template;
 
 const validTest = (value: string): undefined|string|boolean => {
   if (value === "erro") {
@@ -79,145 +68,169 @@ const validTest = (value: string): undefined|string|boolean => {
   return true;
 };
 
-export const Default = Template({
-  label: "Email",
-  style: "",
-  helperText: "Digite um email válido",
-  errorMsg: "Falhou, tente novamente",
-  type: "email",
-  name: "email",
-});
+export const Default: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Email",
+    helperText: "Digite um email válido",
+    errorMsg: "Falhou, tente novamente",
+    type: "email",
+    name: "email",
+  }
+}
 
-export const Required = Template({
-  label: "Name",
-  type: "text",
-  required: true,
-  name: "name",
-});
+export const Required: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Name",
+    type: "text",
+    required: true,
+    name: "name",
+  }
+}
 
-export const Disabled = Template({
-  label: "Name",
-  type: "text",
-  disabled: true,
-  name: "name",
-});
+export const Disabled: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Name",
+    type: "text",
+    disabled: true,
+    name: "name",
+  }
+}
 
-export const CustomValidationAndRequired = Template({
-  label: "Name",
-  type: "text",
-  required: true,
-  validationFn: validTest,
-  helperText: "Digite 'erro' para ser invalido",
-  name: "name",
-});
+export const CustomValidationAndRequired: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Name",
+    type: "text",
+    required: true,
+    validationFn: validTest,
+    helperText: "Digite 'erro' para ser invalido",
+    name: "name",
+  }
+}
 
-export const ForceInvalid = Template({
-  label: "Name",
-  type: "text",
-  forceInvalid: true,
-  errorMsg: "Mensagem de erro customizada",
-  name: "name",
-});
+export const ForceInvalid: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Name",
+    type: "text",
+    forceInvalid: true,
+    errorMsg: "Mensagem de erro customizada",
+    name: "name",
+  }
+}
 
-export const BordersNone = Template({
-  label: "Senha",
-  type: "password",
-  border: "bottom",
-  name: "senha",
-});
+export const BordersNone: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Senha",
+    type: "password",
+    border: "bottom",
+    name: "senha",
+  }
+}
 
-export const WithIcon = Template({
-  label: "Celular 1",
-  type: "tel",
-  border: "bottom",
-  icon: "material-symbols:phone-enabled",
-  name: "phone",
-});
+export const WithIcon: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Celular 1",
+    type: "tel",
+    border: "bottom",
+    icon: "material-symbols:phone-enabled",
+    name: "phone",
+  }
+}
 
-export const WithIconLeft = Template({
-  label: "Celular 2",
-  icon: "material-symbols:phone-enabled",
-  iconPosition: "left",
-  type: "tel",
-  name: "phone",
-});
+export const WithIconLeft: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Celular 2",
+    icon: "material-symbols:phone-enabled",
+    iconPosition: "left",
+    type: "tel",
+    name: "phone",
+  }
+}
 
-export const WithPlaceholder = Template({
-  label: "Endereço",
-  type: "text",
-  name: "address",
-  placeholder: "Rua 300 Lote 900 AP 46 Algum Lugar Por Ai / DF",
+export const WithPlaceholder: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Endereço",
+    type: "text",
+    name: "address",
+    placeholder: "Rua 300 Lote 900 AP 46 Algum Lugar Por Ai / DF",
+  }
+}
 
-});
+export const EnableIconClick: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Celular 2",
+    icon: "material-symbols:phone-enabled",
+    iconPosition: "left",
+    type: "tel",
+    name: "phone",
+    iconClick: true,
+  }
+}
 
-export const enableIconClick = Template({
-  label: "Celular 2",
-  icon: "material-symbols:phone-enabled",
-  iconPosition: "left",
-  type: "tel",
-  name: "phone",
-  iconClick: true,
-});
+export const Readonly: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    label: "Aviso",
+    type: "text",
+    icon: "material-symbols:info-outline-rounded",
+    value: "Não escreva aqui",
+    readonly: true,
+    helperText: "Apenas um exemplo",
+    name: "warning",
+  }
+}
 
-export const Readonly = Template({
-  label: "Aviso",
-  type: "text",
-  icon: "material-symbols:info-outline-rounded",
-  value: "Não escreva aqui",
-  readonly: true,
-  helperText: "Apenas um exemplo",
-  name: "warning",
-});
-
-export const CustomExample: any = Template({
-  validationFn: validTest,
-  label: "Teste",
-  helperText: "Digite 'erro' para ser invalido",
-  type: "name",
-  icon: "phone",
-  style: "--szot-input-height: 1.5rem;"
-          + "--szot-input-background-color: #ffffff;"
-          + "--szot-input-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-input-border-radius: 1.5rem;"
-          + "--szot-input-border: 10px;"
-          + "--szot-input-icon-margin-right: 3rem;"
-          + "--szot-input-border-color-focus: purple;"
-          + "--szot-input-border-color-filled: yellow;",
-});
-
-CustomExample.parameters = {
-  docs: {
-    source: {
-      language: "html",
-      code: `
-    <script lang="ts">
-      import Input from "./Input.svelte";
-
-      const validTest = (value) => {
-        if (value === "erro") {
-          return "Aqui está o erro.";
-        }
-        return true;
-      };
-    </script>
-
-    <div style="--szot-input-height: 1.5rem;
-      --szot-input-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
-      --szot-input-label-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
-      --szot-input-text-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
-      --szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
-      --szot-input-border-color-focus: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
-      --szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
-      --szot-input-border-radius: 1.5rem;" >
-      <Input
-        label="Teste"
-        type="name"
-        validationFn={validTest}
-        helperText="Digite 'erro' para ser invalido"/>
-    </div>
-    `,
-    },
-  },
-};
+export const CustomExample: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    validationFn: validTest,
+    label: "Teste",
+    helperText: "Digite 'erro' para ser invalido",
+    type: "name",
+    icon: "phone",
+    name: "custom",
+    style: "--szot-input-height: 1.5rem;"
+            + "--szot-input-background-color: #ffffff;"
+            + "--szot-input-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+            + "--szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+            + "--szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+            + "--szot-input-border-radius: 1.5rem;"
+            + "--szot-input-border: 10px;"
+            + "--szot-input-icon-margin-right: 3rem;"
+            + "--szot-input-border-color-focus: purple;"
+            + "--szot-input-border-color-filled: yellow;",
+  }
+}
