@@ -6,6 +6,7 @@ import CheckboxExample from "./CheckboxExample.svelte";
 const meta = {
   title: "Components/FormFields/Checkbox",
   component: Checkbox,
+  tags: ["autodocs"], // enable auto docs
   argTypes: {
     styleType: {
       control: "select",

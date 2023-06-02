@@ -6,6 +6,7 @@ import RadioButtonExample from "./RadioButtonExample.svelte";
 const meta = {
   title: "Components/FormFields/RadioButton",
   component: RadioButton,
+  tags: ["autodocs"], // enable auto docs
   argTypes: {
     radioStyleType: {
       control: "select",

@@ -6,6 +6,7 @@ import ListRadioButtonExample from "./ListRadioButtonExample.svelte";
 const meta = {
   title: "Components/FormFields/ListRadioButton",
   component: ListRadioButton,
+  tags: ["autodocs"], // enable auto docs
   argTypes: {
     radioStyleType: {
       control: "select",
