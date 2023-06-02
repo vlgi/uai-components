@@ -7,6 +7,7 @@
 <div {style}>
   <Textarea
     {...$$restProps}
+    name="text-input-form"
     on:input
     on:change
   />
