@@ -1,15 +1,16 @@
 <script lang="ts">
-import OptionsList from "./OptionsList.svelte";
+  import type { TOption } from "../types";
+  import OptionsList from "./OptionsList.svelte";
 
-export let id;
-export let labelledBy;
-export let options;
-export let selected;
-export let focused;
-export let focusNext;
-export let focusPrevious;
-export let toggleSelectedOfFocused;
-export let unfocusItems;
+  export let id: string;
+  export let labelledBy: string;
+  export let options: TOption[];
+  export let selected: TOption | TOption[];
+  export let focused = -1;
+  export let focusNext: () => void;
+  export let focusPrevious: () => void;
+  export let toggleSelectedOfFocused: () => void;
+  export let unfocusItems: () => void;
 </script>
 
 <OptionsList
@@ -32,11 +33,9 @@ export let unfocusItems;
 
 <header><b>Selected:</b></header>
 {#if Array.isArray(selected)}
-
   {#each selected as option}
     <p>{JSON.stringify(option)}</p>
   {/each}
-
 {:else}
   <p>{JSON.stringify(selected)}</p>
 {/if}

@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+
+import ActionKeyboardControlsDemo from "./ActionKeyboardControlsDemo.svelte";
+
+<Meta title="Components/FormFields/Select/Actions/keyboardControls" />
+
+# Action keyboardControls
+
+This is an [svelte action](https://svelte.dev/tutorial/actions) specifically developed to using with
+the `Select` component and its subcomponents. This action has the role to extract the keyboard
+events handling logic out of the `Select` component.
+
+## Parameters and Events
+
+This action needs 2 parameters that can be updated at any time.
+
+| Parameter    | Type      | Description                                                    |
+| ------------ | --------- | -------------------------------------------------------------- |
+| multiple     | `boolean` | Whether the `Select` component is on the multiple mode or not. |
+| dropdownOpen | `boolean` | Whether the `Select`'s dropdown is opened or not.              |
+
+And the available custom events to use after the use of the action are listed on the table below.
+
+| Event                         | Detail Type | Description                                                                                                 |
+| ----------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------- |
+| actiontoggleSelectedOfFocused | -           | Fired when you should trigger the `OptionsList` `toggleSelectedOfFocused`.                                  |
+| actionFocusPrevious           | -           | Fired when you should trigger the `OptionsList` `focusPrevious`.                                            |
+| actionFocusNext               | -           | Fired when you should trigger the `OptionsList` `focusNext`.                                                |
+| actionToggleDropdown          | `boolean?`  | Fired when you should change the dropdown state to the detail's value or toggle (when detail is undefined). |
+| actionType                    | `string`    | Fired when the user starts typing. The detail contains the alphanumeric character typed.                    |
+
+> Important note: the element on which this action is used must be focusable. The keyboard events
+> will only be triggered by focused elements inside the element that you used the action.
+
+## Example
+
+export const Template = (args) => ({
+  Component: ActionKeyboardControlsDemo,
+  props: args,
+});
+
+<Canvas>
+  <Story name="Demo">{Template.bind({})}</Story>
+</Canvas>

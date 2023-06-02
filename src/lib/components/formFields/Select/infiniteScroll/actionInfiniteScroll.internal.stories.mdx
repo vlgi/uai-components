@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+
+import ActionInfiniteScrollDemo from "./ActionInfiniteScrollDemo.svelte";
+
+<Meta title="Components/FormFields/Select/Actions/infiniteScroll" />
+
+# Action infiniteScroll
+
+This is an [svelte action](https://svelte.dev/tutorial/actions) developed for adding a new custom
+event to an element that fires when an infinite scroll should load more items.
+
+## Parameters and Events
+
+This action needs 1 parameter that can be updated at any time.
+
+| Parameter      | Type     | Description                                                                                |
+| -------------- | -------- | ------------------------------------------------------------------------------------------ |
+| distFromBottom | `number` | How many pixels from the bottom of the element that the actionLoadMore event will trigger. |
+
+And the available custom events to use after the use of the action are listed on the table below.
+
+| Event          | Detail Type | Description                                                          |
+| -------------- | ----------- | -------------------------------------------------------------------- |
+| actionLoadMore | -           | Fired when you should load more items on the infiniteScroll element. |
+
+## Example
+
+export const Template = (args) => ({
+  Component: ActionInfiniteScrollDemo,
+  props: args,
+});
+
+<Canvas>
+  <Story
+    name="Demo"
+    args={{
+      distFromBottom: 10,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
