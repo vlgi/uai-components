@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, getContext, hasContext, onDestroy, type ComponentProps } from "svelte";
-  import Button from "../formFields/Button/Button.svelte";
-  import type { TFormContext } from "../Form/types";
+  import Button from "../Button/Button.svelte";
+  import type { TFormContext } from "../../Form/types";
 
   /* eslint-disable*/
   interface $$Props extends ComponentProps<Button> {

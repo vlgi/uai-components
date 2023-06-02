@@ -11,7 +11,7 @@ export { default as CleaveInput } from "$components/formFields/CleaveInput/Cleav
 export { default as Button } from "$components/formFields/Button/Button.svelte";
 export { default as Textarea } from "$components/formFields/Textarea/Textarea.svelte";
 export { default as RangeSlider } from "$components/formFields/RangeSlider/RangeSlider.svelte";
-export { default as FileSelector } from "$components/FileSelector/FileSelector.svelte";
+export { default as FileSelector } from "$lib/components/formFields/FileSelector/FileSelector.svelte";
 
 export { default as ListCheckbox } from "$components/formFields/ListCheckbox/ListCheckbox.svelte";
 export { default as Checkbox } from "$components/formFields/ListCheckbox/Checkbox/Checkbox.svelte";
