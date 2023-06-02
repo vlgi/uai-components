@@ -7,18 +7,20 @@
   export let isAllValid: boolean;
 </script>
 
-<p>
-  This form is an example using the create InputExample and ButtonExample.
-</p>
-<br>
-<hr>
-<br>
+<p>This form is an example using the create InputExample and ButtonExample.</p>
+<br />
+<hr />
+<br />
 
-<Form bind:values bind:isAllValid on:submit>
-  <Input name="input-name"/>
-  <br>
-  <Button/>
+<Form
+  bind:values
+  bind:isAllValid
+  on:submit
+>
+  <Input name="input-name" />
+  <br />
+  <Button />
 </Form>
 
-<p><b>Form Values:</b> { JSON.stringify(values) }</p>
-<p><b>Form valid:</b> { isAllValid }</p>
+<p><b>Form Values:</b> {JSON.stringify(values)}</p>
+<p><b>Form valid:</b> {isAllValid}</p>

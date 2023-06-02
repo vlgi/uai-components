@@ -7,11 +7,9 @@
   export let isAllValid: boolean;
 </script>
 
-<p>
-  This form will be trigged by a function.
-</p>
+<p>This form will be trigged by a function.</p>
 <br />
-<hr>
+<hr />
 <br />
 
 <Form

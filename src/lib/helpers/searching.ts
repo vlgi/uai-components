@@ -4,7 +4,7 @@ export function fuzzySearch<T>(
   list: T[],
   pattern: string,
   keys: string[],
-  threshold = 0.3,
+  threshold = 0.3
 ): Fuse.FuseResult<T>[] {
   const all = JSON.parse(JSON.stringify(list)) as T[];
   const options = {

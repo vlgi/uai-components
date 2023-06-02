@@ -1,7 +1,5 @@
 <script lang="ts">
-  import {
-    onMount, getContext, hasContext, onDestroy, createEventDispatcher,
-  } from "svelte";
+  import { onMount, getContext, hasContext, onDestroy, createEventDispatcher } from "svelte";
   import RadioButton from "./RadioButton/RadioButton.svelte";
   import type { TFormContext } from "../../Form/types";
 
@@ -41,9 +39,7 @@
    * Return true/undefined if valid,
    * or a string to show the error, or false to show the "errorMsg" props.
    */
-  export let validationFn: (
-    value: string
-  ) => undefined | string | boolean = () => true; //eslint-disable-line
+  export let validationFn: (value: string) => undefined | string | boolean = () => true; //eslint-disable-line
 
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
@@ -83,13 +79,12 @@
   let wrapperElement: HTMLElement;
 
   const dispatcher = createEventDispatcher<{
-    click: TRadioProps
+    click: TRadioProps;
   }>();
 
   const isInsideContext = hasContext("FormContext");
-  const {
-    setFieldValue, addFieldToContext, removeFieldFromContext,
-  } = isInsideContext && getContext<TFormContext>("FormContext");
+  const { setFieldValue, addFieldToContext, removeFieldFromContext } =
+    isInsideContext && getContext<TFormContext>("FormContext");
 
   function checkStatus(answer: undefined | string | boolean) {
     if (answer === true || answer === undefined) {
@@ -132,15 +127,7 @@
 
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(
-        name,
-        value,
-        isValid,
-        required,
-        wrapperElement,
-        validation,
-        forceValue,
-      );
+      addFieldToContext(name, value, isValid, required, wrapperElement, validation, forceValue);
     }
   });
 
@@ -151,9 +138,18 @@
   });
 </script>
 
-<div class="list-radio-box" bind:this={wrapperElement}>
-  <span class="radio-title" class:invalid={!isValid}>{listName}</span>
-  <ul class="list-radio {direction}" class:invalid={!isValid}>
+<div
+  class="list-radio-box"
+  bind:this={wrapperElement}
+>
+  <span
+    class="radio-title"
+    class:invalid={!isValid}>{listName}</span
+  >
+  <ul
+    class="list-radio {direction}"
+    class:invalid={!isValid}
+  >
     {#each radioOptions as radio, i}
       <li>
         <RadioButton
@@ -171,7 +167,10 @@
       </li>
     {/each}
   </ul>
-  <p class="error" class:error-show={!isValid}>
+  <p
+    class="error"
+    class:error-show={!isValid}
+  >
     {eMsg}
   </p>
 </div>

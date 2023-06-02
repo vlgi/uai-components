@@ -7,9 +7,22 @@
         { name: "--szot-scroll-bar-color", default: "#333", description: "" },
         { name: "--szot-scroll-bar-hover-color", default: "#33333380", description: "" },
         { name: "--szot-scroll-background-color", default: "transparent", description: "" },
-        { name: "--szot-scroll-size-firefox", default: "thin", description: "você pode passar qualquer valor que a propriedade 'scrollbar-width' aceita." },
-        { name: "--szot-scroll-bar-width", default: "0.3125rem", description: "você pode passar valores em 'rem', 'px' ou 'em'." },
-        { name: "--szot-scroll-bar-height", default: "0.3125rem", description: "você pode passar valores em 'rem', 'px' ou 'em'." },
+        {
+          name: "--szot-scroll-size-firefox",
+          default: "thin",
+          description:
+            "você pode passar qualquer valor que a propriedade 'scrollbar-width' aceita.",
+        },
+        {
+          name: "--szot-scroll-bar-width",
+          default: "0.3125rem",
+          description: "você pode passar valores em 'rem', 'px' ou 'em'.",
+        },
+        {
+          name: "--szot-scroll-bar-height",
+          default: "0.3125rem",
+          description: "você pode passar valores em 'rem', 'px' ou 'em'.",
+        },
         { name: "--szot-scroll-bar-radius", default: "1.5625rem / 3.125rem", description: "" },
       ],
     },
@@ -19,8 +32,8 @@
 {#each data as d}
   <section>
     <header>
-      <h2>{ d.title }</h2>
-      <p class="description">{ d.description }</p>
+      <h2>{d.title}</h2>
+      <p class="description">{d.description}</p>
     </header>
 
     <div class="table-scroll-wrapper">
@@ -42,7 +55,7 @@
           {/each}
         </tbody>
       </table>
-      <div class="spacer"></div>
+      <div class="spacer" />
     </div>
   </section>
 {/each}
@@ -54,7 +67,7 @@
   }
 
   header {
-    margin-bottom: .6rem;
+    margin-bottom: 0.6rem;
 
     h2 {
       text-transform: capitalize;
@@ -65,9 +78,10 @@
     border-collapse: collapse;
   }
 
-  td, th {
+  td,
+  th {
     border: 1px solid #ccc;
-    padding: .6rem;
+    padding: 0.6rem;
     text-align: left;
   }
 
@@ -84,5 +98,4 @@
       height: 100vh;
     }
   }
-
 </style>

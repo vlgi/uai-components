@@ -5,7 +5,7 @@ function isRegistered(name: string): boolean {
 export function define(
   name: string,
   constructor: CustomElementConstructor,
-  options?: ElementDefinitionOptions,
+  options?: ElementDefinitionOptions
 ): void {
   if (isRegistered(name)) return;
   customElements.define(name, constructor, options);

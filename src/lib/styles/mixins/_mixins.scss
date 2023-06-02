@@ -1,5 +1,4 @@
 @mixin custom-scrollbar() {
-
   scrollbar-width: var(--scroll-size-firefox);
   scrollbar-color: var(--scroll-bar-color) var(--scroll-background-color);
 
@@ -48,7 +47,6 @@
   font-size: var(--theme-fields-font-size);
 }
 
-
 /*
  You can use this to set border with gradient or solid colors, like:
     @include m.border(solid, 2px, linear-gradient(-30deg, rgba(252,0,47,0.938813025210084) 0%, rgba(170,255,6,1) 100%));
@@ -80,12 +78,8 @@
     background-origin: border-box;
 
     // can i use 94.8%
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0) border-box;
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content,
-      linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) content, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
@@ -100,7 +94,14 @@
   -webkit-background-clip: text;
 }
 
-@mixin clip-path-border($border_width, $label_width, $label_height, $label_padding, $label_left, $icon_width: 0px) {
+@mixin clip-path-border(
+  $border_width,
+  $label_width,
+  $label_height,
+  $label_padding,
+  $label_left,
+  $icon_width: 0px
+) {
   --top-left-corner-component: 0 0;
   --top-right-corner-component: 100% 0%;
   --bottom-left-corner-component: 0% 100%;
@@ -117,7 +118,14 @@
   --bottom-left-corner-label: var(--left-side) var(--bottom-side);
   --bottom-right-corner-label: var(--right-side) var(--bottom-side);
 
-  clip-path: polygon(var(--top-left-corner-component), var(--top-left-corner-label), var(--bottom-left-corner-label),
-        var(--bottom-right-corner-label), var(--top-right-corner-label), var(--top-right-corner-component),
-        var(--bottom-right-corner-component), var(--bottom-left-corner-component));
+  clip-path: polygon(
+    var(--top-left-corner-component),
+    var(--top-left-corner-label),
+    var(--bottom-left-corner-label),
+    var(--bottom-right-corner-label),
+    var(--top-right-corner-label),
+    var(--top-right-corner-component),
+    var(--bottom-right-corner-component),
+    var(--bottom-left-corner-component)
+  );
 }

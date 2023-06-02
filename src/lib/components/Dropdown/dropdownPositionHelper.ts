@@ -3,8 +3,8 @@ import type { TPosition } from "./types";
 export function getDropdownPosition(
   dropdownAlignment: TPosition,
   triggerRect: DOMRect,
-  dropdownRect: DOMRect,
-): { top: number, left: number } {
+  dropdownRect: DOMRect
+): { top: number; left: number } {
   let pLeft: number;
   let pTop: number;
 
@@ -41,10 +41,10 @@ export function getDropdownPosition(
  *        consider the it as not visible.
  */
 export function checkElementVisibility(element: HTMLElement): {
-  topLeft: boolean,
-  bottomLeft: boolean,
-  topRight: boolean,
-  bottomRight: boolean,
+  topLeft: boolean;
+  bottomLeft: boolean;
+  topRight: boolean;
+  bottomRight: boolean;
 } {
   const elRect = element.getBoundingClientRect();
 
@@ -65,9 +65,8 @@ export function checkElementVisibility(element: HTMLElement): {
     left: elRect.left + elRect.width - 1,
   };
 
-  const isVisible = (position: { top: number, left: number }) => (
-    document.elementFromPoint(position.left, position.top) === element
-  );
+  const isVisible = (position: { top: number; left: number }) =>
+    document.elementFromPoint(position.left, position.top) === element;
 
   return {
     topLeft: isVisible(topLeftCornerPosition),
@@ -79,7 +78,7 @@ export function checkElementVisibility(element: HTMLElement): {
 
 export function getBestValidAlignment(
   requiredAlignment: TPosition,
-  validAlignment: TPosition[],
+  validAlignment: TPosition[]
 ): TPosition {
   const positionsMap: TPosition[] = [
     "rightTop",
@@ -106,7 +105,7 @@ export function getBestValidAlignment(
 
 export function getValidDropdownAlignments(
   triggerElement: HTMLElement,
-  dropdownRect: DOMRect,
+  dropdownRect: DOMRect
 ): TPosition[] {
   const triggerRect = triggerElement.getBoundingClientRect();
   const isVisibleOn = checkElementVisibility(triggerElement);
@@ -137,10 +136,12 @@ export function getValidDropdownAlignments(
 
   invalidAlignments = validAlignments.filter((alignment) => {
     const newPosition = getDropdownPosition(alignment, triggerRect, dropdownRect);
-    return newPosition.left < 0
-    || newPosition.top < 0
-    || newPosition.left + dropdownRect.width > vw
-    || newPosition.top + dropdownRect.height > vh;
+    return (
+      newPosition.left < 0 ||
+      newPosition.top < 0 ||
+      newPosition.left + dropdownRect.width > vw ||
+      newPosition.top + dropdownRect.height > vh
+    );
   });
 
   return validAlignments.filter((x) => !invalidAlignments.includes(x));

@@ -5,9 +5,11 @@
 
   const isInsideContext = hasContext("FormContext");
   const { fireSubmit } = isInsideContext && getContext<TFormContext>("FormContext");
-
 </script>
 
-<button on:click={ () => isInsideContext && fireSubmit() } on:click>
+<button
+  on:click={() => isInsideContext && fireSubmit()}
+  on:click
+>
   Submit
 </button>

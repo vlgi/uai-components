@@ -1,7 +1,5 @@
 <script lang="ts">
-  import {
-    onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
+  import { onMount, getContext, hasContext, onDestroy } from "svelte";
   import { actionWatchSize } from "$actions/watchSize/watchSize";
   import type { TFormContext } from "../../Form/types";
 
@@ -9,7 +7,7 @@
   /** choose default theme colors */
   export let textareaStyle: TtextareaStyle = "dark";
   /** pass the function to validation */
-  export let validationFn: (value: string)=> undefined|string|boolean = () => true;
+  export let validationFn: (value: string) => undefined | string | boolean = () => true;
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
   /** shows if the component is valid (readonly) */
@@ -31,7 +29,7 @@
    * The textarea element (readonly)
    * @type {HTMLTextAreaElement}
    * */
-  export let textareaElement: HTMLTextAreaElement|null = null;
+  export let textareaElement: HTMLTextAreaElement | null = null;
 
   /**
    * Required
@@ -61,11 +59,8 @@
   let inFocus = false;
 
   const isInsideContext = hasContext("FormContext");
-  const {
-    setFieldValue,
-    addFieldToContext,
-    removeFieldFromContext,
-  } = isInsideContext && getContext<TFormContext>("FormContext");
+  const { setFieldValue, addFieldToContext, removeFieldFromContext } =
+    isInsideContext && getContext<TFormContext>("FormContext");
 
   const focused = () => {
     inFocus = !inFocus;
@@ -76,7 +71,7 @@
     }
   };
 
-  const checkStatus = (answer: undefined|string|boolean) => {
+  const checkStatus = (answer: undefined | string | boolean) => {
     if (answer === true || answer === undefined) {
       isValid = true;
       invalid = !isValid;
@@ -177,9 +172,9 @@
       class:resizable
       style="--max-auto-height:{maxHeight}"
     >
-      <pre style="min-height:{minHeight}; max-height:{maxHeight}"
-        aria-hidden="true"
-      >
+      <pre
+        style="min-height:{minHeight}; max-height:{maxHeight}"
+        aria-hidden="true">
         {`${value || placeholder}\n`}
       </pre>
       <textarea
@@ -203,7 +198,7 @@
       />
     </div>
     <label
-      for="{id}"
+      for={id}
       class="label"
       class:required
       bind:this={labelComponent}
@@ -214,9 +209,13 @@
         {label}
       </div>
     </label>
-
   </div>
-  <p class="helper message" class:helper-show={helper}>{helperText}</p>
+  <p
+    class="helper message"
+    class:helper-show={helper}
+  >
+    {helperText}
+  </p>
   <p
     class="error message"
     class:error-show={invalid}
@@ -233,10 +232,7 @@
     --margin-bottom: var(--szot-textarea-margin-bottom, 1.5rem);
 
     --message-left: var(--szot-textarea-message-left, 1rem);
-    --message-error-bottom-focus: var(
-      --szot-textarea-message-error-bottom-focus,
-      -2rem
-    );
+    --message-error-bottom-focus: var(--szot-textarea-message-error-bottom-focus, -2rem);
 
     margin-bottom: calc(var(--margin-bottom) - 20px);
     .textarea-container::before {
@@ -245,7 +241,7 @@
         var(--label-width),
         var(--label-height),
         0px,
-        12.8px,
+        12.8px
       );
     }
   }
@@ -258,10 +254,7 @@
     --textarea-color-text: var(--szot-textarea-color-text, var(--default-textarea-color));
     --border-color: var(--szot-textarea-border-color, var(--default-border-color));
     --border: var(--szot-textarea-border, var(--theme-small-border));
-    --placeholder-color: var(
-      --szot-textarea-placeholder-color,
-      var(--default-placeholder-color)
-    );
+    --placeholder-color: var(--szot-textarea-placeholder-color, var(--default-placeholder-color));
     --margin-top: var(--szot-textarea-margin-top, 0.5rem);
     --max-width: var(--szot-textarea-max-width, 100%);
     --max-height: var(--szot-textarea-max-height, var(--max-auto-height));
@@ -299,11 +292,17 @@
     }
 
     &.inFocus {
-      --border-color-focus: var(--szot-textarea-border-color-focus, var(--border-color-filled, var(--border-color)));
+      --border-color-focus: var(
+        --szot-textarea-border-color-focus,
+        var(--border-color-filled, var(--border-color))
+      );
     }
 
-    @include m.border(var(--border), var(--border-color-focus, var(--border-color-filled, var(--border-color))));
-    border-radius:var(--border-radius);
+    @include m.border(
+      var(--border),
+      var(--border-color-focus, var(--border-color-filled, var(--border-color)))
+    );
+    border-radius: var(--border-radius);
     position: relative;
     margin-top: var(--margin-top);
     height: fit-content;
@@ -323,7 +322,7 @@
     }
 
     &.required {
-      .label-text::after{
+      .label-text::after {
         content: "*";
         display: inline;
       }
@@ -346,9 +345,10 @@
     white-space: pre-wrap;
     word-wrap: break-word;
     visibility: hidden;
-    border-radius:var(--border-radius);
+    border-radius: var(--border-radius);
   }
-  pre, textarea {
+  pre,
+  textarea {
     font-family: inherit;
     font-weight: inherit;
     font-size: inherit;
@@ -357,13 +357,12 @@
 
     margin: var(--padding);
     box-sizing: border-box;
-    width: calc(100% - 2*var(--padding));
-    height: calc(100% - 2*var(--padding));
+    width: calc(100% - 2 * var(--padding));
+    height: calc(100% - 2 * var(--padding));
     border: none;
     background-color: transparent;
     overflow: hidden;
     color: var(--textarea-color-text);
-
   }
 
   textarea {
@@ -372,7 +371,6 @@
     resize: none;
     inset: 0;
     scrollbar-width: none;
-
 
     &::-webkit-scrollbar {
       width: 0px;

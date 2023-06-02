@@ -40,10 +40,7 @@
     const triggerRect = triggerElement.getBoundingClientRect();
     const dropdownRect = dropdownElement.getBoundingClientRect();
 
-    const validAlignments = getValidDropdownAlignments(
-      triggerElement,
-      dropdownRect,
-    );
+    const validAlignments = getValidDropdownAlignments(triggerElement, dropdownRect);
 
     if (count > 1) throw new Error("Infinit loop at setDropdownPosition");
 
@@ -84,7 +81,7 @@
   /**
    * On open, and after dropdown element be mounted, set the initial position.
    * Every time that dropdownAlignment change set the position too
-  */
+   */
   $: if (dropdownElement) setDropdownPosition(dropdownAlignment);
 
   // Set this reactive to handle with opened being changed without click on the trigger
@@ -113,7 +110,7 @@
     use:actionOutClick
     on:actionOutClick={close}
   >
-    <slot></slot>
+    <slot />
   </div>
 {/if}
 
@@ -132,49 +129,49 @@
       --arrow-top: calc(var(--arrow-size) * -1);
       --arrow-right: calc(var(--arrow-size) * 2);
       --arrow-rotation: 0deg;
-      --margin: calc(var(--arrow-size) * .7);
+      --margin: calc(var(--arrow-size) * 0.7);
     }
     &-bottomLeft {
       --arrow-top: calc(var(--arrow-size) * -1);
       --arrow-left: calc(var(--arrow-size) * 2);
       --arrow-rotation: 0deg;
-      --margin: calc(var(--arrow-size) * .7) calc(var(--arrow-size) * -.7);
+      --margin: calc(var(--arrow-size) * 0.7) calc(var(--arrow-size) * -0.7);
     }
     &-topRight {
       --arrow-bottom: calc(var(--arrow-size) * -1);
       --arrow-right: calc(var(--arrow-size) * 2);
       --arrow-rotation: 180deg;
-      --margin: calc(var(--arrow-size) * -.7) calc(var(--arrow-size) * .7);
+      --margin: calc(var(--arrow-size) * -0.7) calc(var(--arrow-size) * 0.7);
     }
     &-topLeft {
       --arrow-bottom: calc(var(--arrow-size) * -1);
       --arrow-left: calc(var(--arrow-size) * 2);
       --arrow-rotation: 180deg;
-      --margin: calc(var(--arrow-size) * -.7);
+      --margin: calc(var(--arrow-size) * -0.7);
     }
     &-rightBottom {
       --arrow-left: calc(var(--arrow-size) * -1.4);
       --arrow-bottom: calc(var(--arrow-size) * 2);
       --arrow-rotation: -90deg;
-      --margin: calc(var(--arrow-size) * .7) calc(var(--arrow-size) * .4);
+      --margin: calc(var(--arrow-size) * 0.7) calc(var(--arrow-size) * 0.4);
     }
     &-rightTop {
       --arrow-left: calc(var(--arrow-size) * -1.4);
       --arrow-top: calc(var(--arrow-size) * 2);
       --arrow-rotation: -90deg;
-      --margin: calc(var(--arrow-size) * -.7) calc(var(--arrow-size) * .4);
+      --margin: calc(var(--arrow-size) * -0.7) calc(var(--arrow-size) * 0.4);
     }
     &-leftBottom {
       --arrow-right: calc(var(--arrow-size) * -1.4);
       --arrow-bottom: calc(var(--arrow-size) * 2);
       --arrow-rotation: 90deg;
-      --margin: calc(var(--arrow-size) * .7) calc(var(--arrow-size) * -.4);
+      --margin: calc(var(--arrow-size) * 0.7) calc(var(--arrow-size) * -0.4);
     }
     &-leftTop {
       --arrow-right: calc(var(--arrow-size) * -1.4);
       --arrow-top: calc(var(--arrow-size) * 2);
       --arrow-rotation: 90deg;
-      --margin: calc(var(--arrow-size) * -.7) calc(var(--arrow-size) * -.4);
+      --margin: calc(var(--arrow-size) * -0.7) calc(var(--arrow-size) * -0.4);
     }
 
     position: fixed;
@@ -199,7 +196,7 @@
 
       border-left: solid var(--arrow-size) transparent;
       border-right: solid var(--arrow-size) transparent;
-      border-top: solid 0 ;
+      border-top: solid 0;
       border-bottom: solid var(--arrow-size) var(--bg-color);
 
       top: var(--arrow-top, unset);

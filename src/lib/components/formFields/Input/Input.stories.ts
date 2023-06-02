@@ -61,7 +61,7 @@ const template = {
   args: {},
 } satisfies Template;
 
-const validTest = (value: string): undefined|string|boolean => {
+const validTest = (value: string): undefined | string | boolean => {
   if (value === "erro") {
     return "Aqui está o erro.";
   }
@@ -78,8 +78,8 @@ export const Default: Story = {
     errorMsg: "Falhou, tente novamente",
     type: "email",
     name: "email",
-  }
-}
+  },
+};
 
 export const Required: Story = {
   ...template,
@@ -90,8 +90,8 @@ export const Required: Story = {
     type: "text",
     required: true,
     name: "name",
-  }
-}
+  },
+};
 
 export const Disabled: Story = {
   ...template,
@@ -102,8 +102,8 @@ export const Disabled: Story = {
     type: "text",
     disabled: true,
     name: "name",
-  }
-}
+  },
+};
 
 export const CustomValidationAndRequired: Story = {
   ...template,
@@ -116,8 +116,8 @@ export const CustomValidationAndRequired: Story = {
     validationFn: validTest,
     helperText: "Digite 'erro' para ser invalido",
     name: "name",
-  }
-}
+  },
+};
 
 export const ForceInvalid: Story = {
   ...template,
@@ -129,8 +129,8 @@ export const ForceInvalid: Story = {
     forceInvalid: true,
     errorMsg: "Mensagem de erro customizada",
     name: "name",
-  }
-}
+  },
+};
 
 export const BordersNone: Story = {
   ...template,
@@ -141,8 +141,8 @@ export const BordersNone: Story = {
     type: "password",
     border: "bottom",
     name: "senha",
-  }
-}
+  },
+};
 
 export const WithIcon: Story = {
   ...template,
@@ -154,8 +154,8 @@ export const WithIcon: Story = {
     border: "bottom",
     icon: "material-symbols:phone-enabled",
     name: "phone",
-  }
-}
+  },
+};
 
 export const WithIconLeft: Story = {
   ...template,
@@ -167,8 +167,8 @@ export const WithIconLeft: Story = {
     iconPosition: "left",
     type: "tel",
     name: "phone",
-  }
-}
+  },
+};
 
 export const WithPlaceholder: Story = {
   ...template,
@@ -179,8 +179,8 @@ export const WithPlaceholder: Story = {
     type: "text",
     name: "address",
     placeholder: "Rua 300 Lote 900 AP 46 Algum Lugar Por Ai / DF",
-  }
-}
+  },
+};
 
 export const EnableIconClick: Story = {
   ...template,
@@ -193,8 +193,8 @@ export const EnableIconClick: Story = {
     type: "tel",
     name: "phone",
     iconClick: true,
-  }
-}
+  },
+};
 
 export const Readonly: Story = {
   ...template,
@@ -208,8 +208,8 @@ export const Readonly: Story = {
     readonly: true,
     helperText: "Apenas um exemplo",
     name: "warning",
-  }
-}
+  },
+};
 
 export const CustomExample: Story = {
   ...template,
@@ -222,15 +222,16 @@ export const CustomExample: Story = {
     type: "name",
     icon: "phone",
     name: "custom",
-    style: "--szot-input-height: 1.5rem;"
-            + "--szot-input-background-color: #ffffff;"
-            + "--szot-input-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-            + "--szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-            + "--szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-            + "--szot-input-border-radius: 1.5rem;"
-            + "--szot-input-border: 10px;"
-            + "--szot-input-icon-margin-right: 3rem;"
-            + "--szot-input-border-color-focus: purple;"
-            + "--szot-input-border-color-filled: yellow;",
-  }
-}
+    style:
+      "--szot-input-height: 1.5rem;" +
+      "--szot-input-background-color: #ffffff;" +
+      "--szot-input-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--szot-input-border-radius: 1.5rem;" +
+      "--szot-input-border: 10px;" +
+      "--szot-input-icon-margin-right: 3rem;" +
+      "--szot-input-border-color-focus: purple;" +
+      "--szot-input-border-color-filled: yellow;",
+  },
+};

@@ -3,7 +3,7 @@ import type { TFireSubmit } from "./types";
 
 // The key is the Form id
 type TFireFunctionStore = {
-  [key: string]: TFireSubmit
-}
+  [key: string]: TFireSubmit;
+};
 
 export default writable<TFireFunctionStore>({});

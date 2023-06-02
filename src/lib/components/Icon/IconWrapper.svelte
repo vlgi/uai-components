@@ -6,5 +6,8 @@
 </script>
 
 <div {style}>
-  <Icon {iconName} on:click/>
+  <Icon
+    {iconName}
+    on:click
+  />
 </div>

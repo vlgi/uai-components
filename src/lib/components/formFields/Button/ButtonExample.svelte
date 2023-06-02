@@ -18,7 +18,10 @@
 </script>
 
 <div {style}>
-  <Button {...restProps} on:click>
+  <Button
+    {...restProps}
+    on:click
+  >
     {labelSlot}
   </Button>
 </div>

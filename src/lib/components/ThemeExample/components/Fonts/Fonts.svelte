@@ -4,7 +4,11 @@
       title: "Global font family",
       description: "",
       variables: [
-        { name: "--szot-font-family", default: "'Open Sans', 'Helvetica Neue', sans-serif", description: "" },
+        {
+          name: "--szot-font-family",
+          default: "'Open Sans', 'Helvetica Neue', sans-serif",
+          description: "",
+        },
         { name: "--szot-font-size", default: "16px", description: "generic usage" },
       ],
     },
@@ -22,14 +26,17 @@
       title: "Form Fields",
       description: "Used in form fields components, like select, textarea, input, ...",
       variables: [
-        { name: "--szot-fields-font-size", default: "(--szot-font-size", description: "this will automatically set label and helper text too" },
+        {
+          name: "--szot-fields-font-size",
+          default: "(--szot-font-size",
+          description: "this will automatically set label and helper text too",
+        },
       ],
     },
     {
       title: "Others",
       description: "The rest of the tags follows the browser default for now",
-      variables: [
-      ],
+      variables: [],
     },
   ];
 
@@ -48,14 +55,18 @@
   <h5>H5 example</h5>
   <h6>H6 example</h6>
   <span>span example</span>
-  <p>p example: Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur natus dolores distinctio officiis maxime eos illo aperiam reprehenderit aspernatur molestiae deleniti ducimus sunt vel veniam, tempora in incidunt ab tempore.</p>
+  <p>
+    p example: Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur natus dolores
+    distinctio officiis maxime eos illo aperiam reprehenderit aspernatur molestiae deleniti ducimus
+    sunt vel veniam, tempora in incidunt ab tempore.
+  </p>
 </div>
 
 {#each data as d}
   <section>
     <header>
-      <h2>{ d.title }</h2>
-      <p class="description">{ d.description }</p>
+      <h2>{d.title}</h2>
+      <p class="description">{d.description}</p>
     </header>
     {#if !isEmpty(d.variables)}
       <table>
@@ -86,7 +97,7 @@
   }
 
   header {
-    margin-bottom: .6rem;
+    margin-bottom: 0.6rem;
 
     h2 {
       text-transform: capitalize;
@@ -97,9 +108,10 @@
     border-collapse: collapse;
   }
 
-  td, th {
+  td,
+  th {
     border: 1px solid #ccc;
-    padding: .6rem;
+    padding: 0.6rem;
     text-align: left;
   }
 

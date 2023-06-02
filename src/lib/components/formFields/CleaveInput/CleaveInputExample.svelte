@@ -1,20 +1,20 @@
 <script lang="ts">
-import type { ComponentProps } from "svelte";
-import CleaveInput from "./CleaveInput.svelte";
+  import type { ComponentProps } from "svelte";
+  import CleaveInput from "./CleaveInput.svelte";
 
-// Force this example extend the base component interface, so we can use the
-// spreed of restProps, instead of declare again all component interface manually.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type $$Props = ComponentProps<CleaveInput>
+  // Force this example extend the base component interface, so we can use the
+  // spreed of restProps, instead of declare again all component interface manually.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  type $$Props = ComponentProps<CleaveInput>;
 
-// Used to force $$restProps be of type ComponentProps<Button>;
-$: restProps = $$restProps as ComponentProps<CleaveInput>;
+  // Used to force $$restProps be of type ComponentProps<Button>;
+  $: restProps = $$restProps as ComponentProps<CleaveInput>;
 
-let inputComponent;
+  let inputComponent;
 
-let inputValue = "";
-
+  let inputValue = "";
 </script>
+
 <!--
   Ver porque estava dando loop infinito quando o form estava em volta do
   CleaveInput
@@ -30,14 +30,19 @@ let inputValue = "";
 />
 
 <p>
-  <b>isValid:</b> { restProps.isValid }
+  <b>isValid:</b>
+  {restProps.isValid}
 </p>
 <p>
-  <b>value:</b> { JSON.stringify(restProps.value) }
+  <b>value:</b>
+  {JSON.stringify(restProps.value)}
 </p>
 
 <b>change value</b>
-<input type="text" bind:value={inputValue} />
+<input
+  type="text"
+  bind:value={inputValue}
+/>
 <button
   on:click={() => {
     restProps.value = inputValue;

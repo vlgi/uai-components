@@ -1,7 +1,7 @@
-export type TOption = { text: string }
+export type TOption = { text: string };
 export type TOptionsListBinds = {
-  unfocusItems?: ()=> void,
-  focusNext?: ()=> void,
-  focusPrevious?: ()=> void,
-  toggleSelectedOfFocused?: ()=> void,
-}
+  unfocusItems?: () => void;
+  focusNext?: () => void;
+  focusPrevious?: () => void;
+  toggleSelectedOfFocused?: () => void;
+};

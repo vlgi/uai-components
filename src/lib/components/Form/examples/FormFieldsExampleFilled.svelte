@@ -73,11 +73,7 @@
   }
 
   function validatePassword(value: string): string | boolean {
-    if (
-      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/.test(
-        value,
-      )
-    ) {
+    if (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/.test(value)) {
       return true;
     }
     return "So weak! You can do it better.";
@@ -89,12 +85,9 @@
   }
 </script>
 
-<p>
-  This form use our real components, and shows an example using all possible
-  form fields.
-</p>
+<p>This form use our real components, and shows an example using all possible form fields.</p>
 <br />
-<hr>
+<hr />
 <br />
 
 <Form
@@ -157,10 +150,7 @@
     min={2}
     options={simpleDessertsOptions}
     required={true}
-    selected={[
-      { text: "Rabanada" },
-      { text: "Beijinho" },
-    ]}
+    selected={[{ text: "Rabanada" }, { text: "Beijinho" }]}
   />
   <ListRadioButton
     name="which-cake"

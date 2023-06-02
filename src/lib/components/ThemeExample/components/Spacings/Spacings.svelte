@@ -27,18 +27,21 @@
       key: "fields-spacings",
       description: "You can overwrite the fields variables",
       variables: [
-        { name: "--szot-fields-padding", default: "--szot-global-small-padding", description: "used at select, input, textarea" },
+        {
+          name: "--szot-fields-padding",
+          default: "--szot-global-small-padding",
+          description: "used at select, input, textarea",
+        },
       ],
     },
   ];
 </script>
 
-
 {#each data as d}
   <section>
     <header>
-      <h2>{ d.title }</h2>
-      <p class="description">{ d.description }</p>
+      <h2>{d.title}</h2>
+      <p class="description">{d.description}</p>
     </header>
 
     {#each d.variables as v}
@@ -49,13 +52,21 @@
 
         {#if d.key === "global-spacings"}
           <div class="card-outter {v.name}">
-            <div class="card-inner"></div>
+            <div class="card-inner" />
           </div>
         {/if}
 
         {#if d.key === "fields-spacings"}
-          <input type="text" class={v.name} value="input example">
-          <select class={v.name} name="" id="">
+          <input
+            type="text"
+            class={v.name}
+            value="input example"
+          />
+          <select
+            class={v.name}
+            name=""
+            id=""
+          >
             <option value="">select example</option>
           </select>
         {/if}
@@ -64,14 +75,13 @@
   </section>
 {/each}
 
-
 <style lang="scss">
   section {
     margin: 2rem 0;
   }
 
   header {
-    margin-bottom: .6rem;
+    margin-bottom: 0.6rem;
 
     h2 {
       text-transform: capitalize;
@@ -84,15 +94,15 @@
 
   .card-outter {
     padding: 2rem;
-    background: #5F7B55;
+    background: #5f7b55;
     width: fit-content;
-    margin-top: .4rem;
+    margin-top: 0.4rem;
   }
 
   .card-inner {
     width: 4rem;
     height: 4rem;
-    background: #547A9D;
+    background: #547a9d;
   }
 
   .card-outter.--szot-global-small-padding {
@@ -108,7 +118,7 @@
   }
 
   .--szot-fields-padding {
-    margin-top: .4rem;
+    margin-top: 0.4rem;
     padding: var(--theme-global-large-padding);
   }
 </style>

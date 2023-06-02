@@ -6,7 +6,7 @@ function compareObjects<T extends Record<string, unknown>>(obj1: T, obj2: T) {
 
 export function checkIfItemIsInArray<T extends Record<string, unknown>>(
   item: T,
-  arr: T[],
+  arr: T[]
 ): { isInIt: boolean; index: number } {
   let isInIt = false;
   let index = -1;

@@ -1,7 +1,5 @@
 <script lang="ts">
-  import {
-    onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
+  import { onMount, getContext, hasContext, onDestroy } from "svelte";
   import type { TFormContext } from "../types";
 
   export let name: string;
@@ -13,11 +11,8 @@
   let showErrorMsg = false;
 
   const isInsideContext = hasContext("FormContext");
-  const {
-    setFieldValue,
-    addFieldToContext,
-    removeFieldFromContext,
-  } = isInsideContext && getContext<TFormContext>("FormContext");
+  const { setFieldValue, addFieldToContext, removeFieldFromContext } =
+    isInsideContext && getContext<TFormContext>("FormContext");
 
   function setContextValue() {
     if (isInsideContext) {
@@ -50,12 +45,12 @@
 
 <input
   type="text"
-  { name }
-  { required }
+  {name}
+  {required}
   bind:value
-  bind:this={ inputEl }
-  on:blur={ validate }
-  on:input={ setContextValue }
+  bind:this={inputEl}
+  on:blur={validate}
+  on:input={setContextValue}
   on:input
   on:change
 />

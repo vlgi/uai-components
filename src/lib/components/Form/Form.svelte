@@ -14,8 +14,8 @@
     isRequired: boolean;
     htmlElement: HTMLElement;
     value?: unknown;
-    forceValidation: ()=> void;
-    setValue: (value: unknown)=> void;
+    forceValidation: () => void;
+    setValue: (value: unknown) => void;
   };
 
   // All fields values (readonly)
@@ -43,7 +43,10 @@
   let fieldsData: Record<string, TFieldData> = {};
   const dispatcher = createEventDispatcher();
 
-  const savedValues = JSON.parse(localStorage.getItem(storageKey) || "{}") as Record<string, unknown>;
+  const savedValues = JSON.parse(localStorage.getItem(storageKey) || "{}") as Record<
+    string,
+    unknown
+  >;
 
   /**
    * Context functions
@@ -56,9 +59,7 @@
 
     // if some is invalid don't dispatch the event, and scroll to first invalid field
     if (!Object.values(fieldsData).every((fData) => fData.isValid)) {
-      const firstInvalidEl = Object.values(fieldsData).find(
-        (fData) => !fData.isValid,
-      ).htmlElement;
+      const firstInvalidEl = Object.values(fieldsData).find((fData) => !fData.isValid).htmlElement;
       firstInvalidEl.scrollIntoView();
       return;
     }
@@ -86,7 +87,7 @@
     isRequired,
     htmlElement,
     forceValidation,
-    setValue,
+    setValue
   ) => {
     let fieldValue = value;
 
@@ -106,17 +107,13 @@
     };
   };
 
-  const removeFieldFromContext: TRemoveFieldFromContext = (
-    fieldName: string,
-  ) => {
+  const removeFieldFromContext: TRemoveFieldFromContext = (fieldName: string) => {
     delete fieldsData[fieldName];
     // force update
     fieldsData = fieldsData;
   };
 
-  $: values = Object.fromEntries(
-    Object.entries(fieldsData).map(([k, v]) => [k, v.value]),
-  );
+  $: values = Object.fromEntries(Object.entries(fieldsData).map(([k, v]) => [k, v.value]));
 
   $: if (saveOnStorage) {
     localStorage.setItem(storageKey, JSON.stringify(values));

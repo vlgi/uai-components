@@ -2,7 +2,7 @@
   import SearchInput from "./SearchInput.svelte";
 
   export let inputElement: HTMLInputElement;
-  export let focus: ()=> void;
+  export let focus: () => void;
   export let searchQuery = "";
   export let filtered: unknown[] = [];
   export let items: unknown[] = [];

@@ -1,10 +1,10 @@
 * {
   // simple colors
   // generic use
-  --theme-primary: var(--szot-primary, #FC6627);
-  --theme-secondary: var(--szot-secondary, #167070 );
-  --theme-dark: var(--szot-dark, #5F5F5F);
-  --theme-light: var(--szot-light, #F9F9F9);
+  --theme-primary: var(--szot-primary, #fc6627);
+  --theme-secondary: var(--szot-secondary, #167070);
+  --theme-dark: var(--szot-dark, #5f5f5f);
+  --theme-light: var(--szot-light, #f9f9f9);
 
   // pure text colors
   --theme-primary-txt: var(--szot-primary-txt, var(--theme-primary));
@@ -13,10 +13,10 @@
   --theme-light-txt: var(--szot-light-txt, var(--theme-light));
 
   // inserted text color
-  --theme-primary-inserted-text: var(--szot-primary-inserted-text, #FC6627);
+  --theme-primary-inserted-text: var(--szot-primary-inserted-text, #fc6627);
   --theme-secondary-inserted-text: var(--szot-secondary-inserted-text, #167070);
-  --theme-dark-inserted-text: var(--szot-dark-inserted-text, #5F5F5F);
-  --theme-light-inserted-text: var(--szot-light-inserted-text, #F9F9F9);
+  --theme-dark-inserted-text: var(--szot-dark-inserted-text, #5f5f5f);
+  --theme-light-inserted-text: var(--szot-light-inserted-text, #f9f9f9);
 
   // surface colors
   --theme-primary-surface: var(--szot-primary-surface, var(--theme-primary));
@@ -26,10 +26,7 @@
 
   // text on surface colors
   --theme-txt-on-primary-surface: var(--szot-txt-on-primary-surface, #dce0e6);
-  --theme-txt-on-secondary-surface: var(
-    --szot-txt-on-secondary-surface,
-    #dce0e6
-  );
+  --theme-txt-on-secondary-surface: var(--szot-txt-on-secondary-surface, #dce0e6);
   --theme-txt-on-dark-surface: var(--szot-txt-on-dark-surface, #dce0e6);
   --theme-txt-on-light-surface: var(--szot-txt-on-light-surface, #1f1f20);
 

@@ -3,8 +3,8 @@ function dispatchEvent<T>(node: HTMLElement, eventName: string, detail?: T) {
 }
 
 type TInfiniteScrollParams = {
-  distFromBottom: number,
-}
+  distFromBottom: number;
+};
 export function infiniteScroll(node: HTMLElement, params: TInfiniteScrollParams): unknown {
   let { distFromBottom } = params;
 

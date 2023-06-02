@@ -1,9 +1,9 @@
 export type TPosition =
-  "leftTop"
-  |"leftBottom"
-  |"rightTop"
-  |"rightBottom"
-  |"topLeft"
-  |"topRight"
-  |"bottomLeft"
-  |"bottomRight";
+  | "leftTop"
+  | "leftBottom"
+  | "rightTop"
+  | "rightBottom"
+  | "topLeft"
+  | "topRight"
+  | "bottomLeft"
+  | "bottomRight";

@@ -16,9 +16,9 @@ export type TAddFieldToContext = (
   isValid: boolean,
   isRequired: boolean,
   htmlElement: HTMLElement,
-  forceValidation: ()=> void,
-  setValue: (value: unknown)=> void,
-)=> void;
+  forceValidation: () => void,
+  setValue: (value: unknown) => void
+) => void;
 
 /**
  * Set the formfield value
@@ -26,24 +26,24 @@ export type TAddFieldToContext = (
  * @param value the value of the field, can be anything, an array, a string
  * @param isvalid true if the value is valid. e.g.: required field + value="", isvalid is false
  */
-export type TSetFieldValue = (fieldName: string, value: unknown, isvalid: boolean)=> void;
+export type TSetFieldValue = (fieldName: string, value: unknown, isvalid: boolean) => void;
 
 /**
  * Remove the formfield from the form context.
  * Use when your formfield component be destroyed
  * @param fieldName the name of the field
  */
-export type TRemoveFieldFromContext = (fieldName: string)=> void;
+export type TRemoveFieldFromContext = (fieldName: string) => void;
 
 /**
  * Dispatch the form submit event.
  * Works like the submit button for defaut html form tag.
  */
-export type TFireSubmit = ()=> Promise<void>;
+export type TFireSubmit = () => Promise<void>;
 
 export type TFormContext = {
-  setFieldValue: TSetFieldValue,
-  addFieldToContext: TAddFieldToContext,
-  removeFieldFromContext: TRemoveFieldFromContext,
-  fireSubmit: TFireSubmit,
-}
+  setFieldValue: TSetFieldValue;
+  addFieldToContext: TAddFieldToContext;
+  removeFieldFromContext: TRemoveFieldFromContext;
+  fireSubmit: TFireSubmit;
+};

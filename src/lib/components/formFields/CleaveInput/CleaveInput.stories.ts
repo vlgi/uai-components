@@ -2,12 +2,7 @@ import type { Meta } from "@storybook/svelte";
 import type { StoryObj, TemplateObj } from "$types/storybook";
 import CleaveInput from "./CleaveInput.svelte";
 import CleaveInputExample from "./CleaveInputExample.svelte";
-import {
-  phoneMaskConfig,
-  cpfMaskConfig,
-  cepMaskConfig,
-  currencyMaskConfig,
-} from "./fixtures";
+import { phoneMaskConfig, cpfMaskConfig, cepMaskConfig, currencyMaskConfig } from "./fixtures";
 
 const meta = {
   title: "Components/FormFields/CleaveInput",
@@ -78,8 +73,8 @@ export const Default: Story = {
     helperText: "Digite seu primeiro nome",
     errorMsg: "Falhou, tente novamente",
     type: "text",
-  }
-}
+  },
+};
 
 export const Phone: Story = {
   ...template,
@@ -92,8 +87,8 @@ export const Phone: Story = {
     errorMsg: "Falhou, tente novamente",
     type: "text",
     cleaveOptions: phoneMaskConfig,
-  }
-}
+  },
+};
 
 export const Cpf: Story = {
   ...template,
@@ -106,8 +101,8 @@ export const Cpf: Story = {
     errorMsg: "Falhou, tente novamente",
     type: "text",
     cleaveOptions: cpfMaskConfig,
-  }
-}
+  },
+};
 
 export const Cep: Story = {
   ...template,
@@ -120,8 +115,8 @@ export const Cep: Story = {
     errorMsg: "Falhou, tente novamente",
     type: "text",
     cleaveOptions: cepMaskConfig,
-  }
-}
+  },
+};
 
 export const Currency: Story = {
   ...template,
@@ -134,8 +129,8 @@ export const Currency: Story = {
     errorMsg: "Falhou, tente novamente",
     type: "text",
     cleaveOptions: currencyMaskConfig,
-  }
-}
+  },
+};
 
 export const Required: Story = {
   ...template,
@@ -150,5 +145,5 @@ export const Required: Story = {
     cleaveOptions: currencyMaskConfig,
     required: true,
     value: "1000",
-  }
-}
+  },
+};

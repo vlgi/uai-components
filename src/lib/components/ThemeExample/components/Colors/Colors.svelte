@@ -22,9 +22,10 @@
     },
     {
       title: "surface colors",
-      description: "Colors of the text entered in the input and in the textarea."
-      + "(this variable is separated only because the input and the textarea do not"
-      + "support gradient in the inserted text).",
+      description:
+        "Colors of the text entered in the input and in the textarea." +
+        "(this variable is separated only because the input and the textarea do not" +
+        "support gradient in the inserted text).",
 
       variables: [
         { name: "--szot-primary-surface", default: "--szot-primary" },
@@ -55,7 +56,8 @@
     },
     {
       title: "signal colors",
-      description: "used to inform something, like a helper text, an info, ... Can be both, a surface or a text",
+      description:
+        "used to inform something, like a helper text, an info, ... Can be both, a surface or a text",
       variables: [
         { name: "--szot-error", default: "#bb5656" },
         { name: "--szot-warning", default: "#bbb156" },
@@ -67,23 +69,17 @@
     {
       title: "text on signal colors surface",
       description: "if the color is used as background, this color must be the text",
-      variables: [
-        { name: "--szot-txt-on-signal-color", default: "black" },
-      ],
+      variables: [{ name: "--szot-txt-on-signal-color", default: "black" }],
     },
     {
       title: "text colors",
       description: "text colors splitted by context of use",
-      variables: [
-        { name: "--szot-global-txt", default: "--szot-txt-dark" },
-      ],
+      variables: [{ name: "--szot-global-txt", default: "--szot-txt-dark" }],
     },
     {
       title: "other colors",
       description: "colors splitted by context of use",
-      variables: [
-        { name: "--szot-fields-outline", default: "--szot-global-txt" },
-      ],
+      variables: [{ name: "--szot-fields-outline", default: "--szot-global-txt" }],
     },
   ];
 </script>
@@ -91,8 +87,8 @@
 {#each data as d}
   <section>
     <header>
-      <h2>{ d.title }</h2>
-      <p class="description">{ d.description }</p>
+      <h2>{d.title}</h2>
+      <p class="description">{d.description}</p>
     </header>
 
     <table>
@@ -106,8 +102,8 @@
       <tbody>
         {#each d.variables as v}
           <tr>
-            <td>{ v.name }</td>
-            <td>{ v.default }</td>
+            <td>{v.name}</td>
+            <td>{v.default}</td>
             <td class="example-cell {v.name}">Text test</td>
           </tr>
         {/each}
@@ -122,7 +118,7 @@
   }
 
   header {
-    margin-bottom: .6rem;
+    margin-bottom: 0.6rem;
 
     h2 {
       text-transform: capitalize;
@@ -133,9 +129,10 @@
     border-collapse: collapse;
   }
 
-  td, th {
+  td,
+  th {
     border: 1px solid #ccc;
-    padding: .6rem;
+    padding: 0.6rem;
     text-align: left;
   }
 
@@ -239,5 +236,4 @@
     background: var(--theme-error);
     color: var(--theme-txt-on-signal-color);
   }
-
 </style>

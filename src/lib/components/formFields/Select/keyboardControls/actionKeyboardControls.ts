@@ -1,8 +1,8 @@
 function isAlphanumeric(text: string): boolean {
-  return text.length === 1
-  && (
-    (text[0].toUpperCase() >= "A" && text[0].toUpperCase() <= "Z")
-    || (text[0].toUpperCase() >= "0" && text[0].toUpperCase() <= "9")
+  return (
+    text.length === 1 &&
+    ((text[0].toUpperCase() >= "A" && text[0].toUpperCase() <= "Z") ||
+      (text[0].toUpperCase() >= "0" && text[0].toUpperCase() <= "9"))
   );
 }
 
@@ -11,9 +11,9 @@ function dispatchEvent<T>(node: HTMLElement, eventName: string, detail?: T) {
 }
 
 type TKeyboardControlsParams = {
-  multiple: boolean,
-  dropdownOpen: boolean,
-}
+  multiple: boolean;
+  dropdownOpen: boolean;
+};
 
 export function keyboardControls(node: HTMLElement, params: TKeyboardControlsParams): unknown {
   let { multiple, dropdownOpen } = params;
@@ -31,37 +31,37 @@ export function keyboardControls(node: HTMLElement, params: TKeyboardControlsPar
     let shouldPreventDefault = true;
 
     switch (key) {
-    case "Escape":
-      dispatchEvent<boolean>(node, "actionToggleDropdown", false);
-      break;
+      case "Escape":
+        dispatchEvent<boolean>(node, "actionToggleDropdown", false);
+        break;
 
-    case "Enter":
-      if (dropdownOpen) {
-        dispatchEvent(node, "actiontoggleSelectedOfFocused");
-      } else if (!dropdownOpen) {
-        dispatchEvent<boolean>(node, "actionToggleDropdown", true);
-      }
-      break;
-
-    case "ArrowDown":
-      dispatchEvent(node, "actionFocusNext");
-      if (!multiple && !dropdownOpen) dispatchEvent(node, "actiontoggleSelectedOfFocused");
-      break;
-    case "ArrowUp":
-      dispatchEvent<boolean>(node, "actionFocusPrevious");
-      if (!multiple && !dropdownOpen) dispatchEvent(node, "actiontoggleSelectedOfFocused");
-      break;
-    default:
-      if (isAlphanumeric(key)) {
-        dispatchEvent<string>(node, "actionType", key);
-        if ((target as HTMLElement).nodeName === "INPUT") {
-          shouldPreventDefault = false;
+      case "Enter":
+        if (dropdownOpen) {
+          dispatchEvent(node, "actiontoggleSelectedOfFocused");
+        } else if (!dropdownOpen) {
+          dispatchEvent<boolean>(node, "actionToggleDropdown", true);
         }
         break;
-      }
-      shouldPreventPropagation = false;
-      shouldPreventDefault = false;
-      break;
+
+      case "ArrowDown":
+        dispatchEvent(node, "actionFocusNext");
+        if (!multiple && !dropdownOpen) dispatchEvent(node, "actiontoggleSelectedOfFocused");
+        break;
+      case "ArrowUp":
+        dispatchEvent<boolean>(node, "actionFocusPrevious");
+        if (!multiple && !dropdownOpen) dispatchEvent(node, "actiontoggleSelectedOfFocused");
+        break;
+      default:
+        if (isAlphanumeric(key)) {
+          dispatchEvent<string>(node, "actionType", key);
+          if ((target as HTMLElement).nodeName === "INPUT") {
+            shouldPreventDefault = false;
+          }
+          break;
+        }
+        shouldPreventPropagation = false;
+        shouldPreventDefault = false;
+        break;
     }
 
     if (shouldPreventPropagation) {

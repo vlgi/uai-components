@@ -19,9 +19,11 @@ export function actionWatchSize(node: HTMLElement): SvelteActionReturnType {
          * Dispatches a actionResize event on the node the action was used. The details contains the
          * new border box size of the element.
          */
-        entry.target.dispatchEvent(new CustomEvent("actionResize", {
-          detail: lastBorderBoxSize,
-        }));
+        entry.target.dispatchEvent(
+          new CustomEvent("actionResize", {
+            detail: lastBorderBoxSize,
+          })
+        );
         ticking = false;
       });
 

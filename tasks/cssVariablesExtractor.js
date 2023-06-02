@@ -42,10 +42,7 @@ function extractCssVarImplicitDefs(stringCssUsage) {
     if (!match) return [stringParam];
     if (!match.groups.value) return [match.groups.key];
 
-    return [
-      match.groups.key,
-      ...extractFn(match.groups.value),
-    ];
+    return [match.groups.key, ...extractFn(match.groups.value)];
   }
 
   const resolvedUsages = extractFn(stringCssUsage);
@@ -84,11 +81,7 @@ function extractCssVarImplicitDefs(stringCssUsage) {
 function extractCssVarExplicitDefs(fileData) {
   const regExpExtractVariables = new RegExp(/\s--(?!szot)([^:]|\n)*:([^;]|\n)*;/, "igm");
   const matchs = fileData.match(regExpExtractVariables);
-  const matchsCleaned = matchs.map((x) => (
-    x
-      .replace(/(\s|\n|;)/igm, "")
-      .replace(":", ",")
-  ));
+  const matchsCleaned = matchs.map((x) => x.replace(/(\s|\n|;)/gim, "").replace(":", ","));
   return matchsCleaned.reduce((prev, curr) => {
     const implicitFormat = `var(${curr})`;
     return {
@@ -157,10 +150,7 @@ fs.readFile(filePath, { encoding: "utf-8" }, (err, data) => {
     const szotVariables = Object.fromEntries(
       Object.entries(explicitCssVars)
         .filter(([k, _]) => /--szot/.test(k))
-        .map(([k, v]) => ([
-          k,
-          resolveDependencies(v),
-        ]))
+        .map(([k, v]) => [k, resolveDependencies(v)])
         .sort((a, b) => {
           if (a[0] < b[0]) {
             return -1;
@@ -169,14 +159,14 @@ fs.readFile(filePath, { encoding: "utf-8" }, (err, data) => {
             return 1;
           }
           return 0;
-        }),
+        })
     );
     printTable(
       Object.entries(szotVariables).map(([k, v]) => ({
         "CSS Property": k,
-        Description: "",
-        Default: v,
-      })),
+        "Description": "",
+        "Default": v,
+      }))
     );
   } else {
     throw err;

@@ -41,7 +41,6 @@
     return "Type a valid e-mail.";
   }
 
-
   function min10Characters(value: string): string | boolean {
     if (value.length >= 10) return true;
     return "Minimum 10 characters";
@@ -54,15 +53,11 @@
 
   //  if values change, show value defined in cookie just for test
   $: if (values) valuesFromCookies = localStorage.getItem("my-form-cookie-key");
-
-
 </script>
 
-<p>
-  This form will keep data save on cookie. Fill some formfield and refresh the page to see it.
-</p>
+<p>This form will keep data save on cookie. Fill some formfield and refresh the page to see it.</p>
 <br />
-<hr>
+<hr />
 <br />
 
 <Form
@@ -122,7 +117,10 @@
   <br />
   <hr />
   <br />
-  <Button buttonStyle="dark" on:click={resetFormCookies}>Reset cookies</Button>
+  <Button
+    buttonStyle="dark"
+    on:click={resetFormCookies}>Reset cookies</Button
+  >
   <br />
   <p><b>Form Values:</b> {JSON.stringify(values)}</p>
   <p><b>Form Cookies:</b> {valuesFromCookies}</p>

@@ -80,8 +80,7 @@
           <p><b>Default Value:</b> {v.default}</p>
           <p><b>Description:</b> {v.description}</p>
           <div class="shape-content">
-            <div class="shape {v.variable}">
-            </div>
+            <div class="shape {v.variable}" />
           </div>
         </div>
       {/each}
@@ -95,7 +94,7 @@
   }
 
   header {
-    margin-bottom: .4rem;
+    margin-bottom: 0.4rem;
   }
 
   .content {
@@ -149,15 +148,14 @@
   }
 
   .--szot-medium-border {
-    border: var(--theme-medium-border) solid #333;;
+    border: var(--theme-medium-border) solid #333;
     width: 20rem;
     height: 10rem;
   }
 
-  .--szot-large-border{
-    border: var(--theme-large-border) solid #333;;
+  .--szot-large-border {
+    border: var(--theme-large-border) solid #333;
     width: 60rem;
     height: 30rem;
   }
-
 </style>
