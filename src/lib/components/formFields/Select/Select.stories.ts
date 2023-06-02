@@ -1,12 +1,15 @@
-import type { ArgType } from "@storybook/addons";
+import type { Meta } from "@storybook/svelte";
+import type { StoryObj, TemplateObj } from "$types/storybook";
 import { longDesserts, simpleDesserts } from "./fixtures";
-// import { action } from "@storybook/addon-actions";
-import Select from "./Select.svelte";
-import SelectWrapper from "./SelectWrapper.svelte";
 
-export default {
+import Select from "./Select.svelte";
+import SelectExample from "./SelectExample.svelte";
+
+const meta = {
   title: "Components/FormFields/Select",
   component: Select,
+  tags: ["autodocs"], // enable auto docs
+  // common stuff for all stories here
   argTypes: {
     selectStyle: {
       table: { category: "visual properties" },
@@ -30,134 +33,193 @@ export default {
       },
     },
   },
-};
+} satisfies Meta<Select>;
 
-const Template = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
-    Component: SelectWrapper,
-    props,
-  });
-  ret.args = _args;
-  return ret;
-};
+export default meta;
+
+type Template = TemplateObj<typeof meta, SelectExample>;
+type Story = StoryObj<typeof meta, SelectExample>;
+
+const template = {
+  render: (args) => ({
+    Component: SelectExample,
+    props: args,
+  }),
+  args: {
+    // common stuff for template stories here
+  },
+} satisfies Template;
 
 const options = simpleDesserts;
 
-export const Single = Template({
-  multiple: false,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesa",
-  options,
-  style: "--szot-select-max-width: 8rem",
-});
+export const Single: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesa",
+    options,
+    style: "--szot-select-max-width: 8rem",
+    selected: options[0],
+    ...template.args,
+  },
+};
 
-export const SingleSelected = Template({
-  multiple: false,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options,
-  selected: options[0],
-});
+export const SingleSelected: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options,
+    selected: options[0],
+    ...template.args,
+  },
+};
 
-export const SimpleLong = Template({
-  multiple: false,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options: longDesserts,
-});
+export const SimpleLong: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options: longDesserts,
+    selected: longDesserts[0],
+    ...template.args,
+  },
+};
 
-export const SimpleRequired = Template({
-  multiple: false,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options,
-  required: true,
-});
+export const SimpleRequired: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options,
+    selected: options[0],
+    required: true,
+    ...template.args,
+  },
+};
 
-export const SimpleForceInvalid = Template({
-  multiple: false,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options,
-  forceInvalid: true,
-});
+export const SimpleForceInvalid: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options,
+    selected: options[0],
+    forceInvalid: true,
+    ...template.args,
+  },
+};
 
-export const Multiple = Template({
-  multiple: true,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options,
-});
+export const Multiple: Story = {
+  ...template,
+  args: {
+    multiple: true,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options,
+    ...template.args,
+  },
+};
 
-export const MultipleSelected = Template({
-  multiple: true,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options,
-  selected: options.slice(0, 3),
-});
+export const MultipleSelected: Story = {
+  ...template,
+  args: {
+    multiple: true,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options,
+    selected: options.slice(0, 3),
+    ...template.args,
+  },
+};
 
-export const MultipleLong = Template({
-  multiple: true,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options: longDesserts,
-});
+export const MultipleLong: Story = {
+  ...template,
+  args: {
+    multiple: true,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options: longDesserts,
+    ...template.args,
+  },
+};
 
-export const MultipleRequired = Template({
-  multiple: true,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options,
-  required: true,
-  min: 2,
-});
+export const MultipleRequired: Story = {
+  ...template,
+  args: {
+    multiple: true,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options,
+    required: true,
+    min: 2,
+    ...template.args,
+  },
+};
 
-export const MultipleForceInvalid = Template({
-  multiple: true,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options,
-  forceInvalid: true,
-});
+export const MultipleForceInvalid: Story = {
+  ...template,
+  args: {
+    multiple: true,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options,
+    forceInvalid: true,
+    ...template.args,
+  },
+};
 
-export const HideSearchInput = Template({
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options,
-  showSearchInput: false,
-});
+export const HideSearchInput: Story = {
+  ...template,
+  args: {
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options,
+    selected: options[0],
+    showSearchInput: false,
+    ...template.args,
+  },
+};
 
-export const CustomExample: any = Template({
-  multiple: false,
-  id: "doce",
-  name: "doce",
-  label: "Sobremesas",
-  options,
-  style: "--szot-select-label-color: red;"
-          + "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-select-border: 10px;"
-          + "--szot-select-border-color-filled: green;"
-          + "--szot-select-border-color-focus: purple;"
-          + "--szot-select-text-color: blue;",
-});
-
-CustomExample.parameters = {
-  docs: {
-    source: {
-      language: "html",
-      code: `
+export const CustomExample: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options,
+    selected: options[0],
+    style:
+      "--szot-select-label-color: red;" +
+      "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--szot-select-border: 10px;" +
+      "--szot-select-border-color-filled: green;" +
+      "--szot-select-border-color-focus: purple;" +
+      "--szot-select-text-color: blue;",
+    ...template.args,
+  },
+  parameters: {
+    docs: {
+      source: {
+        language: "html",
+        code: `
     <div
       style="--szot-select-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
       "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
@@ -173,6 +235,7 @@ CustomExample.parameters = {
       />
     </div>
     `,
+      },
     },
   },
 };
