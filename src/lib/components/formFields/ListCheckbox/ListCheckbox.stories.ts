@@ -1,50 +1,43 @@
-import type { ArgType } from "@storybook/addons";
-import { action } from "@storybook/addon-actions";
-import ListCheckboxWrapper from "./ListCheckboxWrapper.svelte";
+import type { Meta } from "@storybook/svelte";
+import type { StoryObj, TemplateObj } from "$types/storybook";
+import ListCheckboxExample from "./ListCheckboxExample.svelte";
 import ListCheckbox from "./ListCheckbox.svelte";
 
-export default {
+const meta = {
   title: "Components/FormFields/ListCheckbox",
   component: ListCheckbox,
   argTypes: {
     styleType: {
-      control: {
-        type: "select",
-        options: ["checkbox-input", "switch", "badge-pill"],
-      },
+      control: "select",
+      options: ["checkbox-input", "switch", "badge-pill"],
     },
     iconPosition: {
-      control: {
-        type: "select",
-        options: ["left", "right", "both", "none"],
-      },
+      control: "select",
+      options: ["left", "right", "both", "none"],
     },
     badgeStyle: {
-      control: {
-        type: "select",
-        options: ["light", "dark", "primary", "secondary"],
-      },
+      control: "select",
+      options: ["light", "dark", "primary", "secondary"],
     },
     direction: {
-      control: {
-        type: "select",
-        options: ["column", "row"],
-      },
+      control: "select",
+      options: ["column", "row"],
     },
   },
-};
+} satisfies Meta<ListCheckbox>;
 
-const Template = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
-    Component: ListCheckboxWrapper,
-    props,
-    on: {
-      checkItem: action("on:checkItem"),
-    },
-  });
-  ret.args = _args;
-  return ret;
-};
+export default meta;
+
+type Template = TemplateObj<typeof meta, ListCheckboxExample>;
+type Story = StoryObj<typeof meta, ListCheckboxExample>;
+
+const template = {
+  render: (args) => ({
+    Component: ListCheckboxExample,
+    props: args,
+  }),
+  args: {},
+} satisfies Template;
 
 const checkboxItems = [
   {
@@ -88,77 +81,65 @@ const checkboxItemsBadgePill = [
   },
 ];
 
-export const Default = Template({
-  name: "checklist",
-  title: "Lista de Afazeres",
-  checkboxItems,
-});
+export const Default: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "checklist",
+    title: "Lista de Afazeres",
+    checkboxItems,
+  },
+};
 
-export const DefaultChecked = Template({
-  name: "checklist",
-  title: "Lista de Afazeres",
-  checkboxItems,
-  values: ["firstItem", "thirdItem"],
-});
+export const DefaultChecked: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "checklist",
+    title: "Lista de Afazeres",
+    checkboxItems,
+    values: ["firstItem", "thirdItem"],
+  },
+};
 
-export const forceInvalid = Template({
-  name: "checklist",
-  title: "Lista de Afazeres",
-  checkboxItems,
-  forceInvalid: true,
-  errorMsg: "Mensagem de erro",
-});
+export const ForceInvalid: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "checklist",
+    title: "Lista de Afazeres",
+    checkboxItems,
+    forceInvalid: true,
+    errorMsg: "Mensagem de erro",
+  },
+};
 
-export const Badge = Template({
-  name: "checklist",
-  title: "Lista de Afazeres",
-  styleType: "badge-pill",
-  checkboxItems: checkboxItemsBadgePill,
-});
+export const Badge: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "checklist",
+    title: "Lista de Afazeres",
+    styleType: "badge-pill",
+    checkboxItems: checkboxItemsBadgePill,
+  },
+};
 
-export const CustomExample: any = Template({
-  name: "checklist",
-  title: "Lista de Afazeres",
-  checkboxItems,
-  style: "--szot-checkbox-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-          + "--szot-checkbox-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
-});
-CustomExample.parameters = {
-  docs: {
-    source: {
-      language: "html",
-      code: `
-    <script lang="ts">
-      import ListCheckbox from "./ListCheckbox.svelte";
-
-      const checkboxItems = [
-        {
-          value: "firstItem",
-          label: "Item 1",
-        },
-        {
-          value: "secondItem",
-          label: "Item 2",
-        },
-        {
-          value: "thirdItem",
-          label: "Item 3",
-        },
-      ];
-    </script>
-
-    <div style="--szot-checkbox-margin: 3px 2px 0px;
-    --szot-checkbox-size:20px;
-    --szot-checkbox-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);;
-    --szot-checkbox-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);;"
-      >
-      <ListCheckbox
-        name="checklist"
-        title="Lista de Afazeres"
-        {checkboxItems}
-      />
-    </div>
-    `,
-    },
+export const CustomExample: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "checklist",
+    title: "Lista de Afazeres",
+    checkboxItems,
+    style:
+      "--szot-checkbox-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--szot-checkbox-label-color: " +
+      "linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
   },
 };

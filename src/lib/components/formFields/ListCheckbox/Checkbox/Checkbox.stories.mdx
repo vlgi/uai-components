@@ -1,48 +1,8 @@
 import { Meta } from "@storybook/addon-docs";
 
-<Meta title="Components/FormFields/Checkbox/Custom" />
+<Meta title="Components/FormFields/Checkbox/Css Variables" />
 
-# Checkbox Custom
-
-<p>You can change the css variables globally, like:</p>
-
-```css
-:root {
-  --szot-checkbox-border-radius: 0.5rem;
-}
-```
-
-<p>
-  But you can change globally the css variables of a specific style type by
-  setting the values of the variables of the class .checkbox.style-type-
-  <strong>styleType</strong>, where <strong>styleType</strong> is the name of the
-  style type ("checkbox-input" , "switch" , "text-switch"). If you want to use this
-  feature locally, you need to use the where css feature.
-</p>
-
-<p>
-  Using <strong>:where()</strong> we can globally define the variables of each
-  type without affecting the others that use the same variable. in case you need
-  to read the documentation it is
-  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where"> here.</a>
-</p>
-
-```css
-:where(.checkbox.style-type-checkbox-input) {
-  --szot-checkbox-border-radius: 0.5rem;
-}
-
-:where(.checkbox.style-type-switch) {
-  --szot-checkbox-switch-width: 3rem;
-}
-
-:where(.checkbox.style-type-text-switch) {
-  --szot-checkbox-switch-width: 5rem;
-  --szot-checkbox-border-radius: 6rem;
-}
-```
-
-## Custom variables for checkbox button
+# Checkbox Css Variables
 
 | CSS Property                      | Description                             | Default          |
 | --------------------------------- | --------------------------------------- | ---------------- |
