@@ -1,7 +1,5 @@
 <script lang="ts">
-  import {
-    onMount, getContext, hasContext, onDestroy,
-} from "svelte";
+  import { onMount, getContext, hasContext, onDestroy } from "svelte";
   import { actionWatchSize } from "$actions/watchSize/watchSize";
   import type { TFormContext } from "../../Form/types";
   import Icon from "../../Icon/Icon.svelte";
@@ -38,9 +36,7 @@
    * Return true/undefined if valid,
    * or a string to show the error, or false to show the "errorMsg" props.
    */
-  export let validationFn: (
-    value: string
-  ) => undefined | string | boolean = () => true; //eslint-disable-line
+  export let validationFn: (value: string) => undefined | string | boolean = () => true; //eslint-disable-line
 
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
@@ -102,12 +98,8 @@
   let lockLabelTop = false;
 
   const isInsideContext = hasContext("FormContext");
-  const {
-    setFieldValue,
-    addFieldToContext,
-    removeFieldFromContext,
-    fireSubmit,
-  } = isInsideContext && getContext<TFormContext>("FormContext");
+  const { setFieldValue, addFieldToContext, removeFieldFromContext, fireSubmit } =
+    isInsideContext && getContext<TFormContext>("FormContext");
 
   function focused() {
     inFocus = !inFocus;
@@ -199,30 +191,27 @@
     setFieldValue(name, value, isValid);
   }
 
+  // using notation getComputedStyle ? getComputedStyle. : undefined because
+  /// auto doc break when there is ?. operator in script tag
   $: if (wrapperElement && labelComponent) {
     clipPathVariables = {
       ...clipPathVariables,
       borderWidth: getComputedStyle(wrapperElement).borderWidth,
       iconWidth:
         icon && iconPosition === "left"
-          ? getComputedStyle(labelComponent)?.marginLeft
+          ? getComputedStyle(labelComponent)
+            ? getComputedStyle(labelComponent).marginLeft
+            : undefined
           : "0px",
     };
   }
-
-  $: applyClipPath = inFocus || value?.length > 0 || lockLabelTop;
+  // using notation value ? value. : undefined because auto doc break when
+  // there is ?. operator in script tag
+  $: applyClipPath = inFocus || value ? value.length > 0 : undefined || lockLabelTop;
 
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(
-        name,
-        value,
-        isValid,
-        required,
-        wrapperElement,
-        validation,
-        forceValue,
-      );
+      addFieldToContext(name, value, isValid, required, wrapperElement, validation, forceValue);
     }
   });
 
@@ -303,17 +292,26 @@
     </label>
     {#if icon}
       {#if iconClick}
-        <button class="icon icon-cursor" on:click>
+        <button
+          class="icon icon-cursor"
+          on:click
+        >
           <Icon iconName={icon} />
         </button>
       {:else}
-        <label for={id} class="icon">
+        <label
+          for={id}
+          class="icon"
+        >
           <Icon iconName={icon} />
         </label>
       {/if}
     {/if}
   </div>
-  <p class="helper" class:helper-show={helper}>
+  <p
+    class="helper"
+    class:helper-show={helper}
+  >
     {helperText}
   </p>
   <p
@@ -333,10 +331,7 @@
 
     --message-top: var(--szot-input-message-top, calc(37.19px + var(--border)));
     --message-left: var(--szot-input-message-left, 1rem);
-    --message-error-bottom-focus: var(
-      --szot-input-message-error-bottom-focus,
-      -2rem
-    );
+    --message-error-bottom-focus: var(--szot-input-message-error-bottom-focus, -2rem);
 
     --label-left: var(--szot-input-label-left, 1.2rem);
 
@@ -361,10 +356,7 @@
     --input-top: var(--szot-input-top, 0);
     --input-left: var(--szot-input-left, 0);
     --input-padding: var(--szot-input-padding, var(--theme-fields-padding));
-    --input-text-color: var(
-      --szot-input-text-color,
-      var(--default-input-color)
-    );
+    --input-text-color: var(--szot-input-text-color, var(--default-input-color));
     --border: var(--szot-input-border, var(--theme-small-border));
     --border-color: var(--szot-input-border-color, var(--default-border-color));
     --border-color-not-filled: var(--szot-input-border-color, var(--default-border-color));
@@ -374,20 +366,11 @@
     --label-color: var(--szot-input-label-color, var(--default-label-color));
     --background-color: var(--szot-input-background-color, transparent);
 
-    --placeholder-color: var(
-      --szot-input-placeholder-color,
-      var(--default-placeholder-color)
-    );
+    --placeholder-color: var(--szot-input-placeholder-color, var(--default-placeholder-color));
 
     --label-focus-left: var(--szot-input-label-focus-left, 0.8rem);
-    --label-focus-color: var(
-      --szot-input-label-focus-color,
-      var(--label-color)
-    );
-    --label-not-focus-color: var(
-      --szot-input-label-not-focus-color,
-      var(--label-color)
-    );
+    --label-focus-color: var(--szot-input-label-focus-color, var(--label-color));
+    --label-not-focus-color: var(--szot-input-label-not-focus-color, var(--label-color));
 
     --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
 
@@ -431,7 +414,10 @@
       --border-color: var(--border-color-filled);
     }
     &.inFocus {
-      --border-color-focus: var(--szot-input-border-color-focus, var(--border-color-filled, var(--border-color-not-filled)));
+      --border-color-focus: var(
+        --szot-input-border-color-focus,
+        var(--border-color-filled, var(--border-color-not-filled))
+      );
       --border-color: var(--border-color-focus);
     }
 
@@ -574,15 +560,16 @@
       left: 0;
       background-color: transparent;
       border: 0;
-      margin: calc(var(--input-padding) * 1.2) var(--icon-left-margin-right) var(--input-padding) var(--icon-left-margin-left);
+      margin: calc(var(--input-padding) * 1.2) var(--icon-left-margin-right) var(--input-padding)
+        var(--icon-left-margin-left);
       --szot-icon-color: var(--icon-color);
     }
   }
 
   .icons-right {
     .form-input {
-      padding: var(--input-padding)  calc(1.5rem + var(--icon-right-margin-right)) var(--input-padding)
-        var(--input-padding);
+      padding: var(--input-padding) calc(1.5rem + var(--icon-right-margin-right))
+        var(--input-padding) var(--input-padding);
     }
 
     .icon {
@@ -591,7 +578,8 @@
       right: 0;
       background-color: transparent;
       border: 0;
-      margin: calc(var(--input-padding) * 1.2) var(--icon-right-margin-right) var(--input-padding) var(--icon-right-margin-left);
+      margin: calc(var(--input-padding) * 1.2) var(--icon-right-margin-right) var(--input-padding)
+        var(--icon-right-margin-left);
       --szot-icon-color: var(--icon-color);
     }
   }
