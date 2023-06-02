@@ -1,7 +1,5 @@
 <script lang="ts">
-  import {
-    onMount, getContext, hasContext, onDestroy,
-  } from "svelte";
+  import { onMount, getContext, hasContext, onDestroy } from "svelte";
   import { isEmpty } from "$helpers/truthy";
   import type { TFormContext } from "../../Form/types";
 
@@ -16,9 +14,7 @@
    * Return true/undefined if valid,
    * or a string to show the error, or false to show the "errorMsg" props.
    */
-  export let validationFn: (
-    value: number
-  ) => undefined | string | boolean = () => true; //eslint-disable-line
+  export let validationFn: (value: number) => undefined | string | boolean = () => true; //eslint-disable-line
 
   /** if you want to force invalid, change it to true */
   export let forceInvalid = false;
@@ -47,7 +43,7 @@
   /**
    * @type {number}
    */
-  export let step: number|string = 1;
+  export let step: number | string = 1;
 
   /**
    * Min value of the range slider
@@ -71,12 +67,8 @@
   let inFocus = false;
 
   const isInsideContext = hasContext("FormContext");
-  const {
-    setFieldValue,
-    addFieldToContext,
-    removeFieldFromContext,
-    fireSubmit,
-  } = isInsideContext && getContext<TFormContext>("FormContext");
+  const { setFieldValue, addFieldToContext, removeFieldFromContext, fireSubmit } =
+    isInsideContext && getContext<TFormContext>("FormContext");
 
   function focused() {
     inFocus = !inFocus;
@@ -149,15 +141,7 @@
 
   onMount(() => {
     if (isInsideContext) {
-      addFieldToContext(
-        name,
-        value,
-        isValid,
-        true,
-        wrapperElement,
-        validation,
-        forceValue,
-      );
+      addFieldToContext(name, value, isValid, true, wrapperElement, validation, forceValue);
     }
   });
 
@@ -201,7 +185,7 @@
 >
   <div
     class="range-wrapper"
-    class:not-half-filled={2 * (value - min) < (max - min)}
+    class:not-half-filled={2 * (value - min) < max - min}
     bind:this={wrapperElement}
   >
     <input
@@ -241,13 +225,16 @@
       class:hidden={value === min}
     />
   </div>
-  <p class="helper" class:helper-show={helper}>
+  <p
+    class="helper"
+    class:helper-show={helper}
+  >
     {helperText}
   </p>
   <p
     class="error"
     class:error-show={visuallyInvalid}
-    class:show={(helper && helperText?.length > 0) || visuallyInvalid}
+    class:show={(helper && helperText.length > 0) || visuallyInvalid}
   >
     {eMsg}
   </p>
@@ -262,13 +249,19 @@
     --range-slider-height: var(--szot-range-slider-height, 0.625rem);
     --range-slider-border-radius: var(--szot-range-border-radius, 3.25rem);
     --range-slider-background-color: var(--szot-range-slider-background-color, #333);
-    --range-slider-background-color-filled: var(--szot-range-slider-background-color-filled, var(--range-slider-background-color));
+    --range-slider-background-color-filled: var(
+      --szot-range-slider-background-color-filled,
+      var(--range-slider-background-color)
+    );
     --range-slider-thumb-width: var(--szot-range-slider-thumb-width, 1.5rem);
     --range-slider-thumb-height: var(--szot-range-slider-thumb-height, 1.5rem);
     --range-slider-thumb-border-radius: var(--szot-range-slider-thumb-border-radius, 50%);
     --range-slider-thumb-background-color: var(--szot-range-slider-thumb-background-color, #d9d9d9);
     --range-slider-thumb-border: var(--szot-range-slider-thumb-border, none);
-    --range-slider-margin: var(--szot-range-slider-margin, calc(var(--range-slider-thumb-height) / 2) 0);
+    --range-slider-margin: var(
+      --szot-range-slider-margin,
+      calc(var(--range-slider-thumb-height) / 2) 0
+    );
 
     --range-filled: calc(var(--range-value) - var(--range-min));
     --range-gap: calc(var(--range-max) - var(--range-min));
@@ -294,7 +287,6 @@
         --offset: calc(var(--range-slider-thumb-width) / 2);
       }
       .progress-range {
-
         &.hidden {
           display: none;
         }
@@ -311,7 +303,7 @@
 
     /* The slider itself */
     .slider {
-      -webkit-appearance: none;  /* Override default CSS styles */
+      -webkit-appearance: none; /* Override default CSS styles */
       appearance: none;
       width: var(--range-slider-width);
       max-width: var(--range-slider-max-width);

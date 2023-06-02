@@ -1,67 +1,95 @@
-import type { ArgType } from "@storybook/addons";
-import { action } from "@storybook/addon-actions";
+import type { Meta } from "@storybook/svelte";
+import type { StoryObj, TemplateObj } from "$types/storybook";
 import RangeSlider from "./RangeSlider.svelte";
-import RangeSliderWrapper from "./RangeSliderWrapper.svelte";
+import RangeSliderExample from "./RangeSliderExample.svelte";
 
-export default {
+const meta = {
   title: "Components/FormFields/RangeSlider",
   component: RangeSlider,
+} satisfies Meta<RangeSlider>;
+
+export default meta;
+
+type Template = TemplateObj<typeof meta, RangeSliderExample>;
+type Story = StoryObj<typeof meta, RangeSliderExample>;
+
+const template = {
+  render: (args) => ({
+    Component: RangeSliderExample,
+    props: args,
+  }),
+  args: {},
+} satisfies Template;
+
+export const Default: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "default",
+    max: 100,
+    min: 0,
+    value: 70,
+  },
 };
 
-const Template = (_args: ArgType) => {
-  const ret = ({ ...props }) => ({
-    Component: RangeSliderWrapper,
-    props,
-    on: {
-      input: action("on:input"),
-    },
-  });
-  ret.args = _args;
-  return ret;
+export const ForceInvalid: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "few-value",
+    max: 40,
+    min: 0,
+    value: 3,
+    forceInvalid: true,
+    errorMsg: "Erro",
+  },
 };
 
-export const Default = Template({
-  name: "default",
-  max: 100,
-  min: 0,
-  value: 70,
-});
+export const FewValues: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "few-value",
+    max: 5,
+    min: 0,
+    value: 3,
+  },
+};
 
-export const FewValues = Template({
-  name: "few-value",
-  max: 5,
-  min: 0,
-  value: 3,
-});
+export const CustomExample: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "custom",
+    max: 50,
+    min: 1,
+    value: 10,
+    style:
+      "--szot-range-slider-background-color-filled: linear-gradient(90deg, #fe5da3, #a00bea);" +
+      "--szot-range-slider-background-color: #aaa;" +
+      "--szot-range-slider-thumb-background-color: #333;" +
+      "--szot-range-slider-height: 20px;" +
+      "--szot-range-slider-thumb-border: 3px solid white;",
+  },
+};
 
-export const ForceInvalid = Template({
-  name: "few-value",
-  max: 40,
-  min: 0,
-  value: 3,
-  forceInvalid: true,
-  errorMsg: "Erro",
-});
-
-export const CustomExample = Template({
-  name: "custom",
-  max: 50,
-  min: 1,
-  value: 10,
-  style: "--szot-range-slider-background-color-filled: linear-gradient(90deg, #fe5da3, #a00bea);"
-  + "--szot-range-slider-background-color: #aaa;"
-  + "--szot-range-slider-thumb-background-color: #333;"
-  + "--szot-range-slider-height: 20px;"
-  + "--szot-range-slider-thumb-border: 3px solid white;",
-});
-
-export const CustomExampleFull = Template({
-  name: "custom",
-  max: 50,
-  min: 1,
-  value: 50,
-  style: "--szot-range-slider-background-color-filled: linear-gradient(90deg, #fe5da3, #a00bea);"
-  + "--szot-range-slider-background-color: #aaa;"
-  + "--szot-range-slider-thumb-background-color: #333;"
-  + "--szot-range-slider-height: 20px;",
-});
+export const CustomExampleFull: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "custom",
+    max: 50,
+    min: 1,
+    value: 50,
+    style:
+      "--szot-range-slider-background-color-filled: linear-gradient(90deg, #fe5da3, #a00bea);" +
+      "--szot-range-slider-background-color: #aaa;" +
+      "--szot-range-slider-thumb-background-color: #333;" +
+      "--szot-range-slider-height: 20px;",
+  },
+};
