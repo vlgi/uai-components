@@ -30,11 +30,12 @@ ts:
   only:
     - master # or dev, the branch you want to publish
 
-test:
-  stage: test
-  script: npm run test
-  only:
-    - master # or dev, the branch you want to publish
+# Removed temporally, because we don't have tests
+# test:
+#   stage: test
+#   script: npm run test
+#   only:
+#     - master # or dev, the branch you want to publish
 
 format:
   stage: test
