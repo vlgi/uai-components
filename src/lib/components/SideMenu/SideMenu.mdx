@@ -1,0 +1,14 @@
+import { Meta, ArgsTable } from "@storybook/blocks";
+
+import SideMenu from "./SideMenu.svelte";
+import * as SideMenuStories from "./SideMenu.stories.ts";
+
+<Meta of={SideMenuStories} />
+
+# SideMenu
+
+When using this menu you can set you own rule to says when use the desktop and mobile mode.
+
+Be careful with the button and the menu position to not be behind another element.
+
+<ArgsTable of={SideMenu} />

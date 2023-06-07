@@ -1,12 +1,13 @@
-version: '3'
+version: "3"
 services:
   app:
-    container_name: planfy-front
-    image: node:14.18.3
+    container_name: szot-ui
+    image: node:18.16.0
     working_dir: /app
     volumes:
       - ./:/app
     ports:
-      - '6006:6006'
+      - "6006:6006"
+      - "5000:5000"
     user: 1000:1000
     tty: true

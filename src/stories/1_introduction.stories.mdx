@@ -1,0 +1,74 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# Szot UI
+
+## Introduction
+
+This package use css variables to set theme, you can see how set them
+[here](?path=/story/theme-introduction--page).
+
+The components docs is inside the `Components` section.
+
+You can see the component example inside the `Canvas`, swithing in the tab menu at the top.
+
+You can see the props and all examples inside the `Docs`, swithing in the tab menu at the top.
+
+Every component that can be customized with custom css variables have a section `Css Variables`,
+inside the component folder.
+
+## How to install
+
+This package have as peer dependencies `svelte` and `sass`. So your bundler must be able to handle
+with it.
+
+Install the package:
+
+```bash
+npm install szot-ui-experimental
+```
+
+Import the global style and icons, in your entry point or global css:
+
+```scss
+import "szot-ui-experimental/styles";
+```
+
+**NOTE: make sure that you bundler can handle with svelte, scss, images and fonts, to import the
+styles and icons**
+
+Use the components =)
+
+```svelte
+<script lang="ts">
+  import { Input, Form } from "szot-ui-experimental";
+
+  export let values: Record<string, unknown>;
+  export let isAllValid: boolean;
+
+  function validateEmail(value: string): string | boolean {
+    if (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(value)) return true;
+    return "Type a valid e-mail.";
+  }
+</script>
+
+<div class="my-form">
+  <Form
+    bind:values
+    bind:isAllValid
+    on:submit
+  >
+    <Input
+      label="email"
+      name="email"
+      type="email"
+      iconPosition="left"
+      icon="mail"
+      validationFn={validateEmail}
+      required={true}
+    />
+    <Button type="submit">Submit</Button>
+  </Form>
+</div>
+```

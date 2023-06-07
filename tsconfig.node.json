@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler"
+  },
+  "include": [
+    "vite.config.ts",
+    "vitest.config.ts",
+    ".eslint.cjs",
+    "svelte.config.js",
+    "aliases.config.js",
+    "scripts/scssAliases.js"
+  ]
+}

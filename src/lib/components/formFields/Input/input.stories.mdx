@@ -1,0 +1,72 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Components/form fields/Input/Css Variables" />
+
+# Input Css Variables
+
+## Gerais
+
+| CSS Property               | Descripiton                 | Default |
+| -------------------------- | --------------------------- | ------- |
+| --szot-input-margin-top    | Set component top margin    | 0.5rem  |
+| --szot-input-margin-bottom | Set component bottom margin | 1.5rem  |
+| --szot-input-max-width     | Set component max width     | 100%    |
+
+## On the input
+
+| CSS Property                   | Descripiton                                      | Default                   |
+| ------------------------------ | ------------------------------------------------ | ------------------------- |
+| --szot-input-top               | Set input position on top                        | 0                         |
+| --szot-input-left              | Set the input position to the left               | 0                         |
+| --szot-input-padding           | Set simple input padding                         | --szot-fields-padding     |
+| --szot-input-text-color        | Set input text color (does not support gradient) | --szot-dark-inserted-text |
+| --szot-input-border            | Set border width                                 | --theme-small-border      |
+| --szot-input-border-color      | Set label focus position on top                  | --szot-dark-txt           |
+| --szot-input-border-radius     | set the border radius                            | --szot-small-shape        |
+| --szot-input-placeholder-color | set the placeholder color                        | --szot-dark-txt           |
+
+## On the label
+
+| CSS Property                  | Descripiton                                                                                          | Default         |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- | --------------- |
+| --szot-input-label-left       | Set the label position to the left                                                                   | 1.2rem          |
+| --szot-input-label-padding    | Set the label padding                                                                                | 0               |
+| --szot-input-label-color      | Set label text color                                                                                 | --szot-dark-txt |
+| --szot-input-background-color | Set the background color of the label to hide the outline border. (Set according to page background) | transparent     |
+
+## When it's in focus
+
+<p>
+  {" "}
+  These modifications can be used to change the color and position of input elements when it is in focus.
+  If the component is not in focus but contains some text, only the colors will return to the default
+</p>
+
+| CSS Property                       | Descripiton                                              | Default                                     |
+| ---------------------------------- | -------------------------------------------------------- | ------------------------------------------- |
+| --szot-input-label-focus-left      | Set the label position to the left                       | 0                                           |
+| --szot-input-label-focus-color     | Set label color when input is in focus                   | --szot-input-label-color (--szot-dark-txt)  |
+| --szot-input-label-not-focus-color | Set label color when input is not in focus but not empty | --szot-input-label-color (--szot-dark-txt)  |
+| --szot-input-border-color-focus    | Set color to border when input is in focus               | --szot-input-border-color (--szot-dark-txt) |
+| --szot-input-border-color-filled   | Set color to border when input is in filled              | --szot-input-border-color (--szot-dark-txt) |
+
+## With icons
+
+| CSS Property                   | Descripiton                     | Default                                                |
+| ------------------------------ | ------------------------------- | ------------------------------------------------------ |
+| --szot-input-icon-color        | Set the input icon color        | --szot-dark-txt                                        |
+| --szot-input-icon-margin-right | Set the input icon margin right | 0 if icon in the left and 0.5 rem if icon in the right |
+| --szot-input-icon-margin-left  | Set the input icon margin left  | 0 if icon in the right and 0.5 rem if icon in the left |
+
+## Messages
+
+| CSS Property                            | Descripiton                                                     | Default                       |
+| --------------------------------------- | --------------------------------------------------------------- | ----------------------------- |
+| --szot-input-message-top                | Set messages position top                                       | 37.19 + (--szot-input-border) |
+| --szot-input-message-left               | Set messages position to left                                   | 1rem                          |
+| --szot-input-message-error-bottom-focus | Set error text position to low when helper text is also showing | -2rem                         |
+
+<p>
+  In addition to these variables, this component also uses the szot variables for, font-family,
+  sizes, small-shape, small-border, the 4 main szot colors and the colors for error and information.
+</p>
