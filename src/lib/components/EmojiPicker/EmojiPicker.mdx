@@ -1,0 +1,91 @@
+import { Meta, ArgTypes } from "@storybook/blocks";
+import * as EmojiPickerStories from "./EmojiPicker.stories.ts";
+import EmojiPicker from "./EmojiPicker.svelte";
+
+<Meta of={EmojiPickerStories} />
+
+# Emoji Picker
+
+<ArgTypes of={EmojiPicker} />
+
+## Usage example
+
+```svelte
+<script lang="ts">
+  import { onMount } from "svelte";
+  import EmojiPicker from "szot-ui-experimental";
+  import Input from "szot-ui-experimental";
+
+  let targetEl = null;
+  let msg = "";
+  let opened = true;
+
+  onMount(() => {
+    targetEl = document.getElementById("input-msg");
+  });
+
+  function onTypeMsg(e) {
+    msg = (e.target as HTMLInputElement).value;
+  }
+
+  function openEmojisPicker() {
+    opened = true;
+  }
+
+  $: selectedEmoji = "";
+  $: msg = `${msg}${selectedEmoji as string}`;
+</script>
+
+<div class="container">
+  <div class="input-target-container">
+    <Input
+      on:input={onTypeMsg}
+      on:click={openEmojisPicker}
+      icon="emoticon-happy"
+      iconClick={true}
+      id="input-msg"
+      inputAttributes={{ autocomplete: "off" }}
+      label="Message"
+      name="message"
+      type="text"
+      value={msg}
+      --szot-input-margin-bottom="0"
+      --szot-input-margin-top="0"
+    />
+  </div>
+
+  <EmojiPicker
+    bind:opened
+    bind:selected={selectedEmoji}
+    localStorageId="szot-ui-emoji-picker-example"
+    {targetEl}
+    --szot-emojis-picker-background-color="white"
+    --szot-emojis-picker-border-radius="25px"
+    --szot-emojis-picker-height="350px"
+    --szot-emojis-picker-width="320px"
+    --szot-emojis-picker-category-title-border-color="#ddd"
+    --szot-emojis-picker-category-title-font-color="#444"
+    --szot-emojis-picker-emoji-background-color="white"
+    --szot-emojis-picker-tabs-border-color="#eee"
+    --szot-emojis-picker-tabs-icon-color="#777"
+  />
+</div>
+
+<style lang="scss">
+  .container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background: #eee;
+    width: 100%;
+    height: 600px;
+    max-height: 90vh;
+
+    .input-target-container {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  }
+</style>
+```

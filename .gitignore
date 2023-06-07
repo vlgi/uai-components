@@ -1,13 +1,20 @@
-/node_modules/
-
 .DS_Store
 
+# External packages
+node_modules/*
+
+# Native
+android/*
+ios/*
+
 # Build
+dist/*
+storybook-static/*
+/.svelte-kit
+/package
 
-dist/
-
-# IDEs
-.idea
-/coverage/
-.creevey/report/
-storybook-static/
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/*.code-snippets

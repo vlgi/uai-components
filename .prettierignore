@@ -1,0 +1,25 @@
+.DS_Store
+
+# External packages
+node_modules/*
+
+# Native
+android/*
+ios/*
+
+# Build
+dist/*
+storybook-static/*
+/build
+/.svelte-kit
+/package
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+package-lock.json
+yarn.lock

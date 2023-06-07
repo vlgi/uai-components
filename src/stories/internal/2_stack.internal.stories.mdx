@@ -1,0 +1,140 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Internal Documentation/Stack" />
+
+# Stack
+
+This project was build with [svelte kit packaging](https://kit.svelte.dev/docs/packaging), and
+storybook.
+
+This project is divided in two, the contents of `src/routes` is the public-facing stuff; `src/lib`
+contains your app's internal library, that can be published on npm.
+
+## Recommended IDE Setup
+
+Use [VS Code](https://code.visualstudio.com/) and install the
+[extensions recommended for the workspace](./.vscode/extensions.json). Make sure the
+[settings](./.vscode/settings.json) aren't obscured by your user settings in any way.
+
+## Setting up the environment
+
+1. Instal `docker`
+2. If in windows install `WSL2`
+3. Run `make up` to get inside the container
+4. Inside de container run `npm install`
+
+## Make commands
+
+```bash
+# Docker commands
+make up     # Start the container and get inside the app container
+make down   # Stop the container
+make enter  # Get inside the container (useful to get more than one terminal inside the app container)
+
+# Stories commands
+make rm-int-stories # Remove internal stories (match *.itnernal.stories.*). Used on CI.
+```
+
+## Running
+
+```bash
+# For development
+npm run dev         # Runs the website app with hot reloading
+npm run storybook   # Runs storybook in hot reloading mode
+
+# For deployment
+npm run build           # Builds the package and website
+npm run package         # Builds the package into the dist folder
+npm run storybook-build # Builds a static storybook site into storybook-static
+
+# Variant
+npm run package:watch   # Builds the package in watch mode
+```
+
+## Testing
+
+```bash
+# run once variants
+npm run test # Runs tests in *.test.ts files
+
+# watch variants (will rerun changed tests automatically)
+npm run test:watch # Runs tests in *.test.ts files
+```
+
+## Linting and Formatting
+
+The project comes with a pre-loaded eslint configuration, prettier and svelte-check. The commands
+are as follows:
+
+```bash
+npm run format # Formats all files using prettier
+npm run lint-fix # Fixes all autofixable issues detected by eslint
+npm run format-check # Checks if it's formatter correctly using prettier
+npm run lint # Checks if the files are okay according to eslint
+npm run check # Checks if the files are okay according to svelte-check
+```
+
+## Testing everything
+
+You may want to run all the tests to check if the project is following the formatter, linter and has
+no failing tests. You can do that with the command `npm run check-all`
+
+## How is it structured
+
+```
+├── .storybook
+│ ├── main.ts         # Storybook configuration
+│ ├── preview.ts      # Storybook render configuration
+│ └── viewports.ts    # All the pre-loaded viewports
+│
+├── .vscode
+| ├── extensions.json # Extension recommendations
+| ├── settings.json   # Workspace settings
+|
+├── dist              # This is the content of lib compiled (your package output)
+├── scripts           # Scripts that help with build and other stuff
+├── static            # This is copied to the root of the Svelte app
+├── src
+│ ├── app.d.ts        # The svelte kit project types
+│ ├── app.html        # The root of the website
+│ ├── stories         # Some stories in mdx without an especific context
+│ ├── routes          # The website routes (svelte kit project)
+│ └── lib             # The package folder (compiled and exported to be a package)
+│   ├── assets        # The package assets like svg, ...
+│   ├── components    # The package components
+│   ├── helpers       # add any useful code that's not specific here
+│   ├── index.ts      # Export your package components here
+│   ├── styles        # Any common style for the components
+│   │ ├── index.scss        # Exported package style. Don't import this on your components
+│   │ └── variables.scss    # Variables to be used inside the components
+│   └── types         # Any commom type for the components
+├── svelte.config.js  # Configure how svelte is built
+├── tsconfig.json     # Configure the typescript
+├── vite.config.ts    # Configure how the app builds
+├── vitest.config.ts  # Configure how the app is tested
+├── aliases.config.js # All the aliases available in the project. Add more here
+├── .editorconfig     # Configure the IDE with the project's format
+├── .eslintrc.cjs     # Customize your eslint settings
+├── package.json      # All dependencies and package export configs here
+├── .prettierrc.cjs   # Customize your prettier settings
+```
+
+## Snippets
+
+This project has defined some snippets to help with svelte and stories boilerplate.
+
+### Snippets for svelte file
+
+- `component`: Create Svelte Component with TS and SCSS
+- `script`: Create Svelte Script tag with TS lang
+- `style`: Create Svelte Style tag with SCSS lang
+- `example`: Create example component to be used in a story
+
+### Snippets for Typescript file
+
+- `story`: Create a story for a component.
+- `story-template`: Create a story for a component with story template, to reuse common configs.
+
+### Snippets for MDX file
+
+- `story`: Create a story in MDX format.

@@ -1,0 +1,68 @@
+{
+	"Svelte Component": {
+		"scope": "svelte",
+		"prefix": "component",
+		"body": [
+			"<script lang=\"ts\">",
+      "  $1",
+      "</script>",
+      "",
+      "${2:<h1>Hello world!</h1>}",
+      "",
+      "<style lang=\"scss\">",
+      "  $0",
+      "</style>",
+		],
+		"description": "Create Svelte Component with TS and SCSS"
+	},
+  "Script TS lang": {
+		"scope": "svelte",
+		"prefix": "script",
+		"body": [
+			"<script lang=\"ts\">",
+      "  $0",
+      "</script>",
+		],
+		"description": "Create Svelte Script tag with TS lang"
+	},
+  "Style SCSS lang": {
+		"scope": "svelte",
+		"prefix": "style",
+		"body": [
+			"<style lang=\"scss\">",
+      "  $0",
+      "</style>",
+		],
+		"description": "Create Svelte Style tag with SCSS lang"
+	},
+  "Svelte Component Example": {
+		"scope": "svelte",
+		"prefix": "example",
+		"body": [
+      "<script lang=\"ts\">",
+      "  import type { ComponentProps } from \"svelte\";",
+      "  import $1 from \"./$1.svelte\";",
+      "",
+      "  // Force this example extend the base component interface, so we can use the",
+      "  // spreed of restProps, instead of declare again all component interface manually.",
+      "  // eslint-disable-next-line @typescript-eslint/no-unused-vars",
+      "  interface $$$Props extends ComponentProps<$1> {",
+      "    label: string;",
+      "  }",
+      "",
+      "  // Used to force $$$restProps be of type ComponentProps<$1>;",
+      "  $: restProps = $$$restProps as ComponentProps<$1>;",
+      "",
+      "  $2",
+      "</script>",
+      "",
+      "<$1",
+      "  {...restProps}",
+      "  $3",
+      ">",
+      "  $0",
+      "</$1>",
+		],
+		"description": "Create example component to be used in a story"
+	},
+}

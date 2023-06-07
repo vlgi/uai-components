@@ -7,6 +7,6 @@ declare namespace svelte.JSX {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface HTMLAttributes<T> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: `onaction${string}`]: (event: CustomEvent<any> & { target: EventTarget & T })=> any;
+    [key: `onaction${string}`]: (event: CustomEvent<any> & { target: EventTarget & T }) => any;
   }
 }

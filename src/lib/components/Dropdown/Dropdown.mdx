@@ -1,0 +1,43 @@
+import { Meta, ArgTypes } from "@storybook/blocks";
+import * as DropdownStories from "./Dropdown.stories.ts";
+import Dropdown from "./Dropdown.svelte";
+
+<Meta of={DropdownStories} />
+
+# Dropdown
+
+<ArgTypes of={Dropdown} />
+
+## Usage example
+
+```svelte
+<script lang="ts">
+  import { Dropdown, Button } from "szot-ui";
+</script>
+
+<div
+  class="button-wrapper"
+  id="demo-dropdown"
+>
+  <Button>Open</Button>
+</div>
+
+<Dropdown targetId="demo-dropdown">
+  <span class="item">Item 1</span>
+  <span class="item">Item 2</span>
+  <span class="item">Item 3 Long text</span>
+  <span class="item">Item 4</span>
+  <span class="item">Item 5 Long Long Long text</span>
+</Dropdown>
+
+<style lang="scss">
+  .item {
+    display: block;
+  }
+
+  .button-wrapper {
+    width: fit-content;
+    height: fit-content;
+  }
+</style>
+```
