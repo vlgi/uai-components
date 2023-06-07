@@ -1,8 +1,8 @@
 import { Meta } from "@storybook/blocks";
 
-<Meta title="Components/Icon/Doc Usage" />
+<Meta title="Components/Icon/CSS variables" />
 
-# CSS variables for Icon
+# CSS variables
 
 You can set the following css variables for the icon
 
@@ -10,19 +10,3 @@ You can set the following css variables for the icon
 | --------------------- | ---------------- | ------------------------- |
 | --szot-icon-color     | --theme-dark-txt | Set the color of the icon |
 | --szot-icon-font-size | 1.25rem          | Set the size of the icon  |
-
-# Icon Usage
-
-You can get the list of icon names in the [iconify page](https://icon-sets.iconify.design/)
-
-To add icons in the icon bundle to render offline, import the function addIcons from helper folder
-or from the szot-ui-experimental (`import {addIcons} from "szot-ui-experimental"`) if you are using
-it in your own project. The parameter of the function addIcons is a list of IconifyJSON objects
-
-To get the IconifyJSON objects to use in the addIcons function, use the api query from iconify to
-get the objects.
-
-The api query is "https://api.iconify.design/{prefix}.json?icons={icons}", where icons is the list
-of icons separated by comma.
-
-Ex: https://api.iconify.design/mdi.json?icons=account-box,account-cash,account

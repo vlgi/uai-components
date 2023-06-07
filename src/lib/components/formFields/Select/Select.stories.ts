@@ -6,7 +6,7 @@ import Select from "./Select.svelte";
 import SelectExample from "./SelectExample.svelte";
 
 const meta = {
-  title: "Components/FormFields/Select",
+  title: "Components/form fields/Select",
   component: Select,
   tags: ["autodocs"], // enable auto docs
   // common stuff for all stories here

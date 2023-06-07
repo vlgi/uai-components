@@ -5,7 +5,7 @@ import TextArea from "./Textarea.svelte";
 import TextAreaExample from "./TextareaExample.svelte";
 
 const meta = {
-  title: "Components/FormFields/TextArea",
+  title: "Components/form fields/TextArea",
   component: TextArea,
   tags: ["autodocs"], // enable auto docs
   argTypes: {
@@ -48,6 +48,7 @@ const template = {
   }),
   args: {
     // common stuff for template stories here
+    name: "text-input-form",
   },
 } satisfies Template;
 
@@ -112,7 +113,6 @@ export const CustomExample: Story = {
     validationFn: validTest,
     label: "Teste",
     helperText: "Digite 'erro' para ser invalido",
-    type: "text",
     placeholder: "Digite algo:",
     rows: 3,
     style:

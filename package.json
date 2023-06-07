@@ -1,12 +1,12 @@
 {
   "name": "szot-ui-experimental",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "scripts": {
     "dev": "vite dev --host --port 5000",
     "storybook": "storybook dev -p 6006",
     "preview": "vite preview",
     "build": "vite build && npm run package",
-    "build-storybook": "storybook build",
+    "build-storybook": "svelte-kit sync && storybook build",
     "package": "svelte-kit sync && svelte-package",
     "package:watch": "svelte-kit sync && svelte-package --watch",
     "check-all": "npm install && npm run lint && npm run format-check && npm run check && npm run test",
@@ -17,7 +17,7 @@
     "check:watch": "svelte-kit sync && svelte-check --watch",
     "lint": "svelte-kit sync && eslint .",
     "format": "prettier --write .",
-    "test": "vitest run src",
+    "test": "svelte-kit sync && vitest run src",
     "test:watch": "vitest src"
   },
   "description": "Svelte component package",

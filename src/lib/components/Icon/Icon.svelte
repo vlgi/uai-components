@@ -1,6 +1,9 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
 
+  /**
+   * You can get the list of icon names in the [iconify page](https://icon-sets.iconify.design/)
+   */
   export let iconName: string;
 </script>
 

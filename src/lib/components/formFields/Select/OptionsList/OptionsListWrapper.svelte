@@ -7,10 +7,11 @@
   export let options: TOption[];
   export let selected: TOption | TOption[];
   export let focused = -1;
-  export let focusNext: () => void;
-  export let focusPrevious: () => void;
-  export let toggleSelectedOfFocused: () => void;
-  export let unfocusItems: () => void;
+
+  let focusNext: () => void;
+  let focusPrevious: () => void;
+  let toggleSelectedOfFocused: () => void;
+  let unfocusItems: () => void;
 </script>
 
 <OptionsList

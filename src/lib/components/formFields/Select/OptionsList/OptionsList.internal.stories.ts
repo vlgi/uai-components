@@ -6,7 +6,7 @@ import OptionsList from "./OptionsList.svelte";
 import OptionsListExample from "./OptionsListWrapper.svelte";
 
 const meta = {
-  title: "Components/FormFields/Select/Components/OptionsList",
+  title: "Components/form fields/Select/Components/OptionsList",
   component: OptionsList,
   tags: ["autodocs"], // enable auto docs
   // common stuff for all stories here
@@ -18,10 +18,6 @@ type Template = TemplateObj<typeof meta, OptionsListExample>;
 type Story = StoryObj<typeof meta, OptionsListExample>;
 
 const options = longDesserts;
-let focusNext: () => void;
-let focusPrevious: () => void;
-let toggleSelectedOfFocused: () => void;
-let unfocusItems: () => void;
 
 const template = {
   render: (args) => ({
@@ -30,10 +26,6 @@ const template = {
   }),
   args: {
     // common stuff for template stories here
-    focusNext,
-    focusPrevious,
-    toggleSelectedOfFocused,
-    unfocusItems,
   },
 } satisfies Template;
 

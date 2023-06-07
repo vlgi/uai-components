@@ -15,3 +15,4 @@ enter:
 ## Remove internal stories only. Used on CI.
 rm-int-stories:
 	find -name *.internal.stories.* -delete
+	find -name *.internal.mdx -delete

@@ -4,7 +4,7 @@ import Input from "./Input.svelte";
 import InputExample from "./InputExample.svelte";
 
 const meta = {
-  title: "Components/FormFields/Input",
+  title: "Components/form fields/Input",
   component: Input,
   tags: ["autodocs"], // enable auto docs
   argTypes: {

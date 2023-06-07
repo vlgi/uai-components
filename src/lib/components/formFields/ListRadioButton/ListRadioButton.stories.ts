@@ -4,7 +4,7 @@ import ListRadioButton from "./ListRadioButton.svelte";
 import ListRadioButtonExample from "./ListRadioButtonExample.svelte";
 
 const meta = {
-  title: "Components/FormFields/ListRadioButton",
+  title: "Components/form fields/ListRadioButton",
   component: ListRadioButton,
   tags: ["autodocs"], // enable auto docs
   argTypes: {

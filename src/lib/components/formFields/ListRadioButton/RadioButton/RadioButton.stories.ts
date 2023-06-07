@@ -4,7 +4,7 @@ import RadioButton from "./RadioButton.svelte";
 import RadioButtonExample from "./RadioButtonExample.svelte";
 
 const meta = {
-  title: "Components/FormFields/RadioButton",
+  title: "Components/form fields/RadioButton",
   component: RadioButton,
   tags: ["autodocs"], // enable auto docs
   argTypes: {

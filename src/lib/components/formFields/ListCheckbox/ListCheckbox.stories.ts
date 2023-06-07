@@ -4,7 +4,7 @@ import ListCheckboxExample from "./ListCheckboxExample.svelte";
 import ListCheckbox from "./ListCheckbox.svelte";
 
 const meta = {
-  title: "Components/FormFields/ListCheckbox",
+  title: "Components/form fields/ListCheckbox",
   component: ListCheckbox,
   tags: ["autodocs"], // enable auto docs
   argTypes: {

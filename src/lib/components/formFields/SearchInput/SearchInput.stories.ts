@@ -3,10 +3,10 @@ import type { StoryObj, TemplateObj } from "$types/storybook";
 import { complexDesserts } from "./fixtures";
 
 import SearchInput from "./SearchInput.svelte";
-import SearchInputExample from "./SearchInputWrapper.svelte";
+import SearchInputExample from "./SearchInputExample.svelte";
 
 const meta = {
-  title: "Components/FormFields/SearchInput",
+  title: "Components/form fields/SearchInput",
   component: SearchInput,
   tags: ["autodocs"], // enable auto docs
   // common stuff for all stories here
@@ -17,9 +17,6 @@ export default meta;
 type Template = TemplateObj<typeof meta, SearchInputExample>;
 type Story = StoryObj<typeof meta, SearchInputExample>;
 
-let focus: () => void;
-let inputElement: HTMLInputElement;
-
 const template = {
   render: (args) => ({
     Component: SearchInputExample,
@@ -27,8 +24,7 @@ const template = {
   }),
   args: {
     // common stuff for template stories here
-    inputElement,
-    focus,
+    name: "search",
   },
 } satisfies Template;
 

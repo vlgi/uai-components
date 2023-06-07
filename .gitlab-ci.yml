@@ -1,45 +1,20 @@
 # the first thing GitLab Runner will look for in your .gitlab-ci.yml is a Docker image specifying what do you need in your container to run that script
-image: node:14.18.1 # can be upgraded, depending on your node version used
+image: node:18.16.0 # can be upgraded, depending on your node version used
 
 cache: #  Parameter 'cache' to cache the installation files for your projects dependencies, for building faster
   paths:
     - node_modules/
 
 stages:
-  - install-dependencies
+  - prepare
   - test
-  - remove-internal-stories
   - build-storybook
   - deploy
 
-install-dependencies:
-  stage: install-dependencies
+prepare:
+  stage: prepare
   script:
     - npm ci
-  only:
-    - master # or dev, the branch you want to publish
-
-remove-internal-stories:
-  stage: remove-internal-stories
-  script:
-    - >
-      echo '<style>[id*=internal-documentation] {display: none !important;}</style>' > ./.storybook/manager-head.html
-  artifacts:
-    paths:
-      - .storybook
-  only:
-    - master # or dev, the branch you want to publish
-
-build-storybook:
-  stage: build-storybook
-  script:
-    - npm run build-storybook
-  only:
-    - master # or dev, the branch you want to publish
-
-  artifacts:
-    paths:
-      - storybook-static
   only:
     - master # or dev, the branch you want to publish
 
@@ -55,9 +30,27 @@ ts:
   only:
     - master # or dev, the branch you want to publish
 
-test:
+# Removed temporally, because we don't have tests
+# test:
+#   stage: test
+#   script: npm run test
+#   only:
+#     - master # or dev, the branch you want to publish
+
+format:
   stage: test
-  script: npm run test
+  script: npm run format-check
+  only:
+    - master # or dev, the branch you want to publish
+
+build-storybook:
+  stage: build-storybook
+  script:
+    - make rm-int-stories # Delete internal stories (that ones like ...internal.stories.ts|mdx)
+    - npm run build-storybook
+  artifacts:
+    paths:
+      - storybook-static
   only:
     - master # or dev, the branch you want to publish
 

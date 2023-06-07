@@ -7,7 +7,6 @@ import IconWrapper from "./IconWrapper.svelte";
 const meta = {
   title: "Components/Icon",
   component: Icon,
-  tags: ["autodocs"], // enable auto docs
   // common stuff for all stories here
 } satisfies Meta<Icon>;
 
@@ -40,22 +39,5 @@ export const Custom: Story = {
     iconName: "ic:baseline-apple",
     style: "--szot-icon-font-size: 80px;" + "--szot-icon-color: red;",
     ...template.args,
-  },
-  parameters: {
-    docs: {
-      source: {
-        language: "html",
-        code: `
-    <script lang="ts">
-      import Icon from "./Icon.svelte";
-    </script>
-
-    <div style="--szot-icon-font-size: 80px;
-      --szot-icon-color: red;" >
-      <Icon iconName={"ic:baseline-apple"} />
-    </div>
-    `,
-      },
-    },
   },
 };

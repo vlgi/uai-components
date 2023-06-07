@@ -10,19 +10,10 @@
   // Used to force $$restProps be of type ComponentProps<Button>;
   $: restProps = $$restProps as ComponentProps<CleaveInput>;
 
-  let inputComponent;
-
   let inputValue = "";
 </script>
 
-<!--
-  Ver porque estava dando loop infinito quando o form estava em volta do
-  CleaveInput
-  <Form bind:values bind:isAllValid>
-  </Form>
--->
 <CleaveInput
-  bind:this={inputComponent}
   bind:inputElement={restProps.inputElement}
   bind:isValid={restProps.isValid}
   bind:value={restProps.value}

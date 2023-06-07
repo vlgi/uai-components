@@ -7,11 +7,6 @@
   export let isAllValid: boolean;
 </script>
 
-<p>This form is an example using the create InputExample and ButtonExample.</p>
-<br />
-<hr />
-<br />
-
 <Form
   bind:values
   bind:isAllValid

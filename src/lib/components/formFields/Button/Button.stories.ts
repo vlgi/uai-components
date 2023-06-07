@@ -4,7 +4,7 @@ import Button from "./Button.svelte";
 import ButtonExample from "./ButtonExample.svelte";
 
 const meta = {
-  title: "Components/FormFields/Button",
+  title: "Components/form fields/Button",
   component: Button,
   tags: ["autodocs"], // enable auto docs
   argTypes: {

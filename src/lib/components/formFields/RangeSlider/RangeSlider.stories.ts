@@ -4,7 +4,7 @@ import RangeSlider from "./RangeSlider.svelte";
 import RangeSliderExample from "./RangeSliderExample.svelte";
 
 const meta = {
-  title: "Components/FormFields/RangeSlider",
+  title: "Components/form fields/RangeSlider",
   component: RangeSlider,
   tags: ["autodocs"], // enable auto docs
 } satisfies Meta<RangeSlider>;

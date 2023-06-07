@@ -4,7 +4,7 @@ import Checkbox from "./Checkbox.svelte";
 import CheckboxExample from "./CheckboxExample.svelte";
 
 const meta = {
-  title: "Components/FormFields/Checkbox",
+  title: "Components/form fields/Checkbox",
   component: Checkbox,
   tags: ["autodocs"], // enable auto docs
   argTypes: {

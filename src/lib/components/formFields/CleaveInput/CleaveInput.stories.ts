@@ -5,7 +5,7 @@ import CleaveInputExample from "./CleaveInputExample.svelte";
 import { phoneMaskConfig, cpfMaskConfig, cepMaskConfig, currencyMaskConfig } from "./fixtures";
 
 const meta = {
-  title: "Components/FormFields/CleaveInput",
+  title: "Components/form fields/CleaveInput",
   component: CleaveInput,
   tags: ["autodocs"], // enable auto docs
   argTypes: {

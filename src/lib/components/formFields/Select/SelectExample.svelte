@@ -14,6 +14,7 @@
   export let selected: TOption | TOption[] | null = [];
   export let forceInvalid = false;
   export let style = "";
+  export let showSearchInput = true;
 </script>
 
 <div {style}>
@@ -26,8 +27,8 @@
     {multiple}
     {required}
     {min}
+    {showSearchInput}
     {forceInvalid}
-    {...$$restProps}
     bind:isValid
     bind:selected
   />

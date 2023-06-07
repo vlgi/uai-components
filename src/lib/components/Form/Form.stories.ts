@@ -1,8 +1,11 @@
 import type { Meta } from "@storybook/svelte";
 import type { StoryObj } from "$types/storybook";
 import CustomInputExample from "./examples/CustomInputExample.svelte";
+import CustomInputExampleCode from "./examples/CustomInputExample.svelte?raw";
 import CustomButtonExample from "./examples/CustomButtonExample.svelte";
+import CustomButtonExampleCode from "./examples/CustomButtonExample.svelte?raw";
 import CustomUsageExample from "./examples/CustomUsageExample.svelte";
+import CustomUsageExampleCode from "./examples/CustomUsageExample.svelte?raw";
 import FormFieldsComponent from "./examples/FormFieldsExample.svelte";
 import FormFieldsFilledComponent from "./examples/FormFieldsExampleFilled.svelte";
 import CookieFormExampleComponent from "./examples/CookieFormExample.svelte";
@@ -14,7 +17,6 @@ import Form from "./Form.svelte";
 const meta = {
   title: "Components/Form",
   component: Form,
-  tags: ["autodocs"], // enable auto docs
   // common stuff for all stories here
 } satisfies Meta<Form>;
 
@@ -29,64 +31,7 @@ export const CustomInput: StoryObj<typeof meta, CustomInputExample> = {
     docs: {
       source: {
         language: "html",
-        code: `
-      <script lang="ts">
-        import {
-          onMount, getContext, hasContext, onDestroy,
-        } from "svelte";
-        import type { TFormContext } from "./types";
-
-        export let name: string;
-        export let value = "";
-        export let required = false;
-
-        let inputEl: HTMLInputElement;
-        let isValid: boolean;
-
-        const isInsideContext = hasContext("FormContext");
-        const {
-          setFieldValue,
-          addFieldToContext,
-          removeFieldFromContext,
-        } = isInsideContext && getContext<TFormContext>("FormContext");
-
-        function validateInput(_value) {
-          if (_value === "my-input") return true;
-          return false;
-        }
-
-        onMount(() => {
-          if (isInsideContext) {
-            addFieldToContext(name, value, isValid, required, inputEl);
-          }
-        });
-
-        onDestroy(() => {
-          if (isInsideContext) {
-            removeFieldFromContext(name);
-          }
-        });
-
-        // check inputEl to run only after mounted
-        $: if (inputEl) {
-          isValid = validateInput(value);
-          if (isInsideContext) {
-            setFieldValue(name, value, isValid);
-          }
-        }
-      </script>
-
-      <input
-        type="text"
-        { name }
-        { required }
-        bind:this={ inputEl }
-        bind:value
-      />
-      {#if !isValid}
-        <p>Invalid! Type "my-input"</p>
-      {/if}
-      `,
+        code: CustomInputExampleCode,
       },
     },
   },
@@ -101,21 +46,7 @@ export const CustomButton: StoryObj<typeof meta, CustomButtonExample> = {
     docs: {
       source: {
         language: "html",
-        code: `
-      <script lang="ts">
-        import { getContext, hasContext } from "svelte";
-
-        import type { TFormContext } from "./types";
-
-        const isInsideContext = hasContext("FormContext");
-        const { fireSubmit } = isInsideContext && getContext<TFormContext>("FormContext");
-
-      </script>
-
-      <button on:click={ () => isInsideContext && fireSubmit() } on:click>
-        Submit
-      </button>
-            `,
+        code: CustomButtonExampleCode,
       },
     },
   },
@@ -130,25 +61,7 @@ export const CustomUsage: StoryObj<typeof meta, CustomUsageExample> = {
     docs: {
       source: {
         language: "html",
-        code: `
-        <script lang="ts">
-          import Input from "./CustomInputExample.svelte";
-          import Button from "./CustomButtonExample.svelte";
-          import Form from "./Form.svelte";
-
-          export let values: Record<string, unknown>;
-          export let isAllValid: boolean;
-        </script>
-
-        <Form bind:values bind:isAllValid on:submit>
-          <Input name="input-name"/>
-          <br>
-          <Button/>
-        </Form>
-
-        <p><b>Form Values:</b> { JSON.stringify(values) }</p>
-        <p><b>Form valid:</b> { isAllValid }</p>
-`,
+        code: CustomUsageExampleCode,
       },
     },
   },
