@@ -1,14 +1,8 @@
-<<<<<<<< HEAD:src/lib/components/Form/Form.stories.mdx
-import { Canvas, Meta, Story, Source } from "@storybook/blocks";
-
-<Meta title="Components/Form/Usage Docs" />
-========
 import { Meta, ArgsTable, Canvas } from "@storybook/blocks";
 import Form from "./Form.svelte";
 import * as FormStories from "./Form.stories.ts";
 
 <Meta of={FormStories} />
->>>>>>>> 7e15de38ce5bea0779965411c7ff0db6f60af955:src/lib/components/Form/Form.mdx
 
 # Form Docs
 
@@ -28,12 +22,6 @@ fields, not html tags. That's because this wrapper sets up a context to communic
 components and automate validation and fetching values for you.
 
 You can find the full list of the components that can be used inside this wrapper on
-<<<<<<<< HEAD:src/lib/components/Form/Form.stories.mdx
-`Components/FormFields`.
-
-**NOTE: Inside a Form component, every formfield MUST have the name attribute defined, and MUST be
-unique, inside this Form component.**
-========
 `Components/form fields`.
 
 **NOTE: Inside a Form component, every formfield MUST have the name attribute defined, and MUST be
@@ -42,7 +30,6 @@ unique, inside this Form component.**
 ## Form Interface
 
 <ArgsTable of={Form} />
->>>>>>>> 7e15de38ce5bea0779965411c7ff0db6f60af955:src/lib/components/Form/Form.mdx
 
 ## Submit the form
 
@@ -105,29 +92,14 @@ both.
 If you just want create a component to style a formfield, you don't have to handle with this Form
 context, just create the component and style it normally. Our formfield will still work normally.
 
-<<<<<<<< HEAD:src/lib/components/Form/Form.stories.mdx
-If you want to modify the component behavior, like adding an mask that will change the value you
-must handle with the Form context.
-========
 If you want to modify the component behavior, like adding a mask that will change the value you must
 handle with the Form context.
->>>>>>>> 7e15de38ce5bea0779965411c7ff0db6f60af955:src/lib/components/Form/Form.mdx
 
 If you want to create new formfield component, you must handle with the Form context too.
 
 The documentation can be find at the section bellow.
 
-<<<<<<<< HEAD:src/lib/components/Form/Form.stories.mdx
-### Example
-
-We have 3 stories that create:
-
-- [An input example that works with the `Form` component.](?path=/story/components-form--custom-input-example)
-- [An submit example that works with the `Form` component.](?path=/story/components-form--custom-button-example)
-- [And an usage example.](?path=/story/components-form--custom-usage-example)
-========
 Here we have 3 examples:
->>>>>>>> 7e15de38ce5bea0779965411c7ff0db6f60af955:src/lib/components/Form/Form.mdx
 
 ### Creating a custom input
 
