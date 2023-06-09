@@ -5,7 +5,7 @@ import FileSelector from "./FileSelector.svelte";
 import FileSelectorExample from "./FileSelectorExample.svelte";
 
 const meta = {
-  title: "Components/FileSelector",
+  title: "Components/form fields/FileSelector",
   component: FileSelector,
   tags: ["autodocs"], // enable auto docs
   // common stuff for all stories here
@@ -22,7 +22,9 @@ const template = {
     props: args,
   }),
   args: {
-    labelSlot: "Selecionar da galeria",
+    buttonLabel: "Selecionar da galeria",
+    name: "form-input",
+    acceptedFileTypes: ".pdf, image/*",
     // common stuff for template stories here
   },
 } satisfies Template;
@@ -58,7 +60,7 @@ export const FilledFileSelector: Story = {
 export const OnlyPDF: Story = {
   ...template,
   args: {
-    accept: ".pdf",
+    acceptedFileTypes: ".pdf",
     ...template.args,
   },
 };

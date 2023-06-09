@@ -1,38 +1,44 @@
 <script lang="ts">
-  import { onMount, getContext, hasContext, onDestroy, type ComponentProps } from "svelte";
+  import { onMount, getContext, hasContext, onDestroy } from "svelte";
+  import type { ComponentProps } from "svelte";
   import Button from "../Button/Button.svelte";
   import type { TFormContext } from "../../Form/types";
 
   /* eslint-disable*/
   interface $$Props extends ComponentProps<Button> {
     name: string;
-    accept: string;
+    acceptedFileTypes: string;
   }
   /* eslint-enable*/
 
   // set the FileSelector name
   export let name = "file-selector";
-  // set the FileSelector files types accepted
-  export let accept = ".pdf,image/*";
+  /**
+   * Set the types of files accepted on input field
+   * You can pass the desired file extension or the media_type
+   * Use image/*, video/* or audio/* to wrap all types of a media
+   *
+   */
+  export let acceptedFileTypes = ".pdf,image/*";
   // set the FileSelector requires
-  let required = true;
+  export let required = true;
 
   /**
    * Pass the function to validation.
    * Return true/undefined if valid,
    * or a string to show the error, or false to show the "errorMsg" props.
    */
-  let validationFn: (value: File) => undefined | string | boolean = () => true;
+  export let validationFn: (value: File) => undefined | string | boolean = () => true;
 
   /** if you want to force invalid, change it to true */
-  let forceInvalid = false;
+  export let forceInvalid = false;
 
   /** shows if the component is valid (readonly) */
-  let isValid = true;
+  export let isValid = true;
 
-  let files: FileList;
-  let inputEl: HTMLInputElement;
-  let value: File;
+  export let files: FileList | null = null;
+  export let inputEl: HTMLInputElement | null = null;
+  export let value: File = null;
 
   const isInsideContext = hasContext("FormContext");
   const { setFieldValue, addFieldToContext, removeFieldFromContext } =
@@ -66,8 +72,7 @@
   }
 
   function validateInput(_value: File) {
-    if (_value != null) return true;
-    return false;
+    return _value != null;
   }
 
   $: if (inputEl) {
@@ -81,8 +86,6 @@
       setFieldValue(name, value, isValid);
     }
   }
-
-  $: if (files != null) value = files[0];
 
   onMount(() => {
     if (isInsideContext) {
@@ -100,7 +103,7 @@
 <input
   type="file"
   {name}
-  {accept}
+  accept={acceptedFileTypes}
   {required}
   bind:files
   bind:this={inputEl}
