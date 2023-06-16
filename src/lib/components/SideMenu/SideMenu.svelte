@@ -106,7 +106,9 @@
         alt="Logo"
       />
     </div>
-    <hr />
+    <div class="spacer">
+      <hr />
+    </div>
     <div class="nav-items">
       {#each items as n1}
         <!-- n1 item -->
@@ -152,7 +154,9 @@
     </div>
 
     {#if bottomItems.length > 0}
-      <hr />
+      <div class="spacer">
+        <hr />
+      </div>
       <div class="nav-bottom-items-container">
         {#each bottomItems as item}
           <a
@@ -188,7 +192,7 @@
     // nav paddings
     --nav-padding: var(--szot-nav-padding, 0.4rem);
     --nav-logo-padding: var(--szot-nav-logo-padding, 0.6rem 0.3rem);
-    --nav-external-padding: var(--szot-nav-external-padding, 0);
+    --nav-external-padding: var(--szot-nav-external-padding, 0rem);
 
     // nav colors
     --nav-background-color: var(--szot-nav-background-color, #f0f0f0);
@@ -365,12 +369,6 @@
         }
       }
 
-      hr {
-        width: calc(var(--nav-width) - 2 * var(--nav-padding) - 0.4rem);
-        margin: 0 calc(var(--nav-padding));
-        border-color: var(--nav-txt-color);
-      }
-
       @mixin n1-container {
         &--active-true {
           --color-active: var(--nav-items-active-txt-color);
@@ -507,6 +505,21 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    .spacer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 calc(2 * var(--nav-padding));
+
+      hr {
+        border-color: transparent;
+        background-color: var(--szot-nav-spacer-color, var(--nav-txt-color));
+        height: 0.25rem;
+        width: 100%;
+        border-radius: 0.625rem;
+      }
     }
   }
 </style>
