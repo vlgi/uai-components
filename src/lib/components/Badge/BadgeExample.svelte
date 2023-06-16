@@ -18,7 +18,10 @@
 </script>
 
 <div {style}>
-  <Badge {...restProps}>
+  <Badge
+    {...restProps}
+    on:click
+  >
     {labelSlot}
   </Badge>
 </div>
