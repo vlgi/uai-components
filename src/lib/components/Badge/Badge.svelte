@@ -1,13 +1,29 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
   import type { TbadgeStyle, TbadgeStyleType } from "./types";
 
   /** Select the theme color pattern that will be used or Custom to define your own color. */
   export let badgeStyle: TbadgeStyle = "primary";
 
   export let badgeStyleType: TbadgeStyleType = "filled";
+
+  const dispatch = createEventDispatcher<{
+    // dispatch event of click
+    click: undefined;
+  }>();
+
+  function handleKeyboard(ev: KeyboardEvent) {
+    if (ev.key === "Enter") {
+      dispatch("click");
+    }
+  }
 </script>
 
-<span class="badge {badgeStyle} {badgeStyleType}">
+<span
+  class="badge {badgeStyle} {badgeStyleType}"
+  on:click
+  on:keypress={handleKeyboard}
+>
   <span class="text"><slot /></span>
 </span>
 
@@ -19,6 +35,7 @@
     --border: var(--szot-badge-border, var(--default-border));
     --border-color: var(--szot-badge-border-color, var(--default-border-color));
     --font-size: var(--szot-badge-font-size, 0.9rem);
+    --padding: var(--szot-badge-padding, 0 var(--theme-fields-padding));
 
     &.primary {
       --default-background-color: var(--theme-primary-surface);
@@ -60,8 +77,7 @@
     }
 
     font-size: var(--font-size);
-    padding-left: var(--theme-fields-padding);
-    padding-right: var(--theme-fields-padding);
+    padding: var(--padding);
     text-align: center;
     @include m.border(var(--border), var(--border-color));
     border-radius: var(--theme-small-shape);
