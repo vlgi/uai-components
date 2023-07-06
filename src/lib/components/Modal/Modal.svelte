@@ -129,9 +129,6 @@
                 icon="mdi:close"
                 buttonStyle="light"
                 size="round"
-                buttonAttributes={{
-                  autofocus: true,
-                }}
                 on:click={() => {
                   opened = false;
                 }}
