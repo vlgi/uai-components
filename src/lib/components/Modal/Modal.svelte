@@ -59,7 +59,7 @@
     modalContexts = modalContexts.filter((modalID) => modalID !== id);
   }
 
-  function onClose() {
+  function onClose(dispatchCloseEvent: boolean) {
     removeMeFromTheContext();
 
     // if there isn't more modal opened release the scroll
@@ -67,8 +67,10 @@
       scrolltoggle(false);
     }
 
-    // fired when modal is closed
-    dispatcher("closeModal");
+    if (dispatchCloseEvent) {
+      // fired when modal is closed
+      dispatcher("closeModal");
+    }
   }
 
   function closeIfIsLastModal() {
@@ -88,14 +90,14 @@
   $: if (opened) {
     onOpen();
   } else {
-    onClose();
+    onClose(true);
   }
 
   onDestroy(() => {
     opened = false;
 
     // call again, because after ondestroy svelte doens't run the variables reactions again
-    onClose();
+    onClose(false);
   });
 </script>
 
