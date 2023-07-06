@@ -4,14 +4,15 @@
 
 ### Features
 
-- add possibility to use async functions on dialog callbacks
+- Add possibility to use async functions on dialog callbacks.
 
 ### Refactors
 
 ### Fix
 
-- remove autofocus from close button on modal to prevent modal close on press enter
-- add missing documentation about dropdown behavior
+- Remove autofocus from close button on modal to prevent modal close on press enter.
+- Add missing documentation about dropdown behavior.
+- Remove dispatch of close event on modal component when modal is destroyed.
 
 ### Breaking Changes
 
