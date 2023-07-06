@@ -11,6 +11,7 @@
 ### Fix
 
 - remove autofocus from close button on modal to prevent modal close on press enter
+- add missing documentation about dropdown behavior
 
 ### Breaking Changes
 
