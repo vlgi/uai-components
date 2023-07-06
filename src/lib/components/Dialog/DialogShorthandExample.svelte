@@ -14,8 +14,8 @@
     dispatch("confirm");
   }
 
-  function onCancel() {
-    dispatch("cancel");
+  async function onCancel() {
+    await dispatch("cancel");
   }
 
   function openDialog() {

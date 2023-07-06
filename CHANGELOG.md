@@ -4,6 +4,8 @@
 
 ### Features
 
+- add possibility to use async functions on dialog callbacks
+
 ### Refactors
 
 ### Fix
