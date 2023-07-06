@@ -10,6 +10,8 @@
 
 ### Fix
 
+- remove autofocus from close button on modal to prevent modal close on press enter
+
 ### Breaking Changes
 
 ## v3.1.1
