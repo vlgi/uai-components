@@ -59,9 +59,9 @@ export const Single: Story = {
     id: "doce",
     name: "doce",
     label: "Sobremesa",
+    selected: null,
     options,
     style: "--szot-select-max-width: 8rem",
-    selected: options[0],
     ...template.args,
   },
 };
@@ -193,6 +193,21 @@ export const HideSearchInput: Story = {
     options,
     selected: options[0],
     showSearchInput: false,
+    ...template.args,
+  },
+};
+
+export const HideLabel: Story = {
+  ...template,
+  args: {
+    id: "doce",
+    name: "doce",
+    label: "Sobremesas",
+    options,
+    showSearchInput: false,
+    showLabel: false,
+    selected: null,
+    placeholder: "Placeholder...",
     ...template.args,
   },
 };

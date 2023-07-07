@@ -81,6 +81,10 @@
 
   export let showSearchInput = true;
 
+  export let showLabel = true;
+
+  export let placeholder = "";
+
   // ====== Internal control ====== //
 
   // Type casts the selected as TOption for internal use
@@ -240,8 +244,10 @@
     };
   }
 
-  $: applyClipPath =
-    dropdownOpen || (selected && (!Array.isArray(selected) || selected?.length !== 0));
+  $: applyClipPath = Boolean(placeholder) || dropdownOpen || (
+      selected && (!Array.isArray(selected)
+      || selected?.length !== 0)
+    );
 
   onMount(() => {
     if (isInsideContext) {
@@ -289,14 +295,16 @@
       for="{id}-custom"
       on:click={() => toggleOpen()}
       on:keypress={(e) => e.key === "Enter" && toggleOpen()}
-      class:floated={dropdownOpen || isFilled(selected)}
+      class:floated={dropdownOpen || isFilled(selected) || placeholder}
       bind:this={labelComponent}
       use:actionWatchSize
       on:actionResize={handleLabelResize}
     >
-      <div class="label-text">
-        {label}
-      </div>
+      {#if showLabel}
+        <div class="label-text">
+          {label}
+        </div>
+      {/if}
     </label>
 
     <!-- Select's box that shows which option is selected -->
@@ -332,11 +340,15 @@
         {/each}
       {:else if !multiple && selectedSingle}
         {selectedSingle ? selectedSingle.text : ""}
-      {:else}
+      {:else if placeholder}
+        <span class="placeholder">{placeholder}</span>
+      {:else if showLabel}
         <span
           class="fade-out"
           class:faded={!dropdownOpen}>Selecione</span
         >
+      {:else}
+        <br/>
       {/if}
     </div>
 
@@ -441,9 +453,11 @@
     --search-input-border-color: var(
       --szot-select-search-input-border-color,
       var(--component-border-color)
-    );
+      );
+
     --text-color: var(--szot-select-text-color, var(--theme-dark-txt));
     --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--text-color));
+    --component-placeholder-color: var(--szot-select-placeholder-color, var(--text-color));
     --border-width: var(--component-border);
   }
 
@@ -487,6 +501,10 @@
     gap: 0.2rem;
     max-width: 90%;
     outline: none;
+  }
+
+  .placeholder {
+    @include m.text-color(var(--component-placeholder-color));
   }
 
   .select {
@@ -634,7 +652,6 @@
       height: var(--component-arrow-size);
 
       position: absolute;
-
       top: calc(var(--component-padding-vertical) + calc(1rem - var(--component-arrow-size)) / 2);
       right: var(--component-padding-horizontal);
 

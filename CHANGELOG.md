@@ -1,5 +1,18 @@
 # Changelogs
 
+## current
+
+### Features
+
+- Add possibility of hide label in Select component
+- Add placeholder in Select component
+
+### Refactors
+
+### Fix
+
+### Breaking Changes
+
 ## v3.2.0
 
 ### Features
