@@ -15,6 +15,9 @@
   export let forceInvalid = false;
   export let style = "";
   export let showSearchInput = true;
+  export let showLabel = true;
+  export let placeholder = "";
+
 </script>
 
 <div {style}>
@@ -28,6 +31,8 @@
     {required}
     {min}
     {showSearchInput}
+    {showLabel}
+    {placeholder}
     {forceInvalid}
     bind:isValid
     bind:selected
