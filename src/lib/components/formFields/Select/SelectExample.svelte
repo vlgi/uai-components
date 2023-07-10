@@ -17,7 +17,6 @@
   export let showSearchInput = true;
   export let showLabel = true;
   export let placeholder = "";
-
 </script>
 
 <div {style}>
