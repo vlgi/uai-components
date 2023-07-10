@@ -244,10 +244,10 @@
     };
   }
 
-  $: applyClipPath = Boolean(placeholder) || dropdownOpen || (
-      selected && (!Array.isArray(selected)
-      || selected?.length !== 0)
-    );
+  $: applyClipPath =
+    Boolean(placeholder) ||
+    dropdownOpen ||
+    (selected && (!Array.isArray(selected) || selected?.length !== 0));
 
   onMount(() => {
     if (isInsideContext) {
@@ -348,7 +348,7 @@
           class:faded={!dropdownOpen}>Selecione</span
         >
       {:else}
-        <br/>
+        <br />
       {/if}
     </div>
 
@@ -453,7 +453,7 @@
     --search-input-border-color: var(
       --szot-select-search-input-border-color,
       var(--component-border-color)
-      );
+    );
 
     --text-color: var(--szot-select-text-color, var(--theme-dark-txt));
     --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--text-color));
