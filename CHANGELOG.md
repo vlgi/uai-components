@@ -1,5 +1,17 @@
 # Changelogs
 
+## v3.4.0
+
+### Features
+
+- Add in Dialog component and shorthand possibility of centralize Dialog content
+
+### Refactors
+
+### Fix
+
+### Breaking Changes
+
 ## v3.3.0
 
 ### Features

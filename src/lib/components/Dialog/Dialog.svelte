@@ -28,6 +28,9 @@
   // the text for the info/warning/error/success buttons
   export let othersButtonTxt = "Ok";
 
+  // variable to enable centralize text from content variable
+  export let centralizeContent = false;
+
   /**
    * If true, hide close button in the modal
    * @type {boolean}
@@ -138,7 +141,12 @@
         <!-- you can change the default content -->
         <slot name="dialog-content" />
       {:else}
-        <p class="content">{content}</p>
+        <p
+          class="content"
+          class:centralize-text={centralizeContent}
+        >
+          {content}
+        </p>
       {/if}
     </div>
 
@@ -270,5 +278,9 @@
     @include m.text-color(var(--txt-color));
     font-size: var(--txt-size);
     font-weight: var(--txt-weight);
+
+    &.centralize-text {
+      text-align: center;
+    }
   }
 </style>
