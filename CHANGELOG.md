@@ -10,6 +10,9 @@
 
 ### Fix
 
+- It fixes the error of the input label not applying the clipping on the border when, when it comes
+  into focus but it still doesn't have text.
+
 ### Breaking Changes
 
 ## v3.3.0
