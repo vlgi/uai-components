@@ -207,8 +207,7 @@
   }
   // using notation value ? value. : undefined because auto doc break when
   // there is ?. operator in script tag
-  $: applyClipPath = inFocus || value ? value.length > 0 : undefined || lockLabelTop;
-
+  $: applyClipPath = inFocus || (value ? value.length > 0 : undefined) || lockLabelTop;
   onMount(() => {
     if (isInsideContext) {
       addFieldToContext(name, value, isValid, required, wrapperElement, validation, forceValue);

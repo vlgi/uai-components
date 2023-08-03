@@ -151,7 +151,6 @@
       ...cleaveOptions,
       onValueChanged: ({ target }: TCleaveEvent) => {
         const { rawValue, value: maskedValue } = target;
-
         if (inputEnabled) {
           value = rawValue;
           internalInputValue = maskedValue;
@@ -183,9 +182,9 @@
     });
   }
 
-  $: if (cleave || addedToContext) {
+  $: if (cleave || addedToContext || value) {
     // Keep value consistent when updating
-    if (cleave) {
+    if (cleave && value) {
       cleave.setRawValue(value);
     }
 
