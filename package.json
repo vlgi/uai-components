@@ -1,6 +1,6 @@
 {
   "name": "szot-ui-experimental",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "scripts": {
     "dev": "vite dev --host --port 5000",
     "storybook": "storybook dev -p 6006",
