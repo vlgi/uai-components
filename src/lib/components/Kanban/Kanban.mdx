@@ -1,0 +1,198 @@
+import { Meta, ArgTypes } from "@storybook/blocks";
+import * as KanbanStories from "./Kanban.stories.ts";
+import Kanban from "./Kanban.svelte";
+
+<Meta of={KanbanStories} />
+
+# Kanban
+
+Kanban is the main component to build a board, you can use it alone or use it with our complementary
+components such as: List, Card and Label.
+
+<ArgTypes of={Kanban} />
+
+## How use
+
+### Simple example
+
+To use it, just pass your data list, which must always be a list of objects and this object must
+have a unique "id" along with the other data you want to use.
+
+```jsx
+<script>
+  import { Kanban } from "szot-ui-experimental";
+  let columnItems: { id: number, text: string }[];
+</script>
+
+  <Kanban
+    bind:columnItems
+  >
+    <svelte:fragment
+      slot="column"
+      let:text
+    >
+      <span>{text}</span>
+    </svelte:fragment>
+  </Kanban>
+```
+
+### ❌ Don't do:
+
+Within Kanban or List, "svelte/transition" should not be used.
+
+```jsx
+<script>
+  import type { SlideParams } from "svelte/transition";
+  import { slide } from "svelte/transition";
+  import { Kanban } from "szot-ui-experimental";
+
+  let columnItems: { id: number}[];
+
+  let transition: SlideParams = { duration: 250 };
+</script>
+
+<Kanban
+  bind:columnItems
+>
+  <svelte:fragment
+    slot="column"
+    let:columnData
+  >
+    <div
+      class="any"
+      transition:slide={transition}
+    />
+  </svelte:fragment>
+</Kanban>
+```
+
+### Using with our List component:
+
+You can create you kanban column, but you can use our List component too. Our list handle with itens
+draging for you.
+
+To use kanban with our List component is basically the same as create yours. You must pass to the
+kanban the columns data, containing the cards list data. As documented on List componente, each card
+must have an unique ID. But to use Kanban+List the ID of the card must be unique on the entire
+kanban.
+
+```jsx
+<script>
+  import { Card, List, Kanban } from "szot-ui-experimental";
+
+  type TCardsList = {
+    id: number;
+    title: string;
+  }[];
+
+  type TListData = {
+    id: number;
+    title: string;
+    cardsList: TCardsList;
+  }[];
+
+  let columnItems: TListData = [
+    {
+      id: 1,
+      title: "List 1",
+      cardsList: [
+        {
+          id: 1,
+          title: "Card 1",
+        },
+        {
+          id: 2,
+          title: "Card 2",
+        },
+        {
+          id: 3,
+          title: "Card 3",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "List 2",
+      cardsList: [
+        {
+          id: 4,
+          title: "Card 3",
+        },
+        {
+          id: 5,
+          title: "Card 4",
+        },
+        {
+          id: 6,
+          title: "Card 5",
+        },
+      ],
+    },
+  ];
+</script>
+
+<Kanban
+  bind:columnItems
+>
+  <svelte:fragment
+    slot="column"
+    let:columnData
+  >
+    <List
+      id={columnData.id}
+      title={columnData.title}
+      cardsList={columnData.cardsList}
+    >
+      <svelte:fragment
+        slot="list-item"
+        let:cardData
+      >
+        <Card>
+          <span>{cardData.title}</span>
+        </Card>
+      </svelte:fragment>
+    </List>
+  </svelte:fragment>
+</Kanban>
+```
+
+**Note**
+
+In the Kanban slot, you can receive the object with the data or the object's values, but these data
+do not have a "bind" , so if they are edited, the list passed to the Kanban needs to be updated
+manually.
+
+The Kanban as well as the list have the changelog in addition to the click and drag events of the
+list. Here whenever there is a change in the board it will be triggered, if the change occurs within
+a list (ex: moving a card), the change event will be an "update" but if you look at the changelog of
+the list you can see if it was added or removed from it.
+
+```jsx
+....
+<Kanban
+  bind:columnItems
+  on:changelog // when there is a change in the Bord
+>
+  <svelte:fragment
+    slot="column"
+    let:columnData
+    let:index
+  >
+    <List
+      id={columnData.id}
+      title={columnData.title}
+      bind:cardsList={columnItems[index].cardsList}
+      on:changelog // when there is a change in the List
+    >
+      <svelte:fragment
+        slot="list-item"
+        let:cardData
+      >
+        <Card>
+          <span>{cardData.title}</span>
+        </Card>
+      </svelte:fragment>
+    </List>
+  </svelte:fragment>
+</Kanban>
+```

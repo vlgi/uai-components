@@ -1,5 +1,19 @@
 # Changelogs
 
+## current
+
+### Features
+
+- Create card component
+- Create color picker component
+- Create kanban componentes like board, list, and label
+
+### Refactors
+
+### Fix
+
+### Breaking Changes
+
 ## v3.4.0
 
 ### Features

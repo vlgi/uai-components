@@ -1,0 +1,35 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Components/Card/Css Variables" />
+
+# Card
+
+| CSS Property                 | Descripiton                                                          | Default                               |
+| ---------------------------- | -------------------------------------------------------------------- | ------------------------------------- |
+| --card-background            | card background color                                                | white                                 |
+| --card-border-size           | card border size                                                     | 0                                     |
+| --card-border-color          | card border color                                                    | none                                  |
+| --card-padding               | card padding                                                         | 1.5em                                 |
+| --card-border-radius         | card border radius                                                   | 0.75em                                |
+| --card-padding-header        | card padding header                                                  | 0.9375em calc(1.5em - 1.5em) 0.9375em |
+| --card-box-shadow            | card box shadow                                                      | 0rem 0rem 0.25rem 0rem #00000012      |
+| --card-border-not-gradient   | used to have a border on the card when the background is transparent | none                                  |
+| --card-slotted-background    | card slot background color                                           | #808080                               |
+| --card-slotted-border-radius | card slot border radius                                              | 0.75em                                |
+| --card-slotted-padding       | card slot padding                                                    | 0.625em                               |
+| --card-title-font-weight     | card title font weight                                               | 600                                   |
+| --card-title-font-size       | card title font size                                                 | 1.25rem                               |
+| --card-title-margin-top      | card title margin top                                                | 0.45em                                |
+| --card-title-margin-bottom   | card title margin bottom                                             | 0.25em                                |
+| --card-title-margin-right    | card title margin right                                              | 1em                                   |
+
+## Notes
+
+{" "}
+
+<p>
+  The card has 2 variables for the border: "--card-border-not-gradient" and "--card-border-color".
+  With "--card-border-color" you can use any color for the border, including gradient, but if you
+  have subpixel problems or want to make the background of the card transparent you should use
+  "--card-border-not-gradient " and not set "--card-border-color".
+</p>

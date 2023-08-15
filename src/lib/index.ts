@@ -24,4 +24,12 @@ export { default as EmojiPicker } from "$components/EmojiPicker/EmojiPicker.svel
 export { default as Modal } from "$components/Modal/Modal.svelte";
 export { default as Dialog } from "$components/Dialog/DialogShorthand";
 
+export { default as Card } from "$components/Card/Card.svelte";
+
+export { default as PickerColor } from "$lib/components/PickerColor/PickerColor.svelte";
+export { default as LabelEditor } from "$lib/components/Kanban/components/LabelEditor/LabelEditor.svelte";
+export { default as Label } from "$components/Kanban/components/Label/Label.svelte";
+export { default as List } from "$components/Kanban/components/List/List.svelte";
+export { default as Kanban } from "$components/Kanban/Kanban.svelte";
+
 export { addIcons } from "$helpers/iconify";
