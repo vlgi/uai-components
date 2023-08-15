@@ -1,0 +1,82 @@
+import { Meta, ArgTypes } from "@storybook/blocks";
+import * as ListStories from "./List.stories.ts";
+import List from "./List.svelte";
+
+<Meta of={ListStories} />
+
+# List
+
+The List is a complementary component to Kanban that can be used independently or in conjunction
+with Kanban.
+
+<ArgTypes of={List} />
+
+## How use
+
+### Simple example
+
+To use it, just pass your data list, which must always be a list of objects and this object must
+have a unique "id" along with the other data you want to use.
+
+The List has a changelog event informing the affected item (in the example below, the Card), the
+action performed and the updated index of the item in the list.
+
+```jsx
+<script>
+  import { Button, Card, List } from "szot-ui-experimental";
+
+  let cardsList: { id: number, text: string }[];
+</script>
+
+  <List
+    id={1}
+    bind:cardsList
+    on:changelog // card list changes
+  >
+    <svelte:fragment slot="header-list">
+      <Button
+        size="round"
+        icon="mdi:dots-horizontal"
+      />
+    </svelte:fragment>
+
+    <svelte:fragment
+      slot="list-item"
+      let:text
+    >
+      <Card>
+        <span>{text}</span>
+      </Card>
+    </svelte:fragment>
+  </List>
+```
+
+### ❌ Don't do:
+
+Within Kanban or List, "svelte/transition" should not be used.
+
+```jsx
+<script>
+  import type { SlideParams } from "svelte/transition";
+  import { slide } from "svelte/transition";
+  import { List } from "szot-ui-experimental";
+
+  let cardsList: { id: number}[];
+
+  let transition: SlideParams = { duration: 250 };
+</script>
+
+<List
+  bind:columnItems
+>
+  <svelte:fragment
+    slot="list-item"
+    let:cardsList
+  >
+    <div
+      class="any"
+      transition:slide={transition}
+    />
+  </svelte:fragment>
+</List>
+```
