@@ -77,9 +77,11 @@
 
   /**
    * The [CleaveOptions](https://github.com/nosir/cleave.js/blob/master/doc/options.md) used for the mask.
+   * Required, if you not need an mask use default Input componente.
+   * This componente doesn't work without a valid mask option.
    * @type {object}
    */
-  export let cleaveOptions: CleaveOptions = {};
+  export let cleaveOptions: CleaveOptions;
 
   let cleave: Cleave;
 

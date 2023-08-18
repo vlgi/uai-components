@@ -5,7 +5,7 @@
 
   import { actionOutClick } from "$actions/clickOutside/clickOutside";
   import { throttle } from "$helpers/perfomance";
-  import { fuzzySearch } from "$helpers/searching";
+  import searching from "$helpers/searching";
   import { checkIfItemIsInArray } from "$helpers/arrays-handling";
 
   import Input from "../formFields/Input/Input.svelte";
@@ -115,62 +115,58 @@
   }
 
   // fuzzy search with throtle in each category emojis from keys above
-  function searchIcons(e: InputEvent) {
+  const searchIcons = throttle((e: InputEvent) => {
     const val = (e.target as HTMLInputElement).value;
-    return throttle(() => {
-      if (val !== "") {
-        // if there is any string on input search
-        const keys = ["name", "keywords"]; // keys to search for on fuzzy search
-        searched = true;
-        let fuzzyResults: TEmojiCategoriesData[] = [];
+    if (val !== "") {
+      // if there is any string on input search
+      const keys = ["name", "keywords"]; // keys to search for on fuzzy search
+      searched = true;
+      let fuzzyResults: TEmojiCategoriesData[] = [];
 
-        // search for each category emojis
-        fullData.forEach((c) => {
-          const result: TEmojiData[] = fuzzySearch(c.emojisFullData, val, keys, 0.2).map(
-            (r) => r.item
-          );
+      // search for each category emojis
+      fullData.forEach((c) => {
+        const result: TEmojiData[] = searching(c.emojisFullData, val, keys, 0.2);
 
-          // set fuzzyResults with the same fullData object type format
-          fuzzyResults = [
-            ...fuzzyResults,
-            {
-              ...c,
-              emojis: result.map((r) => r.id),
-              emojisFullData: [...result],
-            },
-          ];
-        });
-
-        // set all searched emojis results in the same array
-        let searchedEmojis: string[] = [];
-        let searchedEmojisFullData: TEmojiData[] = [];
-
-        fuzzyResults.forEach((r: TEmojiCategoriesData) => {
-          searchedEmojis = [...searchedEmojis, ...r.emojis];
-          searchedEmojisFullData = [...searchedEmojisFullData, ...r.emojisFullData];
-        });
-
-        // set all searched emojis in a single category
-        results = [
+        // set fuzzyResults with the same fullData object type format
+        fuzzyResults = [
+          ...fuzzyResults,
           {
-            id: "searched",
-            name: "Searched",
-            icon: "",
-            emojis: [...searchedEmojis],
-            emojisFullData: [...searchedEmojisFullData],
+            ...c,
+            emojis: result.map((r) => r.id),
+            emojisFullData: [...result],
           },
         ];
-      } else {
-        // if there isnt any string on input search
-        resetSearch();
-      }
-    }, 500)();
-  }
+      });
+
+      // set all searched emojis results in the same array
+      let searchedEmojis: string[] = [];
+      let searchedEmojisFullData: TEmojiData[] = [];
+
+      fuzzyResults.forEach((r: TEmojiCategoriesData) => {
+        searchedEmojis = [...searchedEmojis, ...r.emojis];
+        searchedEmojisFullData = [...searchedEmojisFullData, ...r.emojisFullData];
+      });
+
+      // set all searched emojis in a single category
+      results = [
+        {
+          id: "searched",
+          name: "Searched",
+          icon: "",
+          emojis: [...searchedEmojis],
+          emojisFullData: [...searchedEmojisFullData],
+        },
+      ];
+    } else {
+      // if there isnt any string on input search
+      resetSearch();
+    }
+  }, 500);
 
   function setEmojiToLocalStorage(emoji: TEmojiData) {
     const check = checkIfItemIsInArray(emoji, recentlyUsedStorage);
     if (check.isInIt) {
-      const copy: TEmojiData[] = JSON.parse(JSON.stringify(recentlyUsedStorage)) as TEmojiData[];
+      const copy: TEmojiData[] = structuredClone(recentlyUsedStorage);
       copy.splice(check.index, 1);
       recentlyUsedStorage = [...copy];
     }

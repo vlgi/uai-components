@@ -1,31 +1,28 @@
 <script lang="ts">
   import type { ComponentProps } from "svelte";
   import SearchInput from "./SearchInput.svelte";
+  import { complexDesserts } from "./fixtures";
 
   // Force this example extend the base component interface, so we can use the
   // spreed of restProps, instead of declare again all component interface manually.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  type $$Props = ComponentProps<SearchInput>;
+  type $$Props = ComponentProps<SearchInput<(typeof complexDesserts)[0]>>;
 
   // Used to force $$restProps be of type ComponentProps<SearchInput>;
-  $: restProps = $$restProps as ComponentProps<SearchInput>;
+  function typeRestProps(restProps: unknown) {
+    return restProps as ComponentProps<SearchInput<(typeof complexDesserts)[0]>>;
+  }
 
-  /**
-   * TODO - I don't know why, but after update the stack
-   * this component only works if this 3 props are exported.
-   * And the reactivity doesn't work. But select, that use this component
-   * works perfectly.
-   */
-  export let filtered: unknown[] = [];
-  export let items: unknown[] = [];
-  export let searchable: string[] = [];
+  let filtered = complexDesserts;
+  let items = complexDesserts;
 </script>
 
 <SearchInput
   bind:filtered
+  on:change
+  on:input
   {items}
-  {searchable}
-  {...restProps}
+  {...typeRestProps($$restProps)}
 />
 
 <header>

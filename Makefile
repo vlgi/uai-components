@@ -16,3 +16,9 @@ enter:
 rm-int-stories:
 	find -name *.internal.stories.* -delete
 	find -name *.internal.mdx -delete
+
+
+# Tasks commands
+export file
+extract-variables:
+	node tasks/cssVariablesExtractor.cjs $(file)

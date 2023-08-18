@@ -1,11 +1,15 @@
 <script lang="ts">
-  import Input from "../Input/Input.svelte";
+  /* eslint-disable */
+  /**
+   * Disabling lint for this file because him can't handle with $$Generic
+   * necessary to make the table columns and table rows be strong typed.
+   */
 
-  // Field concatenation
-  type TConcat = {
-    index: number;
-    concatenated: string;
-  };
+  import Input from "../Input/Input.svelte";
+  import searching from "$helpers/searching";
+  import { throttle } from "$helpers/perfomance";
+
+  type TItem = $$Generic;
 
   type TborderStyle = "primary" | "secondary" | "dark" | "light";
 
@@ -31,17 +35,18 @@
    * All the fields that can be searched.
    * @type {array}
    */
-  export let searchable: string[];
+  export let searchable: Parameters<typeof searching<TItem>>[2];
   /**
    * The items to be filtered by the search.
    * @type {array}
    */
-  export let items: unknown[] = [];
+  export let items: TItem[] = [];
   /**
    * The items filtered by the search.
+   * Readonly. Will be = to "items" if searchQuery is empty
    * @type {array}
    */
-  export let filtered: unknown[] = [];
+  export let filtered: TItem[] = [];
 
   // Search input name //
   export let name: string;
@@ -67,33 +72,19 @@
     if (inputElement) inputElement.focus();
   };
 
-  // Generate a lookup table with the searchable fields concatenated
-  function concatenateSearchable(_items: unknown[], _searchable: string[]): TConcat[] {
-    return _items.map((item, i) => {
-      let concatenated = "";
-      _searchable.forEach((field) => {
-        concatenated = `${concatenated} ${item[field] as string}`;
-      });
-      return {
-        index: i,
-        concatenated,
-      };
-    });
-  }
-  $: searchConcat = concatenateSearchable(items, searchable);
+  const performSearch = throttle((query: string) => {
+    if (query) {
+      filtered = searching(items, query, searchable);
+    } else {
+      filtered = items;
+    }
+  }, 500);
 
-  // search for each word
-  function calculateRegex(_searchQuery: string) {
-    const words = _searchQuery.split(" ").filter((v) => v !== "");
-    const wordSet = `(${words.join("|")})`;
-    return RegExp(`${wordSet}.*`.repeat(words.length), "i");
-  }
-  $: regex = calculateRegex(searchQuery);
-
-  // Searches in the concatenated fields and then find each corresponding item
-  $: filtered = searchConcat
-    .filter(({ concatenated }) => concatenated.match(regex) !== null)
-    .map(({ index }) => items[index]);
+  /**
+   * Perform search only when searchQuery change.
+   * If you need to change items or searchable keys, remount the component.
+   */
+  $: performSearch(searchQuery);
 
   $: inputAttributes.tabindex = tabindex;
   $: inputAttributes.placeholder = placeholder;

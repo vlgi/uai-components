@@ -18,13 +18,13 @@ export function throttle<T extends (...args: unknown[]) => unknown>(fn: T, waitT
 
   function returnFn(...args): void {
     if (!lastExec) {
-      fn.apply(args);
+      fn.apply(this, args);
       lastExec = Date.now();
     } else {
       clearTimeout(timer);
       timer = setTimeout(() => {
         if (Date.now() - lastExec >= waitTime) {
-          fn.apply(args);
+          fn.apply(this, args);
           lastExec = Date.now();
         }
       }, waitTime - (Date.now() - lastExec));

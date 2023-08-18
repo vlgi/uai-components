@@ -1,5 +1,19 @@
 # Changelogs
 
+## current
+
+### Features
+
+- search input now uses fuzzy method that is more performative and allow deep search
+
+### Refactors
+
+### Fix
+
+- fix some docs
+
+### Breaking Changes
+
 ## v3.5.0
 
 ### Features
