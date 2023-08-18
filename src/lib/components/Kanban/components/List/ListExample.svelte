@@ -15,7 +15,6 @@
 
 <script lang="ts">
   import List from "./List.svelte";
-  import Label from "../Label/Label.svelte";
   import Card from "$components/Card/Card.svelte";
   import Button from "$components/formFields/Button/Button.svelte";
   import type { TDiffDatas } from "../../logger";
@@ -31,7 +30,6 @@
 
   // variables used in the kanban example
   export let showLog = true;
-  export let openLabels = true;
 
   let listLastChange: TDiffDatas = undefined;
 
@@ -42,7 +40,7 @@
 
 <List
   {id}
-  {title}
+  title="{title}-{id}"
   {dropTargetStyle}
   {animationDurationMs}
   {dragDisabled}
@@ -62,8 +60,8 @@
 
   <svelte:fragment
     slot="list-item"
-    let:labels
     let:title
+    let:id
   >
     <div class="card">
       <Card>
@@ -71,21 +69,8 @@
           class="header"
           slot="header"
         >
-          <div class="labels">
-            {#each labels as labelData}
-              <Label
-                bind:isOpened={openLabels}
-                {labelData}
-              />
-            {/each}
-          </div>
-          <span>{title}</span>
+          <span>{title}{id}</span>
         </div>
-        <p>
-          {id} - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-          has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
-          a galley of type and scrambled it to make a type specimen book.
-        </p>
       </Card>
     </div>
   </svelte:fragment>
@@ -103,12 +88,6 @@
   .header {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .labels {
-    display: flex;
-    flex-direction: row;
     gap: 0.5rem;
   }
 
