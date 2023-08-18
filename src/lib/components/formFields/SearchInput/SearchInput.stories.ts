@@ -1,6 +1,6 @@
 import type { Meta } from "@storybook/svelte";
 import type { StoryObj, TemplateObj } from "$types/storybook";
-import { complexDesserts } from "./fixtures";
+import type { complexDesserts } from "./fixtures";
 
 import SearchInput from "./SearchInput.svelte";
 import SearchInputExample from "./SearchInputExample.svelte";
@@ -10,7 +10,7 @@ const meta = {
   component: SearchInput,
   tags: ["autodocs"], // enable auto docs
   // common stuff for all stories here
-} satisfies Meta<SearchInput>;
+} satisfies Meta<SearchInput<(typeof complexDesserts)[0]>>;
 
 export default meta;
 
@@ -31,7 +31,6 @@ const template = {
 export const Default: Story = {
   ...template,
   args: {
-    items: complexDesserts,
     searchable: ["variety", "flavor"],
     searchQuery: "",
     ...template.args,
@@ -41,7 +40,6 @@ export const Default: Story = {
 export const Searching: Story = {
   ...template,
   args: {
-    items: complexDesserts,
     searchable: ["variety"],
     searchQuery: "brownie",
     icon: "mdi:magnify",
@@ -49,12 +47,12 @@ export const Searching: Story = {
   },
 };
 
-export const MultipleFieldsSearching: Story = {
+export const DeepSearching: Story = {
   ...template,
   args: {
-    items: complexDesserts,
-    searchable: ["variety", "topping", "flavor"],
-    searchQuery: "brownie chocolate",
+    searchable: ["rank.status"],
+    searchQuery: "loved",
+    icon: "mdi:magnify",
     ...template.args,
   },
 };

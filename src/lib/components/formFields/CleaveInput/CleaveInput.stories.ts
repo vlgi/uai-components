@@ -63,19 +63,6 @@ const template = {
   args: {},
 } satisfies Template;
 
-export const Default: Story = {
-  ...template,
-  args: {
-    ...template.args,
-    // args for this specific story here
-    label: "Nome",
-    name: "name",
-    helperText: "Digite seu primeiro nome",
-    errorMsg: "Falhou, tente novamente",
-    type: "text",
-  },
-};
-
 export const Phone: Story = {
   ...template,
   args: {
