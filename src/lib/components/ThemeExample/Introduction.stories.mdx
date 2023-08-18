@@ -9,11 +9,14 @@ with css variables.
 
 If you set the global theme customization, all components will changing accordingly.
 
+The global customization you can find here on the Theme section.
+
 You can set any where your custom variables to customize your theme. For example, if you set
 `--szot-primary: red` at the body component, all components that use primary color will be red. But
 if in some specific section you set `--szot-primary: blue`, all components inside this section will
 use primary color as blue, and the rest of the entire web site will keep red as primary. This way
-you can change the theme with scope.
+you can change the theme with scope. This is dued by the css cascade behaviour, read about it
+[here](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance).
 
 Some times we want to change some specific component style. Imagine a button that have primary
 background color, you could change the primary variable only for this component, but the global
@@ -24,6 +27,10 @@ For styling the component we export some especific variables, that way you could
 change just the color of the button, or they hight, or another thing.
 
 The components customization is documentated at the respective section of the component.
+
+Some componentes externalize css classes too. That way you can apply your css variables only for an
+especific component internal state, like, change button background color only when the button is
+pressed, or on focus.
 
 **NOTE: all variables, for global theme or customization of the component, have the prefix `szot`.**
 

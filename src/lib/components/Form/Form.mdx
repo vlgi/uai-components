@@ -8,7 +8,7 @@ import * as FormStories from "./Form.stories.ts";
 
 This component is a wrapper to use like html form:
 
-```jsx
+```tsx
 <Form>
   <Input
     type="text"
@@ -43,7 +43,7 @@ You can submit the form in 3 ways, described bellow.
 
 ### With our `<Button type="submit">` inside the `Form` component.
 
-```jsx
+```tsx
 <Form>
   <Input
     type="text"
@@ -55,7 +55,7 @@ You can submit the form in 3 ways, described bellow.
 
 ### With a the fireSubmit function
 
-```jsx
+```tsx
 <script>
   let fireSubmit: () => Promise<void>;
 </script>
@@ -69,7 +69,7 @@ You can submit the form in 3 ways, described bellow.
 
 ### With `Form` `id` props and `Button` `form`
 
-```jsx
+```tsx
 <Form id="my-exclusive-form">
   <Input type="text" name="my-input"/>
 </Form>

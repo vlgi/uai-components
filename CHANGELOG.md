@@ -5,8 +5,11 @@
 ### Features
 
 - search input now uses fuzzy method that is more performative and allow deep search
+- add css variable to change kanban column width
 
 ### Refactors
+
+- refactor some docs, to say more about css cascade using css variables.
 
 ### Fix
 

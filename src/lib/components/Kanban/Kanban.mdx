@@ -18,7 +18,7 @@ components such as: List, Card and Label.
 To use it, just pass your data list, which must always be a list of objects and this object must
 have a unique "id" along with the other data you want to use.
 
-```jsx
+```tsx
 <script>
   import { Kanban } from "szot-ui-experimental";
   let columnItems: { id: number, text: string }[];
@@ -40,7 +40,7 @@ have a unique "id" along with the other data you want to use.
 
 Within Kanban or List, "svelte/transition" should not be used.
 
-```jsx
+```tsx
 <script>
   import type { SlideParams } from "svelte/transition";
   import { slide } from "svelte/transition";
@@ -76,7 +76,7 @@ kanban the columns data, containing the cards list data. As documented on List c
 must have an unique ID. But to use Kanban+List the ID of the card must be unique on the entire
 kanban.
 
-```jsx
+```tsx
 <script>
   import { Card, List, Kanban } from "szot-ui-experimental";
 
@@ -167,7 +167,7 @@ list. Here whenever there is a change in the board it will be triggered, if the 
 a list (ex: moving a card), the change event will be an "update" but if you look at the changelog of
 the list you can see if it was added or removed from it.
 
-```jsx
+```tsx
 ....
 <Kanban
   bind:columnItems
