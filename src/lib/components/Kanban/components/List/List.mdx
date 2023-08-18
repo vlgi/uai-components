@@ -21,7 +21,7 @@ have a unique "id" along with the other data you want to use.
 The List has a changelog event informing the affected item (in the example below, the Card), the
 action performed and the updated index of the item in the list.
 
-```jsx
+```tsx
 <script>
   import { Button, Card, List } from "szot-ui-experimental";
 
@@ -55,7 +55,7 @@ action performed and the updated index of the item in the list.
 
 Within Kanban or List, "svelte/transition" should not be used.
 
-```jsx
+```tsx
 <script>
   import type { SlideParams } from "svelte/transition";
   import { slide } from "svelte/transition";

@@ -115,6 +115,6 @@
   }
 
   .column {
-    width: 100%;
+    width: var(--szot-kanban-column-width, 100%);
   }
 </style>

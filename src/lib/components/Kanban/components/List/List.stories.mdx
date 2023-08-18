@@ -10,3 +10,31 @@ import { Meta } from "@storybook/blocks";
 | --szot-list-flex-direction | card list flex direction | column    |
 | --szot-list-padding        | card list padding        | 0 0.25rem |
 | --szot-list-items-gap      | card list gap            | 0.5rem    |
+
+This component use our Card component, so as css variables will cascade you can set the css
+variables of the card for this component too. But as they cascade if you use our Card component
+inside the list slot you must overwritte the css variables used to customize the list. Unfortunately
+this is a limitation of the approach we choose to customize components styles.
+
+```tsx
+...
+<List
+  --card-background: red
+>
+  <svelte:fragment
+    slot="list-item"
+    let:text
+  >
+    <!--
+      here we set the --card-background to blue even if it is the default
+      because the var defined on list will cascate to here too
+    -->
+    <Card
+      --card-background: blue
+    >
+      <span>{text}</span>
+    </Card>
+  </svelte:fragment>
+</List>
+...
+```
