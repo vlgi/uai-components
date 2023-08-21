@@ -1,5 +1,17 @@
 # Changelogs
 
+## v3.6.1
+
+### Features
+
+### Refactors
+
+### Fix
+
+- make `search input` `items` props reative again
+
+### Breaking Changes
+
 ## v3.6.0
 
 ### Features
