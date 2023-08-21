@@ -13,15 +13,16 @@
     return restProps as ComponentProps<SearchInput<(typeof complexDesserts)[0]>>;
   }
 
+  export let items: typeof complexDesserts;
   let filtered = complexDesserts;
-  let items = complexDesserts;
+
 </script>
 
 <SearchInput
   bind:filtered
+  {items}
   on:change
   on:input
-  {items}
   {...typeRestProps($$restProps)}
 />
 

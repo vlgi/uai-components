@@ -1,6 +1,6 @@
 import type { Meta } from "@storybook/svelte";
 import type { StoryObj, TemplateObj } from "$types/storybook";
-import type { complexDesserts } from "./fixtures";
+import { complexDesserts } from "./fixtures";
 
 import SearchInput from "./SearchInput.svelte";
 import SearchInputExample from "./SearchInputExample.svelte";
@@ -25,6 +25,7 @@ const template = {
   args: {
     // common stuff for template stories here
     name: "search",
+    items: complexDesserts,
   },
 } satisfies Template;
 

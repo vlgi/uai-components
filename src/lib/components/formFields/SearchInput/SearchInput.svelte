@@ -72,7 +72,7 @@
     if (inputElement) inputElement.focus();
   };
 
-  const performSearch = throttle((query: string) => {
+  const performSearch = throttle((items: TItem[], query: string) => {
     if (query) {
       filtered = searching(items, query, searchable);
     } else {
@@ -81,10 +81,9 @@
   }, 500);
 
   /**
-   * Perform search only when searchQuery change.
-   * If you need to change items or searchable keys, remount the component.
+   * Perform search when searchQuery ot items change.
    */
-  $: performSearch(searchQuery);
+  $: performSearch(items, searchQuery);
 
   $: inputAttributes.tabindex = tabindex;
   $: inputAttributes.placeholder = placeholder;
