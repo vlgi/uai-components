@@ -15,7 +15,6 @@
 
   export let items: typeof complexDesserts;
   let filtered = complexDesserts;
-
 </script>
 
 <SearchInput
