@@ -1,5 +1,17 @@
 # Changelogs
 
+## v3.6.2
+
+### Features
+
+### Refactors
+
+### Fix
+
+- make kanban handle with horizontal scroll
+
+### Breaking Changes
+
 ## v3.6.1
 
 ### Features

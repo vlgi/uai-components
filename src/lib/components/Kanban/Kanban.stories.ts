@@ -124,6 +124,39 @@ const cardsList3 = [
   },
 ];
 
+const cardsList4 = [
+  {
+    id: 30,
+    title: "Card 1",
+    labels: [...labels],
+  },
+  {
+    id: 31,
+    title: "Card 2",
+    labels: [labels[1]],
+  },
+  {
+    id: 32,
+    title: "Card 3",
+    labels: [...labels],
+  },
+  {
+    id: 33,
+    title: "Card 4",
+    labels: [labels[0]],
+  },
+  {
+    id: 34,
+    title: "Card 5",
+    labels: [...labels],
+  },
+  {
+    id: 35,
+    title: "Card 6",
+    labels: [...labels],
+  },
+];
+
 export const Default: Story = {
   ...template,
   args: {
@@ -143,6 +176,11 @@ export const Default: Story = {
         id: 3,
         title: "List 3",
         cardsList: [...cardsList3],
+      },
+      {
+        id: 4,
+        title: "List 4",
+        cardsList: [...cardsList4],
       },
     ],
   },

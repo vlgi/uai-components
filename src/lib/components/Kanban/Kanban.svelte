@@ -27,6 +27,12 @@
   let columnItemsBeforeChange: TColumnData[] = structuredClone(columnItems);
   let columnItemsClone: TColumnData[] = structuredClone(columnItems);
 
+  // variables to controls zone scroll
+  let scrollContainerEl: HTMLElement = null;
+  let dndRectData: DOMRect;
+  let interval = null;
+  let isAutoScrollEnabled = false;
+
   const dispatch = createEventDispatcher<{
     clickColumn: { columnId: number };
     changelog: TDiffDatas[];
@@ -56,6 +62,50 @@
     dispatch("changelog", loggerList);
   }
 
+  function startScroll(x: number) {
+    if (interval || !scrollContainerEl) return;
+    interval = setInterval(() => scrollContainerEl.scrollBy({ left: x }), 25);
+  }
+
+  function stopScroll() {
+    clearInterval(interval);
+    interval = null;
+  }
+
+  function scrollToLeft() {
+    startScroll(-10);
+  }
+
+  function scrollToRight() {
+    startScroll(10);
+  }
+
+  function enableAutoScroll() {
+    isAutoScrollEnabled = true;
+  }
+
+  function disableAutoScroll() {
+    isAutoScrollEnabled = false;
+    stopScroll();
+  }
+
+  function handleAutoScroll(ev: MouseEvent) {
+    if (!isAutoScrollEnabled || !dndRectData) return;
+
+    const offset = 70;
+    const leftThreshold = dndRectData.x + offset;
+    const rightThreshold = dndRectData.x + dndRectData.width - offset;
+
+    const { clientX } = ev;
+    if (clientX < leftThreshold) {
+      scrollToLeft();
+    } else if (clientX > rightThreshold) {
+      scrollToRight();
+    } else {
+      stopScroll();
+    }
+  }
+
   $: if (columnItems) {
     columnItemsClone = structuredClone(columnItems);
     sendLogger();
@@ -63,7 +113,15 @@
   }
 </script>
 
+<svelte:window
+  on:mousemove={handleAutoScroll}
+  on:mousedown|capture={enableAutoScroll}
+  on:mouseup|capture={disableAutoScroll}
+/>
+
 <div
+  bind:this={scrollContainerEl}
+  bind:contentRect={dndRectData}
   use:dndzone={{
     items: columnItemsClone,
     flipDurationMs: animationDurationMs,
@@ -105,16 +163,18 @@
 <style lang="scss">
   .colums-list {
     display: flex;
-    flex-direction: var(--szot-kanban-flex-direction, row);
+    flex-direction: row;
 
     border: var(--szot-kanban-border, none);
     padding: var(--szot-kanban-padding, 0.5rem);
-    width: var(--szot-kanban-width, fit-content);
+    width: var(--szot-kanban-width, 100%);
+    overflow: auto;
     height: var(--szot-kanban-height, 100%);
     gap: var(--szot-kanban-gap, 1rem);
   }
 
   .column {
-    width: var(--szot-kanban-column-width, 100%);
+    width: var(--szot-kanban-column-width, 25rem);
+    flex-shrink: 0;
   }
 </style>
