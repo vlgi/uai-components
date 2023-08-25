@@ -106,11 +106,16 @@
     }
   }
 
-  $: if (columnItems) {
+  /**
+   * set internal variables to control the kanban
+   */
+  function handleColumnItemsChange(columnItems: TColumnData[]) {
     columnItemsClone = structuredClone(columnItems);
     sendLogger();
     columnItemsBeforeChange = structuredClone(columnItems);
   }
+
+  $: handleColumnItemsChange(columnItems);
 </script>
 
 <svelte:window

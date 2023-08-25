@@ -24,6 +24,17 @@
   export let dropTargetStyle: Record<string, string> = { outline: "none" };
   export let dragDisabled = false;
 
+  /**
+   * If true itens inside the list can't be ordered, the fixed order will be id.
+   * You can customize the fixed order too, passing an sort function
+   */
+  export let unordered = false;
+  export let sortFunction: (a: TCardData, b: TCardData) => -1 | 0 | 1 = (a, b) => {
+    if (a.id > b.id) return 1;
+    if (a.id < b.id) return -1;
+    return 0;
+  };
+
   // save what we have before the change to create the log
   let listBeforeChange: TCardData[] = structuredClone(cardsList);
   let lastChangeItemID: number = 0;
@@ -55,11 +66,15 @@
 
   // functions of the lib "svelte-dnd-action" necessary for moving cards
   function handleDndConsider(e: CustomEvent<DndEvent<TCardData>>) {
+    if (unordered) e.detail.items.sort(sortFunction);
+
     cardsListClone = structuredClone(e.detail.items);
     dispatch("draggingCard", { listId: id, cardId: Number(e.detail.info.id) });
   }
 
   function handleDndFinalize(e: CustomEvent<DndEvent<TCardData>>) {
+    if (unordered) e.detail.items.sort(sortFunction);
+
     cardsList = structuredClone(e.detail.items);
     lastChangeItemID = Number(e.detail.info.id);
 

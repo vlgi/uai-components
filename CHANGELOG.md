@@ -1,5 +1,15 @@
 # Changelogs
 
+## current
+
+### Features
+
+- allow create list for kanban that can't be ordered
+
+### Refactors
+
+### Fix
+
 ## v3.6.2
 
 ### Features

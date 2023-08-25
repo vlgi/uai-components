@@ -19,15 +19,25 @@
   import Card from "$components/Card/Card.svelte";
   import Button from "$components/formFields/Button/Button.svelte";
   import type { TDiffDatas } from "../../logger";
+  import type { ComponentProps } from "svelte";
+
+  // Force this example extend the base component interface, so we can use the
+  // spreed of restProps, instead of declare again all component interface manually.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  interface $$Props extends ComponentProps<List<TCardsList>> {
+    id: number;
+    cardsList: TCardsList[];
+    showLog?: boolean;
+    openLabels?: boolean;
+  }
+
+  // Used to force $$restProps be of type ComponentProps<List<TCardsList>>;
+  function typeRestProps(restProps: unknown) {
+    return restProps as ComponentProps<List<TCardsList>>;
+  }
 
   export let id: number;
-  export let title: string;
-  export let animationDurationMs: number;
-  export let dropTargetStyle: Record<string, string> = { outline: "none" };
-
   export let cardsList: TCardsList[];
-
-  export let dragDisabled = false;
 
   // variables used in the kanban example
   export let showLog = true;
@@ -42,11 +52,8 @@
 
 <List
   {id}
-  {title}
-  {dropTargetStyle}
-  {animationDurationMs}
-  {dragDisabled}
   bind:cardsList
+  {...typeRestProps($$restProps)}
   on:draggingCard
   on:finishDraggingCard
   on:clickCard
