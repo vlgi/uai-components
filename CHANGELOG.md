@@ -5,6 +5,7 @@
 ### Features
 
 - allow create list for kanban that can't be ordered
+- allow set select to open with a floating dropdown
 
 ### Refactors
 
