@@ -1,6 +1,6 @@
 # Changelogs
 
-## current
+## v3.7.0
 
 ### Features
 
