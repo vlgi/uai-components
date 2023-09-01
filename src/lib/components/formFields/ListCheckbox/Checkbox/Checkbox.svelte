@@ -167,12 +167,14 @@
           <Icon iconName="ion:close-circle" />
         {/if}
       {/if}
+      <slot name="leftLabelSlot" />
       <label
         for={id}
         class="badge-label"
       >
         {label !== undefined ? label : ""}
       </label>
+      <slot name="rightLabelSlot" />
       {#if iconPosition === "right" || iconPosition === "both"}
         {#if checked}
           <Icon iconName="ion:close-circle" />
