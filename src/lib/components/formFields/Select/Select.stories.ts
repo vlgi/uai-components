@@ -66,6 +66,21 @@ export const Single: Story = {
   },
 };
 
+export const SingleFloating: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesa",
+    options,
+    required: true,
+    dropdownStyle: "floating",
+    style: "--szot-select-floating-dropdown-bg-color: #eee",
+    ...template.args,
+  },
+};
+
 export const SingleSelected: Story = {
   ...template,
   args: {

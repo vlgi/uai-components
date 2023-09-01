@@ -9,7 +9,6 @@
   import type { TOption, TOptionsListBinds } from "./types";
   import type { TbadgeStyle, TbadgeStyleType } from "../../Badge/types";
   import { actionWatchSize } from "$actions/watchSize/watchSize";
-  import { isTruthy } from "$helpers/truthy";
 
   // True if the select should select multiple values
   export let multiple = false;
@@ -64,6 +63,12 @@
    * Choose one of the theme styles.
    */
   export let selectStyle: TSelectStyle = "dark";
+
+  /**
+   * Control if the options container will open in a absolute position (floating)
+   * or inside the select element (nested).
+   */
+  export let dropdownStyle: "floating" | "nested" = "nested";
 
   // At the multiple select, this will set the badge style
   export let badgeStyle: TbadgeStyle = selectStyle;
@@ -136,8 +141,6 @@
         isValid = selected !== null && selected !== undefined;
       }
     }
-
-    isVisuallyValid = isValid;
   }
 
   /**
@@ -244,10 +247,9 @@
     };
   }
 
-  $: applyClipPath =
-    Boolean(placeholder) ||
-    dropdownOpen ||
-    (selected && (!Array.isArray(selected) || selected?.length !== 0));
+  $: applyClipPath = !!placeholder || dropdownOpen || isFilled(selected);
+
+  $: isVisuallyValid = isValid || dropdownOpen;
 
   onMount(() => {
     if (isInsideContext) {
@@ -271,7 +273,7 @@
     --label-width: {clipPathVariables.labelWidth};
   "
   class:apply-clip-path={applyClipPath}
-  class:filled={isTruthy(selected)}
+  class:filled={isFilled(selected)}
 >
   <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
   <div
@@ -358,6 +360,7 @@
       class:with-search-input={showSearchInput}
       class:closed={!dropdownOpen}
       class:with-borders={selectBorder === "bottom"}
+      class:floating={dropdownStyle === "floating"}
     >
       {#if showSearchInput}
         <div class="search-input">
@@ -459,6 +462,8 @@
     --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--text-color));
     --component-placeholder-color: var(--szot-select-placeholder-color, var(--text-color));
     --border-width: var(--component-border);
+
+    --floating-dropdown-bg-color: var(--szot-select-floating-dropdown-bg-color, white);
   }
 
   .select-wrapper {
@@ -601,18 +606,45 @@
       grid-template-rows: 1fr;
       gap: var(--component-padding-vertical);
 
-      &.with-search-input {
-        grid-template-rows: auto 1fr;
-      }
-
       overflow: hidden;
       max-height: 10rem;
 
       border-radius: 0 0 var(--component-border-radius) var(--component-border-radius);
-      padding: 0 var(--component-padding-horizontal);
+      padding: 0 var(--component-padding-horizontal) var(--component-padding-horizontal)
+        var(--component-padding-horizontal);
 
       transition: max-height var(--open-transition-duration),
         padding var(--open-transition-duration);
+
+      &.floating {
+        position: absolute;
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+        background-color: var(--floating-dropdown-bg-color);
+
+        // this 0.1875rem on padding is because the search input have a margin top
+        padding: 0.1875rem var(--component-padding-horizontal) var(--component-padding-horizontal)
+          var(--component-padding-horizontal);
+
+        bottom: -0.3125rem;
+        border-radius: var(--component-border-radius);
+        border: 0.0625rem solid var(--component-border-color);
+
+        &.closed {
+          border: none;
+        }
+
+        .search-input {
+          --szot-input-border-radius: calc(
+            var(--component-border-radius) - var(--component-padding-horizontal)
+          );
+        }
+      }
+
+      &.with-search-input {
+        grid-template-rows: auto 1fr;
+      }
 
       .search-input {
         --szot-input-background-color: var(--component-background-color);

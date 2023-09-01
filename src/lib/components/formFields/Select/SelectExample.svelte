@@ -1,38 +1,30 @@
 <script lang="ts">
+  import type { ComponentProps } from "svelte";
   import Select from "./Select.svelte";
   import type { TOption } from "./types";
 
-  export let label: string;
-  export let options: TOption[];
-  export let id: string;
-  export let name: string;
-  export let selectAttributes = {};
+  // Force this example extend the base component interface, so we can use the
+  // spreed of restProps, instead of declare again all component interface manually.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  interface $$Props extends ComponentProps<Select> {
+    style?: string;
+  }
+
   export let multiple = false;
-  export let required = false;
-  export let min = 1;
+  export let selected: TOption | TOption[] | null = multiple ? [] : null;
   export let isValid = true;
-  export let selected: TOption | TOption[] | null = [];
-  export let forceInvalid = false;
   export let style = "";
-  export let showSearchInput = true;
-  export let showLabel = true;
-  export let placeholder = "";
+
+  // Used to force $$restProps be of type ComponentProps<Select>;
+  function typeRestProps(restProps: unknown) {
+    return restProps as ComponentProps<Select>;
+  }
 </script>
 
 <div {style}>
   <Select
-    {label}
-    {options}
-    {id}
-    {name}
-    {selectAttributes}
+    {...typeRestProps($$restProps)}
     {multiple}
-    {required}
-    {min}
-    {showSearchInput}
-    {showLabel}
-    {placeholder}
-    {forceInvalid}
     bind:isValid
     bind:selected
   />
