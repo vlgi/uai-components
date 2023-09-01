@@ -1,5 +1,15 @@
 # Changelogs
 
+## v3.8.0
+
+### Features
+
+- allow more customization in checkbox using slots
+
+### Refactors
+
+### Fix
+
 ## v3.7.0
 
 ### Features

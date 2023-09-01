@@ -145,6 +145,58 @@ export const CustomBadgePillExample: Story = {
   },
 };
 
+export const BadgePillWithLeftSlot: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "badge-pill",
+    styleType: "badge-pill",
+    badgeStyle: "primary",
+    label: "label",
+    iconPosition: "both",
+    showLeftSlot: true,
+    style:
+      " --szot-checkbox-badge-pill-icon-color: orange;" +
+      "--szot-checkbox-badge-pill-selected-label-color: orange",
+  },
+};
+
+export const BadgePillWithRightSlot: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "badge-pill",
+    styleType: "badge-pill",
+    badgeStyle: "primary",
+    label: "label",
+    iconPosition: "both",
+    showRightSlot: true,
+    style:
+      " --szot-checkbox-badge-pill-icon-color: orange;" +
+      "--szot-checkbox-badge-pill-selected-label-color: orange",
+  },
+};
+
+export const BadgePillWithBothSlot: Story = {
+  ...template,
+  args: {
+    ...template.args,
+    // args for this specific story here
+    name: "badge-pill",
+    styleType: "badge-pill",
+    badgeStyle: "primary",
+    label: "label",
+    iconPosition: "both",
+    showRightSlot: true,
+    showLeftSlot: true,
+    style:
+      " --szot-checkbox-badge-pill-icon-color: orange;" +
+      "--szot-checkbox-badge-pill-selected-label-color: orange",
+  },
+};
+
 export const CustomSwitchExample: Story = {
   ...template,
   args: {
