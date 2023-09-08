@@ -17,11 +17,17 @@
   // open and close the modal (make a bind to sync, or use the close Modal event)
   export let opened = false;
 
-  // when true if "Escape" is pressed will close the modal
+  // when true, if "Escape" is pressed will close the modal
   export let closeOnEsc = true;
 
-  // when true if user click out the modal will close it
+  // when true, if user click out the modal will close it
   export let closeOnClickOut = true;
+
+  /*
+    when true, if user click on X button the modal will dispatch an 'tryToClose' event
+    instead of close immediately
+  */
+  export let checkBeforeClose = false;
 
   /**
    * If true, hide close button in the modal
@@ -57,6 +63,14 @@
 
   function removeMeFromTheContext() {
     modalContexts = modalContexts.filter((modalID) => modalID !== id);
+  }
+
+  function onTryToClose() {
+    if (!checkBeforeClose) {
+      opened = false;
+    } else {
+      dispatcher("tryToClose");
+    }
   }
 
   function onClose(dispatchCloseEvent: boolean) {
@@ -131,9 +145,7 @@
                 icon="mdi:close"
                 buttonStyle="light"
                 size="round"
-                on:click={() => {
-                  opened = false;
-                }}
+                on:click={onTryToClose}
               />
             </div>
           {/if}
@@ -165,6 +177,9 @@
     --close-txt-color: var(--szot-modal-close-txt-color, var(--theme-txt-on-light-surface));
     --padding: var(--szot-modal-padding, 0.6rem);
     --margin-content: var(--szot-modal-margin-content, 0.6rem 0);
+    --header-padding: var(--szot-modal-header-padding, 0.9375rem 0.9375rem 0rem 0.9375rem);
+    --footer-padding: var(--szot-modal-footer-padding, 0rem 0.9375rem 0.9375rem 0.9375rem);
+    --content-padding: var(--szot-modal-content-padding, 0rem 0.9375rem 0.9375rem 0.9375rem);
 
     position: fixed;
     top: 0;
@@ -211,6 +226,7 @@
       grid-gap: 0.5em;
       border-radius: 15px 15px 0 0;
       align-items: center;
+      padding: var(--header-padding);
 
       .close-button-container {
         --szot-button-background-color: var(--close-bg-color);
@@ -221,6 +237,11 @@
     .modal-content {
       overflow-y: auto;
       margin: var(--margin-content);
+      padding: var(--content-padding);
+    }
+
+    .modal-footer {
+      padding: var(--footer-padding);
     }
   }
 </style>
