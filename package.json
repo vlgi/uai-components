@@ -106,7 +106,8 @@
     "fuse.js": "^6.6.2",
     "hammerjs": "^2.0.8",
     "remark-gfm": "^3.0.1",
+    "svelte-awesome-color-picker": "2.4.6",
     "svelte-dnd-action": "0.9.24",
-    "svelte-awesome-color-picker": "2.4.6"
+    "svelte-tooltip": "^1.2.0"
   }
 }
