@@ -13,7 +13,7 @@
 
 </script>
 
-<div class="tooltip-wrapper">
+<div class="tooltip-container">
   <SvelteTooltip
     tip={message}
     top={position === "top"}
@@ -33,7 +33,7 @@
 </div>
 
 <style lang="scss">
-  .tooltip-wrapper {
+  .tooltip-container {
     color: #ffffff;
   }
 </style>
