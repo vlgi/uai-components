@@ -334,6 +334,8 @@
 
     --label-left: var(--szot-input-label-left, 1.2rem);
 
+    isolation: isolate;
+
     &.apply-clip-path {
       .border-outline::before {
         @include m.clip-path-border(

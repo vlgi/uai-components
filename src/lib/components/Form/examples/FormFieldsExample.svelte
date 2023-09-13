@@ -131,12 +131,12 @@
     validationFn={min10Characters}
   />
   <Select
+    dropdownStyle="floating"
     label="Favorite Dessert"
     id="favorite-desserts"
     name="favorite-desserts"
     options={simpleDessertsOptions}
     required={true}
-    disabled={true}
   />
   <Select
     label="Disliked Dessert"

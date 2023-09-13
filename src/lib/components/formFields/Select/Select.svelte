@@ -464,6 +464,7 @@
     --border-width: var(--component-border);
 
     --floating-dropdown-bg-color: var(--szot-select-floating-dropdown-bg-color, white);
+    --floating-dropdown-text-color: var(--szot-select-floating-dropdown-text-color);
   }
 
   .select-wrapper {
@@ -618,10 +619,14 @@
 
       &.floating {
         position: absolute;
+        z-index: 1; // necessary to be over others formfields
         left: 0;
         right: 0;
         transform: translateY(100%);
         background-color: var(--floating-dropdown-bg-color);
+
+        // overwrite the text color inside the dropdown only when floating
+        --szot-select-text-color: var(--floating-dropdown-text-color);
 
         // this 0.1875rem on padding is because the search input have a margin top
         padding: 0.1875rem var(--component-padding-horizontal) var(--component-padding-horizontal)
