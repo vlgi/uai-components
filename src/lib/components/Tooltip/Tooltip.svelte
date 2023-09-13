@@ -8,13 +8,13 @@
   export let position: TTipPosition;
   export let iconSize = "";
   export let iconColor = "";
-  export let tipBgColor =  "#757575";
+  export let tipBgColor = "#757575";
   export let isActive = false;
 </script>
 
 <div class="tooltip-container">
   <SvelteTooltip
-    tip={tip}
+    {tip}
     top={position === "top"}
     bottom={position === "bottom"}
     left={position === "left"}

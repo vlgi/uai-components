@@ -38,9 +38,7 @@ export const Big: Story = {
   args: {
     ...template.args,
     iconSize: "50px",
-    style:
-      "--szot-tooltip-txt-font-size:2rem;" +
-      "--szot-tooltip-txt-font-weight:400;",
+    style: "--szot-tooltip-txt-font-size:2rem;" + "--szot-tooltip-txt-font-weight:400;",
   },
 };
 

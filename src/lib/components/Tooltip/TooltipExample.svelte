@@ -16,8 +16,5 @@
 </script>
 
 <div {style}>
-  <Tooltip
-    {...restProps}
-  >
-  </Tooltip>
+  <Tooltip {...restProps} />
 </div>
