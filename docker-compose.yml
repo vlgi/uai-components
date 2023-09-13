@@ -9,5 +9,4 @@ services:
     ports:
       - "6006:6006"
       - "5000:5000"
-    user: 1000:1000
     tty: true
