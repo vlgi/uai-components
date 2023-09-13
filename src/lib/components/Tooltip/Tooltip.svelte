@@ -1,37 +1,40 @@
 <script lang="ts">
-  //import { tooltip } from './tooltip';
-  import Button from "$components/formFields/Button/Button.svelte";
   import SvelteTooltip from "svelte-tooltip";
+  import Icon from "../Icon/Icon.svelte";
 
-  type Tposition = "top" | "bottom" | "left" | "right";
-  type TTooltipStyle = "dark" | "light";
+  type TTipPosition = "top" | "bottom" | "left" | "right";
 
-  export let message: string;
-  export let position: Tposition;
-  export let tooltipStyle: TTooltipStyle = "dark";
+  export let tip: string;
+  export let position: TTipPosition;
+  export let iconSize = "";
+  export let iconColor = "";
+  export let tipBgColor =  "#757575";
   export let isActive = false;
 </script>
 
 <div class="tooltip-container">
   <SvelteTooltip
-    tip={message}
+    tip={tip}
     top={position === "top"}
     bottom={position === "bottom"}
     left={position === "left"}
     right={position === "right"}
     active={isActive}
+    color={tipBgColor}
   >
-    <Button
-      buttonStyleType="not-filled"
-      size="round"
-      icon="ph:info"
-      buttonStyle={tooltipStyle}
+    <Icon
+      iconName="ph:info"
+      --szot-icon-color={iconColor}
+      --szot-icon-font-size={iconSize}
     />
   </SvelteTooltip>
 </div>
 
 <style lang="scss">
   .tooltip-container {
-    color: #ffffff;
+    cursor: pointer;
+    color: var(--szot-tooltip-txt-color, #ffffff);
+    font-size: var(--szot-tooltip-txt-font-size, 1rem);
+    font-weight: var(--szot-tooltip-txt-font-weight, 400);
   }
 </style>
