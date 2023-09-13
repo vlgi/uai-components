@@ -321,6 +321,7 @@
     position: relative;
     padding: var(--checkbox-padding);
     margin: var(--checkbox-margin);
+    isolation: isolate;
 
     .border-checkbox-input {
       box-sizing: content-box;

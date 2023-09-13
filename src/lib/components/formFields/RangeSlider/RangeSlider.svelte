@@ -269,6 +269,8 @@
     --range-filled-proportion: calc(var(--range-filled) / var(--range-gap));
     --range-progress-width: calc(var(--range-filled-proportion) * var(--range-min-between-widths));
 
+    isolation: isolate;
+
     .range-wrapper {
       display: grid;
       grid: 1fr / 1fr;

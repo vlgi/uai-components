@@ -1,5 +1,17 @@
 # Changelogs
 
+## current
+
+### Features
+
+- Adiciona uma variável ao select para controlar a cor do texto no modo floating.
+
+### Refactors
+
+### Fix
+
+- Corrige o select flutuante abrindo em baixo de outros form fields.
+
 ## v3.8.0
 
 ### Features
