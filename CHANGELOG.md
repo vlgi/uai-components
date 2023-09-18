@@ -1,16 +1,26 @@
 # Changelogs
 
-## v3.9.0
+## v3.10.0
 
 ### Features
 
-- Adiciona uma variável ao select para controlar a cor do texto no modo floating.
+- allow choose icon position in search input
 
 ### Refactors
 
 ### Fix
 
-- Corrige o select flutuante abrindo em baixo de outros form fields.
+## v3.9.0
+
+### Features
+
+- allow choose text color of select in the floating mode
+
+### Refactors
+
+### Fix
+
+- fix floating select opening below another form field
 
 ## v3.8.0
 

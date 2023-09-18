@@ -33,7 +33,9 @@ export const Default: Story = {
   ...template,
   args: {
     searchable: ["variety", "flavor"],
+    icon: "tabler:search",
     searchQuery: "",
+    iconPosition: "left",
     ...template.args,
   },
 };
