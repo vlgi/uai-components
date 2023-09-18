@@ -15,6 +15,8 @@
 
   type Tborders = "bottom" | "outline";
 
+  type TPositionIcon = "left" | "right";
+
   /** choose default theme colors */
   export let inputStyle: TborderStyle = "dark";
 
@@ -63,6 +65,9 @@
   // Other attributes for the HTML input element
   export let inputAttributes: Record<string, string> = {};
 
+  /** choose position of the icon */
+  export let iconPosition: TPositionIcon = "right";
+
   export let disabled = false;
 
   /**
@@ -99,6 +104,7 @@
   {inputStyle}
   {border}
   {icon}
+  {iconPosition}
   {inputAttributes}
 />
 
