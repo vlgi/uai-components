@@ -1,5 +1,18 @@
 # Changelogs
 
+## v3.11.0
+
+### Features
+
+- Create MessageBox, a component for displaying messages in a chat.
+- Create ChatInput, a variation of input with more options for a chat.
+
+### Refactors
+
+### Fix
+
+- Fixed problem with Textarea when there was no label and a blank square remained.
+
 ## v3.10.0
 
 ### Features
