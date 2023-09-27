@@ -32,4 +32,7 @@ export { default as Label } from "$components/Kanban/components/Label/Label.svel
 export { default as List } from "$components/Kanban/components/List/List.svelte";
 export { default as Kanban } from "$components/Kanban/Kanban.svelte";
 
+export { default as ChatInput } from "$components/Messages/Components/ChatInput/ChatInput.svelte";
+export { default as MessageBox } from "$components/Messages/Components/MessageBox/MessageBox.svelte";
+
 export { addIcons } from "$helpers/iconify";

@@ -185,6 +185,7 @@
         on:blur={validation}
         on:input
         on:change
+        on:keypress
         bind:this={textareaElement}
         {rows}
         {name}
@@ -197,18 +198,20 @@
         {...textareaAttributes}
       />
     </div>
-    <label
-      for={id}
-      class="label"
-      class:required
-      bind:this={labelComponent}
-      use:actionWatchSize
-      on:actionResize={handleLabelResize}
-    >
-      <div class="label-text">
-        {label}
-      </div>
-    </label>
+    {#if label}
+      <label
+        for={id}
+        class="label"
+        class:required
+        bind:this={labelComponent}
+        use:actionWatchSize
+        on:actionResize={handleLabelResize}
+      >
+        <div class="label-text">
+          {label}
+        </div>
+      </label>
+    {/if}
   </div>
   <p
     class="helper message"
