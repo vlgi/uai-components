@@ -465,6 +465,8 @@
 
     --floating-dropdown-bg-color: var(--szot-select-floating-dropdown-bg-color, white);
     --floating-dropdown-text-color: var(--szot-select-floating-dropdown-text-color);
+
+    --error-height-hidden: var(--szot-select-error-height-hidden);
   }
 
   .select-wrapper {
@@ -493,6 +495,7 @@
   }
   .invisible {
     visibility: hidden;
+    height: var(--error-height-hidden);
   }
   .fade-out {
     transition: opacity var(--open-transition-duration);

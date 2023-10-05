@@ -334,6 +334,8 @@
 
     --label-left: var(--szot-input-label-left, 1.2rem);
 
+    --error-height-hidden: var(--szot-input-error-height-hidden, 0);
+
     isolation: isolate;
 
     &.apply-clip-path {
@@ -628,7 +630,7 @@
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
       @include m.text-color(var(--theme-error));
-      height: 0;
+      height: var(--error-height-hidden);
       margin-bottom: var(--margin-bottom);
     }
     &.error-show {

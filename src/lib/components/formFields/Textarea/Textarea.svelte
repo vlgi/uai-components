@@ -237,6 +237,8 @@
     --message-left: var(--szot-textarea-message-left, 1rem);
     --message-error-bottom-focus: var(--szot-textarea-message-error-bottom-focus, -2rem);
 
+    --error-height-hidden: var(--szot-textarea-error-height-hidden, 0);
+
     margin-bottom: calc(var(--margin-bottom) - 20px);
     .textarea-container::before {
       @include m.clip-path-border(
@@ -457,7 +459,7 @@
       opacity: 0;
       transition: opacity 0.2s linear, bottom 0.2s;
       @include m.text-color(var(--theme-error));
-      height: 0;
+      height: var(--error-height-hidden);
       margin-bottom: var(--margin-bottom);
     }
     &.error-show {
