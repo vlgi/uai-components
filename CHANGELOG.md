@@ -1,5 +1,15 @@
 # Changelogs
 
+## v3.12.0
+
+### Features
+
+- enable change error height hidden (Input, Select and Textarea).
+
+### Refactors
+
+### Fix
+
 ## v3.11.0
 
 ### Features
