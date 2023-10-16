@@ -186,6 +186,8 @@
     }
     .list-radio {
       display: flex;
+      justify-content: var(--szot-list-radio-justify-content);
+      align-items: var(--szot-list-radio-align-items);
       flex-wrap: wrap;
       list-style: none;
 

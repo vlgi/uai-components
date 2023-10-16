@@ -5,6 +5,8 @@
 ### Features
 
 - enable edit message inside message box component using a text area inside component
+- enable change justify-content and align-items css properties in list checkbox and list radiobutton
+  components
 
 ### Refactors
 
