@@ -102,3 +102,26 @@ export const hideButtons: Story = {
     showButtons: false,
   },
 };
+
+export const EditingInBox: Story = {
+  args: {
+    messages: [
+      {
+        id: 1,
+        userId: 1,
+        userName: "João",
+        userImage:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm11Quu24mHpvW7fKnJOH4dS5v7-9wUfkHySSf4hI&s",
+        text: "texto do João sobre algo",
+      },
+      {
+        id: 2,
+        userId: 2,
+        userName: "Claudio",
+        userImage: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png",
+        text: "texto do Claudio sobre outra coisa",
+      },
+    ],
+    editInBox: true,
+  },
+};

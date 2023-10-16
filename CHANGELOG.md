@@ -1,5 +1,15 @@
 # Changelogs
 
+## v3.13.0
+
+### Features
+
+- enable edit message inside message box component using a text area inside component
+
+### Refactors
+
+### Fix
+
 ## v3.12.0
 
 ### Features
