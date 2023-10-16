@@ -238,6 +238,8 @@
 
     .list-checkbox {
       display: flex;
+      justify-content: var(--szot-list-checkbox-justify-content);
+      align-items: var(--szot-list-checkbox-align-items);
       flex-wrap: wrap;
       list-style: none;
 
