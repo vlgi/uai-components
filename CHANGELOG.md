@@ -1,5 +1,16 @@
 # Changelogs
 
+## v3.14.0
+
+### Features
+
+- Allow changing the padding of the checkbox and radio button badge pill.
+- Added the possibility of hiding the icon in the select, changing the maximum size of the select dropdown and limiting the maximum number of items that will be shown within the select dropdown.
+
+### Refactors
+
+### Fix
+
 ## v3.13.0
 
 ### Features
