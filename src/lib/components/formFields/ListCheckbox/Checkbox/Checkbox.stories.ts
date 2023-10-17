@@ -141,7 +141,7 @@ export const CustomBadgePillExample: Story = {
       "--szot-checkbox-badge-pill-selected-icon-color: purple;" +
       "--szot-checkbox-badge-pill-selected-label-color: white;" +
       "--szot-checkbox-badge-pill-selected-border-color: purple;" +
-      "--szot-checkbox-badge-pill-height: 3rem;",
+      "--szot-checkbox-badge-pill-padding: 0.625rem;",
   },
 };
 

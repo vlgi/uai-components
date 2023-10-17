@@ -264,6 +264,7 @@
           --szot-checkbox-badge-pill-font-size,
           var(--theme-fields-font-size)
         );
+        --badge-pill-padding: var(--szot-checkbox-badge-pill-padding, var(--checkbox-padding));
         --badge-pill-font-weight: var(--szot-checkbox-badge-pill-font-weight, normal);
         --border-radius: var(--szot-checkbox-border-radius, 1rem);
 
@@ -389,7 +390,7 @@
       height: var(--badge-pill-height);
       min-height: var(--badge-pill-min-height);
       border-radius: var(--border-radius);
-      padding: var(--checkbox-padding);
+      padding: var(--badge-pill-padding);
       background: var(--background);
       @include m.border(var(--border-size), var(--badge-pill-border-color));
 
