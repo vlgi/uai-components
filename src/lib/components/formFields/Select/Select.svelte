@@ -9,6 +9,7 @@
   import type { TOption, TOptionsListBinds } from "./types";
   import type { TbadgeStyle, TbadgeStyleType } from "../../Badge/types";
   import { actionWatchSize } from "$actions/watchSize/watchSize";
+  import { isEmpty } from "$helpers/truthy";
 
   // True if the select should select multiple values
   export let multiple = false;
@@ -56,6 +57,16 @@
    * Choose border type of the select component.
    */
   export let selectBorder: TSelectBorders = "outline";
+
+  /**
+   * hide the arrow icon if true
+   */
+  export let hideArrowIcon = false;
+
+  /**
+   * limit number of elements displayed in OptionList component
+   */
+  export let maxNumberOfOptions: number = undefined;
 
   type TSelectStyle = "primary" | "secondary" | "dark" | "light";
 
@@ -385,6 +396,8 @@
         id="{id}-listbox"
         labelledBy="{id}-label"
         options={filteredOptions || options}
+        disableLoadMore={!isEmpty(maxNumberOfOptions)}
+        infiniteScrollInitialCount={maxNumberOfOptions || 10}
         on:changeSelected={handleSelectedChange}
         on:changeSelected
         bind:selected
@@ -416,6 +429,7 @@
     <div
       class="select-arrow"
       class:flipped={dropdownOpen}
+      class:hidden={hideArrowIcon}
       on:click={() => toggleOpen()}
       on:keypress={(e) => e.key === "Enter" && toggleOpen()}
     >
@@ -465,6 +479,8 @@
 
     --floating-dropdown-bg-color: var(--szot-select-floating-dropdown-bg-color, white);
     --floating-dropdown-text-color: var(--szot-select-floating-dropdown-text-color);
+
+    --dropdown-max-height: var(--szot-select-dropdown-max-height, 10rem);
 
     --error-height-hidden: var(--szot-select-error-height-hidden);
   }
@@ -611,7 +627,7 @@
       gap: var(--component-padding-vertical);
 
       overflow: hidden;
-      max-height: 10rem;
+      max-height: var(--dropdown-max-height);
 
       border-radius: 0 0 var(--component-border-radius) var(--component-border-radius);
       padding: 0 var(--component-padding-horizontal) var(--component-padding-horizontal)
@@ -700,6 +716,11 @@
       &.flipped {
         transform: rotate(180deg);
       }
+
+      &.hidden {
+        display: none;
+      }
+
       &-aux {
         width: var(--component-arrow-size);
         height: var(--component-arrow-size);

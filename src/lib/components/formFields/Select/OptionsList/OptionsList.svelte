@@ -48,6 +48,12 @@
   export let infiniteScrollInitialCount = 10;
 
   /**
+   * if true, disable the handleLoadMore function. Used to fix number of
+   * elements displayed
+   */
+  export let disableLoadMore = false;
+
+  /**
    * The number of items shown on the list.
    */
   let shownUpperLimit = infiniteScrollInitialCount;
@@ -132,7 +138,9 @@
    * Handles when the infinite scroll requests to load more items on the list
    */
   function handleLoadMore() {
-    shownUpperLimit += infiniteScrollStep;
+    if (!disableLoadMore) {
+      shownUpperLimit += infiniteScrollStep;
+    }
   }
 
   $: if (focused >= 0 && focused < options.length) {

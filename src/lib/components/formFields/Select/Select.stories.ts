@@ -227,6 +227,35 @@ export const HideLabel: Story = {
   },
 };
 
+export const HideIcon: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesa",
+    selected: null,
+    options,
+    hideArrowIcon: true,
+    ...template.args,
+  },
+};
+
+export const LimitOptionsDisplayed: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesa",
+    selected: null,
+    options: longDesserts,
+    maxNumberOfOptions: 8,
+    style: "--szot-select-dropdown-max-height: 18rem;",
+    ...template.args,
+  },
+};
+
 export const CustomExample: Story = {
   ...template,
   args: {
