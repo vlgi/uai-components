@@ -136,6 +136,7 @@
     --badge-pill-max-width: var(--szot-radio-badge-pill-max-width, auto);
     --badge-pill-font-size: var(--szot-radio-badge-pill-font-size, var(--theme-fields-font-size));
     --badge-pill-font-weight: var(--szot-radio-badge-pill-font-weight, normal);
+    --badge-pill-padding: var(--szot-radio-badge-pill-padding, 0 0.375em);
 
     &.badge-style-dark {
       --default-border-color: var(--theme-dark-txt);
@@ -197,6 +198,7 @@
       min-height: var(--badge-pill-min-height);
       margin: var(--badge-pill-margin);
       border-radius: var(--border-radius);
+      padding: var(--badge-pill-padding);
       @include m.border(var(--border-size), var(--badge-pill-border-color));
       background: var(--background);
 

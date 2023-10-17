@@ -129,6 +129,6 @@ export const CustomBadgePillExample: Story = {
       "--szot-radio-badge-pill-selected-icon-color: purple;" +
       "--szot-radio-badge-pill-selected-label-color: white;" +
       "--szot-radio-badge-pill-selected-border-color: purple;" +
-      "--szot-radio-badge-pill-height: 3rem;",
+      "--szot-radio-badge-pill-padding: 0.625rem;",
   },
 };
