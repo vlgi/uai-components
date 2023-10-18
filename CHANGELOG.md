@@ -1,5 +1,15 @@
 # Changelogs
 
+## v3.15.0
+
+### Features
+
+- Possibility of filtering select elements based on fields other than just the text of the elements.
+
+### Refactor
+
+### Fix
+
 ## v3.14.0
 
 ### Features
