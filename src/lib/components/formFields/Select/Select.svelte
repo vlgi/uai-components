@@ -101,6 +101,13 @@
 
   export let placeholder = "";
 
+  export let hideOptionsWhenNotSearching = false;
+
+  /**
+   * Fields that can be searched in search input inside select
+   */
+  export let searchable: string[] = [];
+
   // ====== Internal control ====== //
 
   // Type casts the selected as TOption for internal use
@@ -136,6 +143,7 @@
   };
   let labelComponent: HTMLElement;
   let applyClipPath = false;
+  let hideOptions = false;
 
   const isInsideContext = hasContext("FormContext");
   const { setFieldValue, addFieldToContext, removeFieldFromContext } =
@@ -262,6 +270,9 @@
 
   $: isVisuallyValid = isValid || dropdownOpen;
 
+  $: hideOptions =
+    hideOptionsWhenNotSearching && (isEmpty(searchQuery) || searchQuery?.length === 0);
+
   onMount(() => {
     if (isInsideContext) {
       addFieldToContext(name, selected, isValid, required, wrapperElement, validate, forceValue);
@@ -376,7 +387,7 @@
       {#if showSearchInput}
         <div class="search-input">
           <SearchInput
-            searchable={["text"]}
+            searchable={[...searchable, "text"]}
             items={options}
             name=""
             {disabled}
@@ -402,6 +413,7 @@
         on:changeSelected
         bind:selected
         bind:focused
+        bind:hideOptions
         bind:unfocusItems={optionsListBinds.unfocusItems}
         bind:focusNext={optionsListBinds.focusNext}
         bind:focusPrevious={optionsListBinds.focusPrevious}
