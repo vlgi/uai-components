@@ -1,9 +1,12 @@
 import type { Meta } from "@storybook/svelte";
 import type { StoryObj, TemplateObj } from "$types/storybook";
-import { longDesserts, simpleDesserts } from "./fixtures";
+import { longDesserts, simpleDesserts, complexDesserts } from "./fixtures";
+import type { TOption } from "./types";
 
 import Select from "./Select.svelte";
 import SelectExample from "./SelectExample.svelte";
+
+const desserts: TOption[] = complexDesserts.map((d) => ({ text: d.variety, ...d }));
 
 const meta = {
   title: "Components/form fields/Select",
@@ -252,6 +255,34 @@ export const LimitOptionsDisplayed: Story = {
     options: longDesserts,
     maxNumberOfOptions: 8,
     style: "--szot-select-dropdown-max-height: 18rem;",
+    ...template.args,
+  },
+};
+
+export const SearchMoreFields: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesa",
+    selected: null,
+    options: desserts,
+    searchable: ["flavor"],
+    ...template.args,
+  },
+};
+
+export const HideOptionsWhenNotSearching: Story = {
+  ...template,
+  args: {
+    multiple: false,
+    id: "doce",
+    name: "doce",
+    label: "Sobremesa",
+    selected: null,
+    options,
+    hideOptionsWhenNotSearching: true,
     ...template.args,
   },
 };
