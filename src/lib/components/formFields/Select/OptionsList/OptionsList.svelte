@@ -54,6 +54,11 @@
   export let disableLoadMore = false;
 
   /**
+   * if true, hide list of options
+   */
+  export let hideOptions = false;
+
+  /**
    * The number of items shown on the list.
    */
   let shownUpperLimit = infiniteScrollInitialCount;
@@ -168,7 +173,7 @@
   on:actionLoadMore={handleLoadMore}
 >
   <!-- List all options -->
-  {#if options}
+  {#if options && !hideOptions}
     {#each options.slice(0, shownUpperLimit) as option, i}
       <div
         class="select-option"

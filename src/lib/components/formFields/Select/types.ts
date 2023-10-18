@@ -1,4 +1,4 @@
-export type TOption = { text: string };
+export type TOption = { text: string; [key: string]: string | number };
 export type TOptionsListBinds = {
   unfocusItems?: () => void;
   focusNext?: () => void;
