@@ -1,5 +1,15 @@
 # Changelogs
 
+## v3.16.0
+
+### Features
+
+- Enable change label of buttons in dialog shorthand
+
+### Refactor
+
+### Fix
+
 ## v3.15.0
 
 ### Features
