@@ -25,6 +25,16 @@
     "type": "git",
     "url": "git+https://github.com/vlgi/uai-components.git"
   },
+  "keywords": [
+    "svelte",
+    "components",
+    "ui",
+    "library",
+    "package",
+    "sveltekit",
+    "vite",
+    "storybook"
+  ],
   "author": "vlgi",
   "license": "Apache-2.0",
   "bugs": {

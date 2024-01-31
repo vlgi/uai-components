@@ -7,6 +7,9 @@
 - All prefix change from "szot" to "uai". For example instead of using --szot-primary use
   --uai-primary.
 - The package name change from "szot-ui-experimental" to "uai-components"
+- Versions < 4 are in:
+  - https://www.npmjs.com/package/szot-ui-experimental
+  - https://gitlab.com/team-tecnologia/public-pkgs/szot-ui
 
 ## v3.16.0
 
