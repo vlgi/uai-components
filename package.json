@@ -23,14 +23,14 @@
   "description": "Svelte component package",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/team-tecnologia/public-pkgs/szot-ui.git"
+    "url": "git+https://github.com/vlgi/uai-components.git"
   },
   "author": "szot",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://gitlab.com/team-tecnologia/public-pkgs/szot-ui/issues"
+    "url": "https://github.com/vlgi/uai-components/issues"
   },
-  "homepage": "https://gitlab.com/team-tecnologia/public-pkgs/szot-ui#readme",
+  "homepage": "https://github.com/vlgi/uai-components#readme",
   "type": "module",
   "exports": {
     ".": {

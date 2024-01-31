@@ -1,11 +1,8 @@
 # Szot UI
 
-This lib is still in beta.
-
-See the docs here:
-[https://team-tecnologia.gitlab.io/public-pkgs/szot-ui/](https://team-tecnologia.gitlab.io/public-pkgs/szot-ui/)
+See the docs here: [https://vlgi.github.io/uai-components/](https://vlgi.github.io/uai-components/)
 
 ## Contribute
 
 You're welcome to contribute, see how:
-[https://team-tecnologia.gitlab.io/public-pkgs/szot-ui/](https://team-tecnologia.gitlab.io/public-pkgs/szot-ui/)
+[https://vlgi.github.io/uai-components/](https://vlgi.github.io/uai-components/)
