@@ -1,5 +1,13 @@
 # Changelogs
 
+## v4.0.0
+
+### Breaking Changes
+
+- All prefix change from "szot" to "uai". For example instead of using --szot-primary use
+  --uai-primary.
+- The package name change from "szot-ui-experimental" to "uai-components"
+
 ## v3.16.0
 
 ### Features
