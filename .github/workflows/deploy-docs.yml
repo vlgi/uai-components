@@ -54,7 +54,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "18.16.0"
-          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Delete internal stories (that ones like ...internal.stories.ts|mdx)
         run: make rm-int-stories
