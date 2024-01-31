@@ -160,46 +160,46 @@
     --collapsable-theme-txt-on-background-color: var(--theme-txt-on-light-surface);
 
     // colors
-    --background: var(--szot-collapsable-background, var(--style-type-background));
-    --color: var(--szot-collapsable-color, var(--style-type-color));
-    --border-color: var(--szot-collapsable-border-color, var(--style-type-border-color));
+    --background: var(--uai-collapsable-background, var(--style-type-background));
+    --color: var(--uai-collapsable-color, var(--style-type-color));
+    --border-color: var(--uai-collapsable-border-color, var(--style-type-border-color));
     --content-background: var(
-      --szot-collapsable-content-background,
+      --uai-collapsable-content-background,
       var(--style-type-content-background)
     );
-    --content-color: var(--szot-collapsable-content-color, var(--style-type-content-color));
+    --content-color: var(--uai-collapsable-content-color, var(--style-type-content-color));
     --content-border-color: var(
-      --szot-collapsable-content-border-color,
+      --uai-collapsable-content-border-color,
       var(--style-type-content-border-color)
     );
-    --icon-color: var(--szot-collapsable-icon-color, var(--style-type-icon-color));
+    --icon-color: var(--uai-collapsable-icon-color, var(--style-type-icon-color));
 
     // measurements and spacing
-    --max-height: var(--szot-collapsable-max-height, 40rem);
-    --icon-font-size: var(--szot-collapsable-icon-font-size, 1.5rem);
-    --margin: var(--szot-collapsable-margin, var(--theme-global-medium-padding) 0);
-    --padding: var(--szot-collapsable-padding, var(--theme-global-medium-padding));
-    --padding-header: var(--szot-collapsable-padding-header, var(--padding));
-    --border-width: var(--szot-collapsable-border-width, var(--style-type-border-width));
+    --max-height: var(--uai-collapsable-max-height, 40rem);
+    --icon-font-size: var(--uai-collapsable-icon-font-size, 1.5rem);
+    --margin: var(--uai-collapsable-margin, var(--theme-global-medium-padding) 0);
+    --padding: var(--uai-collapsable-padding, var(--theme-global-medium-padding));
+    --padding-header: var(--uai-collapsable-padding-header, var(--padding));
+    --border-width: var(--uai-collapsable-border-width, var(--style-type-border-width));
     --border-radius: var(
-      --szot-collapsable-border-radius,
+      --uai-collapsable-border-radius,
       calc(
         calc(max(var(--icon-font-size), 1.1875rem) + calc(2 * var(--theme-global-medium-padding))) /
           2
       )
     );
-    --content-padding: var(--szot-collapsable-content-padding, var(--padding));
+    --content-padding: var(--uai-collapsable-content-padding, var(--padding));
     --content-border-width: var(
-      --szot-collapsable-content-border-width,
+      --uai-collapsable-content-border-width,
       var(--style-type-content-border-width)
     );
     --content-border-radius: var(
-      --szot-collapsable-content-border-radius,
+      --uai-collapsable-content-border-radius,
       var(--theme-medium-shape)
     );
-    --title-font-size: var(--szot-collapsable-title-font-size, 1rem);
-    --box-shadow: var(--szot-collapsable-box-shadow, none);
-    --backdrop-filter: var(--szot-collapsable-backdrop-filter, none);
+    --title-font-size: var(--uai-collapsable-title-font-size, 1rem);
+    --box-shadow: var(--uai-collapsable-box-shadow, none);
+    --backdrop-filter: var(--uai-collapsable-backdrop-filter, none);
 
     // Style and style type settings
     &.style {
@@ -294,8 +294,8 @@
     }
 
     .icon {
-      --szot-icon-color: var(--icon-color);
-      --szot-icon-font-size: var(--icon-font-size);
+      --uai-icon-color: var(--icon-color);
+      --uai-icon-font-size: var(--icon-font-size);
     }
 
     .content {

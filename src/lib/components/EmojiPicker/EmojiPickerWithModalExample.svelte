@@ -38,15 +38,15 @@
       name="message"
       type="text"
       value={msg}
-      --szot-input-margin-bottom="0"
-      --szot-input-margin-top="0"
+      --uai-input-margin-bottom="0"
+      --uai-input-margin-top="0"
     />
   </div>
 </div>
 
 <Modal
   bind:opened={openModal}
-  --szot-modal-max-width="90vw"
+  --uai-modal-max-width="90vw"
 >
   <div slot="modal-header" />
   <div
@@ -59,7 +59,7 @@
       opened={true}
       {maxRecently}
       {targetEl}
-      localStorageId="szot-ui-emoji-picker-modal-example"
+      localStorageId="uai-emoji-picker-modal-example"
     />
   </div>
   <div

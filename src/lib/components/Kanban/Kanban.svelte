@@ -170,16 +170,16 @@
     display: flex;
     flex-direction: row;
 
-    border: var(--szot-kanban-border, none);
-    padding: var(--szot-kanban-padding, 0.5rem);
-    width: var(--szot-kanban-width, 100%);
+    border: var(--uai-kanban-border, none);
+    padding: var(--uai-kanban-padding, 0.5rem);
+    width: var(--uai-kanban-width, 100%);
     overflow: auto;
-    height: var(--szot-kanban-height, 100%);
-    gap: var(--szot-kanban-gap, 1rem);
+    height: var(--uai-kanban-height, 100%);
+    gap: var(--uai-kanban-gap, 1rem);
   }
 
   .column {
-    width: var(--szot-kanban-column-width, 25rem);
+    width: var(--uai-kanban-column-width, 25rem);
     flex-shrink: 0;
   }
 </style>

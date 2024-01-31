@@ -218,55 +218,55 @@
 
       @each $style in $styles {
         &-#{$style} {
-          --checkbox-margin: var(--szot-checkbox-margin, 0.3125rem);
-          --checkbox-padding: var(--szot-checkbox-padding, 0 0.375em);
-          --checkbox-size: var(--szot-checkbox-size, 0.7rem);
-          --border-size: var(--szot-checkbox-border-size, 0.15rem);
-          --border-radius: var(--szot-checkbox-border-radius, var(--border-size));
-          --checkbox-color: var(--szot-checkbox-color, var(--theme-dark-txt));
-          --checkbox-checked-color: var(--szot-checkbox-checked-color, var(--checkbox-color));
-          --checkbox-label-color: var(--szot-checkbox-label-color, var(--theme-dark-txt));
-          --checkbox-label-margin-left: var(--szot-checkbox-label-margin-left, 1.25rem);
+          --checkbox-margin: var(--uai-checkbox-margin, 0.3125rem);
+          --checkbox-padding: var(--uai-checkbox-padding, 0 0.375em);
+          --checkbox-size: var(--uai-checkbox-size, 0.7rem);
+          --border-size: var(--uai-checkbox-border-size, 0.15rem);
+          --border-radius: var(--uai-checkbox-border-radius, var(--border-size));
+          --checkbox-color: var(--uai-checkbox-color, var(--theme-dark-txt));
+          --checkbox-checked-color: var(--uai-checkbox-checked-color, var(--checkbox-color));
+          --checkbox-label-color: var(--uai-checkbox-label-color, var(--theme-dark-txt));
+          --checkbox-label-margin-left: var(--uai-checkbox-label-margin-left, 1.25rem);
         }
       }
 
       &-switch {
-        --switch-background: var(--szot-checkbox-switch-background, #cecece);
-        --switch-color: var(--szot-checkbox-switch-color, var(--theme-dark-txt));
-        --switch-checked-color: var(--szot-checkbox-switch-checked-color, var(--switch-color));
-        --switch-width: var(--szot-checkbox-switch-width, 3.25rem);
-        --switch-height: var(--szot-checkbox-switch-height, 1.5rem);
+        --switch-background: var(--uai-checkbox-switch-background, #cecece);
+        --switch-color: var(--uai-checkbox-switch-color, var(--theme-dark-txt));
+        --switch-checked-color: var(--uai-checkbox-switch-checked-color, var(--switch-color));
+        --switch-width: var(--uai-checkbox-switch-width, 3.25rem);
+        --switch-height: var(--uai-checkbox-switch-height, 1.5rem);
         --border-radius: 2.125rem;
       }
 
       &-text-switch {
-        --text-switch-background: var(--szot-checkbox-switch-background, #8b8b8b);
-        --text-switch-color: var(--szot-checkbox-switch-color, var(--theme-dark-txt));
+        --text-switch-background: var(--uai-checkbox-switch-background, #8b8b8b);
+        --text-switch-color: var(--uai-checkbox-switch-color, var(--theme-dark-txt));
         --text-switch-checked-color: var(
-          --szot-checkbox-switch-checked-color,
+          --uai-checkbox-switch-checked-color,
           var(--text-switch-color)
         );
-        --text-switch-text-color: var(--szot-checkbox-switch-text-color, #ffffff);
-        --text-switch-width: var(--szot-checkbox-switch-width, 4.275rem);
-        --text-switch-height: var(--szot-checkbox-switch-height, 2.25rem);
-        --text-switch-border-radius: var(--szot-checkbox-border-radius, 6.25rem);
-        --text-switch-gap: var(--szot-checkbox-text-switch-gap, 0rem);
-        --text-switch-switch-font-size: var(--szot-checkbox-text-switch-font-size, 0.8rem);
+        --text-switch-text-color: var(--uai-checkbox-switch-text-color, #ffffff);
+        --text-switch-width: var(--uai-checkbox-switch-width, 4.275rem);
+        --text-switch-height: var(--uai-checkbox-switch-height, 2.25rem);
+        --text-switch-border-radius: var(--uai-checkbox-border-radius, 6.25rem);
+        --text-switch-gap: var(--uai-checkbox-text-switch-gap, 0rem);
+        --text-switch-switch-font-size: var(--uai-checkbox-text-switch-font-size, 0.8rem);
       }
 
       &-badge-pill {
-        --badge-pill-min-height: var(--szot-checkbox-badge-pill-min-height, 1.875rem);
-        --badge-pill-height: var(--szot-checkbox-badge-pill-height, auto);
-        --badge-pill-background-color: var(--szot-checkbox-badge-pill-background, #aaa);
-        --badge-pill-max-width: var(--szot-checkbox-badge-pill-max-width, auto);
-        --szot-icon-color: var(--badge-pill-icon-color);
+        --badge-pill-min-height: var(--uai-checkbox-badge-pill-min-height, 1.875rem);
+        --badge-pill-height: var(--uai-checkbox-badge-pill-height, auto);
+        --badge-pill-background-color: var(--uai-checkbox-badge-pill-background, #aaa);
+        --badge-pill-max-width: var(--uai-checkbox-badge-pill-max-width, auto);
+        --uai-icon-color: var(--badge-pill-icon-color);
         --badge-pill-font-size: var(
-          --szot-checkbox-badge-pill-font-size,
+          --uai-checkbox-badge-pill-font-size,
           var(--theme-fields-font-size)
         );
-        --badge-pill-padding: var(--szot-checkbox-badge-pill-padding, var(--checkbox-padding));
-        --badge-pill-font-weight: var(--szot-checkbox-badge-pill-font-weight, normal);
-        --border-radius: var(--szot-checkbox-border-radius, 1rem);
+        --badge-pill-padding: var(--uai-checkbox-badge-pill-padding, var(--checkbox-padding));
+        --badge-pill-font-weight: var(--uai-checkbox-badge-pill-font-weight, normal);
+        --border-radius: var(--uai-checkbox-border-radius, 1rem);
 
         &.badge-style-dark {
           --default-border-color: var(--theme-dark-txt);
@@ -293,23 +293,23 @@
         }
 
         &.checked {
-          --border-color-selected: var(--szot-checkbox-badge-pill-selected-border-color);
-          --label-color-selected: var(--szot-checkbox-badge-pill-selected-label-color);
-          --icon-color-selected: var(--szot-checkbox-badge-pill-selected-icon-color);
+          --border-color-selected: var(--uai-checkbox-badge-pill-selected-border-color);
+          --label-color-selected: var(--uai-checkbox-badge-pill-selected-label-color);
+          --icon-color-selected: var(--uai-checkbox-badge-pill-selected-icon-color);
           --background-selected: var(--badge-pill-background-color);
         }
 
         --badge-pill-border-color: var(
           --border-color-selected,
-          var(--szot-checkbox-badge-pill-border-color, var(--default-border-color))
+          var(--uai-checkbox-badge-pill-border-color, var(--default-border-color))
         );
         --badge-pill-label-color: var(
           --label-color-selected,
-          var(--szot-checkbox-badge-pill-label-color, var(--default-label-color))
+          var(--uai-checkbox-badge-pill-label-color, var(--default-label-color))
         );
         --badge-pill-icon-color: var(
           --icon-color-selected,
-          var(--szot-checkbox-badge-pill-icon-color, var(--default-icon-color))
+          var(--uai-checkbox-badge-pill-icon-color, var(--default-icon-color))
         );
         --background: var(--background-selected, none);
       }
@@ -552,9 +552,9 @@
   }
 
   .invalid {
-    --szot-checkbox-color: var(--theme-error);
-    --szot-checkbox-label-color: var(--theme-error);
-    --szot-checkbox-switch-color: var(--theme-error);
+    --uai-checkbox-color: var(--theme-error);
+    --uai-checkbox-label-color: var(--theme-error);
+    --uai-checkbox-switch-color: var(--theme-error);
     @include m.text-color(var(--theme-error));
   }
 

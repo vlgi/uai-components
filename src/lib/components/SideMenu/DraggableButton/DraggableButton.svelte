@@ -75,6 +75,6 @@
     cursor: pointer;
     box-shadow: var(--theme-low-shadow);
     z-index: 100;
-    --szot-icon-color: var(--theme-txt-on-dark-surface);
+    --uai-icon-color: var(--theme-txt-on-dark-surface);
   }
 </style>

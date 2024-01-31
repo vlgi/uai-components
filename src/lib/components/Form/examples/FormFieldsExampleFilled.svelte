@@ -172,7 +172,7 @@
     name="sold-your-soul"
     label="Declaro que li e concordo com os termos de uso"
     required={true}
-    --szot-checkbox-margin="1rem 0 0"
+    --uai-checkbox-margin="1rem 0 0"
     checked={true}
   />
   <Checkbox
@@ -181,15 +181,15 @@
     uncheckedText="Morango"
     checkedText="Chocolate"
     checked={true}
-    --szot-checkbox-margin="1rem 0 0.25rem"
-    --szot-checkbox-switch-width="8.275rem"
+    --uai-checkbox-margin="1rem 0 0.25rem"
+    --uai-checkbox-switch-width="8.275rem"
   />
   <Checkbox
     name="save-my-choices"
     label="salvar minhas escolhas"
     styleType="switch"
     required={true}
-    --szot-checkbox-margin="1rem 0 1rem"
+    --uai-checkbox-margin="1rem 0 1rem"
     checked={true}
   />
   <ListCheckbox
@@ -201,7 +201,7 @@
     direction="row"
     required={true}
     values={["juice", "soda"]}
-    --szot-checkbox-badge-pill-background="#87cefa"
+    --uai-checkbox-badge-pill-background="#87cefa"
   />
   <br />
   <ListRadioButton
@@ -212,7 +212,7 @@
     direction="row"
     required={true}
     value="portuguese"
-    --szot-radio-badge-pill-background-color="#87cefa"
+    --uai-radio-badge-pill-background-color="#87cefa"
   />
   <Button type="submit">Submit</Button>
 </Form>

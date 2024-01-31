@@ -13,14 +13,14 @@ type Story = StoryObj<typeof meta>;
 
 export const InputStyle: Story = {
   args: {
-    name: "szot-chat-textarea",
+    name: "uai-chat-textarea",
     placeholder: "Digite alguma coisa...",
   },
 };
 
 export const Textarea: Story = {
   args: {
-    name: "szot-chat-textarea",
+    name: "uai-chat-textarea",
     inputStyle: "textarea",
     placeholder: "Digite alguma coisa...",
   },
@@ -28,7 +28,7 @@ export const Textarea: Story = {
 
 export const blockChangeStyle: Story = {
   args: {
-    name: "szot-chat-textarea",
+    name: "uai-chat-textarea",
     inputStyle: "textarea",
     placeholder: "Digite alguma coisa...",
     alowChangeStyle: false,
@@ -37,7 +37,7 @@ export const blockChangeStyle: Story = {
 
 export const hideEmojiPicker: Story = {
   args: {
-    name: "szot-chat-textarea",
+    name: "uai-chat-textarea",
     inputStyle: "textarea",
     placeholder: "Digite alguma coisa...",
     showEmojiPicker: false,

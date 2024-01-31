@@ -37,7 +37,7 @@ export const Custom: Story = {
   ...template,
   args: {
     iconName: "ic:baseline-apple",
-    style: "--szot-icon-font-size: 80px;" + "--szot-icon-color: red;",
+    style: "--uai-icon-font-size: 80px;" + "--uai-icon-color: red;",
     ...template.args,
   },
 };

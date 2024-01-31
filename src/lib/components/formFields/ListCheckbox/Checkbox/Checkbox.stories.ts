@@ -134,14 +134,14 @@ export const CustomBadgePillExample: Story = {
     label: "label",
     iconPosition: "both",
     style:
-      "--szot-checkbox-badge-pill-background: #678;" +
-      "--szot-checkbox-badge-pill-icon-color: purple;" +
-      "--szot-checkbox-badge-pill-label-color: purple;" +
-      "--szot-checkbox-badge-pill-border-color: purple;" +
-      "--szot-checkbox-badge-pill-selected-icon-color: purple;" +
-      "--szot-checkbox-badge-pill-selected-label-color: white;" +
-      "--szot-checkbox-badge-pill-selected-border-color: purple;" +
-      "--szot-checkbox-badge-pill-padding: 0.625rem;",
+      "--uai-checkbox-badge-pill-background: #678;" +
+      "--uai-checkbox-badge-pill-icon-color: purple;" +
+      "--uai-checkbox-badge-pill-label-color: purple;" +
+      "--uai-checkbox-badge-pill-border-color: purple;" +
+      "--uai-checkbox-badge-pill-selected-icon-color: purple;" +
+      "--uai-checkbox-badge-pill-selected-label-color: white;" +
+      "--uai-checkbox-badge-pill-selected-border-color: purple;" +
+      "--uai-checkbox-badge-pill-padding: 0.625rem;",
   },
 };
 
@@ -157,8 +157,8 @@ export const BadgePillWithLeftSlot: Story = {
     iconPosition: "both",
     showLeftSlot: true,
     style:
-      " --szot-checkbox-badge-pill-icon-color: orange;" +
-      "--szot-checkbox-badge-pill-selected-label-color: orange",
+      " --uai-checkbox-badge-pill-icon-color: orange;" +
+      "--uai-checkbox-badge-pill-selected-label-color: orange",
   },
 };
 
@@ -174,8 +174,8 @@ export const BadgePillWithRightSlot: Story = {
     iconPosition: "both",
     showRightSlot: true,
     style:
-      " --szot-checkbox-badge-pill-icon-color: orange;" +
-      "--szot-checkbox-badge-pill-selected-label-color: orange",
+      " --uai-checkbox-badge-pill-icon-color: orange;" +
+      "--uai-checkbox-badge-pill-selected-label-color: orange",
   },
 };
 
@@ -192,8 +192,8 @@ export const BadgePillWithBothSlot: Story = {
     showRightSlot: true,
     showLeftSlot: true,
     style:
-      " --szot-checkbox-badge-pill-icon-color: orange;" +
-      "--szot-checkbox-badge-pill-selected-label-color: orange",
+      " --uai-checkbox-badge-pill-icon-color: orange;" +
+      "--uai-checkbox-badge-pill-selected-label-color: orange",
   },
 };
 
@@ -205,11 +205,11 @@ export const CustomSwitchExample: Story = {
     name: "custom-switch",
     styleType: "switch",
     style:
-      "--szot-checkbox-switch-color: black;" +
-      "--szot-checkbox-switch-checked-color: linear-gradient(to bottom, grey, brown);" +
-      "--szot-checkbox-switch-width: 3rem;" +
-      "--szot-checkbox-switch-height: 1.32rem;" +
-      "--szot-checkbox-switch-background: lightblue;",
+      "--uai-checkbox-switch-color: black;" +
+      "--uai-checkbox-switch-checked-color: linear-gradient(to bottom, grey, brown);" +
+      "--uai-checkbox-switch-width: 3rem;" +
+      "--uai-checkbox-switch-height: 1.32rem;" +
+      "--uai-checkbox-switch-background: lightblue;",
   },
 };
 
@@ -223,10 +223,10 @@ export const CustomTextSwitchExample: Story = {
     checkedText: "Ativo",
     uncheckedText: "Inativo",
     style:
-      "--szot-checkbox-switch-color: black;" +
-      "--szot-checkbox-switch-checked-color: linear-gradient(to bottom, grey, brown);" +
-      "--szot-checkbox-switch-width: 5rem;" +
-      "--szot-checkbox-switch-height: 1.32rem;" +
-      "--szot-checkbox-switch-background: lightblue;",
+      "--uai-checkbox-switch-color: black;" +
+      "--uai-checkbox-switch-checked-color: linear-gradient(to bottom, grey, brown);" +
+      "--uai-checkbox-switch-width: 5rem;" +
+      "--uai-checkbox-switch-height: 1.32rem;" +
+      "--uai-checkbox-switch-background: lightblue;",
   },
 };

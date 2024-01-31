@@ -13,8 +13,8 @@ import EmojiPicker from "./EmojiPicker.svelte";
 ```tsx
 <script lang="ts">
   import { onMount } from "svelte";
-  import EmojiPicker from "szot-ui-experimental";
-  import Input from "szot-ui-experimental";
+  import EmojiPicker from "uai-components";
+  import Input from "uai-components";
 
   let targetEl = null;
   let msg = "";
@@ -49,25 +49,25 @@ import EmojiPicker from "./EmojiPicker.svelte";
       name="message"
       type="text"
       value={msg}
-      --szot-input-margin-bottom="0"
-      --szot-input-margin-top="0"
+      --uai-input-margin-bottom="0"
+      --uai-input-margin-top="0"
     />
   </div>
 
   <EmojiPicker
     bind:opened
     bind:selected={selectedEmoji}
-    localStorageId="szot-ui-emoji-picker-example"
+    localStorageId="uai-emoji-picker-example"
     {targetEl}
-    --szot-emojis-picker-background-color="white"
-    --szot-emojis-picker-border-radius="25px"
-    --szot-emojis-picker-height="350px"
-    --szot-emojis-picker-width="320px"
-    --szot-emojis-picker-category-title-border-color="#ddd"
-    --szot-emojis-picker-category-title-font-color="#444"
-    --szot-emojis-picker-emoji-background-color="white"
-    --szot-emojis-picker-tabs-border-color="#eee"
-    --szot-emojis-picker-tabs-icon-color="#777"
+    --uai-emojis-picker-background-color="white"
+    --uai-emojis-picker-border-radius="25px"
+    --uai-emojis-picker-height="350px"
+    --uai-emojis-picker-width="320px"
+    --uai-emojis-picker-category-title-border-color="#ddd"
+    --uai-emojis-picker-category-title-font-color="#444"
+    --uai-emojis-picker-emoji-background-color="white"
+    --uai-emojis-picker-tabs-border-color="#eee"
+    --uai-emojis-picker-tabs-icon-color="#777"
   />
 </div>
 

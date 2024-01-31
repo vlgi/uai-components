@@ -2,18 +2,18 @@ import { Meta } from "@storybook/blocks";
 
 <Meta title="Theme/Introduction" />
 
-# Szot ui theme and customizations
+# UAI theme and customizations
 
-Szot ui have 2 ways of customization: global theme and custom components. All customization is made
-with css variables.
+UAI components have 2 ways of customization: global theme and custom components. All customization
+is made with css variables.
 
 If you set the global theme customization, all components will changing accordingly.
 
 The global customization you can find here on the Theme section.
 
 You can set any where your custom variables to customize your theme. For example, if you set
-`--szot-primary: red` at the body component, all components that use primary color will be red. But
-if in some specific section you set `--szot-primary: blue`, all components inside this section will
+`--uai-primary: red` at the body component, all components that use primary color will be red. But
+if in some specific section you set `--uai-primary: blue`, all components inside this section will
 use primary color as blue, and the rest of the entire web site will keep red as primary. This way
 you can change the theme with scope. This is dued by the css cascade behaviour, read about it
 [here](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance).
@@ -32,7 +32,7 @@ Some componentes externalize css classes too. That way you can apply your css va
 especific component internal state, like, change button background color only when the button is
 pressed, or on focus.
 
-**NOTE: all variables, for global theme or customization of the component, have the prefix `szot`.**
+**NOTE: all variables, for global theme or customization of the component, have the prefix `uai`.**
 
 Using svelte there is an elegant way to pass variables to a component,
 [see svelte style props](https://svelte.dev/docs#template-syntax-component-directives---style-props).

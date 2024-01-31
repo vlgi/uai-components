@@ -221,12 +221,12 @@
 <style lang="scss">
   @use "$styles/mixins" as m;
   .dialog-wrapper {
-    --txt-color: var(--szot-dialog-text-color, var(--theme-txt-on-signal-color));
-    --txt-header-color: var(--szot-dialog-text-color-header, var(--theme-txt-on-signal-color));
-    --txt-weight: var(--szot-dialog-text-weight, 400);
-    --txt-header-weight: var(--szot-dialog-text-weight-header, 700);
-    --txt-header-size: var(--szot-dialog-text-size-header, 0.875rem);
-    --txt-size: var(--szot-dialog-text-size, 0.8125rem);
+    --txt-color: var(--uai-dialog-text-color, var(--theme-txt-on-signal-color));
+    --txt-header-color: var(--uai-dialog-text-color-header, var(--theme-txt-on-signal-color));
+    --txt-weight: var(--uai-dialog-text-weight, 400);
+    --txt-header-weight: var(--uai-dialog-text-weight-header, 700);
+    --txt-header-size: var(--uai-dialog-text-size-header, 0.875rem);
+    --txt-size: var(--uai-dialog-text-size, 0.8125rem);
   }
 
   /** Change modal bg color */
@@ -259,8 +259,8 @@
   }
 
   .title-container {
-    --szot-icon-color: var(--txt-header-color);
-    --szot-icon-font-size: 2.25rem;
+    --uai-icon-color: var(--txt-header-color);
+    --uai-icon-font-size: 2.25rem;
 
     display: flex;
     align-items: center;
@@ -274,7 +274,7 @@
   }
 
   .content {
-    --szot-icon-color: var(--txt-color);
+    --uai-icon-color: var(--txt-color);
     @include m.text-color(var(--txt-color));
     font-size: var(--txt-size);
     font-weight: var(--txt-weight);

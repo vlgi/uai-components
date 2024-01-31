@@ -4,26 +4,26 @@
       title: "Scroll Variables",
       description: "variables to customize global scroll (does not support gradient)",
       variables: [
-        { name: "--szot-scroll-bar-color", default: "#333", description: "" },
-        { name: "--szot-scroll-bar-hover-color", default: "#33333380", description: "" },
-        { name: "--szot-scroll-background-color", default: "transparent", description: "" },
+        { name: "--uai-scroll-bar-color", default: "#333", description: "" },
+        { name: "--uai-scroll-bar-hover-color", default: "#33333380", description: "" },
+        { name: "--uai-scroll-background-color", default: "transparent", description: "" },
         {
-          name: "--szot-scroll-size-firefox",
+          name: "--uai-scroll-size-firefox",
           default: "thin",
           description:
             "você pode passar qualquer valor que a propriedade 'scrollbar-width' aceita.",
         },
         {
-          name: "--szot-scroll-bar-width",
+          name: "--uai-scroll-bar-width",
           default: "0.3125rem",
           description: "você pode passar valores em 'rem', 'px' ou 'em'.",
         },
         {
-          name: "--szot-scroll-bar-height",
+          name: "--uai-scroll-bar-height",
           default: "0.3125rem",
           description: "você pode passar valores em 'rem', 'px' ou 'em'.",
         },
-        { name: "--szot-scroll-bar-radius", default: "1.5625rem / 3.125rem", description: "" },
+        { name: "--uai-scroll-bar-radius", default: "1.5625rem / 3.125rem", description: "" },
       ],
     },
   ];

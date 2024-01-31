@@ -232,12 +232,12 @@
   @use "$styles/mixins" as m;
 
   .content-container {
-    --margin-bottom: var(--szot-textarea-margin-bottom, 1.5rem);
+    --margin-bottom: var(--uai-textarea-margin-bottom, 1.5rem);
 
-    --message-left: var(--szot-textarea-message-left, 1rem);
-    --message-error-bottom-focus: var(--szot-textarea-message-error-bottom-focus, -2rem);
+    --message-left: var(--uai-textarea-message-left, 1rem);
+    --message-error-bottom-focus: var(--uai-textarea-message-error-bottom-focus, -2rem);
 
-    --error-height-hidden: var(--szot-textarea-error-height-hidden, 0);
+    --error-height-hidden: var(--uai-textarea-error-height-hidden, 0);
 
     margin-bottom: calc(var(--margin-bottom) - 20px);
     .textarea-container::before {
@@ -252,20 +252,20 @@
   }
 
   .textarea-container {
-    --label-color: var(--szot-textarea-label-color, var(--default-label-color));
-    --label-padding: var(--szot-textarea-label-padding, 0 0.3125rem);
-    --label-background-color: var(--szot-textarea-background-color, transparent);
+    --label-color: var(--uai-textarea-label-color, var(--default-label-color));
+    --label-padding: var(--uai-textarea-label-padding, 0 0.3125rem);
+    --label-background-color: var(--uai-textarea-background-color, transparent);
 
-    --textarea-color-text: var(--szot-textarea-color-text, var(--default-textarea-color));
-    --border-color: var(--szot-textarea-border-color, var(--default-border-color));
-    --border: var(--szot-textarea-border, var(--theme-small-border));
-    --placeholder-color: var(--szot-textarea-placeholder-color, var(--default-placeholder-color));
-    --margin-top: var(--szot-textarea-margin-top, 0.5rem);
-    --max-width: var(--szot-textarea-max-width, 100%);
-    --max-height: var(--szot-textarea-max-height, var(--max-auto-height));
-    --padding: var(--szot-textarea-padding, var(--theme-fields-padding));
+    --textarea-color-text: var(--uai-textarea-color-text, var(--default-textarea-color));
+    --border-color: var(--uai-textarea-border-color, var(--default-border-color));
+    --border: var(--uai-textarea-border, var(--theme-small-border));
+    --placeholder-color: var(--uai-textarea-placeholder-color, var(--default-placeholder-color));
+    --margin-top: var(--uai-textarea-margin-top, 0.5rem);
+    --max-width: var(--uai-textarea-max-width, 100%);
+    --max-height: var(--uai-textarea-max-height, var(--max-auto-height));
+    --padding: var(--uai-textarea-padding, var(--theme-fields-padding));
 
-    --border-radius: var(--szot-textarea-border-radius, var(--theme-small-shape));
+    --border-radius: var(--uai-textarea-border-radius, var(--theme-small-shape));
 
     &.textarea-style-primary {
       --default-label-color: var(--theme-primary-txt);
@@ -293,12 +293,12 @@
     }
 
     &.filled {
-      --border-color-filled: var(--szot-textarea-border-color-filled, var(--border-color));
+      --border-color-filled: var(--uai-textarea-border-color-filled, var(--border-color));
     }
 
     &.inFocus {
       --border-color-focus: var(
-        --szot-textarea-border-color-focus,
+        --uai-textarea-border-color-focus,
         var(--border-color-filled, var(--border-color))
       );
     }

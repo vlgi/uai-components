@@ -122,13 +122,13 @@ export const CustomBadgePillExample: Story = {
     group: "",
     iconPosition: "both",
     style:
-      "--szot-radio-badge-pill-background: #678;" +
-      "--szot-radio-badge-pill-icon-color: purple;" +
-      "--szot-radio-badge-pill-label-color: purple;" +
-      "--szot-radio-badge-pill-border-color: purple;" +
-      "--szot-radio-badge-pill-selected-icon-color: purple;" +
-      "--szot-radio-badge-pill-selected-label-color: white;" +
-      "--szot-radio-badge-pill-selected-border-color: purple;" +
-      "--szot-radio-badge-pill-padding: 0.625rem;",
+      "--uai-radio-badge-pill-background: #678;" +
+      "--uai-radio-badge-pill-icon-color: purple;" +
+      "--uai-radio-badge-pill-label-color: purple;" +
+      "--uai-radio-badge-pill-border-color: purple;" +
+      "--uai-radio-badge-pill-selected-icon-color: purple;" +
+      "--uai-radio-badge-pill-selected-label-color: white;" +
+      "--uai-radio-badge-pill-selected-border-color: purple;" +
+      "--uai-radio-badge-pill-padding: 0.625rem;",
   },
 };

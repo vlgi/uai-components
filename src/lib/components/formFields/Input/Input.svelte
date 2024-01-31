@@ -326,15 +326,15 @@
   @use "$styles/mixins" as m;
 
   .content-container {
-    --margin-bottom: var(--szot-input-margin-bottom, 1.5rem);
+    --margin-bottom: var(--uai-input-margin-bottom, 1.5rem);
 
-    --message-top: var(--szot-input-message-top, calc(37.19px + var(--border)));
-    --message-left: var(--szot-input-message-left, 1rem);
-    --message-error-bottom-focus: var(--szot-input-message-error-bottom-focus, -2rem);
+    --message-top: var(--uai-input-message-top, calc(37.19px + var(--border)));
+    --message-left: var(--uai-input-message-left, 1rem);
+    --message-error-bottom-focus: var(--uai-input-message-error-bottom-focus, -2rem);
 
-    --label-left: var(--szot-input-label-left, 1.2rem);
+    --label-left: var(--uai-input-label-left, 1.2rem);
 
-    --error-height-hidden: var(--szot-input-error-height-hidden, 0);
+    --error-height-hidden: var(--uai-input-error-height-hidden, 0);
 
     isolation: isolate;
 
@@ -353,34 +353,34 @@
   }
 
   .form-div {
-    --margin-top: var(--szot-input-margin-top, 0.5rem);
-    --max-width: var(--szot-input-max-width, 100%);
+    --margin-top: var(--uai-input-margin-top, 0.5rem);
+    --max-width: var(--uai-input-max-width, 100%);
 
-    --input-top: var(--szot-input-top, 0);
-    --input-left: var(--szot-input-left, 0);
-    --input-padding: var(--szot-input-padding, var(--theme-fields-padding));
-    --input-text-color: var(--szot-input-text-color, var(--default-input-color));
-    --border: var(--szot-input-border, var(--theme-small-border));
-    --border-color: var(--szot-input-border-color, var(--default-border-color));
-    --border-color-not-filled: var(--szot-input-border-color, var(--default-border-color));
-    --border-radius: var(--szot-input-border-radius, var(--theme-small-shape));
+    --input-top: var(--uai-input-top, 0);
+    --input-left: var(--uai-input-left, 0);
+    --input-padding: var(--uai-input-padding, var(--theme-fields-padding));
+    --input-text-color: var(--uai-input-text-color, var(--default-input-color));
+    --border: var(--uai-input-border, var(--theme-small-border));
+    --border-color: var(--uai-input-border-color, var(--default-border-color));
+    --border-color-not-filled: var(--uai-input-border-color, var(--default-border-color));
+    --border-radius: var(--uai-input-border-radius, var(--theme-small-shape));
 
-    --label-padding: var(--szot-input-label-padding, 0rem);
-    --label-color: var(--szot-input-label-color, var(--default-label-color));
-    --background-color: var(--szot-input-background-color, transparent);
+    --label-padding: var(--uai-input-label-padding, 0rem);
+    --label-color: var(--uai-input-label-color, var(--default-label-color));
+    --background-color: var(--uai-input-background-color, transparent);
 
-    --placeholder-color: var(--szot-input-placeholder-color, var(--default-placeholder-color));
+    --placeholder-color: var(--uai-input-placeholder-color, var(--default-placeholder-color));
 
-    --label-focus-left: var(--szot-input-label-focus-left, 0.8rem);
-    --label-focus-color: var(--szot-input-label-focus-color, var(--label-color));
-    --label-not-focus-color: var(--szot-input-label-not-focus-color, var(--label-color));
+    --label-focus-left: var(--uai-input-label-focus-left, 0.8rem);
+    --label-focus-color: var(--uai-input-label-focus-color, var(--label-color));
+    --label-not-focus-color: var(--uai-input-label-not-focus-color, var(--label-color));
 
-    --icon-color: var(--szot-input-icon-color, var(--default-icon-color));
+    --icon-color: var(--uai-input-icon-color, var(--default-icon-color));
 
-    --icon-left-margin-right: var(--szot-input-icon-margin-right, 0);
-    --icon-left-margin-left: var(--szot-input-icon-margin-left, 0.5rem);
-    --icon-right-margin-right: var(--szot-input-icon-margin-right, 0.5rem);
-    --icon-right-margin-left: var(--szot-input-icon-margin-left, 0);
+    --icon-left-margin-right: var(--uai-input-icon-margin-right, 0);
+    --icon-left-margin-left: var(--uai-input-icon-margin-left, 0.5rem);
+    --icon-right-margin-right: var(--uai-input-icon-margin-right, 0.5rem);
+    --icon-right-margin-left: var(--uai-input-icon-margin-left, 0);
 
     &.input-style-primary {
       --default-label-color: var(--theme-primary-txt);
@@ -413,12 +413,12 @@
       --default-placeholder-color: var(--theme-ligth-txt);
     }
     &.input-filled {
-      --border-color-filled: var(--szot-input-border-color-filled, var(--border-color-not-filled));
+      --border-color-filled: var(--uai-input-border-color-filled, var(--border-color-not-filled));
       --border-color: var(--border-color-filled);
     }
     &.inFocus {
       --border-color-focus: var(
-        --szot-input-border-color-focus,
+        --uai-input-border-color-focus,
         var(--border-color-filled, var(--border-color-not-filled))
       );
       --border-color: var(--border-color-focus);
@@ -475,9 +475,9 @@
     }
 
     &.hidden {
-      --szot-input-label-color: transparent;
-      --szot-input-background-color: transparent;
-      --szot-input-icon-color: transparent;
+      --uai-input-label-color: transparent;
+      --uai-input-background-color: transparent;
+      --uai-input-icon-color: transparent;
 
       border: none;
     }
@@ -565,7 +565,7 @@
       border: 0;
       margin: calc(var(--input-padding) * 1.2) var(--icon-left-margin-right) var(--input-padding)
         var(--icon-left-margin-left);
-      --szot-icon-color: var(--icon-color);
+      --uai-icon-color: var(--icon-color);
     }
   }
 
@@ -583,7 +583,7 @@
       border: 0;
       margin: calc(var(--input-padding) * 1.2) var(--icon-right-margin-right) var(--input-padding)
         var(--icon-right-margin-left);
-      --szot-icon-color: var(--icon-color);
+      --uai-icon-color: var(--icon-color);
     }
   }
 

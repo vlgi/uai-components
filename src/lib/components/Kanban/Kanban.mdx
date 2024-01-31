@@ -20,7 +20,7 @@ have a unique "id" along with the other data you want to use.
 
 ```tsx
 <script>
-  import { Kanban } from "szot-ui-experimental";
+  import { Kanban } from "uai-components";
   let columnItems: { id: number, text: string }[];
 </script>
 
@@ -44,7 +44,7 @@ Within Kanban or List, "svelte/transition" should not be used.
 <script>
   import type { SlideParams } from "svelte/transition";
   import { slide } from "svelte/transition";
-  import { Kanban } from "szot-ui-experimental";
+  import { Kanban } from "uai-components";
 
   let columnItems: { id: number}[];
 
@@ -78,7 +78,7 @@ kanban.
 
 ```tsx
 <script>
-  import { Card, List, Kanban } from "szot-ui-experimental";
+  import { Card, List, Kanban } from "uai-components";
 
   type TCardsList = {
     id: number;
@@ -200,6 +200,6 @@ the list you can see if it was added or removed from it.
 ### Kanban cards scroll
 
 Kanban will handle with horizontal scroll to you be able to move card from a list to another, but
-you must set this two css variables `--szot-kanban-width` and `--szot-kanban-column-width`. That way
+you must set this two css variables `--uai-kanban-width` and `--uai-kanban-column-width`. That way
 kanban will have a width size and the column will not shink to fit creating the scroll inside the
 kanban componente, that will be auto handled by the kanban component.

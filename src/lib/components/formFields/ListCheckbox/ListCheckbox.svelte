@@ -215,17 +215,17 @@
   @use "$styles/mixins" as m;
   @use "$styles/variables" as v;
   .list-checkbox-wrapper {
-    --checkbox-label-color: var(--szot-checkbox-label-color, var(--theme-dark-txt));
+    --checkbox-label-color: var(--uai-checkbox-label-color, var(--theme-dark-txt));
 
     .invalid {
-      --szot-checkbox-color: var(--theme-error);
-      --szot-checkbox-label-color: var(--theme-error);
-      --szot-checkbox-badge-pill-icon-color: var(--theme-error);
-      --szot-checkbox-badge-pill-label-color: var(--theme-error);
-      --szot-checkbox-badge-pill-border-color: var(--theme-error);
-      --szot-checkbox-badge-pill-selected-icon-color: var(--theme-error);
-      --szot-checkbox-badge-pill-selected-label-color: var(--theme-error);
-      --szot-checkbox-badge-pill-selected-border-color: var(--theme-error);
+      --uai-checkbox-color: var(--theme-error);
+      --uai-checkbox-label-color: var(--theme-error);
+      --uai-checkbox-badge-pill-icon-color: var(--theme-error);
+      --uai-checkbox-badge-pill-label-color: var(--theme-error);
+      --uai-checkbox-badge-pill-border-color: var(--theme-error);
+      --uai-checkbox-badge-pill-selected-icon-color: var(--theme-error);
+      --uai-checkbox-badge-pill-selected-label-color: var(--theme-error);
+      --uai-checkbox-badge-pill-selected-border-color: var(--theme-error);
 
       &.checkbox-title {
         @include m.text-color(var(--theme-error));
@@ -238,8 +238,8 @@
 
     .list-checkbox {
       display: flex;
-      justify-content: var(--szot-list-checkbox-justify-content);
-      align-items: var(--szot-list-checkbox-align-items);
+      justify-content: var(--uai-list-checkbox-justify-content);
+      align-items: var(--uai-list-checkbox-align-items);
       flex-wrap: wrap;
       list-style: none;
 

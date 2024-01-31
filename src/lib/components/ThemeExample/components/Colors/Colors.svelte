@@ -4,20 +4,20 @@
       title: "Simple colors",
       description: "Have a general use. This will set text and surface colors too.",
       variables: [
-        { name: "--szot-primary", default: "#FC6627" },
-        { name: "--szot-secondary", default: "#167070" },
-        { name: "--szot-dark", default: "#5F5F5F " },
-        { name: "--szot-light", default: "#F9F9F9" },
+        { name: "--uai-primary", default: "#FC6627" },
+        { name: "--uai-secondary", default: "#167070" },
+        { name: "--uai-dark", default: "#5F5F5F " },
+        { name: "--uai-light", default: "#F9F9F9" },
       ],
     },
     {
       title: "pure text colors",
       description: "You can ovewrite the text color.",
       variables: [
-        { name: "--szot-primary-txt", default: "--szot-primary" },
-        { name: "--szot-secondary-txt", default: "--szot-secondary" },
-        { name: "--szot-dark-txt", default: "--szot-dark" },
-        { name: "--szot-light-txt", default: "--szot-light" },
+        { name: "--uai-primary-txt", default: "--uai-primary" },
+        { name: "--uai-secondary-txt", default: "--uai-secondary" },
+        { name: "--uai-dark-txt", default: "--uai-dark" },
+        { name: "--uai-light-txt", default: "--uai-light" },
       ],
     },
     {
@@ -28,30 +28,30 @@
         "support gradient in the inserted text).",
 
       variables: [
-        { name: "--szot-primary-surface", default: "--szot-primary" },
-        { name: "--szot-secondary-surface", default: "--szot-secondary" },
-        { name: "--szot-dark-surface", default: "--szot-dark" },
-        { name: "--szot-light-surface", default: "--szot-light" },
+        { name: "--uai-primary-surface", default: "--uai-primary" },
+        { name: "--uai-secondary-surface", default: "--uai-secondary" },
+        { name: "--uai-dark-surface", default: "--uai-dark" },
+        { name: "--uai-light-surface", default: "--uai-light" },
       ],
     },
     {
       title: "inserted text color",
       description: "Colors of the text entered in the input and in the textarea.",
       variables: [
-        { name: "--szot-primary-inserted-text", default: "#FC6627" },
-        { name: "--szot-secondary-inserted-text", default: "#167070" },
-        { name: "--szot-dark-inserted-text", default: "#5F5F5F" },
-        { name: "--szot-light-inserted-text", default: "#F9F9F9" },
+        { name: "--uai-primary-inserted-text", default: "#FC6627" },
+        { name: "--uai-secondary-inserted-text", default: "#167070" },
+        { name: "--uai-dark-inserted-text", default: "#5F5F5F" },
+        { name: "--uai-light-inserted-text", default: "#F9F9F9" },
       ],
     },
     {
       title: "text on surface colors",
       description: "",
       variables: [
-        { name: "--szot-txt-on-primary-surface", default: "#dce0e6" },
-        { name: "--szot-txt-on-secondary-surface", default: "#dce0e6" },
-        { name: "--szot-txt-on-dark-surface", default: "#dce0e6" },
-        { name: "--szot-txt-on-light-surface", default: "#1f1f20" },
+        { name: "--uai-txt-on-primary-surface", default: "#dce0e6" },
+        { name: "--uai-txt-on-secondary-surface", default: "#dce0e6" },
+        { name: "--uai-txt-on-dark-surface", default: "#dce0e6" },
+        { name: "--uai-txt-on-light-surface", default: "#1f1f20" },
       ],
     },
     {
@@ -59,27 +59,27 @@
       description:
         "used to inform something, like a helper text, an info, ... Can be both, a surface or a text",
       variables: [
-        { name: "--szot-error", default: "#bb5656" },
-        { name: "--szot-warning", default: "#bbb156" },
-        { name: "--szot-info", default: "#568cbb" },
-        { name: "--szot-success", default: "#60bb56" },
-        { name: "--szot-neutral", default: "#6e737a" },
+        { name: "--uai-error", default: "#bb5656" },
+        { name: "--uai-warning", default: "#bbb156" },
+        { name: "--uai-info", default: "#568cbb" },
+        { name: "--uai-success", default: "#60bb56" },
+        { name: "--uai-neutral", default: "#6e737a" },
       ],
     },
     {
       title: "text on signal colors surface",
       description: "if the color is used as background, this color must be the text",
-      variables: [{ name: "--szot-txt-on-signal-color", default: "black" }],
+      variables: [{ name: "--uai-txt-on-signal-color", default: "black" }],
     },
     {
       title: "text colors",
       description: "text colors splitted by context of use",
-      variables: [{ name: "--szot-global-txt", default: "--szot-txt-dark" }],
+      variables: [{ name: "--uai-global-txt", default: "--uai-txt-dark" }],
     },
     {
       title: "other colors",
       description: "colors splitted by context of use",
-      variables: [{ name: "--szot-fields-outline", default: "--szot-global-txt" }],
+      variables: [{ name: "--uai-fields-outline", default: "--uai-global-txt" }],
     },
   ];
 </script>
@@ -140,10 +140,10 @@
     background: #ddd;
   }
 
-  .--szot-primary,
-  .--szot-secondary,
-  .--szot-dark,
-  .--szot-light {
+  .--uai-primary,
+  .--uai-secondary,
+  .--uai-dark,
+  .--uai-light {
     color: transparent;
   }
 
@@ -151,88 +151,88 @@
     font-weight: 700;
   }
 
-  .--szot-primary-txt {
+  .--uai-primary-txt {
     color: var(--theme-primary-txt);
   }
 
-  .--szot-secondary-txt {
+  .--uai-secondary-txt {
     color: var(--theme-secondary-txt);
   }
 
-  .--szot-dark-txt {
+  .--uai-dark-txt {
     color: var(--theme-dark-txt);
   }
 
-  .--szot-light-txt {
+  .--uai-light-txt {
     color: var(--theme-light-txt);
   }
 
-  .--szot-primary-surface {
+  .--uai-primary-surface {
     background: var(--theme-primary-surface);
     color: transparent;
   }
 
-  .--szot-secondary-surface {
+  .--uai-secondary-surface {
     background: var(--theme-secondary-surface);
     color: transparent;
   }
 
-  .--szot-dark-surface {
+  .--uai-dark-surface {
     background: var(--theme-dark-surface);
     color: transparent;
   }
 
-  .--szot-light-surface {
+  .--uai-light-surface {
     background: var(--theme-light-surface);
     color: transparent;
   }
 
-  .--szot-txt-on-primary-surface {
+  .--uai-txt-on-primary-surface {
     background: var(--theme-primary-surface);
     color: var(--theme-txt-on-primary-surface);
   }
 
-  .--szot-txt-on-secondary-surface {
+  .--uai-txt-on-secondary-surface {
     background: var(--theme-secondary-surface);
     color: var(--theme-txt-on-secondary-surface);
   }
 
-  .--szot-txt-on-dark-surface {
+  .--uai-txt-on-dark-surface {
     background: var(--theme-dark-surface);
     color: var(--theme-txt-on-dark-surface);
   }
 
-  .--szot-txt-on-light-surface {
+  .--uai-txt-on-light-surface {
     background: var(--theme-light-surface);
     color: var(--theme-txt-on-light-surface);
   }
 
-  .--szot-error {
+  .--uai-error {
     background: var(--theme-error);
     color: var(--theme-txt-on-signal-color);
   }
 
-  .--szot-warning {
+  .--uai-warning {
     background: var(--theme-warning);
     color: var(--theme-txt-on-signal-color);
   }
 
-  .--szot-info {
+  .--uai-info {
     background: var(--theme-info);
     color: var(--theme-txt-on-signal-color);
   }
 
-  .--szot-success {
+  .--uai-success {
     background: var(--theme-success);
     color: var(--theme-txt-on-signal-color);
   }
 
-  .--szot-neutral {
+  .--uai-neutral {
     background: var(--theme-neutral);
     color: var(--theme-txt-on-signal-color);
   }
 
-  .--szot-txt-on-signal-color {
+  .--uai-txt-on-signal-color {
     background: var(--theme-error);
     color: var(--theme-txt-on-signal-color);
   }

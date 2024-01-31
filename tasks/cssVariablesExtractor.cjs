@@ -20,17 +20,17 @@ const filePath = path.join(__dirname, "../", filePathParam);
  *    --color: red
  * }
  *
- *  in: var(--szot-color, var(--color))
+ *  in: var(--uai-color, var(--color))
  *  out: {
  *    --color: null,
- *    --szot-color: --color,
+ *    --uai-color: --color,
  * }
  *
- * in: var(--szot-color, var(--color, var(--szot-default)))
+ * in: var(--uai-color, var(--color, var(--uai-default)))
  * out: {
- *  --szot-color: --color,
- *  --color: --szot-default,
- *  --szot-default: null,
+ *  --uai-color: --color,
+ *  --color: --uai-default,
+ *  --uai-default: null,
  * }
  *
  * @param {string} stringCssUsage
@@ -61,25 +61,25 @@ function extractCssVarImplicitDefs(stringCssUsage) {
 
 /**
  * This transform something like this:
- * " --switch-background: var(--szot-checkbox-switch-background, #cecece);
-     --switch-color: var(--szot-checkbox-switch-color, var(--theme-dark-txt));
+ * " --switch-background: var(--uai-checkbox-switch-background, #cecece);
+     --switch-color: var(--uai-checkbox-switch-color, var(--theme-dark-txt));
      --switch-checked-color: var(
-       --szot-checkbox-switch-checked-color,
+       --uai-checkbox-switch-checked-color,
        var(--switch-color)
      );"
  *
  * To this:
  *
  * {
- *  --switch-background: var(--szot-checkbox-switch-background,#cecece),
+ *  --switch-background: var(--uai-checkbox-switch-background,#cecece),
  *  ...
- *  --switch-checked-color: var(--szot-checkbox-switch-checked-color,var(--switch-color));
+ *  --switch-checked-color: var(--uai-checkbox-switch-checked-color,var(--switch-color));
  * }
  *
  * @param {string} fileData
  */
 function extractCssVarExplicitDefs(fileData) {
-  const regExpExtractVariables = new RegExp(/\s--(?!szot)([^:]|\n)*:([^;]|\n)*;/, "igm");
+  const regExpExtractVariables = new RegExp(/\s--(?!uai)([^:]|\n)*:([^;]|\n)*;/, "igm");
   const matchs = fileData.match(regExpExtractVariables);
   const matchsCleaned = matchs.map((x) => x.replace(/(\s|\n|;)/gim, "").replace(":", ","));
   return matchsCleaned.reduce((prev, curr) => {
@@ -130,7 +130,7 @@ fs.readFile(filePath, { encoding: "utf-8" }, (err, data) => {
 
     /**
      * Extract the explicit css variables like "--color: red;"
-     * or "--switch-background: var(--szot-checkbox-switch-background,#cecece),"
+     * or "--switch-background: var(--uai-checkbox-switch-background,#cecece),"
      *
      * We will resolve the uses of css variables inside the definitions.
      * This is to force this script works only for who is following our code pattern
@@ -141,15 +141,15 @@ fs.readFile(filePath, { encoding: "utf-8" }, (err, data) => {
     const resolveDependencies = (variable) => {
       if (variable === null) return variable;
       if (!/--/.test(variable)) return variable;
-      if (/--szot/.test(variable)) return variable;
-      if (/--theme/.test(variable)) return variable.replace("theme", "szot");
+      if (/--uai/.test(variable)) return variable;
+      if (/--theme/.test(variable)) return variable.replace("theme", "uai");
 
       return resolveDependencies(explicitCssVars[variable]);
     };
 
-    const szotVariables = Object.fromEntries(
+    const uaiVariables = Object.fromEntries(
       Object.entries(explicitCssVars)
-        .filter(([k, _]) => /--szot/.test(k))
+        .filter(([k, _]) => /--uai/.test(k))
         .map(([k, v]) => [k, resolveDependencies(v)])
         .sort((a, b) => {
           if (a[0] < b[0]) {
@@ -162,7 +162,7 @@ fs.readFile(filePath, { encoding: "utf-8" }, (err, data) => {
         })
     );
     printTable(
-      Object.entries(szotVariables).map(([k, v]) => ({
+      Object.entries(uaiVariables).map(([k, v]) => ({
         "CSS Property": k,
         "Description": "",
         "Default": v,

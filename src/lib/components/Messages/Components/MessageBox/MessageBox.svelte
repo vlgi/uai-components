@@ -162,7 +162,7 @@
           <div
             class="buttons"
             class:not-hidden={messageIdDropdownOpened === message.id}
-            id="szot-message-container-{message.id}"
+            id="uai-message-container-{message.id}"
           >
             <Button
               size="round"
@@ -179,7 +179,7 @@
             <Dropdown
               opened={messageIdDropdownOpened === message.id}
               dropdownAlignment={myUserId === message.userId ? "leftTop" : "rightTop"}
-              targetId="szot-message-container-{message.id}"
+              targetId="uai-message-container-{message.id}"
             >
               <div
                 class="buttons dropdown"
@@ -220,9 +220,9 @@
   .container {
     display: flex;
     flex-direction: column;
-    border: var(--szot-message-box-border, none);
-    gap: var(--szot-message-box-gap, 0.5rem);
-    background: var(--szot-message-box-background, transparent);
+    border: var(--uai-message-box-border, none);
+    gap: var(--uai-message-box-gap, 0.5rem);
+    background: var(--uai-message-box-background, transparent);
   }
 
   .message-container {
@@ -236,11 +236,11 @@
     align-items: top;
 
     .image {
-      margin-top: var(--szot-message-box-image-margin-top, 1rem);
+      margin-top: var(--uai-message-box-image-margin-top, 1rem);
       img {
-        width: var(--szot-message-box-image-width, 2.25rem);
-        height: var(--szot-message-box-image-height, 2.25rem);
-        border-radius: var(--szot-message-box-image-border-radius, 5rem);
+        width: var(--uai-message-box-image-width, 2.25rem);
+        height: var(--uai-message-box-image-height, 2.25rem);
+        border-radius: var(--uai-message-box-image-border-radius, 5rem);
         margin: 0 0 0 0.5rem;
       }
     }
@@ -250,7 +250,7 @@
       max-width: 100vw;
       overflow-x: hidden;
       word-break: break-word;
-      background: var(--szot-message-box-text-background, transparent);
+      background: var(--uai-message-box-text-background, transparent);
       .header {
         display: flex;
         align-items: center;
@@ -273,8 +273,8 @@
         .editing-box {
           display: flex;
           flex-direction: column;
-          --szot-textarea-margin-bottom: 0.85rem;
-          width: var(--szot-textarea-max-width, var(--textarea-width));
+          --uai-textarea-margin-bottom: 0.85rem;
+          width: var(--uai-textarea-max-width, var(--textarea-width));
           .editing-buttons {
             display: flex;
             justify-content: end;
@@ -287,7 +287,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      --szot-button-icon-color: var(--szot-message-box-icon-color);
+      --uai-button-icon-color: var(--uai-message-box-icon-color);
     }
 
     &.right {

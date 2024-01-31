@@ -15,8 +15,8 @@
 <Modal
   bind:opened={openeds[0]}
   {disableHeader}
-  --szot-modal-width="400px"
-  --szot-modal-height="400px"
+  --uai-modal-width="400px"
+  --uai-modal-height="400px"
   {...$$restProps}
 >
   <div slot="modal-header">
@@ -29,8 +29,8 @@
     <Modal
       bind:opened={openeds[1]}
       {disableHeader}
-      --szot-modal-width="300px"
-      --szot-modal-height="300px"
+      --uai-modal-width="300px"
+      --uai-modal-height="300px"
     >
       <div slot="modal-content">
         <button on:click={() => openModal(2)}>Open 3</button><br />
@@ -39,8 +39,8 @@
         <Modal
           bind:opened={openeds[2]}
           {disableHeader}
-          --szot-modal-width="200px"
-          --szot-modal-height="200px"
+          --uai-modal-width="200px"
+          --uai-modal-height="200px"
         >
           <div slot="modal-content">Hi</div>
         </Modal>

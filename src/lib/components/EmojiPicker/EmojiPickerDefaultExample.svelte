@@ -35,8 +35,8 @@
       name="message"
       type="text"
       value={msg}
-      --szot-input-margin-bottom="0"
-      --szot-input-margin-top="0"
+      --uai-input-margin-bottom="0"
+      --uai-input-margin-top="0"
     />
   </div>
   <EmojiPicker
@@ -44,7 +44,7 @@
     bind:opened
     {maxRecently}
     {targetEl}
-    localStorageId="szot-ui-emoji-picker-default-example"
+    localStorageId="uai-emoji-picker-default-example"
   />
 </div>
 

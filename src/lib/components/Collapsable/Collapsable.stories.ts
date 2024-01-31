@@ -89,16 +89,16 @@ export const CustomExample: Story = {
     expanded: false,
     collapsableStyleType: "outline",
     style:
-      "--szot-collapsable-border-width: 10px;" +
-      "--szot-collapsable-border-color: linear-gradient(to right, red, blue, green);" +
-      "--szot-collapsable-color: linear-gradient(to right, red, blue, green);" +
-      "--szot-collapsable-content-border-width: 5px;" +
-      "--szot-collapsable-content-border-color: linear-gradient(to bottom left, red, orange, yellow, green, blue, indigo, violet);" +
-      "--szot-collapsable-content-color: linear-gradient(to bottom left, red, orange, yellow, green, blue, indigo, violet);" +
-      "--szot-collapsable-icon-color: linear-gradient(to top, magenta, yellow, cyan);" +
-      "--szot-collapsable-title-font-size: 24px;" +
-      "--szot-collapsable-box-shadow: inset -0.5px -1px 1px rgba(0, 0, 0, 0.13), inset 0.5px 1px 1px rgba(255, 255, 255, 0.02);" +
-      "--szot-collapsable-backdrop-filter: blur(30.5px);",
+      "--uai-collapsable-border-width: 10px;" +
+      "--uai-collapsable-border-color: linear-gradient(to right, red, blue, green);" +
+      "--uai-collapsable-color: linear-gradient(to right, red, blue, green);" +
+      "--uai-collapsable-content-border-width: 5px;" +
+      "--uai-collapsable-content-border-color: linear-gradient(to bottom left, red, orange, yellow, green, blue, indigo, violet);" +
+      "--uai-collapsable-content-color: linear-gradient(to bottom left, red, orange, yellow, green, blue, indigo, violet);" +
+      "--uai-collapsable-icon-color: linear-gradient(to top, magenta, yellow, cyan);" +
+      "--uai-collapsable-title-font-size: 24px;" +
+      "--uai-collapsable-box-shadow: inset -0.5px -1px 1px rgba(0, 0, 0, 0.13), inset 0.5px 1px 1px rgba(255, 255, 255, 0.02);" +
+      "--uai-collapsable-backdrop-filter: blur(30.5px);",
   },
 };
 

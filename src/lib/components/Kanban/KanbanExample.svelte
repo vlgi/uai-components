@@ -54,7 +54,7 @@
     on:finishDraggingColumn
     on:changelog
     on:changelog={showChangelog}
-    --szot-kanban-height="90vh"
+    --uai-kanban-height="90vh"
   >
     <svelte:fragment
       slot="column"

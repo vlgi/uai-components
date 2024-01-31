@@ -178,7 +178,7 @@
 <style lang="scss">
   @use "$styles/mixins" as m;
   .list-radio-box {
-    --radio-label-color: var(--szot-radio-label-color, var(--theme-dark-txt));
+    --radio-label-color: var(--uai-radio-label-color, var(--theme-dark-txt));
     box-sizing: border-box;
 
     .radio-title {
@@ -186,8 +186,8 @@
     }
     .list-radio {
       display: flex;
-      justify-content: var(--szot-list-radio-justify-content);
-      align-items: var(--szot-list-radio-align-items);
+      justify-content: var(--uai-list-radio-justify-content);
+      align-items: var(--uai-list-radio-align-items);
       flex-wrap: wrap;
       list-style: none;
 
@@ -200,14 +200,14 @@
       }
     }
     .invalid {
-      --szot-radio-color: var(--theme-error);
-      --szot-radio-label-color: var(--theme-error);
-      --szot-radio-badge-pill-icon-color: var(--theme-error);
-      --szot-radio-badge-pill-label-color: var(--theme-error);
-      --szot-radio-badge-pill-border-color: var(--theme-error);
-      --szot-radio-badge-pill-selected-icon-color: var(--theme-error);
-      --szot-radio-badge-pill-selected-label-color: var(--theme-error);
-      --szot-radio-badge-pill-selected-border-color: var(--theme-error);
+      --uai-radio-color: var(--theme-error);
+      --uai-radio-label-color: var(--theme-error);
+      --uai-radio-badge-pill-icon-color: var(--theme-error);
+      --uai-radio-badge-pill-label-color: var(--theme-error);
+      --uai-radio-badge-pill-border-color: var(--theme-error);
+      --uai-radio-badge-pill-selected-icon-color: var(--theme-error);
+      --uai-radio-badge-pill-selected-label-color: var(--theme-error);
+      --uai-radio-badge-pill-selected-border-color: var(--theme-error);
       @include m.text-color(var(--theme-error));
     }
 

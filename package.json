@@ -1,5 +1,5 @@
 {
-  "name": "szot-ui-experimental",
+  "name": "uai-components",
   "version": "3.16.0",
   "scripts": {
     "dev": "vite dev --host --port 5000",
@@ -25,7 +25,7 @@
     "type": "git",
     "url": "git+https://github.com/vlgi/uai-components.git"
   },
-  "author": "szot",
+  "author": "vlgi",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/vlgi/uai-components/issues"

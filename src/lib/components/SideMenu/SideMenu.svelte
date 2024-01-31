@@ -182,50 +182,50 @@
   @use "$styles/mixins" as m;
   .nav-menu-container {
     // nav sizes
-    --nav-width: var(--szot-nav-width, 4.5rem);
-    --nav-expanded-width: var(--szot-nav-expanded-width, 18.75rem);
-    --nav-logo-height: var(--szot-nav-logo-height, 5rem);
-    --nav-text-size: var(--szot-nav-text-size, 1rem);
-    --nav-icon-size: var(--szot-nav-icon-size, 1.5rem);
-    --nav-item-max-height: var(--szot-nav-item-max-height, 3.125rem);
+    --nav-width: var(--uai-nav-width, 4.5rem);
+    --nav-expanded-width: var(--uai-nav-expanded-width, 18.75rem);
+    --nav-logo-height: var(--uai-nav-logo-height, 5rem);
+    --nav-text-size: var(--uai-nav-text-size, 1rem);
+    --nav-icon-size: var(--uai-nav-icon-size, 1.5rem);
+    --nav-item-max-height: var(--uai-nav-item-max-height, 3.125rem);
 
     // nav paddings
-    --nav-padding: var(--szot-nav-padding, 0.4rem);
-    --nav-logo-padding: var(--szot-nav-logo-padding, 0.6rem 0.3rem);
-    --nav-external-padding: var(--szot-nav-external-padding, 0rem);
+    --nav-padding: var(--uai-nav-padding, 0.4rem);
+    --nav-logo-padding: var(--uai-nav-logo-padding, 0.6rem 0.3rem);
+    --nav-external-padding: var(--uai-nav-external-padding, 0rem);
 
     // nav colors
-    --nav-background-color: var(--szot-nav-background-color, #f0f0f0);
-    --nav-txt-color: var(--szot-nav-txt-color, var(--theme-dark-txt));
-    --nav-items-hover-color: var(--szot-nav-items-hover-color, var(--theme-light-surface));
+    --nav-background-color: var(--uai-nav-background-color, #f0f0f0);
+    --nav-txt-color: var(--uai-nav-txt-color, var(--theme-dark-txt));
+    --nav-items-hover-color: var(--uai-nav-items-hover-color, var(--theme-light-surface));
     --nav-items-active-background: var(
-      --szot-nav-items-active-background,
+      --uai-nav-items-active-background,
       var(--theme-dark-surface)
     );
     --nav-items-active-txt-color: var(
-      --szot-nav-items-active-txt-color,
+      --uai-nav-items-active-txt-color,
       var(--theme-txt-on-dark-surface)
     );
     --nav-sub-items-active-highlight: var(
-      --szot-nav-sub-items-active-highlight,
+      --uai-nav-sub-items-active-highlight,
       var(--nav-items-active-txt-color)
     );
 
     // other variables
-    --nav-items-active-border: var(--szot-nav-items-active-border, none);
-    --nav-animation-speed: var(--szot-nav-animation-speed, 350ms);
-    --nav-z-index: var(--szot-nav-z-index, 9999);
-    --nav-shadow: var(--szot-nav-shadow, var(--theme-high-shadow));
+    --nav-items-active-border: var(--uai-nav-items-active-border, none);
+    --nav-animation-speed: var(--uai-nav-animation-speed, 350ms);
+    --nav-z-index: var(--uai-nav-z-index, 9999);
+    --nav-shadow: var(--uai-nav-shadow, var(--theme-high-shadow));
     --nav-border-radius: var(
-      --szot-nav-border-radius,
+      --uai-nav-border-radius,
       0 var(--theme-medium-shape) var(--theme-medium-shape) 0
     );
     --nav-items-border-radius: var(
-      --szot-nav-items-border-radius,
+      --uai-nav-items-border-radius,
       0px var(--theme-small-shape) var(--theme-small-shape) 0px
     );
     --nav-group-hover-border-radius: var(
-      --szot-nav-group-hover-border-radius,
+      --uai-nav-group-hover-border-radius,
       0px var(--theme-medium-shape) var(--theme-medium-shape) 0px
     );
 
@@ -377,8 +377,8 @@
           background: var(--nav-items-active-background);
         }
 
-        --szot-icon-color: var(--color-active, var(--nav-txt-color));
-        --szot-icon-font-size: var(--nav-icon-size);
+        --uai-icon-color: var(--color-active, var(--nav-txt-color));
+        --uai-icon-font-size: var(--nav-icon-size);
 
         display: grid;
         align-items: center;
@@ -515,7 +515,7 @@
 
       hr {
         border-color: transparent;
-        background-color: var(--szot-nav-spacer-color, var(--nav-txt-color));
+        background-color: var(--uai-nav-spacer-color, var(--nav-txt-color));
         height: 0.25rem;
         width: 100%;
         border-radius: 0.625rem;

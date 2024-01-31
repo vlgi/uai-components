@@ -223,15 +223,15 @@ export const CustomExample: Story = {
     icon: "phone",
     name: "custom",
     style:
-      "--szot-input-height: 1.5rem;" +
-      "--szot-input-background-color: #ffffff;" +
-      "--szot-input-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
-      "--szot-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
-      "--szot-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
-      "--szot-input-border-radius: 1.5rem;" +
-      "--szot-input-border: 10px;" +
-      "--szot-input-icon-margin-right: 3rem;" +
-      "--szot-input-border-color-focus: purple;" +
-      "--szot-input-border-color-filled: yellow;",
+      "--uai-input-height: 1.5rem;" +
+      "--uai-input-background-color: #ffffff;" +
+      "--uai-input-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--uai-input-label-focus-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--uai-input-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--uai-input-border-radius: 1.5rem;" +
+      "--uai-input-border: 10px;" +
+      "--uai-input-icon-margin-right: 3rem;" +
+      "--uai-input-border-color-focus: purple;" +
+      "--uai-input-border-color-filled: yellow;",
   },
 };

@@ -116,10 +116,10 @@
 
 <style lang="scss">
   .dropdown {
-    --bg-color: var(--szot-dropdown-bg-color, white);
-    --padding: var(--szot-dropdown-padding, var(--theme-global-medium-padding));
-    --shadow: var(--szot-dropdown-shadow, var(--theme-low-shadow));
-    --border-radius: var(--szot-dropdown-border-radius, var(--theme-medium-shape));
+    --bg-color: var(--uai-dropdown-bg-color, white);
+    --padding: var(--uai-dropdown-padding, var(--theme-global-medium-padding));
+    --shadow: var(--uai-dropdown-shadow, var(--theme-low-shadow));
+    --border-radius: var(--uai-dropdown-border-radius, var(--theme-medium-shape));
 
     // internal variables
     --arrow-size: 0.625rem;

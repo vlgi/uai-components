@@ -64,7 +64,7 @@ export const Single: Story = {
     label: "Sobremesa",
     selected: null,
     options,
-    style: "--szot-select-max-width: 8rem",
+    style: "--uai-select-max-width: 8rem",
     ...template.args,
   },
 };
@@ -79,7 +79,7 @@ export const SingleFloating: Story = {
     options,
     required: true,
     dropdownStyle: "floating",
-    style: "--szot-select-floating-dropdown-bg-color: #eee",
+    style: "--uai-select-floating-dropdown-bg-color: #eee",
     ...template.args,
   },
 };
@@ -254,7 +254,7 @@ export const LimitOptionsDisplayed: Story = {
     selected: null,
     options: longDesserts,
     maxNumberOfOptions: 8,
-    style: "--szot-select-dropdown-max-height: 18rem;",
+    style: "--uai-select-dropdown-max-height: 18rem;",
     ...template.args,
   },
 };
@@ -297,12 +297,12 @@ export const CustomExample: Story = {
     options,
     selected: options[0],
     style:
-      "--szot-select-label-color: red;" +
-      "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
-      "--szot-select-border: 10px;" +
-      "--szot-select-border-color-filled: green;" +
-      "--szot-select-border-color-focus: purple;" +
-      "--szot-select-text-color: blue;",
+      "--uai-select-label-color: red;" +
+      "--uai-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--uai-select-border: 10px;" +
+      "--uai-select-border-color-filled: green;" +
+      "--uai-select-border-color-focus: purple;" +
+      "--uai-select-text-color: blue;",
     ...template.args,
   },
   parameters: {
@@ -311,8 +311,8 @@ export const CustomExample: Story = {
         language: "html",
         code: `
     <div
-      style="--szot-select-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
-      "--szot-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+      style="--uai-select-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+      "--uai-select-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
     >
       <Select
         multiple={false}

@@ -464,37 +464,37 @@
   @use "$styles/mixins" as m;
   * {
     --component-color: var(--theme-color);
-    --margin-top: var(--szot-select-margin-top, 0.5rem);
-    --component-background-color: var(--szot-select-background-color, transparent);
-    --component-border-radius: var(--szot-select-border-radius, var(--theme-small-shape));
-    --component-padding-vertical: var(--szot-select-padding-vertical, var(--theme-fields-padding));
+    --margin-top: var(--uai-select-margin-top, 0.5rem);
+    --component-background-color: var(--uai-select-background-color, transparent);
+    --component-border-radius: var(--uai-select-border-radius, var(--theme-small-shape));
+    --component-padding-vertical: var(--uai-select-padding-vertical, var(--theme-fields-padding));
     --component-padding-horizontal: var(
-      --szot-select-padding-horizontal,
+      --uai-select-padding-horizontal,
       var(--theme-fields-padding)
     );
-    --component-border: var(--szot-select-border, var(--theme-small-border));
+    --component-border: var(--uai-select-border, var(--theme-small-border));
     --label-margin-right: var(--select-label-margin-right, 1.3rem);
-    --message-left-spacing: var(--szot-select-message-left-spacing, 1rem);
-    --open-transition-duration: var(--szot-select-open-transition-duration, 200ms);
-    --component-label-color: var(--szot-select-label-color, var(--component-color));
-    --component-border-color: var(--szot-select-border-color, var(--component-color));
-    --select-badge-color: var(--szot-select-badge-color, var(--szot-select-label-color));
+    --message-left-spacing: var(--uai-select-message-left-spacing, 1rem);
+    --open-transition-duration: var(--uai-select-open-transition-duration, 200ms);
+    --component-label-color: var(--uai-select-label-color, var(--component-color));
+    --component-border-color: var(--uai-select-border-color, var(--component-color));
+    --select-badge-color: var(--uai-select-badge-color, var(--uai-select-label-color));
     --search-input-border-color: var(
-      --szot-select-search-input-border-color,
+      --uai-select-search-input-border-color,
       var(--component-border-color)
     );
 
-    --text-color: var(--szot-select-text-color, var(--theme-dark-txt));
-    --input-placeholder-color: var(--szot-select-input-placeholder-color, var(--text-color));
-    --component-placeholder-color: var(--szot-select-placeholder-color, var(--text-color));
+    --text-color: var(--uai-select-text-color, var(--theme-dark-txt));
+    --input-placeholder-color: var(--uai-select-input-placeholder-color, var(--text-color));
+    --component-placeholder-color: var(--uai-select-placeholder-color, var(--text-color));
     --border-width: var(--component-border);
 
-    --floating-dropdown-bg-color: var(--szot-select-floating-dropdown-bg-color, white);
-    --floating-dropdown-text-color: var(--szot-select-floating-dropdown-text-color);
+    --floating-dropdown-bg-color: var(--uai-select-floating-dropdown-bg-color, white);
+    --floating-dropdown-text-color: var(--uai-select-floating-dropdown-text-color);
 
-    --dropdown-max-height: var(--szot-select-dropdown-max-height, 10rem);
+    --dropdown-max-height: var(--uai-select-dropdown-max-height, 10rem);
 
-    --error-height-hidden: var(--szot-select-error-height-hidden);
+    --error-height-hidden: var(--uai-select-error-height-hidden);
   }
 
   .select-wrapper {
@@ -512,7 +512,7 @@
 
     &.filled {
       --component-border-color-filled: var(
-        --szot-select-border-color-filled,
+        --uai-select-border-color-filled,
         var(--component-border-color)
       );
     }
@@ -549,7 +549,7 @@
     width: 100%;
     outline: none;
     margin-top: var(--margin-top);
-    max-width: var(--szot-select-max-width, 100%);
+    max-width: var(--uai-select-max-width, 100%);
     // hack the specificity
     &.select.select {
       --default-border-color-focus: var(
@@ -590,7 +590,7 @@
       }
     }
     &-inFocus {
-      --select-focus-color: var(--szot-select-border-color-focus);
+      --select-focus-color: var(--uai-select-border-color-focus);
     }
 
     &-label {
@@ -657,7 +657,7 @@
         background-color: var(--floating-dropdown-bg-color);
 
         // overwrite the text color inside the dropdown only when floating
-        --szot-select-text-color: var(--floating-dropdown-text-color);
+        --uai-select-text-color: var(--floating-dropdown-text-color);
 
         // this 0.1875rem on padding is because the search input have a margin top
         padding: 0.1875rem var(--component-padding-horizontal) var(--component-padding-horizontal)
@@ -672,7 +672,7 @@
         }
 
         .search-input {
-          --szot-input-border-radius: calc(
+          --uai-input-border-radius: calc(
             var(--component-border-radius) - var(--component-padding-horizontal)
           );
         }
@@ -683,11 +683,11 @@
       }
 
       .search-input {
-        --szot-input-background-color: var(--component-background-color);
-        --szot-input-border-color: var(--text-color);
-        --szot-input-placeholder-color: var(--input-placeholder-color);
-        --szot-input-margin-bottom: 0;
-        --szot-input-text-color: var(--text-color);
+        --uai-input-background-color: var(--component-background-color);
+        --uai-input-border-color: var(--text-color);
+        --uai-input-placeholder-color: var(--input-placeholder-color);
+        --uai-input-margin-bottom: 0;
+        --uai-input-text-color: var(--text-color);
       }
 
       &.with-borders {
@@ -765,9 +765,9 @@
   }
 
   .badge {
-    --szot-badge-color: var(--select-badge-color);
-    --szot-badge-border-color: var(
-      --szot-select-badge-border-color,
+    --uai-badge-color: var(--select-badge-color);
+    --uai-badge-border-color: var(
+      --uai-select-badge-border-color,
       var(--select-focus-color, var(--default-border-color-focus))
     );
   }
@@ -790,22 +790,22 @@
     // hack the specificity
     &.error.error {
       --component-color: var(--theme-error);
-      --szot-select-label-color: var(--theme-error);
-      --szot-select-border-color: var(--theme-error);
+      --uai-select-label-color: var(--theme-error);
+      --uai-select-border-color: var(--theme-error);
 
       .badge {
-        --szot-badge-color: var(--theme-error);
-        --szot-badge-border-color: var(--theme-error);
+        --uai-badge-color: var(--theme-error);
+        --uai-badge-border-color: var(--theme-error);
 
         &-filled {
-          --szot-badge-background-color: var(--theme-error);
-          --szot-badge-color: var(--theme-txt-on-signal-color);
-          --szot-badge-border-color: transparent;
+          --uai-badge-background-color: var(--theme-error);
+          --uai-badge-color: var(--theme-txt-on-signal-color);
+          --uai-badge-border-color: transparent;
         }
       }
 
       .search-input {
-        --szot-input-text-color: var(--theme-error);
+        --uai-input-text-color: var(--theme-error);
       }
     }
     .select-arrow-aux {

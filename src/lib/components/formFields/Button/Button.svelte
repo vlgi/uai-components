@@ -103,15 +103,15 @@
   @use "$styles/mixins" as m;
 
   .container {
-    --background-color: var(--szot-button-background-color, var(--default-background-color));
-    --border: var(--szot-button-border, var(--default-border));
-    --border-color: var(--szot-button-border-color, var(--default-border-color));
-    --border-radius: var(--szot-button-border-radius, var(--theme-small-shape));
-    --max-width: var(--szot-button-max-width, 100%);
-    --width: var(--szot-button-width, auto);
-    --white-space-text: var(--szot-button-white-space, nowrap);
-    --box-shadow: var(--szot-button-box-shadow, none);
-    --backdrop-filter: var(--szot-button-backdrop-filter, none);
+    --background-color: var(--uai-button-background-color, var(--default-background-color));
+    --border: var(--uai-button-border, var(--default-border));
+    --border-color: var(--uai-button-border-color, var(--default-border-color));
+    --border-radius: var(--uai-button-border-radius, var(--theme-small-shape));
+    --max-width: var(--uai-button-max-width, 100%);
+    --width: var(--uai-button-width, auto);
+    --white-space-text: var(--uai-button-white-space, nowrap);
+    --box-shadow: var(--uai-button-box-shadow, none);
+    --backdrop-filter: var(--uai-button-backdrop-filter, none);
 
     &.style-primary {
       --default-background-color: var(--theme-primary-surface);
@@ -169,21 +169,21 @@
       --default-opacity-hover: 85%;
       --default-effect-color: rgba(184, 182, 182, 0.2);
       // external variables
-      --opacity-hover: var(--szot-button-opacity-hover, var(--default-opacity-hover));
-      --color: var(--szot-button-color, var(--default-color));
-      --szot-icon-color: var(--szot-button-icon-color, var(--color));
+      --opacity-hover: var(--uai-button-opacity-hover, var(--default-opacity-hover));
+      --color: var(--uai-button-color, var(--default-color));
+      --uai-icon-color: var(--uai-button-icon-color, var(--color));
       --effect-color-after-click: var(
-        --szot-button-effect-color-after-click,
+        --uai-button-effect-color-after-click,
         var(--default-effect-color)
       );
-      --text-transform: (--szot-button-text-transform, capitalize);
-      --font-size: var(--szot-button-font-size, var(--theme-fields-font-size));
+      --text-transform: (--uai-button-text-transform, capitalize);
+      --font-size: var(--uai-button-font-size, var(--theme-fields-font-size));
 
-      --padding-large: var(--szot-button-padding, 0.625rem 2.1875rem);
-      --padding-medium: var(--szot-button-padding, 0.5625rem 3.4688rem);
-      --padding-small: var(--szot-button-padding, 0.3125rem 0.625rem);
+      --padding-large: var(--uai-button-padding, 0.625rem 2.1875rem);
+      --padding-medium: var(--uai-button-padding, 0.5625rem 3.4688rem);
+      --padding-small: var(--uai-button-padding, 0.3125rem 0.625rem);
 
-      --margin-icon: var(--szot-button-margin-icon, -0.1rem 1rem);
+      --margin-icon: var(--uai-button-margin-icon, -0.1rem 1rem);
 
       &.button-style-primary {
         --default-color: var(--theme-txt-on-primary-surface);

@@ -210,9 +210,9 @@
       overflow-y: auto;
       overflow-x: hidden;
       :global() {
-        --szot-scroll-bar-color: var(--component-color);
-        --szot-scroll-bar-hover-color: var(--component-color);
-        --szot-scroll-background-color: transparent;
+        --uai-scroll-bar-color: var(--component-color);
+        --uai-scroll-bar-hover-color: var(--component-color);
+        --uai-scroll-background-color: transparent;
       }
     }
 
@@ -226,19 +226,19 @@
       transition: background-color 200ms;
 
       .text {
-        @include m.text-color(var(--szot-select-text-color, var(--theme-dark-txt)));
+        @include m.text-color(var(--uai-select-text-color, var(--theme-dark-txt)));
       }
 
       &.selected {
         .text {
-          @include m.text-color(var(--szot-select-text-color, var(--theme-dark-txt)));
+          @include m.text-color(var(--uai-select-text-color, var(--theme-dark-txt)));
           opacity: 0.5;
         }
       }
 
       &.focused,
       &:hover {
-        background: var(--szot-optionsList-focused-color, #f2f2f2);
+        background: var(--uai-optionsList-focused-color, #f2f2f2);
       }
     }
   }

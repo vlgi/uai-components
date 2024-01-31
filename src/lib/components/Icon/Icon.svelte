@@ -19,8 +19,8 @@
   .icon-container {
     width: fit-content;
     height: fit-content;
-    color: var(--szot-icon-color, var(--theme-dark-txt));
-    font-size: var(--szot-icon-font-size, 1.25rem);
+    color: var(--uai-icon-color, var(--theme-dark-txt));
+    font-size: var(--uai-icon-font-size, 1.25rem);
     line-height: 0;
   }
 </style>

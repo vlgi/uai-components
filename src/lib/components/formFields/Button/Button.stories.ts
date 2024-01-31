@@ -74,7 +74,7 @@ export const LargeIcon: Story = {
     icon: "mdi:upload",
     labelSlot: "Enviar documentos",
     positionIcon: "right",
-    style: "--szot-button-max-width: 20rem",
+    style: "--uai-button-max-width: 20rem",
   },
 };
 
@@ -219,13 +219,13 @@ export const CustomExample: Story = {
     labelSlot: "orange",
     icon: "ic:outline-remove-red-eye",
     style:
-      "--szot-button-color: #333;" +
-      "--szot-button-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
-      "--szot-button-border-radius: 1.5rem;" +
-      "--szot-button-width: 100%;" +
-      "--szot-button-max-width: 100%;" +
-      "--szot-button-icon-color: red;" +
-      "--szot-button-white-space: normal;" +
-      "--szot-button-box-shadow: inset -0.5px -1px 1px rgba(0, 0, 0, 0.13), inset 0.5px 1px 1px rgba(255, 255, 255, 0.02);",
+      "--uai-button-color: #333;" +
+      "--uai-button-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--uai-button-border-radius: 1.5rem;" +
+      "--uai-button-width: 100%;" +
+      "--uai-button-max-width: 100%;" +
+      "--uai-button-icon-color: red;" +
+      "--uai-button-white-space: normal;" +
+      "--uai-button-box-shadow: inset -0.5px -1px 1px rgba(0, 0, 0, 0.13), inset 0.5px 1px 1px rgba(255, 255, 255, 0.02);",
   },
 };

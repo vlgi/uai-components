@@ -38,10 +38,10 @@
 <style lang="scss">
   * {
     :global(.cancel-button-container) {
-      --szot-button-background-color: yellow;
+      --uai-button-background-color: yellow;
     }
     :global(.confirm-button-container) {
-      --szot-button-background-color: purple;
+      --uai-button-background-color: purple;
     }
   }
 </style>

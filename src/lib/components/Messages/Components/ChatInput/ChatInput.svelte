@@ -133,7 +133,7 @@
         bind:opened={emojiPickerOpened}
         maxRecently={20}
         {targetEl}
-        localStorageId="szot-ui-emoji-picker-dropdown-example"
+        localStorageId="uai-emoji-picker-dropdown-example"
       />
     </div>
   </Dropdown>
@@ -141,16 +141,16 @@
 
 <style lang="scss">
   .container {
-    --szot-textarea-margin-bottom: 0.75rem;
-    --szot-textarea-max-width: var(--szot-ui-chat-max-width, 100vw);
-    --szot-textarea-max-height: var(--szot-ui-chat-max-height);
+    --uai-textarea-margin-bottom: 0.75rem;
+    --uai-textarea-max-width: var(--uai-ui-chat-max-width, 100vw);
+    --uai-textarea-max-height: var(--uai-ui-chat-max-height);
     &.input-style {
-      --szot-textarea-max-height: var(--szot-ui-chat-max-height, 2.5rem);
+      --uai-textarea-max-height: var(--uai-ui-chat-max-height, 2.5rem);
     }
     .buttons {
       display: flex;
-      flex-direction: var(--szot-ui-chat-buttons-flex-direction, row-reverse);
-      --szot-button-icon-color: var(--szot-chat-input-icon-color);
+      flex-direction: var(--uai-ui-chat-buttons-flex-direction, row-reverse);
+      --uai-button-icon-color: var(--uai-chat-input-icon-color);
     }
   }
 </style>

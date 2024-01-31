@@ -9,8 +9,8 @@ import Icon from "./Icon.svelte";
 You can get the list of icon names in the [iconify page](https://icon-sets.iconify.design/)
 
 To add icons in the icon bundle to render offline, import the function addIcons from helper folder
-or from the szot-ui-experimental (`import {addIcons} from "szot-ui-experimental"`) if you are using
-it in your own project. The parameter of the function addIcons is a list of IconifyJSON objects
+or from the uai-components (`import {addIcons} from "uai-components"`) if you are using it in your
+own project. The parameter of the function addIcons is a list of IconifyJSON objects
 
 To get the IconifyJSON objects to use in the addIcons function, use the api query from iconify to
 get the objects.
@@ -24,12 +24,12 @@ Ex: https://api.iconify.design/mdi.json?icons=account-box,account-cash,account
 
 ```tsx
 <script lang="ts">
-  import { Icon } from "szot-ui";
+  import { Icon } from "uai-components";
 </script>
 
 <Icon
   iconName={"ic:baseline-apple"}
-  --szot-icon-color="red"
-  --szot-icon-font-size="80px"
+  --uai-icon-color="red"
+  --uai-icon-font-size="80px"
 />
 ```

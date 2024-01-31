@@ -48,8 +48,8 @@
       slot="modal-content"
       class="modal-content"
       style="
-        --szot-input-text-color: {labelData?.textColor || '#000000'};
-        --szot-input-placeholder-color: {isDark ? '#ffffffa1' : '#00000090'}
+        --uai-input-text-color: {labelData?.textColor || '#000000'};
+        --uai-input-placeholder-color: {isDark ? '#ffffffa1' : '#00000090'}
       "
     >
       <div class="label">
@@ -81,15 +81,15 @@
 
 <style lang="scss">
   .container {
-    --szot-modal-width: var(--szot-edit-label-width, 25rem);
-    --szot-modal-height: var(--szot-edit-label-height, 25rem);
+    --uai-modal-width: var(--uai-edit-label-width, 25rem);
+    --uai-modal-height: var(--uai-edit-label-height, 25rem);
 
-    --szot-input-margin-top: var(--szot-edit-label-input-margin-top, 0);
-    --szot-input-margin-bottom: var(--szot-edit-label-input-margin-bottom, 0);
+    --uai-input-margin-top: var(--uai-edit-label-input-margin-top, 0);
+    --uai-input-margin-bottom: var(--uai-edit-label-input-margin-bottom, 0);
 
-    --szot-input-border: var(--szot-edit-label-input-border, none);
-    --szot-input-border-radius: var(--szot-edit-label-border-radius, 1.5rem);
-    --szot-input-border-color: var(--szot-edit-label-input-border-color, transparent);
+    --uai-input-border: var(--uai-edit-label-input-border, none);
+    --uai-input-border-radius: var(--uai-edit-label-border-radius, 1.5rem);
+    --uai-input-border-color: var(--uai-edit-label-input-border-color, transparent);
 
     .modal-content {
       display: grid;
@@ -102,12 +102,12 @@
     }
 
     .label {
-      border-radius: var(--szot-edit-label-border-radius, 1.5rem);
+      border-radius: var(--uai-edit-label-border-radius, 1.5rem);
     }
 
     .input {
       background: var(--background);
-      border-radius: var(--szot-edit-label-border-radius, 1.5rem);
+      border-radius: var(--uai-edit-label-border-radius, 1.5rem);
     }
 
     .footer {

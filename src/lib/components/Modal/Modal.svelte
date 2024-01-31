@@ -165,21 +165,21 @@
 
 <style lang="scss">
   .modal-overlay {
-    --bg-color: var(--szot-modal-bg-color, white);
-    --width: var(--szot-modal-width, fit-content);
-    --height: var(--szot-modal-height, fit-content);
-    --max-height: var(--szot-modal-max-height, calc(100vh - 1.2rem));
-    --max-width: var(--szot-modal-max-width, calc(100vw - 1.2rem));
-    --overlay-color: var(--szot-modal-overlay-color, #ccc);
-    --overlay-blur: var(--szot-modal-overlay-blur, 2px);
-    --z-index: var(--szot-modal-z-index, 9999);
-    --close-bg-color: var(--szot-modal-close-bg-color, var(--theme-light-surface));
-    --close-txt-color: var(--szot-modal-close-txt-color, var(--theme-txt-on-light-surface));
-    --padding: var(--szot-modal-padding, 0.6rem);
-    --margin-content: var(--szot-modal-margin-content, 0.6rem 0);
-    --header-padding: var(--szot-modal-header-padding, 0.9375rem 0.9375rem 0rem 0.9375rem);
-    --footer-padding: var(--szot-modal-footer-padding, 0rem 0.9375rem 0.9375rem 0.9375rem);
-    --content-padding: var(--szot-modal-content-padding, 0rem 0.9375rem 0.9375rem 0.9375rem);
+    --bg-color: var(--uai-modal-bg-color, white);
+    --width: var(--uai-modal-width, fit-content);
+    --height: var(--uai-modal-height, fit-content);
+    --max-height: var(--uai-modal-max-height, calc(100vh - 1.2rem));
+    --max-width: var(--uai-modal-max-width, calc(100vw - 1.2rem));
+    --overlay-color: var(--uai-modal-overlay-color, #ccc);
+    --overlay-blur: var(--uai-modal-overlay-blur, 2px);
+    --z-index: var(--uai-modal-z-index, 9999);
+    --close-bg-color: var(--uai-modal-close-bg-color, var(--theme-light-surface));
+    --close-txt-color: var(--uai-modal-close-txt-color, var(--theme-txt-on-light-surface));
+    --padding: var(--uai-modal-padding, 0.6rem);
+    --margin-content: var(--uai-modal-margin-content, 0.6rem 0);
+    --header-padding: var(--uai-modal-header-padding, 0.9375rem 0.9375rem 0rem 0.9375rem);
+    --footer-padding: var(--uai-modal-footer-padding, 0rem 0.9375rem 0.9375rem 0.9375rem);
+    --content-padding: var(--uai-modal-content-padding, 0rem 0.9375rem 0.9375rem 0.9375rem);
 
     position: fixed;
     top: 0;
@@ -229,8 +229,8 @@
       padding: var(--header-padding);
 
       .close-button-container {
-        --szot-button-background-color: var(--close-bg-color);
-        --szot-button-icon-color: var(--close-txt-color);
+        --uai-button-background-color: var(--close-bg-color);
+        --uai-button-icon-color: var(--close-txt-color);
       }
     }
 

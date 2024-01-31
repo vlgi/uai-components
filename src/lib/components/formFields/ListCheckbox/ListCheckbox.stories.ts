@@ -139,8 +139,8 @@ export const CustomExample: Story = {
     title: "Lista de Afazeres",
     checkboxItems,
     style:
-      "--szot-checkbox-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
-      "--szot-checkbox-label-color: " +
+      "--uai-checkbox-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--uai-checkbox-label-color: " +
       "linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
   },
 };

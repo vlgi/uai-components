@@ -6,17 +6,17 @@
       description: "",
       variables: [
         {
-          name: "--szot-global-small-padding",
+          name: "--uai-global-small-padding",
           default: ".6rem",
           description: "used in small components, like buttons and inputs",
         },
         {
-          name: "--szot-global-medium-padding",
+          name: "--uai-global-medium-padding",
           default: ".8rem",
           description: "used in medium components like card and accordions",
         },
         {
-          name: "--szot-global-large-padding",
+          name: "--uai-global-large-padding",
           default: "1rem",
           description: "used in large components like modals",
         },
@@ -28,8 +28,8 @@
       description: "You can overwrite the fields variables",
       variables: [
         {
-          name: "--szot-fields-padding",
-          default: "--szot-global-small-padding",
+          name: "--uai-fields-padding",
+          default: "--uai-global-small-padding",
           description: "used at select, input, textarea",
         },
       ],
@@ -105,19 +105,19 @@
     background: #547a9d;
   }
 
-  .card-outter.--szot-global-small-padding {
+  .card-outter.--uai-global-small-padding {
     padding: var(--theme-global-small-padding);
   }
 
-  .card-outter.--szot-global-medium-padding {
+  .card-outter.--uai-global-medium-padding {
     padding: var(--theme-global-medium-padding);
   }
 
-  .card-outter.--szot-global-large-padding {
+  .card-outter.--uai-global-large-padding {
     padding: var(--theme-global-large-padding);
   }
 
-  .--szot-fields-padding {
+  .--uai-fields-padding {
     margin-top: 0.4rem;
     padding: var(--theme-global-large-padding);
   }

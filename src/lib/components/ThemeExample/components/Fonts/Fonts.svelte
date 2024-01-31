@@ -5,21 +5,21 @@
       description: "",
       variables: [
         {
-          name: "--szot-font-family",
+          name: "--uai-font-family",
           default: "'Open Sans', 'Helvetica Neue', sans-serif",
           description: "",
         },
-        { name: "--szot-font-size", default: "16px", description: "generic usage" },
+        { name: "--uai-font-size", default: "16px", description: "generic usage" },
       ],
     },
     {
       title: "Tag P font",
       description: "used in <p>",
       variables: [
-        { name: "--szot-p-font-weight", default: "normal", description: "" },
-        { name: "--szot-p-font-style", default: "normal", description: "" },
-        { name: " --szot-p-font-size", default: ".9rem", description: "" },
-        { name: "--szot-p-line-height", default: "1.25rem", description: "" },
+        { name: "--uai-p-font-weight", default: "normal", description: "" },
+        { name: "--uai-p-font-style", default: "normal", description: "" },
+        { name: " --uai-p-font-size", default: ".9rem", description: "" },
+        { name: "--uai-p-line-height", default: "1.25rem", description: "" },
       ],
     },
     {
@@ -27,8 +27,8 @@
       description: "Used in form fields components, like select, textarea, input, ...",
       variables: [
         {
-          name: "--szot-fields-font-size",
-          default: "(--szot-font-size",
+          name: "--uai-fields-font-size",
+          default: "(--uai-font-size",
           description: "this will automatically set label and helper text too",
         },
       ],

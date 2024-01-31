@@ -244,22 +244,22 @@
   @use "$styles/mixins" as m;
 
   .content-container {
-    --range-slider-width: var(--szot-range-slider-width, 100%);
-    --range-slider-max-width: var(--szot-range-slider-max-width, 100%);
-    --range-slider-height: var(--szot-range-slider-height, 0.625rem);
-    --range-slider-border-radius: var(--szot-range-border-radius, 3.25rem);
-    --range-slider-background-color: var(--szot-range-slider-background-color, #333);
+    --range-slider-width: var(--uai-range-slider-width, 100%);
+    --range-slider-max-width: var(--uai-range-slider-max-width, 100%);
+    --range-slider-height: var(--uai-range-slider-height, 0.625rem);
+    --range-slider-border-radius: var(--uai-range-border-radius, 3.25rem);
+    --range-slider-background-color: var(--uai-range-slider-background-color, #333);
     --range-slider-background-color-filled: var(
-      --szot-range-slider-background-color-filled,
+      --uai-range-slider-background-color-filled,
       var(--range-slider-background-color)
     );
-    --range-slider-thumb-width: var(--szot-range-slider-thumb-width, 1.5rem);
-    --range-slider-thumb-height: var(--szot-range-slider-thumb-height, 1.5rem);
-    --range-slider-thumb-border-radius: var(--szot-range-slider-thumb-border-radius, 50%);
-    --range-slider-thumb-background-color: var(--szot-range-slider-thumb-background-color, #d9d9d9);
-    --range-slider-thumb-border: var(--szot-range-slider-thumb-border, none);
+    --range-slider-thumb-width: var(--uai-range-slider-thumb-width, 1.5rem);
+    --range-slider-thumb-height: var(--uai-range-slider-thumb-height, 1.5rem);
+    --range-slider-thumb-border-radius: var(--uai-range-slider-thumb-border-radius, 50%);
+    --range-slider-thumb-background-color: var(--uai-range-slider-thumb-background-color, #d9d9d9);
+    --range-slider-thumb-border: var(--uai-range-slider-thumb-border, none);
     --range-slider-margin: var(
-      --szot-range-slider-margin,
+      --uai-range-slider-margin,
       calc(var(--range-slider-thumb-height) / 2) 0
     );
 

@@ -65,7 +65,7 @@
       {#if showButtons}
         <div
           class="buttons"
-          style="--szot-button-color:{labelData?.textColor || '#000000'}"
+          style="--uai-button-color:{labelData?.textColor || '#000000'}"
         >
           {#if !hasButtonsSlot()}
             <Button
@@ -91,15 +91,15 @@
 <style lang="scss">
   .label {
     min-height: 0.6rem;
-    border-radius: var(--szot-label-border-radius, 1.5rem);
-    padding: var(--szot-label-padding, 0.2rem 1rem);
+    border-radius: var(--uai-label-border-radius, 1.5rem);
+    padding: var(--uai-label-padding, 0.2rem 1rem);
 
     background: var(--background);
     cursor: var(--cursor);
   }
 
   .label-body {
-    display: var(--szot-label-body-display, flex);
+    display: var(--uai-label-body-display, flex);
     justify-content: space-between;
     align-items: center;
   }
@@ -109,8 +109,8 @@
   }
 
   .buttons {
-    --szot-button-background-color: transparent;
-    --szot-button-border-color: transparent;
-    --szot-button-border: none;
+    --uai-button-background-color: transparent;
+    --uai-button-border-color: transparent;
+    --uai-button-border: none;
   }
 </style>

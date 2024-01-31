@@ -98,16 +98,16 @@ export const DialogCustom: StoryObj<typeof meta, DialogCustomExample> = {
   }),
   args: {
     style:
-      "--szot-dialog-text-color: green;" +
-      "--szot-modal-bg-color: red;" +
-      "--szot-modal-padding: 3rem;" +
-      "--szot-modal-close-txt-color: yellow;" +
-      "--szot-modal-close-bg-color: purple;" +
-      "--szot-dialog-text-weight-header: 100;" +
-      "--szot-dialog-text-weight: 700;" +
-      "--szot-dialog-text-size: 1.5rem;" +
-      "--szot-dialog-text-size-header: 0.625rem;" +
-      "--szot-modal-margin-content: 2.5rem 0;",
+      "--uai-dialog-text-color: green;" +
+      "--uai-modal-bg-color: red;" +
+      "--uai-modal-padding: 3rem;" +
+      "--uai-modal-close-txt-color: yellow;" +
+      "--uai-modal-close-bg-color: purple;" +
+      "--uai-dialog-text-weight-header: 100;" +
+      "--uai-dialog-text-weight: 700;" +
+      "--uai-dialog-text-size: 1.5rem;" +
+      "--uai-dialog-text-size-header: 0.625rem;" +
+      "--uai-modal-margin-content: 2.5rem 0;",
     title: "Test",
     content: "testing component style",
     showHeader: true,

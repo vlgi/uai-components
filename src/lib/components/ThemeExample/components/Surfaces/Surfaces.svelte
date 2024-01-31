@@ -5,17 +5,17 @@
       description: "Used in shaped components, like a button or a card",
       variables: [
         {
-          variable: "--szot-low-shadow",
+          variable: "--uai-low-shadow",
           default: "0 0 4px rgba(0,0,0,.07)",
           description: "",
         },
         {
-          variable: "--szot-medium-shadow",
+          variable: "--uai-medium-shadow",
           default: "0 4px 4px rgba(0,0,0,.07)",
           description: "",
         },
         {
-          variable: "--szot-high-shadow",
+          variable: "--uai-high-shadow",
           default: "4px 4px 4px rgba(0,0,0,.07)",
           description: "",
         },
@@ -26,17 +26,17 @@
       description: "Used in shaped components, like a button or a card",
       variables: [
         {
-          variable: "--szot-small-shape",
+          variable: "--uai-small-shape",
           default: "1.25rem",
           description: "used in objects with small sizes, like a button, input, badge",
         },
         {
-          variable: "--szot-medium-shape",
+          variable: "--uai-medium-shape",
           default: "1rem",
           description: "medium size, like a card, accordion",
         },
         {
-          variable: "--szot-large-shape",
+          variable: "--uai-large-shape",
           default: "1.5rem",
           description: "large size, like a modal",
         },
@@ -47,17 +47,17 @@
       description: "Used in shaped components, like a button or a card",
       variables: [
         {
-          variable: "--szot-small-border",
+          variable: "--uai-small-border",
           default: "0.0625rem",
           description: "used in objects with small sizes, like a button, input, badge",
         },
         {
-          variable: "--szot-medium-border",
+          variable: "--uai-medium-border",
           default: "0.0625rem",
           description: "medium size, like a card, accordion",
         },
         {
-          variable: "--szot-large-border",
+          variable: "--uai-large-border",
           default: "0.0625rem",
           description: "large size, like a modal",
         },
@@ -108,52 +108,52 @@
     border: 3px solid black;
   }
 
-  .--szot-small-shape {
+  .--uai-small-shape {
     border-radius: var(--theme-small-shape);
     width: 4rem;
     height: 2rem;
   }
 
-  .--szot-medium-shape {
+  .--uai-medium-shape {
     border-radius: var(--theme-medium-shape);
     width: 20rem;
     height: 10rem;
   }
 
-  .--szot-large-shape {
+  .--uai-large-shape {
     border-radius: var(--theme-large-shape);
     width: 60rem;
     height: 30rem;
   }
 
-  .--szot-low-shadow {
+  .--uai-low-shadow {
     border: 1px solid #eee;
     box-shadow: var(--theme-low-shadow);
   }
 
-  .--szot-medium-shadow {
+  .--uai-medium-shadow {
     border: 1px solid #eee;
     box-shadow: var(--theme-medium-shadow);
   }
 
-  .--szot-high-shadow {
+  .--uai-high-shadow {
     border: 1px solid #eee;
     box-shadow: var(--theme-high-shadow);
   }
 
-  .--szot-small-border {
+  .--uai-small-border {
     border: var(--theme-small-border) solid #333;
     width: 4rem;
     height: 2rem;
   }
 
-  .--szot-medium-border {
+  .--uai-medium-border {
     border: var(--theme-medium-border) solid #333;
     width: 20rem;
     height: 10rem;
   }
 
-  .--szot-large-border {
+  .--uai-large-border {
     border: var(--theme-large-border) solid #333;
     width: 60rem;
     height: 30rem;

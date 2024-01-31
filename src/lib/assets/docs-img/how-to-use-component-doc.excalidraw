@@ -3897,11 +3897,11 @@
       "locked": false,
       "fontSize": 16,
       "fontFamily": 3,
-      "text": "import {Badge} from \"szot-ui\"",
+      "text": "import {Badge} from \"uai-components\"",
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "import {Badge} from \"szot-ui\"",
+      "originalText": "import {Badge} from \"uai-components\"",
       "lineHeight": 1.2,
       "baseline": 16
     },

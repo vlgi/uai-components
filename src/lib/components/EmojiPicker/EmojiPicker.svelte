@@ -252,8 +252,8 @@
           id="emojis-search-input"
           inputAttributes={{ autocomplete: "off" }}
           name="emojis-search-input"
-          --szot-input-margin-bottom="0"
-          --szot-input-margin-top="0"
+          --uai-input-margin-bottom="0"
+          --uai-input-margin-top="0"
         />
       </div>
       <div class="categories-tabs">
@@ -268,8 +268,8 @@
           >
             <Icon
               iconName={cat.icon}
-              --szot-icon-font-size="20px"
-              --szot-icon-color="var(--tabs-icon-color)"
+              --uai-icon-font-size="20px"
+              --uai-icon-color="var(--tabs-icon-color)"
             />
           </button>
         {/each}
@@ -343,16 +343,16 @@
 
 <style lang="scss">
   .container {
-    --background-color: var(--szot-emojis-picker-background-color, white);
-    --height: var(--szot-emojis-picker-height, 320px);
-    --tabs-icon-color: var(--szot-emojis-picker-tabs-icon-color, var(--theme-dark));
+    --background-color: var(--uai-emojis-picker-background-color, white);
+    --height: var(--uai-emojis-picker-height, 320px);
+    --tabs-icon-color: var(--uai-emojis-picker-tabs-icon-color, var(--theme-dark));
 
     background-color: var(--background-color);
-    border-radius: var(--szot-emojis-picker-border-radius, var(--theme-small-shape));
-    box-shadow: var(--szot-emojis-picker-box-shadow, var(--theme-medium-shadow));
+    border-radius: var(--uai-emojis-picker-border-radius, var(--theme-small-shape));
+    box-shadow: var(--uai-emojis-picker-box-shadow, var(--theme-medium-shadow));
 
     height: var(--height);
-    width: var(--szot-emojis-picker-width, 315px);
+    width: var(--uai-emojis-picker-width, 315px);
     max-width: 100%;
     min-width: 150px;
 
@@ -393,7 +393,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          border: 1px solid var(--szot-emojis-picker-tabs-border-color, var(--theme-light));
+          border: 1px solid var(--uai-emojis-picker-tabs-border-color, var(--theme-light));
           border-radius: 0;
         }
 
@@ -427,8 +427,8 @@
         background-color: var(--background-color);
         height: fit-content;
         border-bottom: 1px solid
-          var(--szot-emojis-picker-category-title-border-color, var(--theme-light));
-        color: var(--szot-emojis-picker-category-title-font-color, var(--theme-dark));
+          var(--uai-emojis-picker-category-title-border-color, var(--theme-light));
+        color: var(--uai-emojis-picker-category-title-font-color, var(--theme-dark));
         z-index: 2;
       }
 
@@ -443,7 +443,7 @@
           position: relative;
 
           button {
-            background-color: var(--szot-emojis-picker-emoji-background-color, transparent);
+            background-color: var(--uai-emojis-picker-emoji-background-color, transparent);
           }
 
           .skins-container {

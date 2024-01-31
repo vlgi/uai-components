@@ -63,7 +63,7 @@ export const CustomExample: Story = {
     // args for this specific story here
     labelSlot: "New",
     style:
-      "--szot-badge-color:#FFFFFF;" +
-      "--szot-badge-background-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
+      "--uai-badge-color:#FFFFFF;" +
+      "--uai-badge-background-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
   },
 };

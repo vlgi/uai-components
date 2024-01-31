@@ -166,10 +166,10 @@ export const CustomExample: Story = {
     radioOptions,
     radioStyleType: "notFilled",
     style:
-      "--szot-radio-margin: 3px 2px 0px;" +
-      "--szot-radio-size:18px;" +
-      "--szot-radio-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
-      "--szot-radio-checked-color:  linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);" +
-      "--szot-radio-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
+      "--uai-radio-margin: 3px 2px 0px;" +
+      "--uai-radio-size:18px;" +
+      "--uai-radio-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--uai-radio-checked-color:  linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);" +
+      "--uai-radio-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);",
   },
 };

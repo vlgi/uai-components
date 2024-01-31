@@ -34,14 +34,14 @@
       name="message"
       type="text"
       value={msg}
-      --szot-input-margin-bottom="0"
-      --szot-input-margin-top="0"
+      --uai-input-margin-bottom="0"
+      --uai-input-margin-top="0"
     />
     <Dropdown
       targetId="emojis-picker-dropdown-example"
       enableAutAdjust={false}
       dropdownAlignment="bottomRight"
-      --szot-dropdown-padding="0"
+      --uai-dropdown-padding="0"
       opened={true}
     >
       <div
@@ -53,7 +53,7 @@
           {maxRecently}
           {targetEl}
           opened={true}
-          localStorageId="szot-ui-emoji-picker-dropdown-example"
+          localStorageId="uai-emoji-picker-dropdown-example"
         />
       </div>
     </Dropdown>

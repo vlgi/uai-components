@@ -116,12 +116,12 @@ export const CustomExample: Story = {
     placeholder: "Digite algo:",
     rows: 3,
     style:
-      "--szot-textarea-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
-      "--szot-textarea-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
-      "--szot-textarea-placeholder-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
-      "--szot-textarea-border: 10px;" +
-      "--szot-textarea-border-color-filled: red;" +
-      "--szot-textarea-border-color-focus: green;",
+      "--uai-textarea-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--uai-textarea-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--uai-textarea-placeholder-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);" +
+      "--uai-textarea-border: 10px;" +
+      "--uai-textarea-border-color-filled: red;" +
+      "--uai-textarea-border-color-focus: green;",
     ...template.args,
   },
   parameters: {
@@ -141,12 +141,12 @@ export const CustomExample: Story = {
           </script>
 
           <div
-            style="--szot-textarea-border-radius: 1rem;
-            --szot-textarea-max-height: 5rem;--szot-textarea-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
-            --szot-textarea-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
-            --szot-textarea-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
-            --szot-textarea-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
-            --szot-textarea-placeholder-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+            style="--uai-textarea-border-radius: 1rem;
+            --uai-textarea-max-height: 5rem;--uai-textarea-background-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
+            --uai-textarea-label-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+            --uai-textarea-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+            --uai-textarea-border-color: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+            --uai-textarea-placeholder-color:linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);"
           >
             <Textarea validationFn: validTest,
               label="Teste"

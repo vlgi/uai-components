@@ -2,7 +2,7 @@ import { Meta } from "@storybook/blocks";
 
 <Meta title="Introduction" />
 
-# Szot UI
+# UAI Components
 
 ## Introduction
 
@@ -26,13 +26,13 @@ with it.
 Install the package:
 
 ```bash
-npm install szot-ui-experimental
+npm install uai-components
 ```
 
 Import the global style and icons, in your entry point or global css:
 
 ```scss
-import "szot-ui-experimental/styles";
+import "uai-components/styles";
 ```
 
 **NOTE: make sure that you bundler can handle with svelte, scss, images and fonts, to import the
@@ -42,7 +42,7 @@ Use the components =)
 
 ```tsx
 <script lang="ts">
-  import { Input, Form } from "szot-ui-experimental";
+  import { Input, Form } from "uai-components";
 
   export let values: Record<string, unknown>;
   export let isAllValid: boolean;

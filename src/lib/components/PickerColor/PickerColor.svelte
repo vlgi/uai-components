@@ -37,9 +37,9 @@
 
 <style lang="scss">
   .container {
-    background-color: var(--szot-picker-background, transparent);
-    --picker-height: var(--szot-picker-height, 14rem);
-    --picker-width: var(--szot-picker-width, 20rem);
-    --slider-width: var(--szot-picker-slider-height, 0.75rem);
+    background-color: var(--uai-picker-background, transparent);
+    --picker-height: var(--uai-picker-height, 14rem);
+    --picker-width: var(--uai-picker-width, 20rem);
+    --slider-width: var(--uai-picker-slider-height, 0.75rem);
   }
 </style>

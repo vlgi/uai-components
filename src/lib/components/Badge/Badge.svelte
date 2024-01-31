@@ -30,12 +30,12 @@
 <style lang="scss">
   @use "$styles/mixins" as m;
   .badge {
-    --color: var(--szot-badge-color, var(--default-color));
-    --background-color: var(--szot-badge-background-color, var(--default-background-color));
-    --border: var(--szot-badge-border, var(--default-border));
-    --border-color: var(--szot-badge-border-color, var(--default-border-color));
-    --font-size: var(--szot-badge-font-size, 0.9rem);
-    --padding: var(--szot-badge-padding, 0 var(--theme-fields-padding));
+    --color: var(--uai-badge-color, var(--default-color));
+    --background-color: var(--uai-badge-background-color, var(--default-background-color));
+    --border: var(--uai-badge-border, var(--default-border));
+    --border-color: var(--uai-badge-border-color, var(--default-border-color));
+    --font-size: var(--uai-badge-font-size, 0.9rem);
+    --padding: var(--uai-badge-padding, 0 var(--theme-fields-padding));
 
     &.primary {
       --default-background-color: var(--theme-primary-surface);

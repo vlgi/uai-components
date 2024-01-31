@@ -1,9 +1,9 @@
 * {
   // global spacings
-  --theme-global-small-padding: var(--szot-global-small-padding, 0.6rem);
-  --theme-global-medium-padding: var(--szot-global-medium-padding, 0.8rem);
-  --theme-global-large-padding: var(--szot-global-large-padding, 1rem);
+  --theme-global-small-padding: var(--uai-global-small-padding, 0.6rem);
+  --theme-global-medium-padding: var(--uai-global-medium-padding, 0.8rem);
+  --theme-global-large-padding: var(--uai-global-large-padding, 1rem);
 
   // form fields spacings
-  --theme-fields-padding: var(--szot-fields-padding, var(--global-small-padding, 0.6rem));
+  --theme-fields-padding: var(--uai-fields-padding, var(--global-small-padding, 0.6rem));
 }

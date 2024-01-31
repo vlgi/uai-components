@@ -153,11 +153,11 @@
     overflow: hidden;
   }
   .list {
-    display: var(--szot-list-display, flex);
-    flex-direction: var(--szot-list-flex-direction, column);
+    display: var(--uai-list-display, flex);
+    flex-direction: var(--uai-list-flex-direction, column);
 
-    gap: var(--szot-list-items-gap, 0.5rem);
-    padding: var(--szot-list-padding, 0 0.25rem);
+    gap: var(--uai-list-items-gap, 0.5rem);
+    padding: var(--uai-list-padding, 0 0.25rem);
     height: 100%;
     overflow: auto;
   }

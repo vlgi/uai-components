@@ -118,25 +118,25 @@
 <style lang="scss">
   @use "$styles/mixins" as m;
   .radio-item {
-    --radio-margin: var(--szot-radio-margin, 0);
-    --radio-size: var(--szot-radio-size, 1rem);
-    --radio-filled-gap: var(--szot-radio-filled-gap, 0.5rem);
-    --radio-gap-label: var(--szot-radio-gap-label, 0);
-    --radio-color: var(--szot-radio-color, var(--theme-dark-txt));
-    --radio-border: var(--szot-radio-border, 0.125em);
-    --radio-checked-color: var(--szot-radio-checked-color, var(--radio-color));
-    --radio-label-color: var(--szot-radio-label-color, var(--theme-dark-txt));
+    --radio-margin: var(--uai-radio-margin, 0);
+    --radio-size: var(--uai-radio-size, 1rem);
+    --radio-filled-gap: var(--uai-radio-filled-gap, 0.5rem);
+    --radio-gap-label: var(--uai-radio-gap-label, 0);
+    --radio-color: var(--uai-radio-color, var(--theme-dark-txt));
+    --radio-border: var(--uai-radio-border, 0.125em);
+    --radio-checked-color: var(--uai-radio-checked-color, var(--radio-color));
+    --radio-label-color: var(--uai-radio-label-color, var(--theme-dark-txt));
 
-    --badge-pill-margin: var(--szot-radio-margin, 0.3125rem);
-    --badge-pill-min-height: var(--szot-radio-badge-pill-min-height, 1.875rem);
-    --badge-pill-height: var(--szot-radio-badge-pill-height, auto);
-    --border-size: var(--szot-radio-border, 0.15rem);
-    --border-radius: var(--szot-radio-badge-pill-border-radius, 1rem);
-    --badge-pill-background-color: var(--szot-radio-badge-pill-background-color, #aaa);
-    --badge-pill-max-width: var(--szot-radio-badge-pill-max-width, auto);
-    --badge-pill-font-size: var(--szot-radio-badge-pill-font-size, var(--theme-fields-font-size));
-    --badge-pill-font-weight: var(--szot-radio-badge-pill-font-weight, normal);
-    --badge-pill-padding: var(--szot-radio-badge-pill-padding, 0 0.375em);
+    --badge-pill-margin: var(--uai-radio-margin, 0.3125rem);
+    --badge-pill-min-height: var(--uai-radio-badge-pill-min-height, 1.875rem);
+    --badge-pill-height: var(--uai-radio-badge-pill-height, auto);
+    --border-size: var(--uai-radio-border, 0.15rem);
+    --border-radius: var(--uai-radio-badge-pill-border-radius, 1rem);
+    --badge-pill-background-color: var(--uai-radio-badge-pill-background-color, #aaa);
+    --badge-pill-max-width: var(--uai-radio-badge-pill-max-width, auto);
+    --badge-pill-font-size: var(--uai-radio-badge-pill-font-size, var(--theme-fields-font-size));
+    --badge-pill-font-weight: var(--uai-radio-badge-pill-font-weight, normal);
+    --badge-pill-padding: var(--uai-radio-badge-pill-padding, 0 0.375em);
 
     &.badge-style-dark {
       --default-border-color: var(--theme-dark-txt);
@@ -163,23 +163,23 @@
     }
 
     &.on {
-      --border-color-selected: var(--szot-radio-badge-pill-selected-border-color);
-      --label-color-selected: var(--szot-radio-badge-pill-selected-label-color);
-      --icon-color-selected: var(--szot-radio-badge-pill-selected-icon-color);
+      --border-color-selected: var(--uai-radio-badge-pill-selected-border-color);
+      --label-color-selected: var(--uai-radio-badge-pill-selected-label-color);
+      --icon-color-selected: var(--uai-radio-badge-pill-selected-icon-color);
       --background-selected: var(--badge-pill-background-color);
     }
 
     --badge-pill-border-color: var(
       --border-color-selected,
-      var(--szot-radio-badge-pill-border-color, var(--default-border-color))
+      var(--uai-radio-badge-pill-border-color, var(--default-border-color))
     );
     --badge-pill-label-color: var(
       --label-color-selected,
-      var(--szot-radio-badge-pill-label-color, var(--default-label-color))
+      var(--uai-radio-badge-pill-label-color, var(--default-label-color))
     );
     --badge-pill-icon-color: var(
       --icon-color-selected,
-      var(--szot-radio-badge-pill-icon-color, var(--default-icon-color))
+      var(--uai-radio-badge-pill-icon-color, var(--default-icon-color))
     );
     --background: var(--background-selected, none);
 
@@ -191,7 +191,7 @@
     width: fit-content;
 
     &.badge-pill {
-      --szot-icon-color: var(--badge-pill-icon-color);
+      --uai-icon-color: var(--badge-pill-icon-color);
 
       max-width: var(--badge-pill-max-width);
       height: var(--badge-pill-height);

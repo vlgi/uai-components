@@ -23,14 +23,14 @@ export const Default: StoryObj<typeof meta, EmojiPickerDefaultExample> = {
     opened: true,
     maxRecently: 45,
     style:
-      "--szot-emojis-picker-background-color: white;" +
-      "\n--szot-emojis-picker-border-radius: 25px;" +
-      "\n--szot-emojis-picker-height: 315px;" +
-      "\n--szot-emojis-picker-width: 315px;" +
-      "\n--szot-emojis-picker-category-title-border-color: #ddd;" +
-      "\n--szot-emojis-picker-category-title-font-color: #444;" +
-      "\n--szot-emojis-picker-tabs-border-color: #eee;" +
-      "\n--szot-emojis-picker-tabs-icon-color: #777;",
+      "--uai-emojis-picker-background-color: white;" +
+      "\n--uai-emojis-picker-border-radius: 25px;" +
+      "\n--uai-emojis-picker-height: 315px;" +
+      "\n--uai-emojis-picker-width: 315px;" +
+      "\n--uai-emojis-picker-category-title-border-color: #ddd;" +
+      "\n--uai-emojis-picker-category-title-font-color: #444;" +
+      "\n--uai-emojis-picker-tabs-border-color: #eee;" +
+      "\n--uai-emojis-picker-tabs-icon-color: #777;",
   },
   parameters: {
     controls: {
@@ -48,15 +48,15 @@ export const WithModal: StoryObj<typeof meta, EmojiPickerWithModalExample> = {
   args: {
     maxRecently: 45,
     style:
-      "--szot-emojis-picker-background-color: white;" +
-      "\n--szot-emojis-picker-border-radius: 0;" +
-      "\n--szot-emojis-picker-box-shadow: auto;" +
-      "\n--szot-emojis-picker-height: 400px;" +
-      "\n--szot-emojis-picker-width: 320px;" +
-      "\n--szot-emojis-picker-category-title-border-color: #ddd;" +
-      "\n--szot-emojis-picker-category-title-font-color: #444;" +
-      "\n--szot-emojis-picker-tabs-border-color: #eee;" +
-      "\n--szot-emojis-picker-tabs-icon-color: #777;",
+      "--uai-emojis-picker-background-color: white;" +
+      "\n--uai-emojis-picker-border-radius: 0;" +
+      "\n--uai-emojis-picker-box-shadow: auto;" +
+      "\n--uai-emojis-picker-height: 400px;" +
+      "\n--uai-emojis-picker-width: 320px;" +
+      "\n--uai-emojis-picker-category-title-border-color: #ddd;" +
+      "\n--uai-emojis-picker-category-title-font-color: #444;" +
+      "\n--uai-emojis-picker-tabs-border-color: #eee;" +
+      "\n--uai-emojis-picker-tabs-icon-color: #777;",
   },
   parameters: {
     controls: {
@@ -74,15 +74,15 @@ export const WithDropdown: StoryObj<typeof meta, EmojiPickerWithModalExample> = 
   args: {
     maxRecently: 45,
     style:
-      "--szot-emojis-picker-background-color: #FFFCF5;" +
-      "\n--szot-emojis-picker-border-radius: 0;" +
-      "\n--szot-emojis-picker-box-shadow: auto;" +
-      "\n--szot-emojis-picker-height: 400px;" +
-      "\n--szot-emojis-picker-width: 320px;" +
-      "\n--szot-emojis-picker-category-title-border-color: #ddd;" +
-      "\n--szot-emojis-picker-category-title-font-color: #444;" +
-      "\n--szot-emojis-picker-tabs-border-color: #eee;" +
-      "\n--szot-emojis-picker-tabs-icon-color: #777;",
+      "--uai-emojis-picker-background-color: #FFFCF5;" +
+      "\n--uai-emojis-picker-border-radius: 0;" +
+      "\n--uai-emojis-picker-box-shadow: auto;" +
+      "\n--uai-emojis-picker-height: 400px;" +
+      "\n--uai-emojis-picker-width: 320px;" +
+      "\n--uai-emojis-picker-category-title-border-color: #ddd;" +
+      "\n--uai-emojis-picker-category-title-font-color: #444;" +
+      "\n--uai-emojis-picker-tabs-border-color: #eee;" +
+      "\n--uai-emojis-picker-tabs-icon-color: #777;",
   },
   parameters: {
     controls: {
