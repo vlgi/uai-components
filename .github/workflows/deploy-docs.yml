@@ -23,11 +23,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  prepare:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -37,9 +33,71 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18.16.0'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
+
+  check-lint:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.16.0'
+          cache: 'npm'
+
+      - name: Lint
+        run: npm run lint
+
+  check-ts:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.16.0'
+          cache: 'npm'
+
+      - name: Check Typescript
+        run: npm run check
+
+  check-format:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.16.0'
+          cache: 'npm'
+
+      - name: Check Prettier
+        run: npm run format-check
+
+  build:
+    needs: [prepare, check-lint, check-ts, check-format]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.16.0'
+          cache: 'npm'
 
       - name: Delete internal stories (that ones like ...internal.stories.ts|mdx)
         run: make rm-int-stories
@@ -55,6 +113,13 @@ jobs:
         with:
           path: 'storybook-static'
 
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
