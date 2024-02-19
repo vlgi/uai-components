@@ -25,137 +25,18 @@ const labels = [
   { text: "label 2", backgroundColor: "#3be020" },
 ];
 
-const cardsList = [
-  {
-    id: 1,
-    title: "Card 1",
-    labels: [...labels],
-  },
-  {
-    id: 2,
-    title: "Card 2",
-    labels: [labels[1]],
-  },
-  {
-    id: 3,
-    title: "Card 3",
-    labels: [...labels],
-  },
-  {
-    id: 4,
-    title: "Card 4",
-    labels: [labels[0]],
-  },
-  {
-    id: 5,
-    title: "Card 5",
-    labels: [...labels],
-  },
-  {
-    id: 6,
-    title: "Card 6",
-    labels: [...labels],
-  },
-];
+let uniqueCardId = 1;
+const getCardId = () => uniqueCardId++;
+const genCardsList = (itemsNumber: number) => {
+  const getRandSliceLabelsNumber = () => Math.floor(Math.random() * (labels.length + 1));
+  const genCard = (idx: number) => ({
+    id: getCardId(),
+    title: `Card ${idx}`,
+    labels: labels.slice(0, getRandSliceLabelsNumber()),
+  });
 
-const cardsList2 = [
-  {
-    id: 10,
-    title: "Card 1",
-    labels: [...labels],
-  },
-  {
-    id: 11,
-    title: "Card 2",
-    labels: [labels[1]],
-  },
-  {
-    id: 12,
-    title: "Card 3",
-    labels: [...labels],
-  },
-  {
-    id: 13,
-    title: "Card 4",
-    labels: [labels[0]],
-  },
-  {
-    id: 14,
-    title: "Card 5",
-    labels: [...labels],
-  },
-  {
-    id: 15,
-    title: "Card 6",
-    labels: [...labels],
-  },
-];
-
-const cardsList3 = [
-  {
-    id: 20,
-    title: "Card 1",
-    labels: [...labels],
-  },
-  {
-    id: 21,
-    title: "Card 2",
-    labels: [labels[1]],
-  },
-  {
-    id: 22,
-    title: "Card 3",
-    labels: [...labels],
-  },
-  {
-    id: 23,
-    title: "Card 4",
-    labels: [labels[0]],
-  },
-  {
-    id: 24,
-    title: "Card 5",
-    labels: [...labels],
-  },
-  {
-    id: 25,
-    title: "Card 6",
-    labels: [...labels],
-  },
-];
-
-const cardsList4 = [
-  {
-    id: 30,
-    title: "Card 1",
-    labels: [...labels],
-  },
-  {
-    id: 31,
-    title: "Card 2",
-    labels: [labels[1]],
-  },
-  {
-    id: 32,
-    title: "Card 3",
-    labels: [...labels],
-  },
-  {
-    id: 33,
-    title: "Card 4",
-    labels: [labels[0]],
-  },
-  {
-    id: 34,
-    title: "Card 5",
-    labels: [...labels],
-  },
-  {
-    id: 35,
-    title: "Card 6",
-    labels: [...labels],
-  },
-];
+  return Array.from({ length: itemsNumber }, (_, idx) => genCard(idx + 1));
+};
 
 export const Default: Story = {
   ...template,
@@ -165,22 +46,22 @@ export const Default: Story = {
       {
         id: 1,
         title: "List 1",
-        cardsList: [...cardsList],
+        cardsList: genCardsList(10),
       },
       {
         id: 2,
         title: "List 2",
-        cardsList: [...cardsList2],
+        cardsList: genCardsList(10),
       },
       {
         id: 3,
         title: "List 3",
-        cardsList: [...cardsList3],
+        cardsList: genCardsList(10),
       },
       {
         id: 4,
         title: "List 4",
-        cardsList: [...cardsList4],
+        cardsList: genCardsList(10),
       },
     ],
   },
